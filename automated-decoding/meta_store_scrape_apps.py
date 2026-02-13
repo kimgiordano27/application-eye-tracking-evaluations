@@ -17,7 +17,8 @@ from playwright._impl._errors import TargetClosedError
 HEADLESS = False
 SEED_URLS = [
     "https://www.meta.com/experiences/view/777072216186618/?price=FREE",
-     "https://www.meta.com/experiences/view/777073612853145/?price=FREE"  # new listing
+     "https://www.meta.com/experiences/view/777073612853145/?price=FREE",
+       "https://www.meta.com/experiences/section/1543463242408100/"  # new listing
     # add more here later
 ]
 
@@ -28,11 +29,11 @@ TARGET_NO_EYE = 60
 SCROLL_STEP_PX = 500
 SCROLL_PAUSE_SEC = 6.0
 MAX_TOTAL_SCROLLS = 1500
-STALL_SCROLLS_LIMIT = 10   # stop after this many scrolls with no new free tiles discovered
+STALL_SCROLLS_LIMIT = 15   # stop after this many scrolls with no new free tiles discovered
 
 # Detail page behavior
 NAV_TIMEOUT_MS = 45_000
-DETAIL_WAIT_MS = 1200
+DETAIL_WAIT_MS = 1700
 POLITE_DELAY_SEC = 0.5
 
 SLOW_MO_MS = 50  # set 50 if HEADLESS=False
@@ -123,69 +124,107 @@ def has_eye_tracking(detail_page) -> bool:
     return False
 
 
-# ============================================================
-# TILE EXTRACTION (STRICT: app tiles only)
-# ============================================================
+# ========================= DROP-IN UPDATE =========================
+# Replace your whole "TILE EXTRACTION (STRICT: app tiles only)" section
+# with this updated version. Everything else in your script can stay the same.
+# ================================================================
+
+from urllib.parse import urlsplit
 
 BASE = "https://www.meta.com"
 
-# App detail pages look like: /experiences/<slug>/<id>/
-# BUT the listing/collection page can be: /experiences/view/<id>/
-# So we explicitly EXCLUDE "view" (and a couple other non-app patterns).
-EXPERIENCE_HREF_RE = re.compile(
-    r"^/experiences/(?!view/|wishlist/?|cart/?|settings/?|account/?|help/?|store/?|search/?)[^/]+/\d{6,}/?$",
-    re.IGNORECASE
-)
+# Slugs that are *not* actual app/game detail pages (site UI/buttons/listings)
+NON_APP_SLUGS = {
+    "view", "wishlist", "cart", "settings", "account",
+    "help", "store", "search", "section"
+}
 
-def is_seed_like(url: str) -> bool:
-    # treat anything under /experiences/ as "listing-ish" but we want to keep it on SEED_URL specifically
-    return "https://www.meta.com/experiences/" in (url or "")
+def norm_path(href: str) -> str:
+    """Return href path without query/fragment, ensure leading slash."""
+    if not href:
+        return ""
+    return urlsplit(href).path or ""
+
+def is_real_app_path(path: str) -> bool:
+    """
+    True only for real app detail links:
+      /experiences/<slug>/<id>/
+    False for:
+      /experiences/view/<id>/   (listing)
+      /experiences/section/...  (collections)
+      and other built-in button targets
+    """
+    if not path:
+        return False
+
+    # Normalize trailing slash
+    p = path.rstrip("/") + "/"
+
+    # Must be /experiences/<slug>/<digits>/
+    m = re.match(r"^/experiences/([^/]+)/(\d{6,})/$", p, flags=re.IGNORECASE)
+    if not m:
+        return False
+
+    slug = m.group(1).lower()
+    if slug in NON_APP_SLUGS:
+        return False
+
+    return True
+
+def looks_like_app_tile(a) -> bool:
+    """
+    Heuristic to ignore built-in buttons/nav links:
+    keep only anchors that look like a product tile/card (usually includes an img).
+    """
+    try:
+        # Most tiles include an image somewhere inside the anchor
+        if a.locator("img").count() > 0:
+            return True
+
+        # Sometimes image is inside an ancestor "card" container
+        if a.locator("xpath=ancestor::*[self::article or self::li or self::div][1]//img").count() > 0:
+            return True
+    except Exception:
+        pass
+    return False
 
 def harvest_free_tile_links(listing_page) -> Set[str]:
-    """
-    Returns absolute URLs for app tiles only:
-      - href matches /experiences/<slug>/<id>/ and is NOT /experiences/view/<id>/
-      - anchor is visible
-      - anchor contains a "Get" CTA somewhere inside (typical for free items on listing pages)
-    """
     free_links: Set[str] = set()
 
-    # Scope to main content to avoid header/footer nav anchors
-    # (Meta pages can have lots of /experiences/ links in nav/menus)
-    main = listing_page.locator("main").first
-    scope = main if main.count() > 0 else listing_page.locator("body")
+    # Don’t scope to main; Meta sometimes renders tiles outside it
+    scope = listing_page.locator("body")
 
-    # Candidate anchors inside the main content area only
+    # Wait for at least one experiences anchor to exist (helps React lazy render)
+    try:
+        scope.locator('a[href^="/experiences/"]').first.wait_for(timeout=10_000)
+    except Exception:
+        pass
+
     tiles = scope.locator('a[href^="/experiences/"]')
     count = tiles.count()
 
     for i in range(count):
         a = tiles.nth(i)
 
-        # Must be visible (filters out many hidden menu items / overlays)
-        try:
-            if not a.is_visible():
-                continue
-        except Exception:
-            continue
-
         href = (a.get_attribute("href") or "").strip()
-        if not href or not EXPERIENCE_HREF_RE.match(href):
+        if not href:
             continue
 
-        # Must look like an actual "tile" by containing a Get CTA inside the anchor
-        # (prevents grabbing category links, random experience links, etc.)
-        try:
-            # Use regex to match "Get" as a standalone label
-            get_cta = a.locator("text=/^\\s*Get\\s*$/i")
-            if get_cta.count() == 0:
-                continue
-        except Exception:
+        path = norm_path(href)
+        if not is_real_app_path(path):
             continue
 
-        free_links.add(BASE + href)
+        # This is the key filter to ignore built-in buttons
+        if not looks_like_app_tile(a):
+            continue
+
+        # Normalize to canonical URL form
+        full = BASE + (path.rstrip("/") + "/")
+        free_links.add(full)
 
     return free_links
+# ======================= END DROP-IN UPDATE =======================
+
 
 
 # ============================================================
@@ -261,10 +300,25 @@ class AppRecord:
 
 def classify_detail(detail_page, url: str) -> Tuple[bool, str]:
     detail_page.goto(url, wait_until="domcontentloaded")
-    detail_page.wait_for_timeout(DETAIL_WAIT_MS)
+
+    # Give React time to hydrate
+    detail_page.wait_for_timeout(2500)
+
+    # Nudge lazy-loaded sections (where feature badges often live)
+    try:
+        detail_page.mouse.wheel(0, 1200)
+    except Exception:
+        try:
+            detail_page.evaluate("window.scrollBy(0, 1200)")
+        except Exception:
+            pass
+
+    detail_page.wait_for_timeout(1200)
+
     name = extract_app_name(detail_page)
     eye = has_eye_tracking(detail_page)
     return eye, name
+
 
 def append_unique(path: Path, items: List[str], existing: Set[str]):
     new_items = [x for x in items if x not in existing]
@@ -346,12 +400,12 @@ def main() -> int:
                     if len(eye) >= TARGET_EYE and len(no_eye) >= TARGET_NO_EYE:
                         break
 
-                    # Mark visited early to avoid reprocessing
-                    visited.add(url)
-
                     # Skip anything already in output files (append-only)
                     if url in existing_eye_links or url in existing_no_links:
                         continue
+
+                    visited.add(url)  # only mark when you're actually going to try it
+
 
                     try:
                         eye_tag, name = classify_detail(detail, url)
@@ -359,15 +413,27 @@ def main() -> int:
                         if eye_tag:
                             if len(eye) < TARGET_EYE:
                                 eye.append(AppRecord(name=name, link=url))
+
+                                append_unique(EYE_LINKS_OUT, [url], existing_eye_links)
+                                append_unique(EYE_NAMES_OUT, [name], existing_eye_names)
+
                                 existing_eye_links.add(url)
                                 existing_eye_names.add(name)
+
                                 print(f"  +EYE ({len(eye)}/{TARGET_EYE}) {name}")
+
                         else:
                             if len(no_eye) < TARGET_NO_EYE:
                                 no_eye.append(AppRecord(name=name, link=url))
+
+                                append_unique(NO_LINKS_OUT, [url], existing_no_links)
+                                append_unique(NO_NAMES_OUT, [name], existing_no_names)
+
                                 existing_no_links.add(url)
                                 existing_no_names.add(name)
+
                                 print(f"  +NO  ({len(no_eye)}/{TARGET_NO_EYE}) {name}")
+
 
                     except PlaywrightTimeoutError:
                         print(f"  TIMEOUT {url}")
