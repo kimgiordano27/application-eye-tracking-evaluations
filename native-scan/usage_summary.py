@@ -4,7 +4,7 @@ from collections import defaultdict
 
 
 INPUT_TXT = Path(r"../scan-results/master-results.txt")
-OUT_DIR = Path(r"../scan-results/exports")
+OUT_DIR = Path(r"../scan-results")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
