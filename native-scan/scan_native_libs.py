@@ -2,7 +2,7 @@ import pathlib
 import json
 from datetime import datetime
 
-# -------- CONFIG --------
+# create paths to the various directories
 DECODED_APKS_DIR = pathlib.Path("../decoded-apks")
 OUTPUT_DIR = pathlib.Path("../scan-results")
 SEARCH_TERMS_FILE = pathlib.Path("search_terms.txt")
