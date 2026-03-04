@@ -1,3 +1,4 @@
+# gets broader matches from the og search_terms.txt file via scanning the native libaries that are NOT normalized
 import pathlib
 import json
 from datetime import datetime
