@@ -17,8 +17,9 @@ WRITE_CSV_SUMMARY = True
 CATEGORY_RULES = [
     # 1) Foveated rendering
     ("Foveated Rendering",
-     {"foveation", "foveated rendering", "foveated graphics", "foveated display", "foveated rendering mode", "foveated"},
-     {"foveat"}),
+     {"XR_META_foveation_eye_tracked", "GetEyeTrackedFoveatedRenderingEnabled", "GetEyeTrackedFoveatedRenderingSupported", "foveated rendering mode"},
+     {"EyeTrackedFoveat", "FoveationEyeTracked"}
+     ),
 
     # 2) Raw data collection / state APIs
     ("Raw Data Collection",

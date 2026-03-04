@@ -23,8 +23,6 @@ OUT_WIDE_CSV = OUT_DIR / "app_functionality.csv"
 OUT_LONG_CSV = OUT_DIR / "app_functionality_long.csv"
 OUT_TXT = OUT_DIR / "app_functionality.txt"
 
-# New: a richer “app category summary” CSV matching the columns you showed
-OUT_APP_CATEGORY_SUMMARY_CSV = OUT_DIR / "app_category_summary.csv"
 
 # --------------------------------------------------------------------
 # PARSING CONSTANTS
@@ -51,9 +49,6 @@ def normalize_category(cat: str) -> str:
     # Anything that looks like foveated/ffr/dfr -> canonical "Foveated Rendering"
     # (You can add more synonyms here if your corpus has them.)
     foveated_signals = [
-        "foveated",
-        "ffr",                 # fixed foveated rendering (sometimes abbreviated)
-        "fixed foveated",
         "dynamic foveated",
         "dfr",
         "eye tracked foveated",
@@ -286,32 +281,6 @@ def write_txt_from_merged(merged: dict[str, dict], out_path: Path) -> None:
             f.write("\n")
 
 
-def write_app_category_summary_csv(merged: dict[str, dict], out_path: Path) -> None:
-    """
-    Writes the exact columns you listed:
-    app_categories,primary_category,enablement_only,has_enablement_hits,
-    has_non_enablement_hits,txt_files_scanned,files_with_hits,total_term_hits
-
-    (Plus app_id as the first column so the CSV is usable.)
-    """
-    headers = [
-        "app_id",
-        "app_categories",
-        "primary_category",
-        "enablement_only",
-        "has_enablement_hits",
-        "has_non_enablement_hits",
-        "txt_files_scanned",
-        "files_with_hits",
-        "total_term_hits",
-    ]
-
-    with out_path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=headers)
-        w.writeheader()
-        for app_id in sorted(merged.keys()):
-            w.writerow({h: merged[app_id].get(h, "") for h in headers})
-
 
 def main():
     txt_map = parse_master_results_txt(INPUT_TXT)
@@ -324,8 +293,6 @@ def main():
     write_long_csv_from_merged(merged, OUT_LONG_CSV)
     write_txt_from_merged(merged, OUT_TXT)
 
-    # New richer summary matching your columns
-    write_app_category_summary_csv(merged, OUT_APP_CATEGORY_SUMMARY_CSV)
 
     print(f"Parsed TXT apps: {len(txt_map)}")
     print(f"Loaded APK JSON apps: {len(apk_map)}")
@@ -334,7 +301,6 @@ def main():
     print(f"  {OUT_WIDE_CSV}")
     print(f"  {OUT_LONG_CSV}")
     print(f"  {OUT_TXT}")
-    print(f"  {OUT_APP_CATEGORY_SUMMARY_CSV}")
 
 
 if __name__ == "__main__":
