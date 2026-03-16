@@ -30,14 +30,11 @@ CATEGORY_RULES = [
       "GetEyeGazeData"},
      {"ovrp_GetEye", "ovrpEye", "EyeTrackingState", "EyeTrackingProvider", "GetEyeGazeData"}),
 
-    # 3) Capability / enablement / supported checks
-    ("Eye-Tracking Enablement",
-     {"EyeTracked", "eyeTrackingSupported", "eyeGazeSupported",
-      "ovrp_SetEyeTrackingEnabled", "ovrp_GetEyeTrackingEnabled",
-      "FOculusEyeTracking", "IOculusEyeTrackerModule", "eye tracking",
-      "XR_EXT_eye_gaze_interaction", "xrLocateEyeGazesEXT", "XrEyeGazesEXT", "XrEyeGazeEXT", "XrEyeGazesInfoEXT",
-      "xrLocateEyeGazes", "XR_EXT_eye_gaze_interaction", "XrEyeGaze"},
-     {"Supported", "SetEyeTrackingEnabled", "GetEyeTrackingEnabled", "OculusEye"}),
+    # 3) Biometric signals & metrics
+    ("Biometric Signals & Metrics",
+        {"PupilDilation", "BlinkRate", "BlinkDuration", "SaccadeVelocity", "SaccadeAmplitude", "fixation", 
+         "fixation duration", "attention measurement", "attentionScore", "focused object"},
+        {"Pupil", "Blink", "Saccade", "fixation", "attention", "focused object"}), 
 
     # 4) Interaction / selection input (dwell-to-click etc.)
     ("Gaze Interactions",
@@ -50,12 +47,14 @@ CATEGORY_RULES = [
      {"EyeGazeDirection", "EyeGazePosition", "EyeGazeRotation", "EyeOpenAmount", "eyeOpenness"},
      {"GazeDirection", "GazePosition", "GazeRotation", "EyeOpen"}),
 
-    # 6) Biometric signals & metrics
-    ("Biometric Signals & Metrics",
-        {"PupilDilation", "BlinkRate", "BlinkDuration", "SaccadeVelocity", "SaccadeAmplitude", "fixation", 
-         "fixation duration", "attention measurement", "attentionScore", "focused object"},
-        {"Pupil", "Blink", "Saccade", "fixation", "attention", "focused object"}), 
-
+    # 6) Capability / enablement / supported checks
+    ("Eye-Tracking Enablement",
+     {"EyeTracked", "eyeTrackingSupported", "eyeGazeSupported",
+      "ovrp_SetEyeTrackingEnabled", "ovrp_GetEyeTrackingEnabled",
+      "FOculusEyeTracking", "IOculusEyeTrackerModule", "eye tracking",
+      "XR_EXT_eye_gaze_interaction", "xrLocateEyeGazesEXT", "XrEyeGazesEXT", "XrEyeGazeEXT", "XrEyeGazesInfoEXT",
+      "xrLocateEyeGazes", "XR_EXT_eye_gaze_interaction", "XrEyeGaze"},
+     {"Supported", "SetEyeTrackingEnabled", "GetEyeTrackingEnabled", "OculusEye"}),
 ]
 
 
