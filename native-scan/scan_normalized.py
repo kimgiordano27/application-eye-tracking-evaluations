@@ -25,8 +25,8 @@ CATEGORY_RULES = [
     # 2) Raw data collection / state APIs
     ("Raw Data Collection",
      {"EyeTrackingProvider", "EyeTrackingState", "GazeProvider",
-      "ovrp_GetEyeGazesState", "ovrp_GetEyeTrackingState", "ovrp_GetEyeTrackingState2",
-      "ovrpEyeGazesState", "ovrpEyeGaze", "ovrpEyeTrackingState",
+      "ovrp_GetEyeGazesState", "ovrp_GetEyeTrackingState", "ovrp_GetEyeTrackingState2", "ovrp_GetEyeAcceleration",
+      "ovrpEyeGazesState", "ovrpEyeGaze", "ovrpEyeTrackingState", "ovrp_GetEyeVelocity",
       "GetEyeGazeData"},
      {"ovrp_GetEye", "ovrpEye", "EyeTrackingState", "EyeTrackingProvider", "GetEyeGazeData"}),
 
@@ -36,25 +36,22 @@ CATEGORY_RULES = [
          "fixation duration", "attention measurement", "attentionScore", "focused object"},
         {"Pupil", "Blink", "Saccade", "fixation", "attention", "focused object"}), 
 
-    # 4) Interaction / selection input (dwell-to-click etc.)
-    ("Gaze Interactions",
-     {"EyeGazeInteractor", "GazeInteractor",
+    # 4) Gaze geometry and Interaction/Selection Input
+    ("Gaze Geometry and Interactions",
+     {"EyeGazeDirection", "EyeGazePosition", "EyeGazeRotation", "EyeOpenAmount", "eyeOpenness",
+      "EyeGazeInteractor", "GazeInteractor", "eyeDir",
       "interaction selection", "dwell time"},
-     {"Interactor", "dwell", "selection", "gaze input"}),
+     {"GazeDirection", "GazePosition", "GazeRotation", "EyeOpen",
+      "Interactor", "dwell", "selection", "gaze input"}),
 
-    # 5) Gaze geometry
-    ("Gaze Geometry",
-     {"EyeGazeDirection", "EyeGazePosition", "EyeGazeRotation", "EyeOpenAmount", "eyeOpenness"},
-     {"GazeDirection", "GazePosition", "GazeRotation", "EyeOpen"}),
-
-    # 6) Capability / enablement / supported checks
-    ("Eye-Tracking Enablement",
+    # 5) Capability / enablement / supported checks
+    ("General Eye Tracking Enablement",
      {"EyeTracked", "eyeTrackingSupported", "eyeGazeSupported",
       "ovrp_SetEyeTrackingEnabled", "ovrp_GetEyeTrackingEnabled",
       "FOculusEyeTracking", "IOculusEyeTrackerModule", "eye tracking",
       "XR_EXT_eye_gaze_interaction", "xrLocateEyeGazesEXT", "XrEyeGazesEXT", "XrEyeGazeEXT", "XrEyeGazesInfoEXT",
       "xrLocateEyeGazes", "XR_EXT_eye_gaze_interaction", "XrEyeGaze"},
-     {"Supported", "SetEyeTrackingEnabled", "GetEyeTrackingEnabled", "OculusEye"}),
+     {"SetEyeTrackingEnabled", "GetEyeTrackingEnabled", "OculusEye"}),
 ]
 
 

@@ -133,13 +133,13 @@ def main():
         for app in all_apps:
             app_categories = app_to_categories.get(app, set())
 
-            in_manifest_value = "present" if app in in_manifest else "not present"
-            not_in_manifest_value = "present" if app in not_in_manifest else "not present"
+            in_manifest_value = "Present" if app in in_manifest else "Not Present"
+            not_in_manifest_value = "Present" if app in not_in_manifest else "Not Present"
 
             if app in in_manifest:
-                manifest_status = "eye tracking tag in manifest"
+                manifest_status = "Eye Tracking Tag In Manifest"
             elif app in not_in_manifest:
-                manifest_status = "eye tracking tag not in manifest"
+                manifest_status = "Eye Tracking Tag Not In Manifest"
             else:
                 manifest_status = "not listed in manifest summary"
 
@@ -149,7 +149,7 @@ def main():
             ]
 
             for category in categories:
-                row.append("present" if category in app_categories else "not present")
+                row.append("Used In App" if category in app_categories else "Not Used In App")
 
             writer.writerow(row)
 
