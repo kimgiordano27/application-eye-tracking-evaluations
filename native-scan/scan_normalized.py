@@ -18,17 +18,18 @@ WRITE_CSV_SUMMARY = True
 CATEGORY_RULES = [
     # 1) Foveated rendering
     ("Foveated Rendering",
-     {"XR_META_foveation_eye_tracked", "GetEyeTrackedFoveatedRenderingEnabled", "GetEyeTrackedFoveatedRenderingSupported", "foveated rendering mode"},
-     {"EyeTrackedFoveat", "FoveationEyeTracked"}
+     {"XR_META_foveation_eye_tracked", "GetEyeTrackedFoveatedRenderingEnabled", "GetEyeTrackedFoveatedRenderingSupported", 
+      "foveated rendering mode"},
+     {"EyeTrackedFoveat", "FoveationEyeTracked", "foveat", "Foveated", "Foveation"}
      ),
 
     # 2) Raw data collection / state APIs
-    ("Raw Data Collection",
+    ("Raw Data & State Collection",
      {"EyeTrackingProvider", "EyeTrackingState", "GazeProvider",
-      "ovrp_GetEyeGazesState", "ovrp_GetEyeTrackingState", "ovrp_GetEyeTrackingState2", "ovrp_GetEyeAcceleration",
-      "ovrpEyeGazesState", "ovrpEyeGaze", "ovrpEyeTrackingState", "ovrp_GetEyeVelocity",
+      "ovrp_GetEyeGazesState", "ovrp_GetEyeTrackingState", "ovrp_GetEyeTrackingState2",
+      "ovrpEyeGazesState", "ovrpEyeGaze", "ovrpEyeTrackingState",
       "GetEyeGazeData"},
-     {"ovrp_GetEye", "ovrpEye", "EyeTrackingState", "EyeTrackingProvider", "GetEyeGazeData"}),
+     {"ovrp_GetEyeGaze", "ovrpEye", "EyeTrackingState", "EyeTrackingProvider", "GetEyeGazeData"}),
 
     # 3) Biometric signals & metrics
     ("Biometric Signals & Metrics",
@@ -37,10 +38,12 @@ CATEGORY_RULES = [
         {"Pupil", "Blink", "Saccade", "fixation", "attention", "focused object"}), 
 
     # 4) Gaze geometry and Interaction/Selection Input
-    ("Gaze Geometry and Interactions",
+    ("Gaze Geometry & Interactions",
      {"EyeGazeDirection", "EyeGazePosition", "EyeGazeRotation", "EyeOpenAmount", "eyeOpenness",
       "EyeGazeInteractor", "GazeInteractor", "eyeDir",
-      "interaction selection", "dwell time"},
+      "interaction selection", "dwell time", "XR_EXT_eye_gaze_interaction",
+      "xrLocateEyeGazesEXT", "XrEyeGazesEXT", "XrEyeGazeEXT", "XrEyeGazesInfoEXT",
+      "xrLocateEyeGazes", "XrEyeGaze"},
      {"GazeDirection", "GazePosition", "GazeRotation", "EyeOpen",
       "Interactor", "dwell", "selection", "gaze input"}),
 
@@ -48,9 +51,7 @@ CATEGORY_RULES = [
     ("General Eye Tracking Enablement",
      {"EyeTracked", "eyeTrackingSupported", "eyeGazeSupported",
       "ovrp_SetEyeTrackingEnabled", "ovrp_GetEyeTrackingEnabled",
-      "FOculusEyeTracking", "IOculusEyeTrackerModule", "eye tracking",
-      "XR_EXT_eye_gaze_interaction", "xrLocateEyeGazesEXT", "XrEyeGazesEXT", "XrEyeGazeEXT", "XrEyeGazesInfoEXT",
-      "xrLocateEyeGazes", "XR_EXT_eye_gaze_interaction", "XrEyeGaze"},
+      "FOculusEyeTracking", "IOculusEyeTrackerModule", "eye tracking",},
      {"SetEyeTrackingEnabled", "GetEyeTrackingEnabled", "OculusEye"}),
 ]
 
@@ -76,7 +77,7 @@ def categorize_term(term: str):
 
     # If nothing matched any rule, force it into a real category
     # (You can change this default if you prefer a different “catch-all”.)
-    return "Eye-Tracking Enablement", "low"
+    return "General Eye Tracking Enablement", "low"
 
 
 
