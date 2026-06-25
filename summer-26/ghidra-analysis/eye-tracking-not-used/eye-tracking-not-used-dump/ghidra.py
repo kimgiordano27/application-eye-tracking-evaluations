@@ -1,3 +1,4 @@
+# @runtime Jython
 # -*- coding: utf-8 -*-
 import json
 
