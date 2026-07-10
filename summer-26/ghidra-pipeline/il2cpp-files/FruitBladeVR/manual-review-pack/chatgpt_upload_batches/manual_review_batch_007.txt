@@ -1,0 +1,1445 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 31
+FUNCTION_NAME: UnityEngine.Rendering.Universal.PostProcessPass.<>c$$<RenderLensFlareDataDriven>b__148_0
+ENTRY_POINT: 034d0f04
+MANUAL_PRIORITY_SCORE: 178
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 71
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_6', 'validity_or_gating_hits_13', 'strong_pose_or_ray_construction_hits_9', 'telemetry_or_network_hits_8', 'source_validity_pose_sink_structure', 'negative_framework_namespace_without_eye_use_flow']
+PRIORITY_REASONS: ['base_scanner_score_71', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\general-structure-results\70_high_general_structure_review_high\034d0f04_UnityEngine.Rendering.Universal.PostProcessPass._c$$_RenderLensFlareDataDriven_b__148_0.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\manual-review-pack\A_must_review\031_p178_UnityEngine.Rendering.Universal.PostProcessPass._c$$_RenderLensFlareDataDriven_b__148_0.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.Universal.PostProcessPass.<>c$$<RenderLensFlareDataDriven>b__148_0
+ENTRY_POINT: 034d0f04
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 71
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_13;strong_pose_or_ray_construction_hits_9;telemetry_or_network_hits_8;source_validity_pose_sink_structure;negative_framework_namespace_without_eye_use_flow
+*/
+
+
+void UnityEngine_Rendering_Universal_PostProcessPass_<>c__<RenderLensFlareDataDriven>b__148_0
+               (undefined8 param_1,long param_2,long param_3)
+
+{
+  undefined4 uVar1;
+  char cVar2;
+  undefined *puVar3;
+  int iVar4;
+  int iVar5;
+  ulong uVar6;
+  long *plVar7;
+  long lVar8;
+  long lVar9;
+  undefined8 *puVar10;
+  undefined8 uVar11;
+  undefined8 uVar12;
+  undefined8 uVar13;
+  long lVar14;
+  long lVar15;
+  undefined8 uVar16;
+  undefined4 uVar17;
+  undefined4 uVar18;
+  undefined4 uVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined4 uVar22;
+  undefined8 uVar23;
+  undefined8 uVar24;
+  undefined4 uVar25;
+  undefined4 uVar26;
+  undefined4 uVar27;
+  undefined4 uVar28;
+  undefined4 uVar29;
+  undefined4 uVar30;
+  undefined8 local_5f0;
+  undefined8 uStack_5e8;
+  undefined8 uStack_5e0;
+  undefined8 uStack_5d8;
+  undefined8 local_5d0;
+  undefined8 local_5c0;
+  undefined8 uStack_5b8;
+  undefined8 uStack_5b0;
+  undefined8 uStack_5a8;
+  undefined8 local_5a0;
+  undefined8 uStack_598;
+  undefined8 uStack_590;
+  undefined8 uStack_588;
+  undefined8 local_580;
+  undefined8 uStack_578;
+  undefined8 uStack_570;
+  undefined8 uStack_568;
+  undefined8 local_560;
+  undefined8 uStack_558;
+  undefined8 uStack_550;
+  undefined8 uStack_548;
+  undefined8 local_540;
+  undefined8 uStack_538;
+  undefined8 uStack_530;
+  undefined8 uStack_528;
+  undefined8 local_520;
+  undefined8 uStack_518;
+  undefined8 uStack_510;
+  undefined8 uStack_508;
+  undefined8 local_500;
+  undefined8 uStack_4f8;
+  undefined8 uStack_4f0;
+  undefined8 uStack_4e8;
+  undefined8 local_4e0;
+  undefined8 uStack_4d8;
+  undefined8 uStack_4d0;
+  undefined8 uStack_4c8;
+  undefined8 local_4c0;
+  undefined8 uStack_4b8;
+  undefined8 uStack_4b0;
+  undefined8 uStack_4a8;
+  undefined8 local_4a0;
+  undefined8 local_490;
+  undefined8 uStack_488;
+  undefined8 uStack_480;
+  undefined8 uStack_478;
+  undefined8 local_470;
+  undefined8 uStack_468;
+  undefined8 uStack_460;
+  undefined8 uStack_458;
+  undefined8 local_448;
+  undefined8 uStack_440;
+  undefined8 uStack_438;
+  undefined8 uStack_430;
+  undefined8 local_428;
+  undefined8 local_420;
+  undefined8 uStack_418;
+  undefined8 uStack_410;
+  undefined8 uStack_408;
+  undefined8 local_400;
+  undefined8 uStack_3f8;
+  undefined8 uStack_3f0;
+  undefined8 uStack_3e8;
+  undefined8 local_3e0;
+  undefined8 uStack_3d8;
+  undefined8 uStack_3d0;
+  undefined8 uStack_3c8;
+  undefined8 local_3c0;
+  undefined8 uStack_3b8;
+  undefined8 uStack_3b0;
+  undefined8 uStack_3a8;
+  undefined8 local_3a0;
+  undefined8 uStack_398;
+  undefined8 uStack_390;
+  undefined8 uStack_388;
+  undefined8 local_380;
+  undefined8 uStack_378;
+  undefined8 uStack_370;
+  undefined8 uStack_368;
+  undefined8 local_360;
+  undefined8 uStack_358;
+  undefined8 uStack_350;
+  undefined8 uStack_348;
+  undefined8 local_340;
+  undefined8 uStack_338;
+  undefined8 uStack_330;
+  undefined8 uStack_328;
+  undefined8 local_320;
+  undefined8 uStack_318;
+  undefined8 uStack_310;
+  undefined8 uStack_308;
+  undefined8 local_300;
+  undefined8 uStack_2f8;
+  undefined8 uStack_2f0;
+  undefined8 uStack_2e8;
+  undefined8 local_2e0;
+  undefined8 uStack_2d8;
+  undefined8 uStack_2d0;
+  undefined8 uStack_2c8;
+  undefined8 local_2c0;
+  undefined8 uStack_2b8;
+  undefined8 uStack_2b0;
+  undefined8 uStack_2a8;
+  undefined8 local_2a0;
+  undefined8 uStack_298;
+  undefined8 uStack_290;
+  undefined8 uStack_288;
+  undefined8 local_280;
+  undefined8 uStack_278;
+  undefined8 uStack_270;
+  undefined8 uStack_268;
+  undefined8 local_260;
+  undefined8 uStack_258;
+  undefined8 local_250;
+  undefined8 uStack_248;
+  undefined8 local_240;
+  undefined8 local_230;
+  undefined8 uStack_228;
+  undefined8 local_220;
+  undefined8 uStack_218;
+  undefined8 local_210;
+  undefined8 uStack_208;
+  undefined8 local_200;
+  undefined8 uStack_1f8;
+  undefined8 local_1f0;
+  undefined8 uStack_1e8;
+  undefined8 local_1e0;
+  undefined8 uStack_1d8;
+  undefined8 local_1d0;
+  undefined8 local_1c0;
+  undefined8 uStack_1b8;
+  undefined8 local_1b0;
+  undefined8 uStack_1a8;
+  undefined8 local_1a0;
+  undefined8 local_190;
+  undefined8 uStack_188;
+  undefined8 local_180;
+  undefined8 uStack_178;
+  undefined8 local_170;
+  undefined8 uStack_168;
+  undefined8 local_160;
+  undefined8 uStack_158;
+  undefined8 local_150;
+  undefined8 uStack_148;
+  undefined8 local_140;
+  undefined8 uStack_138;
+  undefined8 local_130;
+  undefined8 local_120;
+  undefined8 uStack_118;
+  undefined8 local_110;
+  undefined8 uStack_108;
+  undefined8 local_100;
+  undefined8 uStack_f8;
+  undefined8 local_f0;
+  undefined8 uStack_e8;
+  undefined8 local_e0;
+  undefined8 uStack_d8;
+  undefined8 local_d0;
+  undefined8 uStack_c8;
+  undefined8 local_c0;
+  undefined8 uStack_b8;
+  undefined8 local_b0;
+  undefined8 uStack_a8;
+  
+                    /* try { // try from 034d0f1c to 035d0f33 has its CatchHandler @ 034d131c */
+                    /* try { // try from 034d0f3c to 035d0f47 has its CatchHandler @ 034d12d4 */
+  if ((DAT_03ef5f7c & 1) == 0) {
+    FUN_01c5c92c(PTR_System_Func<Light,_Camera,_Vector3,_float>_TypeInfo_03cdc020);
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_LensFlareCommonSRP_TypeInfo_03cd50f8);
+                    /* try { // try from 034d0f64 to 035d0f6f has its CatchHandler @ 034d1334 */
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_RenderGraphModule_TextureHandle_TypeInfo_03cd2968);
+    FUN_01c5c92c(
+       
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+3e0 */
+                    /* catch() { ... } // from try @ 034d08cc with catch @ 034d13e4 */
+      lVar9 = *(long *)(param_2 + 0x58);
+                    /* catch() { ... } // from try @ 034d09bc with catch @ 034d13e8 */
+      uStack_d8 = uStack_398;
+      local_e0 = local_3a0;
+                    /* catch() { ... } // from try @ 034d0a08 with catch @ 034d13ec */
+                    /* catch() { ... } // from try @ 034d08fc with catch @ 034d13f0 */
+      uStack_c8 = uStack_388;
+      local_d0 = uStack_390;
+                    /* catch() { ... } // from try @ 034d0874 with catch @ 034d13f4 */
+      uStack_b8 = uStack_378;
+      local_c0 = local_380;
+                    /* catch() { ... } // from try @ 034d08a8 with catch @ 034d13f8 */
+      uStack_a8 = uStack_368;
+      local_b0 = uStack_370;
+                    /* catch() { ... } // from try @ 034d1258 with catch @ 034d13fc */
+                    /* catch() { ... } // from try @ 034d0878 with catch @ 034d1400 */
+                    /* catch() { ... } // from try @ 034d0850 with catch @ 034d1404 */
+      if ((lVar9 != 0) && (*(long *)(lVar9 + 0x1a0) != 0)) {
+        uVar22 = *(undefined4 *)(param_2 + 0x68);
+        uVar17 = *(undefined4 *)(param_2 + 0x6c);
+        uVar27 = *(undefined4 *)(param_2 + 0x80);
+        uVar28 = *(undefined4 *)(param_2 + 0x84);
+        uVar29 = *(undefined4 *)(param_2 + 0x78);
+        uVar30 = *(undefined4 *)(param_2 + 0x7c);
+        uVar16 = *(undefined8 *)(param_2 + 0x60);
+                    /* try { // try from 034d1420 to 035d1423 has its CatchHandler @ 034d1444 */
+                    /* try { // try from 034d1424 to 035d1447 has its CatchHandler @ 034d04d0 */
+        uVar11 = *(undefined8 *)(lVar9 + 0xd8);
+        uVar1 = *(undefined4 *)(*(long *)(lVar9 + 0x1a0) + 0x24);
+        cVar2 = *(char *)(param_2 + 0x88);
+        uVar18 = *(undefined4 *)(param_2 + 0x70);
+        uVar26 = *(undefined4 *)(param_2 + 0x74);
+        lVar8 = UnityEngine_Component__get_transform(lVar8,0);
+        uVar25 = (undefined4)uStack_370;
+                    /* catch() { ... } // from try @ 034d1420 with catch @ 034d1444 */
+                    /* try { // try from 034d1448 to 035d144f has its CatchHandler @ 034d1458 */
+        if ((lVar8 != 0) && (uVar19 = UnityEngine_Transform__get_position(lVar8,0), param_3 != 0)) {
+                    /* try { // try from 034d1450 to 035d145b has its CatchHandler @ 034d04d0 */
+                    /* catch() { ... } // from try @ 034d1448 with catch @ 034d1458 */
+          uVar13 = *(undefined8 *)(param_3 + 0x18);
+          uVar12 = *(undefined8 *)(param_2 + 0x10);
+          uVar20 = *(undefined8 *)(param_2 + 0x18);
+          if (*(int *)(*(long *)
+                        PTR_UnityEngine_Rendering_RenderGraphModule_TextureHandle_TypeInfo_03cd2968
+                      + 0xe4) == 0) {
+            thunk_FUN_01cb0d4c();
+          }
+          UnityEngine_Rendering_RenderGraphModule_TextureHandle__op_Implicit
+                    (&local_448,uVar12,uVar20,0);
+          lVar8 = *(long *)puVar3;
+          if (*(int *)(lVar8 + 0xe4) == 0) {
+            thunk_FUN_01cb0d4c();
+            lVar8 = *(long *)puVar3;
+          }
+          puVar10 = *(undefined8 **)(lVar8 + 0xb8);
+          lVar9 = puVar10[0x10];
+          if (lVar9 == 0) {
+            local_1a0 = local_428;
+            uStack_1b8 = uStack_440;
+            local_1c0 = local_448;
+            uStack_1a8 = uStack_430;
+            local_1b0 = uStack_438;
+            if (*(int *)(lVar8 + 0xe4) == 0) {
+              thunk_FUN_01cb0d4c();
+              puVar10 = *(undefined8 **)(*(long *)puVar3 + 0xb8);
+            }
+            uVar12 = *puVar10;
+            lVar9 = thunk_FUN_01c8fc48(*(undefined8 *)
+                                        PTR_System_Func<Light,_Camera,_Vector3,_float>_TypeInfo_03cdc020
+                                      );
+            System_Func<object,_object,_Vector3,_float>___ctor
+                      (lVar9,uVar12,
+                       *(undefined8 *)
+                        PTR_Method_UnityEngine_Rendering_Universal_PostProcessPass_<>c_<RenderLensFlareDataDriven>b__148_1___03cdc518
+                       ,0);
+            plVar7 = (long *)(*(long *)(*(long *)puVar3 + 0xb8) + 0x80);
+            *plVar7 = lVar9;
+            thunk_FUN_01cc8040(plVar7,lVar9);
+            local_428 = local_1a0;
+            local_448 = local_1c0;
+            uStack_440 = uStack_1b8;
+            uStack_438 = local_1b0;
+            uStack_430 = uStack_1a8;
+          }
+          uStack_188 = uStack_d8;
+          local_190 = local_e0;
+          uStack_178 = uStack_c8;
+          local_180 = local_d0;
+          uStack_168 = uStack_b8;
+          local_170 = local_c0;
+          uStack_158 = uStack_a8;
+          local_160 = local_b0;
+          local_150 = local_448;
+          uStack_148 = uStack_440;
+          local_140 = uStack_438;
+          uStack_138 = uStack_430;
+          local_130 = local_428;
+          if (*(int *)(*(long *)PTR_UnityEngine_Rendering_LensFlareCommonSRP_TypeInfo_03cd50f8 +
+                      0xe4) == 0) {
+            thunk_FUN_01cb0d4c();
+          }
+          uStack_488 = uStack_188;
+          local_490 = local_190;
+          uStack_478 = uStack_178;
+          uStack_480 = local_180;
+          uStack_468 = uStack_168;
+          local_470 = local_170;
+          uStack_458 = uStack_158;
+          uStack_460 = local_160;
+          local_4a0 = local_130;
+          uStack_4b8 = uStack_148;
+          local_4c0 = local_150;
+          uStack_4a8 = uStack_138;
+          uStack_4b0 = local_140;
+          UnityEngine_Rendering_LensFlareCommonSRP__DoLensFlareDataDrivenCommon
+                    (uVar22,uVar17,uVar18,uVar26,uVar27,uVar28,uVar29,uVar30,uVar16,uVar11,lVar14,
+                     uVar1,cVar2 != '\0',1,&local_490,uVar13,uVar19,uVar25,0,0,0,0,&local_4c0,lVar9,
+                     0,0);
+          return;
+        }
+      }
+    }
+  }
+LAB_034d1640:
+                    /* WARNING: Subroutine does not return */
+  FUN_01c5cbd4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 32
+FUNCTION_NAME: UnityEngine.Rendering.Universal.PostProcessPass$$LensFlareDataDriven
+ENTRY_POINT: 034bf618
+MANUAL_PRIORITY_SCORE: 178
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 71
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_6', 'validity_or_gating_hits_18', 'strong_pose_or_ray_construction_hits_9', 'telemetry_or_network_hits_15', 'source_validity_pose_sink_structure', 'negative_framework_namespace_without_eye_use_flow']
+PRIORITY_REASONS: ['base_scanner_score_71', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\general-structure-results\70_high_general_structure_review_high\034bf618_UnityEngine.Rendering.Universal.PostProcessPass$$LensFlareDataDriven.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\manual-review-pack\A_must_review\032_p178_UnityEngine.Rendering.Universal.PostProcessPass$$LensFlareDataDriven.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.Universal.PostProcessPass$$LensFlareDataDriven
+ENTRY_POINT: 034bf618
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 71
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_18;strong_pose_or_ray_construction_hits_9;telemetry_or_network_hits_15;source_validity_pose_sink_structure;negative_framework_namespace_without_eye_use_flow
+*/
+
+
+void UnityEngine_Rendering_Universal_PostProcessPass__LensFlareDataDriven
+               (undefined4 param_1,undefined4 param_2,long param_3,long *param_4,undefined8 param_5,
+               undefined8 *param_6,uint param_7)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  undefined *puVar3;
+  int iVar4;
+  ulong uVar5;
+  long lVar6;
+  long *plVar7;
+  long lVar8;
+  undefined8 *puVar9;
+  undefined8 uVar10;
+  int iVar11;
+  undefined8 uVar12;
+  long lVar13;
+  long lVar14;
+  int iVar15;
+  undefined4 uVar16;
+  undefined8 uVar17;
+  undefined8 uVar18;
+  int iVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined4 uVar22;
+  undefined4 uVar23;
+  undefined4 uVar24;
+  undefined8 local_5f0;
+  undefined8 uStack_5e8;
+  undefined8 uStack_5e0;
+  undefined8 uStack_5d8;
+  undefined8 local_5d0;
+  undefined8 local_5c0;
+  undefined8 uStack_5b8;
+  undefined8 uStack_5b0;
+  undefined8 uStack_5a8;
+  undefined8 local_5a0;
+  undefined8 uStack_598;
+  undefined8 uStack_590;
+  undefined8 uStack_588;
+  undefined8 local_580;
+  undefined8 uStack_578;
+  undefined8 uStack_570;
+  undefined8 uStack_568;
+  undefined8 local_560;
+  undefined8 uStack_558;
+  undefined8 uStack_550;
+  undefined8 uStack_548;
+  undefined8 local_540;
+  undefined8 uStack_538;
+  undefined8 uStack_530;
+  undefined8 uStack_528;
+  undefined8 local_520;
+  undefined8 uStack_518;
+  undefined8 uStack_510;
+  undefined8 uStack_508;
+  undefined8 local_500;
+  undefined8 uStack_4f8;
+  undefined8 uStack_4f0;
+  undefined8 uStack_4e8;
+  undefined8 local_4e0;
+  undefined8 uStack_4d8;
+  undefined8 uStack_4d0;
+  undefined8 uStack_4c8;
+  undefined8 local_4c0;
+  undefined8 uStack_4b8;
+  undefined8 uStack_4b0;
+  undefined8 uStack_4a8;
+  undefined8 local_4a0;
+  undefined8 local_490;
+  undefined8 uStack_488;
+  undefined8 uStack_480;
+  undefined8 uStack_478;
+  undefined8 local_470;
+  undefined8 uStack_468;
+  undefined8 uStack_460;
+  undefined8 uStack_458;
+  undefined8 local_450;
+  undefined8 uStack_448;
+  undefined8 uStack_440;
+  undefined8 uStack_438;
+  undefined8 local_430;
+  undefined8 local_420;
+  undefined8 uStack_418;
+  undefined8 uStack_410;
+  undefined8 uStack_408;
+  undefined8 local_400;
+  undefined8 uStack_3f8;
+  undefined8 uStack_3f0;
+  undefined8 uStack_3e8;
+  undefined8 local_3e0;
+  undefined8 uStack_3d8;
+  undefined8 uStack_3d0;
+  undefined8 uStack_3c8;
+  undefined8 local_3c0;
+  undefined8 uStack_3b8;
+  undefined8 uStack_3b0;
+  undefined8 uStack_3a8;
+  undefined8 local_3a0;
+  undefined8 uStack_398;
+  undefined8 uStack_390;
+  undefined8 uStack_388;
+  undefined8 local_380;
+  undefined8 uStack_378;
+  undefined8 uStack_370;
+  undefined8 uStack_368;
+  undefined8 local_360;
+  undefined8 uStack_358;
+  undefined8 uStack_350;
+  undefined8 uStack_348;
+  undefined8 local_340;
+  undefined8 uStack_338;
+  undefined8 uStack_330;
+  undefined8 uStack_328;
+  undefined8 local_320;
+  undefined8 uStack_318;
+  undefined8 uStack_310;
+  undefined8 uStack_308;
+  undefined8 local_300;
+  undefined8 uStack_2f8;
+  undefined8 uStack_2f0;
+  undefined8 uStack_2e8;
+  undefined8 local_2e0;
+  undefined8 uStack_2d8;
+  undefined8 uStack_2d0;
+  undefined8 uStack_2c8;
+  undefined8 local_2c0;
+  undefined8 uStack_2b8;
+  undefined8 uStack_2b0;
+  undefined8 uStack_2a8;
+  undefined8 local_2a0;
+  undefined8 uStack_298;
+  undefined8 uStack_290;
+  undefined8 uStack_288;
+  undefined8 local_280;
+  undefined8 uStack_278;
+  undefined8 uStack_270;
+  undefined8 uStack_268;
+  undefined8 local_260;
+  undefined8 uStack_258;
+  undefined8 local_250;
+  undefined8 uStack_248;
+  undefined8 local_240;
+  undefined8 local_230;
+  undefined8 uStack_228;
+  undefined8 local_220;
+  undefined8 uStack_218;
+  undefined8 local_210;
+  undefined8 uStack_208;
+  undefined8 local_200;
+  undefined8 uStack_1f8;
+  undefined8 local_1f0;
+  undefined8 uStack_1e8;
+  undefined8 local_1e0;
+  undefined8 uStack_1d8;
+  undefined8 local_1d0;
+  undefined8 local_1c0;
+  undefined8 uStack_1b8;
+  undefined8 local_1b0;
+  undefined8 uStack_1a8;
+  undefined8 local_1a0;
+  undefined8 local_190;
+  undefined8 uStack_188;
+  undefined8 local_180;
+  undefined8 uStack_178;
+  undefined8 local_170;
+  undefined8 uStack_168;
+  undefined8 local_160;
+  undefined8 uStack_158;
+  undefined8 local_150;
+  undefined8 uStack_148;
+  undefined8 local_140;
+  undefined8 uStack_138;
+  undefined8 local_130;
+  undefined8 local_120;
+  undefined8 uStack_118;
+  undefined8 local_110;
+  undefined8 uStack_108;
+  undefined8 local_100;
+  undefined8 uStack_f8;
+  undefined8 local_f0;
+  undefined8 uStack_e8;
+  undefined8 local_e0;
+  undefined8 uStack_d8;
+  undefined8 local_d0;
+  undefined8 uStack_c8;
+  undefined8 local_c0;
+  undefined8 uStack_b8;
+  undefined8 local_b0;
+  undefined8 uStack_a8;
+  
+  if ((DAT_03ef5f3f & 1) == 0) {
+    FUN_01c5c92c(PTR_System_Func<Light,_Camera,_Vector3,_float>_TypeInfo_03cdc020);
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_LensFlareCommonSRP_TypeInfo_03cd50f8);
+    FUN_01c5c92c(
+                PTR_Method_UnityEngine_Rendering_Universal_PostProcessPass_<>c_<LensFlareDataDriven>b__98_0___03cdc028
+                );
+    FUN_01c5c92c(
+                PTR_Method_UnityEngine_Rendering_Universal_PostProcessPass_<>c_<LensFlareDataDriven>b__98_1___03cdc030
+                );
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_Universal_PostProcessPass_<>c_TypeInfo_03cdc038);
+    DAT_03ef5f3f = 1;
+  }
+  lVar8 = *param_4;
+  local_130 = 0;
+  local_1a0 = 0;
+  local_1d0 = 0;
+ 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ ((uVar5 & 1) == 0) goto LAB_034bfabc;
+    }
+    lVar8 = *param_4;
+    if (lVar8 != 0) {
+      iVar11 = 0;
+      while (*(long *)(lVar8 + 0x1a0) != 0) {
+        iVar4 = UnityEngine_Experimental_Rendering_XRPass__get_viewCount(*(long *)(lVar8 + 0x1a0),0)
+        ;
+        if (iVar4 <= iVar11) {
+          return;
+        }
+        if (*param_4 == 0) break;
+        UnityEngine_Rendering_Universal_UniversalCameraData__GetProjectionMatrixNoJitter
+                  (&local_2a0,*param_4,iVar11,0);
+        uStack_4f8 = uStack_298;
+        local_500 = local_2a0;
+        uStack_4e8 = uStack_288;
+        uStack_4f0 = uStack_290;
+        uStack_4d8 = uStack_278;
+        local_4e0 = local_280;
+        uStack_4c8 = uStack_268;
+        uStack_4d0 = uStack_270;
+        UnityEngine_GL__GetGPUProjectionMatrix(&local_2e0,&local_500,1,0);
+        if (*param_4 == 0) break;
+        UnityEngine_Rendering_Universal_UniversalCameraData__GetViewMatrix
+                  (&local_360,*param_4,iVar11,0);
+        uStack_538 = uStack_2d8;
+        local_540 = local_2e0;
+        uStack_528 = uStack_2c8;
+        uStack_530 = uStack_2d0;
+        uStack_518 = uStack_2b8;
+        local_520 = local_2c0;
+        uStack_508 = uStack_2a8;
+        uStack_510 = uStack_2b0;
+        uStack_578 = uStack_358;
+        local_580 = local_360;
+        uStack_568 = uStack_348;
+        uStack_570 = uStack_350;
+        uStack_558 = uStack_338;
+        local_560 = local_340;
+        uStack_548 = uStack_328;
+        uStack_550 = uStack_330;
+        UnityEngine_Matrix4x4__op_Multiply(&local_3a0,&local_540,&local_580,0);
+        uStack_118 = uStack_398;
+        local_120 = local_3a0;
+        uStack_108 = uStack_388;
+        local_110 = uStack_390;
+        uStack_f8 = uStack_378;
+        local_100 = local_380;
+        uStack_e8 = uStack_368;
+        local_f0 = uStack_370;
+        if (((*(long *)(param_3 + 0x1a0) == 0) || (*param_4 == 0)) ||
+           ((lVar8 = *(long *)(*param_4 + 0x1a0), lVar8 == 0 || (lVar13 == 0)))) break;
+        iVar4 = *(int *)(param_3 + 0xb8);
+        iVar1 = *(int *)(param_3 + 0xbc);
+        uVar12 = *(undefined8 *)(*(long *)(param_3 + 0x1a0) + 0x88);
+        uVar2 = *(undefined4 *)(lVar8 + 0x24);
+        uVar10 = uStack_370;
+        lVar6 = UnityEngine_Component__get_transform(lVar13,0);
+        uVar22 = (undefined4)uVar10;
+        if (lVar6 == 0) break;
+        uVar16 = UnityEngine_Transform__get_position(lVar6,0);
+        puVar3 = PTR_UnityEngine_Rendering_Universal_PostProcessPass_<>c_TypeInfo_03cdc038;
+        local_430 = param_6[4];
+        uStack_448 = param_6[1];
+        local_450 = *param_6;
+        uStack_438 = param_6[3];
+        uStack_440 = param_6[2];
+        lVar6 = *(long *)PTR_UnityEngine_Rendering_Universal_PostProcessPass_<>c_TypeInfo_03cdc038;
+        if (*(int *)(lVar6 + 0xe4) == 0) {
+          thunk_FUN_01cb0d4c();
+          lVar6 = *(long *)puVar3;
+        }
+        puVar9 = *(undefined8 **)(lVar6 + 0xb8);
+        lVar14 = puVar9[2];
+        if (lVar14 == 0) {
+          local_240 = local_430;
+          uStack_258 = uStack_448;
+          local_260 = local_450;
+          uStack_248 = uStack_438;
+          local_250 = uStack_440;
+          if (*(int *)(lVar6 + 0xe4) == 0) {
+            thunk_FUN_01cb0d4c();
+            puVar9 = *(undefined8 **)
+                      (*(long *)
+                        PTR_UnityEngine_Rendering_Universal_PostProcessPass_<>c_TypeInfo_03cdc038 +
+                      0xb8);
+          }
+          uVar10 = *puVar9;
+          lVar14 = thunk_FUN_01c8fc48(*(undefined8 *)
+                                       PTR_System_Func<Light,_Camera,_Vector3,_float>_TypeInfo_03cdc020
+                                     );
+          System_Func<object,_object,_Vector3,_float>___ctor
+                    (lVar14,uVar10,
+                     *(undefined8 *)
+                      PTR_Method_UnityEngine_Rendering_Universal_PostProcessPass_<>c_<LensFlareDataDriven>b__98_1___03cdc030
+                     ,0);
+          plVar7 = (long *)(*(long *)(*(long *)
+                                       PTR_UnityEngine_Rendering_Universal_PostProcessPass_<>c_TypeInfo_03cdc038
+                                     + 0xb8) + 0x10);
+          *plVar7 = lVar14;
+          thunk_FUN_01cc8040(plVar7,lVar14);
+          uStack_1e8 = uStack_258;
+          local_1f0 = local_260;
+          uStack_1d8 = uStack_248;
+          local_1e0 = local_250;
+          local_1d0 = local_240;
+        }
+        else {
+          local_1d0 = local_430;
+          uStack_1e8 = uStack_448;
+          local_1f0 = local_450;
+          uStack_1d8 = uStack_438;
+          local_1e0 = uStack_440;
+        }
+        uStack_218 = uStack_108;
+        local_220 = local_110;
+        uStack_208 = uStack_f8;
+        local_210 = local_100;
+        uStack_1f8 = uStack_e8;
+        local_200 = local_f0;
+        local_230 = local_120;
+        uStack_228 = uStack_118;
+        if (*(int *)(*(long *)PTR_UnityEngine_Rendering_LensFlareCommonSRP_TypeInfo_03cd50f8 + 0xe4)
+            == 0) {
+          thunk_FUN_01cb0d4c();
+        }
+        uStack_5b8 = uStack_228;
+        local_5c0 = local_230;
+        uStack_5a8 = uStack_218;
+        uStack_5b0 = local_220;
+        local_5d0 = local_1d0;
+        uStack_598 = uStack_208;
+        local_5a0 = local_210;
+        uStack_588 = uStack_1f8;
+        uStack_590 = local_200;
+        uStack_5e8 = uStack_1e8;
+        local_5f0 = local_1f0;
+        uStack_5d8 = uStack_1d8;
+        uStack_5e0 = local_1e0;
+        UnityEngine_Rendering_LensFlareCommonSRP__DoLensFlareDataDrivenCommon
+                  (uVar23,uVar24,(float)iVar15,(float)iVar19,(float)iVar4,(float)iVar1,param_1,
+                   param_2,uVar12,lVar13,lVar8,uVar2,param_7 & 1,1,&local_5c0,param_5,uVar16,uVar22,
+                   0,0,0,0,&local_5f0,lVar14,0,0);
+        lVar8 = *param_4;
+        iVar11 = iVar11 + 1;
+        if (lVar8 == 0) break;
+      }
+    }
+  }
+LAB_034bfab8:
+                    /* WARNING: Subroutine does not return */
+  FUN_01c5cbd4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 33
+FUNCTION_NAME: UnityEngine.Rendering.InstanceOcclusionEventDebugArray$$MoveToDebugStatsAndClear
+ENTRY_POINT: 0344bf40
+MANUAL_PRIORITY_SCORE: 178
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 71
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_3', 'validity_or_gating_hits_6', 'strong_pose_or_ray_construction_hits_21', 'telemetry_or_network_hits_19', 'source_validity_pose_sink_structure', 'negative_framework_namespace_without_eye_use_flow']
+PRIORITY_REASONS: ['base_scanner_score_71', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\general-structure-results\70_high_general_structure_review_high\0344bf40_UnityEngine.Rendering.InstanceOcclusionEventDebugArray$$MoveToDebugStatsAndClear.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\manual-review-pack\A_must_review\033_p178_UnityEngine.Rendering.InstanceOcclusionEventDebugArray$$MoveToDebugStatsAndClear.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.InstanceOcclusionEventDebugArray$$MoveToDebugStatsAndClear
+ENTRY_POINT: 0344bf40
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 71
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_3;validity_or_gating_hits_6;strong_pose_or_ray_construction_hits_21;telemetry_or_network_hits_19;source_validity_pose_sink_structure;negative_framework_namespace_without_eye_use_flow
+*/
+
+
+void UnityEngine_Rendering_InstanceOcclusionEventDebugArray__MoveToDebugStatsAndClear
+               (long *param_1,long param_2)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined4 uVar5;
+  ulong uVar6;
+  int *piVar7;
+  int iVar8;
+  int *piVar9;
+  ulong uVar10;
+  undefined8 uVar11;
+  undefined1 auVar12 [16];
+  undefined8 local_120;
+  undefined8 local_118;
+  int local_110;
+  undefined4 uStack_10c;
+  undefined4 local_108;
+  long local_100;
+  long lStack_f8;
+  long local_f0;
+  undefined1 auStack_e8 [16];
+  long local_d0;
+  long lStack_c8;
+  long local_c0;
+  undefined1 local_b8 [16];
+  undefined8 local_a0;
+  undefined8 uStack_98;
+  long local_90;
+  long lStack_88;
+  long local_80;
+  undefined1 auStack_78 [16];
+  
+  if ((DAT_03ef5b58 & 1) == 0) {
+    FUN_01c5c92c(PTR_Method_UnityEngine_Rendering_AsyncGPUReadbackRequest_GetData<int>___03cd8640);
+    FUN_01c5c92c(PTR_Method_UnityEngine_GraphicsBuffer_SetData<int>___03cd8648);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeArray<int>_Dispose___03cd4998);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeArray<int>__ctor___03cd4980);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeArray<int>__ctor___03cd82f8);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeList<InstanceOcclusionEventStats>_Add___03cd8650
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_NativeList<InstanceOcclusionEventStats>_Clear___03cd8658
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Dequeue___03cd8660
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Enqueue___03cd8668
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_IsEmpty___03cd8670
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Peek___03cd8678
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>_Dispose___03cd8628
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>__ctor___03cd8608
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>_get_Item___03cd8680
+                );
+    FUN_01c5c92c(
+                PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>_get_Length___03cd8638
+                );
+    DAT_03ef5b58 = 1;
+  }
+  puVar3 = 
+  PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_IsEmpty___03cd8670
+  ;
+  puVar2 = 
+  PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Enqueue___03cd8668
+  ;
+  puVar1 = 
+  PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>__ctor___03cd8608
+  ;
+  local_a0 = 0;
+  uStack_98 = 0;
+  auStack_e8._8_8_ = 0;
+  local_118 = 0;
+  lStack_f8 = 0;
+  local_100 = 0;
+  auStack_e8._0_8_ = 0;
+  local_f0 = 0;
+  lStack_c8 = 0;
+  local_d0 = 0;
+  local_b8 = ZEXT816(0);
+  local_c0 = 0;
+  local_120 = 0;
+  local_108 = 0;
+  local_110 = 0;
+  uStack_10c = 0;
+  if (0 < (int)param_1[2]) {
+    local_b8._8_8_ = 0;
+    lStack_c8 = param_1[2];
+    local_d0 = param_1[1];
+    local_c0 = param_1[3];
+    local_b8._0_8_ = 0;
+    local_b8 = UnityEngine_Rendering_AsyncGPUReadback__Request(*param_1,(int)param_1[2] << 3,0,0,0);
+    lStack_88 = lStack_c8;
+    local_90 = local_d0;
+    local_80 = local_c0;
+    auStack_78 = local_b8;
+    Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>__Enqueue
+              (param_1 + 4,&local_90,*(undefined8 *)puVar2);
+    uVar5 = Unity_Collections_AllocatorManager_AllocatorHandle__op_Implicit(4,0);
+    local_90 = 0;
+    lStack_88 = 0;
+    local_80 = 0;
+    Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>___ctor
+              (&local_90,4,uVar5,0,*(undefined8 *)puVar1);
+    param_1[2] = lStack_88;
+    param_1[1] = local_90;
+    param_1[3] = local_80;
+  }
+  uVar6 = Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>__IsEmpty
+                    (param_1 + 4,*(undefined8 *)puVar3);
+  puVar4 = 
+  PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Peek___03cd8678
+  ;
+  puVar2 = 
+  PTR_Method_Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>_Dequeue___03cd8660
+  ;
+  puVar1 = PTR_Method_UnityEngine_Rendering_AsyncGPUReadbackRequest_GetData<int>___03cd8640;
+  while ((uVar6 & 1) == 0) {
+    Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>__Peek
+              (&local_90,param_1 + 4,*(undefined8 *)puVar4);
+    lStack_c8 = lStack_88;
+    local_d0 = local_90;
+    local_c0 = local_80;
+    local_b8 = auStack_78;
+    uVar6 = UnityEngine_Rendering_AsyncGPUReadbackRequest__get_done(local_b8,0);
+    if ((uVar6 & 1) == 0) break;
+    Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>__Dequeue
+              (&local_90,param_1 + 4,*(undefined8 *)puVar2);
+    lStack_f8 = lStack_88;
+    local_100 = local_90;
+    local_f0 = local_80;
+    auStack_e8 = auStack_78;
+    uVar6 = UnityEngine_Rendering_AsyncGPUReadbackRequest__get_hasError(auStack_e8,0);
+    if ((uVar6 & 1) == 0) {
+      auVar12 = UnityEngine_Rendering_AsyncGPUReadbackRequest__GetData<int>
+                          (auStack_e8,0,*(undefined8 *)puVar1);
+      if (auVar12._8_4_ == (int)lStack_f8 * 2) {
+        if ((char)param_1[10] != '\0') {
+          Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>__Dispose
+                    (param_1 + 5,
+                     *(undefined8 *)
+                      PTR_Method_Unity_Collections_LowLevel_Unsafe_UnsafeList<InstanceOcclusionEventDebugArray_Info>_Dispose___03cd8628
+                    );
+          Unity_Collections_NativeArray<int>__Dispose
+                    (param_1 + 8,
+                     *(undefined8 *)PTR_Method_Unity_Collections_NativeArray<int>_Dispose___03cd4998
+                    );
+          *(undefined1 *)(param_1 + 10) = 0;
+        }
+        param_1[6] = lStack_f8;
+        param_1[5] = local_100;
+        param_1[7] = local_f0;
+        local_90 = 0;
+        lStack_88 = 0;
+        Unity_Collections_NativeArray<int>___ctor
+                  (&local_90,auVar12._0_8_,auVar12._8_8_,4,
+                   *(undefined8 *)PTR_Method_Unity_Collections_NativeArray<int>__ctor___03cd82f8);
+        *(undefined1 *)(param_1 + 10) = 1;
+        param_1[9] = lStack_88;
+        param_1[8] = local_90;
+      }
+    }
+    uVar6 = Unity_Collections_NativeQueue<InstanceOcclusionEventDebugArray_Request>__IsEmpty
+                      (param_1 + 4,*(undefined8 *)puVar3);
+  }
+  puVar1 = PTR_Method_Unity_Collections_NativeArray<int>__ctor___03cd4980;
+  if (param_2 != 0) {
+    Unity_Collections_NativeList<InstanceOcclusionEventStats>__Clear
+              (param_2 + 0x20,
+               *(undefined8 *)
+                PTR_Method_Unity_Collections_NativeList<InstanceOcclusionEventStats>_Clear___03cd8658
+              );
+    puVar2 = PTR_Method_Unity_Collections_NativeList<InstanceOcclusionEventStats>_Add___03cd8650;
+    if (((char)param_1[10] != '\0') && (0 < (int)param_1[6])) {
+      uVar6 = 0;
+      do {
+        piVar9 = (int *)param_1[5];
+        piVar7 = piVar9 + uVar6 * 5;
+        local_120 = *(undefined8 *)piVar7;
+        local_110 = piVar7[4];
+        if (piVar7[1] == 1 || local_110 != 0) {
+          if (uVar6 != 0) {
+            uVar10 = uVar6;
+            do {
+              if ((piVar9[4] != 0 || piVar9[1] == 1) && *piVar9 == *piVar7) {
+                iVar8 = piVar7[2] - piVar9[2];
+                goto LAB_0344c2e8;
+              }
+              uVar10 = uVar10 - 1;
+              piVar9 = piVar9 + 5;
+            } while (uVar10 != 0);
+          }
+          iVar8 = 0;
+        }
+        else {
+          iVar8 = -1;
+        }
+LAB_0344c2e8:
+        uVar11 = NEON_rev64(*(undefined8 *)
+                             (param_1[8] +
+                             (-(uVar6 >> 0x1e & 1) & 0xfffffffc00000000 | (uVar6 & 0x7fffffff) << 3)
+                             ),4);
+        local_118 = CONCAT44(piVar7[3],iVar8);
+        uStack_10c = (undefined4)uVar11;
+        local_108 = (undefined4)((ulong)uVar11 >> 0x20);
+        Unity_Collections_NativeList<InstanceOcclusionEventStats>__Add
+                  (param_2 + 0x20,&local_120,*(undefined8 *)puVar2);
+        uVar6 = uVar6 + 1;
+      } while ((long)uVar6 < (long)(int)param_1[6]);
+    }
+    Unity_Collections_NativeArray<int>___ctor(&local_a0,0x80,2,1,*(undefined8 *)puVar1);
+    if (*param_1 != 0) {
+      UnityEngine_GraphicsBuffer__SetData<int>
+                (*param_1,local_a0,uStack_98,
+                 *(undefined8 *)PTR_Method_UnityEngine_GraphicsBuffer_SetData<int>___03cd8648);
+      Unity_Collections_NativeArray<int>__Dispose
+                (&local_a0,
+                 *(undefined8 *)PTR_Method_Unity_Collections_NativeArray<int>_Dispose___03cd4998);
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_01c5cbd4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 34
+FUNCTION_NAME: UnityEngine.Rendering.RenderGraphModule.NativeRenderPassCompiler.NativePassCompiler$$ExecuteGraph
+ENTRY_POINT: 03426964
+MANUAL_PRIORITY_SCORE: 173
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 71
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['validity_gate', 'pose_vector', 'paired_state_refs', 'foveation_rendering', 'keyword_support']
+EVIDENCE: ['validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_12', 'paired_field_refs_with_structure_only', 'strong_foveation_hits_1', 'eye_or_gaze_keyword_boost_only', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_71', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'module_bonus_keyword_support_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\general-structure-results\70_high_framework_support_only_high\03426964_UnityEngine.Rendering.RenderGraphModule.NativeRenderPassCompiler.NativePassCompiler$$ExecuteGraph.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\manual-review-pack\A_must_review\034_p173_UnityEngine.Rendering.RenderGraphModule.NativeRenderPassCompiler.NativePassCompiler$$ExecuteGraph.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.RenderGraphModule.NativeRenderPassCompiler.NativePassCompiler$$ExecuteGraph
+ENTRY_POINT: 03426964
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 71
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering
+MODULES: validity_gate;pose_vector;paired_state_refs;foveation_rendering;keyword_support
+EVIDENCE: validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_12;paired_field_refs_with_structure_only;strong_foveation_hits_1;eye_or_gaze_keyword_boost_only;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler__ExecuteGraph
+               (long param_1,long param_2,undefined8 param_3,long *param_4)
+
+{
+  bool bVar1;
+  int iVar2;
+  bool bVar3;
+  bool bVar4;
+  undefined4 *puVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  long lVar9;
+  undefined4 *puVar10;
+  long *plVar11;
+  undefined8 *puVar12;
+  int iVar13;
+  ulong unaff_x26;
+  ulong uVar14;
+  long *plVar15;
+  undefined1 auVar16 [16];
+  long lStack_68;
+  undefined *puVar8;
+  
+  lStack_68 = param_2;
+  if ((DAT_03ef59f5 & 1) == 0) {
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_CommandBufferPool_TypeInfo_03cd29f8);
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_CommandBuffer_TypeInfo_03cd6918);
+    FUN_01c5c92c(
+                PTR_Method_System_Collections_Generic_Dictionary<int,_GraphicsFence>_get_Item___03cd7278
+                );
+    FUN_01c5c92c(
+                PTR_Method_System_Collections_Generic_Dictionary<int,_GraphicsFence>_set_Item___03cd7280
+                );
+    FUN_01c5c92c(
+                PTR_Method_UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_FixedAttachmentArray<PassFragmentData>_get_size___03cd7198
+                );
+    FUN_01c5c92c(
+                PTR_UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_FixedAttachmentArray<PassFragmentData>_TypeInfo_03cd71a0
+                );
+    FUN_01c5c92c(PTR_Method_System_Collections_Generic_List<RenderGraphPass>_get_Item___03cd6360);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeList<NativePassData>_ElementAt___03cd7050);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeList<PassData>_ElementAt___03cd6368);
+    FUN_01c5c92c(PTR_Method_Unity_Collections_NativeList<PassData>_get_Length___03cd6370);
+    FUN_01c5c92c(PTR_Method_System_ReadOnlySpan<PassRandomWriteData>_get_Length___03cd7288);
+    FUN_01c5c92c(PTR_UnityEngine_Rendering_ScriptableRenderContext_TypeInfo_03cd6388);
+    FUN_01c5c92c(PTR_StringLiteral_7594_03cd7290);
+    DAT_03ef59f5 = 1;
+  }
+  if (param_2 != 0) {
+    plVar11 = (long *)(param_2 + 0x18);
+    *(long *)(param_1 + 0x40) = *plVar11;
+    thunk_FUN_01cc8040();
+    if (*plVar11 != 0) {
+      UnityEngine_Rendering_CommandBuffer__ClearRandomWriteTargets(*plVar11,0);
+      lVar9 = *(long *)(param_1 + 0x30);
+      if (lVar9 != 0) {
+        bVar4 = false;
+        iVar13 = 0;
+        puVar12 = (undefined8 *)
+                  PTR_Method_Unity_Collections_NativeList<PassData>_ElementAt___03cd6368;
+        plVar15 = (long *)PTR_Method_Unity_Collections_NativeList<PassData>_get_Length___03cd6370;
+        do {
+          lVar9 = *(long *)(lVar9 + 0x18);
+          if ((*(ushort *)(*(long *)(*plVar15 + 0x20) + 0x135) & 1) == 0) {
+            FUN_01c8c820();
+          }
+          if (*(int *)(lVar9 + 8) <= iVar13) {
+            return;
+          }
+          if (*(long *)(param_1 + 0x30) == 0) break;
+          puVar5 = (undefined4 *)
+                   Unity_Collections_NativeList<PassData>__ElementAt
+                             (*(long *)(param_1 + 0x30) + 0x18,iVar13,*puVar12);
+          if (*(char *)((long)puVar5 + 0x6a) == '\0') {
+            iVar2 = puVar5[1];
+            UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler__ExecuteCreateRessource
+                      (param_1,param_2,param_3,puVar5);
+            if ((puVar5[1] == 3) && (*(char *)(puVar5 + 0x1a) != '\0')) {
+              if (*(char *)(param_2 + 0x38) == '\0') {
+                lVar9 = *plVar11;
+                if (*(int *)(*(long *)
+                              PTR_UnityEngine_Rendering_ScriptableRenderContext_TypeInfo_03cd6388 +
+                            0xe4) == 0) {
+                  thunk_FUN_01cb0d4c();
+                }
+                UnityEngine_Rendering_ScriptableRenderContext__ExecuteCommandBuffer
+                          (param_2 + 0x10,lVar9,0);
+              }
+              if (*plVar11 == 0) break;
+              UnityEngine_Rendering_CommandBuffer__Clear(*plVar11,0);
+              if (*(int *)(*(long *)PTR_UnityEngine_Rendering_CommandBufferPool_TypeInfo_03cd29f8 +
+                          0xe4) == 0) {
+                thunk_FUN_01cb0d4c();
+              }
+              lVar9 = UnityEngine_Rendering_CommandBufferPool__Get
+                                (*(undefined8 *)PTR_StringLiteral_7594_03cd7290,0);
+              if (lVar9 == 0) break;
+              UnityEngine_Rendering_CommandBuffer__SetExecutionFlags(lVar9,2,0);
+              *plVar11 = lVar9;
+              thunk_FUN_01cc8040(plVar11,lVar9);
+              bVar3 = false;
+            }
+            else {
+              bVar3 = true;
+            }
+            if (puVar5[0x19] != -1) {
+              if ((*(long *)(param_1 + 0x30) == 0) ||
+                 (lVar9 = *(long *)(*(long *)(param_1 + 0x30) + 0x20), lVar9 == 0)) break;
+              auVar16 = System_Collections_Generic_Dictionary<int,_GraphicsFence>__get_Item
+                                  (lVar9,puVar5[0x19],
+                                   *(undefined8 *)
+                                    PTR_Method_System_Collections_Generic_Dictionary<int,_GraphicsFence>_get_Item___03cd7278
+                                  );
+          
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+
+                  unaff_x26 = unaff_x26 & 0xffffffff00000000 | (ulong)(uint)puVar10[-1];
+                  lVar9 = UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler__SetRandomWriteTarget
+                                    (lVar9,plVar11,param_3,*puVar10,*(undefined8 *)(puVar10 + -3),
+                                     unaff_x26,1);
+                  uVar14 = uVar14 - 1;
+                  puVar10 = puVar10 + 5;
+                } while (uVar14 != 0);
+              }
+            }
+            if (*param_4 == 0) break;
+            uVar6 = System_Collections_Generic_List<object>__get_Item
+                              (*param_4,*puVar5,
+                               *(undefined8 *)
+                                PTR_Method_System_Collections_Generic_List<RenderGraphPass>_get_Item___03cd6360
+                              );
+            UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler__ExecuteGraphNode
+                      (uVar6,&lStack_68);
+            plVar15 = (long *)
+                      PTR_Method_Unity_Collections_NativeList<PassData>_get_Length___03cd6370;
+            if (0 < (int)puVar5[0x10]) {
+              if (*plVar11 == 0) break;
+              UnityEngine_Rendering_CommandBuffer__ClearRandomWriteTargets(*plVar11,0);
+            }
+            if (*(char *)((long)puVar5 + 0x6e) != '\0') {
+              if (*plVar11 == 0) break;
+              auVar16 = UnityEngine_Rendering_CommandBuffer__CreateAsyncGraphicsFence(*plVar11,0);
+              if ((*(long *)(param_1 + 0x30) == 0) ||
+                 (lVar9 = *(long *)(*(long *)(param_1 + 0x30) + 0x20), lVar9 == 0)) break;
+              System_Collections_Generic_Dictionary<int,_GraphicsFence>__set_Item
+                        (lVar9,*puVar5,auVar16._0_8_,auVar16._8_8_,
+                         *(undefined8 *)
+                          PTR_Method_System_Collections_Generic_Dictionary<int,_GraphicsFence>_set_Item___03cd7280
+                        );
+            }
+            puVar12 = (undefined8 *)
+                      PTR_Method_Unity_Collections_NativeList<PassData>_ElementAt___03cd6368;
+            if (iVar2 == 2) {
+              if (puVar5[4] != -1) {
+                bVar1 = true;
+              }
+              if (((puVar5[4] == 2) || (!bVar1)) && (-1 < (int)puVar5[5])) {
+                if (*(long *)(param_1 + 0x30) == 0) break;
+                lVar9 = Unity_Collections_NativeList<NativePassData>__ElementAt
+                                  (*(long *)(param_1 + 0x30) + 0x60,puVar5[5],
+                                   *(undefined8 *)
+                                    PTR_Method_Unity_Collections_NativeList<NativePassData>_ElementAt___03cd7050
+                                  );
+                if (*(int *)(*(long *)
+                              PTR_UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_FixedAttachmentArray<PassFragmentData>_TypeInfo_03cd71a0
+                            + 0xe4) == 0) {
+                  thunk_FUN_01cb0d4c(*(long *)
+                                      PTR_UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_FixedAttachmentArray<PassFragmentData>_TypeInfo_03cd71a0
+                                    );
+                }
+                if (0 < *(int *)(lVar9 + 400)) {
+                  if (!bVar4) {
+                    thunk_FUN_01cb9718(PTR_System_Exception_TypeInfo_03cb62d0);
+                    uVar6 = thunk_FUN_01c8fc48();
+                    puVar8 = PTR_StringLiteral_2068_03cd72a8;
+LAB_03426f50:
+                    uVar7 = thunk_FUN_01cb9718(puVar8);
+                    System_Exception___ctor(uVar6,uVar7,0);
+                    uVar7 = thunk_FUN_01cb9718(
+                                              PTR_Method_UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler_ExecuteGraph___03cd72a0
+                                              );
+                    /* WARNING: Subroutine does not return */
+                    FUN_01c5ca98(uVar6,uVar7);
+                  }
+                  if (*(char *)(lVar9 + 0x2bd) != '\0') {
+                    if (*plVar11 == 0) break;
+                    UnityEngine_Rendering_CommandBuffer__SetFoveatedRenderingMode(*plVar11,0,0);
+                  }
+                  if (*plVar11 == 0) break;
+                  UnityEngine_Rendering_CommandBuffer__EndRenderPass(*plVar11,0);
+                  bVar4 = false;
+                  **(undefined1 **)
+                    (*(long *)PTR_UnityEngine_Rendering_CommandBuffer_TypeInfo_03cd6918 + 0xb8) = 0;
+                }
+              }
+            }
+            else if (!bVar3) {
+              lVar9 = *plVar11;
+              if (*(int *)(*(long *)
+                            PTR_UnityEngine_Rendering_ScriptableRenderContext_TypeInfo_03cd6388 +
+                          0xe4) == 0) {
+                thunk_FUN_01cb0d4c();
+              }
+              UnityEngine_Rendering_ScriptableRenderContext__ExecuteCommandBufferAsync
+                        (param_2 + 0x10,lVar9,1,0);
+              puVar12 = (undefined8 *)
+                        PTR_Method_Unity_Collections_NativeList<PassData>_ElementAt___03cd6368;
+              lVar9 = *plVar11;
+              if (*(int *)(*(long *)PTR_UnityEngine_Rendering_CommandBufferPool_TypeInfo_03cd29f8 +
+                          0xe4) == 0) {
+                thunk_FUN_01cb0d4c();
+              }
+              UnityEngine_Rendering_CommandBufferPool__Release(lVar9,0);
+              *plVar11 = *(long *)(param_1 + 0x40);
+              thunk_FUN_01cc8040(plVar11);
+            }
+            UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler__ExecuteDestroyResource
+                      (param_1,param_2,param_3,puVar5);
+          }
+          lVar9 = *(long *)(param_1 + 0x30);
+          iVar13 = iVar13 + 1;
+        } while (lVar9 != 0);
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_01c5cbd4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 35
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorReticleVisual$$FindClosestHit
+ENTRY_POINT: 0367f188
+MANUAL_PRIORITY_SCORE: 172
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 88
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection']
+EVIDENCE: ['validity_or_gating_hits_4', 'ray_or_cast_sink_hits_4', 'ui_or_gameplay_sink_hits_2', 'strong_file_logging_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_88', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'sensitive_sink_data_collection_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\general-structure-results\70_high_general_structure_review_high\0367f188_UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorReticleVisual$$FindClosestHit.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\FruitBladeVR\manual-review-pack\A_must_review\035_p172_UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorReticleVisual$$FindClosestHit.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorReticleVisual$$FindClosestHit
+ENTRY_POINT: 0367f188
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 88
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;ui_interaction;data_collection
+EVIDENCE: validity_or_gating_hits_4;ray_or_cast_sink_hits_4;ui_or_gameplay_sink_hits_2;strong_file_logging_hits_2
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_XRInteractorReticleVisual__FindClosestHit
+               (undefined8 *param_1,long param_2,uint param_3)
+
+{
+  long lVar1;
+  uint uVar2;
+  ulong uVar3;
+  float fVar4;
+  float fVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  undefined8 uVar8;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  
+  if ((int)param_3 < 1) {
+    if (param_2 == 0) goto LAB_0367f268;
+    uVar2 = 0;
+  }
+  else {
+    if (param_2 == 0) {
+LAB_0367f268:
+                    /* WARNING: Subroutine does not return */
+      FUN_01c5cbd4();
+    }
+    uVar3 = 0;
+    uVar2 = 0;
+    fVar5 = 3.4028235e+38;
+    lVar1 = param_2 + 0x20;
+    do {
+      if (*(uint *)(param_2 + 0x18) <= uVar3) goto LAB_0367f264;
+      fVar4 = (float)UnityEngine_RaycastHit__get_distance(lVar1,0);
+      if (fVar4 < fVar5) {
+        if (*(uint *)(param_2 + 0x18) <= uVar3) goto LAB_0367f264;
+        fVar5 = (float)UnityEngine_RaycastHit__get_distance(lVar1,0);
+        uVar2 = (uint)uVar3;
+      }
+      uVar3 = uVar3 + 1;
+      lVar1 = lVar1 + 0x2c;
+    } while (param_3 != uVar3);
+  }
+  if (uVar2 < *(uint *)(param_2 + 0x18)) {
+    param_2 = param_2 + (long)(int)uVar2 * 0x2c;
+    uVar6 = *(undefined8 *)(param_2 + 0x20);
+    uVar8 = *(undefined8 *)(param_2 + 0x38);
+    uVar7 = *(undefined8 *)(param_2 + 0x30);
+    uVar10 = *(undefined8 *)(param_2 + 0x44);
+    uVar9 = *(undefined8 *)(param_2 + 0x3c);
+    param_1[1] = *(undefined8 *)(param_2 + 0x28);
+    *param_1 = uVar6;
+    param_1[3] = uVar8;
+    param_1[2] = uVar7;
+    *(undefined8 *)((long)param_1 + 0x24) = uVar10;
+    *(undefined8 *)((long)param_1 + 0x1c) = uVar9;
+    return;
+  }
+LAB_0367f264:
+                    /* WARNING: Subroutine does not return */
+  FUN_01c5cbdc();
+}
+
+
+
+END_DECOMPILED_FUNCTION

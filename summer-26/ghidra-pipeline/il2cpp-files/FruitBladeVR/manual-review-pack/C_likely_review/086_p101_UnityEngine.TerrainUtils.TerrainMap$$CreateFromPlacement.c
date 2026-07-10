@@ -1,0 +1,115 @@
+/*
+FUNCTION_NAME: UnityEngine.TerrainUtils.TerrainMap$$CreateFromPlacement
+ENTRY_POINT: 03803abc
+PROGRAM: FruitBladeVR-libil2cpp.so
+SCORE: 71
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector
+EVIDENCE: weak_xr_or_state_hits_5;validity_or_gating_hits_10;strong_pose_or_ray_construction_hits_4;repeated_pose_getters
+*/
+
+
+undefined8
+UnityEngine_TerrainUtils_TerrainMap__CreateFromPlacement
+          (undefined1 param_1 [16],undefined1 param_2 [16],undefined4 param_3,long param_4,
+          long param_5,uint param_6)
+
+{
+  undefined *puVar1;
+  undefined4 uVar2;
+  long lVar3;
+  long lVar4;
+  ulong uVar5;
+  undefined8 uVar6;
+  undefined4 uVar7;
+  undefined4 uVar8;
+  
+  puVar1 = PTR_UnityEngine_TerrainUtils_TerrainMap_<>c__DisplayClass3_0_TypeInfo_03ced408;
+  if ((DAT_03efb931 & 1) == 0) {
+    FUN_01c5c92c(PTR_UnityEngine_Object_TypeInfo_03cb5a80);
+    FUN_01c5c92c(PTR_System_Predicate<Terrain>_TypeInfo_03ced410);
+    FUN_01c5c92c(
+                PTR_Method_UnityEngine_TerrainUtils_TerrainMap_<>c__DisplayClass3_0_<CreateFromPlacement>b__0___03ced418
+                );
+    FUN_01c5c92c(PTR_UnityEngine_TerrainUtils_TerrainMap_<>c__DisplayClass3_0_TypeInfo_03ced408);
+    DAT_03efb931 = 1;
+  }
+  lVar3 = thunk_FUN_01c8fc48(*(undefined8 *)puVar1);
+  System_Object___ctor(lVar3,0);
+  if (DAT_03efb8d8 == (code *)0x0) {
+    DAT_03efb8d8 = (code *)FUN_01c5c8f0("UnityEngine.Terrain::get_activeTerrains()");
+  }
+  lVar4 = (*DAT_03efb8d8)();
+  if (lVar4 != 0) {
+    if (DAT_03efb8d8 == (code *)0x0) {
+      DAT_03efb8d8 = (code *)FUN_01c5c8f0("UnityEngine.Terrain::get_activeTerrains()");
+    }
+    lVar4 = (*DAT_03efb8d8)();
+    puVar1 = PTR_UnityEngine_Object_TypeInfo_03cb5a80;
+    if (lVar4 == 0) {
+LAB_03803cd8:
+                    /* WARNING: Subroutine does not return */
+      FUN_01c5cbd4();
+    }
+    if (*(long *)(lVar4 + 0x18) != 0) {
+      if (*(int *)(*(long *)PTR_UnityEngine_Object_TypeInfo_03cb5a80 + 0xe4) == 0) {
+        thunk_FUN_01cb0d4c();
+      }
+      uVar5 = UnityEngine_Object__op_Equality(param_4,0,0);
+      if ((uVar5 & 1) == 0) {
+        if (param_4 != 0) {
+          uVar6 = UnityEngine_Terrain__get_terrainData(param_4);
+          if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+            thunk_FUN_01cb0d4c(*(long *)puVar1);
+          }
+          uVar5 = UnityEngine_Object__op_Equality(uVar6,0,0);
+          if ((uVar5 & 1) != 0) {
+            return 0;
+          }
+          uVar2 = UnityEngine_Terrain__get_groupingID(param_4);
+          if (lVar3 != 0) {
+            *(undefined4 *)(lVar3 + 0x10) = uVar2;
+            lVar4 = UnityEngine_Component__get_transform(param_4,0);
+            if (lVar4 != 0) {
+              uVar2 = UnityEngine_Transform__get_position(lVar4,0);
+              lVar4 = UnityEngine_Component__get_transform(param_4,0);
+              if (lVar4 != 0) {
+                UnityEngine_Transform__get_position(lVar4,0);
+                uVar8 = param_3;
+                lVar4 = UnityEngine_Terrain__get_terrainData(param_4);
+                if (lVar4 != 0) {
+                  uVar7 = UnityEngine_TerrainData__get_size();
+                  lVar4 = UnityEngine_Terrain__get_terrainData(param_4);
+                  if (lVar4 != 0) {
+                    UnityEngine_TerrainData__get_size();
+                    if (param_5 == 0) {
+                      param_5 = thunk_FUN_01c8fc48(*(undefined8 *)
+                                                    PTR_System_Predicate<Terrain>_TypeInfo_03ced410)
+                      ;
+                      System_Predicate<object>___ctor
+                                (param_5,lVar3,
+                                 *(undefined8 *)
+                                  PTR_Method_UnityEngine_TerrainUtils_TerrainMap_<>c__DisplayClass3_0_<CreateFromPlacement>b__0___03ced418
+                                 ,0);
+                    }
+                    uVar6 = UnityEngine_TerrainUtils_TerrainMap__CreateFromPlacement
+                                      (uVar2,param_3,uVar7,uVar8,param_5,param_6 & 1);
+                    return uVar6;
+                  }
+                }
+              }
+            }
+          }
+        }
+        goto LAB_03803cd8;
+      }
+    }
+  }
+  return 0;
+}
+
+
