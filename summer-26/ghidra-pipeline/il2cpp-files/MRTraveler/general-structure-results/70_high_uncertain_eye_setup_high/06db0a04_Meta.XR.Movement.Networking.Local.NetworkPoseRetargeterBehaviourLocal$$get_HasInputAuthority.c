@@ -1,0 +1,114 @@
+/*
+FUNCTION_NAME: Meta.XR.Movement.Networking.Local.NetworkPoseRetargeterBehaviourLocal$$get_HasInputAuthority
+ENTRY_POINT: 06db0a04
+PROGRAM: MRTraveler-libil2cpp.so
+SCORE: 81
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;validity_or_gating_hits_8;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+undefined8
+Meta_XR_Movement_Networking_Local_NetworkPoseRetargeterBehaviourLocal__get_HasInputAuthority
+          (long param_1)
+
+{
+  int iVar1;
+  byte bVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  ulong uVar6;
+  long *unaff_x19;
+  long unaff_x20;
+  long *unaff_x21;
+  long lVar7;
+  long lVar8;
+  long unaff_x24;
+  long *unaff_x25;
+  int unaff_w26;
+  bool bVar9;
+  
+  do {
+    if (param_1 != 0) {
+      if (unaff_x24 == 0) {
+LAB_06db0d00:
+                    /* WARNING: Subroutine does not return */
+        FUN_03c8fb30();
+      }
+      (**(code **)(unaff_x24 + 0x18))
+                (0,*(undefined8 *)(unaff_x24 + 0x40),0,*(undefined8 *)(unaff_x20 + 0x30),
+                 *(undefined8 *)(unaff_x24 + 0x28));
+    }
+    *(int *)(unaff_x20 + 0x3c) = unaff_w26;
+    bVar9 = true;
+    do {
+      do {
+        lVar7 = *unaff_x21;
+        if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+          thunk_FUN_03cd7500();
+        }
+        bVar2 = FUN_085decd4(lVar7,0,0);
+        if ((bVar9 & bVar2) == 0) {
+          lVar7 = *unaff_x21;
+          if (*(int *)(*(long *)PTR_DAT_08e68f00 + 0xe0) == 0) {
+            thunk_FUN_03cd7500();
+          }
+          uVar6 = FUN_085decd4(lVar7,0,0);
+          if ((uVar6 & 1) == 0) {
+            if (unaff_x19 == (long *)0x0) goto LAB_06db0d00;
+          }
+          else {
+            if (unaff_x19 == (long *)0x0) goto LAB_06db0d00;
+            uVar6 = (**(code **)(*unaff_x19 + 0x338))();
+            if ((uVar6 & 1) != 0) {
+              *(undefined8 *)(unaff_x20 + 0x18) = 0;
+              thunk_FUN_03d233cc((undefined8 *)(unaff_x20 + 0x18),0);
+              *(undefined4 *)(unaff_x20 + 0x10) = 2;
+              return 1;
+            }
+          }
+          uVar6 = (**(code **)(*unaff_x19 + 0x338))();
+          if ((uVar6 & 1) != 0) {
+            (**(code **)(*unaff_x19 + 0x3b8))();
+          }
+          return 0;
+        }
+        if (unaff_x19 == (long *)0x0) goto LAB_06db0d00;
+        iVar3 = (**(code **)(*unaff_x19 + 0x2b8))();
+        if (iVar3 < *(int *)(unaff_x20 + 0x38)) {
+          *(int *)(unaff_x20 + 0x40) = *(int *)(unaff_x20 + 0x40) + 1;
+        }
+        *(int *)(unaff_x20 + 0x38) = iVar3;
+        if (*(long *)(unaff_x20 + 0x28) == 0) goto LAB_06db0d00;
+        iVar5 = *(int *)(unaff_x20 + 0x40);
+        iVar4 = FUN_08592530(*(long *)(unaff_x20 + 0x28),0);
+        lVar7 = *(long *)(unaff_x20 + 0x30);
+        if (lVar7 == 0) goto LAB_06db0d00;
+        iVar1 = *(int *)(unaff_x20 + 0x3c);
+        iVar3 = iVar3 + iVar4 * iVar5;
+        unaff_w26 = iVar1 + *(int *)(lVar7 + 0x18);
+        bVar9 = unaff_w26 < iVar3;
+      } while (iVar3 <= unaff_w26);
+      lVar8 = *unaff_x21;
+      if (lVar8 == 0) goto LAB_06db0d00;
+      iVar5 = FUN_08592530(lVar8,0);
+      iVar3 = 0;
+      if (iVar5 != 0) {
+        iVar3 = iVar1 / iVar5;
+      }
+      uVar6 = FUN_085925e4(lVar8,lVar7,iVar1 - iVar3 * iVar5,0);
+    } while ((uVar6 & 1) == 0);
+    param_1 = unaff_x19[0xc];
+    if (param_1 != 0) {
+      unaff_x24 = param_1;
+    }
+  } while( true );
+}
+
+

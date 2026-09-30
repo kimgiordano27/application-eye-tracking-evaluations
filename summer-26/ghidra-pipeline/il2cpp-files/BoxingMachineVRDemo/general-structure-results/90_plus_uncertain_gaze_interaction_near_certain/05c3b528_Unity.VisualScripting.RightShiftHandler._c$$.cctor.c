@@ -1,0 +1,134 @@
+/*
+FUNCTION_NAME: Unity.VisualScripting.RightShiftHandler.<>c$$.cctor
+ENTRY_POINT: 05c3b528
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 93
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;weak_source_state;pose_vector;ray_interaction
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;strong_pose_or_ray_construction_hits_4;ray_or_cast_sink_hits_2;functionality_gaze_interaction_hits_1
+*/
+
+
+void Unity_VisualScripting_RightShiftHandler_<>c___cctor(long param_1,undefined4 param_2)
+
+{
+  undefined *puVar1;
+  undefined4 uVar2;
+  ulong uVar3;
+  long lVar4;
+  undefined8 uVar5;
+  long *unaff_x20;
+  
+  *(undefined4 *)(param_1 + 0x90) = param_2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<NativeSlice<ushort>>__ctor__);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0x94) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)Method_System_Collections_Generic_List<List<int>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0x98) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<List<InputBinding>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0x9c) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<KeyValuePair<string,_EventObj>>_Clear__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xb0) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<List<UIRenderDevice_AllocToFree>>__ctor__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xb4) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)Method_System_Collections_Generic_List<List<Image>>__ctor__,0)
+  ;
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 200) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<ValueTuple<List<OVRSpaceUser>,_List<OVRSpatialAnchor>>>_GetEnumerator__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xb8) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<NativeSlice<Vertex>>__ctor__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xbc) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<ValueTuple<Camera,_XRPass>>_GetEnumerator__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xc0) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<OVRTask<OVRPlugin_Result>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xc4) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)Method_System_Collections_Generic_List<List<Image>>_get_Item__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xcc) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)PTR_DAT_0678ae20,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xd0) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<KeyValuePair<string,_JsonSchema>>_GetEnumerator__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xd4) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_Dictionary_ValueCollection_Enumerator<string,_object>_MoveNext__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xd8) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_Dictionary_ValueCollection_Enumerator<string,_object>_get_Current__
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xdc) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<NativeArray<XRRaycastHit>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xe0) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<ValueTuple<Camera,_XRPass>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xe4) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<Tuple<Vector3,_float>>_Add__,0);
+  *(undefined4 *)(*(long *)(*unaff_x20 + 0xb8) + 0xe8) = uVar2;
+  uVar2 = FUN_0603326c(*(undefined8 *)
+                        Method_System_Collections_Generic_List<List<int>>_GetEnumerator__,0);
+  lVar4 = *(long *)(*unaff_x20 + 0xb8);
+  *(undefined4 *)(lVar4 + 0xec) = uVar2;
+  puVar1 = PTR_DAT_0675e1b8;
+  uVar5 = *(undefined8 *)(lVar4 + 0x148);
+  if (*(int *)(*(long *)PTR_DAT_0675e1b8 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  uVar3 = UnityEngine_Font__add_textureRebuilt(uVar5,0,0);
+  if ((uVar3 & 1) != 0) {
+    uVar5 = FUN_060355b4(*(undefined8 *)
+                          Method_System_Collections_Generic_List<NativeSlice<ushort>>_get_Item__,0);
+    lVar4 = *unaff_x20;
+    if (*(int *)(lVar4 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4(lVar4);
+      lVar4 = *unaff_x20;
+    }
+    lVar4 = *(long *)(lVar4 + 0xb8);
+    *(undefined8 *)(lVar4 + 0x148) = uVar5;
+    thunk_FUN_02dd37b4(lVar4 + 0x148,uVar5);
+  }
+  lVar4 = *unaff_x20;
+  if (*(int *)(lVar4 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar4 = *unaff_x20;
+  }
+  uVar5 = *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x150);
+  if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4(*(long *)puVar1);
+  }
+  uVar3 = UnityEngine_Font__add_textureRebuilt(uVar5,0,0);
+  if ((uVar3 & 1) != 0) {
+    uVar5 = FUN_060355b4(*(undefined8 *)
+                          Method_System_Collections_Generic_List<Tuple<Vector3,_float>>_Clear__,0);
+    lVar4 = *unaff_x20;
+    if (*(int *)(lVar4 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4(lVar4);
+      lVar4 = *unaff_x20;
+    }
+    lVar4 = *(long *)(lVar4 + 0xb8);
+    *(undefined8 *)(lVar4 + 0x150) = uVar5;
+    thunk_FUN_02dd37b4(lVar4 + 0x150,uVar5);
+    return;
+  }
+  return;
+}
+
+

@@ -1,0 +1,42 @@
+/*
+FUNCTION_NAME: OVRManager$$set_hasVrFocus
+ENTRY_POINT: 060b9b3c
+PROGRAM: BoxingMiniGames-libil2cpp.so
+SCORE: 80
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRManager__set_hasVrFocus(void)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  
+  FUN_03d182e8();
+  FUN_060b9bb8();
+  puVar1 = PTR_DAT_07a23d68;
+  if (*(long *)(unaff_x19 + 200) != 0) {
+    uVar4 = *(undefined8 *)(unaff_x19 + 0x130);
+    uVar2 = FUN_071bd0d0(*(long *)(unaff_x19 + 200),0);
+    uVar3 = thunk_FUN_0367fe20(*(undefined8 *)puVar1);
+    FUN_060b9c88(uVar3,uVar4,uVar2);
+    *(undefined8 *)(unaff_x19 + 0x140) = uVar3;
+    thunk_FUN_036b7ad0(unaff_x19 + 0x140,uVar3);
+    FUN_05ffd214();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03642c18();
+}
+
+

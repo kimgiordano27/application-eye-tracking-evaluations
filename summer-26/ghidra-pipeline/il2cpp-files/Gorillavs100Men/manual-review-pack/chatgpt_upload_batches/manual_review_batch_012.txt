@@ -1,0 +1,395 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 56
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f15618
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 111
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_111', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\03f15618_Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\056_p163_Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f15618
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 111
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_NativeMethods__GetEyeTrackedFoveatedRenderingEnabled
+               (ulong param_1,long param_2)
+
+{
+  long lVar1;
+  long unaff_x20;
+  long unaff_x21;
+  long *plVar2;
+  long unaff_x22;
+  undefined8 *puVar3;
+  
+  puVar3 = *(undefined8 **)(unaff_x22 + 0xf88);
+  plVar2 = *(long **)(unaff_x21 + 0x548);
+  if ((param_1 & 1) == 0) {
+    FUN_020612a4(PTR_DAT_046bef88);
+    FUN_020612a4(PTR_DAT_046a7548);
+    *(undefined1 *)(unaff_x20 + 0xa94) = 1;
+  }
+  lVar1 = thunk_FUN_02094760(*puVar3);
+  *(undefined4 *)(lVar1 + 0x10) = 0x3f800000;
+  FUN_040e31c8(lVar1,0);
+  *(long *)(param_2 + 0xa0) = lVar1;
+  thunk_FUN_020ccb58((long *)(param_2 + 0xa0),lVar1);
+  if (*(int *)(*plVar2 + 0xe4) == 0) {
+    thunk_FUN_020b5864();
+  }
+  FUN_03f01d94(param_2);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 57
+FUNCTION_NAME: FUN_03e9a2bc
+ENTRY_POINT: 03e9a2bc
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 76
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ui_interaction', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_13', 'ui_or_gameplay_sink_hits_3', 'telemetry_or_network_hits_3']
+PRIORITY_REASONS: ['base_scanner_score_76', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_general_structure_review_high\03e9a2bc_FUN_03e9a2bc.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\057_p163_FUN_03e9a2bc.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_03e9a2bc
+ENTRY_POINT: 03e9a2bc
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 76
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ui_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_13;ui_or_gameplay_sink_hits_3;telemetry_or_network_hits_3
+*/
+
+
+void FUN_03e9a2bc(float param_1,long param_2)
+
+{
+  uint uVar1;
+  long lVar2;
+  undefined8 *puVar3;
+  uint uVar4;
+  long lVar5;
+  ulong uVar6;
+  uint uVar7;
+  ulong uVar8;
+  long lVar9;
+  float *pfVar10;
+  
+  if (ABS(param_1) == INFINITY || ABS(param_1) == 0.0) {
+    *(undefined1 *)(param_2 + 0x3a8) = 1;
+    FUN_03e94e6c(param_2);
+    return;
+  }
+  lVar2 = *(long *)(param_2 + 0x3a0);
+  if (lVar2 != 0) {
+    uVar1 = *(uint *)(lVar2 + 0x34);
+    if (0 < (int)uVar1) {
+      lVar5 = *(long *)(lVar2 + 0x60);
+      uVar4 = 0;
+      do {
+        if (lVar5 == 0)
+        goto 
+        UnityEngine_XR_Interaction_Toolkit_Transformers_XRGeneralGrabTransformer_ComputeNewOneHandedScale_00000848_PostfixBurstDelegate__EndInvoke
+        ;
+        if (*(uint *)(lVar5 + 0x18) <= uVar4) goto LAB_03e9a42c;
+        lVar9 = *(long *)(lVar5 + (long)(int)uVar4 * 0x50 + 0x48);
+        if (lVar9 == 0)
+        goto 
+        UnityEngine_XR_Interaction_Toolkit_Transformers_XRGeneralGrabTransformer_ComputeNewOneHandedScale_00000848_PostfixBurstDelegate__EndInvoke
+        ;
+        uVar7 = (uint)*(ulong *)(lVar9 + 0x18);
+        if (0 < (int)uVar7) {
+          uVar6 = (ulong)(uVar7 & ((int)uVar7 >> 0x1f ^ 0xffffffffU));
+          uVar8 = *(ulong *)(lVar9 + 0x18) & 0xffffffff;
+          pfVar10 = (float *)(lVar9 + 0x2c);
+          do {
+            if (uVar8 == 0) goto LAB_03e9a42c;
+            uVar6 = uVar6 - 1;
+            uVar8 = uVar8 - 1;
+            *pfVar10 = ABS(param_1) * *pfVar10;
+            pfVar10 = pfVar10 + 4;
+          } while (uVar6 != 0);
+        }
+        uVar4 = uVar4 + 1;
+      } while (uVar4 != (uVar1 & ((int)uVar1 >> 0x1f ^ 0xffffffffU)));
+    }
+    uVar6 = 0;
+    lVar5 = 0x48;
+    do {
+      lVar2 = *(long *)(lVar2 + 0x60);
+      if (lVar2 == 0) break;
+      if ((long)*(int *)(lVar2 + 0x18) <= (long)uVar6) {
+        return;
+      }
+      if (uVar6 == 0) {
+        if (*(int *)(lVar2 + 0x18) == 0) goto LAB_03e9a42c;
+        lVar9 = *(long *)(param_2 + 0x3d8);
+        if (lVar9 == 0) break;
+        puVar3 = (undefined8 *)(lVar2 + 0x48);
+      }
+      else {
+        lVar2 = *(long *)(param_2 + 0x720);
+        if (lVar2 == 0) break;
+        if (*(uint *)(lVar2 + 0x18) <= uVar6) {
+LAB_03e9a42c:
+                    /* WARNING: Subroutine does not return */
+          FUN_02061554();
+        }
+        lVar2 = *(long *)(lVar2 + uVar6 * 8 + 0x20);
+        if (lVar2 == 0) break;
+        lVar9 = FUN_03ef8230(lVar2,0);
+        if ((*(long *)(param_2 + 0x3a0) == 0) ||
+           (lVar2 = *(long *)(*(long *)(param_2 + 0x3a0) + 0x60), lVar2 == 0)) break;
+        if (*(uint *)(lVar2 + 0x18) <= uVar6) goto LAB_03e9a42c;
+        if (lVar9 == 0) break;
+        puVar3 = (undefined8 *)(lVar2 + lVar5);
+      }
+      FUN_040a70e8(lVar9,0,*puVar3,0);
+      lVar2 = *(long *)(param_2 + 0x3a0);
+      uVar6 = uVar6 + 1;
+      lVar5 = lVar5 + 0x50;
+    } while (lVar2 != 0);
+  }
+
+  UnityEngine_XR_Interaction_Toolkit_Transformers_XRGeneralGrabTransformer_ComputeNewOneHandedScale_00000848_PostfixBurstDelegate__EndInvoke
+  :
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 58
+FUNCTION_NAME: FUN_04019b54
+ENTRY_POINT: 04019b54
+MANUAL_PRIORITY_SCORE: 162
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 110
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_1', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_110', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\04019b54_FUN_04019b54.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\058_p162_FUN_04019b54.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_04019b54
+ENTRY_POINT: 04019b54
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 110
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_1;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void FUN_04019b54(uint param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_049235e8 == (code *)0x0) {
+    local_50 = "OculusXRPlugin";
+    uStack_48 = 0xe;
+    local_40 = "SetEyeTrackedFoveatedRenderingEnabled";
+    uStack_38 = 0x25;
+    local_30 = DAT_00c57ec0;
+    local_28 = 4;
+    local_24 = 0;
+    DAT_049235e8 = (code *)thunk_FUN_02094a00(&local_50);
+  }
+  (*DAT_049235e8)(param_1 & 1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 59
+FUNCTION_NAME: FUN_04019a7c
+ENTRY_POINT: 04019a7c
+MANUAL_PRIORITY_SCORE: 162
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 110
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_1', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_110', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\04019a7c_FUN_04019a7c.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\059_p162_FUN_04019a7c.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_04019a7c
+ENTRY_POINT: 04019a7c
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 110
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_1;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+bool FUN_04019a7c(void)
+
+{
+  char cVar1;
+  char *local_40;
+  undefined8 uStack_38;
+  char *local_30;
+  undefined8 uStack_28;
+  undefined8 local_20;
+  undefined4 local_18;
+  undefined1 local_14;
+  
+  if (DAT_049235d8 == (code *)0x0) {
+    local_40 = "OculusXRPlugin";
+    uStack_38 = 0xe;
+    local_30 = "GetEyeTrackedFoveatedRenderingSupported";
+    uStack_28 = 0x27;
+    local_20 = DAT_00c57ec0;
+    local_18 = 0;
+    local_14 = 0;
+    DAT_049235d8 = (code *)thunk_FUN_02094a00(&local_40);
+  }
+  cVar1 = (*DAT_049235d8)();
+  return cVar1 != '\0';
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 60
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 03f15590
+MANUAL_PRIORITY_SCORE: 161
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 109
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_109', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\03f15590_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\060_p161_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 03f15590
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 109
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_Utils__get_eyeTrackedFoveatedRenderingSupported(void)
+
+{
+  undefined4 uVar1;
+  long unaff_x20;
+  
+  uVar1 = FUN_0386e7a4();
+  *(undefined4 *)(unaff_x20 + 0x38) = uVar1;
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

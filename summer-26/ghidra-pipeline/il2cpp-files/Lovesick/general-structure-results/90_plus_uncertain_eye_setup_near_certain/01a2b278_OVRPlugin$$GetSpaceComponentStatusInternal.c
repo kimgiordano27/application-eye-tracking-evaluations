@@ -1,0 +1,108 @@
+/*
+FUNCTION_NAME: OVRPlugin$$GetSpaceComponentStatusInternal
+ENTRY_POINT: 01a2b278
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 102
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_11;telemetry_or_network_hits_1;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRPlugin__GetSpaceComponentStatusInternal(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  undefined8 uVar5;
+  long *unaff_x19;
+  long unaff_x20;
+  long *unaff_x21;
+  undefined8 *unaff_x22;
+  uint *unaff_x23;
+  
+  if (param_1 == 0) goto LAB_01a2b51c;
+  if (0x16 < *unaff_x23) {
+    unaff_x19[0x1a] = unaff_x20;
+    lVar3 = FUN_00da4fb8(*unaff_x22,1);
+    if (lVar3 == 0) {
+LAB_01a2b528:
+                    /* WARNING: Subroutine does not return */
+      FUN_00da518c();
+    }
+    if (*(int *)(lVar3 + 0x18) != 0) {
+      *(undefined4 *)(lVar3 + 0x20) = 0x18;
+      lVar4 = thunk_FUN_00d6225c(lVar3,*(undefined8 *)(*unaff_x19 + 0x40));
+      if (lVar4 == 0) goto LAB_01a2b51c;
+      if (0x17 < *unaff_x23) {
+        unaff_x19[0x1b] = lVar3;
+        lVar3 = FUN_00da4fb8(*unaff_x22,1);
+        if (lVar3 == 0) goto LAB_01a2b528;
+        if (*(int *)(lVar3 + 0x18) != 0) {
+          *(undefined4 *)(lVar3 + 0x20) = 0x19;
+          lVar4 = thunk_FUN_00d6225c(lVar3,*(undefined8 *)(*unaff_x19 + 0x40));
+          if (lVar4 == 0) {
+LAB_01a2b51c:
+            uVar5 = thunk_FUN_00d7a17c();
+                    /* WARNING: Subroutine does not return */
+            FUN_00da5038(uVar5,0);
+          }
+          if (0x18 < *unaff_x23) {
+            unaff_x19[0x1c] = lVar3;
+            lVar3 = FUN_00da4fb8(*unaff_x22,0);
+            if ((lVar3 != 0) &&
+               (lVar4 = thunk_FUN_00d6225c(lVar3,*(undefined8 *)(*unaff_x19 + 0x40)), lVar4 == 0))
+            goto LAB_01a2b51c;
+            if (0x19 < *unaff_x23) {
+              unaff_x19[0x1d] = lVar3;
+              puVar1 = Method_System_Reflection_Emit_DynamicMethod_Invoke__;
+              *(long **)(*(long *)(*unaff_x21 + 0xb8) + 0x18) = unaff_x19;
+              lVar3 = thunk_FUN_00d62348(*(undefined8 *)puVar1);
+              puVar2 = StringLiteral_10553;
+              puVar1 = FullSerializer_fsDataType_TypeInfo;
+              if (lVar3 != 0) {
+                FUN_01320e50(lVar3,*(undefined8 *)
+                                    Method_System_Threading_Tasks_Task_Run<WebResponse>__);
+                FUN_00bfecf8(lVar3,6,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,7,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,8,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,9,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0xb,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0xc,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0xd,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0xe,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x10,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x11,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x12,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x13,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x15,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x16,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x17,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,0x18,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,2,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,3,*(undefined8 *)puVar1);
+                FUN_00bfecf8(lVar3,4,*(undefined8 *)puVar1);
+                *(long *)(*(long *)(*unaff_x21 + 0xb8) + 0x20) = lVar3;
+                uVar5 = FUN_00da4fb8(*unaff_x22,5);
+                FUN_016a34e8(uVar5,*(undefined8 *)puVar2,0);
+                *(undefined8 *)(*(long *)(*unaff_x21 + 0xb8) + 0x28) = uVar5;
+                return;
+              }
+              goto LAB_01a2b528;
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da5194();
+}
+
+

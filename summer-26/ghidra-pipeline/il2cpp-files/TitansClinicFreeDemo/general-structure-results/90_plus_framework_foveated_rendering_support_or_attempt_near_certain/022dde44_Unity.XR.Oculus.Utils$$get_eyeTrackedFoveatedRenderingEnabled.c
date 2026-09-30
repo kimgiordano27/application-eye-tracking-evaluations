@@ -1,0 +1,23 @@
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 022dde44
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 111
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_Utils__get_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+                    /* WARNING: Subroutine does not return */
+  FUN_01230ca0();
+}
+
+

@@ -1,0 +1,367 @@
+/*
+FUNCTION_NAME: UnityEngine.TextSelectingUtilities$$MoveCursorToPosition_Internal
+ENTRY_POINT: 06944dac
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 70
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;ui_interaction;telemetry
+EVIDENCE: weak_xr_or_state_hits_1;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1
+*/
+
+
+void UnityEngine_TextSelectingUtilities__MoveCursorToPosition_Internal
+               (long param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  long lVar4;
+  long lVar5;
+  undefined8 uVar6;
+  long lVar7;
+  long lVar8;
+  undefined8 uVar9;
+  long lVar10;
+  long unaff_x19;
+  long unaff_x20;
+  long unaff_x21;
+  undefined8 unaff_x22;
+  undefined8 *unaff_x24;
+  long *unaff_x25;
+  long *unaff_x26;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  
+  FUN_042e4a64(param_2,param_3,*(undefined8 *)(param_1 + 0x70));
+  puVar3 = System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo;
+  *(undefined8 *)(unaff_x21 + 0x30) = unaff_x22;
+  lVar4 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                    (*(undefined8 *)puVar3);
+  FUN_042e4268(lVar4,*unaff_x28);
+  lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                    (*(undefined8 *)System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo);
+  FUN_05971910(lVar5,0);
+  if (lVar5 != 0) {
+    uVar6 = *(undefined8 *)
+             UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass13_0_TypeInfo
+    ;
+    *(undefined8 *)(lVar5 + 0x10) =
+         *(undefined8 *)UnityEngine_UIElements_FontDefinition_PropertyBag_FontProperty_TypeInfo;
+    *(undefined8 *)(lVar5 + 0x18) = uVar6;
+    if (lVar4 != 0) {
+      lVar7 = *(long *)(lVar4 + 0x10);
+      lVar8 = *unaff_x26;
+      *(int *)(lVar4 + 0x1c) = *(int *)(lVar4 + 0x1c) + 1;
+      if (lVar7 != 0) {
+        uVar2 = *(uint *)(lVar4 + 0x18);
+        if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+          *(uint *)(lVar4 + 0x18) = uVar2 + 1;
+          *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = lVar5;
+        }
+        else {
+          FUN_042e4a64(lVar4,lVar5,*(undefined8 *)(*(long *)(*(long *)(lVar8 + 0x20) + 0xc0) + 0x70)
+                      );
+        }
+        iVar1 = *(int *)(unaff_x20 + 0x1c);
+        lVar5 = *(long *)(unaff_x20 + 0x10);
+        *(long *)(unaff_x21 + 0x28) = lVar4;
+        *(int *)(unaff_x20 + 0x1c) = iVar1 + 1;
+        if (lVar5 != 0) {
+          uVar2 = *(uint *)(unaff_x20 + 0x18);
+          if (uVar2 < *(uint *)(lVar5 + 0x18)) {
+            *(uint *)(unaff_x20 + 0x18) = uVar2 + 1;
+            *(long *)(lVar5 + (long)(int)uVar2 * 8 + 0x20) = unaff_x21;
+          }
+          else {
+            FUN_042e4a64();
+          }
+          lVar4 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                            (*(undefined8 *)System_Xml_XmlBaseReader_XmlAttributeNode_TypeInfo);
+          FUN_05971910(lVar4,0);
+          if (lVar4 != 0) {
+            uVar6 = *unaff_x24;
+            uVar9 = *(undefined8 *)
+                     UnityEngine_UIElements_BackgroundSize_PropertyBag_XProperty_TypeInfo;
+            *(undefined8 *)(lVar4 + 0x10) =
+                 *(undefined8 *)
+                  UnityEngine_UIElements_BackgroundPosition_PropertyBag_OffsetProperty_TypeInfo;
+            *(undefined8 *)(lVar4 + 0x20) = uVar9;
+            *(undefined4 *)(lVar4 + 0x18) = 3;
+            lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                              (uVar6);
+            FUN_042e4268(lVar5,*unaff_x29);
+            if (lVar5 != 0) {
+              lVar7 = *(long *)(lVar5 + 0x10);
+              uVar6 = *(undefined8 *)
+                       System_Runtime_CompilerServices_YieldAwaitable_YieldAwaiter_TypeInfo;
+              lVar8 = *unaff_x25;
+              *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+              if (lVar7 != 0) {
+                uVar2 = *(uint *)(lVar5 + 0x18);
+                if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                  *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                  *(undefined8 *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = uVar6;
+                }
+                else {
+                  FUN_042e4a64(lVar5,uVar6,
+                               *(undefined8 *)(*(long *)(*(long *)(lVar8 + 0x20) + 0xc0) + 0x70));
+                }
+                puVar3 = System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo;
+                *(long *)(lVar4 + 0x30) = lVar5;
+                lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (*(undefined8 *)puVar3);
+                FUN_042e4268(lVar5,*unaff_x28);
+                lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (*(undefined8 *)
+                                    System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo);
+                FUN_05971910(lVar7,0);
+                if (lVar7 != 0) {
+                  uVar6 = *(undefined8 *)
+                           Unity_Burst_BurstCompiler_BurstCompilerHelper_IsBurstEnabled_00000146_BurstDirectCall_TypeInfo
+                  ;
+                  *(undefined8 *)(lVar7 + 0x10) =
+                       *(undefined8 *)
+                        UnityEngine_UIElements_FontDefinition_PropertyBag_FontProperty_TypeInfo;
+                  *(undefined8 *)(lVar7 + 0x18) = uVar6;
+                  if (lVar5 != 0) {
+                    lVar8 = *(long *)(lVar5 + 0x10);
+                    lVar10 = *unaff_x26;
+                    *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                    if (lVar8 != 0) {
+                      uVar2 = *(uint *)(lVar5 + 0x18);
+                      if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                        *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                        *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = lVar7;
+                      }
+                      else {
+                        FUN_042e4a64(lVar5,lVar7,
+                                     *(undefined8 *)
+                                      (*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) + 0x70));
+                      }
+                      iVar1 = *(int *)(unaff_x20 + 0x1c);
+                      lVar7 = *(long *)(unaff_x20 + 0x10);
+                      *(long *)(lVar4 + 0x28) = lVar5;
+                      *(int *)(unaff_x20 + 0x1c) = iVar1 + 1;
+                      if (lVar7 != 0) {
+                        uVar2 = *(uint *)(unaff_x20 + 0x18);
+                        if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                          *(uint *)(unaff_x20 + 0x18) = uVar2 + 1;
+                          *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = lVar4;
+                        }
+                        else {
+                          FUN_042e4a64();
+                        }
+                        lVar4 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                          (*(undefined8 *)
+                                            System_Xml_XmlBaseReader_XmlAttributeNode_TypeInfo);
+                        FUN_05971910(lVar4,0);
+                        if (lVar4 != 0) {
+                          uVar6 = *unaff_x24;
+                          uVar9 = *(undefined8 *)
+                                   UnityEngine_UIElements_Background_PropertyBag_TextureProperty_TypeInfo
+                          ;
+                          *(undefined8 *)(lVar4 + 0x10) = *(undefined8 *)PTR_DAT_071048a0;
+                          *(undefined8 *)(lVar4 + 0x20) = uVar9;
+                          *(undefined4 *)(lVar4 + 0x18) = 3;
+                          lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                            (uVar6);
+                          FUN_042e4268(lVar5,*unaff_x29);
+                          if (lVar5 != 0) {
+                            lVar7 = *(long *)(lVar5 + 0x10);
+                            uVar6 = *(undefined8 *)
+                                     System_Collections_Generic_List<NetSyncSession>_TypeInfo;
+                            lVar8 = *unaff_x25;
+                            *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                            if (lVar7 != 0) {
+                              uVar2 = *(uint *)(lVar5 + 0x18);
+                              if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                                *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                                *(undefined8 *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = uVar6;
+                              }
+                              else {
+                                FUN_042e4a64(lVar5,uVar6,
+                                             *(undefined8 *)
+                                              (*(long *)(*(long *)(lVar8 + 0x20) + 0xc0) + 0x70));
+                              }
+                              puVar3 = System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo;
+                              *(long *)(lVar4 + 0x30) = lVar5;
+                              lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                (*(undefined8 *)puVar3);
+                              FUN_042e4268(lVar5,*unaff_x28);
+                              lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                (*(undefined8 *)
+                                                  System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo
+                                                );
+                              FUN_05971910(lVar7,0);
+                              if (lVar7 != 0) {
+                                uVar6 = *(undefined8 *)
+                                         UnityEngine_UIElements_BackgroundRepeat_PropertyBag_YProperty_TypeInfo
+                                ;
+                                *(undefined8 *)(lVar7 + 0x10) =
+                                     *(undefined8 *)
+                                      UnityEngine_UIElements_FontDefinition_PropertyBag_FontProperty_TypeInfo
+                                ;
+                                *(undefined8 *)(lVar7 + 0x18) = uVar6;
+                                if (lVar5 != 0) {
+                                  lVar8 = *(long *)(lVar5 + 0x10);
+                                  lVar10 = *unaff_x26;
+                                  *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                                  if (lVar8 != 0) {
+                                    uVar2 = *(uint *)(lVar5 + 0x18);
+                                    if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                                      *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                                      *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = lVar7;
+                                    }
+                                    else {
+                                      FUN_042e4a64(lVar5,lVar7,
+                                                   *(undefined8 *)
+                                                    (*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) +
+                                                    0x70));
+                                    }
+                                    iVar1 = *(int *)(unaff_x20 + 0x1c);
+                                    lVar7 = *(long *)(unaff_x20 + 0x10);
+                                    *(long *)(lVar4 + 0x28) = lVar5;
+                                    *(int *)(unaff_x20 + 0x1c) = iVar1 + 1;
+                                    if (lVar7 != 0) {
+                                      uVar2 = *(uint *)(unaff_x20 + 0x18);
+                                      if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                                        *(uint *)(unaff_x20 + 0x18) = uVar2 + 1;
+                                        *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = lVar4;
+                                      }
+                                      else {
+                                        FUN_042e4a64();
+                                      }
+                                      lVar4 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                        (*(undefined8 *)
+                                                                                                                    
+                                                  System_Xml_XmlBaseReader_XmlAttributeNode_TypeInfo
+                                                  );
+                                      FUN_05971910(lVar4,0);
+                                      if (lVar4 != 0) {
+                                        uVar6 = *unaff_x24;
+                                        uVar9 = *(undefined8 *)
+                                                 UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                                        ;
+                                        *(undefined8 *)(lVar4 + 0x10) =
+                                             *(undefined8 *)
+                                              UnityEngine_Rendering_DebugDisplaySettingsVolume_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                                        ;
+                                        *(undefined8 *)(lVar4 + 0x20) = uVar9;
+                                        *(undefined4 *)(lVar4 + 0x18) = 4;
+                                        lVar5 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                          (uVar6);
+                                        FUN_042e4268(lVar5,*unaff_x29);
+                                        if (lVar5 != 0) {
+                                          lVar7 = *(long *)(lVar5 + 0x10);
+                                          uVar6 = *(undefined8 *)
+                                                   UnityEngine_TextAsset_EncodingUtility_TypeInfo;
+                                          lVar8 = *unaff_x25;
+                                          *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                                          if (lVar7 != 0) {
+                                            uVar2 = *(uint *)(lVar5 + 0x18);
+                                            if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                                              *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                                              *(undefined8 *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) =
+                                                   uVar6;
+                                            }
+                                            else {
+                                              FUN_042e4a64(lVar5,uVar6,
+                                                           *(undefined8 *)
+                                                            (*(long *)(*(long *)(lVar8 + 0x20) +
+                                                                      0xc0) + 0x70));
+                                            }
+                                            puVar3 = 
+                                            System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo;
+                                            *(long *)(lVar4 + 0x30) = lVar5;
+                                            lVar5 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                            FUN_042e4268(lVar5,*unaff_x28);
+                                            lVar7 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)
+                                                                                                                            
+                                                  System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo
+                                                  );
+                                            FUN_05971910(lVar7,0);
+                                            if (lVar7 != 0) {
+                                              uVar6 = *(undefined8 *)
+                                                                                                              
+                                                  UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass15_0_TypeInfo
+                                              ;
+                                              *(undefined8 *)(lVar7 + 0x10) =
+                                                   *(undefined8 *)
+                                                                                                        
+                                                  UnityEngine_UIElements_FontDefinition_PropertyBag_FontProperty_TypeInfo
+                                              ;
+                                              *(undefined8 *)(lVar7 + 0x18) = uVar6;
+                                              if (lVar5 != 0) {
+                                                lVar8 = *(long *)(lVar5 + 0x10);
+                                                lVar10 = *unaff_x26;
+                                                *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                                                if (lVar8 != 0) {
+                                                  uVar2 = *(uint *)(lVar5 + 0x18);
+                                                  if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                                                    *(uint *)(lVar5 + 0x18) = uVar2 + 1;
+                                                    *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) =
+                                                         lVar7;
+                                                  }
+                                                  else {
+                                                    FUN_042e4a64(lVar5,lVar7,
+                                                                 *(undefined8 *)
+                                                                  (*(long *)(*(long *)(lVar10 + 0x20
+                                                                                      ) + 0xc0) +
+                                                                  0x70));
+                                                  }
+                                                  iVar1 = *(int *)(unaff_x20 + 0x1c);
+                                                  lVar7 = *(long *)(unaff_x20 + 0x10);
+                                                  *(long *)(lVar4 + 0x28) = lVar5;
+                                                  *(int *)(unaff_x20 + 0x1c) = iVar1 + 1;
+                                                  if (lVar7 != 0) {
+                                                    uVar2 = *(uint *)(unaff_x20 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                                                      *(uint *)(unaff_x20 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20)
+                                                           = lVar4;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64();
+                                                    }
+                                                    *(long *)(unaff_x19 + 0x28) = unaff_x20;
+                                                    FUN_06938d58();
+                                                    return;
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+

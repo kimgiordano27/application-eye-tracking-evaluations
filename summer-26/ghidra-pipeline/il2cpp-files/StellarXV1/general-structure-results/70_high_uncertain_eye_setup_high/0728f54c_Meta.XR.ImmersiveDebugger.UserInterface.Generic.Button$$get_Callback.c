@@ -1,0 +1,105 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.UserInterface.Generic.Button$$get_Callback
+ENTRY_POINT: 0728f54c
+PROGRAM: StellarXV1-libil2cpp.so
+SCORE: 77
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;ui_interaction
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_5;ui_or_gameplay_sink_hits_6;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+float Meta_XR_ImmersiveDebugger_UserInterface_Generic_Button__get_Callback(int param_1)
+
+{
+  undefined8 *puVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  long lVar4;
+  ulong uVar5;
+  int *piVar6;
+  long *unaff_x19;
+  int unaff_w20;
+  long *unaff_x23;
+  long *unaff_x24;
+  float unaff_s8;
+  
+  do {
+    if (param_1 <= unaff_w20) {
+      return unaff_s8 * 0.5;
+    }
+    lVar4 = *unaff_x19;
+    uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar5 != 0) {
+      piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar6 + -2) == *unaff_x24) {
+          puVar1 = (undefined8 *)(lVar4 + (long)*piVar6 * 0x10 + 0x138);
+          goto LAB_0728f5a0;
+        }
+        uVar5 = uVar5 - 1;
+        piVar6 = piVar6 + 4;
+      } while (uVar5 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_040b1e00();
+LAB_0728f5a0:
+    uVar2 = (*(code *)*puVar1)();
+    lVar4 = *unaff_x19;
+    uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar5 != 0) {
+      piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar6 + -2) == *unaff_x23) {
+          puVar1 = (undefined8 *)(lVar4 + (long)*piVar6 * 0x10 + 0x138);
+          goto Meta_XR_ImmersiveDebugger_UserInterface_Generic_ButtonWithIcon__OnHoverChanged;
+        }
+        uVar5 = uVar5 - 1;
+        piVar6 = piVar6 + 4;
+      } while (uVar5 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_040b1e00();
+Meta_XR_ImmersiveDebugger_UserInterface_Generic_ButtonWithIcon__OnHoverChanged:
+    (*(code *)*puVar1)();
+    lVar4 = *unaff_x19;
+    uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar5 != 0) {
+      piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar6 + -2) == *unaff_x24) {
+          puVar1 = (undefined8 *)(lVar4 + (long)*piVar6 * 0x10 + 0x138);
+          goto LAB_0728f65c;
+        }
+        uVar5 = uVar5 - 1;
+        piVar6 = piVar6 + 4;
+      } while (uVar5 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_040b1e00();
+LAB_0728f65c:
+    unaff_w20 = unaff_w20 + 1;
+    uVar3 = (*(code *)*puVar1)();
+    unaff_s8 = (unaff_s8 + (float)uVar2 * (float)((ulong)uVar3 >> 0x20)) -
+               (float)((ulong)uVar2 >> 0x20) * (float)uVar3;
+    lVar4 = *unaff_x19;
+    uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar5 != 0) {
+      piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar6 + -2) == *unaff_x23) {
+          puVar1 = (undefined8 *)(lVar4 + (long)*piVar6 * 0x10 + 0x138);
+          goto LAB_0728f540;
+        }
+        uVar5 = uVar5 - 1;
+        piVar6 = piVar6 + 4;
+      } while (uVar5 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_040b1e00();
+LAB_0728f540:
+    param_1 = (*(code *)*puVar1)();
+  } while( true );
+}
+
+

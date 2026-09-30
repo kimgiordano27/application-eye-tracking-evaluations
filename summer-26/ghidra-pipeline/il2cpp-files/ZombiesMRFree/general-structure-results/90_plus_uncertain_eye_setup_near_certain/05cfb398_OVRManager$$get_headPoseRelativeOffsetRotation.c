@@ -1,0 +1,83 @@
+/*
+FUNCTION_NAME: OVRManager$$get_headPoseRelativeOffsetRotation
+ENTRY_POINT: 05cfb398
+PROGRAM: ZombiesMRFree-libil2cpp.so
+SCORE: 109
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRManager__get_headPoseRelativeOffsetRotation
+               (float param_1,undefined1 param_2 [16],float param_3,float param_4,float param_5,
+               float param_6,undefined1 param_7 [16],float param_8)
+
+{
+  long unaff_x19;
+  float *unaff_x20;
+  long lVar1;
+  float fVar2;
+  float fVar3;
+  float fVar4;
+  float fVar5;
+  float unaff_s8;
+  float fVar6;
+  float unaff_s9;
+  float fVar7;
+  float unaff_s10;
+  float unaff_s11;
+  float unaff_s12;
+  float unaff_s13;
+  float unaff_s15;
+  float in_s16;
+  float in_s17;
+  float in_s18;
+  float in_s20;
+  float in_s21;
+  float in_s22;
+  undefined4 uStack0000000000000008;
+  undefined4 uStack000000000000000c;
+  undefined4 uStack0000000000000010;
+  undefined4 uStack0000000000000014;
+  undefined4 uStack0000000000000018;
+  undefined4 uStack000000000000001c;
+  
+  fVar4 = (in_s18 + in_s16 + in_s17) - unaff_s10 * param_3;
+  fVar5 = (in_s20 + unaff_s13 * param_3 + unaff_s12 * param_4) - in_s22;
+  FUN_06904520((unaff_s11 * param_3 + param_5 + param_6) - param_8,fVar4,fVar5,
+               ((unaff_s13 * param_4 - in_s21) - param_1) - unaff_s12 * param_3);
+  lVar1 = *(long *)(unaff_x19 + 0x28);
+  if (lVar1 != 0) {
+    fVar2 = (float)FUN_069042b4(lVar1,0);
+    fVar6 = unaff_s8 + fVar4;
+    fVar7 = unaff_s9 + fVar5;
+    fVar3 = (float)FUN_05cfbd68();
+    fVar6 = fVar6 - fVar4;
+    fVar7 = fVar7 - fVar5;
+    FUN_06904354((unaff_s15 + fVar2) - fVar3,fVar6,fVar7,lVar1,0);
+    if (*(long *)(unaff_x19 + 0x28) != 0) {
+      fVar4 = (float)FUN_069042b4(*(long *)(unaff_x19 + 0x28),0);
+      if (*(long *)(unaff_x19 + 0x28) != 0) {
+        FUN_06904354(fVar4 + *unaff_x20,fVar6 + unaff_x20[1],fVar7 + unaff_x20[2],
+                     *(long *)(unaff_x19 + 0x28),0);
+        if (*(long *)(unaff_x19 + 0x20) != 0) {
+          FUN_05cf59f0(uStack000000000000001c,uStack0000000000000018,*(long *)(unaff_x19 + 0x20),0);
+          if (*(long *)(unaff_x19 + 0x20) != 0) {
+            FUN_05cf598c(uStack0000000000000014,uStack0000000000000010,uStack000000000000000c,
+                         uStack0000000000000008,*(long *)(unaff_x19 + 0x20),0);
+            return;
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02fe94e8();
+}
+
+

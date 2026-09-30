@@ -1,0 +1,1380 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 9
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_startingSelectedInteractable
+ENTRY_POINT: 06038204
+MANUAL_PRIORITY_SCORE: 280
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'keyword_support', 'attempted_use']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_1', 'paired_field_refs_with_structure_only', 'ray_or_cast_sink_hits_3', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_3_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\06038204_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_startingSelectedInteractable.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\009_p280_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_startingSelectedInteractable.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_startingSelectedInteractable
+ENTRY_POINT: 06038204
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 89
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;keyword_support;attempted_use
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_1;paired_field_refs_with_structure_only;ray_or_cast_sink_hits_3;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__set_startingSelectedInteractable
+               (undefined8 param_1,undefined8 param_2)
+
+{
+  bool bVar1;
+  long *plVar2;
+  long *plVar3;
+  int iVar4;
+  uint uVar5;
+  uint uVar6;
+  undefined1 auVar7 [16];
+  bool bVar8;
+  bool bVar9;
+  bool bVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  bool bVar13;
+  byte bVar14;
+  byte bVar15;
+  byte bVar16;
+  undefined4 uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  uint uVar24;
+  int iVar25;
+  int iVar26;
+  ulong uVar27;
+  long lVar28;
+  long lVar29;
+  long lVar30;
+  undefined8 uVar31;
+  long lVar32;
+  ulong uVar33;
+  undefined8 uVar34;
+  undefined1 uVar35;
+  char cVar36;
+  float *pfVar37;
+  undefined4 *puVar38;
+  long *plVar39;
+  float *pfVar40;
+  undefined8 *puVar41;
+  code *pcVar42;
+  uint uVar43;
+  float *pfVar44;
+  uint uVar45;
+  long *plVar46;
+  long lVar47;
+  long lVar48;
+  long *unaff_x19;
+  ulong uVar49;
+  long *unaff_x21;
+  int iVar50;
+  int iVar51;
+  int *piVar52;
+  ulong uVar53;
+  uint uVar54;
+  long *plVar55;
+  undefined2 uVar56;
+  undefined1 *unaff_x28;
+  long unaff_x29;
+  long *plVar57;
+  ushort uVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float fVar65;
+  float fVar66;
+  float fVar67;
+  float fVar68;
+  float fVar69;
+  float fVar70;
+  undefined8 uVar71;
+  float fVar73;
+  undefined1 auVar72 [16];
+  float fVar74;
+  undefined8 uVar75;
+  undefined1 auVar76 [16];
+  undefined1 auVar77 [16];
+  float fVar78;
+  float fVar79;
+  float fVar80;
+  float fVar81;
+  undefined4 uVar82;
+  float fVar83;
+  float fVar84;
+  float fVar85;
+  float fVar86;
+  float fVar87;
+  float fVar88;
+  float fVar89;
+  float fVar90;
+  float fVar91;
+  float fVar92;
+  float fVar93;
+  float fVar94;
+  int iStack0000000000000020;
+  uint uStack000000000000004c;
+  float fStack0000000000000058;
+  int iStack0000000000000060;
+  float fStack0000000000000064;
+  float fStack0000000000000068;
+  float fStack000000000000006c;
+  undefined4 uStack0000000000000084;
+  float fStack0000000000000094;
+  float fStack0000000000000098;
+  float fStack00000000000000bc;
+  float fStack00000000000000c0;
+  float fStack00000000000000dc;
+  float fStack00000000000000e0;
+  float fStack00000000000000e8;
+  int iStack00000000000000ec;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  float fStack0000000000000120;
+  float fStack0000000000000124;
+  float fStack0000000000000134;
+  float fStack0000000000000138;
+  float fStack000000000000013c;
+  float fStack0000000000000140;
+  float fStack000000000000016c;
+  float fStack000000000000017c;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float fStack0000000000000190;
+  float fStack00000000000001b0;
+  undefined8 in_stack_000001c8;
+  float fStack00000000000001d0;
+  float fStack00000000000001d4;
+  float in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined8 in_stack_000001e8;
+  float in_stack_000001f0;
+  undefined8 in_stack_000005c0;
+  undefined8 in_stack_000005c8;
+  float in_stack_0000114c;
+  float in_stack_00001158;
+  float in_stack_00001164;
+  float in_stack_00001170;
+  float in_stack_0000117c;
+  float in_stack_00001188;
+  uint in_stack_0000126c;
+  uint uVar95;
+  undefined8 in_stack_00001310;
+  float in_stack_00001318;
+  float in_stack_0000131c;
+  float in_stack_00001320;
+  uint uVar96;
+  undefined8 in_stack_00001328;
+  char in_stack_00001334;
+  float fVar97;
+  uint uVar98;
+  
+  plVar57 = *(long **)(unaff_x29 + 0xd98);
+  uVar27 = FUN_062696b0(param_1,param_2,0);
+  if ((uVar27 & 1) != 0) {
+LAB_060383e4:
+    puVar11 = System_Collections_Generic_List<AvatarPose>_TypeInfo;
+    FUN_0626d24c();
+    uVar34 = FUN_05603500(&stack0x0000130c,0);
+    uVar34 = FUN_05482ce0(*(undefined8 *)puVar11,uVar34,0);
+    if (*(int *)(*plVar57 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c(*plVar57);
+    }
+    FUN_06222224(uVar34,0);
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if (unaff_x19[0x1f] == 0) goto thunk_FUN_02e3ccc4;
+  lVar28 = FUN_0606364c(unaff_x19[0x1f],0);
+  if (lVar28 == 0) goto LAB_060383e4;
+  if (unaff_x19[0x75] != 0) {
+    FUN_060b0d7c(unaff_x19[0x75],0);
+  }
+  lVar28 = unaff_x19[0x92];
+  if ((lVar28 == 0) || (*(long *)(lVar28 + 0x18) == 0)) {
+UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__get_startingHoverFilters:
+    (**(code **)(*unaff_x19 + 0x958))();
+    puVar11 = PTR_DAT_06a3c3a0;
+    *(undefined4 *)(unaff_x19 + 0x84) = 0;
+    *(undefined4 *)((long)unaff_x19 + 0x42c) = 0;
+    if (*(int *)(*(long *)puVar11 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    FUN_060594e8();
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if ((int)*(long *)(lVar28 + 0x18) == 0) goto LAB_0603fce4;
+  if (*(int *)(lVar28 + 0x24) == 0)
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
++ 0x34) <= (long)uVar27) goto LAB_0603d144;
+                              lVar28 = *(long *)(lVar28 + 0x60);
+                              if (lVar28 == 0) break;
+                              if (*(int *)(*plVar57 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              FUN_060a524c(lVar28 + lVar29 + 0x70,0);
+                              lVar28 = unaff_x19[0xe5];
+                              if (lVar28 == 0) break;
+                              if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              uVar34 = *(undefined8 *)(lVar28 + lVar30 * 8 + 0x28);
+                              if (*(int *)(*(long *)PTR_DAT_06a2ed80 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              uVar49 = FUN_062696b0(uVar34,0,0);
+                              if ((uVar49 & 1) == 0) {
+                                if (*(int *)((long)unaff_x19 + 0x35c) != 0) {
+                                  if ((unaff_x19[0x75] == 0) ||
+                                     (lVar28 = *(long *)(unaff_x19[0x75] + 0x60), lVar28 == 0))
+                                  break;
+                                  if (*(int *)(*plVar57 + 0xe4) == 0) {
+                                    thunk_FUN_02e9a04c();
+                                  }
+                                  if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                  FUN_060a5370(lVar28 + lVar29 + 0x70,1,0);
+                                }
+                                lVar28 = unaff_x19[0xe5];
+                                if (lVar28 == 0) break;
+                                if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar28 = *(long *)(lVar28 + lVar30 * 8 + 0x28);
+                                if (lVar28 == 0) break;
+                                lVar28 = FUN_060ae428(lVar28,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar47 = *(long *)(unaff_x19[0x75] + 0x60), lVar47 == 0)) break;
+                                if (*(uint *)(lVar47 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar28 == 0) break;
+                                FUN_06240928(lVar28,*(undefined8 *)(lVar47 + lVar29 + 0x80),0);
+                                lVar28 = unaff_x19[0xe5];
+                                if (lVar28 == 0) break;
+                                if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar28 = *(long *)(lVar28 + lVar30 * 8 + 0x28);
+                                if (lVar28 == 0) break;
+                                lVar28 = FUN_060ae428(lVar28,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar47 = *(long *)(unaff_x19[0x75] + 0x60), lVar47 == 0)) break;
+                                if (*(uint *)(lVar47 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar28 == 0) break;
+                                FUN_06241714(lVar28,0,*(undefined8 *)(lVar47 + lVar29 + 0x98),0);
+                                lVar28 = unaff_x19[0xe5];
+                                if (lVar28 == 0) break;
+                                if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar28 = *(long *)(lVar28 + lVar30 * 8 + 0x28);
+                                if (lVar28 == 0) break;
+                                lVar28 = FUN_060ae428(lVar28,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar47 = *(long *)(unaff_x19[0x75] + 0x60), lVar47 == 0)) break;
+                                if (*(uint *)(lVar47 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar28 == 0) break;
+                                FUN_06240b40(lVar28,*(undefined8 *)(lVar47 + lVar29 + 0xa0),0);
+                                lVar28 = unaff_x19[0xe5];
+                                if (lVar28 == 0) break;
+                                if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar28 = *(long *)(lVar28 + lVar30 * 8 + 0x28);
+                                if (lVar28 == 0) break;
+                                lVar28 = FUN_060ae428(lVar28,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar47 = *(long *)(unaff_x19[0x75] + 0x60), lVar47 == 0)) break;
+                                if (*(uint *)(lVar47 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar28 == 0) break;
+                                UnityEngine_TextCore_Text_SpriteAsset__UpdateLookupTables
+                                          (lVar28,*(undefined8 *)(lVar47 + lVar29 + 0xa8),0);
+                                lVar28 = unaff_x19[0xe5];
+                                if (lVar28 == 0) break;
+                                if (*(uint *)(lVar28 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar28 = *(long *)(lVar28 + lVar30 * 8 + 0x28);
+                                if ((lVar28 == 0) || (lVar28 = FUN_060ae428(lVar28,0), lVar28 == 0))
+                                break;
+                                FUN_062425d0(lVar28,0);
+                              }
+                              lVar28 = unaff_x19[0x75];
+                              lVar30 = lVar30 + 1;
+                              lVar29 = lVar29 + 0x50;
+                            } while (lVar28 != 0);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  goto thunk_FUN_02e3ccc4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 10
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_interactionLayers
+ENTRY_POINT: 060381b4
+MANUAL_PRIORITY_SCORE: 280
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'keyword_support', 'attempted_use']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_1', 'paired_field_refs_with_structure_only', 'ray_or_cast_sink_hits_3', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_3_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\060381b4_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_interactionLayers.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\010_p280_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_interactionLayers.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_interactionLayers
+ENTRY_POINT: 060381b4
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 89
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;keyword_support;attempted_use
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_1;paired_field_refs_with_structure_only;ray_or_cast_sink_hits_3;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__set_interactionLayers
+               (void *param_1,int param_2,size_t param_3)
+
+{
+  bool bVar1;
+  long *plVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  undefined1 auVar6 [16];
+  bool bVar7;
+  bool bVar8;
+  bool bVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  bool bVar13;
+  byte bVar14;
+  byte bVar15;
+  byte bVar16;
+  undefined4 uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  uint uVar24;
+  int iVar25;
+  int iVar26;
+  ulong uVar27;
+  long lVar28;
+  long lVar29;
+  undefined8 uVar30;
+  long lVar31;
+  ulong uVar32;
+  undefined8 uVar33;
+  undefined1 uVar34;
+  char cVar35;
+  float *pfVar36;
+  undefined4 *puVar37;
+  long *plVar38;
+  float *pfVar39;
+  undefined8 *puVar40;
+  code *pcVar41;
+  uint uVar42;
+  float *pfVar43;
+  uint uVar44;
+  long *plVar45;
+  long lVar46;
+  long lVar47;
+  long *unaff_x19;
+  long lVar48;
+  ulong uVar49;
+  long *unaff_x21;
+  int iVar50;
+  int iVar51;
+  int *piVar52;
+  long *plVar53;
+  ulong uVar54;
+  uint uVar55;
+  long *plVar56;
+  undefined2 uVar57;
+  undefined1 *unaff_x28;
+  ushort uVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float fVar65;
+  float fVar66;
+  float fVar67;
+  float fVar68;
+  float fVar69;
+  float fVar70;
+  undefined8 uVar71;
+  float fVar73;
+  undefined1 auVar72 [16];
+  float fVar74;
+  undefined8 uVar75;
+  undefined1 auVar76 [16];
+  undefined1 auVar77 [16];
+  float fVar78;
+  float fVar79;
+  float fVar80;
+  float fVar81;
+  undefined4 uVar82;
+  float fVar83;
+  float fVar84;
+  float fVar85;
+  float fVar86;
+  float fVar87;
+  float fVar88;
+  float fVar89;
+  float fVar90;
+  float fVar91;
+  float fVar92;
+  float fVar93;
+  float fVar94;
+  int iStack0000000000000020;
+  uint uStack000000000000004c;
+  float fStack0000000000000058;
+  int iStack0000000000000060;
+  float fStack0000000000000064;
+  float fStack0000000000000068;
+  float fStack000000000000006c;
+  undefined4 uStack0000000000000084;
+  float fStack0000000000000094;
+  float fStack0000000000000098;
+  float fStack00000000000000bc;
+  float fStack00000000000000c0;
+  float fStack00000000000000dc;
+  float fStack00000000000000e0;
+  float fStack00000000000000e8;
+  int iStack00000000000000ec;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  float fStack0000000000000120;
+  float fStack0000000000000124;
+  float fStack0000000000000134;
+  float fStack0000000000000138;
+  float fStack000000000000013c;
+  float fStack0000000000000140;
+  float fStack000000000000016c;
+  float fStack000000000000017c;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float fStack0000000000000190;
+  float fStack00000000000001b0;
+  undefined8 in_stack_000001c8;
+  float fStack00000000000001d0;
+  float fStack00000000000001d4;
+  float in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined8 in_stack_000001e8;
+  float in_stack_000001f0;
+  undefined8 uVar95;
+  undefined8 uVar96;
+  float in_stack_0000114c;
+  float in_stack_00001158;
+  float in_stack_00001164;
+  float in_stack_00001170;
+  float in_stack_0000117c;
+  float in_stack_00001188;
+  uint in_stack_0000126c;
+  uint uVar97;
+  undefined8 in_stack_00001310;
+  float in_stack_00001318;
+  float in_stack_0000131c;
+  float in_stack_00001320;
+  uint uVar98;
+  undefined8 in_stack_00001328;
+  char in_stack_00001334;
+  float fVar99;
+  uint uVar100;
+  
+  memset(param_1,param_2,param_3);
+  memset(&stack0x00000990,0,0x3b8);
+  memset(&stack0x000005d8,0,0x3b8);
+  lVar48 = unaff_x19[0x1f];
+  uVar96 = 0;
+  uVar95 = 0;
+  if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+    thunk_FUN_02e9a04c();
+  }
+  puVar10 = PTR_DAT_06a2ed98;
+  uVar27 = FUN_062696b0(lVar48,0,0);
+  if ((uVar27 & 1) != 0) {
+LAB_060383e4:
+    puVar11 = System_Collections_Generic_List<AvatarPose>_TypeInfo;
+    FUN_0626d24c();
+    uVar95 = FUN_05603500(&stack0x0000130c,0);
+    uVar95 = FUN_05482ce0(*(undefined8 *)puVar11,uVar95,0);
+    if (*(int *)(*(long *)puVar10 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c(*(long *)puVar10);
+    }
+    FUN_06222224(uVar95,0);
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if (unaff_x19[0x1f] == 0) goto thunk_FUN_02e3ccc4;
+  lVar48 = FUN_0606364c(unaff_x19[0x1f],0);
+  if (lVar48 == 0) goto LAB_060383e4;
+  if (unaff_x19[0x75] != 0) {
+    FUN_060b0d7c(unaff_x19[0x75],0);
+  }
+  lVar48 = unaff_x19[0x92];
+  if ((lVar48 == 0) || (*(long *)(lVar48 + 0x18) == 0)) {
+UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__get_startingHoverFilters:
+    (**(code **)(*unaff_x19 + 0x958))();
+    puVar10 = PTR_DAT_06a3c3a0;
+    *(undefined4 *)(unaff_x19 + 0x84) = 0;
+    *(undefined4 *)((long)unaff_x19 + 0x42c) = 0;
+    if (*(int *)(*(long *)puVar10 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
++ 0x34) <= (long)uVar27) goto LAB_0603d144;
+                              lVar48 = *(long *)(lVar48 + 0x60);
+                              if (lVar48 == 0) break;
+                              if (*(int *)(*plVar53 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              FUN_060a524c(lVar48 + lVar28 + 0x70,0);
+                              lVar48 = unaff_x19[0xe5];
+                              if (lVar48 == 0) break;
+                              if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              uVar95 = *(undefined8 *)(lVar48 + lVar29 * 8 + 0x28);
+                              if (*(int *)(*(long *)PTR_DAT_06a2ed80 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              uVar49 = FUN_062696b0(uVar95,0,0);
+                              if ((uVar49 & 1) == 0) {
+                                if (*(int *)((long)unaff_x19 + 0x35c) != 0) {
+                                  if ((unaff_x19[0x75] == 0) ||
+                                     (lVar48 = *(long *)(unaff_x19[0x75] + 0x60), lVar48 == 0))
+                                  break;
+                                  if (*(int *)(*plVar53 + 0xe4) == 0) {
+                                    thunk_FUN_02e9a04c();
+                                  }
+                                  if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                  FUN_060a5370(lVar48 + lVar28 + 0x70,1,0);
+                                }
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06240928(lVar48,*(undefined8 *)(lVar46 + lVar28 + 0x80),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06241714(lVar48,0,*(undefined8 *)(lVar46 + lVar28 + 0x98),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06240b40(lVar48,*(undefined8 *)(lVar46 + lVar28 + 0xa0),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                UnityEngine_TextCore_Text_SpriteAsset__UpdateLookupTables
+                                          (lVar48,*(undefined8 *)(lVar46 + lVar28 + 0xa8),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if ((lVar48 == 0) || (lVar48 = FUN_060ae428(lVar48,0), lVar48 == 0))
+                                break;
+                                FUN_062425d0(lVar48,0);
+                              }
+                              lVar48 = unaff_x19[0x75];
+                              lVar29 = lVar29 + 1;
+                              lVar28 = lVar28 + 0x50;
+                            } while (lVar48 != 0);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  goto thunk_FUN_02e3ccc4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 11
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_hoverEntered
+ENTRY_POINT: 06038224
+MANUAL_PRIORITY_SCORE: 280
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'keyword_support', 'attempted_use']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_1', 'paired_field_refs_with_structure_only', 'ray_or_cast_sink_hits_3', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_3_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\06038224_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_hoverEntered.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\011_p280_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_hoverEntered.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_hoverEntered
+ENTRY_POINT: 06038224
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 89
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;keyword_support;attempted_use
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_1;paired_field_refs_with_structure_only;ray_or_cast_sink_hits_3;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__set_hoverEntered(long param_1)
+
+{
+  bool bVar1;
+  long *plVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  undefined1 auVar6 [16];
+  bool bVar7;
+  bool bVar8;
+  bool bVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  bool bVar12;
+  byte bVar13;
+  byte bVar14;
+  byte bVar15;
+  undefined4 uVar16;
+  uint uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  int iVar24;
+  int iVar25;
+  ulong uVar26;
+  long lVar27;
+  long lVar28;
+  undefined8 uVar29;
+  long lVar30;
+  ulong uVar31;
+  undefined8 uVar32;
+  undefined1 uVar33;
+  char cVar34;
+  long lVar35;
+  float *pfVar36;
+  undefined4 *puVar37;
+  long *plVar38;
+  float *pfVar39;
+  undefined8 *puVar40;
+  code *pcVar41;
+  uint uVar42;
+  float *pfVar43;
+  uint uVar44;
+  long *plVar45;
+  long lVar46;
+  long lVar47;
+  long *unaff_x19;
+  ulong uVar48;
+  long *unaff_x21;
+  int iVar49;
+  int iVar50;
+  int *piVar51;
+  long *plVar52;
+  ulong uVar53;
+  uint uVar54;
+  long *plVar55;
+  undefined2 uVar56;
+  undefined1 *unaff_x28;
+  long *unaff_x29;
+  ushort uVar57;
+  float fVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float fVar65;
+  float fVar66;
+  float fVar67;
+  float fVar68;
+  float fVar69;
+  undefined8 uVar70;
+  float fVar72;
+  undefined1 auVar71 [16];
+  float fVar73;
+  undefined8 uVar74;
+  undefined1 auVar75 [16];
+  undefined1 auVar76 [16];
+  float fVar77;
+  float fVar78;
+  float fVar79;
+  float fVar80;
+  undefined4 uVar81;
+  float fVar82;
+  float fVar83;
+  float fVar84;
+  float fVar85;
+  float fVar86;
+  float fVar87;
+  float fVar88;
+  float fVar89;
+  float fVar90;
+  float fVar91;
+  float fVar92;
+  float fVar93;
+  int iStack0000000000000020;
+  uint uStack000000000000004c;
+  float fStack0000000000000058;
+  int iStack0000000000000060;
+  float fStack0000000000000064;
+  float fStack0000000000000068;
+  float fStack000000000000006c;
+  undefined4 uStack0000000000000084;
+  float fStack0000000000000094;
+  float fStack0000000000000098;
+  float fStack00000000000000bc;
+  float fStack00000000000000c0;
+  float fStack00000000000000dc;
+  float fStack00000000000000e0;
+  float fStack00000000000000e8;
+  int iStack00000000000000ec;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  float fStack0000000000000120;
+  float fStack0000000000000124;
+  float fStack0000000000000134;
+  float fStack0000000000000138;
+  float fStack000000000000013c;
+  float fStack0000000000000140;
+  float fStack000000000000016c;
+  float fStack000000000000017c;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float fStack0000000000000190;
+  float fStack00000000000001b0;
+  undefined8 in_stack_000001c8;
+  float fStack00000000000001d0;
+  float fStack00000000000001d4;
+  float in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined8 in_stack_000001e8;
+  float in_stack_000001f0;
+  undefined8 in_stack_000005c0;
+  undefined8 in_stack_000005c8;
+  float in_stack_0000114c;
+  float in_stack_00001158;
+  float in_stack_00001164;
+  float in_stack_00001170;
+  float in_stack_0000117c;
+  float in_stack_00001188;
+  uint in_stack_0000126c;
+  uint uVar94;
+  undefined8 in_stack_00001310;
+  float in_stack_00001318;
+  float in_stack_0000131c;
+  float in_stack_00001320;
+  uint uVar95;
+  undefined8 in_stack_00001328;
+  char in_stack_00001334;
+  float fVar96;
+  uint uVar97;
+  
+  puVar10 = System_Collections_Generic_List<AvatarPose>_TypeInfo;
+  if (param_1 == 0) {
+    FUN_0626d24c();
+    uVar32 = FUN_05603500(&stack0x0000130c,0);
+    uVar32 = FUN_05482ce0(*(undefined8 *)puVar10,uVar32,0);
+    if (*(int *)(*unaff_x29 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c(*unaff_x29);
+    }
+    FUN_06222224(uVar32,0);
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if (unaff_x19[0x75] != 0) {
+    FUN_060b0d7c(unaff_x19[0x75],0);
+  }
+  lVar35 = unaff_x19[0x92];
+  if ((lVar35 == 0) || (*(long *)(lVar35 + 0x18) == 0)) {
+UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__get_startingHoverFilters:
+    (**(code **)(*unaff_x19 + 0x958))();
+    puVar10 = PTR_DAT_06a3c3a0;
+    *(undefined4 *)(unaff_x19 + 0x84) = 0;
+    *(undefined4 *)((long)unaff_x19 + 0x42c) = 0;
+    if (*(int *)(*(long *)puVar10 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    FUN_060594e8();
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if ((int)*(long *)(lVar35 + 0x18) == 0) goto LAB_0603fce4;
+  if (*(int *)(lVar35 + 0x24) == 0)
+  goto UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__get_startingHoverFilters;
+  unaff_x19[0x20] = unaff_x19[0x1f];
+  thunk_FUN_02ee2be8(unaff_x19 + 0x20);
+  unaff_x19[0x23] = unaff_x19[0x22];
+  thunk_FUN_02ee2be8(unaff_x19 + 0x23);
+  plVar38 = (long *)System_Collections_Generic_List<AudioListener>_TypeInfo
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
++ 0x34) <= (long)uVar26) goto LAB_0603d144;
+                              lVar35 = *(long *)(lVar35 + 0x60);
+                              if (lVar35 == 0) break;
+                              if (*(int *)(*plVar52 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                              FUN_060a524c(lVar35 + lVar27 + 0x70,0);
+                              lVar35 = unaff_x19[0xe5];
+                              if (lVar35 == 0) break;
+                              if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                              uVar32 = *(undefined8 *)(lVar35 + lVar28 * 8 + 0x28);
+                              if (*(int *)(*(long *)PTR_DAT_06a2ed80 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              uVar48 = FUN_062696b0(uVar32,0,0);
+                              if ((uVar48 & 1) == 0) {
+                                if (*(int *)((long)unaff_x19 + 0x35c) != 0) {
+                                  if ((unaff_x19[0x75] == 0) ||
+                                     (lVar35 = *(long *)(unaff_x19[0x75] + 0x60), lVar35 == 0))
+                                  break;
+                                  if (*(int *)(*plVar52 + 0xe4) == 0) {
+                                    thunk_FUN_02e9a04c();
+                                  }
+                                  if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                  FUN_060a5370(lVar35 + lVar27 + 0x70,1,0);
+                                }
+                                lVar35 = unaff_x19[0xe5];
+                                if (lVar35 == 0) break;
+                                if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                lVar35 = *(long *)(lVar35 + lVar28 * 8 + 0x28);
+                                if (lVar35 == 0) break;
+                                lVar35 = FUN_060ae428(lVar35,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                if (lVar35 == 0) break;
+                                FUN_06240928(lVar35,*(undefined8 *)(lVar46 + lVar27 + 0x80),0);
+                                lVar35 = unaff_x19[0xe5];
+                                if (lVar35 == 0) break;
+                                if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                lVar35 = *(long *)(lVar35 + lVar28 * 8 + 0x28);
+                                if (lVar35 == 0) break;
+                                lVar35 = FUN_060ae428(lVar35,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                if (lVar35 == 0) break;
+                                FUN_06241714(lVar35,0,*(undefined8 *)(lVar46 + lVar27 + 0x98),0);
+                                lVar35 = unaff_x19[0xe5];
+                                if (lVar35 == 0) break;
+                                if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                lVar35 = *(long *)(lVar35 + lVar28 * 8 + 0x28);
+                                if (lVar35 == 0) break;
+                                lVar35 = FUN_060ae428(lVar35,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                if (lVar35 == 0) break;
+                                FUN_06240b40(lVar35,*(undefined8 *)(lVar46 + lVar27 + 0xa0),0);
+                                lVar35 = unaff_x19[0xe5];
+                                if (lVar35 == 0) break;
+                                if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                lVar35 = *(long *)(lVar35 + lVar28 * 8 + 0x28);
+                                if (lVar35 == 0) break;
+                                lVar35 = FUN_060ae428(lVar35,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                if (lVar35 == 0) break;
+                                UnityEngine_TextCore_Text_SpriteAsset__UpdateLookupTables
+                                          (lVar35,*(undefined8 *)(lVar46 + lVar27 + 0xa8),0);
+                                lVar35 = unaff_x19[0xe5];
+                                if (lVar35 == 0) break;
+                                if (*(uint *)(lVar35 + 0x18) <= uVar26) goto LAB_0603fce4;
+                                lVar35 = *(long *)(lVar35 + lVar28 * 8 + 0x28);
+                                if ((lVar35 == 0) || (lVar35 = FUN_060ae428(lVar35,0), lVar35 == 0))
+                                break;
+                                FUN_062425d0(lVar35,0);
+                              }
+                              lVar35 = unaff_x19[0x75];
+                              lVar28 = lVar28 + 1;
+                              lVar27 = lVar27 + 0x50;
+                            } while (lVar35 != 0);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  goto thunk_FUN_02e3ccc4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 12
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_handedness
+ENTRY_POINT: 060381c4
+MANUAL_PRIORITY_SCORE: 280
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'keyword_support', 'attempted_use']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_1', 'paired_field_refs_with_structure_only', 'ray_or_cast_sink_hits_3', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_3_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\060381c4_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_handedness.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\012_p280_UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_handedness.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor$$set_handedness
+ENTRY_POINT: 060381c4
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 89
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;keyword_support;attempted_use
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_1;paired_field_refs_with_structure_only;ray_or_cast_sink_hits_3;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__set_handedness
+               (void *param_1,int param_2,size_t param_3)
+
+{
+  bool bVar1;
+  long *plVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  undefined1 auVar6 [16];
+  bool bVar7;
+  bool bVar8;
+  bool bVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  bool bVar13;
+  byte bVar14;
+  byte bVar15;
+  byte bVar16;
+  undefined4 uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  uint uVar24;
+  int iVar25;
+  int iVar26;
+  ulong uVar27;
+  long lVar28;
+  long lVar29;
+  undefined8 uVar30;
+  long lVar31;
+  ulong uVar32;
+  undefined8 uVar33;
+  undefined1 uVar34;
+  char cVar35;
+  float *pfVar36;
+  undefined4 *puVar37;
+  long *plVar38;
+  float *pfVar39;
+  undefined8 *puVar40;
+  code *pcVar41;
+  uint uVar42;
+  float *pfVar43;
+  uint uVar44;
+  long *plVar45;
+  long lVar46;
+  long lVar47;
+  long *unaff_x19;
+  long lVar48;
+  ulong uVar49;
+  long *unaff_x21;
+  int iVar50;
+  int iVar51;
+  int *piVar52;
+  long *plVar53;
+  ulong uVar54;
+  uint uVar55;
+  long *plVar56;
+  undefined2 uVar57;
+  undefined1 *unaff_x28;
+  ushort uVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float fVar65;
+  float fVar66;
+  float fVar67;
+  float fVar68;
+  float fVar69;
+  float fVar70;
+  undefined8 uVar71;
+  float fVar73;
+  undefined1 auVar72 [16];
+  float fVar74;
+  undefined8 uVar75;
+  undefined1 auVar76 [16];
+  undefined1 auVar77 [16];
+  float fVar78;
+  float fVar79;
+  float fVar80;
+  float fVar81;
+  undefined4 uVar82;
+  float fVar83;
+  float fVar84;
+  float fVar85;
+  float fVar86;
+  float fVar87;
+  float fVar88;
+  float fVar89;
+  float fVar90;
+  float fVar91;
+  float fVar92;
+  float fVar93;
+  float fVar94;
+  int iStack0000000000000020;
+  uint uStack000000000000004c;
+  float fStack0000000000000058;
+  int iStack0000000000000060;
+  float fStack0000000000000064;
+  float fStack0000000000000068;
+  float fStack000000000000006c;
+  undefined4 uStack0000000000000084;
+  float fStack0000000000000094;
+  float fStack0000000000000098;
+  float fStack00000000000000bc;
+  float fStack00000000000000c0;
+  float fStack00000000000000dc;
+  float fStack00000000000000e0;
+  float fStack00000000000000e8;
+  int iStack00000000000000ec;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  float fStack0000000000000120;
+  float fStack0000000000000124;
+  float fStack0000000000000134;
+  float fStack0000000000000138;
+  float fStack000000000000013c;
+  float fStack0000000000000140;
+  float fStack000000000000016c;
+  float fStack000000000000017c;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float fStack0000000000000190;
+  float fStack00000000000001b0;
+  undefined8 in_stack_000001c8;
+  float fStack00000000000001d0;
+  float fStack00000000000001d4;
+  float in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined8 in_stack_000001e8;
+  float in_stack_000001f0;
+  undefined8 uVar95;
+  undefined8 uVar96;
+  float in_stack_0000114c;
+  float in_stack_00001158;
+  float in_stack_00001164;
+  float in_stack_00001170;
+  float in_stack_0000117c;
+  float in_stack_00001188;
+  uint in_stack_0000126c;
+  uint uVar97;
+  undefined8 in_stack_00001310;
+  float in_stack_00001318;
+  float in_stack_0000131c;
+  float in_stack_00001320;
+  uint uVar98;
+  undefined8 in_stack_00001328;
+  char in_stack_00001334;
+  float fVar99;
+  uint uVar100;
+  
+  memset(param_1,param_2,param_3);
+  memset(&stack0x000005d8,0,0x3b8);
+  lVar48 = unaff_x19[0x1f];
+  uVar96 = 0;
+  uVar95 = 0;
+  if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+    thunk_FUN_02e9a04c();
+  }
+  puVar10 = PTR_DAT_06a2ed98;
+  uVar27 = FUN_062696b0(lVar48,0,0);
+  if ((uVar27 & 1) != 0) {
+LAB_060383e4:
+    puVar11 = System_Collections_Generic_List<AvatarPose>_TypeInfo;
+    FUN_0626d24c();
+    uVar95 = FUN_05603500(&stack0x0000130c,0);
+    uVar95 = FUN_05482ce0(*(undefined8 *)puVar11,uVar95,0);
+    if (*(int *)(*(long *)puVar10 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c(*(long *)puVar10);
+    }
+    FUN_06222224(uVar95,0);
+    *(undefined1 *)((long)unaff_x19 + 0x274) = 1;
+    return;
+  }
+  if (unaff_x19[0x1f] == 0) goto thunk_FUN_02e3ccc4;
+  lVar48 = FUN_0606364c(unaff_x19[0x1f],0);
+  if (lVar48 == 0) goto LAB_060383e4;
+  if (unaff_x19[0x75] != 0) {
+    FUN_060b0d7c(unaff_x19[0x75],0);
+  }
+  lVar48 = unaff_x19[0x92];
+  if ((lVar48 == 0) || (*(long *)(lVar48 + 0x18) == 0)) {
+UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor__get_startingHoverFilters:
+    (**(code **)(*unaff_x19 + 0x958))();
+    puVar10 = PTR_DAT_06a3c3a0;
+    *(undefined4 *)(unaff_x19 + 0x84) = 0;
+    *(undefined4 *)((long)unaff_x19 + 0x42c) = 0;
+    if (*(int *)(*(long *)puVar10 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    FUN_060594e8();
+    *(undefined1 *)((long)unaff_x1
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
++ 0x34) <= (long)uVar27) goto LAB_0603d144;
+                              lVar48 = *(long *)(lVar48 + 0x60);
+                              if (lVar48 == 0) break;
+                              if (*(int *)(*plVar53 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              FUN_060a524c(lVar48 + lVar28 + 0x70,0);
+                              lVar48 = unaff_x19[0xe5];
+                              if (lVar48 == 0) break;
+                              if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                              uVar95 = *(undefined8 *)(lVar48 + lVar29 * 8 + 0x28);
+                              if (*(int *)(*(long *)PTR_DAT_06a2ed80 + 0xe4) == 0) {
+                                thunk_FUN_02e9a04c();
+                              }
+                              uVar49 = FUN_062696b0(uVar95,0,0);
+                              if ((uVar49 & 1) == 0) {
+                                if (*(int *)((long)unaff_x19 + 0x35c) != 0) {
+                                  if ((unaff_x19[0x75] == 0) ||
+                                     (lVar48 = *(long *)(unaff_x19[0x75] + 0x60), lVar48 == 0))
+                                  break;
+                                  if (*(int *)(*plVar53 + 0xe4) == 0) {
+                                    thunk_FUN_02e9a04c();
+                                  }
+                                  if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                  FUN_060a5370(lVar48 + lVar28 + 0x70,1,0);
+                                }
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06240928(lVar48,*(undefined8 *)(lVar46 + lVar28 + 0x80),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06241714(lVar48,0,*(undefined8 *)(lVar46 + lVar28 + 0x98),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                FUN_06240b40(lVar48,*(undefined8 *)(lVar46 + lVar28 + 0xa0),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if (lVar48 == 0) break;
+                                lVar48 = FUN_060ae428(lVar48,0);
+                                if ((unaff_x19[0x75] == 0) ||
+                                   (lVar46 = *(long *)(unaff_x19[0x75] + 0x60), lVar46 == 0)) break;
+                                if (*(uint *)(lVar46 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                if (lVar48 == 0) break;
+                                UnityEngine_TextCore_Text_SpriteAsset__UpdateLookupTables
+                                          (lVar48,*(undefined8 *)(lVar46 + lVar28 + 0xa8),0);
+                                lVar48 = unaff_x19[0xe5];
+                                if (lVar48 == 0) break;
+                                if (*(uint *)(lVar48 + 0x18) <= uVar27) goto LAB_0603fce4;
+                                lVar48 = *(long *)(lVar48 + lVar29 * 8 + 0x28);
+                                if ((lVar48 == 0) || (lVar48 = FUN_060ae428(lVar48,0), lVar48 == 0))
+                                break;
+                                FUN_062425d0(lVar48,0);
+                              }
+                              lVar48 = unaff_x19[0x75];
+                              lVar29 = lVar29 + 1;
+                              lVar28 = lVar28 + 0x50;
+                            } while (lVar48 != 0);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  goto thunk_FUN_02e3ccc4;
+}
+
+
+
+END_DECOMPILED_FUNCTION

@@ -1,0 +1,1245 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 1
+FUNCTION_NAME: System.Data.DataTable$$set_TableName
+ENTRY_POINT: 053206e8
+MANUAL_PRIORITY_SCORE: 329
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 163
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_8', 'strong_file_logging_hits_3', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21', 'functionality_possible_biometrics_hits_10']
+PRIORITY_REASONS: ['base_scanner_score_163', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\90_plus_framework_support_only_near_certain\053206e8_System.Data.DataTable$$set_TableName.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\001_p329_System.Data.DataTable$$set_TableName.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Data.DataTable$$set_TableName
+ENTRY_POINT: 053206e8
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 163
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_7;validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_8;strong_file_logging_hits_3;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21;functionality_possible_biometrics_hits_10
+*/
+
+
+void System_Data_DataTable__set_TableName(void)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  undefined8 *puVar4;
+  undefined8 *unaff_x19;
+  long lVar5;
+  long unaff_x22;
+  
+  if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) != 0) {
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1088);
+    puVar4 = (undefined8 *)PlayFab_ClientModels_GetCharacterDataResult_TypeInfo;
+    if (lVar5 != 0) {
+LAB_05313d58:
+      uVar2 = FUN_02922484(*unaff_x19,*puVar4);
+                    /* WARNING: Could not recover jumptable at 0x05313d78. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      (**(code **)(lVar5 + 0x18))(*(undefined8 *)(lVar5 + 0x40),uVar2,*(undefined8 *)(lVar5 + 0x28))
+      ;
+      return;
+    }
+    uVar2 = *(undefined8 *)PlayFab_EventsModels_GetDataConnectionRequest_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1098);
+      puVar4 = (undefined8 *)PlayFab_EventsModels_GetDataConnectionResponse_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenRequest_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x10a8);
+      puVar4 = (undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenResponse_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Net_Mime_Base64WriteStateInfo_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x10b8);
+      puVar4 = (undefined8 *)UnityEngine_UIElements_BaseBoolField_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)UnityEngine_Rendering_BatchRendererGroup_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x10c8);
+      puVar4 = (undefined8 *)UnityEngine_Rendering_BatchRendererGroupGlobals_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Data_Common_BooleanStorage_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x10d8);
+      puVar4 = (undefined8 *)System_Diagnostics_BooleanSwitch_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)Cysharp_Threading_Tasks_CancellationTokenSourceExtensions_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x10e8);
+      puVar4 = (undefined8 *)UnityEngine_Canvas_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Data_DataRelationCollection_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+   lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x150);
+      puVar4 = (undefined8 *)UnityEngine_Rendering_CPUDrawInstanceData_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Security_Claims_Claim_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x160);
+      puVar4 = (undefined8 *)System_Security_Claims_ClaimsIdentity_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Net_ChunkedInputStream_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x170);
+      puVar4 = (undefined8 *)System_IO_ChunkedMemoryStream_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_ComponentModel_CollectionChangeEventHandler_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x180);
+      puVar4 = (undefined8 *)Unity_XR_CoreUtils_CollectionExtensions_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Threading_Tasks_CompletionActionInvoker_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 400);
+      puVar4 = (undefined8 *)System_ComponentModel_ComplexBindingPropertiesAttribute_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Runtime_Remoting_Activation_ContextLevelActivator_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1a0);
+      puVar4 = (undefined8 *)UnityEngine_UIElements_ContextualMenuManipulator_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)Unity_Properties_ConversionRegistry_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1b0);
+      puVar4 = (undefined8 *)System_Convert_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Data_DataException_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1c0);
+      puVar4 = (undefined8 *)System_Data_DataExpression_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_anyURI_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1d0);
+      puVar4 = (undefined8 *)System_Xml_Schema_Datatype_base64Binary_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_fixed_TypeInfo;
+    if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    FUN_050121a8(uVar2,0);
+    uVar3 = FUN_0501afe8();
+    if ((uVar3 & 1) != 0) {
+      if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+      goto LAB_053299d8;
+      lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8)
+                       + 0x1e0);
+      puVar4 = (undefined8 *)System_Xml_Schema_Datatype_float_TypeInfo;
+      if (lVar5 != 0) goto LAB_05313d58;
+    }
+    return;
+  }
+LAB_053299d8:
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4dee8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 2
+FUNCTION_NAME: System.Data.DataTable$$get_TableName
+ENTRY_POINT: 053206e0
+MANUAL_PRIORITY_SCORE: 329
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 163
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_8', 'strong_file_logging_hits_3', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21', 'functionality_possible_biometrics_hits_10']
+PRIORITY_REASONS: ['base_scanner_score_163', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\90_plus_framework_support_only_near_certain\053206e0_System.Data.DataTable$$get_TableName.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\002_p329_System.Data.DataTable$$get_TableName.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Data.DataTable$$get_TableName
+ENTRY_POINT: 053206e0
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 163
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_7;validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_8;strong_file_logging_hits_3;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21;functionality_possible_biometrics_hits_10
+*/
+
+
+void System_Data_DataTable__get_TableName(void)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  undefined8 *puVar4;
+  undefined8 *unaff_x19;
+  long lVar5;
+  long unaff_x22;
+  
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1088);
+    puVar4 = (undefined8 *)PlayFab_ClientModels_GetCharacterDataResult_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_EventsModels_GetDataConnectionRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1098);
+    puVar4 = (undefined8 *)PlayFab_EventsModels_GetDataConnectionResponse_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10a8);
+    puVar4 = (undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenResponse_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Net_Mime_Base64WriteStateInfo_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10b8);
+    puVar4 = (undefined8 *)UnityEngine_UIElements_BaseBoolField_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)UnityEngine_Rendering_BatchRendererGroup_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10c8);
+    puVar4 = (undefined8 *)UnityEngine_Rendering_BatchRendererGroupGlobals_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_Common_BooleanStorage_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10d8);
+    puVar4 = (undefined8 *)System_Diagnostics_BooleanSwitch_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)Cysharp_Threading_Tasks_CancellationTokenSourceExtensions_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10e8);
+    puVar4 = (undefined8 *)UnityEngine_Canvas_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_DataRelationCollection_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10f8);
+    puVar4 = (undefined8 *)System_Data_DataRelationPropertyDescriptor_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_ExperimentationModels_DeleteExperimentRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+odel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x150);
+    puVar4 = (undefined8 *)UnityEngine_Rendering_CPUDrawInstanceData_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Security_Claims_Claim_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x160);
+    puVar4 = (undefined8 *)System_Security_Claims_ClaimsIdentity_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Net_ChunkedInputStream_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x170);
+    puVar4 = (undefined8 *)System_IO_ChunkedMemoryStream_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_ComponentModel_CollectionChangeEventHandler_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x180);
+    puVar4 = (undefined8 *)Unity_XR_CoreUtils_CollectionExtensions_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Threading_Tasks_CompletionActionInvoker_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     400);
+    puVar4 = (undefined8 *)System_ComponentModel_ComplexBindingPropertiesAttribute_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Runtime_Remoting_Activation_ContextLevelActivator_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1a0);
+    puVar4 = (undefined8 *)UnityEngine_UIElements_ContextualMenuManipulator_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)Unity_Properties_ConversionRegistry_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1b0);
+    puVar4 = (undefined8 *)System_Convert_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_DataException_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1c0);
+    puVar4 = (undefined8 *)System_Data_DataExpression_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_anyURI_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1d0);
+    puVar4 = (undefined8 *)System_Xml_Schema_Datatype_base64Binary_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_fixed_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0) {
+LAB_053299d8:
+                    /* WARNING: Subroutine does not return */
+      FUN_02d4dee8();
+    }
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1e0);
+    puVar4 = (undefined8 *)System_Xml_Schema_Datatype_float_TypeInfo;
+    if (lVar5 != 0) {
+LAB_05313d58:
+      uVar2 = FUN_02922484(*unaff_x19,*puVar4);
+                    /* WARNING: Could not recover jumptable at 0x05313d78. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      (**(code **)(lVar5 + 0x18))(*(undefined8 *)(lVar5 + 0x40),uVar2,*(undefined8 *)(lVar5 + 0x28))
+      ;
+      return;
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 3
+FUNCTION_NAME: System.Data.DataTable$$get_Rows
+ENTRY_POINT: 053206d8
+MANUAL_PRIORITY_SCORE: 329
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 163
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_8', 'strong_file_logging_hits_3', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21', 'functionality_possible_biometrics_hits_10']
+PRIORITY_REASONS: ['base_scanner_score_163', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\90_plus_framework_support_only_near_certain\053206d8_System.Data.DataTable$$get_Rows.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\003_p329_System.Data.DataTable$$get_Rows.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Data.DataTable$$get_Rows
+ENTRY_POINT: 053206d8
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 163
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_7;validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_8;strong_file_logging_hits_3;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21;functionality_possible_biometrics_hits_10
+*/
+
+
+void System_Data_DataTable__get_Rows(void)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  undefined8 *puVar4;
+  undefined8 *unaff_x19;
+  long lVar5;
+  long unaff_x22;
+  
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1088);
+    puVar4 = (undefined8 *)PlayFab_ClientModels_GetCharacterDataResult_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_EventsModels_GetDataConnectionRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1098);
+    puVar4 = (undefined8 *)PlayFab_EventsModels_GetDataConnectionResponse_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10a8);
+    puVar4 = (undefined8 *)PlayFab_AuthenticationModels_GetEntityTokenResponse_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Net_Mime_Base64WriteStateInfo_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10b8);
+    puVar4 = (undefined8 *)UnityEngine_UIElements_BaseBoolField_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)UnityEngine_Rendering_BatchRendererGroup_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10c8);
+    puVar4 = (undefined8 *)UnityEngine_Rendering_BatchRendererGroupGlobals_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_Common_BooleanStorage_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10d8);
+    puVar4 = (undefined8 *)System_Diagnostics_BooleanSwitch_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)Cysharp_Threading_Tasks_CancellationTokenSourceExtensions_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10e8);
+    puVar4 = (undefined8 *)UnityEngine_Canvas_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_DataRelationCollection_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10f8);
+    puVar4 = (undefined8 *)System_Data_DataRelationPropertyDescriptor_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)PlayFab_ExperimentationModels_DeleteExperimentRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+odel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x150);
+    puVar4 = (undefined8 *)UnityEngine_Rendering_CPUDrawInstanceData_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Security_Claims_Claim_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x160);
+    puVar4 = (undefined8 *)System_Security_Claims_ClaimsIdentity_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Net_ChunkedInputStream_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x170);
+    puVar4 = (undefined8 *)System_IO_ChunkedMemoryStream_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_ComponentModel_CollectionChangeEventHandler_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x180);
+    puVar4 = (undefined8 *)Unity_XR_CoreUtils_CollectionExtensions_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Threading_Tasks_CompletionActionInvoker_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     400);
+    puVar4 = (undefined8 *)System_ComponentModel_ComplexBindingPropertiesAttribute_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Runtime_Remoting_Activation_ContextLevelActivator_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1a0);
+    puVar4 = (undefined8 *)UnityEngine_UIElements_ContextualMenuManipulator_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)Unity_Properties_ConversionRegistry_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1b0);
+    puVar4 = (undefined8 *)System_Convert_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Data_DataException_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1c0);
+    puVar4 = (undefined8 *)System_Data_DataExpression_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_anyURI_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1d0);
+    puVar4 = (undefined8 *)System_Xml_Schema_Datatype_base64Binary_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar2 = *(undefined8 *)System_Xml_Schema_Datatype_fixed_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar2,0);
+  uVar3 = FUN_0501afe8();
+  if ((uVar3 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0) {
+LAB_053299d8:
+                    /* WARNING: Subroutine does not return */
+      FUN_02d4dee8();
+    }
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1e0);
+    puVar4 = (undefined8 *)System_Xml_Schema_Datatype_float_TypeInfo;
+    if (lVar5 != 0) {
+LAB_05313d58:
+      uVar2 = FUN_02922484(*unaff_x19,*puVar4);
+                    /* WARNING: Could not recover jumptable at 0x05313d78. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      (**(code **)(lVar5 + 0x18))(*(undefined8 *)(lVar5 + 0x40),uVar2,*(undefined8 *)(lVar5 + 0x28))
+      ;
+      return;
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 4
+FUNCTION_NAME: System.Data.DataTable$$get_EncodedTableName
+ENTRY_POINT: 05320c80
+MANUAL_PRIORITY_SCORE: 329
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 163
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_6', 'strong_file_logging_hits_3', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21', 'functionality_possible_biometrics_hits_8']
+PRIORITY_REASONS: ['base_scanner_score_163', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\90_plus_framework_support_only_near_certain\05320c80_System.Data.DataTable$$get_EncodedTableName.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\004_p329_System.Data.DataTable$$get_EncodedTableName.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Data.DataTable$$get_EncodedTableName
+ENTRY_POINT: 05320c80
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 163
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_4;validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_6;strong_file_logging_hits_3;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21;functionality_possible_biometrics_hits_8
+*/
+
+
+void System_Data_DataTable__get_EncodedTableName(void)
+
+{
+  undefined *puVar1;
+  ulong uVar2;
+  undefined8 *puVar3;
+  undefined8 *unaff_x19;
+  undefined8 uVar4;
+  long lVar5;
+  long unaff_x22;
+  
+  uVar4 = *(undefined8 *)Cysharp_Threading_Tasks_CancellationTokenSourceExtensions_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10e8);
+    puVar3 = (undefined8 *)UnityEngine_Canvas_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Data_DataRelationCollection_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x10f8);
+    puVar3 = (undefined8 *)System_Data_DataRelationPropertyDescriptor_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)PlayFab_ExperimentationModels_DeleteExperimentRequest_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1108);
+    puVar3 = (undefined8 *)PlayFab_AddonModels_DeleteFacebookInstantGamesRequest_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Net_DigestSession_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1118);
+    puVar3 = (undefined8 *)UnityEngine_UIElements_StyleSheets_Dimension_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)UnityEngine_UIElements_UIR_ExtraRenderData_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1128);
+    puVar3 = (undefined8 *)UnityEngine_XR_OpenXR_Features_Interactions_EyeTrackingUsages_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)Newtonsoft_Json_Serialization_ExtensionDataGetter_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1138);
+    puVar3 = (undefined8 *)Newtonsoft_Json_Serialization_ExtensionDataSetter_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)PlayFab_DataModels_FinalizeFileUploadsResponse_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  puVar1 = PlayFab_MultiplayerModels_GetLobbyResult_TypeInfo;
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1148);
+    puVar3 = (undefined8 *)UnityEngine_Rendering_FindDrawInstancesJob_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)PlayFab_MultiplayerModels_GetLobbyResult_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1158);
+    puVar3 = (undefined
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+odel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x150);
+    puVar3 = (undefined8 *)UnityEngine_Rendering_CPUDrawInstanceData_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Security_Claims_Claim_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x160);
+    puVar3 = (undefined8 *)System_Security_Claims_ClaimsIdentity_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Net_ChunkedInputStream_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x170);
+    puVar3 = (undefined8 *)System_IO_ChunkedMemoryStream_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_ComponentModel_CollectionChangeEventHandler_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x180);
+    puVar3 = (undefined8 *)Unity_XR_CoreUtils_CollectionExtensions_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Threading_Tasks_CompletionActionInvoker_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     400);
+    puVar3 = (undefined8 *)System_ComponentModel_ComplexBindingPropertiesAttribute_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Runtime_Remoting_Activation_ContextLevelActivator_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1a0);
+    puVar3 = (undefined8 *)UnityEngine_UIElements_ContextualMenuManipulator_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)Unity_Properties_ConversionRegistry_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1b0);
+    puVar3 = (undefined8 *)System_Convert_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Data_DataException_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1c0);
+    puVar3 = (undefined8 *)System_Data_DataExpression_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Xml_Schema_Datatype_anyURI_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0)
+    goto LAB_053299d8;
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1d0);
+    puVar3 = (undefined8 *)System_Xml_Schema_Datatype_base64Binary_TypeInfo;
+    if (lVar5 != 0) goto LAB_05313d58;
+  }
+  uVar4 = *(undefined8 *)System_Xml_Schema_Datatype_fixed_TypeInfo;
+  if (*(int *)(*(long *)(unaff_x22 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_02dabd98();
+  }
+  FUN_050121a8(uVar4,0);
+  uVar2 = FUN_0501afe8();
+  if ((uVar2 & 1) != 0) {
+    if (**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) == 0) {
+LAB_053299d8:
+                    /* WARNING: Subroutine does not return */
+      FUN_02d4dee8();
+    }
+    lVar5 = *(long *)(**(long **)(*(long *)System_ComponentModel_EditorAttribute_TypeInfo + 0xb8) +
+                     0x1e0);
+    puVar3 = (undefined8 *)System_Xml_Schema_Datatype_float_TypeInfo;
+    if (lVar5 != 0) {
+LAB_05313d58:
+      uVar4 = FUN_02922484(*unaff_x19,*puVar3);
+                    /* WARNING: Could not recover jumptable at 0x05313d78. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      (**(code **)(lVar5 + 0x18))(*(undefined8 *)(lVar5 + 0x40),uVar4,*(undefined8 *)(lVar5 + 0x28))
+      ;
+      return;
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

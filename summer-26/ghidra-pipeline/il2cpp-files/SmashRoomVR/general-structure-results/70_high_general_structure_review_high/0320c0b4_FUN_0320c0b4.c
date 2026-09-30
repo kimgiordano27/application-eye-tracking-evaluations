@@ -1,0 +1,48 @@
+/*
+FUNCTION_NAME: FUN_0320c0b4
+ENTRY_POINT: 0320c0b4
+PROGRAM: SmashRoomVR-libil2cpp.so
+SCORE: 70
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;telemetry
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_6;telemetry_or_network_hits_3
+*/
+
+
+void FUN_0320c0b4(undefined8 *param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  undefined4 uVar3;
+  undefined8 uVar4;
+  
+  if (DAT_03fed257 == '\0') {
+    thunk_FUN_01ad9084(Method_Mono_Security_PKCS7_EncryptedData__ctor__);
+    DAT_03fed257 = '\x01';
+  }
+  uVar4 = **(undefined8 **)(*(long *)Method_Mono_Security_PKCS7_EncryptedData__ctor__ + 0xb8);
+  uVar3 = *(undefined4 *)
+           (*(undefined8 **)(*(long *)Method_Mono_Security_PKCS7_EncryptedData__ctor__ + 0xb8) + 1);
+  if (DAT_03fed256 == '\0') {
+    thunk_FUN_01ad9084(Method_OVRPermissionsRequester_<>c_<BuildPermissionCallbacks>b__14_2__);
+    DAT_03fed256 = '\x01';
+  }
+  uVar2 = (*(undefined8 **)
+            (*(long *)Method_OVRPermissionsRequester_<>c_<BuildPermissionCallbacks>b__14_2__ + 0xb8)
+          )[1];
+  uVar1 = **(undefined8 **)
+            (*(long *)Method_OVRPermissionsRequester_<>c_<BuildPermissionCallbacks>b__14_2__ + 0xb8)
+  ;
+  *param_1 = uVar4;
+  *(undefined4 *)(param_1 + 1) = uVar3;
+  *(undefined8 *)((long)param_1 + 0x14) = uVar2;
+  *(undefined8 *)((long)param_1 + 0xc) = uVar1;
+  return;
+}
+
+

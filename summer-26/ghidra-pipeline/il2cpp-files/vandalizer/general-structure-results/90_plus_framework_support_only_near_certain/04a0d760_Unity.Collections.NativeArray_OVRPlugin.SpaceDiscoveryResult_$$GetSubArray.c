@@ -1,0 +1,51 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.SpaceDiscoveryResult>$$GetSubArray
+ENTRY_POINT: 04a0d760
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 94
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_8;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Unity_Collections_NativeArray<OVRPlugin_SpaceDiscoveryResult>__GetSubArray(void)
+
+{
+  long lVar1;
+  long unaff_x19;
+  int unaff_w21;
+  int unaff_w24;
+  
+  do {
+    lVar1 = FUN_0322bef4();
+    do {
+      lVar1 = *(long *)(*(long *)(lVar1 + 0xc0) + 0x48);
+      if ((*(byte *)(lVar1 + 0x135) & 1) == 0) {
+        lVar1 = FUN_0322bef4();
+      }
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+      }
+      if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+        FUN_0322bef4();
+      }
+      FUN_04a0ced8();
+      if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+        FUN_0322bef4();
+      }
+      FUN_04a0d7fc();
+      unaff_w21 = unaff_w21 + -1;
+      if (unaff_w24 + unaff_w21 + 2 < 3) {
+        return;
+      }
+      lVar1 = *(long *)(unaff_x19 + 0x20);
+    } while ((*(byte *)(lVar1 + 0x135) & 1) != 0);
+  } while( true );
+}
+
+

@@ -1,0 +1,87 @@
+/*
+FUNCTION_NAME: System.Array.InternalEnumerator<OVRPlugin.SpaceDiscoveryResult>$$Dispose
+ENTRY_POINT: 04649530
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 81
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;strong_pose_or_ray_construction_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void System_Array_InternalEnumerator<OVRPlugin_SpaceDiscoveryResult>__Dispose(long param_1)
+
+{
+  int iVar1;
+  void *__s;
+  int *piVar2;
+  undefined8 *puVar3;
+  long lVar4;
+  ulong uVar5;
+  long unaff_x19;
+  size_t unaff_x21;
+  void *__dest;
+  void *__s_00;
+  long unaff_x25;
+  ulong unaff_x26;
+  long *plVar6;
+  long unaff_x29;
+  
+  uVar5 = unaff_x21 + 0xf & 0x1fffffff0;
+  __dest = (void *)(param_1 - uVar5);
+  __s_00 = (void *)((long)__dest - uVar5);
+  memset(__s_00,0,unaff_x21);
+  if ((unaff_x26 & 1) == 0) {
+    FUN_03775678();
+  }
+  __s = (void *)thunk_FUN_03799158();
+  memset(__s,0,unaff_x21);
+  uVar5 = 0;
+  while( true ) {
+    if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+      FUN_03775678();
+    }
+    piVar2 = (int *)thunk_FUN_03799158();
+    iVar1 = *piVar2;
+    if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+      FUN_03775678();
+    }
+    if ((long)(iVar1 + -1) <= (long)uVar5) {
+      FUN_031b7e74();
+      if (*(long *)(unaff_x25 + 0x28) == *(long *)(unaff_x29 + -8)) {
+        return;
+      }
+                    /* WARNING: Subroutine does not return */
+      __stack_chk_fail();
+    }
+    puVar3 = (undefined8 *)thunk_FUN_03799158();
+    plVar6 = (long *)*puVar3;
+    memset(__s_00,0,unaff_x21);
+    memcpy(__dest,__s_00,unaff_x21);
+    if (plVar6 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0373b7b4();
+    }
+    if (*(uint *)(plVar6 + 3) <= uVar5) break;
+    memcpy((void *)((long)plVar6 + uVar5 * *(uint *)(*plVar6 + 0x104) + 0x20),__dest,unaff_x21);
+    lVar4 = *(long *)(unaff_x19 + 0x20);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_03775678();
+    }
+    lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 0x10);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_03775678();
+    }
+    if (*(uint *)(plVar6 + 3) <= uVar5) break;
+    FUN_0373b4c8(lVar4,(long)plVar6 + uVar5 * *(uint *)(*plVar6 + 0x104) + 0x20,__dest);
+    uVar5 = uVar5 + 1;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7bc();
+}
+
+

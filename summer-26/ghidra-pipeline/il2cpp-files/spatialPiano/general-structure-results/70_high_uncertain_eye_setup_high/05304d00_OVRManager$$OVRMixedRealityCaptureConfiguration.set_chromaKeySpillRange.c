@@ -1,0 +1,62 @@
+/*
+FUNCTION_NAME: OVRManager$$OVRMixedRealityCaptureConfiguration.set_chromaKeySpillRange
+ENTRY_POINT: 05304d00
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 84
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_3;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRManager__OVRMixedRealityCaptureConfiguration_set_chromaKeySpillRange
+               (undefined1 param_1 [16],float param_2,float param_3,undefined4 param_4,long param_5)
+
+{
+  ulong uVar1;
+  long unaff_x19;
+  undefined8 uVar2;
+  float fVar3;
+  undefined4 uVar4;
+  float fVar5;
+  float fVar6;
+  float unaff_s8;
+  float unaff_s9;
+  float unaff_s10;
+  undefined8 in_stack_00000000;
+  float fStack0000000000000008;
+  float fStack000000000000000c;
+  
+  uVar2 = *(undefined8 *)(unaff_x19 + 0x38);
+  if (*(int *)(param_5 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  uVar1 = FUN_060f078c(uVar2,0,0);
+  if ((uVar1 & 1) == 0) {
+    if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_05304dcc;
+    FUN_05302210((long)&stack0x00000000 + 4);
+    fVar3 = in_stack_00000000._4_4_;
+    param_2 = fStack0000000000000008;
+    param_3 = fStack000000000000000c;
+  }
+  else {
+    if (*(long *)(unaff_x19 + 0x38) == 0) goto LAB_05304dcc;
+    fVar3 = (float)FUN_060ffbe4(*(long *)(unaff_x19 + 0x38),0);
+  }
+  fVar5 = unaff_s9 - param_2;
+  fVar6 = unaff_s8 - param_3;
+  uVar4 = FUN_060df954(unaff_s10 - fVar3,fVar5,fVar6,0);
+  if (*(long *)(unaff_x19 + 0x30) != 0) {
+    FUN_0528c874(fVar3,param_2,param_3,uVar4,fVar5,fVar6,param_4,*(long *)(unaff_x19 + 0x30),0);
+    return;
+  }
+LAB_05304dcc:
+                    /* WARNING: Subroutine does not return */
+  FUN_02f089c8();
+}
+
+

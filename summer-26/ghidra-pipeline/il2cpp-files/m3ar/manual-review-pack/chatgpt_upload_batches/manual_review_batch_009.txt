@@ -1,0 +1,1004 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 41
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$Invoke
+ENTRY_POINT: 0431863c
+MANUAL_PRIORITY_SCORE: 244
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 133
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_7', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_133', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0431863c_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$Invoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\041_p244_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$Invoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$Invoke
+ENTRY_POINT: 0431863c
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 133
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_7;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void Cognitive3D_ActiveSession_RenderEyetracking_IVRSystem__GetEventTypeNameFromEnum__Invoke(void)
+
+{
+  long lVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined8 uVar5;
+  ulong uVar6;
+  long *plVar7;
+  uint uVar8;
+  long unaff_x19;
+  long unaff_x20;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  undefined8 *puVar12;
+  undefined8 in_stack_00000008;
+  undefined8 *in_stack_00000010;
+  long in_stack_00000018;
+  long in_stack_00000020;
+  undefined8 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined8 in_stack_00000038;
+  long in_stack_00000040;
+  long in_stack_00000048;
+  undefined8 in_stack_00000050;
+  
+  if ((*(byte *)(unaff_x20 + 0xe0d) & 1) == 0) {
+    FUN_0403162c(PTR_DAT_08f738c0);
+    FUN_0403162c(PTR_DAT_08f738c8);
+    FUN_0403162c(PTR_DAT_08f738d0);
+    FUN_0403162c(PTR_DAT_08f738d8);
+    FUN_0403162c(PTR_DAT_08f73868);
+    FUN_0403162c(PTR_DAT_08f738e0);
+    FUN_0403162c(PTR_DAT_08f738e8);
+    FUN_0403162c(PTR_DAT_08f68760);
+    *(undefined1 *)(unaff_x20 + 0xe0d) = 1;
+  }
+  lVar9 = *(long *)(unaff_x19 + 0x28);
+  in_stack_00000050 = 0;
+  in_stack_00000038 = 0;
+  in_stack_00000030 = 0;
+  in_stack_00000048 = 0;
+  in_stack_00000040 = 0;
+  if (lVar9 != 0) {
+    if (*(long *)(unaff_x19 + 0x20) == 0) {
+      uVar5 = 0;
+    }
+    else {
+      uVar5 = FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)PTR_DAT_08f73868);
+    }
+    FUN_04308fec(lVar9,uVar5);
+  }
+  puVar4 = PTR_DAT_08f738d0;
+  puVar3 = PTR_DAT_08f738c8;
+  puVar2 = PTR_DAT_08f68760;
+  if (*(long *)(unaff_x19 + 0x30) == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_0403188c();
+  }
+  FUN_06ff01a8(&stack0x00000008,*(long *)(unaff_x19 + 0x30),*(undefined8 *)PTR_DAT_08f738c0);
+  in_stack_00000050 = in_stack_00000028;
+  in_stack_00000038 = in_stack_00000010;
+  in_stack_00000030 = in_stack_00000008;
+  in_stack_00000048 = in_stack_00000020;
+  in_stack_00000040 = in_stack_00000018;
+  in_stack_00000008 = 0;
+  in_stack_00000010 = &stack0x00000030;
+  do {
+    do {
+      uVar6 = FUN_04fcfce0(&stack0x00000030,*(undefined8 *)puVar4);
+      lVar9 = in_stack_00000048;
+      if ((uVar6 & 1) == 0) {
+        FUN_04fcfdf4(&stack0x00000030,*(undefined8 *)puVar3);
+        return;
+      }
+      if (in_stack_00000040 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      lVar10 = *(long *)(in_stack_00000040 + 0x30);
+      if (lVar10 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      uVar8 = *(uint *)(lVar10 + 0x18);
+    } while ((int)uVar8 < 1);
+    lVar11 = 0;
+    puVar12 = (undefined8 *)(lVar10 + 0x28);
+    lVar1 = in_stack_00000048 + 0x20;
+    do {
+      if (uVar8 <= (uint)lVar11) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04031894();
+      }
+      if (lVar9 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      if (*(uint *)(lVar9 + 0x18) <= (uint)lVar11) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04031894();
+      }
+      plVar7 = *(long **)(lVar1 + lVar11 * 8);
+      if (plVar7 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      (**(code **)(*plVar7 + 0x178))
+                (plVar7,puVar12[-1],*puVar12,1,*(undefined8 *)puVar2,
+                 *(undefined8 *)(*plVar7 + 0x180));
+      uVar8 = *(uint *)(lVar10 + 0x18);
+      lVar11 = lVar11 + 1;
+      puVar12 = puVar12 + 2;
+    } while ((int)lVar11 < (int)uVar8);
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 42
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$BeginInvoke
+ENTRY_POINT: 04318650
+MANUAL_PRIORITY_SCORE: 244
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 133
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_7', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_133', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\04318650_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$BeginInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\042_p244_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$BeginInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetEventTypeNameFromEnum$$BeginInvoke
+ENTRY_POINT: 04318650
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 133
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_7;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void Cognitive3D_ActiveSession_RenderEyetracking_IVRSystem__GetEventTypeNameFromEnum__BeginInvoke
+               (void)
+
+{
+  long lVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined8 uVar5;
+  ulong uVar6;
+  long *plVar7;
+  uint uVar8;
+  long unaff_x19;
+  long unaff_x20;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  undefined8 *puVar12;
+  undefined8 in_stack_00000008;
+  undefined8 *in_stack_00000010;
+  long in_stack_00000018;
+  long in_stack_00000020;
+  undefined8 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined8 in_stack_00000038;
+  long in_stack_00000040;
+  long in_stack_00000048;
+  undefined8 in_stack_00000050;
+  
+  FUN_0403162c(PTR_DAT_08f738c8);
+  FUN_0403162c(PTR_DAT_08f738d0);
+  FUN_0403162c(PTR_DAT_08f738d8);
+  FUN_0403162c(PTR_DAT_08f73868);
+  FUN_0403162c(PTR_DAT_08f738e0);
+  FUN_0403162c(PTR_DAT_08f738e8);
+  FUN_0403162c(PTR_DAT_08f68760);
+  *(undefined1 *)(unaff_x20 + 0xe0d) = 1;
+  lVar9 = *(long *)(unaff_x19 + 0x28);
+  in_stack_00000050 = 0;
+  in_stack_00000038 = 0;
+  in_stack_00000030 = 0;
+  in_stack_00000048 = 0;
+  in_stack_00000040 = 0;
+  if (lVar9 != 0) {
+    if (*(long *)(unaff_x19 + 0x20) == 0) {
+      uVar5 = 0;
+    }
+    else {
+      uVar5 = FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)PTR_DAT_08f73868);
+    }
+    FUN_04308fec(lVar9,uVar5);
+  }
+  puVar4 = PTR_DAT_08f738d0;
+  puVar3 = PTR_DAT_08f738c8;
+  puVar2 = PTR_DAT_08f68760;
+  if (*(long *)(unaff_x19 + 0x30) == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_0403188c();
+  }
+  FUN_06ff01a8(&stack0x00000008,*(long *)(unaff_x19 + 0x30),*(undefined8 *)PTR_DAT_08f738c0);
+  in_stack_00000050 = in_stack_00000028;
+  in_stack_00000038 = in_stack_00000010;
+  in_stack_00000030 = in_stack_00000008;
+  in_stack_00000048 = in_stack_00000020;
+  in_stack_00000040 = in_stack_00000018;
+  in_stack_00000008 = 0;
+  in_stack_00000010 = &stack0x00000030;
+  do {
+    do {
+      uVar6 = FUN_04fcfce0(&stack0x00000030,*(undefined8 *)puVar4);
+      lVar9 = in_stack_00000048;
+      if ((uVar6 & 1) == 0) {
+        FUN_04fcfdf4(&stack0x00000030,*(undefined8 *)puVar3);
+        return;
+      }
+      if (in_stack_00000040 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      lVar10 = *(long *)(in_stack_00000040 + 0x30);
+      if (lVar10 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      uVar8 = *(uint *)(lVar10 + 0x18);
+    } while ((int)uVar8 < 1);
+    lVar11 = 0;
+    puVar12 = (undefined8 *)(lVar10 + 0x28);
+    lVar1 = in_stack_00000048 + 0x20;
+    do {
+      if (uVar8 <= (uint)lVar11) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04031894();
+      }
+      if (lVar9 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      if (*(uint *)(lVar9 + 0x18) <= (uint)lVar11) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04031894();
+      }
+      plVar7 = *(long **)(lVar1 + lVar11 * 8);
+      if (plVar7 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0403188c();
+      }
+      (**(code **)(*plVar7 + 0x178))
+                (plVar7,puVar12[-1],*puVar12,1,*(undefined8 *)puVar2,
+                 *(undefined8 *)(*plVar7 + 0x180));
+      uVar8 = *(uint *)(lVar10 + 0x18);
+      lVar11 = lVar11 + 1;
+      puVar12 = puVar12 + 2;
+    } while ((int)lVar11 < (int)uVar8);
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 43
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$Invoke
+ENTRY_POINT: 04317760
+MANUAL_PRIORITY_SCORE: 244
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 133
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_14', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_133', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\04317760_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$Invoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\043_p244_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$Invoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$Invoke
+ENTRY_POINT: 04317760
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 133
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_14;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void Cognitive3D_ActiveSession_RenderEyetracking_IVRSystem__GetBoolTrackedDeviceProperty__Invoke
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  byte bVar4;
+  int iVar5;
+  undefined8 *puVar6;
+  undefined8 uVar7;
+  long *plVar8;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  undefined8 uVar11;
+  long lVar12;
+  long lVar13;
+  long in_x9;
+  ulong uVar14;
+  int *piVar15;
+  long unaff_x19;
+  bool bVar16;
+  
+  if (in_x9 != 0) {
+                    /* try { // try from 04317768 to 0441776b has its CatchHandler @ 04317898 */
+    piVar15 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+                    /* try { // try from 0431776c to 0441783f has its CatchHandler @ 04317330 */
+      if (*(long *)(piVar15 + -2) == param_3) {
+        puVar6 = (undefined8 *)(param_1 + (long)*piVar15 * 0x10 + 0x138);
+        goto LAB_043177a0;
+      }
+      in_x9 = in_x9 + -1;
+      piVar15 = piVar15 + 4;
+    } while (in_x9 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20();
+LAB_043177a0:
+  uVar7 = (*(code *)*puVar6)();
+  puVar3 = PTR_DAT_08f73868;
+  if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_04317b80;
+  plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)PTR_DAT_08f73868);
+  puVar2 = PTR_DAT_08f73278;
+  if (plVar8 == (long *)0x0) goto LAB_04317b80;
+  lVar12 = *plVar8;
+  uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f73278) {
+        puVar6 = (undefined8 *)(lVar12 + (long)*piVar15 * 0x10 + 0x138);
+        goto LAB_0431782c;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f73278,0);
+LAB_0431782c:
+  plVar8 = (long *)(*(code *)*puVar6)(plVar8,puVar6[1]);
+  if (plVar8 == (long *)0x0) goto LAB_04317b80;
+  lVar12 = *plVar8;
+  uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f73260) {
+        puVar6 = (undefined8 *)(lVar12 + (long)(*piVar15 + 1) * 0x10 + 0x138);
+        goto LAB_04317898;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f73260,1);
+LAB_04317898:
+  uVar9 = (*(code *)*puVar6)(plVar8,uVar7,puVar6[1]);
+  if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_04317b80;
+  plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3);
+  if (plVar8 == (long *)0x0) {
+LAB_043178f8:
+    bVar16 = true;
+  }
+  else {
+    bVar4 = *(byte *)(*(long *)PTR_DAT_08f73870 + 0x130);
+    if ((*(byte *)(*plVar8 + 0x130) < bVar4) ||
+       (*(long *)(*(long *)(*plVar8 + 200) + (ulong)bVar4 * 8 + -8) != *(long *)PTR_DAT_08f73870))
+    goto LAB_043178f8;
+    if (*(long *)(unaff_x19 + 0x48) == 0) goto LAB_04317b80;
+    uVar1 = *(int *)((long)plVar8 + 0x3c) - 1;
+    iVar5 = FUN_04349d0c(*(long *)(unaff_x19 + 0x48),0);
+    bVar16 = (int)(uVar1 & ((int)uVar1 >> 0x1f ^ 0xffffffffU)) <= iVar5;
+  }
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3),
+     plVar8 == (long *)0x0)) goto LAB_04317b80;
+  lVar13 = *plVar8;
+  lVar12 = *(long *)puVar2;
+  uVar14 = (ulong)*(ushort *)(lVar13 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == lVar12) {
+        puVar6 = (undefined8 *)(lVar13 + (long)(*piVar15 + 1) * 0x10 + 0x138);
+        goto LAB_04317964;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,lVar12,1);
+LAB_04317964:
+  uVar10 = (*(code *)*puVar6)(plVar8,puVar6[1]);
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3),
+     plVar8 == (long *)0x0)) goto LAB_04317b80;
+  lVar13 = *plVar8;
+  lVar12 = *(long *)puVar2;
+  uVar14 = (ulong)*(ushort *)(lVar13 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == lVar12) {
+        puVar6 = (undefined8 *)(lVar13 + (long)*piVar15 * 0x10 + 0x138);
+        goto LAB_043179dc;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,lVar12,0);
+LAB_043179dc:
+  uVar11 = (*(code *)*puVar6)(plVar8,puVar6[1]);
+  uVar14 = FUN_0437181c(uVar11,uVar7,0);
+  if ((uVar14 & 1) == 0) {
+    bVar4 = 0;
+  }
+  else {
+    plVar8 = *(long **)(unaff_x19 + 0x40);
+    if (plVar8 == (long *)0x0) goto LAB_04317b80;
+    lVar12 = *plVar8;
+    uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+    if (uVar14 != 0) {
+      piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f69238) {
+          puVar6 = (undefined8 *)(lVar12 + (long)(*piVar15 + 9) * 0x10 + 0x138);
+          goto LAB_04317a60;
+        }
+        uVar14 = uVar14 - 1;
+        piVar15 = piVar15 + 4;
+      } while (uVar14 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f69238,9);
+LAB_04317a60:
+    uVar14 = (*(code *)*puVar6)(plVar8,uVar10,puVar6[1]);
+    if ((uVar14 & 1) == 0) {
+      bVar4 = 1;
+    }
+    else {
+      bVar4 = FUN_04317b84();
+      bVar4 = bVar4 & 1;
+    }
+  }
+  if ((bVar4 & bVar16) == 0) {
+    if (*(int *)(*(long *)PTR_DAT_08f658d0 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+    }
+    uVar14 = FUN_0852f904(0);
+    if ((uVar14 & 1) != 0) {
+      if (*(int *)(*(long *)PTR_DAT_08f65f48 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+      }
+      uVar14 = FUN_074c70a4(uVar7,uVar9,0);
+      if (((uVar14 & 1) != 0) && (*(char *)(unaff_x19 + 0x30) != '\0')) goto LAB_04317a94;
+    }
+    lVar12 = FUN_08584ab0();
+    if (lVar12 != 0) {
+      FUN_08588638(lVar12,0,0);
+      return;
+    }
+  }
+  else {
+LAB_04317a94:
+    if (*(long *)(unaff_x19 + 0x20) != 0) {
+      lVar12 = *(long *)(unaff_x19 + 0x28);
+      uVar7 = FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3);
+      if (lVar12 != 0) {
+        FUN_04308fec(lVar12,uVar7);
+        return;
+      }
+    }
+  }
+LAB_04317b80:
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 44
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$EndInvoke
+ENTRY_POINT: 04317850
+MANUAL_PRIORITY_SCORE: 244
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 133
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_11', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_133', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\04317850_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$EndInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\044_p244_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$EndInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$EndInvoke
+ENTRY_POINT: 04317850
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 133
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_11;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void Cognitive3D_ActiveSession_RenderEyetracking_IVRSystem__GetBoolTrackedDeviceProperty__EndInvoke
+               (long param_1)
+
+{
+  uint uVar1;
+  byte bVar2;
+  int iVar3;
+  undefined8 *puVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  long lVar7;
+  long in_x9;
+  ulong uVar8;
+  long *in_x10;
+  int *piVar9;
+  long unaff_x19;
+  undefined8 *unaff_x24;
+  long *unaff_x25;
+  bool bVar10;
+  
+                    /* try { // try from 04317850 to 04417853 has its CatchHandler @ 043178dc */
+                    /* try { // try from 04317854 to 04417857 has its CatchHandler @ 043178d8 */
+  if (in_x9 != 0) {
+                    /* try { // try from 04317858 to 0441785b has its CatchHandler @ 043178ec */
+                    /* try { // try from 0431785c to 0441785f has its CatchHandler @ 043178d0 */
+    piVar9 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+                    /* try { // try from 04317860 to 04417863 has its CatchHandler @ 043178c4 */
+                    /* try { // try from 04317864 to 04417867 has its CatchHandler @ 043178c0 */
+                    /* try { // try from 04317868 to 0441786b has its CatchHandler @ 043178bc */
+      if (*(long *)(piVar9 + -2) == *in_x10) {
+        puVar4 = (undefined8 *)(param_1 + (long)(*piVar9 + 1) * 0x10 + 0x138);
+        goto LAB_04317898;
+      }
+                    /* try { // try from 0431786c to 0441786f has its CatchHandler @ 043178b0 */
+      in_x9 = in_x9 + -1;
+                    /* try { // try from 04317870 to 04417873 has its CatchHandler @ 043178a0 */
+      piVar9 = piVar9 + 4;
+                    /* try { // try from 04317874 to 04417877 has its CatchHandler @ 04317894 */
+    } while (in_x9 != 0);
+  }
+  puVar4 = (undefined8 *)FUN_0406ae20();
+LAB_04317898:
+  (*(code *)*puVar4)();
+  if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_04317b80;
+  plVar5 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*unaff_x24);
+  if (plVar5 == (long *)0x0) {
+LAB_043178f8:
+    bVar10 = true;
+  }
+  else {
+    bVar2 = *(byte *)(*(long *)PTR_DAT_08f73870 + 0x130);
+    if ((*(byte *)(*plVar5 + 0x130) < bVar2) ||
+       (*(long *)(*(long *)(*plVar5 + 200) + (ulong)bVar2 * 8 + -8) != *(long *)PTR_DAT_08f73870))
+    goto LAB_043178f8;
+    if (*(long *)(unaff_x19 + 0x48) == 0) goto LAB_04317b80;
+    uVar1 = *(int *)((long)plVar5 + 0x3c) - 1;
+    iVar3 = FUN_04349d0c(*(long *)(unaff_x19 + 0x48),0);
+    bVar10 = (int)(uVar1 & ((int)uVar1 >> 0x1f ^ 0xffffffffU)) <= iVar3;
+  }
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar5 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*unaff_x24), plVar5 == (long *)0x0))
+  goto LAB_04317b80;
+  lVar7 = *plVar5;
+  uVar8 = (ulong)*(ushort *)(lVar7 + 0x12e);
+  if (uVar8 != 0) {
+    piVar9 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar9 + -2) == *unaff_x25) {
+        puVar4 = (undefined8 *)(lVar7 + (long)(*piVar9 + 1) * 0x10 + 0x138);
+        goto LAB_04317964;
+      }
+      uVar8 = uVar8 - 1;
+      piVar9 = piVar9 + 4;
+    } while (uVar8 != 0);
+  }
+  puVar4 = (undefined8 *)FUN_0406ae20(plVar5,*unaff_x25,1);
+LAB_04317964:
+  uVar6 = (*(code *)*puVar4)(plVar5,puVar4[1]);
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar5 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*unaff_x24), plVar5 == (long *)0x0))
+  goto LAB_04317b80;
+  lVar7 = *plVar5;
+  uVar8 = (ulong)*(ushort *)(lVar7 + 0x12e);
+  if (uVar8 != 0) {
+    piVar9 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar9 + -2) == *unaff_x25) {
+        puVar4 = (undefined8 *)(lVar7 + (long)*piVar9 * 0x10 + 0x138);
+        goto LAB_043179dc;
+      }
+      uVar8 = uVar8 - 1;
+      piVar9 = piVar9 + 4;
+    } while (uVar8 != 0);
+  }
+  puVar4 = (undefined8 *)FUN_0406ae20(plVar5,*unaff_x25,0);
+LAB_043179dc:
+  (*(code *)*puVar4)(plVar5,puVar4[1]);
+  uVar8 = FUN_0437181c();
+  if ((uVar8 & 1) == 0) {
+    bVar2 = 0;
+  }
+  else {
+    plVar5 = *(long **)(unaff_x19 + 0x40);
+    if (plVar5 == (long *)0x0) goto LAB_04317b80;
+    lVar7 = *plVar5;
+    uVar8 = (ulong)*(ushort *)(lVar7 + 0x12e);
+    if (uVar8 != 0) {
+      piVar9 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar9 + -2) == *(long *)PTR_DAT_08f69238) {
+          puVar4 = (undefined8 *)(lVar7 + (long)(*piVar9 + 9) * 0x10 + 0x138);
+          goto LAB_04317a60;
+        }
+        uVar8 = uVar8 - 1;
+        piVar9 = piVar9 + 4;
+      } while (uVar8 != 0);
+    }
+    puVar4 = (undefined8 *)FUN_0406ae20(plVar5,*(long *)PTR_DAT_08f69238,9);
+LAB_04317a60:
+    uVar8 = (*(code *)*puVar4)(plVar5,uVar6,puVar4[1]);
+    if ((uVar8 & 1) == 0) {
+      bVar2 = 1;
+    }
+    else {
+      bVar2 = FUN_04317b84();
+      bVar2 = bVar2 & 1;
+    }
+  }
+  if ((bVar2 & bVar10) == 0) {
+    if (*(int *)(*(long *)PTR_DAT_08f658d0 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+    }
+    uVar8 = FUN_0852f904(0);
+    if ((uVar8 & 1) != 0) {
+      if (*(int *)(*(long *)PTR_DAT_08f65f48 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+      }
+      uVar8 = FUN_074c70a4();
+      if (((uVar8 & 1) != 0) && (*(char *)(unaff_x19 + 0x30) != '\0')) goto LAB_04317a94;
+    }
+    lVar7 = FUN_08584ab0();
+    if (lVar7 != 0) {
+      FUN_08588638(lVar7,0,0);
+      return;
+    }
+  }
+  else {
+LAB_04317a94:
+    if (*(long *)(unaff_x19 + 0x20) != 0) {
+      lVar7 = *(long *)(unaff_x19 + 0x28);
+      uVar6 = FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*unaff_x24);
+      if (lVar7 != 0) {
+        FUN_04308fec(lVar7,uVar6);
+        return;
+      }
+    }
+  }
+LAB_04317b80:
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 45
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$BeginInvoke
+ENTRY_POINT: 04317774
+MANUAL_PRIORITY_SCORE: 244
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 133
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_14', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_133', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\04317774_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$BeginInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\045_p244_Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$BeginInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Cognitive3D.ActiveSession.RenderEyetracking.IVRSystem._GetBoolTrackedDeviceProperty$$BeginInvoke
+ENTRY_POINT: 04317774
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 133
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_14;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void Cognitive3D_ActiveSession_RenderEyetracking_IVRSystem__GetBoolTrackedDeviceProperty__BeginInvoke
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined1 in_ZR;
+  byte bVar4;
+  int iVar5;
+  undefined8 *puVar6;
+  undefined8 uVar7;
+  long *plVar8;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  undefined8 uVar11;
+  long lVar12;
+  long lVar13;
+  long in_x9;
+  ulong uVar14;
+  int *in_x10;
+  int *piVar15;
+  long unaff_x19;
+  bool bVar16;
+  
+  while (!(bool)in_ZR) {
+    in_x9 = in_x9 + -1;
+    if (in_x9 == 0) {
+      puVar6 = (undefined8 *)FUN_0406ae20();
+      goto LAB_043177a0;
+    }
+    in_ZR = *(long *)(in_x10 + 2) == param_3;
+    in_x10 = in_x10 + 4;
+  }
+  puVar6 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+LAB_043177a0:
+  uVar7 = (*(code *)*puVar6)();
+  puVar3 = PTR_DAT_08f73868;
+  if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_04317b80;
+  plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)PTR_DAT_08f73868);
+  puVar2 = PTR_DAT_08f73278;
+  if (plVar8 == (long *)0x0) goto LAB_04317b80;
+  lVar12 = *plVar8;
+  uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f73278) {
+        puVar6 = (undefined8 *)(lVar12 + (long)*piVar15 * 0x10 + 0x138);
+        goto LAB_0431782c;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f73278,0);
+LAB_0431782c:
+  plVar8 = (long *)(*(code *)*puVar6)(plVar8,puVar6[1]);
+  if (plVar8 == (long *)0x0) goto LAB_04317b80;
+                    /* try { // try from 04317840 to 04417843 has its CatchHandler @ 043178fc */
+  lVar12 = *plVar8;
+                    /* try { // try from 04317844 to 04417847 has its CatchHandler @ 043178f8 */
+                    /* try { // try from 04317848 to 0441784b has its CatchHandler @ 043178f0 */
+                    /* try { // try from 0431784c to 0441784f has its CatchHandler @ 043178e0 */
+  uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f73260) {
+        puVar6 = (undefined8 *)(lVar12 + (long)(*piVar15 + 1) * 0x10 + 0x138);
+        goto LAB_04317898;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f73260,1);
+LAB_04317898:
+  uVar9 = (*(code *)*puVar6)(plVar8,uVar7,puVar6[1]);
+  if (*(long *)(unaff_x19 + 0x20) == 0) goto LAB_04317b80;
+  plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3);
+  if (plVar8 == (long *)0x0) {
+LAB_043178f8:
+    bVar16 = true;
+  }
+  else {
+    bVar4 = *(byte *)(*(long *)PTR_DAT_08f73870 + 0x130);
+    if ((*(byte *)(*plVar8 + 0x130) < bVar4) ||
+       (*(long *)(*(long *)(*plVar8 + 200) + (ulong)bVar4 * 8 + -8) != *(long *)PTR_DAT_08f73870))
+    goto LAB_043178f8;
+    if (*(long *)(unaff_x19 + 0x48) == 0) goto LAB_04317b80;
+    uVar1 = *(int *)((long)plVar8 + 0x3c) - 1;
+    iVar5 = FUN_04349d0c(*(long *)(unaff_x19 + 0x48),0);
+    bVar16 = (int)(uVar1 & ((int)uVar1 >> 0x1f ^ 0xffffffffU)) <= iVar5;
+  }
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3),
+     plVar8 == (long *)0x0)) goto LAB_04317b80;
+  lVar13 = *plVar8;
+  lVar12 = *(long *)puVar2;
+  uVar14 = (ulong)*(ushort *)(lVar13 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == lVar12) {
+        puVar6 = (undefined8 *)(lVar13 + (long)(*piVar15 + 1) * 0x10 + 0x138);
+        goto LAB_04317964;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,lVar12,1);
+LAB_04317964:
+  uVar10 = (*(code *)*puVar6)(plVar8,puVar6[1]);
+  if ((*(long *)(unaff_x19 + 0x20) == 0) ||
+     (plVar8 = (long *)FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3),
+     plVar8 == (long *)0x0)) goto LAB_04317b80;
+  lVar13 = *plVar8;
+  lVar12 = *(long *)puVar2;
+  uVar14 = (ulong)*(ushort *)(lVar13 + 0x12e);
+  if (uVar14 != 0) {
+    piVar15 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar15 + -2) == lVar12) {
+        puVar6 = (undefined8 *)(lVar13 + (long)*piVar15 * 0x10 + 0x138);
+        goto LAB_043179dc;
+      }
+      uVar14 = uVar14 - 1;
+      piVar15 = piVar15 + 4;
+    } while (uVar14 != 0);
+  }
+  puVar6 = (undefined8 *)FUN_0406ae20(plVar8,lVar12,0);
+LAB_043179dc:
+  uVar11 = (*(code *)*puVar6)(plVar8,puVar6[1]);
+  uVar14 = FUN_0437181c(uVar11,uVar7,0);
+  if ((uVar14 & 1) == 0) {
+    bVar4 = 0;
+  }
+  else {
+    plVar8 = *(long **)(unaff_x19 + 0x40);
+    if (plVar8 == (long *)0x0) goto LAB_04317b80;
+    lVar12 = *plVar8;
+    uVar14 = (ulong)*(ushort *)(lVar12 + 0x12e);
+    if (uVar14 != 0) {
+      piVar15 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar15 + -2) == *(long *)PTR_DAT_08f69238) {
+          puVar6 = (undefined8 *)(lVar12 + (long)(*piVar15 + 9) * 0x10 + 0x138);
+          goto LAB_04317a60;
+        }
+        uVar14 = uVar14 - 1;
+        piVar15 = piVar15 + 4;
+      } while (uVar14 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_0406ae20(plVar8,*(long *)PTR_DAT_08f69238,9);
+LAB_04317a60:
+    uVar14 = (*(code *)*puVar6)(plVar8,uVar10,puVar6[1]);
+    if ((uVar14 & 1) == 0) {
+      bVar4 = 1;
+    }
+    else {
+      bVar4 = FUN_04317b84();
+      bVar4 = bVar4 & 1;
+    }
+  }
+  if ((bVar4 & bVar16) == 0) {
+    if (*(int *)(*(long *)PTR_DAT_08f658d0 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+    }
+    uVar14 = FUN_0852f904(0);
+    if ((uVar14 & 1) != 0) {
+      if (*(int *)(*(long *)PTR_DAT_08f65f48 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+      }
+      uVar14 = FUN_074c70a4(uVar7,uVar9,0);
+      if (((uVar14 & 1) != 0) && (*(char *)(unaff_x19 + 0x30) != '\0')) goto LAB_04317a94;
+    }
+    lVar12 = FUN_08584ab0();
+    if (lVar12 != 0) {
+      FUN_08588638(lVar12,0,0);
+      return;
+    }
+  }
+  else {
+LAB_04317a94:
+    if (*(long *)(unaff_x19 + 0x20) != 0) {
+      lVar12 = *(long *)(unaff_x19 + 0x28);
+      uVar7 = FUN_054b8ffc(*(long *)(unaff_x19 + 0x20),*(undefined8 *)puVar3);
+      if (lVar12 != 0) {
+        FUN_04308fec(lVar12,uVar7);
+        return;
+      }
+    }
+  }
+LAB_04317b80:
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

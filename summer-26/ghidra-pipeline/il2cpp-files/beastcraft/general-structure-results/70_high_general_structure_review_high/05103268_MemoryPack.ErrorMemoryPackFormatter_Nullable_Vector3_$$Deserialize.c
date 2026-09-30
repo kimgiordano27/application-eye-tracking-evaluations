@@ -1,0 +1,80 @@
+/*
+FUNCTION_NAME: MemoryPack.ErrorMemoryPackFormatter<Nullable<Vector3>>$$Deserialize
+ENTRY_POINT: 05103268
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 74
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;telemetry
+EVIDENCE: validity_or_gating_hits_4;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2
+*/
+
+
+uint MemoryPack_ErrorMemoryPackFormatter<Nullable<Vector3>>__Deserialize(long param_1)
+
+{
+  int iVar1;
+  undefined8 *puVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  uint unaff_w19;
+  long unaff_x20;
+  long *unaff_x21;
+  long unaff_x23;
+  uint unaff_w24;
+  int unaff_w25;
+  
+  do {
+    lVar3 = *unaff_x21;
+    uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == param_1) {
+          puVar2 = (undefined8 *)(lVar3 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_051032b4;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_02e759c0();
+LAB_051032b4:
+    iVar1 = (*(code *)*puVar2)();
+    if (iVar1 == 0) {
+      return unaff_w24;
+    }
+    if (iVar1 < 0) {
+      unaff_w19 = unaff_w24 + 1;
+    }
+    else {
+      unaff_w25 = unaff_w24 - 1;
+    }
+    if (unaff_w25 < (int)unaff_w19) {
+      return ~unaff_w19;
+    }
+    unaff_w24 = unaff_w19 + ((int)(unaff_w25 - unaff_w19) >> 1);
+    if (*(uint *)(unaff_x23 + 0x18) <= unaff_w24) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02e3cccc();
+    }
+    if (unaff_x21 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02e3ccc4();
+    }
+    lVar3 = *(long *)(unaff_x20 + 0x20);
+    if ((*(ushort *)(lVar3 + 0x135) & 1) == 0) {
+      lVar3 = FUN_02e7568c();
+    }
+    param_1 = **(long **)(lVar3 + 0xc0);
+    if ((*(ushort *)(param_1 + 0x135) & 1) == 0) {
+      param_1 = FUN_02e7568c(param_1);
+    }
+  } while( true );
+}
+
+

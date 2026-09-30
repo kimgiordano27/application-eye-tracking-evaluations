@@ -1,0 +1,1234 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 33
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsManualPlacement
+ENTRY_POINT: 05dc4318
+MANUAL_PRIORITY_SCORE: 413
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 265
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_16', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_12', 'telemetry_or_network_hits_14', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_12', 'functionality_data_collection_or_telemetry_hits_14']
+PRIORITY_REASONS: ['base_scanner_score_265', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\general-structure-results\90_plus_framework_support_only_near_certain\05dc4318_UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsManualPlacement.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\manual-review-pack\A_must_review\033_p413_UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsManualPlacement.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsManualPlacement
+ENTRY_POINT: 05dc4318
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 265
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_16;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_12;telemetry_or_network_hits_14;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_12;functionality_data_collection_or_telemetry_hits_14
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XREnvironmentProbeSubsystemDescriptor__get_supportsManualPlacement
+               (void)
+
+{
+  undefined1 (*pauVar1) [12];
+  undefined4 uVar2;
+  int iVar3;
+  undefined1 uVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  byte bVar11;
+  undefined4 uVar12;
+  undefined8 uVar13;
+  long lVar14;
+  ulong uVar15;
+  long lVar16;
+  uint uVar17;
+  long unaff_x19;
+  long *unaff_x20;
+  long *unaff_x21;
+  undefined8 uVar18;
+  long unaff_x22;
+  undefined8 uVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined1 auVar22 [12];
+  undefined4 uStack0000000000000050;
+  undefined4 uStack0000000000000054;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 uStack0000000000000098;
+  undefined4 uStack000000000000009c;
+  undefined8 in_stack_000000a0;
+  undefined8 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined1 uStack00000000000000b8;
+  undefined4 uStack00000000000000b9;
+  undefined3 uStack00000000000000bd;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  long in_stack_000000f0;
+  long in_stack_000000f8;
+  long in_stack_00000100;
+  long in_stack_00000108;
+  
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<StencilCrossFadeRenderPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<TemporalAA_TaaPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<Vrs_VisualizationPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XRDepthMotionPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+              );
+  FUN_02f08768(Method_System_MemoryExtensions_SequenceEqual<byte>__);
+  FUN_02f08768(Method_UnityEngine_InputSystem_Utilities_MemoryHelpers_SetBitsInBuffer__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ARBackgroundRendererFeature_ARCameraBackgroundRenderPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_CopyPassData>__
+              );
+  FUN_02f08768(PTR_DAT_067c9340);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_MainPassData>__
+              );
+  FUN_02f08768(Method_Unity_Collections_FixedStringMethods_Append<UnsafeText>__);
+  FUN_02f08768(
+              Method_UnityEngine_XR_OpenXR_Features_Meta_ObjectPoolCreateUtil_Create<AwaitableCompletionSource<Result<XRAnchor>>>__
+              );
+  FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<ResolvedStyleAccess>__);
+  FUN_02f08768(Method_System_Xml_Schema_Parser_LoadAttributeNode__);
+  FUN_02f08768(PTR_DAT_067c8f20);
+  FUN_02f08768(Method_UnityEngine_Object_FindAnyObjectByType<EventSystem>__);
+  FUN_02f08768(PTR_DAT_067cbf08);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScreenSpaceShadows_ScreenSpaceShadowsPostPass_PassData>__
+              );
+  FUN_02f08768(Method_OVRVirtualKeyboard_Awake__);
+  FUN_02f08768(
+              Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+              );
+  FUN_02f08768(Method_OVRTask_FromResult<OVRResult<OVRAnchor_ShareResult>>__);
+  FUN_02f08768(Method_Unity_AppUI_UI_RectField_OnHFieldChanged__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRenderPass<ProbeReferenceVolume_RenderFragmentationOverlayPassData>__
+              );
+  FUN_02f08768(Method_System_Data_DataTable_set_Prefix__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRenderPass<RenderGraph_ProfilingScopePassData>__
+              );
+  FUN_02f08768(PTR_DAT_067cb280);
+  FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<StyleBackgroundPosition>__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_DoFBokehPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_DoFGaussianPassData>__
+              );
+  FUN_02f08768(Method_Unity_Collections_DataStreamReader_CheckBits__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+;
+    FUN_05de3ab4(lVar16,&stack0x000000a0,uVar4,0);
+    *(long *)(unaff_x19 + 0x2a0) = lVar16;
+    puVar7 = PTR_DAT_067cbf08;
+    if (lVar16 != 0) {
+      *(char *)(lVar16 + 0x19) = (char)unaff_x20[0x11];
+      puVar8 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+      ;
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      uVar18 = FUN_06126ea0(0);
+      lVar16 = unaff_x20[0xc];
+      uVar20 = *(undefined8 *)*pauVar1;
+      uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+      uVar2 = *(undefined4 *)(lVar14 + 0x14);
+      uVar21 = *(undefined8 *)(unaff_x19 + 0x2a0);
+      uVar19 = thunk_FUN_02f45270(*(undefined8 *)puVar8);
+      FUN_05e01004(uVar19,0xd2,uVar18,(int)lVar16,uVar20,uVar12,uVar2,uVar21);
+      puVar7 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_UberPostPassData>__
+      ;
+      *(undefined8 *)(unaff_x19 + 0x178) = uVar19;
+      uVar18 = *(undefined8 *)*pauVar1;
+      uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      FUN_05de5e0c(uVar18,uVar12,0x60,0);
+      lVar14 = FUN_02f0880c(*(undefined8 *)Method_Unity_AppUI_UI_RectField_OnHFieldChanged__,3);
+      uStack0000000000000050 = 0;
+      FUN_0612aaa4(&stack0x00000050,*(undefined8 *)Method_System_Diagnostics_Process_Start__,0);
+      puVar7 = Method_System_Diagnostics_Process_OpenProcessHandle__;
+      if (lVar14 != 0) {
+        if (*(int *)(lVar14 + 0x18) != 0) {
+          *(undefined4 *)(lVar14 + 0x20) = uStack0000000000000050;
+          uStack000000000000009c = 0;
+          FUN_0612aaa4((long)&stack0x00000098 + 4,*(undefined8 *)puVar7,0);
+          puVar7 = 
+          Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_UpdateCameraResolutionPassData>__
+          ;
+          if ((*(uint *)(lVar14 + 0x18) & 0xfffffffe) != 0) {
+            *(undefined4 *)(lVar14 + 0x24) = uStack000000000000009c;
+            uStack0000000000000098 = 0;
+            FUN_0612aaa4(&stack0x00000098,*(undefined8 *)puVar7,0);
+            puVar8 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<RenderGraphUtils_BlitMaterialPassData>__
+            ;
+            puVar7 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<RenderGraphUtils_PassData>__
+            ;
+            if (2 < *(uint *)(lVar14 + 0x18)) {
+              *(undefined4 *)(lVar14 + 0x28) = uStack0000000000000098;
+              uVar18 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                                         );
+              FUN_05df710c(uVar18,0xd3,uVar13,1,0,0,*(undefined8 *)puVar8,0);
+              uVar19 = *(undefined8 *)puVar7;
+              uVar20 = *(undefined8 *)(unaff_x19 + 0x2a0);
+              *(undefined8 *)(unaff_x19 + 0x180) = uVar18;
+              uVar18 = thunk_FUN_02f45270(uVar19);
+              FUN_05df8910(uVar18,0xe6,uVar20,0);
+              *(undefined8 *)(unaff_x19 + 0x188) = uVar18;
+              uVar18 = FUN_06126ea0(0);
+              lVar16 = unaff_x20[0xc];
+              uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                                         );
+              FUN_05dfbdcc(uVar19,*(undefined8 *)
+                                   Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<DeferredLights_SetupLightPassData>__
+                           ,lVar14,1,0xfa,uVar18,(int)lVar16);
+              *(undefined8 *)(unaff_x19 + 400) = uVar19;
+              goto LAB_05dc4eb4;
+            }
+          }
+        }
+                    /* WARNING: Subroutine does not return */
+        FUN_02f089d0();
+      }
+    }
+LAB_05dc5470:
+                    /* WARNING: Subroutine does not return */
+    FUN_02f089c8();
+  }
+LAB_05dc4eb4:
+  puVar7 = 
+  Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_PassData>__
+  ;
+  if (*(int *)(*(long *)PTR_DAT_067cbf08 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  uVar18 = FUN_06126ea0(0);
+  lVar14 = unaff_x20[0xc];
+  uVar20 = *(undefined8 *)*pauVar1;
+  uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+  uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                             );
+  FUN_05dfc26c(uVar19,10,1,0xfa,uVar18,(int)lVar14,uVar20,uVar12);
+  *(undefined8 *)(unaff_x19 + 0x198) = uVar19;
+  uVar18 = FUN_06126ea0(0);
+  lVar14 = unaff_x20[0xc];
+  uVar20 = *(undefined8 *)*pauVar1;
+  uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+  uVar19 = thunk_FUN_02f45270(*(undefined8 *)puVar7);
+  FUN_05dfdc8c(uVar19,10,1,0xfa,uVar18,(int)lVar14,uVar20,uVar12);
+  puVar7 = 
+  Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+  ;
+  iVar3 = *(int *)(unaff_x19 + 0x2b0);
+  *(undefined8 *)(unaff_x19 + 0x1a0) = uVar19;
+  uVar12 = 500;
+  if (iVar3 != 1) {
+    uVar12 = 400;
+  }
+  if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  bVar11 = FUN_05dadd80(0);
+  uVar18 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                             );
+  FUN_05df710c(uVar18,uVar12,uVar13,1,0,iVar3 == 1 & bVar11,0,0);
+  *(undefined8 *)(unaff_x19 + 0x1b0) = uVar18;
+  FUN_063fb9e4(&Method_UnityEngine_Object_FindAnyObjectByType<ARGestureInteractor>__);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 34
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsAutomaticPlacement
+ENTRY_POINT: 05dc4338
+MANUAL_PRIORITY_SCORE: 413
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 265
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_16', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_12', 'telemetry_or_network_hits_14', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_12', 'functionality_data_collection_or_telemetry_hits_14']
+PRIORITY_REASONS: ['base_scanner_score_265', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\general-structure-results\90_plus_framework_support_only_near_certain\05dc4338_UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsAutomaticPlacement.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\manual-review-pack\A_must_review\034_p413_UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsAutomaticPlacement.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XREnvironmentProbeSubsystemDescriptor$$get_supportsAutomaticPlacement
+ENTRY_POINT: 05dc4338
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 265
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_16;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_12;telemetry_or_network_hits_14;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_12;functionality_data_collection_or_telemetry_hits_14
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XREnvironmentProbeSubsystemDescriptor__get_supportsAutomaticPlacement
+               (void)
+
+{
+  undefined1 (*pauVar1) [12];
+  undefined4 uVar2;
+  int iVar3;
+  undefined1 uVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  byte bVar11;
+  undefined4 uVar12;
+  undefined8 uVar13;
+  long lVar14;
+  ulong uVar15;
+  long lVar16;
+  uint uVar17;
+  long unaff_x19;
+  long *unaff_x20;
+  long *unaff_x21;
+  undefined8 uVar18;
+  long unaff_x22;
+  undefined8 uVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined1 auVar22 [12];
+  undefined4 uStack0000000000000050;
+  undefined4 uStack0000000000000054;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 uStack0000000000000098;
+  undefined4 uStack000000000000009c;
+  undefined8 in_stack_000000a0;
+  undefined8 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined1 uStack00000000000000b8;
+  undefined4 uStack00000000000000b9;
+  undefined3 uStack00000000000000bd;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  long in_stack_000000f0;
+  long in_stack_000000f8;
+  long in_stack_00000100;
+  long in_stack_00000108;
+  
+  FUN_02f08768();
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XRDepthMotionPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+              );
+  FUN_02f08768(Method_System_MemoryExtensions_SequenceEqual<byte>__);
+  FUN_02f08768(Method_UnityEngine_InputSystem_Utilities_MemoryHelpers_SetBitsInBuffer__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ARBackgroundRendererFeature_ARCameraBackgroundRenderPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_CopyPassData>__
+              );
+  FUN_02f08768(PTR_DAT_067c9340);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_MainPassData>__
+              );
+  FUN_02f08768(Method_Unity_Collections_FixedStringMethods_Append<UnsafeText>__);
+  FUN_02f08768(
+              Method_UnityEngine_XR_OpenXR_Features_Meta_ObjectPoolCreateUtil_Create<AwaitableCompletionSource<Result<XRAnchor>>>__
+              );
+  FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<ResolvedStyleAccess>__);
+  FUN_02f08768(Method_System_Xml_Schema_Parser_LoadAttributeNode__);
+  FUN_02f08768(PTR_DAT_067c8f20);
+  FUN_02f08768(Method_UnityEngine_Object_FindAnyObjectByType<EventSystem>__);
+  FUN_02f08768(PTR_DAT_067cbf08);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScreenSpaceShadows_ScreenSpaceShadowsPostPass_PassData>__
+              );
+  FUN_02f08768(Method_OVRVirtualKeyboard_Awake__);
+  FUN_02f08768(
+              Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+              );
+  FUN_02f08768(Method_OVRTask_FromResult<OVRResult<OVRAnchor_ShareResult>>__);
+  FUN_02f08768(Method_Unity_AppUI_UI_RectField_OnHFieldChanged__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRenderPass<ProbeReferenceVolume_RenderFragmentationOverlayPassData>__
+              );
+  FUN_02f08768(Method_System_Data_DataTable_set_Prefix__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRenderPass<RenderGraph_ProfilingScopePassData>__
+              );
+  FUN_02f08768(PTR_DAT_067cb280);
+  FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<StyleBackgroundPosition>__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_DoFBokehPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_DoFGaussianPassData>__
+              );
+  FUN_02f08768(Method_Unity_Collections_DataStreamReader_CheckBits__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_UpdateCameraResolutionPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<RenderGraphUtils_BlitMaterialPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<RenderGraphUtils_BlitPassData>__
+              );
+  FUN_02f08768(Method_System_Diagnostics_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+;
+    FUN_05de3ab4(lVar16,&stack0x000000a0,uVar4,0);
+    *(long *)(unaff_x19 + 0x2a0) = lVar16;
+    puVar7 = PTR_DAT_067cbf08;
+    if (lVar16 != 0) {
+      *(char *)(lVar16 + 0x19) = (char)unaff_x20[0x11];
+      puVar8 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+      ;
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      uVar18 = FUN_06126ea0(0);
+      lVar16 = unaff_x20[0xc];
+      uVar20 = *(undefined8 *)*pauVar1;
+      uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+      uVar2 = *(undefined4 *)(lVar14 + 0x14);
+      uVar21 = *(undefined8 *)(unaff_x19 + 0x2a0);
+      uVar19 = thunk_FUN_02f45270(*(undefined8 *)puVar8);
+      FUN_05e01004(uVar19,0xd2,uVar18,(int)lVar16,uVar20,uVar12,uVar2,uVar21);
+      puVar7 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_UberPostPassData>__
+      ;
+      *(undefined8 *)(unaff_x19 + 0x178) = uVar19;
+      uVar18 = *(undefined8 *)*pauVar1;
+      uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      FUN_05de5e0c(uVar18,uVar12,0x60,0);
+      lVar14 = FUN_02f0880c(*(undefined8 *)Method_Unity_AppUI_UI_RectField_OnHFieldChanged__,3);
+      uStack0000000000000050 = 0;
+      FUN_0612aaa4(&stack0x00000050,*(undefined8 *)Method_System_Diagnostics_Process_Start__,0);
+      puVar7 = Method_System_Diagnostics_Process_OpenProcessHandle__;
+      if (lVar14 != 0) {
+        if (*(int *)(lVar14 + 0x18) != 0) {
+          *(undefined4 *)(lVar14 + 0x20) = uStack0000000000000050;
+          uStack000000000000009c = 0;
+          FUN_0612aaa4((long)&stack0x00000098 + 4,*(undefined8 *)puVar7,0);
+          puVar7 = 
+          Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_UpdateCameraResolutionPassData>__
+          ;
+          if ((*(uint *)(lVar14 + 0x18) & 0xfffffffe) != 0) {
+            *(undefined4 *)(lVar14 + 0x24) = uStack000000000000009c;
+            uStack0000000000000098 = 0;
+            FUN_0612aaa4(&stack0x00000098,*(undefined8 *)puVar7,0);
+            puVar8 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<RenderGraphUtils_BlitMaterialPassData>__
+            ;
+            puVar7 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<RenderGraphUtils_PassData>__
+            ;
+            if (2 < *(uint *)(lVar14 + 0x18)) {
+              *(undefined4 *)(lVar14 + 0x28) = uStack0000000000000098;
+              uVar18 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                                         );
+              FUN_05df710c(uVar18,0xd3,uVar13,1,0,0,*(undefined8 *)puVar8,0);
+              uVar19 = *(undefined8 *)puVar7;
+              uVar20 = *(undefined8 *)(unaff_x19 + 0x2a0);
+              *(undefined8 *)(unaff_x19 + 0x180) = uVar18;
+              uVar18 = thunk_FUN_02f45270(uVar19);
+              FUN_05df8910(uVar18,0xe6,uVar20,0);
+              *(undefined8 *)(unaff_x19 + 0x188) = uVar18;
+              uVar18 = FUN_06126ea0(0);
+              lVar16 = unaff_x20[0xc];
+              uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                                         );
+              FUN_05dfbdcc(uVar19,*(undefined8 *)
+                                   Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<DeferredLights_SetupLightPassData>__
+                           ,lVar14,1,0xfa,uVar18,(int)lVar16);
+              *(undefined8 *)(unaff_x19 + 400) = uVar19;
+              goto LAB_05dc4eb4;
+            }
+          }
+        }
+                    /* WARNING: Subroutine does not return */
+        FUN_02f089d0();
+      }
+    }
+LAB_05dc5470:
+                    /* WARNING: Subroutine does not return */
+    FUN_02f089c8();
+  }
+LAB_05dc4eb4:
+  puVar7 = 
+  Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_PassData>__
+  ;
+  if (*(int *)(*(long *)PTR_DAT_067cbf08 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  uVar18 = FUN_06126ea0(0);
+  lVar14 = unaff_x20[0xc];
+  uVar20 = *(undefined8 *)*pauVar1;
+  uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+  uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                             );
+  FUN_05dfc26c(uVar19,10,1,0xfa,uVar18,(int)lVar14,uVar20,uVar12);
+  *(undefined8 *)(unaff_x19 + 0x198) = uVar19;
+  uVar18 = FUN_06126ea0(0);
+  lVar14 = unaff_x20[0xc];
+  uVar20 = *(undefined8 *)*pauVar1;
+  uVar12 = *(undefined4 *)(unaff_x19 + 0x2c5);
+  uVar19 = thunk_FUN_02f45270(*(undefined8 *)puVar7);
+  FUN_05dfdc8c(uVar19,10,1,0xfa,uVar18,(int)lVar14,uVar20,uVar12);
+  puVar7 = 
+  Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+  ;
+  iVar3 = *(int *)(unaff_x19 + 0x2b0);
+  *(undefined8 *)(unaff_x19 + 0x1a0) = uVar19;
+  uVar12 = 500;
+  if (iVar3 != 1) {
+    uVar12 = 400;
+  }
+  if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  bVar11 = FUN_05dadd80(0);
+  uVar18 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                             );
+  FUN_05df710c(uVar18,uVar12,uVar13,1,0,iVar3 == 1 & bVar11,0,0);
+  *(undefined8 *)(unaff_x19 + 0x1b0) = uVar18;
+  FUN_063fb9e4(&Method_UnityEngine_Object_FindAnyObjectByType<ARGestureInteractor>__);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 35
+FUNCTION_NAME: FUN_05dc4244
+ENTRY_POINT: 05dc4244
+MANUAL_PRIORITY_SCORE: 413
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 265
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_16', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_15', 'telemetry_or_network_hits_19', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_15', 'functionality_data_collection_or_telemetry_hits_19']
+PRIORITY_REASONS: ['base_scanner_score_265', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\05dc4244_FUN_05dc4244.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\manual-review-pack\A_must_review\035_p413_FUN_05dc4244.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_05dc4244
+ENTRY_POINT: 05dc4244
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 265
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_16;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_15;telemetry_or_network_hits_19;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_15;functionality_data_collection_or_telemetry_hits_19
+*/
+
+
+void FUN_05dc4244(long param_1,long *param_2)
+
+{
+  undefined1 (*pauVar1) [12];
+  int iVar2;
+  undefined1 uVar3;
+  long lVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  byte bVar11;
+  undefined4 uVar12;
+  undefined8 uVar13;
+  long lVar14;
+  ulong uVar15;
+  long lVar16;
+  undefined4 extraout_var;
+  uint uVar17;
+  undefined4 uVar18;
+  undefined8 uVar19;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined8 uVar22;
+  undefined1 auVar23 [12];
+  undefined8 in_stack_fffffffffffffe90;
+  undefined4 uVar24;
+  undefined4 local_120;
+  undefined4 uStack_11c;
+  undefined8 uStack_118;
+  undefined8 local_110;
+  undefined4 local_d8;
+  undefined4 local_d4;
+  undefined8 local_d0;
+  undefined8 uStack_c8;
+  undefined8 local_c0;
+  undefined1 local_b8;
+  undefined4 local_b7;
+  undefined3 uStack_b3;
+  undefined8 local_b0;
+  undefined8 uStack_a8;
+  undefined8 local_a0;
+  undefined8 uStack_98;
+  undefined8 local_90;
+  long local_80;
+  long local_78;
+  long local_70;
+  long local_68;
+  
+  puVar7 = Method_System_Data_DataTable_set_Prefix__;
+  uVar18 = (undefined4)((ulong)in_stack_fffffffffffffe90 >> 0x20);
+  if ((DAT_06bc3c11 & 1) == 0) {
+    FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<Rotate>__);
+    FUN_02f08768(
+                Method_Unity_Collections_FixedStringMethods_CompareTo<FixedString128Bytes,_FixedString64Bytes>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_SMAAPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_SMAASetupPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                );
+    FUN_02f08768(PTR_DAT_067c9e50);
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_UberPostPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<RenderGraphUtils_PassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<RenderObjectsPass_PassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_BeginXRPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_PassData>__
+                );
+    FUN_02f08768(Method_UnityEngine_UIElements_Painter2D_OnMeshGeneration__);
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<StencilCrossFadeRenderPass_PassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<TemporalAA_TaaPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<Vrs_VisualizationPassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XRDepthMotionPass_PassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+                );
+    FUN_02f08768(Method_System_MemoryExtensions_SequenceEqual<byte>__);
+    FUN_02f08768(Method_UnityEngine_InputSystem_Utilities_MemoryHelpers_SetBitsInBuffer__);
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ARBackgroundRendererFeature_ARCameraBackgroundRenderPass_PassData>__
+                );
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_CopyPassData>__
+                );
+    FUN_02f08768(PTR_DAT_067c9340);
+    FUN_02f08768(
+                Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<FullScreenPassRendererFeature_FullScreenRenderPass_MainPassData>__
+                );
+    FUN_02f08768(Method_Unity_Collections_FixedStringMethods_Append<UnsafeText>__);
+    FUN_02f08768(
+                Method_UnityEngine_XR_OpenXR_Features_Meta_ObjectPoolCreateUtil_Create<AwaitableCompletionSource<Result<XRAnchor>>>__
+                );
+    FUN_02f08768(Method_Unity_Properties_PropertyBag_Register<ResolvedStyleAccess>__);
+    FUN_02f08768(Method_System_Xml_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+;
+    puVar7 = PTR_DAT_067cbf08;
+    if (lVar16 != 0) {
+      *(char *)(lVar16 + 0x19) = (char)param_2[0x11];
+      puVar8 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<XROcclusionMeshPass_PassData>__
+      ;
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      uVar19 = FUN_06126ea0(0);
+      lVar16 = param_2[0xc];
+      uVar21 = *(undefined8 *)*pauVar1;
+      uVar18 = *(undefined4 *)(param_1 + 0x2c5);
+      uVar12 = *(undefined4 *)(lVar14 + 0x14);
+      uVar22 = *(undefined8 *)(param_1 + 0x2a0);
+      uVar20 = thunk_FUN_02f45270(*(undefined8 *)puVar8);
+      FUN_05e01004(uVar20,0xd2,uVar19,(int)lVar16,uVar21,uVar18,uVar12,uVar22,0);
+      puVar7 = 
+      Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_UberPostPassData>__
+      ;
+      *(undefined8 *)(param_1 + 0x178) = uVar20;
+      uVar19 = *(undefined8 *)*pauVar1;
+      uVar18 = *(undefined4 *)(param_1 + 0x2c5);
+      if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+        thunk_FUN_02f6670c();
+      }
+      FUN_05de5e0c(uVar19,uVar18,0x60,0);
+      lVar16 = FUN_02f0880c(*(undefined8 *)Method_Unity_AppUI_UI_RectField_OnHFieldChanged__,3);
+      local_120 = 0;
+      FUN_0612aaa4(&local_120,*(undefined8 *)Method_System_Diagnostics_Process_Start__,0);
+      puVar7 = Method_System_Diagnostics_Process_OpenProcessHandle__;
+      if (lVar16 != 0) {
+        if (*(int *)(lVar16 + 0x18) != 0) {
+          *(undefined4 *)(lVar16 + 0x20) = local_120;
+          local_d4 = 0;
+          FUN_0612aaa4(&local_d4,*(undefined8 *)puVar7,0);
+          puVar7 = 
+          Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_UpdateCameraResolutionPassData>__
+          ;
+          if ((*(uint *)(lVar16 + 0x18) & 0xfffffffe) != 0) {
+            *(undefined4 *)(lVar16 + 0x24) = local_d4;
+            local_d8 = 0;
+            FUN_0612aaa4(&local_d8,*(undefined8 *)puVar7,0);
+            puVar8 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<RenderGraphUtils_BlitMaterialPassData>__
+            ;
+            puVar7 = 
+            Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<RenderGraphUtils_PassData>__
+            ;
+            if (2 < *(uint *)(lVar16 + 0x18)) {
+              *(undefined4 *)(lVar16 + 0x28) = local_d8;
+              uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                                         );
+              FUN_05df710c(uVar19,0xd3,uVar13,1,0,0,*(undefined8 *)puVar8,0);
+              uVar20 = *(undefined8 *)puVar7;
+              uVar21 = *(undefined8 *)(param_1 + 0x2a0);
+              *(undefined8 *)(param_1 + 0x180) = uVar19;
+              uVar19 = thunk_FUN_02f45270(uVar20);
+              FUN_05df8910(uVar19,0xe6,uVar21,0);
+              *(undefined8 *)(param_1 + 0x188) = uVar19;
+              uVar19 = FUN_06126ea0(0);
+              lVar4 = param_2[0xc];
+              uVar20 = thunk_FUN_02f45270(*(undefined8 *)
+                                           Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                                         );
+              uVar18 = extraout_var;
+              FUN_05dfbdcc(uVar20,*(undefined8 *)
+                                   Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<DeferredLights_SetupLightPassData>__
+                           ,lVar16,1,0xfa,uVar19,(int)lVar4);
+              *(undefined8 *)(param_1 + 400) = uVar20;
+              goto LAB_05dc4eb4;
+            }
+          }
+        }
+                    /* WARNING: Subroutine does not return */
+        FUN_02f089d0();
+      }
+    }
+LAB_05dc5470:
+                    /* WARNING: Subroutine does not return */
+    FUN_02f089c8();
+  }
+LAB_05dc4eb4:
+  puVar7 = 
+  Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_PassData>__
+  ;
+  if (*(int *)(*(long *)PTR_DAT_067cbf08 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  uVar19 = FUN_06126ea0(0);
+  lVar16 = param_2[0xc];
+  uVar21 = *(undefined8 *)*pauVar1;
+  uVar12 = *(undefined4 *)(param_1 + 0x2c5);
+  uVar24 = *(undefined4 *)(lVar14 + 0x14);
+  uVar20 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<ScriptableRenderer_EndXRPassData>__
+                             );
+  uVar22 = CONCAT44(uVar18,uVar24);
+  FUN_05dfc26c(uVar20,10,1,0xfa,uVar19,(int)lVar16,uVar21,uVar12,uVar22,0);
+  uVar24 = (undefined4)((ulong)uVar22 >> 0x20);
+  *(undefined8 *)(param_1 + 0x198) = uVar20;
+  uVar19 = FUN_06126ea0(0);
+  lVar16 = param_2[0xc];
+  uVar21 = *(undefined8 *)*pauVar1;
+  uVar18 = *(undefined4 *)(param_1 + 0x2c5);
+  uVar12 = *(undefined4 *)(lVar14 + 0x14);
+  uVar20 = thunk_FUN_02f45270(*(undefined8 *)puVar7);
+  FUN_05dfdc8c(uVar20,10,1,0xfa,uVar19,(int)lVar16,uVar21,uVar18,CONCAT44(uVar24,uVar12),0);
+  puVar7 = 
+  Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+  ;
+  iVar2 = *(int *)(param_1 + 0x2b0);
+  *(undefined8 *)(param_1 + 0x1a0) = uVar20;
+  uVar18 = 500;
+  if (iVar2 != 1) {
+    uVar18 = 400;
+  }
+  if (*(int *)(*(long *)puVar7 + 0xe4) == 0) {
+    thunk_FUN_02f6670c();
+  }
+  bVar11 = FUN_05dadd80(0);
+  uVar19 = thunk_FUN_02f45270(*(undefined8 *)
+                               Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddRasterRenderPass<PostProcessPass_StopNaNsPassData>__
+                             );
+  FUN_05df710c(uVar19,uVar18,uVar13,1,0,iVar2 == 1 & bVar11,0,0);
+  *(undefined8 *)(param_1 + 0x1b0) = uVar19;
+  FUN_063fb9e4(&Method_UnityEngine_Object_FindAnyObjectByType<ARGestureInteractor>__);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 36
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XRFaceSubsystemDescriptor.Cinfo$$op_Inequality
+ENTRY_POINT: 05dc63e8
+MANUAL_PRIORITY_SCORE: 407
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 256
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_13', 'weak_xr_or_state_hits_14', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_4', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_8', 'telemetry_or_network_hits_14', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_8', 'functionality_data_collection_or_telemetry_hits_14']
+PRIORITY_REASONS: ['base_scanner_score_256', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\general-structure-results\90_plus_framework_support_only_near_certain\05dc63e8_UnityEngine.XR.ARSubsystems.XRFaceSubsystemDescriptor.Cinfo$$op_Inequality.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\spatialPiano\manual-review-pack\A_must_review\036_p407_UnityEngine.XR.ARSubsystems.XRFaceSubsystemDescriptor.Cinfo$$op_Inequality.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XRFaceSubsystemDescriptor.Cinfo$$op_Inequality
+ENTRY_POINT: 05dc63e8
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 256
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_13;weak_xr_or_state_hits_14;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_4;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_8;telemetry_or_network_hits_14;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_8;functionality_data_collection_or_telemetry_hits_14
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x05dc8068) */
+/* WARNING: Removing unreachable block (ram,0x05dc8070) */
+/* WARNING: Removing unreachable block (ram,0x05dc6a38) */
+/* WARNING: Removing unreachable block (ram,0x05dc8b68) */
+/* WARNING: Removing unreachable block (ram,0x05dc6a40) */
+/* WARNING: Removing unreachable block (ram,0x05dc6fc8) */
+/* WARNING: Removing unreachable block (ram,0x05dc6fd0) */
+/* WARNING: Removing unreachable block (ram,0x05dc8b5c) */
+/* WARNING: Removing unreachable block (ram,0x05dc6fec) */
+/* WARNING: Removing unreachable block (ram,0x05dc6ffc) */
+/* WARNING: Removing unreachable block (ram,0x05dc7000) */
+/* WARNING: Removing unreachable block (ram,0x05dc7010) */
+/* WARNING: Removing unreachable block (ram,0x05dc7014) */
+/* WARNING: Removing unreachable block (ram,0x05dc8270) */
+/* WARNING: Removing unreachable block (ram,0x05dc8288) */
+/* WARNING: Removing unreachable block (ram,0x05dc8290) */
+
+void UnityEngine_XR_ARSubsystems_XRFaceSubsystemDescriptor_Cinfo__op_Inequality(long param_1)
+
+{
+  long *plVar1;
+  uint uVar2;
+  uint uVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  char cVar6;
+  bool bVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  bool bVar10;
+  bool bVar11;
+  byte bVar12;
+  byte bVar13;
+  uint uVar14;
+  undefined4 uVar15;
+  uint uVar16;
+  uint uVar17;
+  uint uVar18;
+  uint uVar19;
+  uint uVar20;
+  uint uVar21;
+  uint uVar22;
+  uint uVar23;
+  uint uVar24;
+  int iVar25;
+  long lVar26;
+  long lVar27;
+  undefined8 uVar28;
+  undefined8 uVar29;
+  long lVar30;
+  long lVar31;
+  ulong uVar32;
+  undefined8 uVar33;
+  ulong uVar34;
+  ulong uVar35;
+  ulong uVar36;
+  undefined8 *puVar37;
+  uint uVar38;
+  long lVar39;
+  int iVar40;
+  long unaff_x19;
+  long unaff_x20;
+  uint uVar41;
+  long lVar42;
+  long *plVar43;
+  long lVar44;
+  char cVar45;
+  char cVar46;
+  long lVar47;
+  uint uVar48;
+  undefined8 uVar49;
+  undefined8 uVar50;
+  undefined8 uVar51;
+  undefined8 uVar52;
+  undefined8 uVar53;
+  undefined8 uVar54;
+  undefined8 uVar55;
+  undefined1 auVar56 [16];
+  uint uStack000000000000003c;
+  uint uStack0000000000000044;
+  uint uStack0000000000000060;
+  undefined8 in_stack_00000080;
+  undefined8 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined8 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined8 in_stack_000000b0;
+  undefined8 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  ulong in_stack_000000e0;
+  undefined8 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined8 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined8 in_stack_00000108;
+  undefined4 in_stack_00000110;
+  undefined8 in_stack_00000120;
+  undefined8 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined8 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined8 in_stack_00000150;
+  undefined8 in_stack_00000158;
+  undefined8 in_stack_00000160;
+  undefined8 in_stack_00000168;
+  undefined8 in_stack_00000170;
+  ulong in_stack_00000180;
+  undefined8 in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined8 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined8 in_stack_000001a8;
+  undefined4 in_stack_000001b0;
+  undefined8 in_stack_000001c0;
+  undefined8 in_stack_000001c8;
+  undefined8 in_stack_000001d0;
+  undefined8 in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined8 in_stack_000001e8;
+  undefined4 in_stack_000001f0;
+  long in_stack_000003d0;
+  undefined8 in_stack_000003e0;
+  
+  FUN_02f08768(*(undefined8 *)(param_1 + 0xe90));
+  FUN_02f08768(Method_Unity_Collections_FixedStringMethods_Append<FixedString128Bytes>__);
+  FUN_02f08768(PTR_DAT_067c97a8);
+  FUN_02f08768(
+              Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+              );
+  FUN_02f08768(PTR_DAT_067cbf10);
+  FUN_02f08768(Method_OVRTask_FromResult<OVRResult<OVRAnchor_ShareResult>>__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<InvokeOnRenderObjectCallbackPass_PassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_BloomPassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_LensFlarePassData>__
+              );
+  FUN_02f08768(PTR_DAT_067cb280);
+  FUN_02f08768(Method_System_Data_NewDiffgramGen_GenerateColumn__);
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<PostProcessPass_LensFlareScreenSpacePassData>__
+              );
+  FUN_02f08768(
+              Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<ScreenSpaceAmbientOcclusionPass_SSAOPassData>__
+              );
+  FUN_02f08768(Method_System_Xml_Schema_ParticleContentValidator_ValidateElement__);
+  FUN_02f08768(Method_Unity_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+14 = uVar14 ^ 1;
+  }
+  plVar43 = (long *)(unaff_x19 + 0x230);
+  plVar1 = (long *)(unaff_x19 + 0x240);
+  if (uVar18 == 0) {
+    if (cVar45 == '\0') {
+      return;
+    }
+    FUN_05dc589c();
+  }
+  else {
+    uVar15 = FUN_060d65a4(&stack0x00000980,0);
+    if (*(int *)(*(long *)Method_System_IO_Path_InsecureGetFullPath__ + 0xe4) == 0) {
+      thunk_FUN_02f6670c(*(long *)Method_System_IO_Path_InsecureGetFullPath__);
+    }
+    in_stack_00000180 = uVar36;
+    in_stack_00000188 = uVar49;
+    in_stack_00000190 = uVar50;
+    in_stack_00000198 = uVar52;
+    in_stack_000001a0 = uVar54;
+    in_stack_000001a8 = uVar55;
+    in_stack_000001b0 = uVar4;
+    FUN_05d835c8(&stack0x000001c0,&stack0x00000180,uVar36 & 0xffffffff,(int)(uVar36 >> 0x20),uVar15,
+                 0,0);
+    if (*(int *)(*(long *)
+                  Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<OVRPlugin_Qpl_Annotation>__
+                + 0xe4) == 0) {
+      thunk_FUN_02f6670c();
+    }
+    FUN_05daf224(0,unaff_x19 + 0x328,&stack0x00000650,0,1,1,
+                 *(undefined8 *)
+                  Method_UnityEngine_Rendering_RenderGraphModule_RenderGraph_AddUnsafePass<ScreenSpaceAmbientOcclusionPass_SSAOPassData>__
+                 ,0);
+    if (cVar45 == '\0') {
+      if (*(long *)(unaff_x19 + 0x318) == 0) goto LAB_05dc8b54;
+      FUN_05d80c30(*(long *)(unaff_x19 + 0x318),&stack0x00000980,plVar43,0,plVar1,&stack0x00000750,
+                   unaff_x19 + 0x288,0);
+      goto LAB_05dc692c;
+    }
+    FUN_05dc589c();
+    if (*(long *)(unaff_x19 + 0x318) == 0) goto LAB_05dc8b54;
+    FUN_05d80c30(*(long *)(unaff_x19 + 0x318),&stack0x00000980,plVar43,bVar13,plVar1,
+                 &stack0x00000750,unaff_x19 + 0x288,bVar12 & 1);
+    FUN_05d6624c();
+  }
+  lVar30 = *plVar43;
+  if ((bVar12 & 1) != 0) {
+    if (*(long *)(unaff_x19 + 800) == 0) goto LAB_05dc8b54;
+    FUN_05d80d50(*(long *)(unaff_x19 + 800),&stack0x00000648,1,uVar14 & 1,0);
+    FUN_05d6624c();
+  }
+  if (*(long *)(lVar27 + 0x1b0) != 0) {
+    FUN_05d6624c();
+  }
+  if (((bVar12 & 1) == 0) && (((uVar18 == 0 || (lVar26 != 0)) || (bVar10 && !bVar11)))) {
+    lVar26 = *plVar43;
+    if (lVar26 == 0) goto LAB_05dc8b54;
+    uVar33 = *(undefined8 *)(lVar26 + 0x30);
+    uVar29 = *(undefined8 *)(lVar26 + 0x28);
+    uVar53 = *(undefined8 *)(lVar26 + 0x40);
+    uVar51 = *(undefined8 *)(lVar26 + 0x38);
+    uVar28 = *(undefined8 *)(lVar26 + 0x48);
+    lVar26 = *(long *)(unaff_x19 + 600);
+    if (lVar26 == 0) goto LAB_05dc8b54;
+    in_stack_000001c8 = *(undefined8 *)(lVar26 + 0x30);
+    in_stack_000001c0 = *(undefined8 *)(lVar26 + 0x28);
+    in_stack_000001d8 = *(undefined8 *)(lVar26 + 0x40);
+    in_stack_000001d0 = *(undefined8 *)(lVar26 + 0x38);
+    in_stack_000001e0 = *(undefined8 *)(lVar26 + 0x48);
+    if (*(int *)(*(long *)PTR_DAT_067c97a8 + 0xe4) == 0) {
+      thunk_FUN_02f6670c();
+    }
+    in_stack_00000128 = in_stack_000001c8;
+    in_stack_00000120 = in_stack_000001c0;
+    in_stack_00000138 = in_stack_000001d8;
+    in_stack_00000130 = in_stack_000001d0;
+    in_stack_00000140 = in_stack_000001e0;
+    in_stack_00000150 = uVar29;
+    in_stack_00000158 = uVar33;
+    in_stack_00000160 = uVar51;
+    in_stack_00000168 = uVar53;
+    in_stack_00000170 = uVar28;
+    uVar35 = FUN_0610d5f4(&stack0x00000150,&stack0x00000120,0);
+    if ((uVar35 & 1) == 0) {
+      if (*(long *)(unaff_x19 + 0x1d8) == 0) goto LAB_05dc8b54;
+      in_stack_000000e0 = uVar36;
+      in_stack_000000e8 = uVar49;
+      in_stack_000000f0 = uVar50;
+      in_stack_000000f8 = uVar52;
+      in_stack_00000100 = uVar54;
+      in_stack_00000108 = uVar55;
+      in_stack_00000110 = uVar4;
+      FUN_05dff16c(*(long *)(unaff_x19 + 0x1d8),&stack0x000000e0,lVar30,0);
+      FUN_05d6624c();
+    }
+  }
+  if (((uVar32 & 1) != 0) && ((uVar34 & 1) == 0 && *(char *)(lVar27 + 0x238) != '\0')) {
+    FUN_05d6624c();
+  }
+  if (*(long *)(lVar27 + 0x1a0) != 0) {
+    uVar36 = FUN_05c35d3c(*(long *)(lVar27 + 0x1a0),0);
+    if ((uVar36 & 1) == 0) {
+      return;
+    }
+    lVar26 = *plVar1;
+    if (lVar26 != 0) {
+      uVar49 = *(undefined8 *)(lVar26 + 0x30);
+      uVar29 = *(undefined8 *)(lVar26 + 0x28);
+      uVar52 = *(undefined8 *)(lVar26 + 0x40);
+      uVar50 = *(undefined8 *)(lVar26 + 0x38);
+      uVar28 = *(undefined8 *)(lVar26 + 0x48);
+      lVar26 = *(long *)(lVar27 + 0x1a0);
+      if (lVar26 != 0) {
+        in_stack_000001c8 = *(undefined8 *)(lVar26 + 0x48);
+        in_stack_000001c0 = *(undefined8 *)(lVar26 + 0x40);
+        in_stack_000001d8 = *(undefined8 *)(lVar26 + 0x58);
+        in_stack_000001d0 = *(undefined8 *)(lVar26 + 0x50);
+        in_stack_000001e0 = *(undefined8 *)(lVar26 + 0x60);
+        if (*(int *)(*(long *)PTR_DAT_067c97a8 + 0xe4) == 0) {
+          thunk_FUN_02f6670c();
+        }
+        in_stack_00000088 = in_stack_000001c8;
+        in_stack_00000080 = in_stack_000001c0;
+        in_stack_00000098 = in_stack_000001d8;
+        in_stack_00000090 = in_stack_000001d0;
+        in_stack_000000a0 = in_stack_000001e0;
+        in_stack_000000b0 = uVar29;
+        in_stack_000000b8 = uVar49;
+        in_stack_000000c0 = uVar50;
+        in_stack_000000c8 = uVar52;
+        in_stack_000000d0 = uVar28;
+        uVar36 = FUN_0610d5f4(&stack0x000000b0,&stack0x00000080,0);
+        if ((uVar36 & 1) != 0) {
+          return;
+        }
+        if (*(long *)(lVar27 + 0x1a0) != 0) {
+          if (*(char *)(*(long *)(lVar27 + 0x1a0) + 0x28) == '\0') {
+            return;
+          }
+          if (*(long *)(unaff_x19 + 0x1f0) != 0) {
+            FUN_05df72fc(*(long *)(unaff_x19 + 0x1f0),*(undefined8 *)(unaff_x19 + 0x240),
+                         *(undefined8 *)(unaff_x19 + 0x260),0);
+            if (*(long *)(unaff_x19 + 0x1f0) != 0) {
+              *(undefined1 *)(*(long *)(unaff_x19 + 0x1f0) + 0xcd) = 1;
+LAB_05dc692c:
+              FUN_05d6624c();
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_05dc8b54:
+                    /* WARNING: Subroutine does not return */
+  FUN_02f089c8();
+}
+
+
+
+END_DECOMPILED_FUNCTION

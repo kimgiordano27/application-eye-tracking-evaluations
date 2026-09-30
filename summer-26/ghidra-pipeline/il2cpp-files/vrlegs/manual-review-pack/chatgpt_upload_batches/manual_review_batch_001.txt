@@ -1,0 +1,1255 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 1
+FUNCTION_NAME: FUN_03139398
+ENTRY_POINT: 03139398
+MANUAL_PRIORITY_SCORE: 406
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 249
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_15', 'strong_pose_or_ray_construction_hits_2', 'ray_or_cast_sink_hits_4', 'ui_or_gameplay_sink_hits_10', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_permission_setup', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_14', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_249', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\03139398_FUN_03139398.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\manual-review-pack\A_must_review\001_p406_FUN_03139398.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_03139398
+ENTRY_POINT: 03139398
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 249
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_15;strong_pose_or_ray_construction_hits_2;ray_or_cast_sink_hits_4;ui_or_gameplay_sink_hits_10;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_permission_setup;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_14;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_03139398(long param_1,undefined4 param_2,long param_3)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined1 auVar4 [16];
+  undefined8 local_1e0 [4];
+  undefined8 local_1c0 [4];
+  undefined8 local_1a0;
+  undefined4 uStack_198;
+  undefined4 uStack_194;
+  undefined4 local_190;
+  undefined4 uStack_18c;
+  undefined4 uStack_188;
+  undefined8 local_180;
+  undefined8 local_178;
+  undefined8 local_170;
+  undefined8 local_168;
+  undefined8 local_160;
+  undefined8 local_158;
+  undefined8 local_150;
+  undefined8 local_148;
+  undefined8 local_140;
+  undefined8 uStack_138;
+  undefined8 local_130;
+  undefined8 local_120;
+  undefined8 local_118;
+  undefined8 local_110;
+  undefined8 local_108;
+  undefined8 local_100;
+  undefined4 uStack_f8;
+  undefined4 uStack_f4;
+  undefined4 local_f0;
+  undefined4 uStack_ec;
+  undefined4 local_e8;
+  undefined8 local_e0;
+  undefined8 local_d8;
+  undefined8 local_d0;
+  undefined8 local_c8;
+  undefined8 local_c0;
+  int local_b8;
+  int local_b4;
+  undefined4 local_ac;
+  undefined4 local_a8;
+  undefined4 local_a4;
+  undefined1 local_a0 [16];
+  undefined4 local_90;
+  undefined4 local_8c;
+  undefined4 local_88;
+  undefined4 local_84;
+  undefined4 local_80;
+  undefined4 local_7c;
+  undefined1 local_78 [16];
+  undefined1 local_68 [16];
+  undefined4 local_58;
+  undefined4 local_54;
+  
+  puVar1 = System_Collections_Generic_HashSet<ITypeDefinition>_TypeInfo;
+  if ((DAT_0412bc6e & 1) == 0) {
+    FUN_01ab69ac(System_Collections_Generic_HashSet<LabelScopeInfo>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<MaskableGraphic>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Material>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<IXRInteractor>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Mesh>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<MeshRenderer>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<NetworkId>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<object>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Object>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<OrderNode>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ParameterExpression>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<RTHandle>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Renderer>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<IValueAnimationUpdate>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Rigidbody>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ScheduledItem>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ScriptableRenderer>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Shader>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<float>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<IXRInteractionGroup>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<string>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<StylePropertyId>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<StyleSheet>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<TalkiesBase>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Text>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Tick>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Transform>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<Type>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<TypeIndex>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ushort>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ITypeDefinition>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<uint>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<VisualElement>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<VisualTreeAsset>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<XRLoader>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                );
+    FUN_01ab69ac(
+                System_Collections_Generic_HashSet<MaterialValueBindingMerger_MaterialTarget>_TypeInfo
+                );
+    FUN_01ab69ac(System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<ResourceManager_InstanceOperation>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<SVGDocument_ElemHandler>_TypeInfo);
+    FUN_01ab69ac(System_Collections_Generic_HashSet<StunServers_StunServer>_TypeInfo);
+    FUN_01ab69ac(
+                System_Collections_Generic_HashSet<VRMSpringBoneColliderGroup_SphereCollider>_TypeInfo
+                );
+    
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+0,*(undefined8 *)puVar2);
+      uStack_f8 = uStack_198;
+      local_100 = local_1a0;
+      uStack_ec = uStack_18c;
+      local_e8 = uStack_188;
+      uStack_f4 = uStack_194;
+      local_f0 = local_190;
+      local_1c0[0] = local_1a0;
+      local_8c = param_2;
+      FUN_020dd354(param_1 + 0x48,&local_8c,local_1c0,*(undefined8 *)puVar3);
+      local_d8._4_4_ = local_d8._4_4_ + 1;
+    } while (local_d8._4_4_ < (int)local_d8);
+  }
+  FUN_021b2770(&local_e0,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<Material>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0x48,
+                        *(undefined8 *)System_Collections_Generic_HashSet<VisualTreeAsset>_TypeInfo)
+  ;
+  puVar3 = System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<StylePropertyId>_TypeInfo;
+  local_110 = auVar4._0_8_;
+  local_108._4_4_ = auVar4._12_4_ + 1;
+  local_108._0_4_ = auVar4._8_4_;
+  if (local_108._4_4_ < (int)local_108) {
+    do {
+      FUN_021d3e84(&local_110,local_a0,*(undefined8 *)puVar2);
+      local_88 = param_2;
+      FUN_020dd354(param_1 + 0x58,&local_88,local_a0,*(undefined8 *)puVar3);
+      local_108._4_4_ = local_108._4_4_ + 1;
+    } while (local_108._4_4_ < (int)local_108);
+  }
+  FUN_021b2770(&local_110,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<MaskableGraphic>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0x60,
+                        *(undefined8 *)System_Collections_Generic_HashSet<VisualElement>_TypeInfo);
+  puVar3 = System_Collections_Generic_HashSet<VRMSpringBoneColliderGroup_SphereCollider>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<Text>_TypeInfo;
+  local_120 = auVar4._0_8_;
+  local_118._4_4_ = auVar4._12_4_ + 1;
+  local_118._0_4_ = auVar4._8_4_;
+  if (local_118._4_4_ < (int)local_118) {
+    do {
+      FUN_021d3e84(&local_120,&local_1a0,*(undefined8 *)puVar2);
+      uStack_138 = CONCAT44(uStack_194,uStack_198);
+      local_130 = CONCAT44(uStack_18c,local_190);
+      local_140 = local_1a0;
+      local_1e0[0] = local_1a0;
+      local_84 = param_2;
+      FUN_020dd354(param_1 + 0x68,&local_84,local_1e0,*(undefined8 *)puVar3);
+      local_118._4_4_ = local_118._4_4_ + 1;
+    } while (local_118._4_4_ < (int)local_118);
+  }
+  FUN_021b2770(&local_120,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<Object>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0x90,
+                        *(undefined8 *)System_Collections_Generic_HashSet<XRLoader>_TypeInfo);
+  puVar3 = System_Collections_Generic_HashSet<StunServers_StunServer>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<StyleSheet>_TypeInfo;
+  local_150 = auVar4._0_8_;
+  local_148._4_4_ = auVar4._12_4_ + 1;
+  local_148._0_4_ = auVar4._8_4_;
+  if (local_148._4_4_ < (int)local_148) {
+    do {
+      FUN_021d3e84(&local_150,local_78,*(undefined8 *)puVar2);
+      local_7c = param_2;
+      FUN_020dd354(param_1 + 0x78,&local_7c,local_78,*(undefined8 *)puVar3);
+      local_148._4_4_ = local_148._4_4_ + 1;
+    } while (local_148._4_4_ < (int)local_148);
+  }
+  FUN_021b2770(&local_150,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<MeshRenderer>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0xa8,
+                        *(undefined8 *)
+                         System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                       );
+  puVar3 = System_Collections_Generic_HashSet<SVGDocument_ElemHandler>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<string>_TypeInfo;
+  local_160 = auVar4._0_8_;
+  local_158._4_4_ = auVar4._12_4_ + 1;
+  local_158._0_4_ = auVar4._8_4_;
+  if (local_158._4_4_ < (int)local_158) {
+    do {
+      FUN_021d3e84(&local_160,local_a0,*(undefined8 *)puVar2);
+      local_58 = param_2;
+      FUN_020dd354(param_1 + 0x88,&local_58,local_a0,*(undefined8 *)puVar3);
+      local_158._4_4_ = local_158._4_4_ + 1;
+    } while (local_158._4_4_ < (int)local_158);
+  }
+  FUN_021b2770(&local_160,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<LabelScopeInfo>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0xc0,
+                        *(undefined8 *)
+                         System_Collections_Generic_HashSet<MaterialValueBindingMerger_MaterialTarget>_TypeInfo
+                       );
+  puVar3 = System_Collections_Generic_HashSet<ResourceManager_InstanceOperation>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<Transform>_TypeInfo;
+  local_170 = auVar4._0_8_;
+  local_168._4_4_ = auVar4._12_4_ + 1;
+  local_168._0_4_ = auVar4._8_4_;
+  if (local_168._4_4_ < (int)local_168) {
+    do {
+      FUN_021d3e84(&local_170,&local_1a0,*(undefined8 *)puVar2);
+      local_54 = param_2;
+      FUN_020dd354(param_1 + 0xa8,&local_54,&local_1a0,*(undefined8 *)puVar3);
+      local_168._4_4_ = local_168._4_4_ + 1;
+    } while (local_168._4_4_ < (int)local_168);
+  }
+  FUN_021b2770(&local_170,*(undefined8 *)puVar1);
+  puVar1 = System_Collections_Generic_HashSet<Mesh>_TypeInfo;
+  auVar4 = FUN_020da0f0(param_3 + 0xd8,
+                        *(undefined8 *)System_Collections_Generic_HashSet<uint>_TypeInfo);
+  puVar3 = Unity_Services_CloudSave_Internal_Http_HttpException<BatchConflictErrorResponse>_TypeInfo
+  ;
+  puVar2 = System_Collections_Generic_HashSet<float>_TypeInfo;
+  local_180 = auVar4._0_8_;
+  local_178._4_4_ = auVar4._12_4_ + 1;
+  local_178._0_4_ = auVar4._8_4_;
+  if (local_178._4_4_ < (int)local_178) {
+    do {
+      FUN_021d3e84(&local_180,local_68,*(undefined8 *)puVar2);
+      local_80 = SUB84(local_68._0_8_,4);
+      FUN_020dd354(param_1 + 0x28,&local_80,local_68,*(undefined8 *)puVar3);
+      local_178._4_4_ = local_178._4_4_ + 1;
+    } while (local_178._4_4_ < (int)local_178);
+  }
+  FUN_021b2770(&local_180,*(undefined8 *)puVar1);
+  if (*(int *)(param_3 + 0xf0) != 0) {
+    local_a4 = param_2;
+    FUN_020d8994(param_1 + 0xb8,&local_a4,
+                 *(undefined8 *)System_Collections_Generic_HashSet<Type>_TypeInfo);
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 2
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermissions
+ENTRY_POINT: 0355130c
+MANUAL_PRIORITY_SCORE: 401
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 235
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_eye_tracking_support_or_permission_path_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'structure_combo', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_12', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_7', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_gaze_interaction_hits_7', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_235', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\general-structure-results\90_plus_framework_eye_tracking_support_or_permission_path_near_certain\0355130c_UnityEngine.Android.Permission$$RequestUserPermissions.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\manual-review-pack\A_must_review\002_p401_UnityEngine.Android.Permission$$RequestUserPermissions.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermissions
+ENTRY_POINT: 0355130c
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 235
+LABEL: framework_eye_tracking_support_or_permission_path_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;gaze_interaction;data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;structure_combo;attempted_use
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_12;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_7;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_gaze_interaction_hits_7;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_Android_Permission__RequestUserPermissions
+               (undefined1 param_1 [16],undefined1 *param_2)
+
+{
+  bool bVar1;
+  int iVar2;
+  ushort uVar3;
+  undefined2 uVar4;
+  uint uVar5;
+  bool bVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  bool bVar9;
+  bool bVar10;
+  uint uVar11;
+  int iVar12;
+  uint uVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  uint uVar17;
+  undefined8 uVar18;
+  ulong uVar19;
+  ulong uVar20;
+  undefined8 uVar21;
+  int *piVar22;
+  ulong uVar23;
+  undefined1 uVar24;
+  char cVar25;
+  long lVar26;
+  undefined4 *puVar27;
+  long lVar28;
+  undefined1 *in_x9;
+  long lVar29;
+  long lVar30;
+  float *pfVar31;
+  code *pcVar32;
+  uint uVar33;
+  float *pfVar34;
+  long lVar35;
+  uint uVar36;
+  long lVar37;
+  long lVar38;
+  long lVar39;
+  uint uVar40;
+  long lVar41;
+  long *unaff_x19;
+  uint *unaff_x20;
+  long *unaff_x21;
+  long *plVar42;
+  uint unaff_w23;
+  ulong unaff_x24;
+  long lVar43;
+  int unaff_w25;
+  long *plVar44;
+  uint unaff_w26;
+  undefined4 unaff_w27;
+  long *unaff_x28;
+  long unaff_x29;
+  float fVar45;
+  float fVar46;
+  float fVar47;
+  float fVar48;
+  float fVar49;
+  float fVar50;
+  float fVar51;
+  float fVar52;
+  undefined4 uVar53;
+  ulong uVar54;
+  uint uVar55;
+  ulong uVar56;
+  float unaff_s8;
+  float fVar57;
+  float fVar58;
+  float fVar59;
+  float unaff_s9;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float unaff_s12;
+  float fVar65;
+  undefined4 uVar66;
+  float fVar67;
+  undefined8 in_stack_00000018;
+  float fStack0000000000000020;
+  float fStack0000000000000024;
+  float fStack0000000000000028;
+  float fStack000000000000002c;
+  uint uStack0000000000000030;
+  int iStack0000000000000034;
+  float fStack0000000000000038;
+  float fStack0000000000000040;
+  undefined8 in_stack_00000050;
+  float fStack0000000000000058;
+  float fStack000000000000005c;
+  float in_stack_00000060;
+  undefined8 in_stack_00000068;
+  byte bStack0000000000000070;
+  byte bStack0000000000000074;
+  float fStack0000000000000078;
+  long in_stack_00000080;
+  undefined8 in_stack_00000088;
+  float fStack0000000000000098;
+  float fStack000000000000009c;
+  float fStack00000000000000a0;
+  float fStack00000000000000a8;
+  long *in_stack_000000b8;
+  uint uStack00000000000000c0;
+  float fStack00000000000000c4;
+  float fStack00000000000000c8;
+  float fStack00000000000000d0;
+  float fStack00000000000000d4;
+  float fStack00000000000000d8;
+  float fStack00000000000000dc;
+  long *in_stack_000000e0;
+  undefined8 uStack00000000000000e8;
+  undefined8 in_stack_000000f8;
+  float fStack0000000000000100;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  int iStack0000000000000128;
+  float fStack000000000000012c;
+  float in_stack_00000150;
+  float fStack0000000000000158;
+  float fStack000000000000015c;
+  long *in_stack_00000160;
+  undefined8 in_stack_00000168;
+  long *in_stack_00000170;
+  undefined8 in_stack_00000178;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined8 in_stack_00000198;
+  float in_stack_000001a0;
+  uint in_stack_000008a0;
+  undefined4 in_stack_000008a4;
+  undefined8 in_stack_000008a8;
+  undefined4 in_stack_000008b0;
+  long in_stack_000016f8;
+  uint in_stack_0000178c;
+  uint in_stack_000017a8;
+  undefined8 in_stack_000017b0;
+  undefined8 in_stack_000017b8;
+  float in_stack_000017c0;
+  undefined8 in_stack_000017c8;
+  char in_stack_000017d4;
+  float in_stack_000017d8;
+  uint in_stack_000017dc;
+  
+  uVar18 = param_1._8_8_;
+  uVar21 = param_1._0_8_;
+code_r0x0355130c:
+  *(undefined8 *)(in_x9 + 0xe68) = uVar18;
+  *(undefined8 *)(in_x9 + 0xe60) = uVar21;
+  fVar45 = (float)FUN_03776c9c(param_2,0);
+  if (*(long *)(unaff_x29 + 0x20) != 0) {
+    fVar61 = *(float *)(unaff_x29 + 0x2c);
+    fVar46 = (float)FUN_03776ea8(*(long *)(unaff_x29 + 0x20),0);
+    if (*unaff_x21 != 0) {
+      fVar47 = (float)FUN_03776980(*unaff_x21 + 0x50,0);
+      if (*unaff_x21 != 0) {
+        fVar48 = (float)FUN_037769b0(*unaff_x21 + 0x50,0);
+        if (*unaff_x21 != 0) {
+          fVar57 = *(float *)((long)unaff_x19 + 0x404);
+          fVar49 = (float)FUN_03776960(*unaff_x21 + 0x50,0);
+          if (unaff_x19[0x20] != 0) {
+            fVar49 = in_stack_00000150 * fVar48 * fVar57 * fVar49;
+            fVar48 = (fStack000000000000015c / (float)unaff_w25) * unaff_s8 * unaff_s9;
+            fVar46 = fVar48 * (unaff_s12 / fVar45) * fVar61 * fVar46;
+            fVar48 = fVar48 / fVar46;
+            fVar47 = fVar48 * fVar47;
+            fVar45 = (float)FUN_037769c0(unaff_x19[0x20] + 0x50,0);
+            fVar48 = fVar48 * fVar45;
+LAB_035513e0:
+            uVar20 = (ulong)(uint)fVar46;
+            *in_stack_000000e0 = unaff_x29;
+            GAP_ParticleSystemController_ParticleSystemController__EmptyLists
+                      (
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+int *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a4810(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0x98),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = UnityEngine_Material__GetColorArray(lVar26,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar35 = *(long *)(*in_stack_00000170 + 0x60), lVar35 == 0))
+                                    break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a48bc(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0xa0),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = UnityEngine_Material__GetColorArray(lVar26,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar35 = *(long *)(*in_stack_00000170 + 0x60), lVar35 == 0))
+                                    break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a4e24(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0xa8),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = UnityEngine_Material__GetColorArray(lVar26,0),
+                                       lVar26 == 0)) break;
+                                    FUN_036aa280(lVar26,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = FUN_037b514c(lVar26,0);
+                                    lVar35 = unaff_x19[0xe1];
+                                    if (lVar35 == 0) break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar35 = *(long *)(lVar35 + lVar29 * 8 + 0x28);
+                                    if ((lVar35 == 0) ||
+                                       (uVar18 = UnityEngine_Material__GetColorArray(lVar35,0),
+                                       lVar26 == 0)) break;
+                                    FUN_0390f3a4(lVar26,uVar18,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = FUN_037b514c(lVar26,0), lVar26 == 0)) break;
+                                    FUN_0390eec8(uVar21,uVar54,uVar19,uVar56,lVar26,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = FUN_037b514c(lVar26,0), lVar26 == 0)) break;
+                                    FUN_0390ed78(lVar26,uVar11 & 1,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    plVar42 = *(long **)(lVar26 + lVar29 * 8 + 0x28);
+                                    uVar17 = (**(code **)(*unaff_x19 + 0x2b8))();
+                                    if (plVar42 == (long *)0x0) break;
+                                    (**(code **)(*plVar42 + 0x2c8))
+                                              (plVar42,uVar17 & 1,*(undefined8 *)(*plVar42 + 0x2d0))
+                                    ;
+                                  }
+                                  lVar26 = *in_stack_00000170;
+                                  lVar29 = lVar29 + 1;
+                                  lVar30 = lVar30 + 0x50;
+                                } while (lVar26 != 0);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_035574b8:
+                    /* WARNING: Subroutine does not return */
+  FUN_01ab6c3c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 3
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermissions
+ENTRY_POINT: 03551468
+MANUAL_PRIORITY_SCORE: 401
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 235
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_eye_tracking_support_or_permission_path_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'structure_combo', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_12', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_7', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_gaze_interaction_hits_7', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_235', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\general-structure-results\90_plus_framework_eye_tracking_support_or_permission_path_near_certain\03551468_UnityEngine.Android.Permission$$RequestUserPermissions.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\manual-review-pack\A_must_review\003_p401_UnityEngine.Android.Permission$$RequestUserPermissions.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermissions
+ENTRY_POINT: 03551468
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 235
+LABEL: framework_eye_tracking_support_or_permission_path_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;gaze_interaction;data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;structure_combo;attempted_use
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_12;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_7;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_gaze_interaction_hits_7;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_Android_Permission__RequestUserPermissions(void)
+
+{
+  bool bVar1;
+  int iVar2;
+  ushort uVar3;
+  undefined2 uVar4;
+  uint uVar5;
+  bool bVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  bool bVar9;
+  bool bVar10;
+  uint uVar11;
+  int iVar12;
+  uint uVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  uint uVar17;
+  undefined8 uVar18;
+  ulong uVar19;
+  ulong uVar20;
+  undefined8 uVar21;
+  int *piVar22;
+  ulong uVar23;
+  ulong uVar24;
+  undefined1 uVar25;
+  char cVar26;
+  long lVar27;
+  undefined4 *puVar28;
+  long lVar29;
+  long lVar30;
+  long lVar31;
+  float *pfVar32;
+  code *pcVar33;
+  uint uVar34;
+  float *pfVar35;
+  long lVar36;
+  uint uVar37;
+  long lVar38;
+  long lVar39;
+  long lVar40;
+  uint uVar41;
+  long lVar42;
+  long *unaff_x19;
+  uint *unaff_x20;
+  long *unaff_x21;
+  long *plVar43;
+  uint unaff_w23;
+  ulong unaff_x24;
+  long lVar44;
+  long *plVar45;
+  uint unaff_w26;
+  undefined4 unaff_w27;
+  long *unaff_x28;
+  undefined8 *unaff_x29;
+  float fVar46;
+  float fVar47;
+  float fVar48;
+  float fVar49;
+  float fVar50;
+  float fVar51;
+  undefined4 uVar52;
+  undefined8 uVar53;
+  uint uVar54;
+  ulong uVar55;
+  float unaff_s8;
+  float fVar56;
+  float fVar57;
+  float fVar58;
+  float fVar59;
+  float fVar60;
+  ulong unaff_d11;
+  float fVar61;
+  float fVar62;
+  float unaff_s14;
+  undefined4 uVar63;
+  float fVar64;
+  float fVar65;
+  undefined8 in_stack_00000018;
+  float fStack0000000000000020;
+  float fStack0000000000000024;
+  float fStack0000000000000028;
+  float fStack000000000000002c;
+  uint uStack0000000000000030;
+  int iStack0000000000000034;
+  float fStack0000000000000038;
+  float fStack0000000000000040;
+  undefined8 in_stack_00000050;
+  float fStack0000000000000058;
+  float fStack000000000000005c;
+  float in_stack_00000060;
+  undefined8 in_stack_00000068;
+  byte bStack0000000000000070;
+  byte bStack0000000000000074;
+  float fStack0000000000000078;
+  long in_stack_00000080;
+  undefined8 in_stack_00000088;
+  float fStack0000000000000098;
+  float fStack000000000000009c;
+  float fStack00000000000000a0;
+  float fStack00000000000000a8;
+  long *in_stack_000000b8;
+  uint uStack00000000000000c0;
+  float fStack00000000000000c4;
+  float fStack00000000000000c8;
+  float fStack00000000000000d0;
+  float fStack00000000000000d4;
+  float fStack00000000000000d8;
+  float fStack00000000000000dc;
+  long *in_stack_000000e0;
+  undefined8 uStack00000000000000e8;
+  undefined8 in_stack_000000f8;
+  float fStack0000000000000100;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  float in_stack_00000128;
+  float fStack000000000000012c;
+  float in_stack_00000158;
+  float fStack000000000000015c;
+  long *in_stack_00000160;
+  undefined8 in_stack_00000168;
+  long *in_stack_00000170;
+  undefined8 in_stack_00000178;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined8 in_stack_00000198;
+  float in_stack_000001a0;
+  uint in_stack_000008a0;
+  undefined4 in_stack_000008a4;
+  undefined4 in_stack_000008b0;
+  undefined4 in_stack_00000c18;
+  undefined4 in_stack_00000c1c;
+  undefined8 in_stack_00000c20;
+  long in_stack_000016f8;
+  uint in_stack_0000178c;
+  uint in_stack_000017a8;
+  undefined8 in_stack_000017b0;
+  undefined8 in_stack_000017b8;
+  float in_stack_000017c0;
+  undefined8 in_stack_000017c8;
+  char in_stack_000017d4;
+  float in_stack_000017d8;
+  uint in_stack_000017dc;
+  
+code_r0x03551468:
+  lVar27 = *unaff_x28;
+  if ((lVar27 != 0) && (lVar30 = *(long *)(lVar27 + 0x38), lVar30 != 0)) {
+    if (*unaff_x20 < *(uint *)(lVar30 + 0x18)) {
+      fStack000000000000015c = 0.0;
+      *(int *)(lVar30 + (long)(int)*unaff_x20 * unaff_x24 + 0x58) = (int)unaff_x19[0x24];
+      *(undefined4 *)(unaff_x19 + 0x24) = unaff_w27;
+LAB_035514b0:
+      uVar23 = 0;
+      uVar21 = in_stack_000017c8;
+      if (in_stack_000017dc != 3 && in_stack_000017dc != 0xad) {
+        uVar23 = unaff_d11 & 0xffffffff;
+      }
+LAB_035514cc:
+      lVar27 = *(long *)(lVar27 + 0x38);
+      if (lVar27 == 0) goto LAB_035574b8;
+      if (*(uint *)(lVar27 + 0x18) <= *unaff_x20) goto LAB_035575f4;
+      lVar27 = lVar27 + (long)(int)*unaff_x20 * unaff_x24;
+      *(short *)(lVar27 + 0x20) = (short)in_stack_000017dc;
+      *(int *)(lVar27 + 0x60) = (int)unaff_x19[0x3d];
+      *(undefined4 *)(lVar27 + 0x164) = *(undefined4 *)((long)unaff_x19 + 0x4ec);
+      if ((unaff_x19[0x6d] == 0) || (lVar27 = *(long *)(unaff_x19[0x6d] + 0x38), lVar27 == 0))
+      goto LAB_035574b8;
+      if (*(uint *)(lVar27 + 0x18) <= *unaff_x20) goto LAB_035575f4;
+      *(int *)(lVar27 + (long)(int)*unaff_x20 * unaff_x24 + 0x168) = (int)unaff_x19[0x2b];
+      if ((unaff_x19[0x6d] == 0) || (lVar27 = *(long *)(unaff_x19[0x6d] + 0x38), lVar27 == 0))
+      goto LAB_035574b8;
+      if (*(uint *)(lVar27 + 0x18) <= *unaff_x20) got
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+int *)(lVar36 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    if (lVar27 == 0) break;
+                                    FUN_036a4810(lVar27,*(undefined8 *)(lVar36 + lVar31 + 0x98),0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if (lVar27 == 0) break;
+                                    lVar27 = UnityEngine_Material__GetColorArray(lVar27,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar36 = *(long *)(*in_stack_00000170 + 0x60), lVar36 == 0))
+                                    break;
+                                    if (*(uint *)(lVar36 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    if (lVar27 == 0) break;
+                                    FUN_036a48bc(lVar27,*(undefined8 *)(lVar36 + lVar31 + 0xa0),0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if (lVar27 == 0) break;
+                                    lVar27 = UnityEngine_Material__GetColorArray(lVar27,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar36 = *(long *)(*in_stack_00000170 + 0x60), lVar36 == 0))
+                                    break;
+                                    if (*(uint *)(lVar36 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    if (lVar27 == 0) break;
+                                    FUN_036a4e24(lVar27,*(undefined8 *)(lVar36 + lVar31 + 0xa8),0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if ((lVar27 == 0) ||
+                                       (lVar27 = UnityEngine_Material__GetColorArray(lVar27,0),
+                                       lVar27 == 0)) break;
+                                    FUN_036aa280(lVar27,0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if (lVar27 == 0) break;
+                                    lVar27 = FUN_037b514c(lVar27,0);
+                                    lVar36 = unaff_x19[0xe1];
+                                    if (lVar36 == 0) break;
+                                    if (*(uint *)(lVar36 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar36 = *(long *)(lVar36 + lVar30 * 8 + 0x28);
+                                    if ((lVar36 == 0) ||
+                                       (uVar18 = UnityEngine_Material__GetColorArray(lVar36,0),
+                                       lVar27 == 0)) break;
+                                    FUN_0390f3a4(lVar27,uVar18,0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if ((lVar27 == 0) ||
+                                       (lVar27 = FUN_037b514c(lVar27,0), lVar27 == 0)) break;
+                                    FUN_0390eec8(uVar21,uVar19,uVar20,uVar55,lVar27,0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    lVar27 = *(long *)(lVar27 + lVar30 * 8 + 0x28);
+                                    if ((lVar27 == 0) ||
+                                       (lVar27 = FUN_037b514c(lVar27,0), lVar27 == 0)) break;
+                                    FUN_0390ed78(lVar27,uVar11 & 1,0);
+                                    lVar27 = unaff_x19[0xe1];
+                                    if (lVar27 == 0) break;
+                                    if (*(uint *)(lVar27 + 0x18) <= uVar23) goto LAB_035575f4;
+                                    plVar43 = *(long **)(lVar27 + lVar30 * 8 + 0x28);
+                                    uVar17 = (**(code **)(*unaff_x19 + 0x2b8))();
+                                    if (plVar43 == (long *)0x0) break;
+                                    (**(code **)(*plVar43 + 0x2c8))
+                                              (plVar43,uVar17 & 1,*(undefined8 *)(*plVar43 + 0x2d0))
+                                    ;
+                                  }
+                                  lVar27 = *in_stack_00000170;
+                                  lVar30 = lVar30 + 1;
+                                  lVar31 = lVar31 + 0x50;
+                                } while (lVar27 != 0);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_035574b8:
+                    /* WARNING: Subroutine does not return */
+  FUN_01ab6c3c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 4
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermission
+ENTRY_POINT: 03551280
+MANUAL_PRIORITY_SCORE: 387
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 221
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_12', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_7', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_gaze_interaction_hits_7', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_221', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\general-structure-results\90_plus_framework_support_only_near_certain\03551280_UnityEngine.Android.Permission$$RequestUserPermission.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrlegs\manual-review-pack\A_must_review\004_p387_UnityEngine.Android.Permission$$RequestUserPermission.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Android.Permission$$RequestUserPermission
+ENTRY_POINT: 03551280
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 221
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_12;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_7;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_gaze_interaction_hits_7;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_Android_Permission__RequestUserPermission(void)
+
+{
+  bool bVar1;
+  int iVar2;
+  ushort uVar3;
+  undefined2 uVar4;
+  uint uVar5;
+  bool bVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  bool bVar9;
+  bool bVar10;
+  uint uVar11;
+  int iVar12;
+  uint uVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  uint uVar17;
+  undefined8 uVar18;
+  ulong uVar19;
+  ulong uVar20;
+  undefined8 uVar21;
+  int *piVar22;
+  ulong uVar23;
+  undefined1 uVar24;
+  char cVar25;
+  long lVar26;
+  undefined4 *puVar27;
+  long lVar28;
+  long lVar29;
+  long lVar30;
+  float *pfVar31;
+  code *pcVar32;
+  uint uVar33;
+  float *pfVar34;
+  long lVar35;
+  uint uVar36;
+  long lVar37;
+  long lVar38;
+  long lVar39;
+  uint uVar40;
+  long lVar41;
+  long *unaff_x19;
+  uint *unaff_x20;
+  long *unaff_x21;
+  long *plVar42;
+  uint unaff_w23;
+  ulong unaff_x24;
+  long lVar43;
+  long *plVar44;
+  uint unaff_w26;
+  undefined4 unaff_w27;
+  long *unaff_x28;
+  long unaff_x29;
+  float fVar45;
+  float fVar46;
+  float fVar47;
+  float fVar48;
+  float fVar49;
+  float fVar50;
+  float fVar51;
+  float fVar52;
+  float fVar53;
+  undefined4 uVar54;
+  ulong uVar55;
+  uint uVar56;
+  ulong uVar57;
+  float fVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  float fVar63;
+  float fVar64;
+  float fVar65;
+  float unaff_s14;
+  undefined4 uVar66;
+  float unaff_s15;
+  float fVar67;
+  undefined8 in_stack_00000018;
+  float fStack0000000000000020;
+  float fStack0000000000000024;
+  float fStack0000000000000028;
+  float fStack000000000000002c;
+  uint uStack0000000000000030;
+  int iStack0000000000000034;
+  float fStack0000000000000038;
+  float fStack0000000000000040;
+  undefined8 in_stack_00000050;
+  float fStack0000000000000058;
+  float fStack000000000000005c;
+  float in_stack_00000060;
+  undefined8 in_stack_00000068;
+  byte bStack0000000000000070;
+  byte bStack0000000000000074;
+  float fStack0000000000000078;
+  long in_stack_00000080;
+  undefined8 in_stack_00000088;
+  float fStack0000000000000098;
+  float fStack000000000000009c;
+  float fStack00000000000000a0;
+  float fStack00000000000000a8;
+  long *in_stack_000000b8;
+  uint uStack00000000000000c0;
+  float fStack00000000000000c4;
+  float fStack00000000000000c8;
+  float fStack00000000000000d0;
+  float fStack00000000000000d4;
+  float fStack00000000000000d8;
+  float fStack00000000000000dc;
+  long *in_stack_000000e0;
+  undefined8 uStack00000000000000e8;
+  undefined8 in_stack_000000f8;
+  float fStack0000000000000100;
+  float fStack0000000000000104;
+  float fStack0000000000000114;
+  int iStack0000000000000128;
+  float fStack000000000000012c;
+  float in_stack_00000158;
+  float fStack000000000000015c;
+  long *in_stack_00000160;
+  undefined8 in_stack_00000168;
+  long *in_stack_00000170;
+  undefined8 in_stack_00000178;
+  float fStack0000000000000180;
+  float fStack0000000000000184;
+  float in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined8 in_stack_00000198;
+  float in_stack_000001a0;
+  uint in_stack_000008a0;
+  undefined4 in_stack_000008a4;
+  undefined8 in_stack_000008a8;
+  undefined4 in_stack_000008b0;
+  long in_stack_000016f8;
+  uint in_stack_0000178c;
+  uint in_stack_000017a8;
+  undefined8 in_stack_000017b0;
+  undefined8 in_stack_000017b8;
+  float in_stack_000017c0;
+  undefined8 in_stack_000017c8;
+  char in_stack_000017d4;
+  float in_stack_000017d8;
+  uint in_stack_000017dc;
+  
+code_r0x03551280:
+  if (*unaff_x21 != 0) {
+    iVar12 = FUN_03776950(*unaff_x21 + 0x50,0);
+    if (*unaff_x21 != 0) {
+      fVar45 = (float)FUN_03776960(*unaff_x21 + 0x50,0);
+      fVar52 = fStack0000000000000098;
+      if (*(char *)((long)unaff_x19 + 0x305) != '\0') {
+        fVar52 = 1.0;
+      }
+      if (unaff_x19[0x20] != 0) {
+        fVar46 = (float)FUN_03776980(unaff_x19[0x20] + 0x50,0);
+        if (*(long *)(unaff_x29 + 0x20) != 0) {
+          FUN_03776e6c(&stack0x000008a0,*(long *)(unaff_x29 + 0x20),0);
+          fVar47 = (float)FUN_03776c9c(&stack0x00001700,0);
+          if (*(long *)(unaff_x29 + 0x20) != 0) {
+            fVar61 = *(float *)(unaff_x29 + 0x2c);
+            fVar48 = (float)FUN_03776ea8(*(long *)(unaff_x29 + 0x20),0);
+            if (*unaff_x21 != 0) {
+              fVar49 = (float)FUN_03776980(*unaff_x21 + 0x50,0);
+              if (*unaff_x21 != 0) {
+                fVar50 = (float)FUN_037769b0(*unaff_x21 + 0x50,0);
+                if (*unaff_x21 != 0) {
+                  fVar58 = *(float *)((long)unaff_x19 + 0x404);
+                  fVar51 = (float)FUN_03776960(*unaff_x21 + 0x50,0);
+                  if (unaff_x19[0x20] != 0) {
+                    fVar51 = unaff_s15 * fVar50 * fVar58 * fVar51;
+                    fVar52 = (unaff_s14 / (float)iVar12) * fVar45 * fVar52;
+                    fVar46 = fVar52 * (fVar46 / fVar47) * fVar61 * fVar48;
+                    fVar52 = fVar52 / fVar46;
+                    fVar49 = fVar52 * fVar49;
+                    fVar45 = (float)FUN_037769c0(unaff_x19[0x20] + 0x50,0);
+                    fVar52 = fVar52 * fVar45;
+
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+int *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a4810(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0x98),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = UnityEngine_Material__GetColorArray(lVar26,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar35 = *(long *)(*in_stack_00000170 + 0x60), lVar35 == 0))
+                                    break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a48bc(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0xa0),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = UnityEngine_Material__GetColorArray(lVar26,0);
+                                    if ((*in_stack_00000170 == 0) ||
+                                       (lVar35 = *(long *)(*in_stack_00000170 + 0x60), lVar35 == 0))
+                                    break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    if (lVar26 == 0) break;
+                                    FUN_036a4e24(lVar26,*(undefined8 *)(lVar35 + lVar30 + 0xa8),0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = UnityEngine_Material__GetColorArray(lVar26,0),
+                                       lVar26 == 0)) break;
+                                    FUN_036aa280(lVar26,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if (lVar26 == 0) break;
+                                    lVar26 = FUN_037b514c(lVar26,0);
+                                    lVar35 = unaff_x19[0xe1];
+                                    if (lVar35 == 0) break;
+                                    if (*(uint *)(lVar35 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar35 = *(long *)(lVar35 + lVar29 * 8 + 0x28);
+                                    if ((lVar35 == 0) ||
+                                       (uVar18 = UnityEngine_Material__GetColorArray(lVar35,0),
+                                       lVar26 == 0)) break;
+                                    FUN_0390f3a4(lVar26,uVar18,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = FUN_037b514c(lVar26,0), lVar26 == 0)) break;
+                                    FUN_0390eec8(uVar21,uVar55,uVar19,uVar57,lVar26,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    lVar26 = *(long *)(lVar26 + lVar29 * 8 + 0x28);
+                                    if ((lVar26 == 0) ||
+                                       (lVar26 = FUN_037b514c(lVar26,0), lVar26 == 0)) break;
+                                    FUN_0390ed78(lVar26,uVar11 & 1,0);
+                                    lVar26 = unaff_x19[0xe1];
+                                    if (lVar26 == 0) break;
+                                    if (*(uint *)(lVar26 + 0x18) <= uVar20) goto LAB_035575f4;
+                                    plVar42 = *(long **)(lVar26 + lVar29 * 8 + 0x28);
+                                    uVar17 = (**(code **)(*unaff_x19 + 0x2b8))();
+                                    if (plVar42 == (long *)0x0) break;
+                                    (**(code **)(*plVar42 + 0x2c8))
+                                              (plVar42,uVar17 & 1,*(undefined8 *)(*plVar42 + 0x2d0))
+                                    ;
+                                  }
+                                  lVar26 = *in_stack_00000170;
+                                  lVar29 = lVar29 + 1;
+                                  lVar30 = lVar30 + 0x50;
+                                } while (lVar26 != 0);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_035574b8:
+                    /* WARNING: Subroutine does not return */
+  FUN_01ab6c3c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

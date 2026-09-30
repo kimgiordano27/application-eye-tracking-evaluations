@@ -1,0 +1,339 @@
+# Manual Review Pack Summary: Lovesick
+
+Selected functions: 100
+
+## Tier counts
+
+- A_must_review: 100
+
+## Top functions
+
+### 1. FUN_00e47e28
+
+- Manual priority score: 556
+- Manual tier: A_must_review
+- Original scanner score: 351
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; paired_state_refs; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_16; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_14; paired_field_refs_with_eye_source; ray_or_cast_sink_hits_9; ui_or_gameplay_sink_hits_11; strong_file_logging_hits_4; telemetry_or_network_hits_6; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_14; functionality_data_collection_or_telemetry_hits_6
+- Priority reasons: base_scanner_score_351; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_paired_state_refs_8; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\001_p556_FUN_00e47e28.c
+
+### 2. Meta.XR.EnvironmentDepthRaycaster$$<Raycast>g__GetRaycastResultForEye|38_0
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 394
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; paired_state_refs; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_1; weak_xr_or_state_hits_1; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_11; paired_field_refs_with_eye_source; ray_or_cast_sink_hits_6; ui_or_gameplay_sink_hits_4; telemetry_or_network_hits_2; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_interaction_hits_10; functionality_data_collection_or_telemetry_hits_2; functionality_possible_biometrics_hits_1
+- Priority reasons: base_scanner_score_394; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_paired_state_refs_8; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\002_p548_Meta.XR.EnvironmentDepthRaycaster$$_Raycast_g__GetRaycastResultForEye_38_0.c
+
+### 3. Newtonsoft.Json.JsonTextWriter$$WriteValueNotNullAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_17; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_11; ui_or_gameplay_sink_hits_14; strong_file_logging_hits_11; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\003_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueNotNullAsync.c
+
+### 4. Newtonsoft.Json.JsonTextWriter$$WriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_9; weak_xr_or_state_hits_19; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_16; strong_file_logging_hits_13; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\004_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueAsync.c
+
+### 5. Newtonsoft.Json.JsonTextWriter$$WriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_9; weak_xr_or_state_hits_19; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_16; strong_file_logging_hits_13; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\005_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueAsync.c
+
+### 6. Newtonsoft.Json.JsonTextWriter$$WriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_18; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_16; strong_file_logging_hits_13; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\006_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueAsync.c
+
+### 7. Newtonsoft.Json.JsonTextWriter$$WriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_18; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_15; strong_file_logging_hits_13; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\007_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueAsync.c
+
+### 8. Newtonsoft.Json.JsonTextWriter$$WriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_17; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_11; ui_or_gameplay_sink_hits_15; strong_file_logging_hits_12; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\008_p545_Newtonsoft.Json.JsonTextWriter$$WriteValueAsync.c
+
+### 9. Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync
+
+- Manual priority score: 545
+- Manual tier: A_must_review
+- Original scanner score: 345
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_18; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_15; strong_file_logging_hits_13; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_345; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\009_p545_Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync.c
+
+### 10. TinyJSON.JSON$$Dump
+
+- Manual priority score: 531
+- Manual tier: A_must_review
+- Original scanner score: 331
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_11; validity_or_gating_hits_2; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_4; ui_or_gameplay_sink_hits_21; strong_file_logging_hits_2; telemetry_or_network_hits_20; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_17
+- Priority reasons: base_scanner_score_331; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\010_p531_TinyJSON.JSON$$Dump.c
+
+### 11. TinyJSON.JSON$$Dump
+
+- Manual priority score: 531
+- Manual tier: A_must_review
+- Original scanner score: 331
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_11; validity_or_gating_hits_2; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_4; ui_or_gameplay_sink_hits_21; strong_file_logging_hits_2; telemetry_or_network_hits_19; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_16
+- Priority reasons: base_scanner_score_331; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\011_p531_TinyJSON.JSON$$Dump.c
+
+### 12. UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterOverride$$Find
+
+- Manual priority score: 525
+- Manual tier: A_must_review
+- Original scanner score: 325
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_18; strong_file_logging_hits_4; telemetry_or_network_hits_16; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_15
+- Priority reasons: base_scanner_score_325; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\012_p525_UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterOverride$$Find.c
+
+### 13. UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterOverride$$.ctor
+
+- Manual priority score: 525
+- Manual tier: A_must_review
+- Original scanner score: 325
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_18; strong_file_logging_hits_4; telemetry_or_network_hits_16; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_15
+- Priority reasons: base_scanner_score_325; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\013_p525_UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterOverride$$.ctor.c
+
+### 14. UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$System.Collections.IEnumerator.get_Current
+
+- Manual priority score: 525
+- Manual tier: A_must_review
+- Original scanner score: 325
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_9; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_18; strong_file_logging_hits_4; telemetry_or_network_hits_18; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_16
+- Priority reasons: base_scanner_score_325; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\014_p525_UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$System.Collections.IEnumerator.get_Current.c
+
+### 15. UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$MoveToNextProcessor
+
+- Manual priority score: 525
+- Manual tier: A_must_review
+- Original scanner score: 325
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_9; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_18; strong_file_logging_hits_4; telemetry_or_network_hits_18; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_16
+- Priority reasons: base_scanner_score_325; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\015_p525_UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$MoveToNextProcessor.c
+
+### 16. UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$Dispose
+
+- Manual priority score: 525
+- Manual tier: A_must_review
+- Original scanner score: 325
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_8; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_13; ui_or_gameplay_sink_hits_18; strong_file_logging_hits_4; telemetry_or_network_hits_16; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_15
+- Priority reasons: base_scanner_score_325; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\016_p525_UnityEngine.InputSystem.InputActionRebindingExtensions.ParameterEnumerator$$Dispose.c
+
+### 17. Obi.ObiRopeLineRenderer$$.ctor
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 371
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ui_interaction; telemetry; frame_behavior; structure_combo; ordered_structure; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_5; weak_xr_or_state_hits_5; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_9; ui_or_gameplay_sink_hits_5; telemetry_or_network_hits_7; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_5; functionality_data_collection_or_telemetry_hits_4
+- Priority reasons: base_scanner_score_371; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_frame_behavior_5; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\017_p519_Obi.ObiRopeLineRenderer$$.ctor.c
+
+### 18. FUN_0185043c
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 371
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ui_interaction; telemetry; frame_behavior; structure_combo; ordered_structure; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_5; weak_xr_or_state_hits_5; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_9; ui_or_gameplay_sink_hits_3; telemetry_or_network_hits_7; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_3; functionality_data_collection_or_telemetry_hits_4
+- Priority reasons: base_scanner_score_371; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_frame_behavior_5; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\018_p519_FUN_0185043c.c
+
+### 19. System.Numerics.BigNumber.BigNumberBuffer$$Create
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 319
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_5; validity_or_gating_hits_8; strong_pose_or_ray_construction_hits_8; ray_or_cast_sink_hits_10; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_4; telemetry_or_network_hits_5; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_13; functionality_data_collection_or_telemetry_hits_7
+- Priority reasons: base_scanner_score_319; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\019_p519_System.Numerics.BigNumber.BigNumberBuffer$$Create.c
+
+### 20. System.Numerics.BigNumber$$TryValidateParseStyleInteger
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 319
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_5; validity_or_gating_hits_10; strong_pose_or_ray_construction_hits_12; ray_or_cast_sink_hits_11; ui_or_gameplay_sink_hits_9; strong_file_logging_hits_4; telemetry_or_network_hits_5; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_14; functionality_data_collection_or_telemetry_hits_7
+- Priority reasons: base_scanner_score_319; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\020_p519_System.Numerics.BigNumber$$TryValidateParseStyleInteger.c
+
+### 21. System.Numerics.BigNumber$$TryParseBigInteger
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 319
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_5; validity_or_gating_hits_8; strong_pose_or_ray_construction_hits_10; ray_or_cast_sink_hits_11; ui_or_gameplay_sink_hits_9; strong_file_logging_hits_4; telemetry_or_network_hits_5; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_14; functionality_data_collection_or_telemetry_hits_7
+- Priority reasons: base_scanner_score_319; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\021_p519_System.Numerics.BigNumber$$TryParseBigInteger.c
+
+### 22. System.Numerics.BigNumber$$HexNumberToBigInteger
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 319
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_5; validity_or_gating_hits_8; strong_pose_or_ray_construction_hits_8; ray_or_cast_sink_hits_10; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_4; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_13; functionality_data_collection_or_telemetry_hits_6
+- Priority reasons: base_scanner_score_319; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\022_p519_System.Numerics.BigNumber$$HexNumberToBigInteger.c
+
+### 23. System.Globalization.FormatProvider$$TryStringToBigInteger
+
+- Manual priority score: 519
+- Manual tier: A_must_review
+- Original scanner score: 319
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_3; weak_xr_or_state_hits_5; validity_or_gating_hits_8; strong_pose_or_ray_construction_hits_8; ray_or_cast_sink_hits_10; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_4; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_13; functionality_data_collection_or_telemetry_hits_6
+- Priority reasons: base_scanner_score_319; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\023_p519_System.Globalization.FormatProvider$$TryStringToBigInteger.c
+
+### 24. Newtonsoft.Json.JsonTextWriter$$WriteValueToBuffer
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_4; weak_xr_or_state_hits_8; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_16; ray_or_cast_sink_hits_5; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_8; telemetry_or_network_hits_12; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_8; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\024_p515_Newtonsoft.Json.JsonTextWriter$$WriteValueToBuffer.c
+
+### 25. Newtonsoft.Json.JsonTextWriter$$WriteValue
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_4; weak_xr_or_state_hits_8; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_16; ray_or_cast_sink_hits_5; ui_or_gameplay_sink_hits_5; strong_file_logging_hits_8; telemetry_or_network_hits_12; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_8; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\025_p515_Newtonsoft.Json.JsonTextWriter$$WriteValue.c
+
+### 26. Newtonsoft.Json.JsonTextWriter$$WriteValue
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_4; weak_xr_or_state_hits_8; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_16; ray_or_cast_sink_hits_5; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_8; telemetry_or_network_hits_12; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_8; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\026_p515_Newtonsoft.Json.JsonTextWriter$$WriteValue.c
+
+### 27. Newtonsoft.Json.JsonTextWriter$$WriteStartObject
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_12; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_9; strong_file_logging_hits_11; telemetry_or_network_hits_18; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_14; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\027_p515_Newtonsoft.Json.JsonTextWriter$$WriteStartObject.c
+
+### 28. Newtonsoft.Json.JsonTextWriter$$WriteStartConstructor
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_12; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_11; telemetry_or_network_hits_18; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_13; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\028_p515_Newtonsoft.Json.JsonTextWriter$$WriteStartConstructor.c
+
+### 29. Newtonsoft.Json.JsonTextWriter$$WriteStartArray
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_12; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_11; telemetry_or_network_hits_18; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_13; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\029_p515_Newtonsoft.Json.JsonTextWriter$$WriteStartArray.c
+
+### 30. Newtonsoft.Json.JsonTextWriter$$WritePropertyName
+
+- Manual priority score: 515
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_6; weak_xr_or_state_hits_12; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_7; ui_or_gameplay_sink_hits_8; strong_file_logging_hits_11; telemetry_or_network_hits_16; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_21
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\030_p515_Newtonsoft.Json.JsonTextWriter$$WritePropertyName.c

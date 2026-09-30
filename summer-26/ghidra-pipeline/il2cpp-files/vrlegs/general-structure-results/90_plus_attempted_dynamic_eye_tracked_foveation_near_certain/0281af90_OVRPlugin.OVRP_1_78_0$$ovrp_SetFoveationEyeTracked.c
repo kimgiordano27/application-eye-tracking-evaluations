@@ -1,0 +1,31 @@
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_78_0$$ovrp_SetFoveationEyeTracked
+ENTRY_POINT: 0281af90
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 129
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_2;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin_OVRP_1_78_0__ovrp_SetFoveationEyeTracked(void)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  
+  uVar1 = FUN_0282f8b0();
+  thunk_FUN_01a6ca08(PTR_DAT_03cc9f50);
+  uVar2 = thunk_FUN_01a89e68();
+  FUN_027676f4(uVar2,uVar1,0);
+  uVar1 = thunk_FUN_01a6ca08(PTR_DAT_03cfe640);
+                    /* WARNING: Subroutine does not return */
+  FUN_01ab6b14(uVar2,uVar1);
+}
+
+

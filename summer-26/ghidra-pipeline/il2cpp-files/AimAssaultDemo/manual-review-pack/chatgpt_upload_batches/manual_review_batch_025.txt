@@ -1,0 +1,1002 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 98
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$get_instance
+ENTRY_POINT: 063503bc
+MANUAL_PRIORITY_SCORE: 282
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 159
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'validity_gate', 'telemetry', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_8', 'validity_or_gating_hits_21', 'telemetry_or_network_hits_2', 'strong_foveation_hits_6', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_159', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\063503bc_UnityEngine.EventSystems.OVRInputModule$$get_instance.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\098_p282_UnityEngine.EventSystems.OVRInputModule$$get_instance.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$get_instance
+ENTRY_POINT: 063503bc
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 159
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;data_collection_or_telemetry;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;validity_gate;telemetry;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_8;validity_or_gating_hits_21;telemetry_or_network_hits_2;strong_foveation_hits_6;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x06351788) */
+/* WARNING: Removing unreachable block (ram,0x063506bc) */
+/* WARNING: Removing unreachable block (ram,0x0635100c) */
+/* WARNING: Removing unreachable block (ram,0x06351010) */
+/* WARNING: Removing unreachable block (ram,0x06351ab0) */
+/* WARNING: Removing unreachable block (ram,0x063513a8) */
+/* WARNING: Removing unreachable block (ram,0x063513ac) */
+/* WARNING: Removing unreachable block (ram,0x063515f8) */
+/* WARNING: Removing unreachable block (ram,0x0635177c) */
+
+undefined8 UnityEngine_EventSystems_OVRInputModule__get_instance(undefined8 *param_1)
+
+{
+  byte bVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined4 uVar7;
+  uint uVar8;
+  long lVar9;
+  long *plVar10;
+  undefined8 *puVar11;
+  undefined8 uVar12;
+  long lVar13;
+  long lVar14;
+  long lVar15;
+  ulong uVar16;
+  long lVar17;
+  int *piVar18;
+  long *unaff_x20;
+  long *plVar19;
+  long *unaff_x24;
+  long *plVar20;
+  undefined8 uVar21;
+  undefined1 auVar22 [16];
+  long in_stack_00000018;
+  long in_stack_00000020;
+  long in_stack_00000028;
+  long in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000048;
+  long in_stack_00000050;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  long in_stack_00000070;
+  
+  (*(code *)*param_1)();
+  lVar9 = FUN_06351ba4(in_stack_00000028);
+  if (in_stack_00000038._4_4_ != 0) {
+    if (*(long *)(in_stack_00000030 + 0xd8) != 0) {
+      plVar10 = (long *)FUN_05450738(*(long *)(in_stack_00000030 + 0xd8),
+                                     *(undefined8 *)PTR_DAT_07db4a70);
+      puVar6 = PTR_DAT_07db4f68;
+      puVar5 = PTR_DAT_07db4f60;
+      puVar4 = PTR_DAT_07db4f10;
+      puVar3 = PTR_DAT_07db4ee8;
+      puVar2 = PTR_DAT_07db4a78;
+      if (plVar10 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0373b7b4();
+      }
+      do {
+        lVar13 = *plVar10;
+        uVar16 = (ulong)*(ushort *)(lVar13 + 0x12e);
+        if (uVar16 != 0) {
+          piVar18 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d89700) {
+              puVar11 = (undefined8 *)(lVar13 + (long)*piVar18 * 0x10 + 0x138);
+              goto LAB_06350498;
+            }
+            uVar16 = uVar16 - 1;
+            piVar18 = piVar18 + 4;
+          } while (uVar16 != 0);
+        }
+        puVar11 = (undefined8 *)FUN_0377596c(plVar10,*(long *)PTR_DAT_07d89700,0);
+LAB_06350498:
+        uVar16 = (*(code *)*puVar11)(plVar10,puVar11[1]);
+        unaff_x24 = (long *)PTR_DAT_07db4be0;
+        if ((uVar16 & 1) == 0) {
+          if (plVar10 == (long *)0x0) goto LAB_063506c0;
+          lVar13 = *plVar10;
+          uVar16 = (ulong)*(ushort *)(lVar13 + 0x12e);
+          if (uVar16 == 0) goto LAB_06350688;
+          piVar18 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+          goto LAB_06350670;
+        }
+        lVar13 = thunk_FUN_037788cc(*(undefined8 *)puVar6);
+        FUN_06352d54(lVar13,0);
+        lVar14 = *plVar10;
+        uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+        if (uVar16 != 0) {
+          piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar18 + -2) == *(long *)puVar2) {
+              puVar11 = (undefined8 *)(lVar14 + (long)*piVar18 * 0x10 + 0x138);
+              goto LAB_06350508;
+            }
+            uVar16 = uVar16 - 1;
+            piVar18 = piVar18 + 4;
+          } while (uVar16 != 0);
+        }
+        puVar11 = (undefined8 *)FUN_0377596c(plVar10,*(long *)puVar2,0);
+LAB_06350508:
+        lVar14 = (*(code *)*puVar11)(plVar10,puVar11[1]);
+        if (lVar13 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        plVar20 = (long *)(lVar13 + 0x10);
+        *plVar20 = lVar14;
+        thunk_FUN_037aeb94(plVar20);
+        if (*plVar20 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        if (*(char *)(*plVar20 + 0x80) == '\0') {
+          uVar12 = thunk_FUN_037788cc(*(undefined8 *)puVar4);
+          FUN_044a3874(uVar12,lVar13,*(undefined8 *)puVar5,0);
+          uVar16 = FUN_03f439f0(lVar9,uVar12,*(undefined8 *)puVar3);
+          if ((uVar16 & 1) != 0) {
+            if (*plVar20 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_0373b7b4();
+            }
+            uVar12 = *(undefined8 *)(*plVar20 + 0x30);
+            lVar13 = thunk_FUN_037788cc(*(undefined8 *)PTR_DAT_07db4ee0);
+            FUN_06352c74(lVar13,uVar12,0);
+            if (lVar13 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_0373b7b4();
+            }
+            *(long *)(lVar13 + 0x18) = *plVar20;
+            thunk_FUN_037aeb94();
+            in_stack_00000040 = 0;
+            FUN_04e5f37c(&stack0x000
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+       FUN_0373bb54();
+          }
+          if ((char)plVar10[5] == '\0') {
+            plVar20 = *(long **)(lVar14 + 0x68);
+            if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_0373b7b4();
+            }
+            lVar14 = *plVar20;
+            uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+            if (uVar16 != 0) {
+              piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07db4e80) {
+                  puVar11 = (undefined8 *)(lVar14 + (long)(*piVar18 + 1) * 0x10 + 0x138);
+                  goto LAB_063510d4;
+                }
+                uVar16 = uVar16 - 1;
+                piVar18 = piVar18 + 4;
+              } while (uVar16 != 0);
+            }
+            puVar11 = (undefined8 *)FUN_0377596c(plVar20,*(long *)PTR_DAT_07db4e80,1);
+LAB_063510d4:
+            lVar14 = (*(code *)*puVar11)(plVar20,uVar12,puVar11[1]);
+            if (lVar14 != 0) {
+              if ((char)plVar10[0x20] == '\0') {
+                uVar21 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar20 = (long *)thunk_FUN_037787d0(lVar14,uVar21);
+                if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar14,uVar21);
+                }
+              }
+              else {
+                plVar20 = (long *)FUN_0634424c(plVar10,lVar14);
+              }
+              if ((char)plVar10[0x20] == '\0') {
+                uVar21 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar10 = (long *)thunk_FUN_037787d0(lVar17,uVar21);
+                if (plVar10 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar17,uVar21);
+                }
+              }
+              else {
+                plVar10 = (long *)FUN_0634424c(plVar10,lVar17);
+                if (plVar10 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+              }
+              lVar14 = *plVar10;
+              uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+              if (uVar16 != 0) {
+                piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d974d8) {
+                    puVar11 = (undefined8 *)(lVar14 + (long)(*piVar18 + 9) * 0x10 + 0x138);
+                    goto Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate;
+                  }
+                  uVar16 = uVar16 - 1;
+                  piVar18 = piVar18 + 4;
+                } while (uVar16 != 0);
+              }
+              puVar11 = (undefined8 *)FUN_0377596c(plVar10,*(long *)PTR_DAT_07d974d8,9);
+Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate:
+              plVar10 = (long *)(*(code *)*puVar11)(plVar10,puVar11[1]);
+              if (plVar10 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                FUN_0373b7b4();
+              }
+              do {
+                lVar14 = *plVar10;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d89700) {
+                      puVar11 = (undefined8 *)(lVar14 + (long)*piVar18 * 0x10 + 0x138);
+                      goto Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar11 = (undefined8 *)FUN_0377596c(plVar10,*(long *)PTR_DAT_07d89700,0);
+Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked:
+                uVar16 = (*(code *)*puVar11)(plVar10,puVar11[1]);
+                if ((uVar16 & 1) == 0) goto LAB_06351318;
+                lVar14 = *plVar10;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d9b3e8) {
+                      puVar11 = (undefined8 *)(lVar14 + (long)(*piVar18 + 2) * 0x10 + 0x138);
+                      goto LAB_06351290;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar11 = (undefined8 *)FUN_0377596c(plVar10,*(long *)PTR_DAT_07d9b3e8,2);
+LAB_06351290:
+                auVar22 = (*(code *)*puVar11)(plVar10,puVar11[1]);
+                if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+                lVar14 = *plVar20;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d974d8) {
+                      puVar11 = (undefined8 *)(lVar14 + (long)(*piVar18 + 1) * 0x10 + 0x138);
+                      goto LAB_06351300;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar11 = (undefined8 *)FUN_0377596c(plVar20,*(long *)PTR_DAT_07d974d8,1);
+LAB_06351300:
+                (*(code *)*puVar11)(plVar20,auVar22._0_8_,auVar22._8_8_,puVar11[1]);
+              } while( true );
+            }
+          }
+        }
+        goto LAB_06351064;
+      }
+    }
+  }
+LAB_0635162c:
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 99
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$OnDestroy
+ENTRY_POINT: 063502e8
+MANUAL_PRIORITY_SCORE: 282
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 159
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'validity_gate', 'telemetry', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_8', 'validity_or_gating_hits_21', 'telemetry_or_network_hits_2', 'strong_foveation_hits_6', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_159', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\063502e8_UnityEngine.EventSystems.OVRInputModule$$OnDestroy.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\099_p282_UnityEngine.EventSystems.OVRInputModule$$OnDestroy.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$OnDestroy
+ENTRY_POINT: 063502e8
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 159
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;data_collection_or_telemetry;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;validity_gate;telemetry;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_8;validity_or_gating_hits_21;telemetry_or_network_hits_2;strong_foveation_hits_6;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x06351788) */
+/* WARNING: Removing unreachable block (ram,0x063506bc) */
+/* WARNING: Removing unreachable block (ram,0x0635100c) */
+/* WARNING: Removing unreachable block (ram,0x06351010) */
+/* WARNING: Removing unreachable block (ram,0x06351ab0) */
+/* WARNING: Removing unreachable block (ram,0x063513a8) */
+/* WARNING: Removing unreachable block (ram,0x063513ac) */
+/* WARNING: Removing unreachable block (ram,0x063515f8) */
+/* WARNING: Removing unreachable block (ram,0x0635177c) */
+
+undefined8 UnityEngine_EventSystems_OVRInputModule__OnDestroy(long param_1)
+
+{
+  byte bVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined4 uVar7;
+  uint uVar8;
+  undefined8 uVar9;
+  undefined8 *puVar10;
+  long *plVar11;
+  long lVar12;
+  long lVar13;
+  long lVar14;
+  long lVar15;
+  ulong uVar16;
+  long lVar17;
+  int *piVar18;
+  long *unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  long *plVar19;
+  long *unaff_x24;
+  long *unaff_x26;
+  long *plVar20;
+  undefined8 uVar21;
+  undefined1 auVar22 [16];
+  long in_stack_00000018;
+  long in_stack_00000020;
+  long in_stack_00000028;
+  long in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000048;
+  long in_stack_00000050;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  long in_stack_00000070;
+  
+  if (*(int *)(param_1 + 0xe4) == 0) {
+    thunk_FUN_03798b70(param_1);
+  }
+  uVar9 = FUN_061d52c8(0);
+  FUN_06334b04(*(undefined8 *)PTR_DAT_07db4f70,uVar9,*(undefined8 *)(unaff_x21 + 0x60));
+  if (*(int *)(*(long *)PTR_DAT_07d9b718 + 0xe4) == 0) {
+    thunk_FUN_03798b70(*(long *)PTR_DAT_07d9b718);
+  }
+  thunk_FUN_037787d0();
+  FUN_062d6f1c();
+  if (unaff_x26 == (long *)0x0) goto LAB_0635162c;
+  lVar12 = *unaff_x26;
+  uVar16 = (ulong)*(ushort *)(lVar12 + 0x12e);
+  if (uVar16 != 0) {
+    piVar18 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar18 + -2) == *unaff_x19) {
+        puVar10 = (undefined8 *)(lVar12 + (long)(*piVar18 + 1) * 0x10 + 0x138);
+        goto UnityEngine_EventSystems_OVRInputModule__get_instance;
+      }
+      uVar16 = uVar16 - 1;
+      piVar18 = piVar18 + 4;
+    } while (uVar16 != 0);
+  }
+  puVar10 = (undefined8 *)FUN_0377596c();
+UnityEngine_EventSystems_OVRInputModule__get_instance:
+  (*(code *)*puVar10)();
+  lVar12 = FUN_06351ba4(in_stack_00000028);
+  if (in_stack_00000038._4_4_ != 0) {
+    if (*(long *)(in_stack_00000030 + 0xd8) != 0) {
+      plVar11 = (long *)FUN_05450738(*(long *)(in_stack_00000030 + 0xd8),
+                                     *(undefined8 *)PTR_DAT_07db4a70);
+      puVar6 = PTR_DAT_07db4f68;
+      puVar5 = PTR_DAT_07db4f60;
+      puVar4 = PTR_DAT_07db4f10;
+      puVar3 = PTR_DAT_07db4ee8;
+      puVar2 = PTR_DAT_07db4a78;
+      if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0373b7b4();
+      }
+      do {
+        lVar13 = *plVar11;
+        uVar16 = (ulong)*(ushort *)(lVar13 + 0x12e);
+        if (uVar16 != 0) {
+          piVar18 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d89700) {
+              puVar10 = (undefined8 *)(lVar13 + (long)*piVar18 * 0x10 + 0x138);
+              goto LAB_06350498;
+            }
+            uVar16 = uVar16 - 1;
+            piVar18 = piVar18 + 4;
+          } while (uVar16 != 0);
+        }
+        puVar10 = (undefined8 *)FUN_0377596c(plVar11,*(long *)PTR_DAT_07d89700,0);
+LAB_06350498:
+        uVar16 = (*(code *)*puVar10)(plVar11,puVar10[1]);
+        unaff_x24 = (long *)PTR_DAT_07db4be0;
+        if ((uVar16 & 1) == 0) {
+          if (plVar11 == (long *)0x0) goto LAB_063506c0;
+          lVar13 = *plVar11;
+          uVar16 = (ulong)*(ushort *)(lVar13 + 0x12e);
+          if (uVar16 == 0) goto LAB_06350688;
+          piVar18 = (int *)(*(long *)(lVar13 + 0xb0) + 8);
+          goto LAB_06350670;
+        }
+        lVar13 = thunk_FUN_037788cc(*(undefined8 *)puVar6);
+        FUN_06352d54(lVar13,0);
+        lVar14 = *plVar11;
+        uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+        if (uVar16 != 0) {
+          piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar18 + -2) == *(long *)puVar2) {
+              puVar10 = (undefined8 *)(lVar14 + (long)*piVar18 * 0x10 + 0x138);
+              goto LAB_06350508;
+            }
+            uVar16 = uVar16 - 1;
+            piVar18 = piVar18 + 4;
+          } while (uVar16 != 0);
+        }
+        puVar10 = (undefined8 *)FUN_0377596c(plVar11,*(long *)puVar2,0);
+LAB_06350508:
+        lVar14 = (*(code *)*puVar10)(plVar11,puVar10[1]);
+        if (lVar13 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        plVar20 = (long *)(lVar13 + 0x10);
+        *plVar20 = lVar14;
+        thunk_FUN_037aeb94(plVar20);
+        if (*plVar20 ==
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+        FUN_0373bb54();
+          }
+          if ((char)plVar11[5] == '\0') {
+            plVar20 = *(long **)(lVar14 + 0x68);
+            if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_0373b7b4();
+            }
+            lVar14 = *plVar20;
+            uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+            if (uVar16 != 0) {
+              piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07db4e80) {
+                  puVar10 = (undefined8 *)(lVar14 + (long)(*piVar18 + 1) * 0x10 + 0x138);
+                  goto LAB_063510d4;
+                }
+                uVar16 = uVar16 - 1;
+                piVar18 = piVar18 + 4;
+              } while (uVar16 != 0);
+            }
+            puVar10 = (undefined8 *)FUN_0377596c(plVar20,*(long *)PTR_DAT_07db4e80,1);
+LAB_063510d4:
+            lVar14 = (*(code *)*puVar10)(plVar20,uVar9,puVar10[1]);
+            if (lVar14 != 0) {
+              if ((char)plVar11[0x20] == '\0') {
+                uVar21 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar20 = (long *)thunk_FUN_037787d0(lVar14,uVar21);
+                if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar14,uVar21);
+                }
+              }
+              else {
+                plVar20 = (long *)FUN_0634424c(plVar11,lVar14);
+              }
+              if ((char)plVar11[0x20] == '\0') {
+                uVar21 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar11 = (long *)thunk_FUN_037787d0(lVar17,uVar21);
+                if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar17,uVar21);
+                }
+              }
+              else {
+                plVar11 = (long *)FUN_0634424c(plVar11,lVar17);
+                if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+              }
+              lVar14 = *plVar11;
+              uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+              if (uVar16 != 0) {
+                piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d974d8) {
+                    puVar10 = (undefined8 *)(lVar14 + (long)(*piVar18 + 9) * 0x10 + 0x138);
+                    goto Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate;
+                  }
+                  uVar16 = uVar16 - 1;
+                  piVar18 = piVar18 + 4;
+                } while (uVar16 != 0);
+              }
+              puVar10 = (undefined8 *)FUN_0377596c(plVar11,*(long *)PTR_DAT_07d974d8,9);
+Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate:
+              plVar11 = (long *)(*(code *)*puVar10)(plVar11,puVar10[1]);
+              if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                FUN_0373b7b4();
+              }
+              do {
+                lVar14 = *plVar11;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d89700) {
+                      puVar10 = (undefined8 *)(lVar14 + (long)*piVar18 * 0x10 + 0x138);
+                      goto Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar10 = (undefined8 *)FUN_0377596c(plVar11,*(long *)PTR_DAT_07d89700,0);
+Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked:
+                uVar16 = (*(code *)*puVar10)(plVar11,puVar10[1]);
+                if ((uVar16 & 1) == 0) goto LAB_06351318;
+                lVar14 = *plVar11;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d9b3e8) {
+                      puVar10 = (undefined8 *)(lVar14 + (long)(*piVar18 + 2) * 0x10 + 0x138);
+                      goto LAB_06351290;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar10 = (undefined8 *)FUN_0377596c(plVar11,*(long *)PTR_DAT_07d9b3e8,2);
+LAB_06351290:
+                auVar22 = (*(code *)*puVar10)(plVar11,puVar10[1]);
+                if (plVar20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+                lVar14 = *plVar20;
+                uVar16 = (ulong)*(ushort *)(lVar14 + 0x12e);
+                if (uVar16 != 0) {
+                  piVar18 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar18 + -2) == *(long *)PTR_DAT_07d974d8) {
+                      puVar10 = (undefined8 *)(lVar14 + (long)(*piVar18 + 1) * 0x10 + 0x138);
+                      goto LAB_06351300;
+                    }
+                    uVar16 = uVar16 - 1;
+                    piVar18 = piVar18 + 4;
+                  } while (uVar16 != 0);
+                }
+                puVar10 = (undefined8 *)FUN_0377596c(plVar20,*(long *)PTR_DAT_07d974d8,1);
+LAB_06351300:
+                (*(code *)*puVar10)(plVar20,auVar22._0_8_,auVar22._8_8_,puVar10[1]);
+              } while( true );
+            }
+          }
+        }
+        goto LAB_06351064;
+      }
+    }
+  }
+LAB_0635162c:
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 100
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$.cctor
+ENTRY_POINT: 0635047c
+MANUAL_PRIORITY_SCORE: 282
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 159
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'validity_gate', 'telemetry', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_8', 'validity_or_gating_hits_21', 'telemetry_or_network_hits_2', 'strong_foveation_hits_6', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_159', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\0635047c_UnityEngine.EventSystems.OVRInputModule$$.cctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\100_p282_UnityEngine.EventSystems.OVRInputModule$$.cctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.EventSystems.OVRInputModule$$.cctor
+ENTRY_POINT: 0635047c
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 159
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;data_collection_or_telemetry;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;validity_gate;telemetry;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_8;validity_or_gating_hits_21;telemetry_or_network_hits_2;strong_foveation_hits_6;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x06351788) */
+/* WARNING: Removing unreachable block (ram,0x063506bc) */
+/* WARNING: Removing unreachable block (ram,0x0635100c) */
+/* WARNING: Removing unreachable block (ram,0x06351010) */
+/* WARNING: Removing unreachable block (ram,0x06351ab0) */
+/* WARNING: Removing unreachable block (ram,0x063513a8) */
+/* WARNING: Removing unreachable block (ram,0x063513ac) */
+/* WARNING: Removing unreachable block (ram,0x063515f8) */
+/* WARNING: Removing unreachable block (ram,0x0635177c) */
+
+undefined8 UnityEngine_EventSystems_OVRInputModule___cctor(void)
+
+{
+  byte bVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined4 uVar4;
+  uint uVar5;
+  undefined8 *puVar6;
+  ulong uVar7;
+  long lVar8;
+  undefined8 uVar9;
+  long lVar10;
+  long lVar11;
+  long lVar12;
+  int *piVar13;
+  undefined8 *unaff_x19;
+  long *unaff_x20;
+  long *plVar14;
+  long unaff_x22;
+  long *unaff_x23;
+  long *unaff_x24;
+  undefined8 *unaff_x25;
+  long *plVar15;
+  long *plVar16;
+  undefined8 uVar17;
+  undefined8 *unaff_x29;
+  undefined1 auVar18 [16];
+  long in_stack_00000018;
+  long in_stack_00000020;
+  long in_stack_00000028;
+  long in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000048;
+  long in_stack_00000050;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  long in_stack_00000070;
+  
+code_r0x0635047c:
+  puVar6 = (undefined8 *)FUN_0377596c();
+  do {
+    uVar7 = (*(code *)*puVar6)();
+    puVar3 = PTR_DAT_07db4be0;
+    if ((uVar7 & 1) == 0) {
+      if (unaff_x23 == (long *)0x0) goto LAB_063506b0;
+      lVar8 = *unaff_x23;
+      uVar7 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar7 == 0) goto LAB_06350688;
+      piVar13 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      goto LAB_06350670;
+    }
+    lVar8 = thunk_FUN_037788cc(*unaff_x19);
+    FUN_06352d54(lVar8,0);
+    lVar11 = *unaff_x23;
+    uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+    if (uVar7 != 0) {
+      piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar13 + -2) == *unaff_x24) {
+          puVar6 = (undefined8 *)(lVar11 + (long)*piVar13 * 0x10 + 0x138);
+          goto LAB_06350508;
+        }
+        uVar7 = uVar7 - 1;
+        piVar13 = piVar13 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_0377596c();
+LAB_06350508:
+    lVar11 = (*(code *)*puVar6)();
+    if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0373b7b4();
+    }
+    plVar15 = (long *)(lVar8 + 0x10);
+    *plVar15 = lVar11;
+    thunk_FUN_037aeb94(plVar15);
+    if (*plVar15 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0373b7b4();
+    }
+    if (*(char *)(*plVar15 + 0x80) == '\0') {
+      uVar9 = thunk_FUN_037788cc(*unaff_x25);
+      FUN_044a3874(uVar9,lVar8,*unaff_x29,0);
+      uVar7 = FUN_03f439f0();
+      if ((uVar7 & 1) != 0) {
+        if (*plVar15 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        uVar9 = *(undefined8 *)(*plVar15 + 0x30);
+        lVar8 = thunk_FUN_037788cc(*(undefined8 *)PTR_DAT_07db4ee0);
+        FUN_06352c74(lVar8,uVar9,0);
+        if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        *(long *)(lVar8 + 0x18) = *plVar15;
+        thunk_FUN_037aeb94();
+        in_stack_00000040 = 0;
+        FUN_04e5f37c(&stack0x00000040,0,*(undefined8 *)PTR_DAT_07db4f38);
+        *(undefined8 *)(lVar8 + 0x28) = in_stack_00000040;
+        if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        lVar11 = *(long *)(unaff_x22 + 0x10);
+        *(int *)(unaff_x22 + 0x1c) = *(int *)(unaff_x22 + 0x1c) + 1;
+        if (lVar11 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0373b7b4();
+        }
+        uVar5 = *(uint *)(unaff_x22 + 0x18);
+        if (uVar5 < *(uint *)(lVar11 + 0x18)) {
+          *(uint *)(unaff_x22 + 0x18) = uVar5 + 1;
+          plVar15 = (long *)(lVar11 + (long)(int)uVar5 * 8 + 0x20);
+          *plVar15 = lVar8;
+          thunk_FUN_037aeb94(plVar15,lVar8);
+        }
+        else {
+          FUN_049ceef4();
+        }
+      }
+    }
+    lVar8 = *unaff_x23;
+    uVar7 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar7 == 0) goto code_r0x0635047c;
+    piVar13 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+    while (*(long *)(piVar13 + -2) != *(long *)PTR_DAT_07d89700) {
+      uVar7 = uVar7 - 1;
+      piVar13 = piVar13 + 4;
+      if (uVar7 == 0) goto code_r0x0635047c;
+    }
+    puVar6 = (undefined8 *)(lVar8 + (long)*piVar13 * 0x10 + 0x138);
+  } while( true );
+LAB_06350914:
+  if (*(long *)(lVar8 + 0x18) != 0) {
+    uVar9 = FUN_06338600(in_stack_00000030);
+    lVar11 = *(long *)puVar3;
+    if (*(int *)(lVar11 + 0xe4) == 0) {
+      thunk_FUN_03798b70(lVar11);
+      lVar11 = *(long *)puVar3;
+    }
+    lVar10 = *(long
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+               /* WARNING: Subroutine does not return */
+            FUN_0373bb54();
+          }
+          if ((char)plVar15[5] == '\0') {
+            plVar16 = *(long **)(lVar11 + 0x68);
+            if (plVar16 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_0373b7b4();
+            }
+            lVar11 = *plVar16;
+            uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+            if (uVar7 != 0) {
+              piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar13 + -2) == *(long *)PTR_DAT_07db4e80) {
+                  puVar6 = (undefined8 *)(lVar11 + (long)(*piVar13 + 1) * 0x10 + 0x138);
+                  goto LAB_063510d4;
+                }
+                uVar7 = uVar7 - 1;
+                piVar13 = piVar13 + 4;
+              } while (uVar7 != 0);
+            }
+            puVar6 = (undefined8 *)FUN_0377596c(plVar16,*(long *)PTR_DAT_07db4e80,1);
+LAB_063510d4:
+            lVar11 = (*(code *)*puVar6)(plVar16,uVar9,puVar6[1]);
+            if (lVar11 != 0) {
+              if ((char)plVar15[0x20] == '\0') {
+                uVar17 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar16 = (long *)thunk_FUN_037787d0(lVar11,uVar17);
+                if (plVar16 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar11,uVar17);
+                }
+              }
+              else {
+                plVar16 = (long *)FUN_0634424c(plVar15,lVar11);
+              }
+              if ((char)plVar15[0x20] == '\0') {
+                uVar17 = *(undefined8 *)PTR_DAT_07d974d8;
+                plVar15 = (long *)thunk_FUN_037787d0(lVar10,uVar17);
+                if (plVar15 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373bb54(lVar10,uVar17);
+                }
+              }
+              else {
+                plVar15 = (long *)FUN_0634424c(plVar15,lVar10);
+                if (plVar15 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+              }
+              lVar11 = *plVar15;
+              uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+              if (uVar7 != 0) {
+                piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar13 + -2) == *(long *)PTR_DAT_07d974d8) {
+                    puVar6 = (undefined8 *)(lVar11 + (long)(*piVar13 + 9) * 0x10 + 0x138);
+                    goto Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate;
+                  }
+                  uVar7 = uVar7 - 1;
+                  piVar13 = piVar13 + 4;
+                } while (uVar7 != 0);
+              }
+              puVar6 = (undefined8 *)FUN_0377596c(plVar15,*(long *)PTR_DAT_07d974d8,9);
+Meta_XR_MetaXREyeTrackedFoveationFeature__OnSessionCreate:
+              plVar15 = (long *)(*(code *)*puVar6)(plVar15,puVar6[1]);
+              if (plVar15 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                FUN_0373b7b4();
+              }
+              do {
+                lVar11 = *plVar15;
+                uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+                if (uVar7 != 0) {
+                  piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar13 + -2) == *(long *)PTR_DAT_07d89700) {
+                      puVar6 = (undefined8 *)(lVar11 + (long)*piVar13 * 0x10 + 0x138);
+                      goto Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked;
+                    }
+                    uVar7 = uVar7 - 1;
+                    piVar13 = piVar13 + 4;
+                  } while (uVar7 != 0);
+                }
+                puVar6 = (undefined8 *)FUN_0377596c(plVar15,*(long *)PTR_DAT_07d89700,0);
+Meta_XR_MetaXREyeTrackedFoveationFeature__MetaGetFoveationEyeTracked:
+                uVar7 = (*(code *)*puVar6)(plVar15,puVar6[1]);
+                if ((uVar7 & 1) == 0) goto LAB_06351318;
+                lVar11 = *plVar15;
+                uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+                if (uVar7 != 0) {
+                  piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar13 + -2) == *(long *)PTR_DAT_07d9b3e8) {
+                      puVar6 = (undefined8 *)(lVar11 + (long)(*piVar13 + 2) * 0x10 + 0x138);
+                      goto LAB_06351290;
+                    }
+                    uVar7 = uVar7 - 1;
+                    piVar13 = piVar13 + 4;
+                  } while (uVar7 != 0);
+                }
+                puVar6 = (undefined8 *)FUN_0377596c(plVar15,*(long *)PTR_DAT_07d9b3e8,2);
+LAB_06351290:
+                auVar18 = (*(code *)*puVar6)(plVar15,puVar6[1]);
+                if (plVar16 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+                  FUN_0373b7b4();
+                }
+                lVar11 = *plVar16;
+                uVar7 = (ulong)*(ushort *)(lVar11 + 0x12e);
+                if (uVar7 != 0) {
+                  piVar13 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+                  do {
+                    if (*(long *)(piVar13 + -2) == *(long *)PTR_DAT_07d974d8) {
+                      puVar6 = (undefined8 *)(lVar11 + (long)(*piVar13 + 1) * 0x10 + 0x138);
+                      goto LAB_06351300;
+                    }
+                    uVar7 = uVar7 - 1;
+                    piVar13 = piVar13 + 4;
+                  } while (uVar7 != 0);
+                }
+                puVar6 = (undefined8 *)FUN_0377596c(plVar16,*(long *)PTR_DAT_07d974d8,1);
+LAB_06351300:
+                (*(code *)*puVar6)(plVar16,auVar18._0_8_,auVar18._8_8_,puVar6[1]);
+              } while( true );
+            }
+          }
+        }
+        goto LAB_06351064;
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION

@@ -1,0 +1,1226 @@
+/*
+FUNCTION_NAME: Unity.Properties.AttributesScope$$Dispose
+ENTRY_POINT: 05e677a0
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 85
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;paired_state_refs;telemetry
+EVIDENCE: validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_structure_only;telemetry_or_network_hits_4
+*/
+
+
+void Unity_Properties_AttributesScope__Dispose(long param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long *plVar6;
+  long lVar7;
+  long lVar8;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  undefined4 in_w10;
+  long *unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  long unaff_x24;
+  long unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x27;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  long in_stack_00000000;
+  undefined8 in_stack_00000008;
+  
+  *(undefined4 *)(unaff_x25 + 0x1c) = in_w10;
+  if (param_1 != 0) {
+    uVar1 = *(uint *)(unaff_x25 + 0x18);
+    if (uVar1 < *(uint *)(param_1 + 0x18)) {
+      *(uint *)(unaff_x25 + 0x18) = uVar1 + 1;
+      *(undefined8 *)(param_1 + (long)(int)uVar1 * 8 + 0x20) = param_3;
+      thunk_FUN_02dc1ef0();
+    }
+    else {
+      FUN_036a5e08();
+    }
+    *(long *)(unaff_x24 + 0x20) = unaff_x25;
+    thunk_FUN_02dc1ef0();
+    lVar7 = *(long *)(unaff_x23 + 0x10);
+    *(int *)(unaff_x23 + 0x1c) = *(int *)(unaff_x23 + 0x1c) + 1;
+    if (lVar7 != 0) {
+      uVar1 = *(uint *)(unaff_x23 + 0x18);
+      if (uVar1 < *(uint *)(lVar7 + 0x18)) {
+        *(uint *)(unaff_x23 + 0x18) = uVar1 + 1;
+        *(long *)(lVar7 + (long)(int)uVar1 * 8 + 0x20) = unaff_x24;
+        thunk_FUN_02dc1ef0();
+      }
+      else {
+        FUN_036a5e08();
+      }
+      *(long *)(unaff_x22 + 0x28) = unaff_x23;
+      thunk_FUN_02dc1ef0();
+      lVar7 = *(long *)(unaff_x21 + 0x10);
+      *(int *)(unaff_x21 + 0x1c) = *(int *)(unaff_x21 + 0x1c) + 1;
+      if (lVar7 != 0) {
+        uVar1 = *(uint *)(unaff_x21 + 0x18);
+        if (uVar1 < *(uint *)(lVar7 + 0x18)) {
+          *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+          *(long *)(lVar7 + (long)(int)uVar1 * 8 + 0x20) = unaff_x22;
+          thunk_FUN_02dc1ef0();
+        }
+        else {
+          FUN_036a5e08();
+        }
+        lVar7 = thunk_FUN_02d8a638(*(undefined8 *)Method_System_Xml_XmlNode_AppendChild__);
+        FUN_05e467f0(lVar7,0);
+        puVar2 = Method_System_Xml_XmlTextReaderImpl_set_EntityHandling__;
+        if (lVar7 != 0) {
+          *(undefined8 *)(lVar7 + 0x10) =
+               *(undefined8 *)Method_System_Collections_Generic_Stack<ExpressionCombinator>_Peek__;
+          thunk_FUN_02dc1ef0();
+          *(undefined8 *)(lVar7 + 0x20) = *(undefined8 *)puVar2;
+          thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+          uVar4 = *unaff_x29;
+          *(undefined4 *)(lVar7 + 0x18) = 0;
+          lVar5 = thunk_FUN_02d8a638(uVar4);
+          FUN_036a55a0(lVar5,*unaff_x27);
+          if (lVar5 != 0) {
+            lVar8 = *(long *)(lVar5 + 0x10);
+            uVar4 = *(undefined8 *)
+                     Method_System_Net_Configuration_SmtpNetworkElement_get_TargetName__;
+            lVar10 = *unaff_x19;
+            *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+            if (lVar8 != 0) {
+              uVar1 = *(uint *)(lVar5 + 0x18);
+              if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                *(undefined8 *)(lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4;
+                thunk_FUN_02dc1ef0();
+              }
+              else {
+                FUN_036a5e08(lVar5,uVar4,
+                             *(undefined8 *)(*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) + 0x70));
+              }
+              *(long *)(lVar7 + 0x30) = lVar5;
+              thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+              lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                          Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                        );
+              FUN_036a55a0(lVar5,*(undefined8 *)
+                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__)
+              ;
+              lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+              FUN_05e467e8(lVar8,0);
+              if (lVar8 != 0) {
+                *(undefined8 *)(lVar8 + 0x18) =
+                     *(undefined8 *)Method_System_Xml_XmlTextEncoder_WriteSurrogateChar__;
+                thunk_FUN_02dc1ef0();
+                *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                thunk_FUN_02dc1ef0();
+                lVar10 = thunk_FUN_02d8a638(*unaff_x29);
+                FUN_036a55a0(lVar10,*unaff_x27);
+                if (lVar10 != 0) {
+                  lVar9 = *(long *)(lVar10 + 0x10);
+                  uVar4 = *(undefined8 *)Method_System_Xml_Schema_XmlNumeric10Converter_ToDecimal__;
+                  lVar11 = *unaff_x19;
+                  *(int *)(lVar10 + 0x1c) = *(int *)(lVar10 + 0x1c) + 1;
+                  if (lVar9 != 0) {
+                    uVar1 = *(uint *)(lVar10 + 0x18);
+                    if (uVar1 < *(uint *)(lVar9 + 0x18)) {
+                      *(uint *)(lVar10 + 0x18) = uVar1 + 1;
+                      *(undefined8 *)(lVar9 + (long)(int)uVar1 * 8 + 0x20) = uVar4;
+                      thunk_FUN_02dc1ef0();
+                    }
+                    else {
+                      FUN_036a5e08(lVar10,uVar4,
+                                   *(undefined8 *)
+                                    (*(long *)(*(long *)(lVar11 + 0x20) + 0xc0) + 0x70));
+                    }
+                    *(long *)(lVar8 + 0x20) = lVar10;
+                    thunk_FUN_02dc1ef0((long *)(lVar8 + 0x20),lVar10);
+                    if (lVar5 != 0) {
+                      lVar10 = *(long *)(lVar5 + 0x10);
+                      lVar9 = *unaff_x20;
+                      *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                      if (lVar10 != 0) {
+                        uVar1 = *(uint *)(lVar5 + 0x18);
+                        if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                          *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                          plVar6 = (long *)(lVar10 + (long)(int)uVar1 * 8 + 0x20);
+                          *plVar6 = lVar8;
+                          thunk_FUN_02dc1ef0(plVar6,lVar8);
+                        }
+                        else {
+                          FUN_036a5e08(lVar5,lVar8,
+                                       *(undefined8 *)
+                                        (*(long *)(*(long *)(lVar9 + 0x20) + 0xc0) + 0x70));
+                        }
+                        lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                        FUN_05e467e8(lVar8,0);
+                        if (lVar8 != 0) {
+                          *(undefined8 *)(lVar8 + 0x18) =
+                               *(undefined8 *)Method_System_Xml_XmlTextReaderImpl_Throw__;
+                          thunk_FUN_02dc1ef0();
+                          *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                          thunk_FUN_02dc1ef0();
+                          lVar10 = thunk_FUN_02d8a638(*unaff_x29);
+                          FUN_036a55a0(lVar10,*unaff_x27);
+                          if (lVar10 != 0) {
+                            lVar9 = *(long *)(lVar10 + 0x10);
+                            uVar4 = *(undefined8 *)Method_System_Xml_XmlNodeReader_GetAttribute__;
+                            lVar11 = *unaff_x19;
+                            *(int *)(lVar10 + 0x1c) = *(int *)(lVar10 + 0x1c) + 1;
+                            if (lVar9 != 0) {
+                              uVar1 = *(uint *)(lVar10 + 0x18);
+                              if (uVar1 < *(uint *)(lVar9 + 0x18)) {
+                                *(uint *)(lVar10 + 0x18) = uVar1 + 1;
+                                *(undefined8 *)(lVar9 + (long)(int)uVar1 * 8 + 0x20) = uVar4;
+                                thunk_FUN_02dc1ef0();
+                              }
+                              else {
+                                FUN_036a5e08(lVar10,uVar4,
+                                             *(undefined8 *)
+                                              (*(long *)(*(long *)(lVar11 + 0x20) + 0xc0) + 0x70));
+                              }
+                              *(long *)(lVar8 + 0x20) = lVar10;
+                              thunk_FUN_02dc1ef0((long *)(lVar8 + 0x20),lVar10);
+                              lVar10 = *(long *)(lVar5 + 0x10);
+                              lVar9 = *unaff_x20;
+                              *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                              if (lVar10 != 0) {
+                                uVar1 = *(uint *)(lVar5 + 0x18);
+                                if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                  *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                  plVar6 = (long *)(lVar10 + (long)(int)uVar1 * 8 + 0x20);
+                                  *plVar6 = lVar8;
+                                  thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                }
+                                else {
+                                  FUN_036a5e08(lVar5,lVar8,
+                                               *(undefined8 *)
+                                                (*(long *)(*(long *)(lVar9 + 0x20) + 0xc0) + 0x70));
+                                }
+                                *(long *)(lVar7 + 0x28) = lVar5;
+                                thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                lVar5 = *(long *)(unaff_x21 + 0x10);
+                                *(int *)(unaff_x21 + 0x1c) = *(int *)(unaff_x21 + 0x1c) + 1;
+                                if (lVar5 != 0) {
+                                  uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                  if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                    *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                    plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8 + 0x20);
+                                    *plVar6 = lVar7;
+                                    thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                  }
+                                  else {
+                                    FUN_036a5e08();
+                                  }
+                                  lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                            
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                  FUN_05e467f0(lVar7,0);
+                                  puVar2 = PTR_DAT_06648368;
+                                  if (lVar7 != 0) {
+                                    *(undefined8 *)(lVar7 + 0x10) =
+                                         *(undefined8 *)
+                                          Method_System_Collections_Generic_Stack<CompilerContextData>__ctor__
+                                    ;
+                                    thunk_FUN_02dc1ef0();
+                                    *(undefined8 *)(lVar7 + 0x20) = *(undefined8 *)puVar2;
+                                    thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                    uVar4 = *unaff_x29;
+                                    *(undefined4 *)(lVar7 + 0x18) = 1;
+                                    lVar5 = thunk_FUN_02d8a638(uVar4);
+                                    FUN_036a55a0(lVar5,*unaff_x27);
+                                    if (lVar5 != 0) {
+                                      lVar8 = *(long *)(lVar5 + 0x10);
+                                      uVar4 = *(undefined8 *)puVar2;
+                                      lVar10 = *unaff_x19;
+                                      *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                                      if (lVar8 != 0) {
+                                        uVar1 = *(uint *)(lVar5 + 0x18);
+                                        if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                          *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                          *(undefined8 *)(lVar8 + (long)(int)uVar1 * 8 + 0x20) =
+                                               uVar4;
+                                          thunk_FUN_02dc1ef0();
+                                        }
+                                        else {
+                                          FUN_036a5e08(lVar5,uVar4,
+                                                       *(undefined8 *)
+                                                        (*(long *)(*(long *)(lVar10 + 0x20) + 0xc0)
+                                                        + 0x70));
+                                        }
+                                        *(long *)(lVar7 + 0x30) = lVar5;
+                                        thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                        lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                        
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                        FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                        
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                        lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                        FUN_05e467e8(lVar8,0);
+                                        puVar2 = 
+                                        Method_System_Xml_Serialization_XmlSerializer_Serialize__;
+                                        if (lVar8 != 0) {
+                                          *(undefined8 *)(lVar8 + 0x18) =
+                                               *(undefined8 *)
+                                                Method_System_Xml_Serialization_XmlSerializer_Serialize__
+                                          ;
+                                          thunk_FUN_02dc1ef0();
+                                          *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                          thunk_FUN_02dc1ef0();
+                                          if (lVar5 != 0) {
+                                            lVar10 = *(long *)(lVar5 + 0x10);
+                                            lVar9 = *unaff_x20;
+                                            *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+                                            if (lVar10 != 0) {
+                                              uVar1 = *(uint *)(lVar5 + 0x18);
+                                              if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                plVar6 = (long *)(lVar10 + (long)(int)uVar1 * 8 +
+                                                                 0x20);
+                                                *plVar6 = lVar8;
+                                                thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                              }
+                                              else {
+                                                FUN_036a5e08(lVar5,lVar8,
+                                                             *(undefined8 *)
+                                                              (*(long *)(*(long *)(lVar9 + 0x20) +
+                                                                        0xc0) + 0x70));
+                                              }
+                                              *(long *)(lVar7 + 0x28) = lVar5;
+                                              thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                              lVar5 = *(long *)(unaff_x21 + 0x10);
+                                              *(int *)(unaff_x21 + 0x1c) =
+                                                   *(int *)(unaff_x21 + 0x1c) + 1;
+                                              if (lVar5 != 0) {
+                                                uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                  *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                  plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8 +
+                                                                   0x20);
+                                                  *plVar6 = lVar7;
+                                                  thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                }
+                                                else {
+                                                  FUN_036a5e08();
+                                                }
+                                                lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                FUN_05e467f0(lVar7,0);
+                                                puVar3 = 
+                                                Method_System_Xml_XmlSqlBinaryReader_CheckAllowContent__
+                                                ;
+                                                if (lVar7 != 0) {
+                                                  *(undefined8 *)(lVar7 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  Method_System_Collections_Generic_Stack<ByteArraySlice>_get_Count__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar3;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 0;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Net_Configuration_SmtpNetworkElement_set_ClientDomain__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)puVar2;
+                                                    thunk_FUN_02dc1ef0();
+                                                    *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                    thunk_FUN_02dc1ef0();
+                                                    if (lVar5 != 0) {
+                                                      lVar10 = *(long *)(lVar5 + 0x10);
+                                                      lVar9 = *unaff_x20;
+                                                      *(int *)(lVar5 + 0x1c) =
+                                                           *(int *)(lVar5 + 0x1c) + 1;
+                                                      if (lVar10 != 0) {
+                                                        uVar1 = *(uint *)(lVar5 + 0x18);
+                                                        if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                          *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                          plVar6 = (long *)(lVar10 + (long)(int)
+                                                  uVar1 * 8 + 0x20);
+                                                  *plVar6 = lVar8;
+                                                  thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                  }
+                                                  else {
+                                                    FUN_036a5e08(lVar5,lVar8,
+                                                                 *(undefined8 *)
+                                                                  (*(long *)(*(long *)(lVar9 + 0x20)
+                                                                            + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_XmlTextWriter_LookupPrefix__;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Collections_Generic_Stack<ExpressionCombinator>__ctor__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 0;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Xml_XmlSqlBinaryReader_ValueAsDouble__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_XmlSqlBinaryReader_ValueAsLong__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_Serialization_XmlSerializationWriter_WriteXmlAttribute__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Collections_Generic_Stack<Entry>_Pop__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 0;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Net_Configuration_SmtpNetworkElement_set_Port__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlSerializationWriterInterpreter_WriteAnyElementContent__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_XmlTextEncoder_WriteSurrogateCharEntity__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Collections_Generic_Stack<Entry>_Clear__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 0;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Net_Configuration_SmtpNetworkElement_set_TargetName__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_XmlSqlBinaryReader_ValueAsULong__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_XmlTextEncoder_WriteCharEntity__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_XmlTextReaderImpl_GetAttribute__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 0;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Xml_XmlSqlBinaryReader_ValueAsDateTimeString__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Schema_XmlStringConverter_ChangeType__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_Serialization_XmlReflectionImporter_ImportTextElementInfo__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlReflectionImporter_ImportAnyElementInfo__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 3;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_System_Xml_XmlReader_ReadValueChunk__;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlReflectionImporter_IncludeType__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_Serialization_XmlReflectionImporter_CreateMapMember__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)PTR_DAT_066596b8;
+                                                    thunk_FUN_02dc1ef0();
+                                                    *(undefined8 *)(lVar7 + 0x20) =
+                                                         *(undefined8 *)puVar2;
+                                                    thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20))
+                                                    ;
+                                                    uVar4 = *unaff_x29;
+                                                    *(undefined4 *)(lVar7 + 0x18) = 3;
+                                                    lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                    FUN_036a55a0(lVar5,*unaff_x27);
+                                                    if (lVar5 != 0) {
+                                                      lVar8 = *(long *)(lVar5 + 0x10);
+                                                      uVar4 = *(undefined8 *)
+                                                                                                                              
+                                                  Method_UnityEngine_InputSystem_Utilities_ArrayHelpers_AppendWithCapacity<InputManager_StateChangeMonitorListener>__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlReflectionImporter_ImportElementInfo__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    lVar7 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                                
+                                                  Method_System_Xml_XmlNode_AppendChild__);
+                                                  FUN_05e467f0(lVar7,0);
+                                                  puVar2 = 
+                                                  Method_System_Xml_Serialization_XmlSerializationWriterInterpreter_WriteMemberElement__
+                                                  ;
+                                                  if (lVar7 != 0) {
+                                                    *(undefined8 *)(lVar7 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_XmlSqlBinaryReader_AddQName__;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar7 + 0x20) =
+                                                       *(undefined8 *)puVar2;
+                                                  thunk_FUN_02dc1ef0((undefined8 *)(lVar7 + 0x20));
+                                                  uVar4 = *unaff_x29;
+                                                  *(undefined4 *)(lVar7 + 0x18) = 4;
+                                                  lVar5 = thunk_FUN_02d8a638(uVar4);
+                                                  FUN_036a55a0(lVar5,*unaff_x27);
+                                                  if (lVar5 != 0) {
+                                                    lVar8 = *(long *)(lVar5 + 0x10);
+                                                    uVar4 = *(undefined8 *)
+                                                                                                                          
+                                                  Method_UnityEngine_XR_Interaction_Toolkit_Interactors_XRBaseInteractor_OnHoverEntered__
+                                                  ;
+                                                  lVar10 = *unaff_x19;
+                                                  *(int *)(lVar5 + 0x1c) =
+                                                       *(int *)(lVar5 + 0x1c) + 1;
+                                                  if (lVar8 != 0) {
+                                                    uVar1 = *(uint *)(lVar5 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+                                                      *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar4
+                                                      ;
+                                                      thunk_FUN_02dc1ef0();
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08(lVar5,uVar4,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar10 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x30) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x30),lVar5);
+                                                  lVar5 = thunk_FUN_02d8a638(*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_CreateInstruction__
+                                                  );
+                                                  FUN_036a55a0(lVar5,*(undefined8 *)
+                                                                                                                                            
+                                                  Method_Newtonsoft_Json_Converters_XmlNodeConverter_AddAttribute__
+                                                  );
+                                                  lVar8 = thunk_FUN_02d8a638(*unaff_x28);
+                                                  FUN_05e467e8(lVar8,0);
+                                                  if (lVar8 != 0) {
+                                                    *(undefined8 *)(lVar8 + 0x18) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlSerializationWriter_WriteTypedPrimitive__
+                                                  ;
+                                                  thunk_FUN_02dc1ef0();
+                                                  *(undefined8 *)(lVar8 + 0x10) = *unaff_x26;
+                                                  thunk_FUN_02dc1ef0();
+                                                  if (lVar5 != 0) {
+                                                    lVar10 = *(long *)(lVar5 + 0x10);
+                                                    lVar9 = *unaff_x20;
+                                                    *(int *)(lVar5 + 0x1c) =
+                                                         *(int *)(lVar5 + 0x1c) + 1;
+                                                    if (lVar10 != 0) {
+                                                      uVar1 = *(uint *)(lVar5 + 0x18);
+                                                      if (uVar1 < *(uint *)(lVar10 + 0x18)) {
+                                                        *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+                                                        plVar6 = (long *)(lVar10 + (long)(int)uVar1
+                                                                                   * 8 + 0x20);
+                                                        *plVar6 = lVar8;
+                                                        thunk_FUN_02dc1ef0(plVar6,lVar8);
+                                                      }
+                                                      else {
+                                                        FUN_036a5e08(lVar5,lVar8,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar9 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar7 + 0x28) = lVar5;
+                                                  thunk_FUN_02dc1ef0((long *)(lVar7 + 0x28),lVar5);
+                                                  lVar5 = *(long *)(unaff_x21 + 0x10);
+                                                  *(int *)(unaff_x21 + 0x1c) =
+                                                       *(int *)(unaff_x21 + 0x1c) + 1;
+                                                  if (lVar5 != 0) {
+                                                    uVar1 = *(uint *)(unaff_x21 + 0x18);
+                                                    if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+                                                      *(uint *)(unaff_x21 + 0x18) = uVar1 + 1;
+                                                      plVar6 = (long *)(lVar5 + (long)(int)uVar1 * 8
+                                                                       + 0x20);
+                                                      *plVar6 = lVar7;
+                                                      thunk_FUN_02dc1ef0(plVar6,lVar7);
+                                                    }
+                                                    else {
+                                                      FUN_036a5e08();
+                                                    }
+                                                    *(long *)(in_stack_00000000 + 0x28) = unaff_x21;
+                                                    thunk_FUN_02dc1ef0();
+                                                    FUN_05e465bc(in_stack_00000008,in_stack_00000000
+                                                                 ,0);
+                                                    return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4dee8();
+}
+
+

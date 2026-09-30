@@ -1,0 +1,781 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 26
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnStart
+ENTRY_POINT: 028cc608
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 106
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_1', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_4', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_106', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\028cc608_Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnStart.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\026_p210_Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnStart.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnStart
+ENTRY_POINT: 028cc608
+PROGRAM: sharks-libil2cpp.so
+SCORE: 106
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_1;paired_field_refs_with_eye_source;telemetry_or_network_hits_4;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+void Meta_XR_ImmersiveDebugger_Telemetry_TelemetryTracker__OnStart(long param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  long lVar3;
+  long lVar4;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  if ((*(byte *)(param_1 + 0x135) & 1) == 0) {
+    param_1 = FUN_0185daa4(param_1);
+  }
+  lVar3 = *(long *)(*(long *)(param_1 + 0xc0) + 8);
+  if ((*(byte *)(lVar3 + 0x135) & 1) == 0) {
+    lVar3 = FUN_0185daa4();
+  }
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_01843fdc();
+  }
+  lVar3 = *(long *)(unaff_x19 + 0x20);
+  if ((*(byte *)(lVar3 + 0x135) & 1) == 0) {
+    lVar3 = FUN_0185daa4();
+  }
+  lVar3 = *(long *)(*(long *)(lVar3 + 0xc0) + 8);
+  if ((*(byte *)(lVar3 + 0x135) & 1) == 0) {
+    lVar3 = FUN_0185daa4();
+  }
+  lVar3 = *(long *)(*(long *)(lVar3 + 0xb8) + 8);
+  if (lVar3 != 0) {
+    lVar4 = *(long *)(unaff_x19 + 0x20);
+    uVar1 = *unaff_x20;
+    uVar2 = unaff_x20[1];
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    FUN_02156cc0(lVar3,uVar1,uVar2,*(undefined8 *)(*(long *)(lVar4 + 0xc0) + 0x1d8));
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5a8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 27
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionEnd
+ENTRY_POINT: 02c48fa0
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 103
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_103', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02c48fa0_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionEnd.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\027_p206_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionEnd.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionEnd
+ENTRY_POINT: 02c48fa0
+PROGRAM: sharks-libil2cpp.so
+SCORE: 103
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin_OVRP_1_71_0__ovrp_UnityOpenXR_OnSessionEnd
+               (undefined8 *param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  long lVar1;
+  long *plVar2;
+  long unaff_x20;
+  undefined8 unaff_x21;
+  long *unaff_x23;
+  
+  FUN_02c4071c(param_2,param_3,*param_1);
+  *(undefined8 *)(*(long *)(*unaff_x23 + 0xb8) + 0x10) = unaff_x21;
+  thunk_FUN_0188fd20();
+  lVar1 = thunk_FUN_01861bbc(*(undefined8 *)PTR_DAT_03802a30);
+  FUN_02c12df4(lVar1,0);
+  FUN_02c3f5c0(lVar1);
+  if (unaff_x20 != 0) {
+    plVar2 = (long *)(unaff_x20 + 0x78);
+    *plVar2 = lVar1;
+    thunk_FUN_0188fd20(plVar2,lVar1);
+    if (*plVar2 != 0) {
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5a8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 28
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnFocusLost
+ENTRY_POINT: 028ccf58
+MANUAL_PRIORITY_SCORE: 205
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 102
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_1', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_4', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_102', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\028ccf58_Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnFocusLost.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\028_p205_Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnFocusLost.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry.TelemetryTracker$$OnFocusLost
+ENTRY_POINT: 028ccf58
+PROGRAM: sharks-libil2cpp.so
+SCORE: 102
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_1;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_4;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+void Meta_XR_ImmersiveDebugger_Telemetry_TelemetryTracker__OnFocusLost(void)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  long lVar4;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 *unaff_x21;
+  undefined1 auVar5 [16];
+  
+  uVar3 = FUN_028cc1c8();
+  if ((uVar3 & 1) == 0) {
+    lVar4 = *(long *)(unaff_x20 + 0x20);
+    uVar1 = *unaff_x21;
+    uVar2 = unaff_x21[1];
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 0x270);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    if (*(int *)(lVar4 + 0xe0) == 0) {
+      thunk_FUN_01843fdc();
+    }
+    if ((*(byte *)(*(long *)(unaff_x20 + 0x20) + 0x135) & 1) == 0) {
+      FUN_0185daa4();
+    }
+    FUN_02028e7c(uVar1,uVar2);
+    return;
+  }
+  lVar4 = *(long *)(unaff_x20 + 0x20);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_0185daa4();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_0185daa4();
+  }
+  if (*(int *)(lVar4 + 0xe0) == 0) {
+    thunk_FUN_01843fdc();
+  }
+  if ((*(byte *)(*(long *)(unaff_x20 + 0x20) + 0x135) & 1) == 0) {
+    FUN_0185daa4();
+  }
+  auVar5 = FUN_028cc440();
+  if (unaff_x19 != 0) {
+    if ((*(byte *)(*(long *)(unaff_x20 + 0x20) + 0x135) & 1) == 0) {
+      FUN_0185daa4();
+    }
+                    /* WARNING: Could not recover jumptable at 0x028ccff4. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+    (**(code **)(unaff_x19 + 0x18))
+              (*(undefined8 *)(unaff_x19 + 0x40),auVar5._0_8_,auVar5._8_8_ & 0xffffffff,
+               *(undefined8 *)(unaff_x19 + 0x28));
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5a8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 29
+FUNCTION_NAME: OVRPlugin$$RequestBodyTrackingFidelity
+ENTRY_POINT: 02c2f0fc
+MANUAL_PRIORITY_SCORE: 204
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 107
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_11', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_107', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02c2f0fc_OVRPlugin$$RequestBodyTrackingFidelity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\029_p204_OVRPlugin$$RequestBodyTrackingFidelity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$RequestBodyTrackingFidelity
+ENTRY_POINT: 02c2f0fc
+PROGRAM: sharks-libil2cpp.so
+SCORE: 107
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_11;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+int OVRPlugin__RequestBodyTrackingFidelity(void)
+
+{
+  uint uVar1;
+  undefined1 auVar2 [16];
+  undefined1 auVar3 [16];
+  undefined1 auVar4 [16];
+  undefined1 auVar5 [16];
+  undefined1 auVar6 [16];
+  undefined1 auVar7 [16];
+  undefined1 auVar8 [16];
+  undefined1 auVar9 [16];
+  undefined1 auVar10 [16];
+  undefined1 auVar11 [16];
+  undefined8 uVar12;
+  undefined8 uVar13;
+  ulong in_x3;
+  ulong uVar14;
+  ulong in_x6;
+  ulong uVar15;
+  ulong in_x7;
+  ulong uVar16;
+  uint *puVar17;
+  ulong uVar18;
+  ulong uVar19;
+  uint uVar20;
+  uint uVar21;
+  long lVar22;
+  uint *puVar23;
+  undefined **in_x15;
+  long *plVar24;
+  int unaff_w19;
+  uint *unaff_x20;
+  int iVar25;
+  ulong unaff_x21;
+  int unaff_w22;
+  int unaff_w23;
+  ulong unaff_x24;
+  int unaff_w25;
+  int iVar26;
+  uint unaff_w26;
+  int unaff_w27;
+  uint unaff_w28;
+  int unaff_w29;
+  ulong unaff_x30;
+  ulong uVar27;
+  undefined8 in_stack_00000008;
+  
+code_r0x02c2f0fc:
+  plVar24 = (long *)in_x15[0x199];
+                    /* try { // try from 02c2f100 to 02d2f177 has its CatchHandler @ 02c2eff4 */
+  uVar27 = unaff_x30 & 0xffff | 0x346dc5d638860000;
+  uVar16 = in_x7 & 0xffff | 0x20c49ba5e3530000;
+  uVar15 = in_x6 & 0xffff | 0x28f5c28f5c280000;
+  uVar14 = in_x3 & 0xffff | 0x44b82fa09b0000;
+LAB_02c2f160:
+  puVar17 = unaff_x20 + (unaff_x21 & 0xffffffff);
+  uVar21 = (int)unaff_x21 - 1;
+                    /* try { // try from 02c2f178 to 02d2f197 has its CatchHandler @ 02c2f210 */
+  uVar19 = (ulong)*puVar17 / 100000000;
+  uVar20 = *puVar17 % 100000000;
+  if (-1 < (int)uVar21) {
+    lVar22 = (ulong)uVar21 + 1;
+    puVar23 = unaff_x20 + uVar21;
+    do {
+      uVar21 = *puVar23;
+      lVar22 = lVar22 + -1;
+      auVar6._4_4_ = uVar20;
+      auVar6._0_4_ = uVar21;
+                    /* try { // try from 02c2f198 to 02d2f19b has its CatchHandler @ 02c2f208 */
+                    /* try { // try from 02c2f19c to 02d2f1a3 has its CatchHandler @ 02c2eff4 */
+      auVar6._8_8_ = 0;
+                    /* try { // try from 02c2f1a4 to 02d2f1f7 has its CatchHandler @ 02c2f200 */
+      auVar11._8_8_ = 0;
+      auVar11._0_8_ = unaff_x24;
+      uVar20 = (uint)(SUB168(auVar6 * auVar11,8) >> 0x1a);
+      *puVar23 = uVar20;
+      uVar20 = uVar21 + uVar20 * -100000000;
+      puVar23 = puVar23 + -1;
+    } while (0 < lVar22);
+  }
+  uVar21 = 50000000;
+  iVar26 = unaff_w25;
+  do {
+    *puVar17 = (uint)uVar19;
+    unaff_w28 = unaff_w28 | unaff_w26;
+    unaff_w25 = iVar26 + -9;
+    uVar1 = (int)unaff_x21 - (uint)((int)unaff_x21 != 0 && (uint)uVar19 == 0);
+    unaff_x21 = (ulong)uVar1;
+    unaff_w26 = uVar20;
+    if (unaff_w25 == 0 || iVar26 < 9) {
+      if (uVar1 < 3) {
+        if ((uVar20 < uVar21) ||
+           (((uVar1 = *unaff_x20, uVar20 <= uVar21 && ((uVar1 & 1) == 0 && unaff_w28 == 0)) ||
+            (*unaff_x20 = uVar1 + 1, uVar1 != 0xffffffff)))) {
+          return in_stack_00000008._4_4_;
+        }
+        unaff_x21 = 0;
+        do {
+          uVar20 = (int)unaff_x21 + 1;
+          unaff_x21 = (ulong)uVar20;
+          uVar21 = unaff_x20[unaff_x21];
+          unaff_x20[unaff_x21] = uVar21 + 1;
+        } while (0xfffffffe < uVar21);
+        if (uVar20 < 3) {
+          return in_stack_00000008._4_4_;
+        }
+        if (in_stack_00000008._4_4_ == 0) goto LAB_02c2f2a8;
+        unaff_w26 = 0;
+        unaff_w28 = 0;
+      }
+      else if (in_stack_00000008._4_4_ == 0) {
+LAB_02c2f2a8:
+        thunk_FUN_01851c08(PTR_DAT_037f87b0);
+        uVar12 = thunk_FUN_01861bbc();
+        uVar13 = thunk_FUN_01851c08(PTR_DAT_03809d90);
+        FUN_02bde04c(uVar12,uVar13,0);
+        uVar13 = thunk_FUN_01851c08(PTR_DAT_0380bda8);
+                    /* WARNING: Subroutine does not return */
+        FUN_017fc474(uVar12,uVar13);
+      }
+      in_stack_00000008._4_4_ = in_stack_00000008._4_4_ + -1;
+      unaff_w25 = 1;
+    }
+    iVar25 = (int)unaff_x21;
+    iVar26 = unaff_w25;
+    switch(unaff_w25) {
+    case 1:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar20 = *puVar17;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)uVar20 / 10;
+      uVar20 = uVar20 + (uVar20 / 10) * unaff_w19;
+      if (-1 < (int)uVar21) {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          uVar20 = (uint)(CONCAT44(uVar20,uVar21) / 10);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * unaff_w19;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+      }
+      uVar21 = 5;
+      break;
+    case 2:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar20 = *puVar17;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)uVar20 / 100;
+      uVar20 = uVar20 + (uVar20 / 100) * unaff_w22;
+      if ((int)uVar21 < 0) {
+        uVar21 = 0x32;
+      }
+      else {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+2fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar20 = *puVar17;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)uVar20 / 1000;
+      uVar20 = uVar20 + (uVar20 / 1000) * unaff_w29;
+      if ((int)uVar21 < 0) {
+        uVar21 = 500;
+      }
+      else {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          auVar4._8_8_ = 0;
+          auVar4._0_8_ = CONCAT44(uVar20,uVar21) >> 3;
+          auVar9._8_8_ = 0;
+          auVar9._0_8_ = uVar16;
+          uVar20 = (uint)(SUB168(auVar4 * auVar9,8) >> 4);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * unaff_w29;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+        uVar21 = 500;
+      }
+      break;
+    case 4:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar20 = *puVar17;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)uVar20 / 10000;
+      uVar20 = uVar20 + (uVar20 / 10000) * unaff_w23;
+      if ((int)uVar21 < 0) {
+        uVar21 = 5000;
+      }
+      else {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          auVar5._4_4_ = uVar20;
+          auVar5._0_4_ = uVar21;
+          auVar5._8_8_ = 0;
+          auVar10._8_8_ = 0;
+          auVar10._0_8_ = uVar27;
+          uVar20 = (uint)(SUB168(auVar5 * auVar10,8) >> 0xb);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * unaff_w23;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+        uVar21 = 5000;
+      }
+      break;
+    case 5:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar21 = iVar25 - 1;
+      uVar20 = *puVar17 >> 5;
+      uVar19 = (ulong)uVar20 / 0xc35;
+      uVar20 = *puVar17 + (uVar20 / 0xc35) * -100000;
+      if ((int)uVar21 < 0) {
+        uVar21 = 50000;
+      }
+      else {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          uVar20 = (uint)(CONCAT44(uVar20,uVar21) / 100000);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * -100000;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+        uVar21 = 50000;
+      }
+      break;
+    case 6:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)*puVar17 / 1000000;
+      uVar20 = *puVar17 % 1000000;
+      if (-1 < (int)uVar21) {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          uVar20 = (uint)(CONCAT44(uVar20,uVar21) / 1000000);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * -1000000;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+      }
+      uVar21 = 500000;
+      break;
+    case 7:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar21 = iVar25 - 1;
+      uVar19 = (ulong)*puVar17 / 10000000;
+      uVar20 = *puVar17 % 10000000;
+      if (-1 < (int)uVar21) {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          uVar20 = (uint)(CONCAT44(uVar20,uVar21) / 10000000);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * -10000000;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+      }
+      uVar21 = 5000000;
+      break;
+    case 8:
+      goto switchD_02c2e940_caseD_8;
+    default:
+      if (*(int *)(*plVar24 + 0xe0) == 0) {
+        thunk_FUN_01843fdc();
+        uVar27 = 0x346dc5d63886594b;
+        uVar16 = 0x20c49ba5e353f7cf;
+        uVar15 = 0x28f5c28f5c28f5c3;
+        uVar14 = 0x44b82fa09b5a53;
+        plVar24 = (long *)PTR_DAT_0380bcc8;
+      }
+      puVar17 = unaff_x20 + unaff_x21;
+      uVar21 = iVar25 - 1;
+      uVar18 = (ulong)(*puVar17 >> 9) * 0x44b83;
+      uVar19 = uVar18 >> 0x27;
+      uVar20 = *puVar17 + (uint)(uVar18 >> 0x27) * unaff_w27;
+      if (-1 < (int)uVar21) {
+        lVar22 = (ulong)uVar21 + 1;
+        puVar23 = unaff_x20 + uVar21;
+        do {
+          uVar21 = *puVar23;
+          lVar22 = lVar22 + -1;
+          auVar2._8_8_ = 0;
+          auVar2._0_8_ = CONCAT44(uVar20,uVar21) >> 9;
+          auVar7._8_8_ = 0;
+          auVar7._0_8_ = uVar14;
+          uVar20 = (uint)(SUB168(auVar2 * auVar7,8) >> 0xb);
+          *puVar23 = uVar20;
+          uVar20 = uVar21 + uVar20 * unaff_w27;
+          puVar23 = puVar23 + -1;
+        } while (0 < lVar22);
+      }
+      uVar21 = 500000000;
+    }
+  } while( true );
+switchD_02c2e940_caseD_8:
+  if (*(int *)(*plVar24 + 0xe0) == 0) goto code_r0x02c2f0e4;
+  goto LAB_02c2f160;
+code_r0x02c2f0e4:
+  thunk_FUN_01843fdc();
+  in_x15 = &PTR_DAT_0380b000;
+  unaff_x30 = 0x594b;
+  in_x7 = 0xf7cf;
+  in_x6 = 0xf5c3;
+  in_x3 = 0x5a53;
+  goto code_r0x02c2f0fc;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 30
+FUNCTION_NAME: OVRManager$$InitPermissionRequest
+ENTRY_POINT: 02c07da0
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 106
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_3', 'telemetry_or_network_hits_2', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_106', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02c07da0_OVRManager$$InitPermissionRequest.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\030_p203_OVRManager$$InitPermissionRequest.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$InitPermissionRequest
+ENTRY_POINT: 02c07da0
+PROGRAM: sharks-libil2cpp.so
+SCORE: 106
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_3;telemetry_or_network_hits_2;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRManager__InitPermissionRequest(void)
+
+{
+  byte bVar1;
+  undefined8 uVar2;
+  long *plVar3;
+  long lVar4;
+  long *unaff_x19;
+  ulong unaff_x20;
+  long *unaff_x22;
+  ulong unaff_x23;
+  long unaff_x24;
+  undefined8 in_stack_00000018;
+  
+  do {
+                    /* try { // try from 02c07da4 to 02d07dc7 has its CatchHandler @ 02c07bf4 */
+    unaff_x24 = unaff_x24 + 8;
+                    /* catch(type#1 @ 0361ba68) { ... } // from try @ 02c07c7c with catch @ 02c07da8
+                        */
+    if (unaff_x23 == unaff_x20) {
+      FUN_02a30410(&stack0x00000008,0);
+                    /* try { // try from 02c07dc8 to 02d07dcb has its CatchHandler @ 02c07df8 */
+      return;
+    }
+    uVar2 = thunk_FUN_02a300f4(&stack0x00000008,unaff_x20 & 0xffffffff,0);
+    plVar3 = (long *)FUN_02b1c1b0(uVar2,in_stack_00000018,0);
+    if (unaff_x19 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_017fc5a8();
+    }
+    if (plVar3 != (long *)0x0) {
+      bVar1 = *(byte *)(*unaff_x22 + 0x130);
+      if ((*(byte *)(*plVar3 + 0x130) < bVar1) ||
+         (*(long *)(*(long *)(*plVar3 + 200) + (ulong)bVar1 * 8 + -8) != *unaff_x22)) {
+                    /* WARNING: Subroutine does not return */
+                    /* try { // try from 02c07dd8 to 02d07df7 has its CatchHandler @ 02c07e74 */
+        FUN_017fc944(plVar3);
+      }
+      lVar4 = thunk_FUN_01861ac0(plVar3,*(undefined8 *)(*unaff_x19 + 0x40));
+      if (lVar4 == 0) {
+        uVar2 = thunk_FUN_0187aa4c();
+                    /* WARNING: Subroutine does not return */
+        FUN_017fc474(uVar2,0);
+      }
+      bVar1 = *(byte *)(*unaff_x22 + 0x130);
+      if ((*(byte *)(*plVar3 + 0x130) < bVar1) ||
+         (*(long *)(*(long *)(*plVar3 + 200) + (ulong)bVar1 * 8 + -8) != *unaff_x22)) {
+                    /* WARNING: Subroutine does not return */
+        FUN_017fc944(plVar3);
+      }
+    }
+    if (*(uint *)(unaff_x19 + 3) <= unaff_x20) {
+                    /* WARNING: Subroutine does not return */
+      FUN_017fc5b0();
+    }
+    unaff_x19[unaff_x20 + 4] = (long)plVar3;
+    thunk_FUN_0188fd20((long)unaff_x19 + unaff_x24,plVar3);
+    unaff_x20 = unaff_x20 + 1;
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION

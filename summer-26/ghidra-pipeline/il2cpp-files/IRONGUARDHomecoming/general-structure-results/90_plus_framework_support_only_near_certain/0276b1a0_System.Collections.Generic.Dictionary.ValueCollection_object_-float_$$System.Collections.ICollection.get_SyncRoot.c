@@ -1,0 +1,222 @@
+/*
+FUNCTION_NAME: System.Collections.Generic.Dictionary.ValueCollection<object,-float>$$System.Collections.ICollection.get_SyncRoot
+ENTRY_POINT: 0276b1a0
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 97
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_11;strong_pose_or_ray_construction_hits_8;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x0276b620) */
+
+void System_Collections_Generic_Dictionary_ValueCollection<object,_float>__System_Collections_ICollection_get_SyncRoot
+               (ulong param_1,long *param_2)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  int iVar5;
+  int iVar6;
+  long *plVar7;
+  long lVar8;
+  undefined8 uVar9;
+  undefined8 *puVar10;
+  long lVar11;
+  long lVar12;
+  ulong uVar13;
+  int *piVar14;
+  long unaff_x20;
+  long unaff_x21;
+  int iStack000000000000000c;
+  
+  if ((param_1 & 1) == 0) {
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+    thunk_FUN_01efb3a4(Method_UnityEngine_Rendering_UI_DebugUIHandlerVector4_<SetWidget>b__8_7__);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__);
+    thunk_FUN_01efb3a4(Method_System_Net_Configuration_DefaultProxySection_Reset__);
+    thunk_FUN_01efb3a4(Method_System_Net_Configuration_DefaultProxySection_get_Properties__);
+    thunk_FUN_01efb3a4(Method_Sirenix_Serialization_DefaultSerializationBinder_BindToName__);
+    thunk_FUN_01efb3a4(Method_Sirenix_Serialization_DefaultSerializationBinder_BindToType__);
+    thunk_FUN_01efb3a4(
+                      Method_UnityEngine_Rendering_UI_DebugUIHandlerVector4_<SetupSettings>b__10_0__
+                      );
+    thunk_FUN_01efb3a4(Method_Sirenix_Serialization_DefaultSerializationBinder_ParseTypeName__);
+    *(undefined1 *)(unaff_x21 + 0x3ba) = 1;
+  }
+  iStack000000000000000c = 0;
+  lVar11 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 8);
+  if ((*(byte *)(lVar11 + 0x135) & 1) == 0) {
+    lVar11 = FUN_01ecaf44(lVar11);
+  }
+  plVar7 = (long *)thunk_FUN_01f116d0(param_2,lVar11);
+  puVar2 = Method_Sirenix_Serialization_DefaultSerializationBinder_BindToName__;
+  if (plVar7 == (long *)0x0) {
+    if (param_2 == (long *)0x0) goto LAB_0276b618;
+    FUN_032bf548(param_2,*(undefined8 *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x48));
+  }
+  else {
+    lVar11 = thunk_FUN_01f117cc(*(undefined8 *)
+                                 Method_Sirenix_Serialization_DefaultSerializationBinder_BindToType__
+                               );
+    FUN_030f2380(lVar11,*(undefined8 *)puVar2);
+    if ((lVar11 == 0) ||
+       (lVar8 = System_Collections_Generic_List<ONSPPropagationGeometry_TerrainMaterial>__Sort
+                          (lVar11,*(undefined8 *)
+                                   Method_System_Net_Configuration_DefaultProxySection_get_Properties__
+                          ), param_2 == (long *)0x0)) goto LAB_0276b618;
+    param_2[0x13] = lVar8;
+    thunk_FUN_01f51358();
+    iStack000000000000000c = 0;
+    iVar5 = (**(code **)(*param_2 + 0x618))(param_2,*(undefined8 *)(*param_2 + 0x620));
+    puVar2 = Method_System_Net_Configuration_DefaultProxySection_Reset__;
+    if (0 < iVar5) {
+      do {
+        iVar5 = iStack000000000000000c;
+        uVar9 = FUN_035683d0(&stack0x0000000c,0);
+        lVar8 = *(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0);
+        if (iVar5 == 0) {
+          uVar9 = FUN_02443f9c(param_2,uVar9,*(undefined8 *)(lVar8 + 0x18));
+        }
+        else {
+          lVar8 = *(long *)(lVar8 + 8);
+          if ((*(byte *)(lVar8 + 0x135) & 1) == 0) {
+            lVar8 = FUN_01ecaf44(lVar8);
+          }
+          lVar12 = *plVar7;
+          uVar13 = (ulong)*(ushort *)(lVar12 + 0x12e);
+          if (uVar13 != 0) {
+            piVar14 = (int *)(*(long *)(lVar12 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar14 + -2) == lVar8) {
+                puVar10 = (undefined8 *)(lVar12 + (long)*piVar14 * 0x10 + 0x138);
+                goto LAB_0276b35c;
+              }
+              uVar13 = uVar13 - 1;
+              piVar14 = piVar14 + 4;
+            } while (uVar13 != 0);
+          }
+          puVar10 = (undefined8 *)FUN_01ecb238(plVar7,lVar8,0);
+LAB_0276b35c:
+          (*(code *)*puVar10)(plVar7,puVar10[1]);
+          uVar9 = FUN_02444460(param_2,uVar9,
+                               *(undefined8 *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x30)
+                              );
+        }
+        lVar8 = *(long *)(lVar11 + 0x10);
+        lVar12 = *(long *)puVar2;
+        *(int *)(lVar11 + 0x1c) = *(int *)(lVar11 + 0x1c) + 1;
+        if (lVar8 == 0) goto LAB_0276b618;
+        uVar1 = *(uint *)(lVar11 + 0x18);
+        if (uVar1 < *(uint *)(lVar8 + 0x18)) {
+          *(uint *)(lVar11 + 0x18) = uVar1 + 1;
+          *(undefined8 *)(lVar8 + (long)(int)uVar1 * 8 + 0x20) = uVar9;
+          thunk_FUN_01f51358();
+        }
+        else {
+          FUN_030f2bb4(lVar11,uVar9,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70));
+        }
+        iVar5 = iStack000000000000000c + 1;
+        iStack000000000000000c = iVar5;
+        iVar6 = (**(code **)(*param_2 + 0x618))(param_2,*(undefined8 *)(*param_2 + 0x620));
+      } while (iVar5 < iVar6);
+    }
+  }
+  puVar2 = Method_Sirenix_Serialization_DefaultSerializationBinder_ParseTypeName__;
+  if ((*(byte *)(*(long *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x58) + 0x135) & 1) == 0)
+  {
+    FUN_01ecaf44();
+  }
+  uVar9 = thunk_FUN_01f117cc();
+  lVar11 = *(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0);
+  FUN_02e6d028(uVar9,param_2,*(undefined8 *)(lVar11 + 0x50),*(undefined8 *)(lVar11 + 0x60));
+  lVar11 = FUN_02444fcc(param_2,*(undefined8 *)puVar2,uVar9,
+                        *(undefined8 *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x68));
+  if (lVar11 != 0) {
+    lVar11 = FUN_03fe3c18(lVar11,0);
+    param_2[0x14] = lVar11;
+    thunk_FUN_01f51358(param_2 + 0x14,lVar11);
+    puVar2 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__;
+    if (param_2[0x13] != 0) {
+      plVar7 = (long *)FUN_0265d924(param_2[0x13],
+                                    *(undefined8 *)
+                                     Method_UnityEngine_Rendering_UI_DebugUIHandlerVector4_<SetupSettings>b__10_0__
+                                   );
+      puVar4 = Method_UnityEngine_Rendering_UI_DebugUIHandlerVector4_<SetWidget>b__8_7__;
+      puVar3 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__;
+      if (plVar7 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08a3c();
+      }
+      do {
+        lVar11 = *plVar7;
+        uVar13 = (ulong)*(ushort *)(lVar11 + 0x12e);
+        if (uVar13 != 0) {
+          piVar14 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar14 + -2) == *(long *)puVar3) {
+              puVar10 = (undefined8 *)(lVar11 + (long)*piVar14 * 0x10 + 0x138);
+              goto LAB_0276b51c;
+            }
+            uVar13 = uVar13 - 1;
+            piVar14 = piVar14 + 4;
+          } while (uVar13 != 0);
+        }
+        puVar10 = (undefined8 *)FUN_01ecb238(plVar7,*(long *)puVar3,0);
+LAB_0276b51c:
+        uVar13 = (*(code *)*puVar10)(plVar7,puVar10[1]);
+        if ((uVar13 & 1) == 0) goto LAB_0276b59c;
+        lVar11 = *plVar7;
+        uVar13 = (ulong)*(ushort *)(lVar11 + 0x12e);
+        if (uVar13 != 0) {
+          piVar14 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar14 + -2) == *(long *)puVar4) {
+              puVar10 = (undefined8 *)(lVar11 + (long)*piVar14 * 0x10 + 0x138);
+              goto LAB_0276b578;
+            }
+            uVar13 = uVar13 - 1;
+            piVar14 = piVar14 + 4;
+          } while (uVar13 != 0);
+        }
+        puVar10 = (undefined8 *)FUN_01ecb238(plVar7,*(long *)puVar4,0);
+LAB_0276b578:
+        uVar9 = (*(code *)*puVar10)(plVar7,puVar10[1]);
+        thunk_FUN_03fe9acc(param_2,uVar9,param_2[0x14],0);
+      } while( true );
+    }
+  }
+LAB_0276b618:
+                    /* WARNING: Subroutine does not return */
+  FUN_01f08a3c();
+LAB_0276b59c:
+  if (plVar7 != (long *)0x0) {
+    lVar11 = *plVar7;
+    uVar13 = (ulong)*(ushort *)(lVar11 + 0x12e);
+    if (uVar13 != 0) {
+      piVar14 = (int *)(*(long *)(lVar11 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar14 + -2) == *(long *)puVar2) {
+          puVar10 = (undefined8 *)(lVar11 + (long)*piVar14 * 0x10 + 0x138);
+          goto LAB_0276b5f0;
+        }
+        uVar13 = uVar13 - 1;
+        piVar14 = piVar14 + 4;
+      } while (uVar13 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_01ecb238(plVar7,*(long *)puVar2,0);
+LAB_0276b5f0:
+    (*(code *)*puVar10)(plVar7,puVar10[1]);
+  }
+  return;
+}
+
+

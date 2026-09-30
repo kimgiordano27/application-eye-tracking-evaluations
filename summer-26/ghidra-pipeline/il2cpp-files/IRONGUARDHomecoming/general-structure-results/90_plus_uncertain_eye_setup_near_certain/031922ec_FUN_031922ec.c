@@ -1,0 +1,184 @@
+/*
+FUNCTION_NAME: FUN_031922ec
+ENTRY_POINT: 031922ec
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 117
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_7;strong_pose_or_ray_construction_hits_8;functionality_eye_api_context_without_clear_sink_hits_4
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x031925fc) */
+
+void FUN_031922ec(long param_1,long *param_2,long param_3)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined8 *puVar3;
+  long *plVar4;
+  long lVar5;
+  long lVar6;
+  ulong uVar7;
+  int *piVar8;
+  uint uVar9;
+  undefined1 auStack_248 [168];
+  undefined1 auStack_1a0 [168];
+  undefined1 auStack_f8 [168];
+  
+                    /* try { // try from 03192308 to 03292353 has its CatchHandler @ 03192308
+                       catch() { ... } // from try @ 03192308 with catch @ 03192308
+                       catch() { ... } // from try @ 031923c0 with catch @ 03192308
+                       catch() { ... } // from try @ 031923f0 with catch @ 03192308
+                       catch() { ... } // from try @ 03192470 with catch @ 03192308 */
+  if ((DAT_04831cfd & 1) == 0) {
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__);
+    DAT_04831cfd = 1;
+  }
+  memset(auStack_f8,0,0xa8);
+                    /* try { // try from 03192354 to 032923bf has its CatchHandler @ 031923c0 */
+  *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + 1;
+  if (param_2 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08a3c();
+  }
+  lVar5 = *(long *)(*(long *)(*(long *)(param_3 + 0x20) + 0xc0) + 0x20);
+  if ((*(byte *)(lVar5 + 0x135) & 1) == 0) {
+    lVar5 = FUN_01ecaf44(lVar5);
+  }
+  lVar6 = *param_2;
+  uVar7 = (ulong)*(ushort *)(lVar6 + 0x12e);
+  if (uVar7 != 0) {
+    piVar8 = (int *)(*(long *)(lVar6 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar8 + -2) == lVar5) {
+                    /* catch(type#1 @ 042b3198) { ... } // from try @ 03192354 with catch @ 031923c0
+                       try { // try from 031923c0 to 032923d7 has its CatchHandler @ 03192308 */
+        puVar3 = (undefined8 *)(lVar6 + (long)*piVar8 * 0x10 + 0x138);
+        goto LAB_031923c4;
+      }
+      uVar7 = uVar7 - 1;
+      piVar8 = piVar8 + 4;
+    } while (uVar7 != 0);
+  }
+  puVar3 = (undefined8 *)FUN_01ecb238(param_2,lVar5,0);
+LAB_031923c4:
+  puVar1 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__;
+  plVar4 = (long *)(*(code *)*puVar3)(param_2,puVar3[1]);
+  puVar2 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__;
+                    /* try { // try from 031923d8 to 032923ef has its CatchHandler @ 03192468 */
+  if (plVar4 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08a3c();
+  }
+  do {
+    lVar5 = *plVar4;
+                    /* try { // try from 031923f0 to 03292457 has its CatchHandler @ 03192308 */
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 != 0) {
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *(long *)puVar2) {
+          puVar3 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_03192438;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar3 = (undefined8 *)FUN_01ecb238(plVar4,*(long *)puVar2,0);
+LAB_03192438:
+    uVar7 = (*(code *)*puVar3)(plVar4,puVar3[1]);
+    if ((uVar7 & 1) == 0) {
+      if (plVar4 == (long *)0x0) {
+        return;
+      }
+      lVar5 = *plVar4;
+      uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+      if (uVar7 == 0) goto LAB_031925a0;
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      break;
+    }
+    lVar5 = *(long *)(*(long *)(*(long *)(param_3 + 0x20) + 0xc0) + 0x140);
+                    /* try { // try from 03192458 to 03292467 has its CatchHandler @ 03192468 */
+    if ((*(byte *)(lVar5 + 0x135) & 1) == 0) {
+      lVar5 = FUN_01ecaf44(lVar5);
+    }
+                    /* catch() { ... } // from try @ 031923d8 with catch @ 03192468
+                       catch() { ... } // from try @ 03192458 with catch @ 03192468 */
+    lVar6 = *plVar4;
+                    /* try { // try from 0319246c to 0329246f has its CatchHandler @ 03192478 */
+    uVar7 = (ulong)*(ushort *)(lVar6 + 0x12e);
+                    /* try { // try from 03192470 to 0329247b has its CatchHandler @ 03192308 */
+    if (uVar7 != 0) {
+                    /* catch(type#2 @ 00000000) { ... } // from try @ 0319246c with catch @ 03192478
+                        */
+      piVar8 = (int *)(*(long *)(lVar6 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == lVar5) {
+          puVar3 = (undefined8 *)(lVar6 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_031924b0;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar3 = (undefined8 *)FUN_01ecb238(plVar4,lVar5,0);
+LAB_031924b0:
+    (*(code *)*puVar3)(auStack_1a0,plVar4,puVar3[1]);
+    memcpy(auStack_f8,auStack_1a0,0xa8);
+    lVar5 = *(long *)(param_1 + 0x10);
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08a3c();
+    }
+    uVar9 = *(uint *)(param_1 + 0x18);
+    if (uVar9 == *(uint *)(lVar5 + 0x18)) {
+      FUN_03190894(param_1,uVar9 + 1,
+                   *(undefined8 *)(*(long *)(*(long *)(param_3 + 0x20) + 0xc0) + 0x78));
+      lVar5 = *(long *)(param_1 + 0x10);
+      uVar9 = *(uint *)(param_1 + 0x18);
+    }
+    *(uint *)(param_1 + 0x18) = uVar9 + 1;
+    memcpy(auStack_1a0,auStack_f8,0xa8);
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08a3c();
+    }
+    memcpy(auStack_248,auStack_1a0,0xa8);
+    if (*(uint *)(lVar5 + 0x18) <= uVar9) {
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08a44();
+    }
+    lVar5 = lVar5 + (long)(int)uVar9 * 0xa8;
+    memcpy((void *)(lVar5 + 0x20),auStack_248,0xa8);
+    thunk_FUN_01f51358(lVar5 + 0xb0,0);
+  } while( true );
+  while( true ) {
+    uVar7 = uVar7 - 1;
+    piVar8 = piVar8 + 4;
+    if (uVar7 == 0) break;
+    if (*(long *)(piVar8 + -2) == *(long *)puVar1) {
+      puVar3 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+      goto LAB_031925bc;
+    }
+  }
+LAB_031925a0:
+  puVar3 = (undefined8 *)FUN_01ecb238(plVar4,*(long *)puVar1,0);
+LAB_031925bc:
+                    /* try { // try from 031925bc to 03292603 has its CatchHandler @ 031925bc
+                       catch() { ... } // from try @ 031925bc with catch @ 031925bc
+                       catch() { ... } // from try @ 031926f8 with catch @ 031925bc
+                       catch() { ... } // from try @ 03192728 with catch @ 031925bc
+                       catch() { ... } // from try @ 0319279c with catch @ 031925bc */
+  (*(code *)*puVar3)(plVar4,puVar3[1]);
+  return;
+}
+
+

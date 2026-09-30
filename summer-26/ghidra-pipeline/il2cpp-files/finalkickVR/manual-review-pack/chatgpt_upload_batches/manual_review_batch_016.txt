@@ -1,0 +1,1138 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 62
+FUNCTION_NAME: OVR.OpenVR.IVRTrackedCamera._GetVideoStreamFrameBuffer$$BeginInvoke
+ENTRY_POINT: 02d85120
+MANUAL_PRIORITY_SCORE: 389
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 246
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_12', 'ui_or_gameplay_sink_hits_8', 'telemetry_or_network_hits_5', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'functionality_permission_setup', 'functionality_gaze_interaction_hits_8', 'functionality_data_collection_or_telemetry_hits_5']
+PRIORITY_REASONS: ['base_scanner_score_246', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\02d85120_OVR.OpenVR.IVRTrackedCamera._GetVideoStreamFrameBuffer$$BeginInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\062_p389_OVR.OpenVR.IVRTrackedCamera._GetVideoStreamFrameBuffer$$BeginInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVR.OpenVR.IVRTrackedCamera._GetVideoStreamFrameBuffer$$BeginInvoke
+ENTRY_POINT: 02d85120
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 246
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_12;ui_or_gameplay_sink_hits_8;telemetry_or_network_hits_5;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;functionality_permission_setup;functionality_gaze_interaction_hits_8;functionality_data_collection_or_telemetry_hits_5
+*/
+
+
+void OVR_OpenVR_IVRTrackedCamera__GetVideoStreamFrameBuffer__BeginInvoke(long param_1)
+
+{
+  undefined4 uVar1;
+  byte bVar2;
+  uint uVar3;
+  undefined8 uVar4;
+  long lVar5;
+  undefined8 *puVar6;
+  void *pvVar7;
+  undefined4 *puVar8;
+  long in_x9;
+  undefined4 in_w10;
+  long unaff_x29;
+  undefined4 uStack00000000000000fc;
+  uint uStack000000000000010c;
+  int iStack000000000000013c;
+  undefined4 uStack000000000000014c;
+  undefined4 uStack000000000000015c;
+  long in_stack_000001d0;
+  undefined8 *in_stack_000001d8;
+  undefined8 *in_stack_000001e0;
+  undefined8 *in_stack_000001e8;
+  undefined8 *in_stack_000001f0;
+  undefined8 *in_stack_000001f8;
+  undefined8 *in_stack_00000200;
+  undefined8 *in_stack_00000208;
+  undefined8 *in_stack_00000210;
+  undefined8 *in_stack_00000218;
+  undefined8 *in_stack_00000220;
+  undefined8 *in_stack_00000228;
+  undefined8 *in_stack_00000230;
+  undefined8 *in_stack_00000238;
+  undefined8 *in_stack_00000240;
+  
+  *(undefined4 *)(unaff_x29 + -0xac) = in_w10;
+  *(undefined8 *)(in_x9 + 0x1f0) = *(undefined8 *)(param_1 + 0x158);
+  *(undefined8 *)(in_x9 + 0x1e8) = *(undefined8 *)(param_1 + 0x158);
+  NullCheck(*(void **)(in_stack_000001d0 + 0x200));
+  uVar4 = VirtualFuncInvoker0<String_t*>::Invoke(3,*(Il2CppObject **)(in_stack_000001d0 + 0x200));
+  in_stack_000001d8[0x28] = uVar4;
+  *(undefined8 *)(in_stack_000001d0 + 0x1c0) = in_stack_000001d8[0x28];
+  *(undefined4 *)(unaff_x29 + -0xec) = *(undefined4 *)(unaff_x29 + -0xac);
+  *(undefined8 *)(in_stack_000001d0 + 0x1b0) = *(undefined8 *)(in_stack_000001d0 + 0x1f0);
+  *(undefined8 *)(in_stack_000001d0 + 0x1a8) = *(undefined8 *)(in_stack_000001d0 + 0x1e8);
+  NullCheck(*(void **)(in_stack_000001d0 + 0x1b0));
+  StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248::SetAt
+            (*(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248 **)(in_stack_000001d0 + 0x1b0)
+             ,(long)*(int *)(unaff_x29 + -0xec),*(String_t **)(in_stack_000001d0 + 0x1c0));
+  in_stack_000001d8[0x27] = *(undefined8 *)(in_stack_000001d0 + 0x1a8);
+  NullCheck((void *)in_stack_000001d8[0x27]);
+  StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248::SetAt
+            ((StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248 *)in_stack_000001d8[0x27],6,
+             *(String_t **)
+              Method_System_Xml_Serialization_XmlSerializationWriterInterpreter_CallbackInfo_WriteEnum__
+            );
+  in_stack_000001d8[0x26] = in_stack_000001d8[0x27];
+  il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+  uVar4 = OVRPlugin_get_nativeSDKVersion_mBE25B31B01647B580765EA355C508A235EB07E63(0);
+  in_stack_000001d8[0x25] = uVar4;
+  in_stack_000001d8[0x24] = in_stack_000001d8[0x25];
+  if (in_stack_000001d8[0x24] == 0) {
+    *(undefined8 *)(in_stack_000001d0 + 0x180) = in_stack_000001d8[0x24];
+    *(undefined8 *)(in_stack_000001d0 + 0x170) = in_stack_000001d8[0x26];
+    *(undefined8 *)(in_stack_000001d0 + 0x168) = in_stack_000001d8[0x26];
+    *(undefined8 *)(in_stack_000001d0 + 0x160) = 0;
+    *(undefined8 *)(in_stack_000001d0 + 0x150) = *(undefined8 *)(in_stack_000001d0 + 0x170);
+    *(undefined8 *)(in_stack_000001d0 + 0x148) = *(undefined8 *)(in_stack_000001d0 + 0x168);
+  }
+  else {
+    *(undefined8 *)(in_stack_000001d0 + 0x1a0) = in_stack_000001d8[0x24];
+    *(undefined8 *)(in_stack_000001d0 + 400) = in_stack_000001d8[0x26];
+    *(undefined8 *)(in_stack_000001d0 + 0x188) = in_stack_000001d8[0x26];
+    NullCheck(*(void **)(in_stack_000001d0 + 0x1a0));
+    uVar4 = VirtualFuncInvoker0<String_t*>::Invoke(3,*(Il2CppObject **)(in_stack_000001d0 + 0x1a0));
+    in_stack_000001d8[0x23] = uVar4;
+    *(undefined8 *)(in_stack_000001d0 + 0x160) = in_stack_000001d8[0x23];
+    *(undefined8 *)(in_stack_000001d0 + 0x150) = *(undefined8 *)(in_stack_000001d0 + 400);
+    *(undefined8 *)(in_stack_000001d0 + 0x148) = *(undefined8 *)(in_stack_000001d0 + 0x188);
+  }
+  NullCheck(*(void **)(in_stack_000001d0 + 0x150));
+  StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248::SetAt
+            (*(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248 **)(in_stack_000001d0 + 0x150)
+             ,7,*(String_t **)(in_stack_000001d0 + 0x160));
+  in_stack_000001d8[0x22] = *(undefined8 *)(in_stack_000001d0 + 0x148);
+  NullCheck((void *)in_stack_000001d8[0x22]);
+  StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248::SetAt
+            ((StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248 *)in_stack_000001d8[0x22],8,
+             *(String_t **)
+              Method_System_Collections_Generic_Dictionary<string,_JsonSchemaType>_Add__);
+  uVar4 = String_Concat_m647EBF831F54B6DF7D5AFA5FD012CF4EE7571B6A(in_stack_000001d8[0x22],0);
+  in_stack_000001d8[0x21] = uVar4;
+  il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+  Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(in_stack_000001d8[0x21],0);
+  uVar4 = SZArrayNew((Il2CppClass *)*in_stack_00000218,2);
+  in_stack_000001d8[0x20] = uVar4;
+  in_stack_000001d8[0x1f] = in_stack_000001d8[0x20];
+  il2cpp_codegen_runtime_class_init_inline(
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+2EC3 **)
+                          (in_stack_000001d0 + 0x2a0),(MethodInfo *)*in_stack_000001f0);
+      in_stack_000001e0[7] = uVar4;
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000220);
+      uVar3 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(in_stack_000001e0[7],0);
+      if ((uVar3 & 1) != 0) {
+        uVar4 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B
+                          (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0);
+        in_stack_000001e0[5] = uVar4;
+        NullCheck((void *)in_stack_000001e0[5]);
+        uVar4 = GameObject_AddComponent_TisOVRSystemPerfMetricsTcpServer_tD146C2687DE96043EC01031488CFB10442814F86_m9801277350485D9C445EC7E0035EFCF0579BC30E
+                          ((GameObject_t76FEDD663AB33C991A9C9A23129337651094216F *)
+                           in_stack_000001e0[5],
+                           *(MethodInfo **)
+                            Method_System_Xml_Schema_XmlSchemaObjectTable_XSODictionaryEnumerator_get_Entry__
+                          );
+        in_stack_000001e0[4] = uVar4;
+      }
+      uVar4 = Component_GetComponent_TisOVRSystemPerfMetricsTcpServer_tD146C2687DE96043EC01031488CFB10442814F86_mF0B4099235709D379979102F6053FD6042D8A77C
+                        (*(Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3 **)
+                          (in_stack_000001d0 + 0x2a0),(MethodInfo *)*in_stack_000001f0);
+      in_stack_000001e0[3] = uVar4;
+      *(undefined8 *)(in_stack_000001d0 + 0x268) = in_stack_000001e0[3];
+      in_stack_000001e0[2] = *(undefined8 *)(in_stack_000001d0 + 0x268);
+      uVar1 = *(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 100);
+      NullCheck((void *)in_stack_000001e0[2]);
+      *(undefined4 *)(in_stack_000001e0[2] + 0x28) = uVar1;
+      *in_stack_000001e0 = *(undefined8 *)(in_stack_000001d0 + 0x268);
+      NullCheck((void *)*in_stack_000001e0);
+      uVar3 = Behaviour_get_enabled_mAAC9F15E9EBF552217A5AE2681589CC0BFA300C1(*in_stack_000001e0,0);
+      if ((uVar3 & 1) == 0) {
+        pvVar7 = *(void **)(in_stack_000001d0 + 0x268);
+        NullCheck(pvVar7);
+        Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(pvVar7,1,0);
+      }
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      OVRPlugin_SetDeveloperMode_m666BA62AB965FE5E7E2857C29F619EE186CC8155(1,0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+    pvVar7 = (void *)OVRManager_get_runtimeSettings_m6DFAF39BFB4B75B251235D43B02696D70BFA897A_inline
+                               ((MethodInfo *)0x0);
+    NullCheck(pvVar7);
+    *(undefined4 *)(unaff_x29 + -0x30) = *(undefined4 *)((long)pvVar7 + 0x18);
+    OVRManager_set_colorGamut_m12885C55A4AF562CF4DA969CE3DFE90B2905509F
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),*(undefined4 *)(unaff_x29 + -0x30),0);
+    uVar1 = *(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x30);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+    OVRPlugin_SetEyeBufferSharpenType_mF9C093758526297D065147C475D3FC473E3CECF5(uVar1,0);
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x100) & 1) != 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      uVar3 = OVRPlugin_SetSimultaneousHandsAndControllersEnabled_m58736E9A0BB38074C30D9CB6364C1F307882A09A
+                        (1,0);
+      if ((uVar3 & 1) == 0) {
+        il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+        Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB
+                  (*(undefined8 *)
+                    Method_System_Xml_XmlTextReaderImpl_DtdDefaultAttributeInfoToNodeDataComparer_Compare__
+                   ,0);
+      }
+    }
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x101) & 1) != 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+      OVRManager_InitializeInsightPassthrough_m016E6C16576A1E4F6B7871E7FDE7D2671119F67E(0);
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000208);
+      puVar8 = (undefined4 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000208);
+      OVRTelemetryMarker_AddPoint_m5DF94030CCE86DDE95347ECF9A4C581ADF85E2E9
+                (&stack0x00000268,unaff_x29 + -0x28,*puVar8,0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+    uVar3 = OVRPlugin_get_localDimmingSupported_m33C94209109E4B84E3F531A9005747FF38D6D75C(0);
+    if ((uVar3 & 1) == 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+      Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9
+                (*(undefined8 *)
+                  Method_System_Xml_XmlWellFormedWriter_NamespaceResolverProxy_System_Xml_IXmlNamespaceResolver_GetNamespacesInScope__
+                 ,0);
+      *(undefined1 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x106) = 0;
+    }
+    else {
+      bVar2 = *(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x106);
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      OVRPlugin_set_localDimming_mB802F316C5988ACA499BA45E7B9D6590570025AB(bVar2 & 1,0);
+    }
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x38) & 1) != 0) {
+      XRSettings_set_eyeTextureResolutionScale_m92F1029D68F387D9B0C2DB35DFAB2FD82C64A30B
+                (*(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x40),0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+    lVar5 = il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000200);
+    *(undefined1 *)(lVar5 + 0x180) = 1;
+  }
+  il2cpp::utils::
+  FinallyHelper<OVRManager_InitOVRManager_m70F462CB3521560EDE92D4C54EF0FAD199386053::$_0,false>::
+  ~FinallyHelper((FinallyHelper<OVRManager_InitOVRManager_m70F462CB3521560EDE92D4C54EF0FAD199386053::__0,false>
+                  *)&stack0x00000690);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 63
+FUNCTION_NAME: OVRTelemetryConstants.OVRManager$$.cctor
+ENTRY_POINT: 02d0bddc
+MANUAL_PRIORITY_SCORE: 385
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 243
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_11', 'strong_pose_or_ray_construction_hits_4', 'ui_or_gameplay_sink_hits_16', 'telemetry_or_network_hits_10', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'functionality_gaze_interaction_hits_16', 'functionality_data_collection_or_telemetry_hits_10']
+PRIORITY_REASONS: ['base_scanner_score_243', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\02d0bddc_OVRTelemetryConstants.OVRManager$$.cctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\063_p385_OVRTelemetryConstants.OVRManager$$.cctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRTelemetryConstants.OVRManager$$.cctor
+ENTRY_POINT: 02d0bddc
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 243
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_11;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_16;telemetry_or_network_hits_10;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;functionality_gaze_interaction_hits_16;functionality_data_collection_or_telemetry_hits_10
+*/
+
+
+undefined4
+OVRTelemetryConstants_OVRManager___cctor
+          (undefined8 *param_1,undefined1 param_2 [16],float param_3,float param_4)
+
+{
+  byte bVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  undefined4 uVar5;
+  uint uVar6;
+  int iVar7;
+  int iVar8;
+  int iVar9;
+  int iVar10;
+  long lVar11;
+  undefined8 uVar12;
+  undefined8 *puVar13;
+  Il2CppObject *pIVar14;
+  __2 *extraout_x1;
+  __3 *extraout_x1_00;
+  Il2CppClass *pIVar15;
+  void *pvVar16;
+  SingleU5BU2CU5D_t8C95DA2D5056EB0490FC7DCB1ED30E33DE1D53F4 *this;
+  SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C *pSVar17;
+  Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C *pIVar18;
+  void *pvVar19;
+  MeshGroupU5BU5D_t1BAD00E7CE5BF858020FB5777903C6A0A88FFD0A *pMVar20;
+  undefined8 uVar21;
+  undefined8 uVar22;
+  undefined8 uVar23;
+  undefined8 uVar24;
+  long unaff_x29;
+  float fVar25;
+  float fVar26;
+  undefined4 uVar27;
+  undefined1 auVar28 [16];
+  undefined8 in_stack_000004d0;
+  long in_stack_00000538;
+  undefined8 *in_stack_00000540;
+  undefined8 *in_stack_00000548;
+  undefined8 *in_stack_00000550;
+  undefined8 *in_stack_00000558;
+  undefined8 *in_stack_00000560;
+  void *in_stack_00000568;
+  undefined8 *in_stack_00000570;
+  undefined8 *in_stack_00000578;
+  undefined8 *in_stack_00000580;
+  undefined8 *in_stack_00000588;
+  int in_stack_000006b0;
+  undefined4 in_stack_00000880;
+  float in_stack_00000884;
+  float in_stack_00000888;
+  undefined4 in_stack_0000088c;
+  undefined4 in_stack_000008a0;
+  float in_stack_00000904;
+  float in_stack_00000910;
+  undefined4 in_stack_00000a08;
+  undefined4 in_stack_00000a0c;
+  float in_stack_00000a68;
+  float in_stack_00000bfc;
+  float in_stack_00000c18;
+  undefined4 in_stack_00000c30;
+  float in_stack_00000c34;
+  undefined4 in_stack_00000c58;
+  undefined4 in_stack_00000c5c;
+  undefined4 in_stack_00000c68;
+  undefined4 in_stack_00000c6c;
+  float in_stack_00000e2c;
+  float in_stack_00000e40;
+  int in_stack_000015b0;
+  int iVar29;
+  int in_stack_00001b7c;
+  int in_stack_00001b80;
+  int in_stack_00001b84;
+  int in_stack_00001b94;
+  
+  do {
+    NullCheck((void *)param_1[0x95]);
+    iVar4 = Mesh_get_vertexCount_mB7BE0340AAF272933068D830C8E711FC8978E12C
+                      (in_stack_00000548[0x95],in_stack_000004d0);
+    iVar29 = in_stack_00001b7c;
+    if (in_stack_00001b84 <= iVar4) {
+      iVar29 = in_stack_00001b80;
+      iVar4 = in_stack_00001b84;
+    }
+    in_stack_00001b84 = iVar4;
+    in_stack_00001b80 = iVar29;
+    in_stack_00001b7c = il2cpp_codegen_add<int,int>(in_stack_00001b7c,1);
+    while( true ) {
+      in_stack_00000548[0x90] = *(undefined8 *)(in_stack_00000538 + 0x2a8);
+      NullCheck((void *)in_stack_00000548[0x90]);
+      if (in_stack_00001b7c < (int)*(undefined8 *)(in_stack_00000548[0x90] + 0x18)) break;
+      uVar12 = *(undefined8 *)(in_stack_00000538 + 0x2e0);
+      in_stack_00000548[0x8d] = *(undefined8 *)(in_stack_00000538 + 0x2e8);
+      in_stack_00000548[0x8c] = uVar12;
+      in_stack_00000548[0x8e] = *(undefined8 *)(in_stack_00000538 + 0x2f0);
+      in_stack_00000548[0x8b] = in_stack_00000548[0x8e];
+      in_stack_00000548[0x89] = *(undefined8 *)(in_stack_00000538 + 0x2a8);
+      NullCheck((void *)in_stack_00000548[0x89]);
+      uVar12 = MeshFilterU5BU5D_tCE3B457E6F7ECE5ECEE9E09150642150448685BA::GetAt
+                         ((MeshFilterU5BU5D_tCE3B457E6F7ECE5ECEE9E09150642150448685BA *)
+                          in_stack_00000548[0x89],(long)in_stack_00001b80);
+      in_stack_00000548[0x87] = uVar12;
+      NullCheck((void *)in_stack_00000548[0x87]);
+      uVar12 = MeshFilter_get_sharedMesh_mE4ED3E7E31C1DE5097E4980DA996E620F7D7CB8C
+                         (in_stack_00000548[0x87],0);
+      in_stack_00000548[0x86] = uVar12;
+      NullCheck((void *)in_stack_00000548[0x8b]);
+      MeshU5BU5D_t178CA36422FC397211E68FB7E39C5B2F95619689::SetAt
+                ((MeshU5BU5D_t178CA36422FC397211E68FB7E39C5B2F95619689 *)in_stack_00000548[0x8b],
+                 (long)in_stack_00001b94,
+                 (Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4 *)in_stack_00000548[0x86]);
+      in_stack_00001b94 = il2cpp_codegen_add<int,int>(in_stack_00001b94,1);
+      while( true ) {
+        in_stack_00000548[0x84] = *(undefined8 *)(in_stack_00000538 + 0x2b8);
+        NullCheck((void *)in_stack_00000548[0x84]);
+        if (in_stack_00001b94 < (int)*(undefined8 *)(in_stack_00000548[0x84] + 0x18)) break;
+        in_stack_00000548[0x83] = *(undefined8 *)(in_stack_00000538 + 0x2d8);
+        NullCheck((void *)in_stack_00000548[0x83]);
+        uVar12 = TerrainData_get_treeInstances_mDAB68FD1F3677BD5CB122EA943493D5FC94B2147
+                           (in_stack_00000548[0x83],0);
+        in_stack_00000548[0x82] = uVar12;
+        *(undefined8 *)(in_stack_00000538 + 0x290) = in_stack_00000548[0x82];
+        iVar29 = 0;
+        while( true ) {
+          in_stack_00000548[0x6e] = *(undefined8 *)(in_stack_00000538 + 0x290);
+          NullCheck((void *)in_stack_00000548[0x6e]);
+          if ((int)*(undefined8 *)(in_stack_00000548[0x6e] + 0x18) <= iVar29) break;
+          in_stack_00000548[0
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+)(unaff_x29 + -0x4c) = uVar5;
+          in_stack_00000548[0xac] = *(undefined8 *)(in_stack_00000538 + 0x2d8);
+          NullCheck((void *)in_stack_00000548[0xac]);
+          uVar12 = TerrainData_get_treePrototypes_m0A43789B50E554DACB5DF88C86DA23B89DB33EEB
+                             (in_stack_00000548[0xac],0);
+          in_stack_00000548[0xab] = uVar12;
+          *(undefined8 *)(in_stack_00000538 + 0x2b8) = in_stack_00000548[0xab];
+          in_stack_00000548[0xaa] = *(undefined8 *)(in_stack_00000538 + 0x2b8);
+          NullCheck((void *)in_stack_00000548[0xaa]);
+        } while (*(long *)(in_stack_00000548[0xaa] + 0x18) == 0);
+        in_stack_00000548[0xa9] = *(undefined8 *)(in_stack_00000538 + 0x368);
+        NullCheck((void *)in_stack_00000548[0xa9]);
+        uVar12 = ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57::GetAt
+                           ((ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57
+                             *)in_stack_00000548[0xa9],0);
+        in_stack_00000548[0xa7] = uVar12;
+        il2cpp_codegen_runtime_class_init_inline
+                  (*(Il2CppClass **)
+                    Method_System_Collections_Generic_Dictionary<int,_float>_get_Keys__);
+        bVar1 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605
+                          (in_stack_00000548[0xa7],0);
+        *(byte *)((long)in_stack_00000548 + 0x537) = bVar1 & 1;
+        if ((*(byte *)((long)in_stack_00000548 + 0x537) & 1) != 0) {
+          in_stack_00000548[0xa5] = *(undefined8 *)(in_stack_00000538 + 0x368);
+          uVar12 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B
+                             (*(undefined8 *)(in_stack_00000538 + 0x3b8));
+          in_stack_00000548[0xa4] = uVar12;
+          NullCheck((void *)in_stack_00000548[0xa4]);
+          uVar12 = GameObject_AddComponent_TisONSPPropagationMaterial_tF580835BFC32B7348745917529FBFB582A9BDE4A_mA2E65A7D0A1AD72C4C8AD8DE686F68CF9A874206
+                             ((GameObject_t76FEDD663AB33C991A9C9A23129337651094216F *)
+                              in_stack_00000548[0xa4],
+                              *(MethodInfo **)Method_System_Collections_SortedList_KeyList_Remove__)
+          ;
+          in_stack_00000548[0xa3] = uVar12;
+          NullCheck((void *)in_stack_00000548[0xa5]);
+          ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57::SetAt
+                    ((ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57 *)
+                     in_stack_00000548[0xa5],0,
+                     (ONSPPropagationMaterial_tF580835BFC32B7348745917529FBFB582A9BDE4A *)
+                     in_stack_00000548[0xa3]);
+          in_stack_00000548[0xa2] = *(undefined8 *)(in_stack_00000538 + 0x368);
+          NullCheck((void *)in_stack_00000548[0xa2]);
+          uVar12 = ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57::GetAt
+                             ((ONSPPropagationMaterialU5BU5D_t09366E3A22D05CEBD56F798F10E24B4E0126FE57
+                               *)in_stack_00000548[0xa2],0);
+          in_stack_00000548[0xa0] = uVar12;
+          NullCheck((void *)in_stack_00000548[0xa0]);
+          ONSPPropagationMaterial_SetPreset_m7A3C6A79D7CC89A2DD81776C5E30F9E9E58D4AC3
+                    (in_stack_00000548[0xa0],0xd,0);
+        }
+        in_stack_00000548[0x9f] = *(undefined8 *)(in_stack_00000538 + 0x2b8);
+        NullCheck((void *)in_stack_00000548[0x9f]);
+        uVar12 = SZArrayNew(*(Il2CppClass **)
+                             Method_System_Collections_Generic_Dictionary<InternedString,_InternedString>_TryGetValue__
+                            ,(uint)*(undefined8 *)(in_stack_00000548[0x9f] + 0x18));
+        in_stack_00000548[0x9e] = uVar12;
+        *(undefined8 *)(in_stack_00000538 + 0x2f0) = in_stack_00000548[0x9e];
+        Il2CppCodeGenWriteBarrier((void **)(unaff_x29 + -0xd0),(void *)in_stack_00000548[0x9e]);
+        in_stack_00001b94 = 0;
+      }
+      in_stack_00000548[0x9d] = *(undefined8 *)(in_stack_00000538 + 0x2b8);
+      NullCheck((void *)in_stack_00000548[0x9d]);
+      uVar12 = TreePrototypeU5BU5D_tB0255CA167F991C2C9BA3BA55DF7417168D93B7A::GetAt
+                         ((TreePrototypeU5BU5D_tB0255CA167F991C2C9BA3BA55DF7417168D93B7A *)
+                          in_stack_00000548[0x9d],(long)in_stack_00001b94);
+      in_stack_00000548[0x9b] = uVar12;
+      NullCheck((void *)in_stack_00000548[0x9b]);
+      uVar12 = TreePrototype_get_prefab_mCE1630C35B09770D35B2ECA45B98D1CB6D5AC67C
+                         (in_stack_00000548[0x9b],0);
+      in_stack_00000548[0x9a] = uVar12;
+      NullCheck((void *)in_stack_00000548[0x9a]);
+      uVar12 = GameObject_GetComponentsInChildren_TisMeshFilter_t6D1CE2473A1E45AC73013400585A1163BF66B2F5_mC29DC007A56E819962202CC5829E097BA9E61495
+                         ((GameObject_t76FEDD663AB33C991A9C9A23129337651094216F *)
+                          in_stack_00000548[0x9a],
+                          *(MethodInfo **)Method_System_Collections_SortedList_KeyList_RemoveAt__);
+      in_stack_00000548[0x99] = uVar12;
+      *(undefined8 *)(in_stack_00000538 + 0x2a8) = in_stack_00000548[0x99];
+      in_stack_00001b84 = 0x7fffffff;
+      in_stack_00001b80 = -1;
+      in_stack_00001b7c = 0;
+    }
+    in_stack_00000548[0x98] = *(undefined8 *)(in_stack_00000538 + 0x2a8);
+    NullCheck((void *)in_stack_00000548[0x98]);
+    uVar12 = MeshFilterU5BU5D_tCE3B457E6F7ECE5ECEE9E09150642150448685BA::GetAt
+                       ((MeshFilterU5BU5D_tCE3B457E6F7ECE5ECEE9E09150642150448685BA *)
+                        in_stack_00000548[0x98],(long)in_stack_00001b7c);
+    in_stack_00000548[0x96] = uVar12;
+    NullCheck((void *)in_stack_00000548[0x96]);
+    in_stack_000004d0 = 0;
+    uVar12 = MeshFilter_get_sharedMesh_mE4ED3E7E31C1DE5097E4980DA996E620F7D7CB8C
+                       (in_stack_00000548[0x96]);
+    in_stack_00000548[0x95] = uVar12;
+    param_1 = in_stack_00000548;
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 64
+FUNCTION_NAME: OVR.OpenVR.IVRTrackedCamera._GetVideoStreamTextureD3D11$$BeginInvoke
+ENTRY_POINT: 02d8578c
+MANUAL_PRIORITY_SCORE: 384
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 241
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_4', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_4', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_permission_setup', 'functionality_gaze_interaction_hits_4', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_241', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\02d8578c_OVR.OpenVR.IVRTrackedCamera._GetVideoStreamTextureD3D11$$BeginInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\064_p384_OVR.OpenVR.IVRTrackedCamera._GetVideoStreamTextureD3D11$$BeginInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVR.OpenVR.IVRTrackedCamera._GetVideoStreamTextureD3D11$$BeginInvoke
+ENTRY_POINT: 02d8578c
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 241
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_4;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_permission_setup;functionality_gaze_interaction_hits_4;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+void OVR_OpenVR_IVRTrackedCamera__GetVideoStreamTextureD3D11__BeginInvoke(void)
+
+{
+  undefined4 uVar1;
+  byte bVar2;
+  uint uVar3;
+  long lVar4;
+  undefined8 uVar5;
+  undefined8 *puVar6;
+  void *pvVar7;
+  undefined4 *puVar8;
+  long unaff_x29;
+  long in_stack_000001d0;
+  undefined8 *in_stack_000001d8;
+  undefined8 *in_stack_000001e0;
+  undefined8 *in_stack_000001f0;
+  undefined8 *in_stack_000001f8;
+  undefined8 *in_stack_00000200;
+  undefined8 *in_stack_00000208;
+  undefined8 *in_stack_00000210;
+  undefined8 *in_stack_00000218;
+  undefined8 *in_stack_00000220;
+  undefined8 *in_stack_00000228;
+  undefined8 *in_stack_00000238;
+  undefined8 *in_stack_00000240;
+  int in_stack_00000444;
+  
+  if ((((in_stack_00000444 == 0) || (*(int *)(unaff_x29 + -0x2c) == 1)) ||
+      (*(int *)(unaff_x29 + -0x2c) == 7)) || (*(int *)(unaff_x29 + -0x2c) == 2)) {
+    OVRManager_set_isSupportedPlatform_mE8A33FC72544A424CC63ACAF84F71CEC1EC9CE6F_inline
+              (*(OVRManager_t21429E69CA88C5E9C6EE3AAB75EAFBE6E1B129D4 **)(in_stack_000001d0 + 0x2a0)
+               ,true,(MethodInfo *)0x0);
+  }
+  else {
+    OVRManager_set_isSupportedPlatform_mE8A33FC72544A424CC63ACAF84F71CEC1EC9CE6F_inline
+              (*(OVRManager_t21429E69CA88C5E9C6EE3AAB75EAFBE6E1B129D4 **)(in_stack_000001d0 + 0x2a0)
+               ,false,(MethodInfo *)0x0);
+  }
+  uVar3 = OVRManager_get_isSupportedPlatform_m6AE0B37666BB1660CCFC7F9EAD30E550C5D7FBFA_inline
+                    (*(OVRManager_t21429E69CA88C5E9C6EE3AAB75EAFBE6E1B129D4 **)
+                      (in_stack_000001d0 + 0x2a0),(MethodInfo *)0x0);
+  if ((uVar3 & 1) == 0) {
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+    Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9
+              (*(undefined8 *)
+                Method_System_Xml_Serialization_XmlSerializationWriterInterpreter_CallbackInfo_WriteObject__
+               ,0);
+    OVRTelemetryMarker_SetResult_mC26EF54EA58688FAD90DCC02BDF51171CC14A5E3
+              (&stack0x000003f8,unaff_x29 + -0x28,3,0);
+    uVar5 = in_stack_000001e0[0x24];
+    in_stack_000001d8[1] = in_stack_000001e0[0x25];
+    *in_stack_000001d8 = uVar5;
+    in_stack_000001d8[2] = in_stack_000001e0[0x26];
+  }
+  else {
+    OVRManager_set_chromatic_mC1109A775529EF48476D51176DEC780678AAE0EF
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0,0);
+    *(undefined1 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x69) = 0;
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+    OVRManager_StaticInitializeMixedRealityCapture_mECD5892929515DFF005276CD46C2B270F0F7A533
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0);
+    OVRManager_Initialize_m339CEB2C05C31DCDA1C4390EE2635DC90D538821
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0);
+    OVRManager_InitPermissionRequest_m119AB6ECF8AC0DF7B5165493E5F285A734ABCEB5
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000208);
+    lVar4 = il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000208);
+    OVRTelemetryMarker_AddPoint_m5DF94030CCE86DDE95347ECF9A4C581ADF85E2E9
+              (&stack0x000003b8,unaff_x29 + -0x28,*(undefined4 *)(lVar4 + 4),0);
+    in_stack_000001e0[0x20] = in_stack_000001e0[0x1d];
+    in_stack_000001e0[0x1f] = in_stack_000001e0[0x1c];
+    in_stack_000001e0[0x21] = in_stack_000001e0[0x1e];
+    uVar5 = SZArrayNew((Il2CppClass *)*in_stack_00000218,2);
+    in_stack_000001e0[0x1a] = uVar5;
+    in_stack_000001e0[0x19] = in_stack_000001e0[0x1a];
+    uVar5 = OVRManager_get_display_m1D17D6867547AC786E00A4CF60B863275AC1AF3D_inline
+                      ((MethodInfo *)0x0);
+    in_stack_000001e0[0x18] = uVar5;
+    NullCheck((void *)in_stack_000001e0[0x18]);
+    OVRDisplay_get_displayFrequency_mEBAAEE931893607AEA59FEF00916CCEC79C8DF6B
+              (in_stack_000001e0[0x18],0);
+    uVar5 = Box(*(Il2CppClass **)
+                 Method_System_Collections_Generic_Dictionary<XmlQualifiedName,_SchemaElementDecl>_Remove__
+                ,&stack0x00000390);
+    in_stack_000001e0[0x16] = uVar5;
+    NullCheck((void *)in_stack_000001e0[0x19]);
+    ArrayElementTypeCheck((Il2CppArray *)in_stack_000001e0[0x19],(void *)in_stack_000001e0[0x16]);
+    ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918::SetAt
+              ((ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918 *)in_stack_000001e0[0x19],0,
+               (Il2CppObject *)in_stack_000001e0[0x16]);
+    in_stack_000001e0[0x15] = in_stack_000001e0[0x19];
+    uVar5 = OVRManager_get_display_m1D17D6867547AC786E00A4CF60B863275AC1AF3D_inline
+                      ((MethodInfo *)0x0);
+    in_stack_000001e0[0x14] = uVar5;
+    NullCheck((void *)in_stack_000001e0[0x14]);
+    uVar5 = OVRDisplay_get_displayFrequenciesAvailable_mB0AD342C0A7F312A4F7215CA5DC4D8244CF9F9AE
+                      (in_stack_000001e0[0x14],0);
+    in_stack_000001e0[0x13] = uVar5;
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000228);
+    lVar4 = il
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+2EC3 **)
+                          (in_stack_000001d0 + 0x2a0),(MethodInfo *)*in_stack_000001f0);
+      in_stack_000001e0[7] = uVar5;
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000220);
+      uVar3 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(in_stack_000001e0[7],0);
+      if ((uVar3 & 1) != 0) {
+        uVar5 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B
+                          (*(undefined8 *)(in_stack_000001d0 + 0x2a0),0);
+        in_stack_000001e0[5] = uVar5;
+        NullCheck((void *)in_stack_000001e0[5]);
+        uVar5 = GameObject_AddComponent_TisOVRSystemPerfMetricsTcpServer_tD146C2687DE96043EC01031488CFB10442814F86_m9801277350485D9C445EC7E0035EFCF0579BC30E
+                          ((GameObject_t76FEDD663AB33C991A9C9A23129337651094216F *)
+                           in_stack_000001e0[5],
+                           *(MethodInfo **)
+                            Method_System_Xml_Schema_XmlSchemaObjectTable_XSODictionaryEnumerator_get_Entry__
+                          );
+        in_stack_000001e0[4] = uVar5;
+      }
+      uVar5 = Component_GetComponent_TisOVRSystemPerfMetricsTcpServer_tD146C2687DE96043EC01031488CFB10442814F86_mF0B4099235709D379979102F6053FD6042D8A77C
+                        (*(Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3 **)
+                          (in_stack_000001d0 + 0x2a0),(MethodInfo *)*in_stack_000001f0);
+      in_stack_000001e0[3] = uVar5;
+      *(undefined8 *)(in_stack_000001d0 + 0x268) = in_stack_000001e0[3];
+      in_stack_000001e0[2] = *(undefined8 *)(in_stack_000001d0 + 0x268);
+      uVar1 = *(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 100);
+      NullCheck((void *)in_stack_000001e0[2]);
+      *(undefined4 *)(in_stack_000001e0[2] + 0x28) = uVar1;
+      *in_stack_000001e0 = *(undefined8 *)(in_stack_000001d0 + 0x268);
+      NullCheck((void *)*in_stack_000001e0);
+      uVar3 = Behaviour_get_enabled_mAAC9F15E9EBF552217A5AE2681589CC0BFA300C1(*in_stack_000001e0,0);
+      if ((uVar3 & 1) == 0) {
+        pvVar7 = *(void **)(in_stack_000001d0 + 0x268);
+        NullCheck(pvVar7);
+        Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(pvVar7,1,0);
+      }
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      OVRPlugin_SetDeveloperMode_m666BA62AB965FE5E7E2857C29F619EE186CC8155(1,0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+    pvVar7 = (void *)OVRManager_get_runtimeSettings_m6DFAF39BFB4B75B251235D43B02696D70BFA897A_inline
+                               ((MethodInfo *)0x0);
+    NullCheck(pvVar7);
+    *(undefined4 *)(unaff_x29 + -0x30) = *(undefined4 *)((long)pvVar7 + 0x18);
+    OVRManager_set_colorGamut_m12885C55A4AF562CF4DA969CE3DFE90B2905509F
+              (*(undefined8 *)(in_stack_000001d0 + 0x2a0),*(undefined4 *)(unaff_x29 + -0x30),0);
+    uVar1 = *(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x30);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+    OVRPlugin_SetEyeBufferSharpenType_mF9C093758526297D065147C475D3FC473E3CECF5(uVar1,0);
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x100) & 1) != 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      uVar3 = OVRPlugin_SetSimultaneousHandsAndControllersEnabled_m58736E9A0BB38074C30D9CB6364C1F307882A09A
+                        (1,0);
+      if ((uVar3 & 1) == 0) {
+        il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+        Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB
+                  (*(undefined8 *)
+                    Method_System_Xml_XmlTextReaderImpl_DtdDefaultAttributeInfoToNodeDataComparer_Compare__
+                   ,0);
+      }
+    }
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x101) & 1) != 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+      OVRManager_InitializeInsightPassthrough_m016E6C16576A1E4F6B7871E7FDE7D2671119F67E(0);
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000208);
+      puVar8 = (undefined4 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000208);
+      OVRTelemetryMarker_AddPoint_m5DF94030CCE86DDE95347ECF9A4C581ADF85E2E9
+                (&stack0x00000268,unaff_x29 + -0x28,*puVar8,0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+    uVar3 = OVRPlugin_get_localDimmingSupported_m33C94209109E4B84E3F531A9005747FF38D6D75C(0);
+    if ((uVar3 & 1) == 0) {
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_000001f8);
+      Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9
+                (*(undefined8 *)
+                  Method_System_Xml_XmlWellFormedWriter_NamespaceResolverProxy_System_Xml_IXmlNamespaceResolver_GetNamespacesInScope__
+                 ,0);
+      *(undefined1 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x106) = 0;
+    }
+    else {
+      bVar2 = *(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x106);
+      il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000210);
+      OVRPlugin_set_localDimming_mB802F316C5988ACA499BA45E7B9D6590570025AB(bVar2 & 1,0);
+    }
+    if ((*(byte *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x38) & 1) != 0) {
+      XRSettings_set_eyeTextureResolutionScale_m92F1029D68F387D9B0C2DB35DFAB2FD82C64A30B
+                (*(undefined4 *)(*(long *)(in_stack_000001d0 + 0x2a0) + 0x40),0);
+    }
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000200);
+    lVar4 = il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000200);
+    *(undefined1 *)(lVar4 + 0x180) = 1;
+  }
+  il2cpp::utils::
+  FinallyHelper<OVRManager_InitOVRManager_m70F462CB3521560EDE92D4C54EF0FAD199386053::$_0,false>::
+  ~FinallyHelper((FinallyHelper<OVRManager_InitOVRManager_m70F462CB3521560EDE92D4C54EF0FAD199386053::__0,false>
+                  *)&stack0x00000690);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 65
+FUNCTION_NAME: AsyncTaskMethodBuilder_1_GetTaskForResult_m8210EDCCA4F113BD4377A4433475A9E6D39E6CFC_gshared
+ENTRY_POINT: 022841d4
+MANUAL_PRIORITY_SCORE: 384
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 241
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_21', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'functionality_gaze_interaction_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_241', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\022841d4_AsyncTaskMethodBuilder_1_GetTaskForResult_m8210EDCCA4F113BD4377A4433475A9E6D39E6CFC_gshared.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\065_p384_AsyncTaskMethodBuilder_1_GetTaskForResult_m8210EDCCA4F113BD4377A4433475A9E6D39E6CFC_gshared.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: AsyncTaskMethodBuilder_1_GetTaskForResult_m8210EDCCA4F113BD4377A4433475A9E6D39E6CFC_gshared
+ENTRY_POINT: 022841d4
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 241
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_7;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_21;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;functionality_gaze_interaction_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *
+AsyncTaskMethodBuilder_1_GetTaskForResult_m8210EDCCA4F113BD4377A4433475A9E6D39E6CFC_gshared
+          (undefined8 ****param_1,long param_2)
+
+{
+  long lVar1;
+  Il2CppClass *pIVar2;
+  byte *pbVar3;
+  int *piVar4;
+  char *pcVar5;
+  long *plVar6;
+  short *psVar7;
+  ulong uVar8;
+  undefined8 *puVar9;
+  MethodInfo *pMVar10;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *apTStack_600 [2];
+  void *local_5f0;
+  void *local_5e8;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_5e0;
+  undefined8 ***local_5d8;
+  undefined8 *local_5d0;
+  int local_5c4;
+  undefined8 ***local_5c0;
+  undefined8 *local_5b8;
+  int local_5ac;
+  undefined8 ***local_5a8;
+  undefined8 *local_5a0;
+  undefined8 local_598;
+  undefined8 ***local_590;
+  undefined8 *local_588;
+  undefined8 local_580;
+  undefined8 ***local_578;
+  undefined8 *local_570;
+  undefined8 local_568;
+  undefined8 ***local_560;
+  undefined8 *local_558;
+  undefined8 local_550;
+  undefined8 ***local_548;
+  undefined8 *local_540;
+  undefined8 local_538;
+  undefined8 ***local_530;
+  undefined8 *local_528;
+  undefined8 local_520;
+  undefined8 ***local_518;
+  undefined8 *local_510;
+  undefined8 local_508;
+  undefined8 ***local_500;
+  undefined8 *local_4f8;
+  undefined8 local_4f0;
+  undefined8 ***local_4e8;
+  undefined8 *local_4e0;
+  undefined8 local_4d8;
+  undefined8 ***local_4d0;
+  undefined8 *local_4c8;
+  undefined8 local_4c0;
+  undefined8 *local_4b8;
+  Il2CppObject *local_4b0;
+  undefined8 ***local_4a8;
+  undefined8 *local_4a0;
+  undefined8 local_498;
+  Il2CppObject *local_490;
+  undefined8 *local_488;
+  undefined8 *local_480;
+  undefined8 ***local_478;
+  undefined8 *local_470;
+  undefined8 local_468;
+  int local_460;
+  int local_45c;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_458;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_450;
+  byte local_444;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_440;
+  byte local_434;
+  Il2CppObject *local_430;
+  byte local_424;
+  undefined8 local_420;
+  undefined8 local_418;
+  undefined8 local_410;
+  undefined8 local_408;
+  undefined8 local_400;
+  undefined8 local_3f8;
+  byte local_3ec;
+  Il2CppObject *local_3e8;
+  byte local_3dc;
+  undefined8 local_3d8;
+  undefined8 local_3d0;
+  undefined8 local_3c8;
+  undefined8 local_3c0;
+  undefined8 local_3b8;
+  undefined8 local_3b0;
+  Il2CppObject *local_3a8;
+  byte local_39c;
+  undefined8 local_398;
+  undefined8 local_390;
+  undefined8 local_388;
+  undefined8 local_380;
+  undefined8 local_378;
+  undefined8 local_370;
+  Il2CppObject *local_368;
+  byte local_35c;
+  undefined8 local_358;
+  undefined8 local_350;
+  undefined8 local_348;
+  undefined8 local_340;
+  undefined8 local_338;
+  undefined8 local_330;
+  Il2CppObject *local_328;
+  byte local_31c;
+  undefined8 local_318;
+  undefined8 local_310;
+  undefined8 local_308;
+  undefined8 local_300;
+  undefined8 local_2f8;
+  undefined8 local_2f0;
+  Il2CppObject *local_2e8;
+  byte local_2dc;
+  undefined8 local_2d8;
+  undefined8 local_2d0;
+  undefined8 local_2c8;
+  undefined8 local_2c0;
+  undefined8 local_2b8;
+  undefined8 local_2b0;
+  Il2CppObject *local_2a8;
+  byte local_29c;
+  undefined8 local_298;
+  undefined8 local_290;
+  undefined8 local_288;
+  undefined8 local_280;
+  undefined8 local_278;
+  undefined8 local_270;
+  Il2CppObject *local_268;
+  byte local_25c;
+  undefined8 local_258;
+  undefined8 local_250;
+  undefined8 local_248;
+  undefined8 local_240;
+  undefined8 local_238;
+  undefined8 local_230;
+  Il2CppObject *local_228;
+  byte local_21c;
+  undefined8 local_218;
+  undefined8 local_210;
+  undefined8 local_208;
+  undefined8 local_200;
+  undefined8 local_1f8;
+  undefined8 local_1f0;
+  Il2CppObject *local_1e8;
+  byte local_1dc;
+  undefined8 local_1d8;
+  undefined8 local_1d0;
+  undefined8 local_1c8;
+  undefined8 local_1c0;
+  undefined8 local_1b8;
+  undefined8 local_1b0;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_1a8;
+  Il2CppObject *local_1a0;
+  int local_198;
+  int local_194;
+  Task_1U5BU5D_t54E2C15C8F3B98F79512798949C26C8A752440F8 *local_190;
+  int local_188;
+  int local_184;
+  Il2CppObject *local_180;
+  byte local_174;
+  undefined8 local_170;
+  undefined8 local_168;
+  undefined8 local_160;
+  undefined8 local_158;
+  undefined8 local_150;
+  undefined8 local_148;
+  Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *local_140;
+  Il2CppObject *local_138;
+  Il2CppObject *local_130;
+  Il2CppObject *local_128;
+  byte local_11c;
+  undefined8 local_118;
+  undefined8 local_110;
+  undefined8 local_108;
+  undefined8 local_100;
+  undefined8 local_f8;
+  undefined8 local_f0;
+  byte local_e4;
+  Il2CppObject *local_e0;
+  int local_d4;
+  void *local_d0;
+  void *local_c8;
+  undefined8 *local_c0;
+  undefined8 *local_b8;
+  undefined8 *local_b0;
+  undefined8 *local_a8;
+  undefined8 *local_a0;
+  undefined8 *local_98;
+  undefined8 *local_90;
+  undefined8 *local_88;
+  undefined8 *local_80;
+  undefined8 *local_78;
+  undefined8 *local_70;
+  undefined8 *local_68;
+  undefined8 *local_60;
+  undefined8 *local_58;
+  undefined8 *local
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+_type(pIVar2);
+      if ((uVar8 & 1) == 0) {
+        local_590 = &local_38;
+      }
+      else {
+        local_590 = local_38;
+      }
+      il2cpp_codegen_memcpy(local_588,local_590,(ulong)local_44);
+      lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+      pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+      local_3e8 = (Il2CppObject *)Box(pIVar2,local_a8);
+      puVar9 = (undefined8 *)
+               UnBox(local_3e8,
+                     *(Il2CppClass **)
+                      Method_UnityEngine_UIElements_PointerCaptureEventBase<MouseCaptureOutEvent>_GetPooled__
+                    );
+      local_3ec = IntPtr_op_Equality_m7D9CDCDE9DC2A0C2C614633F4921E90187FAB271(0,*puVar9);
+      local_3ec = local_3ec & 1;
+      if (local_3ec != 0) goto LAB_02285520;
+    }
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    local_3f8 = il2cpp_rgctx_type(*(Il2CppRGCTXData **)(lVar1 + 0xc0),9);
+    il2cpp_codegen_runtime_class_init_inline
+              (*(Il2CppClass **)Method_System_Collections_Generic_Dictionary<int,_Transform>__ctor__
+              );
+    local_408 = local_3f8;
+    local_598 = 0;
+    local_400 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57(local_3f8);
+    local_420 = *(undefined8 *)
+                 Method_UnityEngine_UIElements_PointerCaptureEventBase<PointerCaptureEvent>__ctor__;
+    local_410 = local_420;
+    local_418 = Type_GetTypeFromHandle_m6062B81682F79A4D6DF2640692EE6D9987858C57
+                          (local_420,local_598);
+    local_424 = Type_op_Equality_m99930A0E44E420A685FABA60E60BA1CC5FA0EBDC
+                          (local_400,local_418,local_598);
+    local_424 = local_424 & 1;
+    if (local_424 != 0) {
+      local_5a0 = local_b0;
+      lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+      pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+      uVar8 = il2cpp_codegen_class_is_value_type(pIVar2);
+      if ((uVar8 & 1) == 0) {
+        local_5a8 = &local_38;
+      }
+      else {
+        local_5a8 = local_38;
+      }
+      il2cpp_codegen_memcpy(local_5a0,local_5a8,(ulong)local_44);
+      lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+      pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+      local_430 = (Il2CppObject *)Box(pIVar2,local_b0);
+      puVar9 = (undefined8 *)
+               UnBox(local_430,
+                     *(Il2CppClass **)
+                      Method_UnityEngine_UIElements_PointerCaptureEventBase<PointerCaptureEvent>_GetPooled__
+                    );
+      local_434 = UIntPtr_op_Equality_m6854CBDA705729A896265CF7D2BD522E3460DCFB(0,*puVar9);
+      local_434 = local_434 & 1;
+      if (local_434 != 0) goto LAB_02285520;
+    }
+LAB_02285650:
+    local_5d0 = local_c0;
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+    uVar8 = il2cpp_codegen_class_is_value_type(pIVar2);
+    if ((uVar8 & 1) == 0) {
+      local_5d8 = &local_38;
+    }
+    else {
+      local_5d8 = local_38;
+    }
+    il2cpp_codegen_memcpy(local_5d0,local_5d8,(ulong)local_44);
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data(*(Il2CppRGCTXData **)(lVar1 + 0xc0),3);
+    local_5e0 = (Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *)
+                il2cpp_codegen_object_new(pIVar2);
+    local_458 = local_5e0;
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+    uVar8 = il2cpp_codegen_class_is_value_type(pIVar2);
+    if ((uVar8 & 1) == 0) {
+      local_5e8 = (void *)*local_c0;
+    }
+    else {
+      local_5e8 = (void *)il2cpp_codegen_memcpy(local_c8,local_c0,(ulong)local_44);
+    }
+    local_5f0 = local_5e8;
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pMVar10 = (MethodInfo *)il2cpp_rgctx_method(*(Il2CppRGCTXData **)(lVar1 + 0xc0),0xb);
+    Task_1__ctor_m1C40D38062933195E1A9BFFEEA9CA53E25D9E7DC(local_5e0,local_5f0,pMVar10);
+    local_30 = local_458;
+  }
+  else {
+    local_4c8 = local_68;
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+    uVar8 = il2cpp_codegen_class_is_value_type(pIVar2);
+    if ((uVar8 & 1) == 0) {
+      local_4d0 = &local_38;
+    }
+    else {
+      local_4d0 = local_38;
+    }
+    il2cpp_codegen_memcpy(local_4c8,local_4d0,(ulong)local_44);
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar1 + 0xc0),5);
+    local_1e8 = (Il2CppObject *)Box(pIVar2,local_68);
+    piVar4 = (int *)UnBox(local_1e8,
+                          *(Il2CppClass **)
+                           Method_System_Collections_Generic_Dictionary<XmlQualifiedName,_SchemaEntity>_ContainsKey__
+                         );
+    if (*piVar4 != 0) goto LAB_022849d4;
+LAB_02285520:
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    local_5ac = 2;
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data(*(Il2CppRGCTXData **)(lVar1 + 0xc0),2);
+    il2cpp_codegen_runtime_class_init_inline(pIVar2);
+    lVar1 = InitializedTypeInfo(*(Il2CppClass **)(local_40 + 0x20));
+    pIVar2 = (Il2CppClass *)il2cpp_rgctx_data(*(Il2CppRGCTXData **)(lVar1 + 0xc0),local_5ac);
+    puVar9 = (undefined8 *)il2cpp_codegen_static_fields_for(pIVar2);
+    local_440 = (Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9 *)*puVar9;
+    local_30 = local_440;
+  }
+FUN_0228575c:
+  apTStack_600[1] = local_30;
+  lVar1 = tpidr_el0;
+  lVar1 = *(long *)(lVar1 + 0x28) - local_28;
+  if (lVar1 != 0) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail(lVar1);
+  }
+  return local_30;
+}
+
+
+
+END_DECOMPILED_FUNCTION

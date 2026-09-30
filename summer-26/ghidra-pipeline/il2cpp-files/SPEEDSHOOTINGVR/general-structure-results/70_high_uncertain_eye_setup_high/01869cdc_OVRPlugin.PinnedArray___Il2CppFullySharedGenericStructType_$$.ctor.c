@@ -1,0 +1,30 @@
+/*
+FUNCTION_NAME: OVRPlugin.PinnedArray<__Il2CppFullySharedGenericStructType>$$.ctor
+ENTRY_POINT: 01869cdc
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 81
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;strong_pose_or_ray_construction_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRPlugin_PinnedArray<__Il2CppFullySharedGenericStructType>___ctor(void)
+
+{
+  bool in_ZR;
+  
+  if (in_ZR) {
+    thunk_FUN_01040230();
+    FUN_01869b58();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00fdc8d0();
+}
+
+

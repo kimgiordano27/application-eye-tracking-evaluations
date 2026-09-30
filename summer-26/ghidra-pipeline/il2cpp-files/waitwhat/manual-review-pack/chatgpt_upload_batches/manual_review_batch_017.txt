@@ -1,0 +1,1186 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 65
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_zMotion
+ENTRY_POINT: 069597e0
+MANUAL_PRIORITY_SCORE: 307
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_17', 'telemetry_or_network_hits_7', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\069597e0_UnityEngine.ConfigurableJoint$$get_zMotion.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\065_p307_UnityEngine.ConfigurableJoint$$get_zMotion.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_zMotion
+ENTRY_POINT: 069597e0
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 153
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;data_collection;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_5;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_17;telemetry_or_network_hits_7;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void UnityEngine_ConfigurableJoint__get_zMotion(long param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  long lVar7;
+  long lVar8;
+  undefined8 uVar9;
+  long lVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  undefined8 *unaff_x20;
+  long unaff_x21;
+  undefined8 *unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  undefined8 in_stack_00000000;
+  long in_stack_00000008;
+  
+  FUN_06938f78();
+  if (param_1 != 0) {
+    uVar9 = *(undefined8 *)
+             UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass20_0_TypeInfo
+    ;
+    *(undefined8 *)(param_1 + 0x10) =
+         *(undefined8 *)
+          System_Collections_Generic_Dictionary<OVRSpace_StorageLocation,_List<OVRSpatialAnchor>>_TypeInfo
+    ;
+    puVar4 = PTR_DAT_070c25e8;
+    *(undefined8 *)(param_1 + 0x20) = uVar9;
+    *(undefined4 *)(param_1 + 0x18) = 0;
+    lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                      (*(undefined8 *)puVar4);
+    FUN_042e4268(lVar6,*unaff_x26);
+    puVar4 = PTR_DAT_070c2cb8;
+    if (lVar6 != 0) {
+      lVar7 = *(long *)(lVar6 + 0x10);
+      uVar9 = *(undefined8 *)OVR_OpenVR_IVROverlay__ReleaseNativeOverlayHandle_TypeInfo;
+      *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+      if (lVar7 != 0) {
+        uVar2 = *(uint *)(lVar6 + 0x18);
+        if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+          *(uint *)(lVar6 + 0x18) = uVar2 + 1;
+          *(undefined8 *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = uVar9;
+        }
+        else {
+          FUN_042e4a64(lVar6,uVar9,
+                       *(undefined8 *)(*(long *)(*(long *)(*(long *)puVar4 + 0x20) + 0xc0) + 0x70));
+        }
+        uVar9 = *unaff_x25;
+        *(long *)(param_1 + 0x30) = lVar6;
+        lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed(uVar9);
+        FUN_042e4268(lVar6,*unaff_x20);
+        lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                          (*unaff_x19);
+        FUN_06938f70(lVar7,0);
+        if (lVar7 != 0) {
+          uVar9 = *(undefined8 *)
+                   UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass4_0_TypeInfo
+          ;
+          *(undefined8 *)(lVar7 + 0x10) = *unaff_x28;
+          *(undefined8 *)(lVar7 + 0x18) = uVar9;
+          if (lVar6 != 0) {
+            lVar8 = *(long *)(lVar6 + 0x10);
+            lVar10 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+            *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+            if (lVar8 != 0) {
+              uVar2 = *(uint *)(lVar6 + 0x18);
+              if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                *(uint *)(lVar6 + 0x18) = uVar2 + 1;
+                *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = lVar7;
+              }
+              else {
+                FUN_042e4a64(lVar6,lVar7,
+                             *(undefined8 *)(*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) + 0x70));
+              }
+              iVar1 = *(int *)(unaff_x21 + 0x1c);
+              lVar7 = *(long *)(unaff_x21 + 0x10);
+              *(long *)(param_1 + 0x28) = lVar6;
+              *(int *)(unaff_x21 + 0x1c) = iVar1 + 1;
+              if (lVar7 != 0) {
+                uVar2 = *(uint *)(unaff_x21 + 0x18);
+                if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+                  *(uint *)(unaff_x21 + 0x18) = uVar2 + 1;
+                  *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = param_1;
+                }
+                else {
+                  FUN_042e4a64();
+                }
+                lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (*unaff_x29);
+                FUN_06938f78(lVar6,0);
+                if (lVar6 != 0) {
+                  uVar9 = *(undefined8 *)
+                           Fusion_NetworkSceneAsyncOp_Awaiter_<>c__DisplayClass5_1_TypeInfo;
+                  *(undefined8 *)(lVar6 + 0x10) =
+                       *(undefined8 *)
+                        System_Collections_Generic_Dictionary<StylePropertyAnimationSystem_ElementPropertyPair,_StylePropertyAnimationSystem_TransitionState>_TypeInfo
+                  ;
+                  puVar4 = PTR_DAT_070c25e8;
+                  *(undefined8 *)(lVar6 + 0x20) = uVar9;
+                  *(undefined4 *)(lVar6 + 0x18) = 0;
+                  lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                    (*(undefined8 *)puVar4);
+                  FUN_042e4268(lVar7,*unaff_x26);
+                  puVar4 = PTR_DAT_070c2cb8;
+                  if (lVar7 != 0) {
+                    lVar8 = *(long *)(lVar7 + 0x10);
+                    uVar9 = *(undefined8 *)
+                             OVR_OpenVR_IVROverlay__GetTransformForOverlayCoordinates_TypeInfo;
+                    *(int *)(lVar7 + 0x1c) = *(int *)(lVar7 + 0x1c) + 1;
+                    if (lVar8 != 0) {
+                      uVar2 = *(uint *)(lVar7 + 0x18);
+                      if (uVa
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+                                                *(long *)(in_stack_00000008 + 0x28) = unaff_x21;
+                                                    FUN_06938d58(in_stack_00000000,in_stack_00000008
+                                                                 ,0);
+                                                    return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 66
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_yMotion
+ENTRY_POINT: 06959668
+MANUAL_PRIORITY_SCORE: 307
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_18', 'telemetry_or_network_hits_7', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\06959668_UnityEngine.ConfigurableJoint$$get_yMotion.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\066_p307_UnityEngine.ConfigurableJoint$$get_yMotion.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_yMotion
+ENTRY_POINT: 06959668
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 153
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;data_collection;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_5;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_18;telemetry_or_network_hits_7;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void UnityEngine_ConfigurableJoint__get_yMotion(long param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  undefined8 uVar7;
+  long lVar8;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  undefined8 *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  undefined8 *unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  undefined8 in_stack_00000000;
+  long in_stack_00000008;
+  
+  FUN_042e4268();
+  puVar4 = PTR_DAT_070c2cb8;
+  if (param_1 != 0) {
+    lVar8 = *(long *)(param_1 + 0x10);
+                    /* try { // try from 06959684 to 06a596b3 has its CatchHandler @ 0695948c */
+    uVar7 = *(undefined8 *)OVR_OpenVR_IVROverlay__SetDashboardOverlaySceneProcess_TypeInfo;
+    *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + 1;
+    if (lVar8 != 0) {
+      uVar2 = *(uint *)(param_1 + 0x18);
+      if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                    /* try { // try from 069596b4 to 06a596b7 has its CatchHandler @ 069596d4 */
+                    /* try { // try from 069596b8 to 06a596bb has its CatchHandler @ 069596c8 */
+        *(uint *)(param_1 + 0x18) = uVar2 + 1;
+                    /* try { // try from 069596bc to 06a596f3 has its CatchHandler @ 0695948c */
+        *(undefined8 *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = uVar7;
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 06959618 with catch @ 069596c0
+                        */
+      }
+      else {
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 06959658 with catch @ 069596c4
+                        */
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 069596b8 with catch @ 069596c8
+                        */
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 069595e0 with catch @ 069596cc
+                        */
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 069595a0 with catch @ 069596d0
+                        */
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 069596b4 with catch @ 069596d4
+                        */
+        FUN_042e4a64(param_1,uVar7,
+                     *(undefined8 *)(*(long *)(*(long *)(*(long *)puVar4 + 0x20) + 0xc0) + 0x70));
+      }
+                    /* catch(type#1 @ 06cdc248) { ... } // from try @ 0695957c with catch @ 069596d8
+                        */
+      uVar7 = *unaff_x25;
+      *(long *)(unaff_x22 + 0x30) = param_1;
+      lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed(uVar7);
+      FUN_042e4268(lVar8,*unaff_x20);
+      lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                        (*unaff_x19);
+      FUN_06938f70(lVar6,0);
+      if (lVar6 != 0) {
+        uVar7 = *(undefined8 *)
+                 Fusion_NetworkBehaviour_ChangeDetector_OnChangedCallbackWrapper_TypeInfo;
+        *(undefined8 *)(lVar6 + 0x10) = *unaff_x28;
+        *(undefined8 *)(lVar6 + 0x18) = uVar7;
+        if (lVar8 != 0) {
+          lVar9 = *(long *)(lVar8 + 0x10);
+          lVar10 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+          *(int *)(lVar8 + 0x1c) = *(int *)(lVar8 + 0x1c) + 1;
+          if (lVar9 != 0) {
+            uVar2 = *(uint *)(lVar8 + 0x18);
+            if (uVar2 < *(uint *)(lVar9 + 0x18)) {
+              *(uint *)(lVar8 + 0x18) = uVar2 + 1;
+              *(long *)(lVar9 + (long)(int)uVar2 * 8 + 0x20) = lVar6;
+            }
+            else {
+              FUN_042e4a64(lVar8,lVar6,
+                           *(undefined8 *)(*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) + 0x70));
+            }
+            iVar1 = *(int *)(unaff_x21 + 0x1c);
+            lVar6 = *(long *)(unaff_x21 + 0x10);
+            *(long *)(unaff_x22 + 0x28) = lVar8;
+            *(int *)(unaff_x21 + 0x1c) = iVar1 + 1;
+            if (lVar6 != 0) {
+              uVar2 = *(uint *)(unaff_x21 + 0x18);
+              if (uVar2 < *(uint *)(lVar6 + 0x18)) {
+                *(uint *)(unaff_x21 + 0x18) = uVar2 + 1;
+                *(long *)(lVar6 + (long)(int)uVar2 * 8 + 0x20) = unaff_x22;
+              }
+              else {
+                FUN_042e4a64();
+              }
+              lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                (*unaff_x29);
+              FUN_06938f78(lVar8,0);
+              if (lVar8 != 0) {
+                uVar7 = *(undefined8 *)
+                         UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass20_0_TypeInfo
+                ;
+                *(undefined8 *)(lVar8 + 0x10) =
+                     *(undefined8 *)
+                      System_Collections_Generic_Dictionary<OVRSpace_StorageLocation,_List<OVRSpatialAnchor>>_TypeInfo
+                ;
+                puVar4 = PTR_DAT_070c25e8;
+                *(undefined8 *)(lVar8 + 0x20) = uVar7;
+                *(undefined4 *)(lVar8 + 0x18) = 0;
+                lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (*(undefined8 *)puVar4);
+
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+        return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 67
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_xMotion_Injected
+ENTRY_POINT: 06959568
+MANUAL_PRIORITY_SCORE: 307
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_18', 'telemetry_or_network_hits_7', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\06959568_UnityEngine.ConfigurableJoint$$get_xMotion_Injected.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\067_p307_UnityEngine.ConfigurableJoint$$get_xMotion_Injected.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_xMotion_Injected
+ENTRY_POINT: 06959568
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 153
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;data_collection;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_5;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_18;telemetry_or_network_hits_7;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void UnityEngine_ConfigurableJoint__get_xMotion_Injected(void)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  long lVar7;
+  long lVar8;
+  long lVar9;
+  undefined8 uVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  undefined8 *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  undefined8 unaff_x24;
+  undefined8 *unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  undefined8 in_stack_00000000;
+  long in_stack_00000008;
+  
+  lVar7 = *(long *)(unaff_x23 + 0x10);
+                    /* try { // try from 0695957c to 06a59583 has its CatchHandler @ 069596d8 */
+  *(int *)(unaff_x23 + 0x1c) = *(int *)(unaff_x23 + 0x1c) + 1;
+  if (lVar7 != 0) {
+    uVar2 = *(uint *)(unaff_x23 + 0x18);
+    if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+      *(uint *)(unaff_x23 + 0x18) = uVar2 + 1;
+                    /* try { // try from 069595a0 to 06a595a7 has its CatchHandler @ 069596d0 */
+      *(undefined8 *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = unaff_x24;
+    }
+    else {
+      FUN_042e4a64();
+    }
+    iVar1 = *(int *)(unaff_x21 + 0x1c);
+    lVar7 = *(long *)(unaff_x21 + 0x10);
+    *(long *)(unaff_x22 + 0x28) = unaff_x23;
+    *(int *)(unaff_x21 + 0x1c) = iVar1 + 1;
+    if (lVar7 != 0) {
+      uVar2 = *(uint *)(unaff_x21 + 0x18);
+      if (uVar2 < *(uint *)(lVar7 + 0x18)) {
+        *(uint *)(unaff_x21 + 0x18) = uVar2 + 1;
+        *(long *)(lVar7 + (long)(int)uVar2 * 8 + 0x20) = unaff_x22;
+      }
+      else {
+        FUN_042e4a64();
+      }
+      lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                        (*unaff_x29);
+      FUN_06938f78(lVar7,0);
+      if (lVar7 != 0) {
+        uVar10 = *(undefined8 *)
+                  UnityEngine_InputSystem_LowLevel_InputEventTrace_ReplayController_<>c_TypeInfo;
+        *(undefined8 *)(lVar7 + 0x10) =
+             *(undefined8 *)
+              System_Collections_Generic_Dictionary<StyleSheetCache_SheetHandleKey,_StylePropertyId[]>_TypeInfo
+        ;
+        puVar4 = PTR_DAT_070c25e8;
+        *(undefined8 *)(lVar7 + 0x20) = uVar10;
+        *(undefined4 *)(lVar7 + 0x18) = 0;
+        lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                          (*(undefined8 *)puVar4);
+        FUN_042e4268(lVar6,*unaff_x26);
+        puVar4 = PTR_DAT_070c2cb8;
+        if (lVar6 != 0) {
+          lVar8 = *(long *)(lVar6 + 0x10);
+          uVar10 = *(undefined8 *)OVR_OpenVR_IVROverlay__SetDashboardOverlaySceneProcess_TypeInfo;
+          *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+          if (lVar8 != 0) {
+            uVar2 = *(uint *)(lVar6 + 0x18);
+            if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+              *(uint *)(lVar6 + 0x18) = uVar2 + 1;
+              *(undefined8 *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = uVar10;
+            }
+            else {
+              FUN_042e4a64(lVar6,uVar10,
+                           *(undefined8 *)
+                            (*(long *)(*(long *)(*(long *)puVar4 + 0x20) + 0xc0) + 0x70));
+            }
+            uVar10 = *unaff_x25;
+            *(long *)(lVar7 + 0x30) = lVar6;
+            lVar6 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                              (uVar10);
+            FUN_042e4268(lVar6,*unaff_x20);
+            lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                              (*unaff_x19);
+            FUN_06938f70(lVar8,0);
+            if (lVar8 != 0) {
+              uVar10 = *(undefined8 *)
+                        Fusion_NetworkBehaviour_ChangeDetector_OnChangedCallbackWrapper_TypeInfo;
+              *(undefined8 *)(lVar8 + 0x10) = *unaff_x28;
+              *(undefined8 *)(lVar8 + 0x18) = uVar10;
+              if (lVar6 != 0) {
+                lVar9 = *(long *)(lVar6 + 0x10);
+                lVar11 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+                if (lVar9 != 0) {
+                  uVar2 = *(uint *)(lVar6 + 0x18);
+                  if (uVar2 < *(uint *)(lVar9 + 0x18)) {
+                    *(uint *)(lVar6 + 0x18) = uVar2 + 1;
+                    *(long *)(lVar9 + (long)(int)uVar2 * 8 + 0x20) = lVar8;
+                  }
+                  else {
+                    FUN_042e4a64(lVar6,lVar8,
+                                 *(undefined8 *)(*(long *)(*(long *)(lVar11 + 0x20) + 0xc0) + 0x70))
+                    ;
+                  }
+                  iVar1 = *(int *)(unaff_x21 + 0x1c);
+                  lVar8 = *(long *)(unaff_x21 + 0x10);
+                  *(long *)(lVar7 + 0x28) = lVar6;
+                  *(int *)(unaff_x21 + 0x1c) = iVar1 + 1;
+                  if (lVar8 != 0) {
+                    uVar2 = *(uint *)(unaff_x21 + 0x18);
+                    if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+                      *(uint *)(unaff_x21 + 0x18) = uVar2 + 1;
+                      *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = lVar7;
+                    }
+                    else {
+                      FUN_042e4a
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 68
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_xMotion
+ENTRY_POINT: 069594f0
+MANUAL_PRIORITY_SCORE: 307
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_19', 'telemetry_or_network_hits_7', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\069594f0_UnityEngine.ConfigurableJoint$$get_xMotion.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\068_p307_UnityEngine.ConfigurableJoint$$get_xMotion.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.ConfigurableJoint$$get_xMotion
+ENTRY_POINT: 069594f0
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 153
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction;data_collection;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_5;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_19;telemetry_or_network_hits_7;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void UnityEngine_ConfigurableJoint__get_xMotion(long param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  bool in_CY;
+  undefined8 uVar6;
+  long lVar7;
+  long lVar8;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  long in_x10;
+  undefined8 *unaff_x19;
+  undefined8 *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  undefined8 *unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  undefined8 in_stack_00000000;
+  long in_stack_00000008;
+  
+  if (in_CY) {
+    FUN_042e4a64();
+  }
+  else {
+    *(int *)(unaff_x23 + 0x18) = (int)in_x10 + 1;
+    *(undefined8 *)(param_1 + in_x10 * 8 + 0x20) = param_3;
+  }
+  uVar6 = *unaff_x25;
+  *(long *)(unaff_x22 + 0x30) = unaff_x23;
+  lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed(uVar6);
+  FUN_042e4268(lVar7,*unaff_x20);
+  lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed(*unaff_x19);
+  FUN_06938f70(lVar8,0);
+  if (lVar8 != 0) {
+    uVar6 = *(undefined8 *)
+             UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass6_0_TypeInfo
+    ;
+    *(undefined8 *)(lVar8 + 0x10) = *unaff_x28;
+    *(undefined8 *)(lVar8 + 0x18) = uVar6;
+    if (lVar7 != 0) {
+      lVar9 = *(long *)(lVar7 + 0x10);
+      lVar10 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+      *(int *)(lVar7 + 0x1c) = *(int *)(lVar7 + 0x1c) + 1;
+      if (lVar9 != 0) {
+        uVar2 = *(uint *)(lVar7 + 0x18);
+        if (uVar2 < *(uint *)(lVar9 + 0x18)) {
+          *(uint *)(lVar7 + 0x18) = uVar2 + 1;
+          *(long *)(lVar9 + (long)(int)uVar2 * 8 + 0x20) = lVar8;
+        }
+        else {
+          FUN_042e4a64(lVar7,lVar8,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar10 + 0x20) + 0xc0) + 0x70));
+        }
+        iVar1 = *(int *)(unaff_x21 + 0x1c);
+        lVar8 = *(long *)(unaff_x21 + 0x10);
+        *(long *)(unaff_x22 + 0x28) = lVar7;
+        *(int *)(unaff_x21 + 0x1c) = iVar1 + 1;
+        if (lVar8 != 0) {
+          uVar2 = *(uint *)(unaff_x21 + 0x18);
+          if (uVar2 < *(uint *)(lVar8 + 0x18)) {
+            *(uint *)(unaff_x21 + 0x18) = uVar2 + 1;
+            *(long *)(lVar8 + (long)(int)uVar2 * 8 + 0x20) = unaff_x22;
+          }
+          else {
+            FUN_042e4a64();
+          }
+          lVar7 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                            (*unaff_x29);
+          FUN_06938f78(lVar7,0);
+          if (lVar7 != 0) {
+            uVar6 = *(undefined8 *)
+                     UnityEngine_InputSystem_LowLevel_InputEventTrace_ReplayController_<>c_TypeInfo;
+            *(undefined8 *)(lVar7 + 0x10) =
+                 *(undefined8 *)
+                  System_Collections_Generic_Dictionary<StyleSheetCache_SheetHandleKey,_StylePropertyId[]>_TypeInfo
+            ;
+            puVar4 = PTR_DAT_070c25e8;
+            *(undefined8 *)(lVar7 + 0x20) = uVar6;
+            *(undefined4 *)(lVar7 + 0x18) = 0;
+            lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                              (*(undefined8 *)puVar4);
+            FUN_042e4268(lVar8,*unaff_x26);
+            puVar4 = PTR_DAT_070c2cb8;
+            if (lVar8 != 0) {
+              lVar9 = *(long *)(lVar8 + 0x10);
+              uVar6 = *(undefined8 *)OVR_OpenVR_IVROverlay__SetDashboardOverlaySceneProcess_TypeInfo
+              ;
+              *(int *)(lVar8 + 0x1c) = *(int *)(lVar8 + 0x1c) + 1;
+              if (lVar9 != 0) {
+                uVar2 = *(uint *)(lVar8 + 0x18);
+                if (uVar2 < *(uint *)(lVar9 + 0x18)) {
+                  *(uint *)(lVar8 + 0x18) = uVar2 + 1;
+                  *(undefined8 *)(lVar9 + (long)(int)uVar2 * 8 + 0x20) = uVar6;
+                }
+                else {
+                  FUN_042e4a64(lVar8,uVar6,
+                               *(undefined8 *)
+                                (*(long *)(*(long *)(*(long *)puVar4 + 0x20) + 0xc0) + 0x70));
+                }
+                uVar6 = *unaff_x25;
+                *(long *)(lVar7 + 0x30) = lVar8;
+                lVar8 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (uVar6);
+                FUN_042e4268(lVar8,*unaff_x20);
+                lVar9 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                  (*unaff_x19);
+                FUN_06938f70(lVar9,0);
+                if (lVar9 != 0) {
+                  uVar6 = *(undefined8 *)
+                           Fusion_NetworkBehaviour_ChangeDetector_OnChangedCallbackWrapper_TypeInfo;
+                  *(undefined8 *)(lVar9 + 0x10) = *unaff_x28;
+                  *(undefined8 *)(lVar9 + 0x18) = uVar6;
+                  if (lVar8 != 0) {
+                    lVar10 = *(long *)(lVar8 + 0x10);
+                    lVar11 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                    *(int *)(lVar8 + 0x1c) = *(int *)(lVar8 + 0x1c) + 1;
+                    if (lVar10 != 0) {
+                  
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION

@@ -1,0 +1,24 @@
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions
+ENTRY_POINT: 03be6768
+PROGRAM: StretchPunch-libil2cpp.so
+SCORE: 83
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_2;telemetry_or_network_hits_2;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_XR_OpenXR_OpenXRSettings__Internal_HasRequestedEyeTrackingPermissions(void)
+
+{
+  thunk_FUN_01e10808();
+  thunk_FUN_03d711f0();
+  return;
+}
+
+

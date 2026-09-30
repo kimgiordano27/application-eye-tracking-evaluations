@@ -1,0 +1,126 @@
+/*
+FUNCTION_NAME: OVRPlugin.Qpl.Annotation.Builder$$Add
+ENTRY_POINT: 063af6a8
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 75
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x063af91c) */
+/* WARNING: Removing unreachable block (ram,0x063af9ec) */
+
+void OVRPlugin_Qpl_Annotation_Builder__Add(long param_1,undefined8 param_2,long param_3)
+
+{
+  undefined1 in_ZR;
+  undefined8 *puVar1;
+  ulong uVar2;
+  long *plVar3;
+  undefined8 uVar4;
+  long lVar5;
+  ulong in_x9;
+  int *in_x10;
+  int *piVar6;
+  long unaff_x19;
+  long *unaff_x20;
+  long *plVar7;
+  long *unaff_x23;
+  long *unaff_x24;
+  long *unaff_x25;
+  long in_stack_00000028;
+  
+code_r0x063af6a8:
+  in_x10 = in_x10 + 4;
+  if (!(bool)in_ZR) goto LAB_063af698;
+LAB_063af6b0:
+  puVar1 = (undefined8 *)FUN_0377596c();
+  do {
+    uVar2 = (*(code *)*puVar1)();
+    if ((uVar2 & 1) == 0) {
+      if (unaff_x20 == (long *)0x0) goto LAB_063af910;
+      lVar5 = *unaff_x20;
+      uVar2 = (ulong)*(ushort *)(lVar5 + 0x12e);
+      if (uVar2 == 0) goto LAB_063af868;
+      piVar6 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      break;
+    }
+    lVar5 = *unaff_x20;
+    uVar2 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar2 != 0) {
+      piVar6 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar6 + -2) == *unaff_x24) {
+          puVar1 = (undefined8 *)(lVar5 + (long)*piVar6 * 0x10 + 0x138);
+          goto LAB_063af728;
+        }
+        uVar2 = uVar2 - 1;
+        piVar6 = piVar6 + 4;
+      } while (uVar2 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_0377596c();
+LAB_063af728:
+    plVar3 = (long *)(*(code *)*puVar1)();
+    if (plVar3 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0373b7b4();
+    }
+    plVar7 = *(long **)(unaff_x19 + 0x10);
+    uVar2 = (**(code **)(*plVar3 + 0x178))(plVar3,*(undefined8 *)(*plVar3 + 0x180));
+    if (plVar7 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0373b7b4(uVar2,uVar2 & 0xffffffff);
+    }
+    (**(code **)(*plVar7 + 0x1d8))(plVar7,uVar2 & 0xffffffff,*(undefined8 *)(*plVar7 + 0x1e0));
+    if (*(int *)(*unaff_x25 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+    }
+    uVar4 = FUN_061d52c8(0);
+    FUN_06260640(&stack0x00000028,uVar4,0);
+    FUN_0632e3c8(in_stack_00000028,0);
+    FUN_063afd0c();
+    FUN_063aedc8();
+    in_stack_00000028 = in_stack_00000028 + 1;
+    param_1 = *unaff_x20;
+    param_3 = *unaff_x23;
+    in_x9 = (ulong)*(ushort *)(param_1 + 0x12e);
+    if (in_x9 == 0) goto LAB_063af6b0;
+    in_x10 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+LAB_063af698:
+    if (*(long *)(in_x10 + -2) != param_3) {
+      in_x9 = in_x9 - 1;
+      in_ZR = in_x9 == 0;
+      goto code_r0x063af6a8;
+    }
+    puVar1 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+  } while( true );
+  while( true ) {
+    uVar2 = uVar2 - 1;
+    piVar6 = piVar6 + 4;
+    if (uVar2 == 0) break;
+    if (*(long *)(piVar6 + -2) == *(long *)PTR_DAT_07d896f8) {
+      puVar1 = (undefined8 *)(lVar5 + (long)*piVar6 * 0x10 + 0x138);
+      goto LAB_063af904;
+    }
+  }
+LAB_063af868:
+  puVar1 = (undefined8 *)FUN_0377596c();
+LAB_063af904:
+  (*(code *)*puVar1)();
+LAB_063af910:
+  plVar3 = *(long **)(unaff_x19 + 0x10);
+  if (plVar3 != (long *)0x0) {
+    (**(code **)(*plVar3 + 0x1c8))(plVar3,0,*(undefined8 *)(*plVar3 + 0x1d0));
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+

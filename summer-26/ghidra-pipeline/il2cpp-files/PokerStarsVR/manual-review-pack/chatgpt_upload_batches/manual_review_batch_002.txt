@@ -1,0 +1,333 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 6
+FUNCTION_NAME: FUN_0bbccd40
+ENTRY_POINT: 0bbccd40
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 112
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_112', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\0bbccd40_FUN_0bbccd40.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\manual-review-pack\A_must_review\006_p164_FUN_0bbccd40.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0bbccd40
+ENTRY_POINT: 0bbccd40
+PROGRAM: PokerStarsVR-libil2cpp.so
+SCORE: 112
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+bool FUN_0bbccd40(void)
+
+{
+  char cVar1;
+  char *local_40;
+  undefined8 uStack_38;
+  char *local_30;
+  undefined8 uStack_28;
+  undefined8 local_20;
+  undefined4 local_18;
+  undefined1 local_14;
+  
+  if (DAT_0cf61948 == (code *)0x0) {
+    local_18 = 0;
+    local_40 = "OculusXRPlugin";
+    uStack_38 = 0xe;
+    local_30 = "GetEyeTrackedFoveatedRenderingEnabled";
+    uStack_28 = 0x25;
+    local_20 = DAT_021ee180;
+    local_14 = 0;
+    DAT_0cf61948 = (code *)thunk_FUN_051c0dd0(&local_40);
+  }
+  cVar1 = (*DAT_0cf61948)();
+  return cVar1 != '\0';
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 7
+FUNCTION_NAME: FUN_0af8582c
+ENTRY_POINT: 0af8582c
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_uncertain_gaze_or_xr_structure_high
+MODULES: ['eye_source', 'weak_source_state', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\general-structure-results\70_high_uncertain_gaze_or_xr_structure_high\0af8582c_FUN_0af8582c.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\manual-review-pack\A_must_review\007_p163_FUN_0af8582c.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0af8582c
+ENTRY_POINT: 0af8582c
+PROGRAM: PokerStarsVR-libil2cpp.so
+SCORE: 74
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void FUN_0af8582c(undefined8 param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_0cf58b78 == (code *)0x0) {
+    local_50 = "OVRPlugin";
+    uStack_48 = 9;
+    local_40 = "ovrp_UnityOpenXR_OnSessionDestroy";
+    uStack_38 = 0x21;
+    local_28 = 8;
+    local_30 = DAT_021ede28;
+    local_24 = 0;
+    DAT_0cf58b78 = (code *)thunk_FUN_051c0dd0(&local_50);
+  }
+  (*DAT_0cf58b78)(param_1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 8
+FUNCTION_NAME: FUN_0af856f0
+ENTRY_POINT: 0af856f0
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_uncertain_gaze_or_xr_structure_high
+MODULES: ['eye_source', 'weak_source_state', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\general-structure-results\70_high_uncertain_gaze_or_xr_structure_high\0af856f0_FUN_0af856f0.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\manual-review-pack\A_must_review\008_p163_FUN_0af856f0.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0af856f0
+ENTRY_POINT: 0af856f0
+PROGRAM: PokerStarsVR-libil2cpp.so
+SCORE: 74
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void FUN_0af856f0(undefined8 param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_0cf58b70 == (code *)0x0) {
+    local_50 = "OVRPlugin";
+    uStack_48 = 9;
+    local_40 = "ovrp_UnityOpenXR_OnSessionExiting";
+    uStack_38 = 0x21;
+    local_28 = 8;
+    local_30 = DAT_021ede28;
+    local_24 = 0;
+    DAT_0cf58b70 = (code *)thunk_FUN_051c0dd0(&local_50);
+  }
+  (*DAT_0cf58b70)(param_1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 9
+FUNCTION_NAME: FUN_0af855b4
+ENTRY_POINT: 0af855b4
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_uncertain_gaze_or_xr_structure_high
+MODULES: ['eye_source', 'weak_source_state', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\general-structure-results\70_high_uncertain_gaze_or_xr_structure_high\0af855b4_FUN_0af855b4.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\manual-review-pack\A_must_review\009_p163_FUN_0af855b4.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0af855b4
+ENTRY_POINT: 0af855b4
+PROGRAM: PokerStarsVR-libil2cpp.so
+SCORE: 74
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void FUN_0af855b4(undefined8 param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_0cf58b68 == (code *)0x0) {
+    local_50 = "OVRPlugin";
+    uStack_48 = 9;
+    local_40 = "ovrp_UnityOpenXR_OnSessionEnd";
+    uStack_38 = 0x1d;
+    local_28 = 8;
+    local_30 = DAT_021ede28;
+    local_24 = 0;
+    DAT_0cf58b68 = (code *)thunk_FUN_051c0dd0(&local_50);
+  }
+  (*DAT_0cf58b68)(param_1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 10
+FUNCTION_NAME: FUN_0af85478
+ENTRY_POINT: 0af85478
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_uncertain_gaze_or_xr_structure_high
+MODULES: ['eye_source', 'weak_source_state', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\general-structure-results\70_high_uncertain_gaze_or_xr_structure_high\0af85478_FUN_0af85478.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\PokerStarsVR\manual-review-pack\A_must_review\010_p163_FUN_0af85478.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0af85478
+ENTRY_POINT: 0af85478
+PROGRAM: PokerStarsVR-libil2cpp.so
+SCORE: 74
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void FUN_0af85478(undefined8 param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_0cf58b60 == (code *)0x0) {
+    local_50 = "OVRPlugin";
+    uStack_48 = 9;
+    local_40 = "ovrp_UnityOpenXR_OnSessionBegin";
+    uStack_38 = 0x1f;
+    local_28 = 8;
+    local_30 = DAT_021ede28;
+    local_24 = 0;
+    DAT_0cf58b60 = (code *)thunk_FUN_051c0dd0(&local_50);
+  }
+  (*DAT_0cf58b60)(param_1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

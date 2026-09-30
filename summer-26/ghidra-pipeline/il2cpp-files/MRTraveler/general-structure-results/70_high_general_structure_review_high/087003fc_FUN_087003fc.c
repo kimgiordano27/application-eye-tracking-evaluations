@@ -1,0 +1,1993 @@
+/*
+FUNCTION_NAME: FUN_087003fc
+ENTRY_POINT: 087003fc
+PROGRAM: MRTraveler-libil2cpp.so
+SCORE: 85
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry;frame_behavior
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_11;frame_or_lifecycle_behavior
+*/
+
+
+/* WARNING: Restarted to delay deadcode elimination for space: stack */
+
+void FUN_087003fc(long param_1)
+
+{
+  uint uVar1;
+  int iVar2;
+  int iVar3;
+  long lVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  ulong uVar9;
+  ulong uVar10;
+  undefined8 uVar11;
+  undefined8 uVar12;
+  ulong uVar13;
+  undefined8 uVar14;
+  undefined8 uVar15;
+  undefined4 uVar16;
+  undefined4 uVar17;
+  undefined4 uVar18;
+  undefined4 uVar19;
+  undefined4 uVar20;
+  undefined4 uVar21;
+  undefined4 uVar22;
+  int iVar23;
+  int iVar24;
+  long lVar25;
+  ulong uVar26;
+  ulong uVar27;
+  long lVar28;
+  long lVar29;
+  uint uVar30;
+  long lVar32;
+  long lVar33;
+  long *plVar34;
+  undefined8 *puVar35;
+  undefined8 *puVar36;
+  ulong *puVar37;
+  int iVar38;
+  ulong local_2a0;
+  long lStack_298;
+  ulong local_290;
+  long lStack_288;
+  ulong local_280;
+  long lStack_278;
+  ulong local_270;
+  ulong local_240;
+  long lStack_238;
+  ulong local_230;
+  ulong local_220;
+  long lStack_218;
+  ulong local_210;
+  ulong local_200;
+  long lStack_1f8;
+  ulong local_1f0;
+  long local_1e8;
+  ulong local_1e0;
+  undefined8 local_1d0;
+  undefined8 uStack_1c8;
+  undefined8 local_1c0;
+  undefined8 uStack_1b8;
+  undefined8 local_1b0;
+  undefined8 uStack_1a8;
+  undefined8 local_1a0;
+  undefined8 uStack_198;
+  undefined8 local_190;
+  undefined8 uStack_188;
+  undefined8 local_180;
+  long local_178;
+  undefined8 local_170;
+  undefined8 uStack_168;
+  undefined8 uStack_160;
+  undefined8 local_158;
+  undefined8 local_150;
+  undefined8 uStack_148;
+  long local_140;
+  ulong uStack_138;
+  ulong local_130;
+  long lStack_128;
+  ulong local_120;
+  ulong local_110;
+  long lStack_108;
+  ulong local_100;
+  long lStack_f8;
+  ulong local_f0;
+  long lStack_e8;
+  ulong local_e0;
+  ulong local_d0;
+  long lStack_c8;
+  ulong uStack_c0;
+  long lStack_b8;
+  ulong local_b0;
+  undefined8 local_a0;
+  undefined8 uStack_98;
+  undefined4 local_90;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined4 local_70;
+  long local_68;
+  long lVar31;
+  
+  lVar4 = tpidr_el0;
+  local_68 = *(long *)(lVar4 + 0x28);
+  lVar25 = param_1;
+  if ((DAT_0943c7ce & 1) == 0) {
+    FUN_03c8f898(UnityEngine_XR_XRDisplaySubsystem_XRBlitParams_var);
+    FUN_03c8f898(UnityEngine_XR_XRDisplaySubsystem_XRRenderParameter_var);
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_120_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_124_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_128_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_132_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_136_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_140_var
+                );
+    FUN_03c8f898(Unity_Collections_xxHash3_Hash128Long_00000726_PostfixBurstDelegate_var);
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_144_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_148_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_152_var
+                );
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_16_var
+                );
+    FUN_03c8f898(
+                Unity_Collections_AllocatorManager_SlabAllocator_Try_0000098E_PostfixBurstDelegate_var
+                );
+    FUN_03c8f898(
+                Unity_Collections_AllocatorManager_StackAllocator_Try_00000980_PostfixBurstDelegate_var
+                );
+    FUN_03c8f898(System_Dynamic_BindingRestrictions_TestBuilder_AndNode_var);
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_20_var
+                );
+    FUN_03c8f898(UnityEngine_XR_Management_XRManagementAnalytics_BuildEvent_var);
+    FUN_03c8f898(System_Xml_Schema_XmlAtomicValue_Union_var);
+    FUN_03c8f898(Unity_VisualScripting_FullSerializer_fsAotCompilationManager_AotCompilation_var);
+    FUN_03c8f898(
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_24_var
+                );
+    lVar25 = FUN_03c8f898(UnityEngine_UI_GraphicRaycaster_BlockingObjects_var);
+    DAT_0943c7ce = 1;
+  }
+  local_e0 = 0;
+  local_130 = 0;
+  lStack_128 = 0;
+  local_120 = 0;
+  uStack_78 = 0;
+  local_80 = 0;
+  local_70 = 0;
+  uStack_98 = 0;
+  local_a0 = 0;
+  local_90 = 0;
+  local_1a0 = 0;
+  uStack_198 = 0;
+  local_1b0 = 0;
+  uStack_1a8 = 0;
+  local_1c0 = 0;
+  uStack_1b8 = 0;
+  local_1d0 = 0;
+  uStack_1c8 = 0;
+  local_1e0 = 0;
+  lStack_f8 = 0;
+  local_100 = 0;
+  lStack_e8 = 0;
+  local_f0 = 0;
+  lStack_108 = 0;
+  local_110 = 0;
+  uStack_148 = 0;
+  uStack_148._4_4_ = 0;
+  local_150 = 0;
+  local_150._4_4_ = 0;
+  uStack_138 = 0;
+  local_140 = 0;
+  uStack_168 = 0;
+  uStack_168._4_4_ = 0;
+  local_170 = 0;
+  local_170._4_4_ = 0;
+  local_158 = 0;
+  local_158._4_4_ = 0;
+  uStack_160 = 0;
+  uStack_160._4_4_ = 0;
+  uStack_188 = 0;
+  local_190 = 0;
+  local_178 = 0;
+  local_180 = 0;
+  lStack_1f8 = 0;
+  local_200 = 0;
+  local_1e8 = 0;
+  local_1f0 = 0;
+  lVar28 = *(long *)(param_1 + 0x50);
+  uVar1 = *(int *)(param_1 + 0x60) + 1;
+  *(uint *)(param_1 + 0x60) = uVar1;
+  *(uint *)(param_1 + 0x68) = uVar1;
+  uVar17 = local_170._4_4_;
+  uVar16 = uStack_168._4_4_;
+  uVar18 = uStack_160._4_4_;
+  uVar19 = local_158._4_4_;
+  uVar20 = local_150._4_4_;
+  uVar21 = uStack_148._4_4_;
+  if (lVar28 != 0) {
+    uVar30 = (uint)*(undefined8 *)(lVar28 + 0x18);
+    lVar31 = (long)(int)uVar30;
+    lVar33 = 0;
+    if (lVar31 != 0) {
+      lVar33 = (long)(ulong)uVar1 / lVar31;
+    }
+    lVar33 = (ulong)uVar1 - lVar33 * lVar31;
+    if (uVar30 <= (uint)lVar33) {
+LAB_08700c90:
+      uStack_148._4_4_ = uVar21;
+      local_150._4_4_ = uVar20;
+      local_158._4_4_ = uVar19;
+      uStack_160._4_4_ = uVar18;
+      uStack_168._4_4_ = uVar16;
+      local_170._4_4_ = uVar17;
+      uVar21 = uStack_148._4_4_;
+      uVar20 = local_150._4_4_;
+      uVar19 = local_158._4_4_;
+      uVar18 = uStack_160._4_4_;
+      uVar16 = uStack_168._4_4_;
+      uVar17 = local_170._4_4_;
+      uVar10 = local_170;
+      local_170._4_4_ = uVar17;
+      uVar11 = uStack_168;
+      uStack_168._4_4_ = uVar16;
+      uVar12 = uStack_160;
+      uStack_160._4_4_ = uVar18;
+      uVar13 = local_158;
+      local_158._4_4_ = uVar19;
+      uVar14 = local_150;
+      local_150._4_4_ = uVar20;
+      uVar15 = uStack_148;
+      uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+      FUN_03c8fb38();
+    }
+    FUN_08702cd4(lVar25,*(undefined4 *)(lVar28 + lVar33 * 4 + 0x20));
+    uVar21 = uStack_148._4_4_;
+    uVar20 = local_150._4_4_;
+    uVar19 = local_158._4_4_;
+    uVar18 = uStack_160._4_4_;
+    uVar16 = uStack_168._4_4_;
+    uVar17 = local_170._4_4_;
+    lVar25 = *(long *)(param_1 + 0x50);
+    uVar10 = local_170;
+    uVar11 = uStack_168;
+    uVar12 = uStack_160;
+    uVar13 = local_158;
+    uVar14 = local_150;
+    uVar15 = uStack_148;
+    if (lVar25 == 0) goto LAB_08700c7c;
+    if (*(uint *)(lVar25 + 0x18) <= (uint)lVar33) goto LAB_08700c90;
+    *(undefined4 *)(lVar25 + lVar33 * 4 + 0x20) = 0;
+  }
+  uStack_148._4_4_ = uVar21;
+  local_150._4_4_ = uVar20;
+  local_158._4_4_ = uVar19;
+  uStack_160._4_4_ = uVar18;
+  uStack_168._4_4_ = uVar16;
+  local_170._4_4_ = uVar17;
+  uVar21 = uStack_148._4_4_;
+  uVar20 = local_150._4_4_;
+  uVar19 = local_158._4_4_;
+  uVar18 = uStack_160._4_4_;
+  uVar16 = uStack_168._4_4_;
+  uVar17 = local_170._4_4_;
+  lVar25 = *(long *)(param_1 + 0x40);
+  *(undefined4 *)(param_1 + 100) = 1;
+  uVar10 = local_170;
+  uVar11 = uStack_168;
+  uVar12 = uStack_160;
+  uVar13 = local_158;
+  uVar14 = local_150;
+  uVar15 = uStack_148;
+  if (lVar25 != 0) {
+    uVar1 = *(uint *)(lVar25 + 0x18);
+    uVar30 = 0;
+    if (uVar1 != 0) {
+      uVar30 = *(uint *)(param_1 + 0x60) / uVar1;
+    }
+    local_170._4_4_ = uVar17;
+    uStack_168._4_4_ = uVar16;
+    uStack_160._4_4_ = uVar18;
+    local_158._4_4_ = uVar19;
+    local_150._4_4_ = uVar20;
+    uStack_148._4_4_ = uVar21;
+    lVar25 = FUN_05212a24(lVar25,*(uint *)(param_1 + 0x60) - uVar30 * uVar1,
+                          *(undefined8 *)
+                           Unity_Collections_AllocatorManager_StackAllocator_Try_00000980_PostfixBurstDelegate_var
+                         );
+    uVar15 = uStack_148;
+    uVar14 = local_150;
+    uVar13 = local_158;
+    uVar12 = uStack_160;
+    uVar11 = uStack_168;
+    uVar10 = local_170;
+    puVar8 = 
+    DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_152_var
+    ;
+    puVar7 = 
+    DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_132_var
+    ;
+    puVar6 = 
+    DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_120_var
+    ;
+    puVar5 = System_Dynamic_BindingRestrictions_TestBuilder_AndNode_var;
+    uVar17 = local_170._4_4_;
+    uVar16 = uStack_168._4_4_;
+    uVar18 = uStack_160._4_4_;
+    uVar19 = local_158._4_4_;
+    uVar20 = local_150._4_4_;
+    uVar21 = uStack_148._4_4_;
+    if (lVar25 != 0) {
+      local_170 = uVar10;
+      uStack_168 = uVar11;
+      uStack_160 = uVar12;
+      local_158 = uVar13;
+      local_150 = uVar14;
+      uStack_148 = uVar15;
+      uVar10 = local_170;
+      local_170._4_4_ = uVar17;
+      uVar11 = uStack_168;
+      uStack_168._4_4_ = uVar16;
+      uVar12 = uStack_160;
+      uStack_160._4_4_ = uVar18;
+      uVar13 = local_158;
+      local_158._4_4_ = uVar19;
+      uVar14 = local_150;
+      local_150._4_4_ = uVar20;
+      uVar15 = uStack_148;
+      uStack_148._4_4_ = uVar21;
+      FUN_05462708(&local_2a0,lVar25,
+                   *(undefined8 *)
+                    DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_16_var
+                  );
+      uVar21 = uStack_148._4_4_;
+      uVar20 = local_150._4_4_;
+      uVar19 = local_158._4_4_;
+      uVar18 = uStack_160._4_4_;
+      uVar16 = uStack_168._4_4_;
+      uVar17 = local_170._4_4_;
+      lStack_108 = lStack_298;
+      local_110 = local_2a0;
+      lStack_f8 = lStack_288;
+      local_100 = local_290;
+      lStack_e8 = lStack_278;
+      local_f0 = local_280;
+      local_e0 = local_270;
+      uVar10 = local_170;
+      uVar11 = uStack_168;
+      uVar12 = uStack_160;
+      uVar13 = local_158;
+      uVar14 = local_150;
+      uVar15 = uStack_148;
+      local_170._4_4_ = uVar17;
+      uStack_168._4_4_ = uVar16;
+      uStack_160._4_4_ = uVar18;
+      local_158._4_4_ = uVar19;
+      local_150._4_4_ = uVar20;
+      uStack_148._4_4_ = uVar21;
+      while (uStack_148 = uVar15, local_150 = uVar14, local_158 = uVar13, uStack_160 = uVar12,
+            uStack_168 = uVar11, local_170 = uVar10, uVar21 = uStack_148._4_4_,
+            uVar20 = local_150._4_4_, uVar19 = local_158._4_4_, uVar18 = uStack_160._4_4_,
+            uVar16 = uStack_168._4_4_, uVar17 = local_170._4_4_, uVar10 = local_170,
+            local_170._4_4_ = uVar17, uVar11 = uStack_168, uStack_168._4_4_ = uVar16,
+            uVar12 = uStack_160, uStack_160._4_4_ = uVar18, uVar13 = local_158,
+            local_158._4_4_ = uVar19, uVar14 = local_150, local_150._4_4_ = uVar20,
+            uVar15 = uStack_148, uStack_148._4_4_ = uVar21,
+            uVar26 = FUN_04a1f884(&local_110,*(undefined8 *)puVar7), uVar15 = uStack_148,
+            uVar14 = local_150, uVar13 = local_158, uVar12 = uStack_160, uVar11 = uStack_168,
+            uVar10 = local_170, local_170 = uVar10, uStack_168 = uVar11, uStack_160 = uVar12,
+            local_158 = uVar13, local_150 = uVar14, uStack_148 = uVar15, (uVar26 & 1) != 0) {
+        lStack_128 = lStack_f8;
+        local_130 = local_100;
+        local_120 = local_f0;
+        if ((local_e0 & 1) == 0) {
+          if (lStack_e8 == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          if (*(long *)(lStack_e8 + 0x20) == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          lVar28 = *(long *)(*(long *)(lStack_e8 + 0x20) + 0x40);
+          lStack_298 = lStack_f8;
+          local_2a0 = local_100;
+          local_290 = local_f0;
+          if (lVar28 == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          lStack_238 = lStack_f8;
+          local_240 = local_100;
+          local_230 = local_f0;
+          uVar17 = local_170._4_4_;
+          uVar16 = uStack_168._4_4_;
+          uVar18 = uStack_160._4_4_;
+          uVar19 = local_158._4_4_;
+          uVar20 = local_150._4_4_;
+          uVar21 = uStack_148._4_4_;
+          uVar10 = local_170;
+          local_170._4_4_ = uVar17;
+          uVar11 = uStack_168;
+          uStack_168._4_4_ = uVar16;
+          uVar12 = uStack_160;
+          uStack_160._4_4_ = uVar18;
+          uVar13 = local_158;
+          local_158._4_4_ = uVar19;
+          uVar14 = local_150;
+          local_150._4_4_ = uVar20;
+          uVar15 = uStack_148;
+          uStack_148._4_4_ = uVar21;
+          FUN_086ff8d0(lVar28,&local_240);
+          uVar15 = uStack_148;
+          uVar14 = local_150;
+          uVar13 = local_158;
+          uVar12 = uStack_160;
+          uVar11 = uStack_168;
+          uVar10 = local_170;
+        }
+        else {
+          if (lStack_e8 == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          if (*(long *)(lStack_e8 + 0x18) == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          lVar28 = *(long *)(*(long *)(lStack_e8 + 0x18) + 0x40);
+          lStack_298 = lStack_f8;
+          local_2a0 = local_100;
+          local_290 = local_f0;
+          if (lVar28 == 0) {
+            uVar17 = local_170._4_4_;
+            uVar16 = uStack_168._4_4_;
+            uVar18 = uStack_160._4_4_;
+            uVar19 = local_158._4_4_;
+            uVar20 = local_150._4_4_;
+            uVar21 = uStack_148._4_4_;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+            FUN_03c8fb30();
+          }
+          lStack_218 = lStack_f8;
+          local_220 = local_100;
+          local_210 = local_f0;
+          uVar17 = local_170._4_4_;
+          uVar16 = uStack_168._4_4_;
+          uVar18 = uStack_160._4_4_;
+          uVar19 = local_158._4_4_;
+          uVar20 = local_150._4_4_;
+          uVar21 = uStack_148._4_4_;
+          uVar10 = local_170;
+          local_170._4_4_ = uVar17;
+          uVar11 = uStack_168;
+          uStack_168._4_4_ = uVar16;
+          uVar12 = uStack_160;
+          uStack_160._4_4_ = uVar18;
+          uVar13 = local_158;
+          local_158._4_4_ = uVar19;
+          uVar14 = local_150;
+          local_150._4_4_ = uVar20;
+          uVar15 = uStack_148;
+          uStack_148._4_4_ = uVar21;
+          FUN_086ff8d0(lVar28,&local_220);
+          uVar15 = uStack_148;
+          uVar14 = local_150;
+          uVar13 = local_158;
+          uVar12 = uStack_160;
+          uVar11 = uStack_168;
+          uVar10 = local_170;
+        }
+      }
+      uVar17 = local_170._4_4_;
+      uVar16 = uStack_168._4_4_;
+      uVar18 = uStack_160._4_4_;
+      uVar19 = local_158._4_4_;
+      uVar20 = local_150._4_4_;
+      uVar21 = uStack_148._4_4_;
+      uVar10 = local_170;
+      local_170._4_4_ = uVar17;
+      uVar11 = uStack_168;
+      uStack_168._4_4_ = uVar16;
+      uVar12 = uStack_160;
+      uStack_160._4_4_ = uVar18;
+      uVar13 = local_158;
+      local_158._4_4_ = uVar19;
+      uVar14 = local_150;
+      local_150._4_4_ = uVar20;
+      uVar15 = uStack_148;
+      uStack_148._4_4_ = uVar21;
+      FUN_04a1f880(&local_110,*(undefined8 *)puVar6);
+      uVar21 = uStack_148._4_4_;
+      uVar20 = local_150._4_4_;
+      uVar19 = local_158._4_4_;
+      uVar18 = uStack_160._4_4_;
+      uVar16 = uStack_168._4_4_;
+      uVar17 = local_170._4_4_;
+      puVar36 = (undefined8 *)
+                DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_128_var
+      ;
+      iVar2 = *(int *)(lVar25 + 0x18);
+      *(undefined4 *)(lVar25 + 0x18) = 0;
+      *(int *)(lVar25 + 0x1c) = *(int *)(lVar25 + 0x1c) + 1;
+      uVar11 = uStack_160;
+      uVar10 = local_158;
+      uVar12 = local_150;
+      uVar14 = uStack_148;
+      if (0 < iVar2) {
+        uVar10 = local_170;
+        local_170._4_4_ = uVar17;
+        uVar11 = uStack_168;
+        uStack_168._4_4_ = uVar16;
+        uVar12 = uStack_160;
+        uStack_160._4_4_ = uVar18;
+        uVar13 = local_158;
+        local_158._4_4_ = uVar19;
+        uVar14 = local_150;
+        local_150._4_4_ = uVar20;
+        uVar15 = uStack_148;
+        uStack_148._4_4_ = uVar21;
+        FUN_071245a8(*(undefined8 *)(lVar25 + 0x10),0,iVar2,0);
+        uVar14 = uStack_148;
+        uVar12 = local_150;
+        uVar10 = local_158;
+        uVar11 = uStack_160;
+        uVar16 = uStack_168._4_4_;
+        uVar17 = local_170._4_4_;
+        uVar18 = uStack_160._4_4_;
+        uVar19 = local_158._4_4_;
+        uVar20 = local_150._4_4_;
+        uVar21 = uStack_148._4_4_;
+      }
+      uStack_148._4_4_ = uVar21;
+      local_150._4_4_ = uVar20;
+      local_158._4_4_ = uVar19;
+      uStack_160._4_4_ = uVar18;
+      uStack_168._4_4_ = uVar16;
+      local_170._4_4_ = uVar17;
+      uStack_148 = uVar14;
+      local_150 = uVar12;
+      local_158 = uVar10;
+      uStack_160 = uVar11;
+      uVar21 = uStack_148._4_4_;
+      uVar20 = local_150._4_4_;
+      uVar19 = local_158._4_4_;
+      uVar18 = uStack_160._4_4_;
+      uVar16 = uStack_168._4_4_;
+      uVar17 = local_170._4_4_;
+      uVar10 = local_170;
+      uVar11 = uStack_168;
+      uVar12 = uStack_160;
+      uVar13 = local_158;
+      uVar14 = local_150;
+      uVar15 = uStack_148;
+      if ((*(long *)(param_1 + 0x40) != 0) && (*(long *)(param_1 + 0x48) != 0)) {
+        uVar1 = *(uint *)(*(long *)(param_1 + 0x40) + 0x18);
+        uVar30 = 0;
+        if (uVar1 != 0) {
+          uVar30 = *(uint *)(param_1 + 0x60) / uVar1;
+        }
+        local_170._4_4_ = uVar17;
+        uStack_168._4_4_ = uVar16;
+        uStack_160._4_4_ = uVar18;
+        local_158._4_4_ = uVar19;
+        local_150._4_4_ = uVar20;
+        uStack_148._4_4_ = uVar21;
+        lVar28 = FUN_05212a24(*(long *)(param_1 + 0x48),*(uint *)(param_1 + 0x60) - uVar30 * uVar1,
+                              *(undefined8 *)puVar5);
+        uVar15 = uStack_148;
+        uVar14 = local_150;
+        uVar13 = local_158;
+        uVar12 = uStack_160;
+        uVar11 = uStack_168;
+        uVar10 = local_170;
+        uVar17 = local_170._4_4_;
+        uVar16 = uStack_168._4_4_;
+        uVar18 = uStack_160._4_4_;
+        uVar19 = local_158._4_4_;
+        uVar20 = local_150._4_4_;
+        uVar21 = uStack_148._4_4_;
+        if (lVar28 != 0) {
+          local_170 = uVar10;
+          uStack_168 = uVar11;
+          uStack_160 = uVar12;
+          local_158 = uVar13;
+          local_150 = uVar14;
+          uStack_148 = uVar15;
+          uVar10 = local_170;
+          local_170._4_4_ = uVar17;
+          uVar11 = uStack_168;
+          uStack_168._4_4_ = uVar16;
+          uVar12 = uStack_160;
+          uStack_160._4_4_ = uVar18;
+          uVar13 = local_158;
+          local_158._4_4_ = uVar19;
+          uVar14 = local_150;
+          local_150._4_4_ = uVar20;
+          uVar15 = uStack_148;
+          uStack_148._4_4_ = uVar21;
+          FUN_05465634(&local_2a0,lVar28,*(undefined8 *)puVar8);
+          uVar15 = uStack_148;
+          uVar14 = local_150;
+          uVar13 = local_158;
+          uVar12 = uStack_160;
+          uVar11 = uStack_168;
+          uVar10 = local_170;
+          uVar17 = local_170._4_4_;
+          local_170 = uVar10;
+          uVar16 = uStack_168._4_4_;
+          uStack_168 = uVar11;
+          uVar18 = uStack_160._4_4_;
+          uStack_160 = uVar12;
+          uVar19 = local_158._4_4_;
+          local_158 = uVar13;
+          uVar20 = local_150._4_4_;
+          local_150 = uVar14;
+          uVar21 = uStack_148._4_4_;
+          uStack_148 = uVar15;
+          uVar10 = local_170;
+          local_170._4_4_ = uVar17;
+          uVar11 = uStack_168;
+          uStack_168._4_4_ = uVar16;
+          uVar12 = uStack_160;
+          uStack_160._4_4_ = uVar18;
+          uVar13 = local_158;
+          local_158._4_4_ = uVar19;
+          uVar14 = local_150;
+          local_150._4_4_ = uVar20;
+          uVar15 = uStack_148;
+          uStack_148._4_4_ = uVar21;
+          memcpy(&local_190,&local_2a0,0x60);
+          uVar15 = uStack_148;
+          uVar14 = local_150;
+          uVar13 = local_158;
+          uVar12 = uStack_160;
+          uVar11 = uStack_168;
+          uVar10 = local_170;
+          do {
+            do {
+              uStack_148 = uVar15;
+              local_150 = uVar14;
+              local_158 = uVar13;
+              uStack_160 = uVar12;
+              uStack_168 = uVar11;
+              local_170 = uVar10;
+              uVar21 = uStack_148._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar17 = local_170._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+              uVar27 = FUN_04a1fac0(&local_190,*puVar36);
+              uVar26 = uStack_138;
+              lVar31 = local_140;
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar13 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+              lVar33 = local_178;
+              local_170 = uVar10;
+              uStack_168 = uVar11;
+              uStack_160 = uVar12;
+              local_158 = uVar13;
+              local_150 = uVar14;
+              uStack_148 = uVar15;
+              if ((uVar27 & 1) == 0) {
+                uVar17 = local_170._4_4_;
+                uVar16 = uStack_168._4_4_;
+                uVar18 = uStack_160._4_4_;
+                uVar19 = local_158._4_4_;
+                uVar20 = local_150._4_4_;
+                uVar21 = uStack_148._4_4_;
+                uVar10 = local_170;
+                local_170._4_4_ = uVar17;
+                uVar11 = uStack_168;
+                uStack_168._4_4_ = uVar16;
+                uVar12 = uStack_160;
+                uStack_160._4_4_ = uVar18;
+                uVar13 = local_158;
+                local_158._4_4_ = uVar19;
+                uVar14 = local_150;
+                local_150._4_4_ = uVar20;
+                uVar15 = uStack_148;
+                uStack_148._4_4_ = uVar21;
+                FUN_04a1fabc(&local_190,
+                             *(undefined8 *)
+                              DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_124_var
+                            );
+                uVar15 = uStack_148;
+                uVar14 = local_150;
+                uVar13 = local_158;
+                uVar12 = uStack_160;
+                uVar11 = uStack_168;
+                uVar10 = local_170;
+                iVar2 = *(int *)(lVar28 + 0x18);
+                *(undefined4 *)(lVar28 + 0x18) = 0;
+                *(int *)(lVar28 + 0x1c) = *(int *)(lVar28 + 0x1c) + 1;
+                if (0 < iVar2) {
+                  uVar17 = local_170._4_4_;
+                  local_170 = uVar10;
+                  uVar16 = uStack_168._4_4_;
+                  uStack_168 = uVar11;
+                  uVar18 = uStack_160._4_4_;
+                  uStack_160 = uVar12;
+                  uVar19 = local_158._4_4_;
+                  local_158 = uVar13;
+                  uVar20 = local_150._4_4_;
+                  local_150 = uVar14;
+                  uVar21 = uStack_148._4_4_;
+                  uStack_148 = uVar15;
+                  uVar10 = local_170;
+                  local_170._4_4_ = uVar17;
+                  uVar11 = uStack_168;
+                  uStack_168._4_4_ = uVar16;
+                  uVar12 = uStack_160;
+                  uStack_160._4_4_ = uVar18;
+                  uVar13 = local_158;
+                  local_158._4_4_ = uVar19;
+                  uVar14 = local_150;
+                  local_150._4_4_ = uVar20;
+                  uVar15 = uStack_148;
+                  uStack_148._4_4_ = uVar21;
+                  FUN_071245a8(*(undefined8 *)(lVar28 + 0x10),0,iVar2,0);
+                  uVar15 = uStack_148;
+                  uVar14 = local_150;
+                  uVar13 = local_158;
+                  uVar12 = uStack_160;
+                  uVar16 = uStack_168._4_4_;
+                  uVar17 = local_170._4_4_;
+                  uVar10 = local_170;
+                  uVar11 = uStack_168;
+                  local_170._4_4_ = uVar17;
+                  uStack_168._4_4_ = uVar16;
+                }
+                uStack_148 = uVar15;
+                local_150 = uVar14;
+                local_158 = uVar13;
+                uStack_160 = uVar12;
+                uStack_168 = uVar11;
+                local_170 = uVar10;
+                uVar21 = uStack_148._4_4_;
+                uVar20 = local_150._4_4_;
+                uVar19 = local_158._4_4_;
+                uVar18 = uStack_160._4_4_;
+                uVar16 = uStack_168._4_4_;
+                uVar17 = local_170._4_4_;
+                uVar10 = local_170;
+                local_170._4_4_ = uVar17;
+                uVar11 = uStack_168;
+                uStack_168._4_4_ = uVar16;
+                uVar12 = uStack_160;
+                uStack_160._4_4_ = uVar18;
+                uVar13 = local_158;
+                local_158._4_4_ = uVar19;
+                uVar14 = local_150;
+                local_150._4_4_ = uVar20;
+                uVar15 = uStack_148;
+                uStack_148._4_4_ = uVar21;
+                FUN_08702d5c(param_1);
+                uVar15 = uStack_148;
+                uVar14 = local_150;
+                uVar13 = local_158;
+                uVar12 = uStack_160;
+                uVar11 = uStack_168;
+                uVar10 = local_170;
+                if (*(long *)(lVar4 + 0x28) == local_68) {
+                  return;
+                }
+                uVar17 = local_170._4_4_;
+                local_170 = uVar10;
+                uVar16 = uStack_168._4_4_;
+                uStack_168 = uVar11;
+                uVar18 = uStack_160._4_4_;
+                uStack_160 = uVar12;
+                uVar19 = local_158._4_4_;
+                local_158 = uVar13;
+                uVar20 = local_150._4_4_;
+                local_150 = uVar14;
+                uVar21 = uStack_148._4_4_;
+                uStack_148 = uVar15;
+                uVar10 = local_170;
+                local_170._4_4_ = uVar17;
+                uVar11 = uStack_168;
+                uStack_168._4_4_ = uVar16;
+                uVar12 = uStack_160;
+                uStack_160._4_4_ = uVar18;
+                uVar13 = local_158;
+                local_158._4_4_ = uVar19;
+                uVar14 = local_150;
+                local_150._4_4_ = uVar20;
+                uVar15 = uStack_148;
+                uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+                __stack_chk_fail();
+              }
+              local_70 = uStack_160._4_4_;
+              uStack_78 = CONCAT84(uVar12,uStack_168._4_4_);
+              local_80 = CONCAT84(uVar11,local_170._4_4_);
+              local_170._0_4_ = (int)uVar10;
+              iVar2 = (int)local_170;
+              local_158._0_4_ = (undefined4)uVar13;
+              uVar17 = (undefined4)local_158;
+              uStack_98 = CONCAT84(uVar15,local_150._4_4_);
+              local_a0 = CONCAT84(uVar14,local_158._4_4_);
+              local_90 = uStack_148._4_4_;
+              if (local_178 == 0) {
+                uVar17 = local_170._4_4_;
+                uVar16 = uStack_168._4_4_;
+                uVar18 = uStack_160._4_4_;
+                uVar19 = local_158._4_4_;
+                uVar20 = local_150._4_4_;
+                uVar21 = uStack_148._4_4_;
+                uVar10 = local_170;
+                local_170._4_4_ = uVar17;
+                uVar11 = uStack_168;
+                uStack_168._4_4_ = uVar16;
+                uVar12 = uStack_160;
+                uStack_160._4_4_ = uVar18;
+                uVar13 = local_158;
+                local_158._4_4_ = uVar19;
+                uVar14 = local_150;
+                local_150._4_4_ = uVar20;
+                uVar15 = uStack_148;
+                uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+                FUN_03c8fb30();
+              }
+            } while ((*(int *)(local_178 + 0x5c) != (int)local_180) ||
+                    (*(int *)(local_178 + 0x58) != local_180._4_4_));
+            plVar34 = (long *)(local_178 + 0x50);
+            if (*plVar34 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            lVar29 = *(long *)(*plVar34 + 0x18);
+            if (lVar29 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            puVar37 = (ulong *)(local_178 + 0x18);
+            puVar35 = (undefined8 *)(local_178 + 0x1c);
+            uVar16 = local_170._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar22 = uStack_148._4_4_;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            FUN_05676c4c(&local_1a0,*(undefined8 *)(lVar29 + 0x20),*(undefined8 *)(lVar29 + 0x28),
+                         *(int *)puVar37,*(undefined4 *)puVar35,
+                         *(undefined8 *)
+                          UnityEngine_XR_Management_XRManagementAnalytics_BuildEvent_var);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar9 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar27 = local_170;
+            local_170 = uVar27;
+            uStack_168 = uVar11;
+            uStack_160 = uVar12;
+            local_158 = uVar9;
+            local_150 = uVar14;
+            uStack_148 = uVar15;
+            if (lVar31 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            lVar29 = *(long *)(lVar31 + 0x18);
+            if (lVar29 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            uVar16 = local_170._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar22 = uStack_148._4_4_;
+            uVar27 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar9 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            FUN_05676c4c(&local_1b0,*(undefined8 *)(lVar29 + 0x20),*(undefined8 *)(lVar29 + 0x28),
+                         uVar10 & 0xffffffff,*(undefined4 *)puVar35,
+                         *(undefined8 *)
+                          UnityEngine_XR_Management_XRManagementAnalytics_BuildEvent_var);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar9 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar27 = local_170;
+            uVar16 = local_170._4_4_;
+            local_170 = uVar27;
+            uVar18 = uStack_168._4_4_;
+            uStack_168 = uVar11;
+            uVar19 = uStack_160._4_4_;
+            uStack_160 = uVar12;
+            uVar20 = local_158._4_4_;
+            local_158 = uVar9;
+            uVar21 = local_150._4_4_;
+            local_150 = uVar14;
+            uVar22 = uStack_148._4_4_;
+            uStack_148 = uVar15;
+            uVar27 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar9 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            FUN_05676d7c(&local_1b0,local_1a0,uStack_198,
+                         *(undefined8 *)
+                          DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_20_var
+                        );
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar9 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar27 = local_170;
+            local_170 = uVar27;
+            uStack_168 = uVar11;
+            uStack_160 = uVar12;
+            local_158 = uVar9;
+            local_150 = uVar14;
+            uStack_148 = uVar15;
+            if (*(long *)(lVar31 + 0x18) == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            uVar16 = local_170._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar22 = uStack_148._4_4_;
+            uVar27 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar9 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            FUN_06806afc(*(long *)(lVar31 + 0x18),uVar10 & 0xffffffff,*(undefined4 *)puVar35,
+                         *(undefined8 *)UnityEngine_XR_XRDisplaySubsystem_XRBlitParams_var);
+            uVar22 = uStack_148._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar16 = local_170._4_4_;
+            uVar10 = local_170;
+            uVar11 = uStack_168;
+            uVar12 = uStack_160;
+            uVar27 = local_158;
+            uVar14 = local_150;
+            uVar15 = uStack_148;
+            if ((uVar26 & 1) != 0) {
+              local_170._4_4_ = uVar16;
+              uStack_168._4_4_ = uVar18;
+              uStack_160._4_4_ = uVar19;
+              local_158._4_4_ = uVar20;
+              local_150._4_4_ = uVar21;
+              uStack_148._4_4_ = uVar22;
+              if (*plVar34 == 0) {
+                uVar13 = local_158;
+                    /* WARNING: Subroutine does not return */
+                FUN_03c8fb30();
+              }
+              lVar29 = *(long *)(*plVar34 + 0x20);
+              if (lVar29 == 0) {
+                uVar13 = local_158;
+                    /* WARNING: Subroutine does not return */
+                FUN_03c8fb30();
+              }
+              uVar26 = local_158;
+              FUN_056750ec(&local_1c0,*(undefined8 *)(lVar29 + 0x20),*(undefined8 *)(lVar29 + 0x28),
+                           *(undefined4 *)(lVar33 + 0x30),*(undefined4 *)(lVar33 + 0x34),
+                           *(undefined8 *)System_Xml_Schema_XmlAtomicValue_Union_var);
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar26 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+              lVar29 = *(long *)(lVar31 + 0x20);
+              local_170 = uVar10;
+              uStack_168 = uVar11;
+              uStack_160 = uVar12;
+              local_158 = uVar26;
+              local_150 = uVar14;
+              uStack_148 = uVar15;
+              if (lVar29 == 0) {
+                uVar17 = local_170._4_4_;
+                uVar16 = uStack_168._4_4_;
+                uVar18 = uStack_160._4_4_;
+                uVar19 = local_158._4_4_;
+                uVar20 = local_150._4_4_;
+                uVar21 = uStack_148._4_4_;
+                uVar10 = local_170;
+                local_170._4_4_ = uVar17;
+                uVar11 = uStack_168;
+                uStack_168._4_4_ = uVar16;
+                uVar12 = uStack_160;
+                uStack_160._4_4_ = uVar18;
+                uVar13 = local_158;
+                local_158._4_4_ = uVar19;
+                uVar14 = local_150;
+                local_150._4_4_ = uVar20;
+                uVar15 = uStack_148;
+                uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+                FUN_03c8fb30();
+              }
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar26 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              FUN_056750ec(&local_1d0,*(undefined8 *)(lVar29 + 0x20),*(undefined8 *)(lVar29 + 0x28),
+                           uVar13 & 0xffffffff,*(undefined4 *)(lVar33 + 0x34),
+                           *(undefined8 *)System_Xml_Schema_XmlAtomicValue_Union_var);
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar26 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+              uVar16 = local_170._4_4_;
+              local_170 = uVar10;
+              uVar18 = uStack_168._4_4_;
+              uStack_168 = uVar11;
+              uVar19 = uStack_160._4_4_;
+              uStack_160 = uVar12;
+              uVar20 = local_158._4_4_;
+              local_158 = uVar26;
+              uVar21 = local_150._4_4_;
+              local_150 = uVar14;
+              uVar22 = uStack_148._4_4_;
+              uStack_148 = uVar15;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar26 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              iVar23 = FUN_056753c4(&local_1d0,
+                                    *(undefined8 *)
+                                     DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_24_var
+                                   );
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar26 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+              if (0 < iVar23) {
+                iVar3 = *(int *)puVar37;
+                iVar38 = 0;
+                do {
+                  uStack_148 = uVar15;
+                  local_150 = uVar14;
+                  local_158 = uVar26;
+                  uStack_160 = uVar12;
+                  uStack_168 = uVar11;
+                  local_170 = uVar10;
+                  uVar22 = uStack_148._4_4_;
+                  uVar21 = local_150._4_4_;
+                  uVar20 = local_158._4_4_;
+                  uVar19 = uStack_160._4_4_;
+                  uVar18 = uStack_168._4_4_;
+                  uVar16 = local_170._4_4_;
+                  uVar10 = local_170;
+                  local_170._4_4_ = uVar16;
+                  uVar11 = uStack_168;
+                  uStack_168._4_4_ = uVar18;
+                  uVar12 = uStack_160;
+                  uStack_160._4_4_ = uVar19;
+                  uVar26 = local_158;
+                  local_158._4_4_ = uVar20;
+                  uVar14 = local_150;
+                  local_150._4_4_ = uVar21;
+                  uVar15 = uStack_148;
+                  uStack_148._4_4_ = uVar22;
+                  iVar24 = FUN_05675140(&local_1c0,iVar38,
+                                        *(undefined8 *)
+                                         Unity_VisualScripting_FullSerializer_fsAotCompilationManager_AotCompilation_var
+                                       );
+                  uVar15 = uStack_148;
+                  uVar14 = local_150;
+                  uVar26 = local_158;
+                  uVar12 = uStack_160;
+                  uVar11 = uStack_168;
+                  uVar10 = local_170;
+                  uVar16 = local_170._4_4_;
+                  local_170 = uVar10;
+                  uVar18 = uStack_168._4_4_;
+                  uStack_168 = uVar11;
+                  uVar19 = uStack_160._4_4_;
+                  uStack_160 = uVar12;
+                  uVar20 = local_158._4_4_;
+                  local_158 = uVar26;
+                  uVar21 = local_150._4_4_;
+                  local_150 = uVar14;
+                  uVar22 = uStack_148._4_4_;
+                  uStack_148 = uVar15;
+                  uVar10 = local_170;
+                  local_170._4_4_ = uVar16;
+                  uVar11 = uStack_168;
+                  uStack_168._4_4_ = uVar18;
+                  uVar12 = uStack_160;
+                  uStack_160._4_4_ = uVar19;
+                  uVar26 = local_158;
+                  local_158._4_4_ = uVar20;
+                  uVar14 = local_150;
+                  local_150._4_4_ = uVar21;
+                  uVar15 = uStack_148;
+                  uStack_148._4_4_ = uVar22;
+                  FUN_05675180(&local_1d0,iVar38,iVar24 + (iVar2 - iVar3),
+                               *(undefined8 *)UnityEngine_UI_GraphicRaycaster_BlockingObjects_var);
+                  uVar15 = uStack_148;
+                  uVar14 = local_150;
+                  uVar26 = local_158;
+                  uVar12 = uStack_160;
+                  uVar11 = uStack_168;
+                  uVar10 = local_170;
+                  iVar38 = iVar38 + 1;
+                } while (iVar23 != iVar38);
+              }
+              uStack_148 = uVar15;
+              local_150 = uVar14;
+              local_158 = uVar26;
+              uStack_160 = uVar12;
+              uStack_168 = uVar11;
+              local_170 = uVar10;
+              uVar22 = uStack_148._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar16 = local_170._4_4_;
+              local_170._4_4_ = uVar16;
+              uStack_168._4_4_ = uVar18;
+              uStack_160._4_4_ = uVar19;
+              local_158._4_4_ = uVar20;
+              local_150._4_4_ = uVar21;
+              uStack_148._4_4_ = uVar22;
+              if (*(long *)(lVar31 + 0x20) == 0) {
+                uVar10 = local_170;
+                uVar11 = uStack_168;
+                uVar12 = uStack_160;
+                uVar13 = local_158;
+                uVar14 = local_150;
+                uVar15 = uStack_148;
+                    /* WARNING: Subroutine does not return */
+                FUN_03c8fb30();
+              }
+              uVar10 = local_170;
+              uVar11 = uStack_168;
+              uVar12 = uStack_160;
+              uVar26 = local_158;
+              uVar14 = local_150;
+              uVar15 = uStack_148;
+              FUN_0680636c(*(long *)(lVar31 + 0x20),uVar13 & 0xffffffff,
+                           *(undefined4 *)(lVar33 + 0x34),
+                           *(undefined8 *)UnityEngine_XR_XRDisplaySubsystem_XRRenderParameter_var);
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar27 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+              puVar36 = (undefined8 *)
+                        DigitalOpus_MB_Core_MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_128_var
+              ;
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+            }
+            uStack_148._4_4_ = uVar22;
+            local_150._4_4_ = uVar21;
+            local_158._4_4_ = uVar20;
+            uStack_160._4_4_ = uVar19;
+            uStack_168._4_4_ = uVar18;
+            local_170._4_4_ = uVar16;
+            uStack_148 = uVar15;
+            local_150 = uVar14;
+            local_158 = uVar27;
+            uStack_160 = uVar12;
+            uStack_168 = uVar11;
+            local_170 = uVar10;
+            uVar22 = uStack_148._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar16 = local_170._4_4_;
+            local_1e8 = 0;
+            local_1e0 = 0;
+            local_1f0 = *(ulong *)(lVar33 + 0x28);
+            lStack_1f8 = *(long *)(lVar33 + 0x20);
+            local_200 = *puVar37;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            thunk_FUN_03d233cc((ulong)&local_200 | 8,0);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            local_1e8 = *plVar34;
+            uVar16 = local_170._4_4_;
+            local_170 = uVar10;
+            uVar18 = uStack_168._4_4_;
+            uStack_168 = uVar11;
+            uVar19 = uStack_160._4_4_;
+            uStack_160 = uVar12;
+            uVar20 = local_158._4_4_;
+            local_158 = uVar13;
+            uVar21 = local_150._4_4_;
+            local_150 = uVar14;
+            uVar22 = uStack_148._4_4_;
+            uStack_148 = uVar15;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            thunk_FUN_03d233cc(&local_1e8);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            puVar5 = Unity_Collections_xxHash3_Hash128Long_00000726_PostfixBurstDelegate_var;
+            local_1e0 = CONCAT71(local_1e0._1_7_,1);
+            lVar32 = *(long *)
+                      Unity_Collections_xxHash3_Hash128Long_00000726_PostfixBurstDelegate_var;
+            lStack_c8 = lStack_1f8;
+            local_d0 = local_200;
+            lStack_b8 = local_1e8;
+            uStack_c0 = local_1f0;
+            local_b0 = local_1e0;
+            lVar29 = *(long *)(lVar25 + 0x10);
+            *(int *)(lVar25 + 0x1c) = *(int *)(lVar25 + 0x1c) + 1;
+            local_170 = uVar10;
+            uStack_168 = uVar11;
+            uStack_160 = uVar12;
+            local_158 = uVar13;
+            local_150 = uVar14;
+            uStack_148 = uVar15;
+            if (lVar29 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            uVar1 = *(uint *)(lVar25 + 0x18);
+            if (uVar1 < *(uint *)(lVar29 + 0x18)) {
+              *(uint *)(lVar25 + 0x18) = uVar1 + 1;
+              lVar29 = lVar29 + (long)(int)uVar1 * 0x28;
+              *(ulong *)(lVar29 + 0x40) = local_1e0;
+              *(long *)(lVar29 + 0x28) = lStack_1f8;
+              *(ulong *)(lVar29 + 0x20) = local_200;
+              *(long *)(lVar29 + 0x38) = local_1e8;
+              *(ulong *)(lVar29 + 0x30) = local_1f0;
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              thunk_FUN_03d233cc(lVar29 + 0x28,0);
+              uVar22 = uStack_148._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar16 = local_170._4_4_;
+              uVar10 = local_170;
+              uVar11 = uStack_168;
+              uVar12 = uStack_160;
+              uVar13 = local_158;
+              uVar14 = local_150;
+              uVar15 = uStack_148;
+              local_170._4_4_ = uVar16;
+              uStack_168._4_4_ = uVar18;
+              uStack_160._4_4_ = uVar19;
+              local_158._4_4_ = uVar20;
+              local_150._4_4_ = uVar21;
+              uStack_148._4_4_ = uVar22;
+            }
+            else {
+              lStack_298 = lStack_1f8;
+              local_2a0 = local_200;
+              lStack_288 = local_1e8;
+              local_290 = local_1f0;
+              local_280 = local_1e0;
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              FUN_05461a74(lVar25,&local_2a0,
+                           *(undefined8 *)(*(long *)(*(long *)(lVar32 + 0x20) + 0xc0) + 0x70));
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar13 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+            }
+            uStack_148 = uVar15;
+            local_150 = uVar14;
+            local_158 = uVar13;
+            uStack_160 = uVar12;
+            uStack_168 = uVar11;
+            local_170 = uVar10;
+            uVar22 = uStack_148._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar16 = local_170._4_4_;
+            local_1e8 = 0;
+            local_1e0 = 0;
+            local_1f0 = *(ulong *)(lVar33 + 0x40);
+            lStack_1f8 = *(long *)(lVar33 + 0x38);
+            local_200 = *(ulong *)(lVar33 + 0x30);
+            uVar10 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            thunk_FUN_03d233cc((ulong)&local_200 | 8,0);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            local_1e8 = *plVar34;
+            uVar16 = local_170._4_4_;
+            local_170 = uVar10;
+            uVar18 = uStack_168._4_4_;
+            uStack_168 = uVar11;
+            uVar19 = uStack_160._4_4_;
+            uStack_160 = uVar12;
+            uVar20 = local_158._4_4_;
+            local_158 = uVar13;
+            uVar21 = local_150._4_4_;
+            local_150 = uVar14;
+            uVar22 = uStack_148._4_4_;
+            uStack_148 = uVar15;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            thunk_FUN_03d233cc(&local_1e8);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            local_1e0 = local_1e0 & 0xffffffffffffff00;
+            lVar32 = *(long *)puVar5;
+            lStack_c8 = lStack_1f8;
+            local_d0 = local_200;
+            lStack_b8 = local_1e8;
+            uStack_c0 = local_1f0;
+            local_b0 = local_1e0;
+            lVar29 = *(long *)(lVar25 + 0x10);
+            *(int *)(lVar25 + 0x1c) = *(int *)(lVar25 + 0x1c) + 1;
+            local_170 = uVar10;
+            uStack_168 = uVar11;
+            uStack_160 = uVar12;
+            local_158 = uVar13;
+            local_150 = uVar14;
+            uStack_148 = uVar15;
+            if (lVar29 == 0) {
+              uVar17 = local_170._4_4_;
+              uVar16 = uStack_168._4_4_;
+              uVar18 = uStack_160._4_4_;
+              uVar19 = local_158._4_4_;
+              uVar20 = local_150._4_4_;
+              uVar21 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar17;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar16;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar18;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar19;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar20;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+              FUN_03c8fb30();
+            }
+            uVar1 = *(uint *)(lVar25 + 0x18);
+            if (uVar1 < *(uint *)(lVar29 + 0x18)) {
+              *(uint *)(lVar25 + 0x18) = uVar1 + 1;
+              lVar29 = lVar29 + (long)(int)uVar1 * 0x28;
+              *(ulong *)(lVar29 + 0x40) = local_1e0;
+              *(long *)(lVar29 + 0x28) = lStack_1f8;
+              *(ulong *)(lVar29 + 0x20) = local_200;
+              *(long *)(lVar29 + 0x38) = local_1e8;
+              *(ulong *)(lVar29 + 0x30) = local_1f0;
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              thunk_FUN_03d233cc(lVar29 + 0x28,0);
+              uVar22 = uStack_148._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar16 = local_170._4_4_;
+              uVar10 = local_170;
+              uVar11 = uStack_168;
+              uVar12 = uStack_160;
+              uVar13 = local_158;
+              uVar14 = local_150;
+              uVar15 = uStack_148;
+              local_170._4_4_ = uVar16;
+              uStack_168._4_4_ = uVar18;
+              uStack_160._4_4_ = uVar19;
+              local_158._4_4_ = uVar20;
+              local_150._4_4_ = uVar21;
+              uStack_148._4_4_ = uVar22;
+            }
+            else {
+              lStack_298 = lStack_1f8;
+              local_2a0 = local_200;
+              lStack_288 = local_1e8;
+              local_290 = local_1f0;
+              local_280 = local_1e0;
+              uVar16 = local_170._4_4_;
+              uVar18 = uStack_168._4_4_;
+              uVar19 = uStack_160._4_4_;
+              uVar20 = local_158._4_4_;
+              uVar21 = local_150._4_4_;
+              uVar22 = uStack_148._4_4_;
+              uVar10 = local_170;
+              local_170._4_4_ = uVar16;
+              uVar11 = uStack_168;
+              uStack_168._4_4_ = uVar18;
+              uVar12 = uStack_160;
+              uStack_160._4_4_ = uVar19;
+              uVar13 = local_158;
+              local_158._4_4_ = uVar20;
+              uVar14 = local_150;
+              local_150._4_4_ = uVar21;
+              uVar15 = uStack_148;
+              uStack_148._4_4_ = uVar22;
+              FUN_05461a74(lVar25,&local_2a0,
+                           *(undefined8 *)(*(long *)(*(long *)(lVar32 + 0x20) + 0xc0) + 0x70));
+              uVar15 = uStack_148;
+              uVar14 = local_150;
+              uVar13 = local_158;
+              uVar12 = uStack_160;
+              uVar11 = uStack_168;
+              uVar10 = local_170;
+            }
+            uStack_148 = uVar15;
+            local_150 = uVar14;
+            local_158 = uVar13;
+            uStack_160 = uVar12;
+            uStack_168 = uVar11;
+            local_170 = uVar10;
+            uVar22 = uStack_148._4_4_;
+            uVar21 = local_150._4_4_;
+            uVar20 = local_158._4_4_;
+            uVar19 = uStack_160._4_4_;
+            uVar18 = uStack_168._4_4_;
+            uVar16 = local_170._4_4_;
+            *(int *)(lVar33 + 0x18) = iVar2;
+            *(undefined4 *)(lVar33 + 0x2c) = local_70;
+            *(undefined8 *)(lVar33 + 0x24) = uStack_78;
+            *puVar35 = local_80;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar16;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar18;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar19;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar20;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar21;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar22;
+            thunk_FUN_03d233cc(lVar33 + 0x20,0);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            *(undefined4 *)(lVar33 + 0x30) = uVar17;
+            *(undefined4 *)(lVar33 + 0x44) = local_90;
+            *(undefined8 *)(lVar33 + 0x3c) = uStack_98;
+            *(undefined8 *)(lVar33 + 0x34) = local_a0;
+            uVar17 = local_170._4_4_;
+            local_170 = uVar10;
+            uVar16 = uStack_168._4_4_;
+            uStack_168 = uVar11;
+            uVar18 = uStack_160._4_4_;
+            uStack_160 = uVar12;
+            uVar19 = local_158._4_4_;
+            local_158 = uVar13;
+            uVar20 = local_150._4_4_;
+            local_150 = uVar14;
+            uVar21 = uStack_148._4_4_;
+            uStack_148 = uVar15;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+            thunk_FUN_03d233cc(lVar33 + 0x38,0);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            *plVar34 = lVar31;
+            uVar17 = local_170._4_4_;
+            local_170 = uVar10;
+            uVar16 = uStack_168._4_4_;
+            uStack_168 = uVar11;
+            uVar18 = uStack_160._4_4_;
+            uStack_160 = uVar12;
+            uVar19 = local_158._4_4_;
+            local_158 = uVar13;
+            uVar20 = local_150._4_4_;
+            local_150 = uVar14;
+            uVar21 = uStack_148._4_4_;
+            uStack_148 = uVar15;
+            uVar10 = local_170;
+            local_170._4_4_ = uVar17;
+            uVar11 = uStack_168;
+            uStack_168._4_4_ = uVar16;
+            uVar12 = uStack_160;
+            uStack_160._4_4_ = uVar18;
+            uVar13 = local_158;
+            local_158._4_4_ = uVar19;
+            uVar14 = local_150;
+            local_150._4_4_ = uVar20;
+            uVar15 = uStack_148;
+            uStack_148._4_4_ = uVar21;
+            thunk_FUN_03d233cc(plVar34,lVar31);
+            uVar15 = uStack_148;
+            uVar14 = local_150;
+            uVar13 = local_158;
+            uVar12 = uStack_160;
+            uVar11 = uStack_168;
+            uVar10 = local_170;
+            *(undefined4 *)(lVar33 + 0x5c) = 0;
+          } while( true );
+        }
+      }
+    }
+  }
+LAB_08700c7c:
+  uStack_148._4_4_ = uVar21;
+  local_150._4_4_ = uVar20;
+  local_158._4_4_ = uVar19;
+  uStack_160._4_4_ = uVar18;
+  uStack_168._4_4_ = uVar16;
+  local_170._4_4_ = uVar17;
+  uStack_148 = uVar15;
+  local_150 = uVar14;
+  local_158 = uVar13;
+  uStack_160 = uVar12;
+  uStack_168 = uVar11;
+  local_170 = uVar10;
+  uVar21 = uStack_148._4_4_;
+  uVar20 = local_150._4_4_;
+  uVar19 = local_158._4_4_;
+  uVar18 = uStack_160._4_4_;
+  uVar16 = uStack_168._4_4_;
+  uVar17 = local_170._4_4_;
+  uVar10 = local_170;
+  local_170._4_4_ = uVar17;
+  uVar11 = uStack_168;
+  uStack_168._4_4_ = uVar16;
+  uVar12 = uStack_160;
+  uStack_160._4_4_ = uVar18;
+  uVar13 = local_158;
+  local_158._4_4_ = uVar19;
+  uVar14 = local_150;
+  local_150._4_4_ = uVar20;
+  uVar15 = uStack_148;
+  uStack_148._4_4_ = uVar21;
+                    /* WARNING: Subroutine does not return */
+  FUN_03c8fb30();
+}
+
+

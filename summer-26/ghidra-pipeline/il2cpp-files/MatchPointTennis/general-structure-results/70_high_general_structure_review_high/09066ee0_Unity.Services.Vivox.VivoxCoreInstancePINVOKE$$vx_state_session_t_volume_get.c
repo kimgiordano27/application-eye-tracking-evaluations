@@ -1,0 +1,171 @@
+/*
+FUNCTION_NAME: Unity.Services.Vivox.VivoxCoreInstancePINVOKE$$vx_state_session_t_volume_get
+ENTRY_POINT: 09066ee0
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 71
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ui_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_8;ui_or_gameplay_sink_hits_3;telemetry_or_network_hits_2
+*/
+
+
+void Unity_Services_Vivox_VivoxCoreInstancePINVOKE__vx_state_session_t_volume_get(void)
+
+{
+  undefined4 uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  long lVar5;
+  undefined8 *puVar6;
+  ulong uVar7;
+  int *piVar8;
+  int *unaff_x19;
+  long unaff_x20;
+  long lVar9;
+  undefined8 uVar10;
+  long *plVar11;
+  undefined8 uVar12;
+  undefined8 uVar13;
+  undefined8 in_stack_00000008;
+  
+  FUN_04447ba8();
+  FUN_04447ba8(PTR_DAT_09f21ed8);
+  FUN_04447ba8(PTR_DAT_09fc1f88);
+  FUN_04447ba8(PTR_DAT_09fc1f90);
+  FUN_04447ba8(PTR_DAT_09f25a58);
+  FUN_04447ba8(PTR_DAT_09f20de8);
+  FUN_04447ba8(PTR_DAT_09fc1fe8);
+  FUN_04447ba8(PTR_DAT_09fc1b88);
+  FUN_04447ba8(PTR_DAT_09fc1b90);
+  FUN_04447ba8(PTR_DAT_09fc1bc0);
+  FUN_04447ba8(PTR_DAT_09fbae90);
+  FUN_04447ba8(PTR_DAT_09fbcb48);
+  FUN_04447ba8(PTR_DAT_09fbcb50);
+  FUN_04447ba8(PTR_DAT_09fbaea0);
+  FUN_04447ba8(PTR_DAT_09fbaeb0);
+  FUN_04447ba8(PTR_DAT_09fbaeb8);
+  FUN_04447ba8(PTR_DAT_09f20d80);
+  *(undefined1 *)(unaff_x20 + 0x867) = 1;
+  puVar2 = PTR_DAT_09f27ea0;
+  in_stack_00000008 = 0;
+  if (*unaff_x19 == 0) {
+    in_stack_00000008 = *(undefined8 *)(unaff_x19 + 0x10);
+    unaff_x19[0x10] = 0;
+    unaff_x19[0x11] = 0;
+    *unaff_x19 = -1;
+  }
+  else {
+    lVar9 = *(long *)(unaff_x19 + 10);
+    lVar5 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f21ed8);
+    FUN_07441bc0(lVar5,*(undefined8 *)PTR_DAT_09f21ee0);
+    puVar3 = PTR_DAT_09f758a0;
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbcb48,0,*(undefined8 *)PTR_DAT_09f758a0);
+    puVar4 = PTR_DAT_09fc1f88;
+    uVar12 = *(undefined8 *)PTR_DAT_09fc1f88;
+    if (*(int *)(*(long *)(PTR_DAT_09f1e5b8 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    uVar12 = FUN_07a4ce38(uVar12,0);
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbae90,uVar12,*(undefined8 *)puVar3);
+    uVar12 = FUN_07a4ce38(*(undefined8 *)puVar4,0);
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbcb50,uVar12,*(undefined8 *)puVar3);
+    uVar12 = FUN_07a4ce38(*(undefined8 *)puVar4,0);
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbaeb8,uVar12,*(undefined8 *)puVar3);
+    uVar12 = FUN_07a4ce38(*(undefined8 *)puVar4,0);
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbaeb0,uVar12,*(undefined8 *)puVar3);
+    uVar12 = FUN_07a4ce38(*(undefined8 *)puVar4,0);
+    FUN_0744298c(lVar5,*(undefined8 *)PTR_DAT_09fbaea0,uVar12,*(undefined8 *)puVar3);
+    *(long *)(unaff_x19 + 0xe) = lVar5;
+    thunk_FUN_044bb4b4(unaff_x19 + 0xe,lVar5);
+    if (lVar9 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    uVar10 = *(undefined8 *)(unaff_x19 + 8);
+    uVar12 = FUN_0906442c(lVar9);
+    lVar5 = FUN_0903ee10(uVar10,uVar12,0);
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    if (*(long *)(unaff_x19 + 0xc) == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    plVar11 = *(long **)(lVar9 + 0x10);
+    uVar12 = FUN_078a7764(*(undefined8 *)(lVar5 + 0x10),
+                          *(undefined8 *)(*(long *)(unaff_x19 + 0xc) + 0x28),0);
+    if (*(long *)(unaff_x19 + 0xc) == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    uVar10 = Unity_Services_Vivox_VivoxCoreInstancePINVOKE__vx_req_base_t_cookie_set
+                       (*(long *)(unaff_x19 + 0xc),*(undefined8 *)(lVar9 + 0x18),lVar5);
+    uVar1 = 10;
+    if ((*(uint *)(lVar5 + 0x18) & 0xff) != 0) {
+      uVar1 = *(undefined4 *)(lVar5 + 0x1c);
+    }
+    if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44(10);
+    }
+    lVar5 = *plVar11;
+    uVar13 = *(undefined8 *)PTR_DAT_09f20d80;
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 != 0) {
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_09fc1f90) {
+          puVar6 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_090671f8;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_044822ac(plVar11,*(long *)PTR_DAT_09fc1f90,0);
+LAB_090671f8:
+    lVar5 = (*(code *)*puVar6)(plVar11,uVar13,uVar12,0,uVar10,uVar1,puVar6[1]);
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    in_stack_00000008 = FUN_068a4fb0(lVar5,*(undefined8 *)PTR_DAT_09fc1bc0);
+    uVar7 = FUN_067804ac(&stack0x00000008,*(undefined8 *)PTR_DAT_09fc1b90);
+    if ((uVar7 & 1) == 0) {
+      *unaff_x19 = 0;
+      *(undefined8 *)(unaff_x19 + 0x10) = in_stack_00000008;
+      thunk_FUN_044bb4b4(unaff_x19 + 0x10,0);
+      if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+        thunk_FUN_044a54b4();
+      }
+      FUN_047bb0b8(unaff_x19 + 2,&stack0x00000008);
+      return;
+    }
+  }
+  uVar12 = FUN_067804f0(&stack0x00000008,*(undefined8 *)PTR_DAT_09fc1b88);
+  FUN_09058794(uVar12,*(undefined8 *)(unaff_x19 + 0xe));
+  uVar10 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09fc1fe8);
+  FUN_0903f534(uVar10,uVar12,0);
+  puVar3 = PTR_DAT_09f2bc28;
+  *unaff_x19 = -2;
+  unaff_x19[0xe] = 0;
+  unaff_x19[0xf] = 0;
+  thunk_FUN_044bb4b4(unaff_x19 + 0xe,0);
+  if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+    thunk_FUN_044a54b4();
+  }
+  FUN_066f3a60(unaff_x19 + 2,uVar10,*(undefined8 *)puVar3);
+  return;
+}
+
+

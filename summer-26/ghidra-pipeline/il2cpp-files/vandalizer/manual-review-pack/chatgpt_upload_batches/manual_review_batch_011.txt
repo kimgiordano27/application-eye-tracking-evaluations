@@ -1,0 +1,1153 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 51
+FUNCTION_NAME: OVRManager$$get_suggestedGpuPerfLevel
+ENTRY_POINT: 05ff1d9c
+MANUAL_PRIORITY_SCORE: 230
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 158
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_17', 'weak_xr_or_state_hits_12', 'validity_or_gating_hits_12', 'strong_foveation_hits_5', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_158', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\05ff1d9c_OVRManager$$get_suggestedGpuPerfLevel.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\manual-review-pack\A_must_review\051_p230_OVRManager$$get_suggestedGpuPerfLevel.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_suggestedGpuPerfLevel
+ENTRY_POINT: 05ff1d9c
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 158
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_17;weak_xr_or_state_hits_12;validity_or_gating_hits_12;strong_foveation_hits_5;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__get_suggestedGpuPerfLevel(long param_1)
+
+{
+  float fVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  float *pfVar5;
+  long unaff_x19;
+  long *unaff_x20;
+  float *unaff_x21;
+  long unaff_x22;
+  ulong uVar6;
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float fVar12;
+  float fVar13;
+  float fVar14;
+  float fVar15;
+  float fVar16;
+  float fVar17;
+  float fVar18;
+  float unaff_s8;
+  float unaff_s9;
+  float fVar19;
+  float fVar20;
+  float unaff_s10;
+  float unaff_s11;
+  float unaff_s12;
+  float fVar21;
+  float unaff_s14;
+  float unaff_s15;
+  float fStack000000000000001c;
+  float fStack0000000000000024;
+  float fStack0000000000000034;
+  float fStack000000000000003c;
+  float fStack0000000000000040;
+  float fStack0000000000000044;
+  float fStack0000000000000048;
+  float fStack000000000000004c;
+  
+  FUN_031f20f4(*(undefined8 *)(param_1 + 0x420));
+  *(undefined1 *)(unaff_x22 + 0x545) = 1;
+  fStack0000000000000044 = fStack0000000000000044 - unaff_s8;
+  fStack0000000000000048 = fStack0000000000000048 - unaff_s10;
+  fVar16 = **(float **)(*(long *)PTR_DAT_075b9420 + 0xb8);
+  fVar7 = unaff_s14 * unaff_s14 + unaff_s9 * unaff_s9 + unaff_s15 * unaff_s15;
+  fStack000000000000004c = fStack000000000000004c - unaff_s11;
+  if (fVar16 <= fVar7) {
+    fVar13 = fStack000000000000004c * unaff_s14 +
+             fStack0000000000000044 * unaff_s9 + fStack0000000000000048 * unaff_s15;
+    fVar16 = (unaff_s9 * fVar13) / fVar7;
+    fStack0000000000000044 = fStack0000000000000044 - fVar16;
+    fStack0000000000000048 = fStack0000000000000048 - (unaff_s15 * fVar13) / fVar7;
+    fStack000000000000004c = fStack000000000000004c - (unaff_s14 * fVar13) / fVar7;
+  }
+  if (DAT_07a3f7a9 == '\0') {
+    FUN_031f20f4(PTR_DAT_0759b370);
+    DAT_07a3f7a9 = '\x01';
+  }
+  puVar2 = PTR_DAT_0759b370;
+  if (*(int *)(*(long *)PTR_DAT_0759b370 + 0xe4) == 0) {
+    Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+  }
+  fVar19 = *unaff_x21;
+  fVar14 = unaff_x21[1];
+  fStack0000000000000024 = unaff_x21[2];
+  fVar7 = fVar14;
+  fStack000000000000003c = (float)FUN_06e6836c();
+  fVar8 = *unaff_x21;
+  fVar17 = unaff_x21[1];
+  fStack0000000000000034 = unaff_x21[2];
+  fVar13 = fVar7;
+  fStack000000000000001c = fVar16;
+  fVar9 = (float)FUN_06e6836c();
+  fVar12 = fVar13;
+  fVar21 = fVar16;
+  lVar3 = FUN_06e5502c();
+  if (lVar3 != 0) {
+    fVar10 = (float)FUN_06e6e3cc(lVar3,0);
+    lVar3 = FUN_06e5502c();
+    if (lVar3 != 0) {
+      FUN_06e6e3cc(lVar3,0);
+      lVar3 = FUN_06e5502c();
+      if (lVar3 != 0) {
+        FUN_06e6e3cc(lVar3,0);
+        fVar1 = DAT_014ba9b8;
+        if (0 < *(int *)(unaff_x19 + 0x50)) {
+          fStack0000000000000040 = 0.0;
+          fVar16 = fStack0000000000000034 - fVar16;
+          fVar11 = unaff_s12 + -0.5;
+          fStack0000000000000034 = 1.0 / fVar12;
+          fVar15 = SQRT(fStack0000000000000044 * fStack0000000000000044 +
+                        fStack0000000000000048 * fStack0000000000000048 +
+                        fStack000000000000004c * fStack000000000000004c);
+          fStack000000000000003c = fVar19 + fVar11 * fVar15 * fStack000000000000003c;
+          uVar6 = 0;
+          lVar3 = 0x38;
+          fVar19 = fStack0000000000000024 + fVar11 * fVar15 * fStack000000000000001c;
+          fVar12 = fVar8 - fVar9;
+          fVar13 = fVar17 - fVar13;
+          do {
+            fVar9 = unaff_x21[1];
+            fVar17 = unaff_x21[2];
+            fVar8 = (float)FUN_05ff240c(*unaff_x21,fVar9,fVar17,fStack000000000000003c,
+                                        fVar14 + fVar11 * fVar15 * fVar7,fVar19);
+            lVar4 = *unaff_x20;
+            if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (*(uint *)(lVar4 + 0x18) <= uVar6) goto LAB_05ff226c;
+            lVar4 = lVar4 + lVar3;
+            *(float *)(lVar4 + -0x10) = (1.0 / fVar21) * fVar17;
+            *(float *)(lVar4 + -0x18) = (1.0 / fVar10) * fVar8;
+            *(float *)(lVar4 + -0x14) = fStack0000000000000034 * fVar9;
+            lVar4 = *unaff_x20;
+            if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (DAT_07a3ca81 == '\0') {
+              FUN_031f20f4(puVar2);
+              DAT_07a3ca81 = '\x01';
+            }
+            if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+              Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+            }
+            fVar12 = fVar8 - fVar12;
+            fVar13 = fVar9 - fVar13;
+            fVar16 = fVar17 - fVar16;
+            fVar20 = SQRT(fVar16 * fVar16 + fVar12 * fVar12 + fVar13 * fVar13);
+            fVar18 = fVar1;
+            if (fVar20 <= fVar1) {
+              if (DAT_07a3ca82 == '\0') {
+                FUN_031f20f4(PTR_DAT_0759b378);
+                DAT_07a3ca82 = '\x01';
+              }
+              pfVar5 = *(float **)(*(long *)PTR_DAT_0759b378 + 0xb8);
+              fVar12 = *pfVar5;
+              fVar13 = pfVar5[1];
+              fVar16 = pfVar5[2];
+            }
+            else {
+              fVar12 = fVar12 / fVar20;
+              fVar13 = fVar13 / fVar20;
+              fVar16 = fVar16 / fVar20;
+            }
+            fVar12 = (float)FUN_06e46264(fVar12,0);
+            if (*(uint *)(lVar4 + 0x18) <= uVar6) goto LAB_05ff226c;
+            pfVar5 = (float *)(lVar4 + lVar3);
+            pfVar5[-3] = fVar12;
+            pfVar5[-2] = fVar13;
+            pfVar5[-1] = fVar16;
+            *pfVar5 = fVar18;
+            if (lVar3 != 0x38) {
+              if (DAT_07a3f7a9 == '\0') {
+                FUN_031f20f4(puVar2);
+                DAT_07a3f7a9 = '\x01';
+              }
+              if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              fStack0000000000000040 = fStack0000000000000040 + fVar20;
+            }
+            uVar6 = uVar6 + 1;
+            lVar3 = lVar3 + 0x20;
+            fVar12 = fVar8;
+            fVar13 = fVar9;
+            fVar16 = fVar17;
+          } while ((long)uVar6 < (long)*(int *)(unaff_x19 + 0x50));
+          if (1 < *(int *)(unaff_x19 + 0x50)) {
+            lVar4 = *unaff_x20;
+            lVar3 = 0x5c;
+            uVar6 = 1;
+            do {
+              if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar6 - 1) ||
+                 (*(uint *)(lVar4 + 0x18) <= uVar6)) {
+LAB_05ff226c:
+                    /* WARNING: Subroutine does not return */
+                FUN_031f2398();
+              }
+              lVar4 = lVar4 + lVar3;
+              fVar7 = *(float *)(lVar4 + -0x38);
+              fVar13 = *(float *)(lVar4 + -0x34);
+              fVar16 = *(float *)(lVar4 + -0x3c);
+              fVar8 = *(float *)(lVar4 + -0x1c);
+              fVar21 = *(float *)(lVar4 + -0x18);
+              fVar12 = *(float *)(lVar4 + -0x14);
+              if (DAT_07a3f7a9 == '\0') {
+                FUN_031f20f4(puVar2);
+                DAT_07a3f7a9 = '\x01';
+              }
+              if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              lVar4 = *unaff_x20;
+              if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar6 - 1) ||
+                 (*(uint *)(lVar4 + 0x18) <= uVar6)) goto LAB_05ff226c;
+              fVar16 = fVar16 - fVar8;
+              fVar7 = fVar7 - fVar21;
+              fVar13 = fVar13 - fVar12;
+              *(float *)(lVar4 + lVar3) =
+                   SQRT(fVar16 * fVar16 + fVar7 * fVar7 + fVar13 * fVar13) / fStack0000000000000040
+                   + ((float *)(lVar4 + lVar3))[-8];
+              uVar6 = uVar6 + 1;
+              lVar3 = lVar3 + 0x20;
+            } while ((long)uVar6 < (long)*(int *)(unaff_x19 + 0x50));
+          }
+        }
+        return;
+      }
+    }
+  }
+OVRManager__GetEyeTrackedFoveatedRenderingSupported:
+                    /* WARNING: Subroutine does not return */
+  FUN_031f2390();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 52
+FUNCTION_NAME: OVRManager$$get_suggestedCpuPerfLevel
+ENTRY_POINT: 05ff1c80
+MANUAL_PRIORITY_SCORE: 230
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 158
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_17', 'weak_xr_or_state_hits_12', 'validity_or_gating_hits_13', 'strong_foveation_hits_5', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_158', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\05ff1c80_OVRManager$$get_suggestedCpuPerfLevel.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\manual-review-pack\A_must_review\052_p230_OVRManager$$get_suggestedCpuPerfLevel.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_suggestedCpuPerfLevel
+ENTRY_POINT: 05ff1c80
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 158
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_17;weak_xr_or_state_hits_12;validity_or_gating_hits_13;strong_foveation_hits_5;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__get_suggestedCpuPerfLevel
+               (ulong param_1,float param_2,float param_3,float param_4,long param_5,float *param_6)
+
+{
+  float fVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  float *pfVar5;
+  long unaff_x20;
+  long *plVar6;
+  ulong uVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float fVar12;
+  float fVar13;
+  float fVar14;
+  float fVar15;
+  float fVar16;
+  float fVar17;
+  float fVar18;
+  float fVar19;
+  float fVar20;
+  float fVar21;
+  float fVar22;
+  float fStack000000000000001c;
+  float fStack0000000000000024;
+  float fStack0000000000000034;
+  float fStack000000000000003c;
+  float fStack0000000000000040;
+  float fStack0000000000000044;
+  float fStack0000000000000048;
+  float fStack000000000000004c;
+  
+  fStack0000000000000044 = param_2;
+  fStack0000000000000048 = param_3;
+  fStack000000000000004c = param_4;
+  if ((param_1 & 1) == 0) {
+    FUN_031f20f4(PTR_DAT_075d64f0);
+    FUN_031f20f4(PTR_DAT_075f2f08);
+    *(undefined1 *)(unaff_x20 + 0x86f) = 1;
+  }
+  puVar2 = PTR_DAT_075d64f0;
+  plVar6 = (long *)(param_5 + 0x68);
+  if ((*plVar6 == 0) || (*(int *)(param_5 + 0x50) != *(int *)(*plVar6 + 0x18))) {
+    lVar3 = FUN_031f21dc(*(undefined8 *)PTR_DAT_075f2f08);
+    *plVar6 = lVar3;
+    thunk_FUN_0329bf60(plVar6,lVar3);
+  }
+  if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+    Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+  }
+  fVar8 = (float)FUN_06e6836c(param_6,0);
+  if (DAT_07a3caf2 == '\0') {
+    FUN_031f20f4(PTR_DAT_0759b378);
+    DAT_07a3caf2 = '\x01';
+  }
+  lVar3 = *(long *)(*(long *)PTR_DAT_0759b378 + 0xb8);
+  fVar17 = *(float *)(lVar3 + 0x18);
+  fVar22 = *(float *)(lVar3 + 0x1c);
+  fVar21 = *(float *)(lVar3 + 0x20);
+  fVar8 = param_4 * fVar21 + fVar8 * fVar17 + param_3 * fVar22;
+  fVar8 = powf(1.0 - fVar8 * fVar8,-0.25);
+  fVar16 = *param_6;
+  fVar19 = param_6[1];
+  fVar20 = param_6[2];
+  if (DAT_07a44545 == '\0') {
+    FUN_031f20f4(PTR_DAT_075b9420);
+    DAT_07a44545 = '\x01';
+  }
+  fVar16 = fStack0000000000000044 - fVar16;
+  fVar19 = fStack0000000000000048 - fVar19;
+  fVar14 = **(float **)(*(long *)PTR_DAT_075b9420 + 0xb8);
+  fVar9 = fVar21 * fVar21 + fVar17 * fVar17 + fVar22 * fVar22;
+  fVar20 = fStack000000000000004c - fVar20;
+  if (fVar14 <= fVar9) {
+    fVar12 = fVar20 * fVar21 + fVar16 * fVar17 + fVar19 * fVar22;
+    fVar14 = (fVar17 * fVar12) / fVar9;
+    fVar16 = fVar16 - fVar14;
+    fVar19 = fVar19 - (fVar22 * fVar12) / fVar9;
+    fVar20 = fVar20 - (fVar21 * fVar12) / fVar9;
+  }
+  if (DAT_07a3f7a9 == '\0') {
+    FUN_031f20f4(PTR_DAT_0759b370);
+    DAT_07a3f7a9 = '\x01';
+  }
+  puVar2 = PTR_DAT_0759b370;
+  if (*(int *)(*(long *)PTR_DAT_0759b370 + 0xe4) == 0) {
+    Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+  }
+  fVar18 = *param_6;
+  fVar13 = param_6[1];
+  fStack0000000000000024 = param_6[2];
+  fVar17 = fVar13;
+  fStack000000000000003c = (float)FUN_06e6836c(param_6,0);
+  fVar12 = *param_6;
+  fVar15 = param_6[1];
+  fStack0000000000000034 = param_6[2];
+  fVar21 = fVar17;
+  fStack000000000000001c = fVar14;
+  fVar10 = (float)FUN_06e6836c(param_6,0);
+  fVar22 = fVar21;
+  fVar9 = fVar14;
+  lVar3 = FUN_06e5502c(param_5,0);
+  if (lVar3 != 0) {
+    fVar11 = (float)FUN_06e6e3cc(lVar3,0);
+    lVar3 = FUN_06e5502c(param_5,0);
+    if (lVar3 != 0) {
+      FUN_06e6e3cc(lVar3,0);
+      lVar3 = FUN_06e5502c(param_5,0);
+      if (lVar3 != 0) {
+        FUN_06e6e3cc(lVar3,0);
+        fVar1 = DAT_014ba9b8;
+        if (0 < *(int *)(param_5 + 0x50)) {
+          fStack0000000000000040 = 0.0;
+          fVar14 = fStack0000000000000034 - fVar14;
+          fVar8 = fVar8 + -0.5;
+          fStack0000000000000034 = 1.0 / fVar22;
+          fVar20 = SQRT(fVar16 * fVar16 + fVar19 * fVar19 + fVar20 * fVar20);
+          fStack000000000000003c = fVar18 + fVar8 * fVar20 * fStack000000000000003c;
+          uVar7 = 0;
+          lVar3 = 0x38;
+          fVar22 = fStack0000000000000024 + fVar8 * fVar20 * fStack000000000000001c;
+          fVar16 = fVar12 - fVar10;
+          fVar19 = fVar15 - fVar21;
+          do {
+            fVar12 = param_6[1];
+            fVar10 = param_6[2];
+            fVar21 = (float)FUN_05ff240c(*param_6,fVar12,fVar10,fStack000000000000003c,
+                                         fVar13 + fVar8 * fVar20 * fVar17,fVar22);
+            lVar4 = *plVar6;
+            if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (*(uint *)(lVar4 + 0x18) <= uVar7) goto LAB_05ff226c;
+            lVar4 = lVar4 + lVar3;
+            *(float *)(lVar4 + -0x10) = (1.0 / fVar9) * fVar10;
+            *(float *)(lVar4 + -0x18) = (1.0 / fVar11) * fVar21;
+            *(float *)(lVar4 + -0x14) = fStack0000000000000034 * fVar12;
+            lVar4 = *plVar6;
+            if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (DAT_07a3ca81 == '\0') {
+              FUN_031f20f4(puVar2);
+              DAT_07a3ca81 = '\x01';
+            }
+            if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+              Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+            }
+            fVar16 = fVar21 - fVar16;
+            fVar19 = fVar12 - fVar19;
+            fVar14 = fVar10 - fVar14;
+            fVar18 = SQRT(fVar14 * fVar14 + fVar16 * fVar16 + fVar19 * fVar19);
+            fVar15 = fVar1;
+            if (fVar18 <= fVar1) {
+              if (DAT_07a3ca82 == '\0') {
+                FUN_031f20f4(PTR_DAT_0759b378);
+                DAT_07a3ca82 = '\x01';
+              }
+              pfVar5 = *(float **)(*(long *)PTR_DAT_0759b378 + 0xb8);
+              fVar16 = *pfVar5;
+              fVar19 = pfVar5[1];
+              fVar14 = pfVar5[2];
+            }
+            else {
+              fVar16 = fVar16 / fVar18;
+              fVar19 = fVar19 / fVar18;
+              fVar14 = fVar14 / fVar18;
+            }
+            fVar16 = (float)FUN_06e46264(fVar16,0);
+            if (*(uint *)(lVar4 + 0x18) <= uVar7) goto LAB_05ff226c;
+            pfVar5 = (float *)(lVar4 + lVar3);
+            pfVar5[-3] = fVar16;
+            pfVar5[-2] = fVar19;
+            pfVar5[-1] = fVar14;
+            *pfVar5 = fVar15;
+            if (lVar3 != 0x38) {
+              if (DAT_07a3f7a9 == '\0') {
+                FUN_031f20f4(puVar2);
+                DAT_07a3f7a9 = '\x01';
+              }
+              if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              fStack0000000000000040 = fStack0000000000000040 + fVar18;
+            }
+            uVar7 = uVar7 + 1;
+            lVar3 = lVar3 + 0x20;
+            fVar16 = fVar21;
+            fVar19 = fVar12;
+            fVar14 = fVar10;
+          } while ((long)uVar7 < (long)*(int *)(param_5 + 0x50));
+          if (1 < *(int *)(param_5 + 0x50)) {
+            lVar4 = *plVar6;
+            lVar3 = 0x5c;
+            uVar7 = 1;
+            do {
+              if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar7 - 1) ||
+                 (*(uint *)(lVar4 + 0x18) <= uVar7)) {
+LAB_05ff226c:
+                    /* WARNING: Subroutine does not return */
+                FUN_031f2398();
+              }
+              lVar4 = lVar4 + lVar3;
+              fVar16 = *(float *)(lVar4 + -0x38);
+              fVar17 = *(float *)(lVar4 + -0x34);
+              fVar8 = *(float *)(lVar4 + -0x3c);
+              fVar21 = *(float *)(lVar4 + -0x1c);
+              fVar20 = *(float *)(lVar4 + -0x18);
+              fVar19 = *(float *)(lVar4 + -0x14);
+              if (DAT_07a3f7a9 == '\0') {
+                FUN_031f20f4(puVar2);
+                DAT_07a3f7a9 = '\x01';
+              }
+              if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              lVar4 = *plVar6;
+              if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar7 - 1) ||
+                 (*(uint *)(lVar4 + 0x18) <= uVar7)) goto LAB_05ff226c;
+              fVar8 = fVar8 - fVar21;
+              fVar16 = fVar16 - fVar20;
+              fVar17 = fVar17 - fVar19;
+              *(float *)(lVar4 + lVar3) =
+                   SQRT(fVar8 * fVar8 + fVar16 * fVar16 + fVar17 * fVar17) / fStack0000000000000040
+                   + ((float *)(lVar4 + lVar3))[-8];
+              uVar7 = uVar7 + 1;
+              lVar3 = lVar3 + 0x20;
+            } while ((long)uVar7 < (long)*(int *)(param_5 + 0x50));
+          }
+        }
+        return;
+      }
+    }
+  }
+OVRManager__GetEyeTrackedFoveatedRenderingSupported:
+                    /* WARNING: Subroutine does not return */
+  FUN_031f2390();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 53
+FUNCTION_NAME: OVRManager$$get_isPowerSavingActive
+ENTRY_POINT: 05ff20f0
+MANUAL_PRIORITY_SCORE: 230
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 158
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_14', 'weak_xr_or_state_hits_12', 'validity_or_gating_hits_6', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_158', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\05ff20f0_OVRManager$$get_isPowerSavingActive.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\manual-review-pack\A_must_review\053_p230_OVRManager$$get_isPowerSavingActive.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_isPowerSavingActive
+ENTRY_POINT: 05ff20f0
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 158
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_14;weak_xr_or_state_hits_12;validity_or_gating_hits_6;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__get_isPowerSavingActive
+               (float param_1,float param_2,float param_3,float param_4,undefined8 param_5)
+
+{
+  float *pfVar1;
+  long lVar2;
+  long unaff_x19;
+  long *unaff_x20;
+  undefined4 *unaff_x21;
+  long *unaff_x22;
+  long unaff_x23;
+  long lVar3;
+  long unaff_x24;
+  ulong unaff_x25;
+  ulong uVar4;
+  long unaff_x26;
+  long unaff_x27;
+  undefined1 unaff_w28;
+  long unaff_x29;
+  float fVar5;
+  float unaff_s8;
+  float fVar6;
+  float unaff_s9;
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float unaff_s14;
+  float unaff_s15;
+  undefined8 in_stack_00000028;
+  float fStack0000000000000030;
+  float fStack0000000000000034;
+  float fStack0000000000000038;
+  undefined4 uStack000000000000003c;
+  float in_stack_00000040;
+  
+  while (fVar5 = (float)FUN_06e46264(param_1,param_5), unaff_x25 < *(uint *)(unaff_x23 + 0x18)) {
+    pfVar1 = (float *)(unaff_x23 + unaff_x26);
+    pfVar1[-3] = fVar5;
+    pfVar1[-2] = param_2;
+    pfVar1[-1] = param_3;
+    *pfVar1 = param_4;
+    if (unaff_x26 != 0x38) {
+      if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+        FUN_031f20f4();
+        *(undefined1 *)(unaff_x24 + 0x7a9) = unaff_w28;
+      }
+      if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+        Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+      }
+      in_stack_00000040 = in_stack_00000040 + unaff_s9;
+    }
+    unaff_x25 = unaff_x25 + 1;
+    unaff_x26 = unaff_x26 + 0x20;
+    if ((long)*(int *)(unaff_x19 + 0x50) <= (long)unaff_x25) {
+      if (*(int *)(unaff_x19 + 0x50) < 2) {
+        return;
+      }
+      lVar2 = *unaff_x20;
+      lVar3 = 0x5c;
+      uVar4 = 1;
+      goto LAB_05ff2180;
+    }
+    fVar7 = (float)unaff_x21[1];
+    fVar6 = (float)unaff_x21[2];
+    fVar5 = (float)FUN_05ff240c(*unaff_x21,fVar7,fVar6,uStack000000000000003c);
+    lVar3 = *unaff_x20;
+    if (lVar3 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+    if (*(uint *)(lVar3 + 0x18) <= unaff_x25) break;
+    lVar3 = lVar3 + unaff_x26;
+    *(float *)(lVar3 + -0x10) = fStack0000000000000030 * fVar6;
+    *(float *)(lVar3 + -0x18) = fStack0000000000000038 * fVar5;
+    *(float *)(lVar3 + -0x14) = fStack0000000000000034 * fVar7;
+    unaff_x23 = *unaff_x20;
+    if (unaff_x23 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+    if (*(char *)(unaff_x27 + 0xa81) == '\0') {
+      FUN_031f20f4();
+      *(undefined1 *)(unaff_x27 + 0xa81) = unaff_w28;
+    }
+    if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+      Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+    }
+    param_1 = fVar5 - unaff_s14;
+    param_2 = fVar7 - unaff_s15;
+    param_3 = fVar6 - unaff_s8;
+    unaff_s9 = SQRT(param_3 * param_3 + param_1 * param_1 + param_2 * param_2);
+    param_4 = in_stack_00000028._4_4_;
+    if (unaff_s9 <= in_stack_00000028._4_4_) {
+      if (*(char *)(unaff_x29 + 0xa82) == '\0') {
+        FUN_031f20f4(PTR_DAT_0759b378);
+        *(undefined1 *)(unaff_x29 + 0xa82) = unaff_w28;
+      }
+      pfVar1 = *(float **)(*(long *)PTR_DAT_0759b378 + 0xb8);
+      param_1 = *pfVar1;
+      param_2 = pfVar1[1];
+      param_3 = pfVar1[2];
+    }
+    else {
+      param_1 = param_1 / unaff_s9;
+      param_2 = param_2 / unaff_s9;
+      param_3 = param_3 / unaff_s9;
+    }
+    param_5 = 0;
+    unaff_s14 = fVar5;
+    unaff_s15 = fVar7;
+    unaff_s8 = fVar6;
+  }
+LAB_05ff226c:
+                    /* WARNING: Subroutine does not return */
+  FUN_031f2398();
+LAB_05ff2180:
+  if (lVar2 == 0) {
+OVRManager__GetEyeTrackedFoveatedRenderingSupported:
+                    /* WARNING: Subroutine does not return */
+    FUN_031f2390();
+  }
+  if (((ulong)*(uint *)(lVar2 + 0x18) <= uVar4 - 1) || (*(uint *)(lVar2 + 0x18) <= uVar4))
+  goto LAB_05ff226c;
+  lVar2 = lVar2 + lVar3;
+  fVar7 = *(float *)(lVar2 + -0x38);
+  fVar6 = *(float *)(lVar2 + -0x34);
+  fVar5 = *(float *)(lVar2 + -0x3c);
+  fVar10 = *(float *)(lVar2 + -0x1c);
+  fVar9 = *(float *)(lVar2 + -0x18);
+  fVar8 = *(float *)(lVar2 + -0x14);
+  if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+    FUN_031f20f4();
+    *(undefined1 *)(unaff_x24 + 0x7a9) = 1;
+  }
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+  }
+  lVar2 = *unaff_x20;
+  if (lVar2 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+  if (((ulong)*(uint *)(lVar2 + 0x18) <= uVar4 - 1) || (*(uint *)(lVar2 + 0x18) <= uVar4))
+  goto LAB_05ff226c;
+  fVar5 = fVar5 - fVar10;
+  fVar7 = fVar7 - fVar9;
+  fVar6 = fVar6 - fVar8;
+  *(float *)(lVar2 + lVar3) =
+       SQRT(fVar5 * fVar5 + fVar7 * fVar7 + fVar6 * fVar6) / in_stack_00000040 +
+       ((float *)(lVar2 + lVar3))[-8];
+  uVar4 = uVar4 + 1;
+  lVar3 = lVar3 + 0x20;
+  if ((long)*(int *)(unaff_x19 + 0x50) <= (long)uVar4) {
+    return;
+  }
+  goto LAB_05ff2180;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 54
+FUNCTION_NAME: OVRManager$$get_gpuLevel
+ENTRY_POINT: 05ff1fd4
+MANUAL_PRIORITY_SCORE: 230
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 158
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_11', 'weak_xr_or_state_hits_8', 'validity_or_gating_hits_7', 'strong_foveation_hits_3', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_158', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\05ff1fd4_OVRManager$$get_gpuLevel.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\manual-review-pack\A_must_review\054_p230_OVRManager$$get_gpuLevel.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_gpuLevel
+ENTRY_POINT: 05ff1fd4
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 158
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_11;weak_xr_or_state_hits_8;validity_or_gating_hits_7;strong_foveation_hits_3;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__get_gpuLevel(void)
+
+{
+  int iVar1;
+  long lVar2;
+  float *pfVar3;
+  long lVar4;
+  long unaff_x19;
+  long *unaff_x20;
+  undefined4 *unaff_x21;
+  long *unaff_x22;
+  long unaff_x24;
+  ulong unaff_x25;
+  ulong uVar5;
+  long unaff_x26;
+  long unaff_x27;
+  undefined1 unaff_w28;
+  long unaff_x29;
+  float fVar6;
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float in_s4;
+  float in_s5;
+  float unaff_s9;
+  float fVar12;
+  float unaff_s10;
+  float fVar13;
+  float unaff_s11;
+  undefined4 uStack0000000000000004;
+  float fStack0000000000000010;
+  undefined8 in_stack_00000028;
+  float fStack0000000000000030;
+  float fStack0000000000000034;
+  float fStack0000000000000038;
+  undefined4 uStack000000000000003c;
+  float in_stack_00000040;
+  undefined4 in_stack_00000048;
+  
+  while( true ) {
+    fStack0000000000000010 = (float)(int)unaff_x25 / (in_s4 + in_s5);
+    fVar8 = (float)unaff_x21[1];
+    fVar10 = (float)unaff_x21[2];
+    uStack0000000000000004 = in_stack_00000048;
+    fVar6 = (float)FUN_05ff240c(*unaff_x21,fVar8,fVar10,uStack000000000000003c);
+    lVar2 = *unaff_x20;
+    if (lVar2 == 0) break;
+    if (*(uint *)(lVar2 + 0x18) <= unaff_x25) goto LAB_05ff226c;
+    lVar2 = lVar2 + unaff_x26;
+    *(float *)(lVar2 + -0x10) = fStack0000000000000030 * fVar10;
+    *(float *)(lVar2 + -0x18) = fStack0000000000000038 * fVar6;
+    *(float *)(lVar2 + -0x14) = fStack0000000000000034 * fVar8;
+    lVar2 = *unaff_x20;
+    if (lVar2 == 0) break;
+    if (*(char *)(unaff_x27 + 0xa81) == '\0') {
+      FUN_031f20f4();
+      *(undefined1 *)(unaff_x27 + 0xa81) = unaff_w28;
+    }
+    if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+      Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+    }
+    fVar7 = fVar6 - unaff_s9;
+    fVar9 = fVar8 - unaff_s10;
+    fVar11 = fVar10 - unaff_s11;
+    fVar12 = SQRT(fVar11 * fVar11 + fVar7 * fVar7 + fVar9 * fVar9);
+    fVar13 = in_stack_00000028._4_4_;
+    if (fVar12 <= in_stack_00000028._4_4_) {
+      if (*(char *)(unaff_x29 + 0xa82) == '\0') {
+        FUN_031f20f4(PTR_DAT_0759b378);
+        *(undefined1 *)(unaff_x29 + 0xa82) = unaff_w28;
+      }
+      pfVar3 = *(float **)(*(long *)PTR_DAT_0759b378 + 0xb8);
+      fVar7 = *pfVar3;
+      fVar9 = pfVar3[1];
+      fVar11 = pfVar3[2];
+    }
+    else {
+      fVar7 = fVar7 / fVar12;
+      fVar9 = fVar9 / fVar12;
+      fVar11 = fVar11 / fVar12;
+    }
+    fVar7 = (float)FUN_06e46264(fVar7,0);
+    if (*(uint *)(lVar2 + 0x18) <= unaff_x25) goto LAB_05ff226c;
+    pfVar3 = (float *)(lVar2 + unaff_x26);
+    pfVar3[-3] = fVar7;
+    pfVar3[-2] = fVar9;
+    pfVar3[-1] = fVar11;
+    *pfVar3 = fVar13;
+    if (unaff_x26 != 0x38) {
+      if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+        FUN_031f20f4();
+        *(undefined1 *)(unaff_x24 + 0x7a9) = unaff_w28;
+      }
+      if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+        Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+      }
+      in_stack_00000040 = in_stack_00000040 + fVar12;
+    }
+    iVar1 = *(int *)(unaff_x19 + 0x50);
+    unaff_x25 = unaff_x25 + 1;
+    unaff_x26 = unaff_x26 + 0x20;
+    if ((long)iVar1 <= (long)unaff_x25) {
+      if (iVar1 < 2) {
+        return;
+      }
+      lVar4 = *unaff_x20;
+      lVar2 = 0x5c;
+      uVar5 = 1;
+      goto LAB_05ff2180;
+    }
+    in_s4 = (float)iVar1;
+    in_s5 = -1.0;
+    unaff_s9 = fVar6;
+    unaff_s10 = fVar8;
+    unaff_s11 = fVar10;
+  }
+OVRManager__GetEyeTrackedFoveatedRenderingSupported:
+                    /* WARNING: Subroutine does not return */
+  FUN_031f2390();
+LAB_05ff2180:
+  if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+  if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar5 - 1) || (*(uint *)(lVar4 + 0x18) <= uVar5)) {
+LAB_05ff226c:
+                    /* WARNING: Subroutine does not return */
+    FUN_031f2398();
+  }
+  lVar4 = lVar4 + lVar2;
+  fVar8 = *(float *)(lVar4 + -0x38);
+  fVar10 = *(float *)(lVar4 + -0x34);
+  fVar6 = *(float *)(lVar4 + -0x3c);
+  fVar9 = *(float *)(lVar4 + -0x1c);
+  fVar7 = *(float *)(lVar4 + -0x18);
+  fVar13 = *(float *)(lVar4 + -0x14);
+  if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+    FUN_031f20f4();
+    *(undefined1 *)(unaff_x24 + 0x7a9) = 1;
+  }
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+  }
+  lVar4 = *unaff_x20;
+  if (lVar4 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+  if (((ulong)*(uint *)(lVar4 + 0x18) <= uVar5 - 1) || (*(uint *)(lVar4 + 0x18) <= uVar5))
+  goto LAB_05ff226c;
+  fVar6 = fVar6 - fVar9;
+  fVar8 = fVar8 - fVar7;
+  fVar10 = fVar10 - fVar13;
+  *(float *)(lVar4 + lVar2) =
+       SQRT(fVar6 * fVar6 + fVar8 * fVar8 + fVar10 * fVar10) / in_stack_00000040 +
+       ((float *)(lVar4 + lVar2))[-8];
+  uVar5 = uVar5 + 1;
+  lVar2 = lVar2 + 0x20;
+  if ((long)*(int *)(unaff_x19 + 0x50) <= (long)uVar5) {
+    return;
+  }
+  goto LAB_05ff2180;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 55
+FUNCTION_NAME: OVRManager$$get_cpuLevel
+ENTRY_POINT: 05ff1eb8
+MANUAL_PRIORITY_SCORE: 230
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 158
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_17', 'weak_xr_or_state_hits_12', 'validity_or_gating_hits_11', 'strong_foveation_hits_5', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_158', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\05ff1eb8_OVRManager$$get_cpuLevel.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vandalizer\manual-review-pack\A_must_review\055_p230_OVRManager$$get_cpuLevel.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_cpuLevel
+ENTRY_POINT: 05ff1eb8
+PROGRAM: vandalizer-libil2cpp.so
+SCORE: 158
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_17;weak_xr_or_state_hits_12;validity_or_gating_hits_11;strong_foveation_hits_5;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__get_cpuLevel(undefined1 param_1 [16],float param_2,float param_3)
+
+{
+  long lVar1;
+  long lVar2;
+  float *pfVar3;
+  long unaff_x19;
+  long *unaff_x20;
+  undefined4 *unaff_x21;
+  long *unaff_x22;
+  long unaff_x24;
+  ulong uVar4;
+  float fVar5;
+  float fVar6;
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float fVar12;
+  float fVar13;
+  float unaff_s8;
+  float unaff_s9;
+  float fVar14;
+  float fVar15;
+  float fVar16;
+  float unaff_s10;
+  float unaff_s11;
+  float unaff_s12;
+  float unaff_s13;
+  float unaff_s14;
+  float unaff_s15;
+  undefined8 in_stack_00000018;
+  float fStack0000000000000020;
+  float fStack0000000000000024;
+  float in_stack_00000028;
+  undefined8 in_stack_00000030;
+  float fStack0000000000000038;
+  float fStack000000000000003c;
+  float in_stack_00000040;
+  
+  lVar1 = FUN_06e5502c();
+  if (lVar1 != 0) {
+    fVar5 = (float)FUN_06e6e3cc(lVar1,0);
+    lVar1 = FUN_06e5502c();
+    if (lVar1 != 0) {
+      FUN_06e6e3cc(lVar1,0);
+      lVar1 = FUN_06e5502c();
+      if (lVar1 != 0) {
+        FUN_06e6e3cc(lVar1,0);
+        fVar16 = DAT_014ba9b8;
+        if (0 < *(int *)(unaff_x19 + 0x50)) {
+          fVar14 = in_stack_00000040 - unaff_s15;
+          in_stack_00000040 = 0.0;
+          fVar6 = unaff_s12 + -0.5;
+          fVar8 = SQRT(unaff_s8 * unaff_s8 + unaff_s10 * unaff_s10 + unaff_s13 * unaff_s13);
+          uVar4 = 0;
+          lVar1 = 0x38;
+          fVar10 = fStack0000000000000038 - unaff_s11;
+          fVar12 = in_stack_00000030._4_4_ - unaff_s14;
+          do {
+            fVar9 = (float)unaff_x21[1];
+            fVar11 = (float)unaff_x21[2];
+            fVar7 = (float)FUN_05ff240c(*unaff_x21,fVar9,fVar11,
+                                        unaff_s9 + fVar6 * fVar8 * fStack000000000000003c,
+                                        in_stack_00000028 + fVar6 * fVar8 * fStack0000000000000020,
+                                        fStack0000000000000024 +
+                                        fVar6 * fVar8 * in_stack_00000018._4_4_);
+            lVar2 = *unaff_x20;
+            if (lVar2 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (*(uint *)(lVar2 + 0x18) <= uVar4) goto LAB_05ff226c;
+            lVar2 = lVar2 + lVar1;
+            *(float *)(lVar2 + -0x10) = (1.0 / param_3) * fVar11;
+            *(float *)(lVar2 + -0x18) = (1.0 / fVar5) * fVar7;
+            *(float *)(lVar2 + -0x14) = (1.0 / param_2) * fVar9;
+            lVar2 = *unaff_x20;
+            if (lVar2 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+            if (DAT_07a3ca81 == '\0') {
+              FUN_031f20f4();
+              DAT_07a3ca81 = '\x01';
+            }
+            if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+              Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+            }
+            fVar14 = fVar7 - fVar14;
+            fVar10 = fVar9 - fVar10;
+            fVar12 = fVar11 - fVar12;
+            fVar15 = SQRT(fVar12 * fVar12 + fVar14 * fVar14 + fVar10 * fVar10);
+            fVar13 = fVar16;
+            if (fVar15 <= fVar16) {
+              if (DAT_07a3ca82 == '\0') {
+                FUN_031f20f4(PTR_DAT_0759b378);
+                DAT_07a3ca82 = '\x01';
+              }
+              pfVar3 = *(float **)(*(long *)PTR_DAT_0759b378 + 0xb8);
+              fVar14 = *pfVar3;
+              fVar10 = pfVar3[1];
+              fVar12 = pfVar3[2];
+            }
+            else {
+              fVar14 = fVar14 / fVar15;
+              fVar10 = fVar10 / fVar15;
+              fVar12 = fVar12 / fVar15;
+            }
+            fVar14 = (float)FUN_06e46264(fVar14,0);
+            if (*(uint *)(lVar2 + 0x18) <= uVar4) goto LAB_05ff226c;
+            pfVar3 = (float *)(lVar2 + lVar1);
+            pfVar3[-3] = fVar14;
+            pfVar3[-2] = fVar10;
+            pfVar3[-1] = fVar12;
+            *pfVar3 = fVar13;
+            if (lVar1 != 0x38) {
+              if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+                FUN_031f20f4();
+                *(undefined1 *)(unaff_x24 + 0x7a9) = 1;
+              }
+              if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              in_stack_00000040 = in_stack_00000040 + fVar15;
+            }
+            uVar4 = uVar4 + 1;
+            lVar1 = lVar1 + 0x20;
+            fVar14 = fVar7;
+            fVar10 = fVar9;
+            fVar12 = fVar11;
+          } while ((long)uVar4 < (long)*(int *)(unaff_x19 + 0x50));
+          if (1 < *(int *)(unaff_x19 + 0x50)) {
+            lVar2 = *unaff_x20;
+            lVar1 = 0x5c;
+            uVar4 = 1;
+            do {
+              if (lVar2 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar2 + 0x18) <= uVar4 - 1) ||
+                 (*(uint *)(lVar2 + 0x18) <= uVar4)) {
+LAB_05ff226c:
+                    /* WARNING: Subroutine does not return */
+                FUN_031f2398();
+              }
+              lVar2 = lVar2 + lVar1;
+              fVar16 = *(float *)(lVar2 + -0x38);
+              fVar14 = *(float *)(lVar2 + -0x34);
+              fVar5 = *(float *)(lVar2 + -0x3c);
+              fVar6 = *(float *)(lVar2 + -0x1c);
+              fVar12 = *(float *)(lVar2 + -0x18);
+              fVar10 = *(float *)(lVar2 + -0x14);
+              if (*(char *)(unaff_x24 + 0x7a9) == '\0') {
+                FUN_031f20f4();
+                *(undefined1 *)(unaff_x24 + 0x7a9) = 1;
+              }
+              if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+                Best_HTTP_Hosts_Connections_HTTP2_FramesAsStreamView__get_CanWrite();
+              }
+              lVar2 = *unaff_x20;
+              if (lVar2 == 0) goto OVRManager__GetEyeTrackedFoveatedRenderingSupported;
+              if (((ulong)*(uint *)(lVar2 + 0x18) <= uVar4 - 1) ||
+                 (*(uint *)(lVar2 + 0x18) <= uVar4)) goto LAB_05ff226c;
+              fVar5 = fVar5 - fVar6;
+              fVar16 = fVar16 - fVar12;
+              fVar14 = fVar14 - fVar10;
+              *(float *)(lVar2 + lVar1) =
+                   SQRT(fVar5 * fVar5 + fVar16 * fVar16 + fVar14 * fVar14) / in_stack_00000040 +
+                   ((float *)(lVar2 + lVar1))[-8];
+              uVar4 = uVar4 + 1;
+              lVar1 = lVar1 + 0x20;
+            } while ((long)uVar4 < (long)*(int *)(unaff_x19 + 0x50));
+          }
+        }
+        return;
+      }
+    }
+  }
+OVRManager__GetEyeTrackedFoveatedRenderingSupported:
+                    /* WARNING: Subroutine does not return */
+  FUN_031f2390();
+}
+
+
+
+END_DECOMPILED_FUNCTION

@@ -1,0 +1,22 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.UserInterface.Generic.Cursor$$SetCursorRay
+ENTRY_POINT: 05f3bc48
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 83
+LABEL: uncertain_gaze_interaction_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;pose_vector;ui_interaction
+EVIDENCE: strong_eye_source_hits_1;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_4;functionality_gaze_interaction_hits_4
+*/
+
+
+uint Meta_XR_ImmersiveDebugger_UserInterface_Generic_Cursor__SetCursorRay(uint param_1)
+
+{
+  return param_1 & 1;
+}
+
+

@@ -1,0 +1,296 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 73
+FUNCTION_NAME: System.Array$$InternalArray__ICollection_Remove<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 013eb0dc
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\013eb0dc_System.Array$$InternalArray__ICollection_Remove_OVRPlugin.EyeGazeState_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\manual-review-pack\A_must_review\073_p190_System.Array$$InternalArray__ICollection_Remove_OVRPlugin.EyeGazeState_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array$$InternalArray__ICollection_Remove<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 013eb0dc
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8 System_Array__InternalArray__ICollection_Remove<OVRPlugin_EyeGazeState>(long param_1)
+
+{
+  long lVar1;
+  
+  lVar1 = *(long *)(param_1 + 0x38);
+  if (lVar1 == 0) {
+    FUN_0122e7a4(param_1);
+    lVar1 = *(long *)(param_1 + 0x38);
+  }
+  lVar1 = *(long *)(lVar1 + 8);
+  if ((*(byte *)(lVar1 + 0x135) & 1) == 0) {
+    lVar1 = FUN_0122e748();
+  }
+  if (*(int *)(lVar1 + 0xe0) == 0) {
+    thunk_FUN_01220628();
+  }
+  lVar1 = *(long *)(*(long *)(param_1 + 0x38) + 8);
+  if ((*(byte *)(lVar1 + 0x135) & 1) == 0) {
+    lVar1 = FUN_0122e748();
+  }
+  return **(undefined8 **)(lVar1 + 0xb8);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 74
+FUNCTION_NAME: System.Array$$InternalArray__ICollection_Contains<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 013cf4cc
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\013cf4cc_System.Array$$InternalArray__ICollection_Contains_OVRPlugin.EyeGazeState_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\manual-review-pack\A_must_review\074_p190_System.Array$$InternalArray__ICollection_Contains_OVRPlugin.EyeGazeState_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array$$InternalArray__ICollection_Contains<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 013cf4cc
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void System_Array__InternalArray__ICollection_Contains<OVRPlugin_EyeGazeState>
+               (undefined1 param_1 [16],undefined8 *param_2,undefined8 param_3)
+
+{
+  undefined8 *puVar1;
+  undefined8 *unaff_x19;
+  undefined8 *unaff_x20;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  undefined8 uStack0000000000000000;
+  undefined8 uStack0000000000000008;
+  undefined8 in_stack_00000010;
+  
+  uStack0000000000000008 = param_1._8_8_;
+  uStack0000000000000000 = param_1._0_8_;
+  while( true ) {
+    uVar3 = unaff_x20[1];
+    uVar2 = *unaff_x20;
+    unaff_x19[2] = unaff_x20[2];
+    unaff_x19[1] = uVar3;
+    *unaff_x19 = uVar2;
+    thunk_FUN_01286abc(param_2,param_3);
+    unaff_x20[2] = in_stack_00000010;
+    unaff_x20[1] = uStack0000000000000008;
+    *unaff_x20 = uStack0000000000000000;
+    thunk_FUN_01286abc(unaff_x20 + 1,0);
+    puVar1 = unaff_x19 + 3;
+    unaff_x20 = unaff_x20 + -3;
+    if (unaff_x20 <= puVar1) break;
+    in_stack_00000010 = unaff_x19[5];
+    uStack0000000000000008 = unaff_x19[4];
+    uStack0000000000000000 = *puVar1;
+    param_2 = unaff_x19 + 4;
+    param_3 = 0;
+    unaff_x19 = puVar1;
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 75
+FUNCTION_NAME: OVRPlugin.OVRP_1_78_0$$ovrp_GetFoveationEyeTrackedSupported
+ENTRY_POINT: 01f9f364
+MANUAL_PRIORITY_SCORE: 189
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01f9f364_OVRPlugin.OVRP_1_78_0$$ovrp_GetFoveationEyeTrackedSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\manual-review-pack\A_must_review\075_p189_OVRPlugin.OVRP_1_78_0$$ovrp_GetFoveationEyeTrackedSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_78_0$$ovrp_GetFoveationEyeTrackedSupported
+ENTRY_POINT: 01f9f364
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 131
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin_OVRP_1_78_0__ovrp_GetFoveationEyeTrackedSupported(void)
+
+{
+                    /* WARNING: Subroutine does not return */
+  FUN_01230ca0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 76
+FUNCTION_NAME: OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01f80c4c
+MANUAL_PRIORITY_SCORE: 189
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01f80c4c_OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\manual-review-pack\A_must_review\076_p189_OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01f80c4c
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 131
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin__get_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+                    /* WARNING: Subroutine does not return */
+  FUN_01230ca0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 77
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01f5fa9c
+MANUAL_PRIORITY_SCORE: 189
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01f5fa9c_OVRManager$$get_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TitansClinicFreeDemo\manual-review-pack\A_must_review\077_p189_OVRManager$$get_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01f5fa9c
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 131
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+bool OVRManager__get_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  undefined8 *unaff_x20;
+  ulong unaff_x21;
+  undefined8 in_stack_00000008;
+  
+  FUN_01e766e4();
+  *unaff_x20 = in_stack_00000008;
+  return unaff_x21 < 0x2bca2875f4374000;
+}
+
+
+
+END_DECOMPILED_FUNCTION

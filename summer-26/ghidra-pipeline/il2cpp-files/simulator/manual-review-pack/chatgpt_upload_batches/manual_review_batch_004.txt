@@ -1,0 +1,541 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 15
+FUNCTION_NAME: Obi.ObiNativeList<Vector2>$$Upload
+ENTRY_POINT: 0247b98c
+MANUAL_PRIORITY_SCORE: 167
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'pose_vector', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_4', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_general_structure_review_high\0247b98c_Obi.ObiNativeList_Vector2_$$Upload.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\015_p167_Obi.ObiNativeList_Vector2_$$Upload.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Obi.ObiNativeList<Vector2>$$Upload
+ENTRY_POINT: 0247b98c
+PROGRAM: simulator-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;telemetry
+EVIDENCE: validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_4;telemetry_or_network_hits_2
+*/
+
+
+void Obi_ObiNativeList<Vector2>__Upload(void)
+
+{
+  long lVar1;
+  long lVar2;
+  uint uVar3;
+  int iVar4;
+  long unaff_x19;
+  int unaff_w20;
+  uint unaff_w21;
+  long unaff_x22;
+  long unaff_x23;
+  undefined8 unaff_x24;
+  long lVar5;
+  uint unaff_w26;
+  undefined8 unaff_x27;
+  undefined8 uVar6;
+  undefined8 unaff_x28;
+  undefined8 uVar7;
+  uint uVar8;
+  undefined8 unaff_x29;
+  int iStack0000000000000000;
+  int iStack0000000000000004;
+  undefined8 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  
+  do {
+                    /* try { // try from 0247b990 to 0257b9b7 has its CatchHandler @ 0247b900 */
+    uVar3 = (**(code **)(unaff_x23 + 0x18))
+                      (*(undefined8 *)(unaff_x23 + 0x40),unaff_x24,unaff_x28,unaff_x29,unaff_x27,
+                       *(undefined8 *)(unaff_x23 + 0x28));
+    unaff_w26 = unaff_w26 | uVar3 >> 0x1f;
+    uVar3 = unaff_w21;
+    do {
+      unaff_w21 = unaff_w26;
+      uVar8 = unaff_w20 + unaff_w21;
+      if (*(uint *)(unaff_x19 + 0x18) <= uVar8) goto LAB_0247ba80;
+      lVar5 = (long)(int)uVar8;
+      lVar2 = unaff_x19 + lVar5 * 0x10;
+      uVar6 = *(undefined8 *)(lVar2 + 0x20);
+      if (unaff_x23 == 0) goto Obi_ObiNativeList<Vector2>__Compare;
+      uVar7 = *(undefined8 *)(lVar2 + 0x28);
+      if ((*(byte *)(*(long *)(unaff_x22 + 0x20) + 0x135) & 1) == 0) {
+        FUN_018a835c();
+      }
+      iVar4 = (**(code **)(unaff_x23 + 0x18))
+                        (*(undefined8 *)(unaff_x23 + 0x40),in_stack_00000008,in_stack_00000010,uVar6
+                         ,uVar7,*(undefined8 *)(unaff_x23 + 0x28));
+      if (-1 < iVar4) {
+        uVar8 = unaff_w20 + uVar3;
+        lVar5 = (long)(int)uVar8;
+LAB_0247ba44:
+        if (uVar8 < *(uint *)(unaff_x19 + 0x18)) {
+          lVar2 = unaff_x19 + lVar5 * 0x10;
+          *(undefined8 *)(lVar2 + 0x20) = in_stack_00000008;
+          *(undefined8 *)(lVar2 + 0x28) = in_stack_00000010;
+          return;
+        }
+        goto LAB_0247ba80;
+      }
+      if ((*(uint *)(unaff_x19 + 0x18) <= uVar8) ||
+         (*(uint *)(unaff_x19 + 0x18) <= unaff_w20 + uVar3)) goto LAB_0247ba80;
+      uVar6 = *(undefined8 *)(lVar2 + 0x20);
+      lVar1 = unaff_x19 + (long)(int)(unaff_w20 + uVar3) * 0x10;
+      *(undefined8 *)(lVar1 + 0x28) = *(undefined8 *)(lVar2 + 0x28);
+      *(undefined8 *)(lVar1 + 0x20) = uVar6;
+      if (iStack0000000000000004 < (int)unaff_w21) goto LAB_0247ba44;
+      unaff_w26 = unaff_w21 * 2;
+      uVar3 = unaff_w21;
+    } while (in_stack_00000018._4_4_ <= (int)unaff_w26);
+    uVar3 = unaff_w26 + iStack0000000000000000;
+    if ((*(uint *)(unaff_x19 + 0x18) <= uVar3 - 1) || (*(uint *)(unaff_x19 + 0x18) <= uVar3)) {
+LAB_0247ba80:
+                    /* WARNING: Subroutine does not return */
+      FUN_018c4b04();
+    }
+    if (unaff_x23 == 0) {
+Obi_ObiNativeList<Vector2>__Compare:
+                    /* WARNING: Subroutine does not return */
+      FUN_018c4afc();
+    }
+    lVar2 = unaff_x19 + (long)(int)(uVar3 - 1) * 0x10;
+    lVar5 = unaff_x19 + (long)(int)uVar3 * 0x10;
+    unaff_x24 = *(undefined8 *)(lVar2 + 0x20);
+    unaff_x28 = *(undefined8 *)(lVar2 + 0x28);
+    unaff_x29 = *(undefined8 *)(lVar5 + 0x20);
+    unaff_x27 = *(undefined8 *)(lVar5 + 0x28);
+    if ((*(byte *)(*(long *)(unaff_x22 + 0x20) + 0x135) & 1) == 0) {
+      FUN_018a835c();
+    }
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 16
+FUNCTION_NAME: Obi.ObiNativeList<BoneWeight1>$$AsNativeArray
+ENTRY_POINT: 02446ce8
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 79
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'pose_vector', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_4', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_79', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_general_structure_review_high\02446ce8_Obi.ObiNativeList_BoneWeight1_$$AsNativeArray.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\016_p164_Obi.ObiNativeList_BoneWeight1_$$AsNativeArray.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Obi.ObiNativeList<BoneWeight1>$$AsNativeArray
+ENTRY_POINT: 02446ce8
+PROGRAM: simulator-libil2cpp.so
+SCORE: 79
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;telemetry
+EVIDENCE: validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_4;telemetry_or_network_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x02446d80) */
+/* WARNING: Removing unreachable block (ram,0x02446d7c) */
+/* WARNING: Removing unreachable block (ram,0x02446dc4) */
+
+void Obi_ObiNativeList<BoneWeight1>__AsNativeArray(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long unaff_x19;
+  long unaff_x20;
+  long *unaff_x23;
+  long *unaff_x24;
+  undefined8 uStack0000000000000020;
+  undefined8 uStack0000000000000030;
+  
+  uStack0000000000000020 = param_1;
+  uStack0000000000000030 = param_2;
+  do {
+    FUN_024466c0();
+    lVar2 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *unaff_x24) {
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_02446c4c;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02446c4c:
+    uVar4 = (*(code *)*puVar1)();
+    if ((uVar4 & 1) == 0) break;
+    lVar2 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x140);
+    if ((*(byte *)(lVar2 + 0x135) & 1) == 0) {
+      lVar2 = FUN_018a835c(lVar2);
+    }
+    lVar3 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == lVar2) {
+          puVar1 = (undefined8 *)(lVar3 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_02446cc4;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02446cc4:
+    (*(code *)*puVar1)(&stack0x00000020);
+  } while( true );
+  if (unaff_x23 != (long *)0x0) {
+    lVar2 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_03497240) {
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+          goto Obi_ObiNativeList<BoneWeight1>__Upload;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_018a8460();
+Obi_ObiNativeList<BoneWeight1>__Upload:
+    (*(code *)*puVar1)();
+  }
+  *(int *)(unaff_x19 + 0x1c) = *(int *)(unaff_x19 + 0x1c) + 1;
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 17
+FUNCTION_NAME: Obi.ObiNativeList<ColliderRigidbody>$$Upload
+ENTRY_POINT: 024547c8
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_5', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_general_structure_review_high\024547c8_Obi.ObiNativeList_ColliderRigidbody_$$Upload.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\017_p164_Obi.ObiNativeList_ColliderRigidbody_$$Upload.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Obi.ObiNativeList<ColliderRigidbody>$$Upload
+ENTRY_POINT: 024547c8
+PROGRAM: simulator-libil2cpp.so
+SCORE: 74
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_5;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2
+*/
+
+
+int Obi_ObiNativeList<ColliderRigidbody>__Upload(ulong param_1)
+
+{
+  undefined8 *puVar1;
+  ulong uVar2;
+  int iVar3;
+  long lVar4;
+  long lVar5;
+  long unaff_x19;
+  long unaff_x20;
+  uint unaff_w21;
+  uint uVar6;
+  long unaff_x22;
+  int unaff_w23;
+  long unaff_x24;
+  undefined8 uVar7;
+  undefined8 uVar8;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined8 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  
+code_r0x024547c8:
+  if (unaff_x22 < (long)param_1) goto LAB_02454768;
+  do {
+    iVar3 = (int)param_1;
+    uVar6 = (uint)unaff_x22;
+    if ((int)uVar6 < iVar3) {
+      lVar4 = *(long *)(unaff_x19 + 0x10);
+      if (lVar4 == 0) goto LAB_02454878;
+      if (*(uint *)(lVar4 + 0x18) <= uVar6) goto LAB_0245487c;
+      lVar5 = lVar4 + (long)(int)uVar6 * (long)unaff_w23;
+      uVar10 = *(undefined8 *)(lVar5 + 0x28);
+      uVar9 = *(undefined8 *)(lVar5 + 0x20);
+      uVar8 = *(undefined8 *)(lVar5 + 0x38);
+      uVar7 = *(undefined8 *)(lVar5 + 0x30);
+      if (*(uint *)(lVar4 + 0x18) <= unaff_w21) goto LAB_0245487c;
+      lVar4 = lVar4 + (long)(int)unaff_w21 * (long)unaff_w23;
+      unaff_w21 = unaff_w21 + 1;
+      *(undefined8 *)(lVar4 + 0x40) = *(undefined8 *)(lVar5 + 0x40);
+      *(undefined8 *)(lVar4 + 0x28) = uVar10;
+      *(undefined8 *)(lVar4 + 0x20) = uVar9;
+      *(undefined8 *)(lVar4 + 0x38) = uVar8;
+      *(undefined8 *)(lVar4 + 0x30) = uVar7;
+      iVar3 = *(int *)(unaff_x19 + 0x18);
+      uVar6 = uVar6 + 1;
+    }
+    if (iVar3 <= (int)uVar6) {
+      FUN_0290d6ac(*(undefined8 *)(unaff_x19 + 0x10),unaff_w21,iVar3 - unaff_w21,0);
+      iVar3 = *(int *)(unaff_x19 + 0x18);
+      *(uint *)(unaff_x19 + 0x18) = unaff_w21;
+      *(int *)(unaff_x19 + 0x1c) = *(int *)(unaff_x19 + 0x1c) + 1;
+      return iVar3 - unaff_w21;
+    }
+    unaff_x24 = (long)(int)uVar6 * (long)unaff_w23 + 0x20;
+    unaff_x22 = (long)(int)uVar6;
+LAB_02454768:
+    lVar4 = *(long *)(unaff_x19 + 0x10);
+    if (lVar4 == 0) {
+LAB_02454878:
+                    /* WARNING: Subroutine does not return */
+      FUN_018c4afc();
+    }
+    if (*(uint *)(lVar4 + 0x18) <= (uint)unaff_x22) {
+LAB_0245487c:
+                    /* WARNING: Subroutine does not return */
+      FUN_018c4b04();
+    }
+    puVar1 = (undefined8 *)(lVar4 + unaff_x24);
+    if (unaff_x20 == 0) goto LAB_02454878;
+    in_stack_00000060 = *puVar1;
+    in_stack_00000068 = puVar1[1];
+    in_stack_00000070 = puVar1[2];
+    in_stack_00000078 = puVar1[3];
+    in_stack_00000080 = puVar1[4];
+    uVar2 = (**(code **)(unaff_x20 + 0x18))
+                      (*(undefined8 *)(unaff_x20 + 0x40),&stack0x00000060,
+                       *(undefined8 *)(unaff_x20 + 0x28));
+    if ((uVar2 & 1) != 0) break;
+    param_1 = (ulong)*(uint *)(unaff_x19 + 0x18);
+  } while( true );
+  param_1 = (ulong)*(int *)(unaff_x19 + 0x18);
+  unaff_x22 = unaff_x22 + 1;
+  unaff_x24 = unaff_x24 + 0x28;
+  goto code_r0x024547c8;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 18
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$get_pose
+ENTRY_POINT: 02f0b25c
+MANUAL_PRIORITY_SCORE: 161
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 117
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_eye_tracking_permission_or_feature_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_117', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_attempted_eye_tracking_permission_or_feature_near_certain\02f0b25c_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$get_pose.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\018_p161_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$get_pose.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$get_pose
+ENTRY_POINT: 02f0b25c
+PROGRAM: simulator-libil2cpp.so
+SCORE: 117
+LABEL: attempted_eye_tracking_permission_or_feature_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction_EyeGazeDevice__get_pose(void)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  ulong uVar3;
+  long in_x10;
+  int *piVar4;
+  long unaff_x20;
+  long *unaff_x21;
+  
+  lVar2 = *unaff_x21;
+  uVar3 = (ulong)*(ushort *)(lVar2 + 0x12e);
+  if (uVar3 != 0) {
+    piVar4 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar4 + -2) == **(long **)(in_x10 + 0x4c0)) {
+        puVar1 = (undefined8 *)(lVar2 + (long)(*piVar4 + 8) * 0x10 + 0x138);
+        goto LAB_02f0b2b0;
+      }
+      uVar3 = uVar3 - 1;
+      piVar4 = piVar4 + 4;
+    } while (uVar3 != 0);
+  }
+  puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02f0b2b0:
+  (*(code *)*puVar1)();
+  lVar2 = *(long *)(unaff_x20 + 0x20);
+  if (lVar2 != 0) {
+                    /* WARNING: Could not recover jumptable at 0x02f0b2e0. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+    (**(code **)(lVar2 + 0x18))(*(undefined8 *)(lVar2 + 0x40));
+    return;
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 19
+FUNCTION_NAME: Obi.ObiNativeList<Vector4>$$Upload<Vector4>
+ENTRY_POINT: 019029a0
+MANUAL_PRIORITY_SCORE: 161
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 76
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'pose_vector', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_4', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_76', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_general_structure_review_high\019029a0_Obi.ObiNativeList_Vector4_$$Upload_Vector4_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\019_p161_Obi.ObiNativeList_Vector4_$$Upload_Vector4_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Obi.ObiNativeList<Vector4>$$Upload<Vector4>
+ENTRY_POINT: 019029a0
+PROGRAM: simulator-libil2cpp.so
+SCORE: 76
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;telemetry
+EVIDENCE: validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_4;telemetry_or_network_hits_2
+*/
+
+
+void Obi_ObiNativeList<Vector4>__Upload<Vector4>(ulong param_1,undefined1 param_2 [16],long param_3)
+
+{
+  long lVar1;
+  long in_x10;
+  ulong uVar2;
+  ulong uVar3;
+  
+  uVar3 = param_2._8_8_;
+  uVar2 = param_2._0_8_;
+  lVar1 = 0;
+  do {
+    if (uVar2 < param_1) {
+      *(undefined2 *)(param_3 + lVar1 + 0xabc) = 0;
+    }
+    if (uVar3 < param_1) {
+      *(undefined2 *)(param_3 + lVar1 + 0xac0) = 0;
+    }
+    lVar1 = lVar1 + 8;
+    uVar2 = uVar2 + in_x10;
+    uVar3 = uVar3 + in_x10;
+  } while (lVar1 != 0x50);
+  *(undefined4 *)(param_3 + 0x170c) = 0;
+  *(undefined2 *)(param_3 + 0x4d4) = 1;
+  *(undefined8 *)(param_3 + 0x1720) = 0;
+  *(undefined8 *)(param_3 + 0x1718) = 0;
+  *(undefined4 *)(param_3 + 0x1728) = 0;
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

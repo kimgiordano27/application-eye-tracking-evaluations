@@ -1,0 +1,111 @@
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyePosition
+ENTRY_POINT: 0411d720
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 221
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;ui_interaction;frame_behavior;structure_combo;active_gaze_retrieval;active_gaze_interaction;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_2;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;possible_biometric_feature_from_active_eye_context;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+byte Unity_XR_Oculus_Input_OculusHMD__set_leftEyePosition(void)
+
+{
+  uint uVar1;
+  Il2CppObject *pIVar2;
+  undefined8 uVar3;
+  __21 *extraout_x1;
+  Il2CppObject *pIVar4;
+  Il2CppObject *pIVar5;
+  long unaff_x29;
+  int iStack0000000000000028;
+  long in_stack_00000038;
+  undefined8 *in_stack_00000040;
+  long in_stack_00000090;
+  undefined8 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined8 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  
+  iStack0000000000000028 = *(int *)((long)in_stack_00000040 + 0x24);
+  if ((iStack0000000000000028 == 0) || (iStack0000000000000028 == 2)) {
+    in_stack_00000040[3] = *(undefined8 *)(*(long *)(in_stack_00000038 + 0x30) + 0x40);
+    in_stack_00000040[2] = *(undefined8 *)(in_stack_00000038 + 0x28);
+    in_stack_00000040[1] = *(undefined8 *)(*(long *)(in_stack_00000038 + 0x30) + 0xa0);
+    NullCheck((void *)in_stack_00000040[3]);
+    XRInteractionManager_GetValidTargets_m2466547EA6CE2E4DF08784B06C05D9CEBF4CDA7C
+              (in_stack_00000040[3],in_stack_00000040[2],in_stack_00000040[1],0);
+    *in_stack_00000040 = *(undefined8 *)(*(long *)(in_stack_00000038 + 0x30) + 0xa0);
+    NullCheck((void *)*in_stack_00000040);
+    List_1_GetEnumerator_mE88C6014E5D496A14CFE8D413102CD60E6961E48
+              ((List_1_t3B3CED900C4A273E3B63AAB5493C4D6D4B112810 *)*in_stack_00000040,
+               *(MethodInfo **)
+                PTR_List_1_GetEnumerator_mE88C6014E5D496A14CFE8D413102CD60E6961E48_RuntimeMethod_var_048cf948
+              );
+    in_stack_000000c8 = in_stack_000000b0;
+    in_stack_000000c0 = in_stack_000000a8;
+    in_stack_000000d0 = in_stack_000000b8;
+    in_stack_00000090 = unaff_x29 + -0x70;
+    in_stack_00000040[0x1c] = in_stack_000000b0;
+    in_stack_00000040[0x1b] = in_stack_000000a8;
+    in_stack_00000040[0x1d] = in_stack_000000b8;
+    il2cpp::utils::
+    Finally<XRInteractionGroup_CanStartOrContinueAnySelect_m42A0AED7CA78570F41D96436AE36CF419497CA2D::__21>
+              ((utils *)&stack0x00000090,extraout_x1);
+    do {
+      do {
+        uVar1 = Enumerator_MoveNext_mFA0CD3249649865B04C91FE04E85091C0105935E
+                          ((Enumerator_t09D43999A353BEFF0532A0A8596DD0B04A916275 *)
+                           (unaff_x29 + -0x70),
+                           *(MethodInfo **)
+                            PTR_Enumerator_MoveNext_mFA0CD3249649865B04C91FE04E85091C0105935E_RuntimeMethod_var_048cf920
+                          );
+        if ((uVar1 & 1) == 0) {
+          *(undefined4 *)((long)in_stack_00000040 + 0x24) = 8;
+          goto LAB_0411d944;
+        }
+        pIVar2 = (Il2CppObject *)
+                 Enumerator_get_Current_m5A723821D45562AEA6CF9D3057317CC1601A688C_inline
+                           ((Enumerator_t09D43999A353BEFF0532A0A8596DD0B04A916275 *)
+                            (unaff_x29 + -0x70),
+                            *(MethodInfo **)
+                             PTR_Enumerator_get_Current_m5A723821D45562AEA6CF9D3057317CC1601A688C_RuntimeMethod_var_048cf928
+                           );
+        uVar3 = IsInst(pIVar2,*(Il2CppClass **)
+                               PTR_IXRSelectInteractable_t588B8BE99E84540D5A1A9D6E5AAC9EDF12985735_il2cpp_TypeInfo_var_048cfc88
+                      );
+        in_stack_00000040[0x1a] = uVar3;
+      } while (in_stack_00000040[0x1a] == 0);
+      pIVar5 = *(Il2CppObject **)(*(long *)(in_stack_00000038 + 0x30) + 0x40);
+      pIVar4 = *(Il2CppObject **)(in_stack_00000038 + 0x28);
+      pIVar2 = (Il2CppObject *)in_stack_00000040[0x1a];
+      NullCheck(pIVar5);
+      uVar1 = VirtualFuncInvoker2<bool,Il2CppObject*,Il2CppObject*>::Invoke
+                        (0x10,pIVar5,pIVar4,pIVar2);
+    } while ((uVar1 & 1) == 0);
+    *(undefined1 *)(unaff_x29 + -0x49) = 1;
+    *(undefined4 *)((long)in_stack_00000040 + 0x24) = 5;
+LAB_0411d944:
+    il2cpp::utils::
+    FinallyHelper<XRInteractionGroup_CanStartOrContinueAnySelect_m42A0AED7CA78570F41D96436AE36CF419497CA2D::$_21,false>
+    ::~FinallyHelper((FinallyHelper<XRInteractionGroup_CanStartOrContinueAnySelect_m42A0AED7CA78570F41D96436AE36CF419497CA2D::__21,false>
+                      *)&stack0x00000098);
+    if ((*(int *)((long)in_stack_00000040 + 0x24) == 0) ||
+       (*(int *)((long)in_stack_00000040 + 0x24) != 5)) {
+      *(undefined1 *)(unaff_x29 + -1) = 0;
+      goto LAB_0411da94;
+    }
+  }
+  *(byte *)(unaff_x29 + -1) = *(byte *)(unaff_x29 + -0x49) & 1;
+LAB_0411da94:
+  return *(byte *)(unaff_x29 + -1) & 1;
+}
+
+

@@ -1,0 +1,72 @@
+/*
+FUNCTION_NAME: OVRManager$$OVRMixedRealityCaptureConfiguration.set_capturingCameraDevice
+ENTRY_POINT: 05d6474c
+PROGRAM: BowlingAlley-libil2cpp.so
+SCORE: 83
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_6;validity_or_gating_hits_2;functionality_eye_api_context_without_clear_sink_hits_4
+*/
+
+
+uint OVRManager__OVRMixedRealityCaptureConfiguration_set_capturingCameraDevice
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  uint uVar1;
+  undefined8 *puVar2;
+  long *plVar3;
+  long lVar4;
+  long in_x9;
+  ulong uVar5;
+  int *in_x10;
+  int *piVar6;
+  long in_x11;
+  undefined4 *unaff_x19;
+  undefined4 unaff_w20;
+  undefined8 in_stack_00000008;
+  
+  while (in_x11 != param_3) {
+    in_x9 = in_x9 + -1;
+    if (in_x9 == 0) {
+      puVar2 = (undefined8 *)FUN_032937ac();
+      goto OVRManager__OVRMixedRealityCaptureConfiguration_get_handPoseStateLatency;
+    }
+    in_x11 = *(long *)(in_x10 + 2);
+    in_x10 = in_x10 + 4;
+  }
+  puVar2 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+OVRManager__OVRMixedRealityCaptureConfiguration_get_handPoseStateLatency:
+  plVar3 = (long *)(*(code *)*puVar2)();
+  if (plVar3 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_032d5ee8();
+  }
+  lVar4 = *plVar3;
+  uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+  if (uVar5 != 0) {
+    piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) == *(long *)PTR_DAT_072b1118) {
+        puVar2 = (undefined8 *)(lVar4 + (long)(*piVar6 + 1) * 0x10 + 0x138);
+        goto FUN_05d647e8;
+      }
+      uVar5 = uVar5 - 1;
+      piVar6 = piVar6 + 4;
+    } while (uVar5 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_032937ac(plVar3,*(long *)PTR_DAT_072b1118,1);
+FUN_05d647e8:
+  uVar1 = (*(code *)*puVar2)(plVar3,unaff_w20,(long)&stack0x00000008 + 4,puVar2[1]);
+  if ((uVar1 & 1) == 0) {
+    in_stack_00000008._4_4_ = 0;
+  }
+  *unaff_x19 = in_stack_00000008._4_4_;
+  return uVar1 & 1;
+}
+
+

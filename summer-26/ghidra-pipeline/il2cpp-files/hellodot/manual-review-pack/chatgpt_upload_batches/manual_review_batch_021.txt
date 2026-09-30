@@ -1,0 +1,108 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 100
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionExiting
+ENTRY_POINT: 051e05d0
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 100
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_100', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051e05d0_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionExiting.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\100_p203_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionExiting.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionExiting
+ENTRY_POINT: 051e05d0
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 100
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_1;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 OVRPlugin_OVRP_1_71_0__ovrp_UnityOpenXR_OnSessionExiting(undefined8 *param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined8 uVar3;
+  long lVar4;
+  long in_x9;
+  undefined8 uVar5;
+  long lVar6;
+  long *unaff_x22;
+  
+                    /* try { // try from 051e05d4 to 052e0647 has its CatchHandler @ 051e04e0 */
+  uVar5 = *param_1;
+  uVar3 = thunk_FUN_02cea894(**(undefined8 **)(in_x9 + 0x260));
+  FUN_04a57d0c(uVar3,uVar5,*(undefined8 *)PTR_DAT_06609280,0);
+  lVar4 = *unaff_x22;
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x28) = uVar3;
+  if (*(int *)(lVar4 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar4 = *unaff_x22;
+  }
+  puVar2 = PTR_DAT_06609278;
+  puVar1 = PTR_DAT_06609270;
+  lVar6 = *(long *)(*(long *)(lVar4 + 0xb8) + 0x30);
+  if (lVar6 == 0) {
+    if (*(int *)(lVar4 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar4 = *unaff_x22;
+    }
+                    /* try { // try from 051e0648 to 052e0657 has its CatchHandler @ 051e065c */
+    uVar5 = **(undefined8 **)(lVar4 + 0xb8);
+    lVar6 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609268);
+    FUN_04a66dd0(lVar6,uVar5,*(undefined8 *)PTR_DAT_06609288,0);
+    *(long *)(*(long *)(*unaff_x22 + 0xb8) + 0x30) = lVar6;
+  }
+  uVar5 = thunk_FUN_02cea894(*(undefined8 *)puVar2);
+  FUN_03d875dc(uVar5,4,uVar3,lVar6,*(undefined8 *)puVar1);
+  return uVar5;
+}
+
+
+
+END_DECOMPILED_FUNCTION

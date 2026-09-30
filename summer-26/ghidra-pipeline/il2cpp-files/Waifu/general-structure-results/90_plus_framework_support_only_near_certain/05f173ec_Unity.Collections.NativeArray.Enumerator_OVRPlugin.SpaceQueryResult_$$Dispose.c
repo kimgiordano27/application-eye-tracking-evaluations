@@ -1,0 +1,67 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray.Enumerator<OVRPlugin.SpaceQueryResult>$$Dispose
+ENTRY_POINT: 05f173ec
+PROGRAM: Waifu-libil2cpp.so
+SCORE: 94
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Unity_Collections_NativeArray_Enumerator<OVRPlugin_SpaceQueryResult>__Dispose(void)
+
+{
+  ulong *puVar1;
+  ushort uVar2;
+  char cVar3;
+  bool bVar4;
+  undefined8 uVar5;
+  long lVar6;
+  ulong uVar7;
+  long unaff_x19;
+  
+  uVar5 = FUN_03398a84();
+  lVar6 = *(long *)(unaff_x19 + 0x20);
+  uVar2 = *(ushort *)(lVar6 + 0x135);
+  if ((uVar2 & 1) == 0) {
+    FUN_0338f618(lVar6);
+    lVar6 = *(long *)(unaff_x19 + 0x20);
+    uVar2 = *(ushort *)(lVar6 + 0x135);
+  }
+  if ((uVar2 & 1) == 0) {
+    lVar6 = FUN_0338f618(lVar6);
+  }
+  lVar6 = *(long *)(*(long *)(lVar6 + 0xc0) + 0x20);
+  if ((*(byte *)(lVar6 + 0x135) & 1) == 0) {
+    lVar6 = FUN_0338f618();
+  }
+  **(undefined8 **)(lVar6 + 0xb8) = uVar5;
+  lVar6 = *(long *)(unaff_x19 + 0x20);
+  if ((*(byte *)(lVar6 + 0x135) & 1) == 0) {
+    lVar6 = FUN_0338f618();
+  }
+  lVar6 = *(long *)(*(long *)(lVar6 + 0xc0) + 0x20);
+  if ((*(byte *)(lVar6 + 0x135) & 1) == 0) {
+    lVar6 = FUN_0338f618();
+  }
+  if (DAT_08908cd0 != 0) {
+    uVar7 = *(ulong *)(lVar6 + 0xb8);
+    puVar1 = &DAT_0873ccb0 + (uVar7 >> 0x12 & 0x7fff);
+    do {
+      cVar3 = '\x01';
+      bVar4 = (bool)ExclusiveMonitorPass(puVar1,0x10);
+      if (bVar4) {
+        *puVar1 = *puVar1 | 1L << (uVar7 >> 0xc & 0x3f);
+        cVar3 = ExclusiveMonitorsStatus();
+      }
+    } while (cVar3 != '\0');
+  }
+  return;
+}
+
+

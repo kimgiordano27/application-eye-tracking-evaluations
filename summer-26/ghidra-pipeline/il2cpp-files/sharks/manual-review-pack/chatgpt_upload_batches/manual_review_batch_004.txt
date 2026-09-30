@@ -1,0 +1,523 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 16
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry$$OnButtonClicked
+ENTRY_POINT: 028cbe00
+MANUAL_PRIORITY_SCORE: 223
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 112
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_2', 'paired_field_refs_with_eye_source', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_112', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\028cbe00_Meta.XR.ImmersiveDebugger.Telemetry$$OnButtonClicked.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\016_p223_Meta.XR.ImmersiveDebugger.Telemetry$$OnButtonClicked.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Telemetry$$OnButtonClicked
+ENTRY_POINT: 028cbe00
+PROGRAM: sharks-libil2cpp.so
+SCORE: 112
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_ImmersiveDebugger_Telemetry__OnButtonClicked(void)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  long lVar4;
+  long lVar5;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  long in_stack_00000008;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  
+  uVar3 = FUN_02171fa4();
+  if ((uVar3 & 1) == 0) {
+    lVar4 = *(long *)(unaff_x19 + 0x20);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    if (*(int *)(lVar4 + 0xe0) == 0) {
+      thunk_FUN_01843fdc();
+    }
+    lVar4 = *(long *)(unaff_x19 + 0x20);
+                    /* try { // try from 028cbe9c to 029cbec3 has its CatchHandler @ 028cc034 */
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_0185daa4();
+    }
+    lVar4 = *(long *)(*(long *)(lVar4 + 0xb8) + 8);
+    if (lVar4 == 0) goto LAB_028cbf38;
+    lVar5 = *(long *)(unaff_x19 + 0x20);
+    uVar1 = *unaff_x20;
+    uVar2 = unaff_x20[1];
+    if ((*(byte *)(lVar5 + 0x135) & 1) == 0) {
+                    /* try { // try from 028cbedc to 029cbf3b has its CatchHandler @ 028cc038 */
+      lVar5 = FUN_0185daa4();
+    }
+    FUN_02156a94(lVar4,uVar1,uVar2,in_stack_00000020,in_stack_00000028,
+                 *(undefined8 *)(*(long *)(lVar5 + 0xc0) + 0x168));
+    if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+      FUN_0185daa4();
+    }
+    FUN_028cba88();
+  }
+  else {
+    if (in_stack_00000008 == 0) {
+LAB_028cbf38:
+                    /* WARNING: Subroutine does not return */
+      FUN_017fc5a8();
+    }
+    uVar1 = *unaff_x20;
+    uVar2 = unaff_x20[1];
+    if ((*(byte *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+      FUN_0185daa4();
+    }
+    (**(code **)(in_stack_00000008 + 0x18))
+              (*(undefined8 *)(in_stack_00000008 + 0x40),uVar1,uVar2,in_stack_00000020,
+               in_stack_00000028,*(undefined8 *)(in_stack_00000008 + 0x28));
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 17
+FUNCTION_NAME: OVRManager$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c03524
+MANUAL_PRIORITY_SCORE: 219
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_10', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02c03524_OVRManager$$set_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\017_p219_OVRManager$$set_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c03524
+PROGRAM: sharks-libil2cpp.so
+SCORE: 153
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_10;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__set_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  ushort uVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  int in_w8;
+  long *unaff_x19;
+  long *unaff_x25;
+  
+  if (in_w8 == 1) {
+    uVar1 = FUN_02a4b568();
+    if (uVar1 < 100) {
+      if (uVar1 < 0x47) {
+        if (uVar1 == 0x44) {
+LAB_02c03634:
+          if (unaff_x19 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_017fc5a8();
+          }
+                    /* WARNING: Could not recover jumptable at 0x02c03658. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+          (**(code **)(*unaff_x19 + 0x168))();
+          return;
+        }
+        if (uVar1 == 0x46) {
+LAB_02c0357c:
+          if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+            thunk_FUN_01843fdc();
+          }
+          FUN_02c00a74();
+          return;
+        }
+      }
+      else {
+        if (uVar1 == 0x47) {
+LAB_02c0365c:
+          if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+            thunk_FUN_01843fdc();
+          }
+          FUN_02c0088c();
+          return;
+        }
+        if (uVar1 == 0x58) {
+LAB_02c03608:
+          if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+            thunk_FUN_01843fdc();
+          }
+          FUN_02c003e0();
+          return;
+        }
+      }
+    }
+    else if (uVar1 < 0x67) {
+      if (uVar1 == 100) goto LAB_02c03634;
+      if (uVar1 == 0x66) goto LAB_02c0357c;
+    }
+    else {
+      if (uVar1 == 0x67) goto LAB_02c0365c;
+      if (uVar1 == 0x78) goto LAB_02c03608;
+    }
+  }
+  uVar2 = thunk_FUN_01851c08(PTR_DAT_0380ad50);
+  uVar2 = FUN_02c108dc(uVar2,0);
+  thunk_FUN_01851c08(PTR_DAT_037feb28);
+  uVar3 = thunk_FUN_01861bbc();
+  FUN_02bb89a0(uVar3,uVar2,0);
+  uVar2 = thunk_FUN_01851c08(PTR_DAT_0380ad58);
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc474(uVar3,uVar2);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 18
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c03498
+MANUAL_PRIORITY_SCORE: 219
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 153
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_10', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_153', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02c03498_OVRManager$$GetEyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\018_p219_OVRManager$$GetEyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c03498
+PROGRAM: sharks-libil2cpp.so
+SCORE: 153
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_10;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__GetEyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  byte bVar1;
+  ushort uVar2;
+  ulong uVar3;
+  long *plVar4;
+  undefined8 uVar5;
+  undefined8 uVar6;
+  long *unaff_x19;
+  long unaff_x20;
+  long *unaff_x21;
+  long *unaff_x23;
+  long *unaff_x25;
+  
+  thunk_FUN_01843fdc();
+  FUN_02c01850();
+  uVar3 = (**(code **)(*unaff_x23 + 0x888))();
+  if ((uVar3 & 1) == 0) {
+    uVar5 = thunk_FUN_01851c08(PTR_DAT_037f2f98);
+    uVar5 = FUN_017fc3f4(uVar5,2);
+    FUN_015d6ff8();
+    uVar6 = (**(code **)(*unaff_x23 + 0x168))();
+    FUN_015d6ff8(uVar5);
+    FUN_015d7aec(uVar5,uVar6);
+    FUN_015d7b20(uVar5,0,uVar6);
+    FUN_015d6ff8();
+    uVar6 = (**(code **)(*unaff_x21 + 0x168))();
+    FUN_015d6ff8(uVar5);
+    FUN_015d7aec(uVar5,uVar6);
+    FUN_015d7b20(uVar5,1,uVar6);
+    uVar6 = thunk_FUN_01851c08(PTR_DAT_0380a1b8);
+    uVar6 = FUN_02c12818(uVar6,uVar5,0);
+    thunk_FUN_01851c08(PTR_DAT_037f87a8);
+    uVar5 = thunk_FUN_01861bbc();
+    System_Threading_Tasks_Task__Finish(uVar5,uVar6,0);
+  }
+  else {
+    bVar1 = *(byte *)(*unaff_x25 + 0x130);
+    if ((*(byte *)(*unaff_x19 + 0x130) < bVar1) ||
+       (*(long *)(*(long *)(*unaff_x19 + 200) + (ulong)bVar1 * 8 + -8) != *unaff_x25)) {
+                    /* WARNING: Subroutine does not return */
+      FUN_017fc944();
+    }
+    plVar4 = (long *)FUN_017f82a0();
+    if (*(int *)(unaff_x20 + 0x10) == 1) {
+      uVar2 = FUN_02a4b568();
+      if (uVar2 < 100) {
+        if (uVar2 < 0x47) {
+          if (uVar2 == 0x44) {
+LAB_02c03634:
+            if (plVar4 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_017fc5a8();
+            }
+                    /* WARNING: Could not recover jumptable at 0x02c03658. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+            (**(code **)(*plVar4 + 0x168))(plVar4,*(undefined8 *)(*plVar4 + 0x170));
+            return;
+          }
+          if (uVar2 == 0x46) {
+LAB_02c0357c:
+            if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+              thunk_FUN_01843fdc();
+            }
+            FUN_02c00a74();
+            return;
+          }
+        }
+        else {
+          if (uVar2 == 0x47) {
+LAB_02c0365c:
+            if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+              thunk_FUN_01843fdc();
+            }
+            FUN_02c0088c();
+            return;
+          }
+          if (uVar2 == 0x58) {
+LAB_02c03608:
+            if (*(int *)(*unaff_x25 + 0xe0) == 0) {
+              thunk_FUN_01843fdc();
+            }
+            FUN_02c003e0(plVar4);
+            return;
+          }
+        }
+      }
+      else if (uVar2 < 0x67) {
+        if (uVar2 == 100) goto LAB_02c03634;
+        if (uVar2 == 0x66) goto LAB_02c0357c;
+      }
+      else {
+        if (uVar2 == 0x67) goto LAB_02c0365c;
+        if (uVar2 == 0x78) goto LAB_02c03608;
+      }
+    }
+    uVar5 = thunk_FUN_01851c08(PTR_DAT_0380ad50);
+    uVar6 = FUN_02c108dc(uVar5,0);
+    thunk_FUN_01851c08(PTR_DAT_037feb28);
+    uVar5 = thunk_FUN_01861bbc();
+    FUN_02bb89a0(uVar5,uVar6,0);
+  }
+  uVar6 = thunk_FUN_01851c08(PTR_DAT_0380ad58);
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc474(uVar5,uVar6);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 19
+FUNCTION_NAME: OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c22544
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 150
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_3', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_150', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02c22544_OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\019_p216_OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c22544
+PROGRAM: sharks-libil2cpp.so
+SCORE: 150
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_3;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin__set_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  uint uVar1;
+  uint uVar2;
+  undefined8 uVar3;
+  ulong uVar4;
+  long lVar5;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  undefined2 unaff_w21;
+  
+  uVar3 = FUN_017fc3f4();
+  *(undefined8 *)(unaff_x19 + 0x110) = uVar3;
+  thunk_FUN_0188fd20();
+  uVar1 = *(uint *)(unaff_x19 + 0x118);
+  lVar5 = *(long *)(unaff_x19 + 0x110);
+  *(uint *)(unaff_x19 + 0x118) = uVar1 + 1;
+  if (lVar5 != 0) {
+    uVar2 = *(uint *)(lVar5 + 0x18);
+    if (uVar2 <= uVar1) {
+                    /* WARNING: Subroutine does not return */
+      FUN_017fc5b0();
+    }
+    *(undefined2 *)(lVar5 + (long)(int)uVar1 * 2 + 0x20) = unaff_w21;
+    if ((uVar1 + 1 == uVar2) || (uVar4 = FUN_02c224ac(), (uVar4 & 1) == 0)) {
+      if (*(long *)(unaff_x19 + 0x68) == 0) goto LAB_02c225c4;
+      FUN_02b6517c(*(long *)(unaff_x19 + 0x68),*unaff_x20,*(undefined4 *)(unaff_x19 + 0x118),0);
+      *(undefined4 *)(unaff_x19 + 0x118) = 0;
+    }
+    return;
+  }
+LAB_02c225c4:
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5a8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 20
+FUNCTION_NAME: OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c22458
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 150
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_3', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_150', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02c22458_OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\020_p216_OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 02c22458
+PROGRAM: sharks-libil2cpp.so
+SCORE: 150
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_3;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin__get_eyeTrackedFoveatedRenderingEnabled(long param_1,long param_2)
+
+{
+  bool in_ZR;
+  bool in_CY;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  if (in_CY && !in_ZR) {
+    if (param_2 != 0) {
+      if (*(int *)(param_2 + 0x18) == 0) goto LAB_02c224a4;
+      *(undefined1 *)(param_2 + 0x20) = *(undefined1 *)(param_1 + 0x22);
+      if (unaff_x21 != 0) {
+        FUN_02c24ccc();
+        if (*unaff_x20 != 0) {
+          *(undefined1 *)(unaff_x19 + 0xb0) = 1;
+          return;
+        }
+      }
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_017fc5a8();
+  }
+LAB_02c224a4:
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5b0();
+}
+
+
+
+END_DECOMPILED_FUNCTION

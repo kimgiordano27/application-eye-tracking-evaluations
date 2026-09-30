@@ -1,0 +1,37 @@
+/*
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPlugin.EyeGazeState>$$get_Current
+ENTRY_POINT: 049ace20
+PROGRAM: spatialPiano-libil2cpp.so
+SCORE: 79
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;pose_vector;attempted_use
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void System_Array_EmptyInternalEnumerator<OVRPlugin_EyeGazeState>__get_Current(long param_1)
+
+{
+  long unaff_x19;
+  undefined4 unaff_w20;
+  
+  Newtonsoft_Json_Linq_JObject__LoadAsync(param_1,0,*(undefined4 *)(param_1 + 0x18),0);
+                    /* try { // try from 049ace40 to 04aace97 has its CatchHandler @ 049ace40
+                       catch() { ... } // from try @ 049ace40 with catch @ 049ace40
+                       catch() { ... } // from try @ 049acf60 with catch @ 049ace40
+                       catch() { ... } // from try @ 049acfe8 with catch @ 049ace40
+                       catch() { ... } // from try @ 049ad028 with catch @ 049ace40
+                       catch() { ... } // from try @ 049ad054 with catch @ 049ace40
+                       catch() { ... } // from try @ 049ad0d0 with catch @ 049ace40 */
+  *(undefined4 *)(unaff_x19 + 0x28) = 0;
+  *(undefined8 *)(unaff_x19 + 0x20) = 0xffffffff00000000;
+  Newtonsoft_Json_Linq_JObject__LoadAsync(*(undefined8 *)(unaff_x19 + 0x18),0,unaff_w20,0);
+  *(int *)(unaff_x19 + 0x2c) = *(int *)(unaff_x19 + 0x2c) + 1;
+  return;
+}
+
+

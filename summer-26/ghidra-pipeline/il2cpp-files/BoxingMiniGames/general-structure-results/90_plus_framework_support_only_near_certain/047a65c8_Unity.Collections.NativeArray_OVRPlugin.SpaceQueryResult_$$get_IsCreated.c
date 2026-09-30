@@ -1,0 +1,100 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.SpaceQueryResult>$$get_IsCreated
+ENTRY_POINT: 047a65c8
+PROGRAM: BoxingMiniGames-libil2cpp.so
+SCORE: 100
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__get_IsCreated(void)
+
+{
+  long lVar1;
+  long lVar2;
+  uint uVar3;
+  undefined8 uVar4;
+  char in_NG;
+  char in_OV;
+  int iVar5;
+  long unaff_x19;
+  long unaff_x20;
+  long unaff_x22;
+  undefined8 unaff_x23;
+  undefined8 unaff_x24;
+  ulong unaff_x27;
+  uint uVar6;
+  ulong unaff_x28;
+  ulong uVar7;
+  long unaff_x29;
+  undefined8 uVar8;
+  ulong in_stack_00000008;
+  long in_stack_00000010;
+  int in_stack_00000018;
+  
+  while( true ) {
+    if (in_NG == in_OV) goto LAB_047a653c;
+    do {
+      uVar6 = *(uint *)(unaff_x22 + 0x18);
+      uVar7 = unaff_x28;
+      do {
+        unaff_x28 = unaff_x27;
+        uVar3 = (int)uVar7 + 1;
+        if (uVar6 <= uVar3) goto LAB_047a6620;
+        lVar2 = unaff_x22 + (long)(int)uVar3 * 0x10;
+        *(undefined8 *)(lVar2 + 0x20) = unaff_x23;
+        *(undefined8 *)(lVar2 + 0x28) = unaff_x24;
+        thunk_FUN_036b7ad0(unaff_x29 + (long)(int)uVar3 * 0x10,0);
+        if (unaff_x28 == in_stack_00000008) {
+          return;
+        }
+        uVar6 = *(uint *)(unaff_x22 + 0x18);
+        unaff_x27 = unaff_x28 + 1;
+        if (uVar6 <= (uint)unaff_x27) goto LAB_047a6620;
+        lVar2 = unaff_x22 + unaff_x27 * 0x10;
+        unaff_x23 = *(undefined8 *)(lVar2 + 0x20);
+        unaff_x24 = *(undefined8 *)(lVar2 + 0x28);
+        uVar7 = unaff_x28;
+      } while ((long)unaff_x28 < in_stack_00000010);
+LAB_047a653c:
+      uVar6 = (uint)unaff_x28;
+      if (*(uint *)(unaff_x22 + 0x18) <= uVar6) goto LAB_047a6620;
+      if (unaff_x20 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03642c18();
+      }
+      lVar2 = unaff_x22 + (long)(int)uVar6 * 0x10;
+      uVar8 = *(undefined8 *)(lVar2 + 0x20);
+      uVar4 = *(undefined8 *)(lVar2 + 0x28);
+      if ((*(ushort *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+        FUN_0367c9fc();
+      }
+      iVar5 = (**(code **)(unaff_x20 + 0x18))
+                        (*(undefined8 *)(unaff_x20 + 0x40),unaff_x23,unaff_x24,uVar8,uVar4,
+                         *(undefined8 *)(unaff_x20 + 0x28));
+    } while (-1 < iVar5);
+    if (*(uint *)(unaff_x22 + 0x18) <= uVar6) break;
+    uVar3 = uVar6 + 1;
+    if (*(uint *)(unaff_x22 + 0x18) <= uVar3) break;
+    lVar1 = unaff_x22 + (long)(int)uVar3 * 0x10;
+    uVar8 = *(undefined8 *)(lVar2 + 0x20);
+    *(undefined8 *)(lVar1 + 0x28) = *(undefined8 *)(lVar2 + 0x28);
+    *(undefined8 *)(lVar1 + 0x20) = uVar8;
+    thunk_FUN_036b7ad0(unaff_x29 + (long)(int)uVar3 * 0x10,0);
+    uVar6 = uVar6 - 1;
+    unaff_x28 = (ulong)uVar6;
+    in_OV = SBORROW4(uVar6,in_stack_00000018);
+    in_NG = (int)(uVar6 - in_stack_00000018) < 0;
+  }
+LAB_047a6620:
+                    /* WARNING: Subroutine does not return */
+  FUN_03642c20();
+}
+
+

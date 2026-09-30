@@ -1,0 +1,1173 @@
+/*
+FUNCTION_NAME: System.Xml.Schema.SymbolsDictionary$$GetParticle
+ENTRY_POINT: 01eb1e48
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 145
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ui_interaction;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_3;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_1;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_3;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_3
+*/
+
+
+void System_Xml_Schema_SymbolsDictionary__GetParticle(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  undefined8 uVar7;
+  long lVar8;
+  long *plVar9;
+  long lVar10;
+  long lVar11;
+  long *unaff_x19;
+  undefined8 *unaff_x22;
+  long *unaff_x24;
+  undefined8 *unaff_x25;
+  undefined8 uVar12;
+  
+  puVar2 = Mono_ISystemDependencyProvider_TypeInfo;
+  if (param_1 != 0) {
+    FUN_01eb35f0(param_1,0,*(undefined8 *)StringLiteral_12377);
+                    /* try { // try from 01eb1e70 to 01fb1e7b has its CatchHandler @ 01eb20c8 */
+    lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+    if (lVar6 != 0) {
+      FUN_017b46ec(lVar6,0);
+      *(undefined4 *)(lVar6 + 0x10) = 1;
+      uVar7 = FUN_01eaff34(0);
+      *(undefined4 *)(lVar6 + 0x14) = 0;
+      *(undefined8 *)(lVar6 + 0x18) = uVar7;
+      *(long *)(lVar6 + 0x20) = param_1;
+      if (unaff_x19 != (long *)0x0) {
+        lVar8 = thunk_FUN_00d6225c(lVar6,*(undefined8 *)(*unaff_x19 + 0x40));
+        if (lVar8 == 0) {
+LAB_01eb35e4:
+          uVar7 = thunk_FUN_00d7a17c();
+                    /* WARNING: Subroutine does not return */
+          FUN_00da5038(uVar7,0);
+        }
+        if ((int)unaff_x19[3] == 0) goto LAB_01eb35e0;
+        unaff_x19[4] = lVar6;
+        lVar6 = thunk_FUN_00d62348(*unaff_x22);
+        if (lVar6 != 0) {
+          FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                Method_Obi_ObiPathDataChannel<ObiWingedPoint,_Vector3>_GetSpanCount__
+                      );
+          lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+          if (lVar8 != 0) {
+            FUN_017b46ec(lVar8,0);
+            *(undefined4 *)(lVar8 + 0x10) = 0x16;
+            uVar7 = FUN_01eaff34(10);
+            *(undefined4 *)(lVar8 + 0x14) = 0;
+            *(undefined8 *)(lVar8 + 0x18) = uVar7;
+            *(long *)(lVar8 + 0x20) = lVar6;
+            lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*unaff_x19 + 0x40));
+            if (lVar6 == 0) goto LAB_01eb35e4;
+            if (*(uint *)(unaff_x19 + 3) < 2) goto LAB_01eb35e0;
+            unaff_x19[5] = lVar8;
+            *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x28) = unaff_x19;
+            plVar9 = (long *)FUN_00da4fb8(*unaff_x25,8);
+            lVar6 = thunk_FUN_00d62348(*unaff_x22);
+            if (lVar6 != 0) {
+              FUN_01eb35f0(lVar6,0,*(undefined8 *)StringLiteral_9741);
+              lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+              if (lVar8 != 0) {
+                FUN_017b46ec(lVar8,0);
+                *(undefined4 *)(lVar8 + 0x10) = 1;
+                uVar7 = FUN_01eaff34(10);
+                *(undefined4 *)(lVar8 + 0x14) = 0x100;
+                *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                *(long *)(lVar8 + 0x20) = lVar6;
+                if (plVar9 != (long *)0x0) {
+                  lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*plVar9 + 0x40));
+                  if (lVar6 == 0) goto LAB_01eb35e4;
+                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                  plVar9[4] = lVar8;
+                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                  if (lVar6 != 0) {
+                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                          Method_OVRSceneAnchor_GetSceneAnchorsOfType<object>__);
+                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                    if (lVar8 != 0) {
+                      FUN_017b46ec(lVar8,0);
+                      *(undefined4 *)(lVar8 + 0x10) = 9;
+                      uVar7 = FUN_01eaff34(10);
+                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                      *(long *)(lVar8 + 0x20) = lVar6;
+                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*plVar9 + 0x40));
+                      if (lVar6 == 0) goto LAB_01eb35e4;
+                      if (*(uint *)(plVar9 + 3) < 2) goto LAB_01eb35e0;
+                      plVar9[5] = lVar8;
+                      lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                      if (lVar6 != 0) {
+                        FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                              Method_System_Collections_Generic_List_Enumerator<MetaXRAcousticGeometry_TerrainMaterial>_MoveNext__
+                                    );
+                        lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                        if (lVar8 != 0) {
+                          FUN_017b46ec(lVar8,0);
+                          *(undefined4 *)(lVar8 + 0x10) = 6;
+                          uVar7 = FUN_01eaff34(10);
+                          *(undefined4 *)(lVar8 + 0x14) = 0;
+                          *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                          *(long *)(lVar8 + 0x20) = lVar6;
+                          lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*plVar9 + 0x40));
+                          if (lVar6 == 0) goto LAB_01eb35e4;
+                          if (*(uint *)(plVar9 + 3) < 3) goto LAB_01eb35e0;
+                          plVar9[6] = lVar8;
+                          lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                          if (lVar6 != 0) {
+                            FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                  RCG_Lovesick_InteractiveObjects_PlacePoint_<>c_TypeInfo
+                                        );
+                            lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                            if (lVar8 != 0) {
+                              FUN_017b46ec(lVar8,0);
+                              *(undefined4 *)(lVar8 + 0x10) = 0xe;
+                              uVar7 = FUN_01eaff34(10);
+                              *(undefined4 *)(lVar8 + 0x14) = 0;
+                              *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                              *(long *)(lVar8 + 0x20) = lVar6;
+                              lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*plVar9 + 0x40));
+                              if (lVar6 == 0) goto LAB_01eb35e4;
+                              if (*(uint *)(plVar9 + 3) < 4) goto LAB_01eb35e0;
+                              plVar9[7] = lVar8;
+                              lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                              puVar3 = 
+                              Method_System_Linq_Set<__Il2CppFullySharedGenericType>_Resize__;
+                              if (lVar6 != 0) {
+                                FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                            
+                                                  Method_System_Linq_Set<__Il2CppFullySharedGenericType>_Resize__
+                                            );
+                                lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                if (lVar8 != 0) {
+                                  FUN_017b46ec(lVar8,0);
+                                  *(undefined4 *)(lVar8 + 0x10) = 0x29;
+                                  uVar7 = FUN_01eaff34(0);
+                                  *(undefined4 *)(lVar8 + 0x14) = 0;
+                                  *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                  *(long *)(lVar8 + 0x20) = lVar6;
+                                  lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)(*plVar9 + 0x40));
+                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                  if (*(uint *)(plVar9 + 3) < 5) goto LAB_01eb35e0;
+                                  plVar9[8] = lVar8;
+                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                  if (lVar6 != 0) {
+                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlTypeMapElementInfo_set_IsUnnamedAnyElement__
+                                                );
+                                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                    if (lVar8 != 0) {
+                                      FUN_017b46ec(lVar8,0);
+                                      *(undefined4 *)(lVar8 + 0x10) = 0x2a;
+                                      uVar7 = FUN_01eaff34(7);
+                                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                      *(long *)(lVar8 + 0x20) = lVar6;
+                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                        (*plVar9 + 0x40));
+                                      if (lVar6 == 0) goto LAB_01eb35e4;
+                                      if (*(uint *)(plVar9 + 3) < 6) goto LAB_01eb35e0;
+                                      plVar9[9] = lVar8;
+                                      lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                      if (lVar6 != 0) {
+                                        FUN_01eb35f0(lVar6,0,*(undefined8 *)StringLiteral_6747);
+                                        lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                        if (lVar8 != 0) {
+                                          FUN_017b46ec(lVar8,0);
+                                          *(undefined4 *)(lVar8 + 0x10) = 0x2b;
+                                          uVar7 = FUN_01eaff34(0);
+                                          *(undefined4 *)(lVar8 + 0x14) = 0;
+                                          *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                          *(long *)(lVar8 + 0x20) = lVar6;
+                                          lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                            (*plVar9 + 0x40));
+                                          if (lVar6 == 0) goto LAB_01eb35e4;
+                                          if (*(uint *)(plVar9 + 3) < 7) goto LAB_01eb35e0;
+                                          plVar9[10] = lVar8;
+                                          lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                          if (lVar6 != 0) {
+                                            FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                    
+                                                  System_Data_DataViewManagerListItemTypeDescriptor_TypeInfo
+                                                  );
+                                            lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                            if (lVar8 != 0) {
+                                              FUN_017b46ec(lVar8,0);
+                                              *(undefined4 *)(lVar8 + 0x10) = 0x2c;
+                                              uVar7 = FUN_01eaff34(0);
+                                              *(undefined4 *)(lVar8 + 0x14) = 0;
+                                              *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                              *(long *)(lVar8 + 0x20) = lVar6;
+                                              lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                (*plVar9 + 0x40));
+                                              if (lVar6 == 0) goto LAB_01eb35e4;
+                                              if (*(uint *)(plVar9 + 3) < 8) goto LAB_01eb35e0;
+                                              plVar9[0xb] = lVar8;
+                                              *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x30) =
+                                                   plVar9;
+                                              plVar9 = (long *)FUN_00da4fb8(*unaff_x25,7);
+                                              lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                              if (lVar6 != 0) {
+                                                FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                            
+                                                  System_Collections_Generic_List<NavMeshSurface>_TypeInfo
+                                                  );
+                                                lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                if (lVar8 != 0) {
+                                                  FUN_017b46ec(lVar8,0);
+                                                  *(undefined4 *)(lVar8 + 0x10) = 1;
+                                                  uVar7 = FUN_01eaff34(10);
+                                                  *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                  *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                  *(long *)(lVar8 + 0x20) = lVar6;
+                                                  if (plVar9 != (long *)0x0) {
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                    plVar9[4] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                            StringLiteral_4010);
+                                                      lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar2);
+                                                      if (lVar8 != 0) {
+                                                        FUN_017b46ec(lVar8,0);
+                                                        *(undefined4 *)(lVar8 + 0x10) = 0x12;
+                                                        uVar7 = FUN_01eaff34(10);
+                                                        *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                        *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                        *(long *)(lVar8 + 0x20) = lVar6;
+                                                        lVar6 = thunk_FUN_00d6225c(lVar8,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 2) goto LAB_01eb35e0;
+                                                  plVar9[5] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_Unity_Burst_Intrinsics_Arm_Neon_vmulx_lane_f32__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x1e;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 3)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[6] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    puVar5 = 
+                                                  Method_System_Collections_Generic_List<Light2D>_get_Item__
+                                                  ;
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_System_Collections_Generic_List<Light2D>_get_Item__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x29;
+                                                    uVar7 = FUN_01eaff34(10);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 4)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[7] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                            PTR_DAT_033f1ad8);
+                                                      lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar2);
+                                                      if (lVar8 != 0) {
+                                                        FUN_017b46ec(lVar8,0);
+                                                        *(undefined4 *)(lVar8 + 0x10) = 0x2a;
+                                                        uVar7 = FUN_01eaff34(7);
+                                                        *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                        *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                        *(long *)(lVar8 + 0x20) = lVar6;
+                                                        lVar6 = thunk_FUN_00d6225c(lVar8,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 5) goto LAB_01eb35e0;
+                                                  plVar9[8] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  puVar1 = 
+                                                  Method_UnityEngine_XR_Interaction_Toolkit_AR_GestureRecognizer<TapGesture>_TryCreateOneFingerGestureOnTouchBegan__
+                                                  ;
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_UnityEngine_XR_Interaction_Toolkit_AR_GestureRecognizer<TapGesture>_TryCreateOneFingerGestureOnTouchBegan__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x2b;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 6)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[9] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    puVar4 = 
+                                                  System_Xml_Schema_XmlSchemaObjectTable_XSOEnumerator_TypeInfo
+                                                  ;
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  System_Xml_Schema_XmlSchemaObjectTable_XSOEnumerator_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x2c;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 7)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[10] = lVar8;
+                                                    *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x38)
+                                                         = plVar9;
+                                                    plVar9 = (long *)FUN_00da4fb8(*unaff_x25,3);
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_Unity_Burst_Intrinsics_Arm_Neon_vqsubq_s8__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 2;
+                                                    uVar7 = FUN_01eaff34(10);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0x100;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    if (plVar9 != (long *)0x0) {
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  UnityEngine_Events_UnityAction<DeactivateEventArgs>_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 4;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 2)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[5] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_UnityEngine_Mesh_MeshData_GetVertexData<MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_96>__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 3;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 3)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[6] = lVar8;
+                                                    *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x40)
+                                                         = plVar9;
+                                                    plVar9 = (long *)FUN_00da4fb8(*unaff_x25,3);
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  System_Runtime_CompilerServices_ITuple_TypeInfo);
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 2;
+                                                    uVar7 = FUN_01eaff34(10);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    if (plVar9 != (long *)0x0) {
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                          StringLiteral_5392);
+                                                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2
+                                                                              );
+                                                    if (lVar8 != 0) {
+                                                      FUN_017b46ec(lVar8,0);
+                                                      *(undefined4 *)(lVar8 + 0x10) = 0x12;
+                                                      uVar7 = FUN_01eaff34(10);
+                                                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                      *(long *)(lVar8 + 0x20) = lVar6;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 2) goto LAB_01eb35e0;
+                                                  plVar9[5] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_System_Net_Configuration_SocketElement__ctor__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x1e;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 3)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[6] = lVar8;
+                                                    *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x48)
+                                                         = plVar9;
+                                                    plVar9 = (long *)FUN_00da4fb8(*unaff_x25,3);
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_Meta_XR_MRUtilityKit_SceneDecorator_PoolManager<GameObject,_Pool<GameObject>>_GetPool__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0xe;
+                                                    uVar7 = FUN_01eaff34(10);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    if (plVar9 != (long *)0x0) {
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  UnityEngine_UIElements_BindableElement_UxmlFactory_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 4;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 2)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[5] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeBufferPointerWithoutChecks<int4>__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 3;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 3)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[6] = lVar8;
+                                                    *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x50)
+                                                         = plVar9;
+                                                    plVar9 = (long *)FUN_00da4fb8(*unaff_x25,4);
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)puVar3);
+                                                      lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar2);
+                                                      if (lVar8 != 0) {
+                                                        FUN_017b46ec(lVar8,0);
+                                                        *(undefined4 *)(lVar8 + 0x10) = 0x29;
+                                                        uVar7 = FUN_01eaff34(0);
+                                                        *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                        *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                        *(long *)(lVar8 + 0x20) = lVar6;
+                                                        if (plVar9 != (long *)0x0) {
+                                                          lVar6 = thunk_FUN_00d6225c(lVar8,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_System_Xml_Serialization_XmlTypeMapElementInfo_set_IsUnnamedAnyElement__
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x2a;
+                                                    uVar7 = FUN_01eaff34(7);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 2)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[5] = lVar8;
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                            StringLiteral_6747);
+                                                      lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar2);
+                                                      if (lVar8 != 0) {
+                                                        FUN_017b46ec(lVar8,0);
+                                                        *(undefined4 *)(lVar8 + 0x10) = 0x2b;
+                                                        uVar7 = FUN_01eaff34(0);
+                                                        *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                        *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                        *(long *)(lVar8 + 0x20) = lVar6;
+                                                        lVar6 = thunk_FUN_00d6225c(lVar8,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 3) goto LAB_01eb35e0;
+                                                  plVar9[6] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  System_Data_DataViewManagerListItemTypeDescriptor_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar8 != 0) {
+                                                    FUN_017b46ec(lVar8,0);
+                                                    *(undefined4 *)(lVar8 + 0x10) = 0x2c;
+                                                    uVar7 = FUN_01eaff34(0);
+                                                    *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                    *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                    *(long *)(lVar8 + 0x20) = lVar6;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8 *)
+                                                                                      (*plVar9 +
+                                                                                      0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 4)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[7] = lVar8;
+                                                    *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x58)
+                                                         = plVar9;
+                                                    plVar9 = (long *)FUN_00da4fb8(*unaff_x25,4);
+                                                    lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb35f0(lVar6,0,*(undefined8 *)puVar5);
+                                                      lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar2);
+                                                      if (lVar8 != 0) {
+                                                        FUN_017b46ec(lVar8,0);
+                                                        *(undefined4 *)(lVar8 + 0x10) = 0x29;
+                                                        uVar7 = FUN_01eaff34(10);
+                                                        *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                        *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                        *(long *)(lVar8 + 0x20) = lVar6;
+                                                        if (plVar9 != (long *)0x0) {
+                                                          lVar6 = thunk_FUN_00d6225c(lVar8,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)
+                                                                          PTR_DAT_033f1ad8);
+                                                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2
+                                                                              );
+                                                    if (lVar8 != 0) {
+                                                      FUN_017b46ec(lVar8,0);
+                                                      *(undefined4 *)(lVar8 + 0x10) = 0x2a;
+                                                      uVar7 = FUN_01eaff34(7);
+                                                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                      *(long *)(lVar8 + 0x20) = lVar6;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 2) goto LAB_01eb35e0;
+                                                  plVar9[5] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)puVar1);
+                                                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2
+                                                                              );
+                                                    if (lVar8 != 0) {
+                                                      FUN_017b46ec(lVar8,0);
+                                                      *(undefined4 *)(lVar8 + 0x10) = 0x2b;
+                                                      uVar7 = FUN_01eaff34(0);
+                                                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                      *(long *)(lVar8 + 0x20) = lVar6;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 3) goto LAB_01eb35e0;
+                                                  plVar9[6] = lVar8;
+                                                  lVar6 = thunk_FUN_00d62348(*unaff_x22);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb35f0(lVar6,0,*(undefined8 *)puVar4);
+                                                    lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar2
+                                                                              );
+                                                    if (lVar8 != 0) {
+                                                      FUN_017b46ec(lVar8,0);
+                                                      *(undefined4 *)(lVar8 + 0x10) = 0x2c;
+                                                      uVar7 = FUN_01eaff34(0);
+                                                      *(undefined4 *)(lVar8 + 0x14) = 0;
+                                                      *(undefined8 *)(lVar8 + 0x18) = uVar7;
+                                                      *(long *)(lVar8 + 0x20) = lVar6;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar8,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 4) goto LAB_01eb35e0;
+                                                  plVar9[7] = lVar8;
+                                                  puVar3 = 
+                                                  Method_Newtonsoft_Json_Linq_JProperty_GetItem__;
+                                                  *(long **)(*(long *)(*unaff_x24 + 0xb8) + 0x60) =
+                                                       plVar9;
+                                                  puVar2 = 
+                                                  Method_System_Collections_Generic_Dictionary_KeyCollection_Enumerator<TextureBlenderMaterialPropertyCacheHelper_MaterialPropertyPair,_object>_get_Current__
+                                                  ;
+                                                  plVar9 = (long *)FUN_00da4fb8(*(undefined8 *)
+                                                                                 puVar3,9);
+                                                  uVar7 = **(undefined8 **)(*unaff_x24 + 0xb8);
+                                                  lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar2);
+                                                  if (lVar6 != 0) {
+                                                    FUN_017b46ec(lVar6,0);
+                                                    *(undefined4 *)(lVar6 + 0x10) = 0;
+                                                    *(undefined8 *)(lVar6 + 0x18) = uVar7;
+                                                    *(undefined8 *)(lVar6 + 0x28) = 0;
+                                                    *(undefined8 *)(lVar6 + 0x20) = 0;
+                                                    *(undefined8 *)(lVar6 + 0x38) = 0;
+                                                    *(undefined8 *)(lVar6 + 0x30) = 0;
+                                                    *(undefined1 *)(lVar6 + 0x40) = 0;
+                                                    if (plVar9 != (long *)0x0) {
+                                                      lVar8 = thunk_FUN_00d6225c(lVar6,*(undefined8
+                                                                                         *)(*plVar9 
+                                                  + 0x40));
+                                                  if (lVar8 == 0) goto LAB_01eb35e4;
+                                                  if ((int)plVar9[3] == 0) goto LAB_01eb35e0;
+                                                  plVar9[4] = lVar6;
+                                                  puVar3 = 
+                                                  RCG_Lovesick_RhythmGame_SongManager_TypeInfo;
+                                                  uVar12 = *(undefined8 *)
+                                                            (*(long *)(*unaff_x24 + 0xb8) + 8);
+                                                  uVar7 = *(undefined8 *)
+                                                           (*(long *)(*unaff_x24 + 0xb8) + 0x28);
+                                                  lVar6 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                                                                                            
+                                                  RCG_Lovesick_RhythmGame_SongManager_TypeInfo);
+                                                  puVar5 = StringLiteral_8081;
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  System_Data_FunctionNode_TypeInfo);
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar5);
+                                                  puVar1 = 
+                                                  System_Collections_Generic_List<ITimelineEvaluateCallback>_TypeInfo
+                                                  ;
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb389c(lVar8,0,*(undefined8 *)
+                                                                          OVRPlugin_Media_TypeInfo);
+                                                    lVar10 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                 puVar1);
+                                                    if (lVar10 != 0) {
+                                                      FUN_01eb3970(lVar10,0,*(undefined8 *)
+                                                                             StringLiteral_2469);
+                                                      lVar11 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                   puVar2);
+                                                      if (lVar11 != 0) {
+                                                        FUN_017b46ec(lVar11,0);
+                                                        *(undefined8 *)(lVar11 + 0x18) = uVar12;
+                                                        *(undefined8 *)(lVar11 + 0x20) = uVar7;
+                                                        *(long *)(lVar11 + 0x28) = lVar6;
+                                                        *(long *)(lVar11 + 0x30) = lVar8;
+                                                        *(long *)(lVar11 + 0x38) = lVar10;
+                                                        *(undefined4 *)(lVar11 + 0x10) = 0x1f;
+                                                        *(undefined1 *)(lVar11 + 0x40) = 0;
+                                                        lVar6 = thunk_FUN_00d6225c(lVar11,*(
+                                                  undefined8 *)(*plVar9 + 0x40));
+                                                  puVar4 = StringLiteral_3853;
+                                                  if (lVar6 == 0) goto LAB_01eb35e4;
+                                                  if (*(uint *)(plVar9 + 3) < 2) goto LAB_01eb35e0;
+                                                  plVar9[5] = lVar11;
+                                                  uVar7 = *(undefined8 *)
+                                                           (*(long *)(*(long *)puVar4 + 0xb8) + 0x10
+                                                           );
+                                                  uVar12 = *(undefined8 *)
+                                                            (*(long *)(*(long *)puVar4 + 0xb8) +
+                                                            0x30);
+                                                  lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar3);
+                                                  if (lVar6 != 0) {
+                                                    FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Field_<PrivateImplementationDetails>_C9DC39A22CBFC4F5FF834B1596E09F71781B66A23D4CE41A687AEDFD7F6A83B9
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar5);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb389c(lVar8,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  RhythmGameStarter_TrackManager_<>c__DisplayClass22_0_TypeInfo
+                                                  );
+                                                  lVar10 = thunk_FUN_00d62348(*(undefined8 *)puVar1)
+                                                  ;
+                                                  if (lVar10 != 0) {
+                                                    FUN_01eb3970(lVar10,0,*(undefined8 *)
+                                                                                                                                                      
+                                                  Method_UnityEngine_ProBuilder_MeshOperations_DeleteElements_<>c_<DeleteFaces>b__3_0__
+                                                  );
+                                                  lVar11 = thunk_FUN_00d62348(*(undefined8 *)puVar2)
+                                                  ;
+                                                  if (lVar11 != 0) {
+                                                    FUN_017b46ec(lVar11,0);
+                                                    *(undefined8 *)(lVar11 + 0x18) = uVar7;
+                                                    *(undefined8 *)(lVar11 + 0x20) = uVar12;
+                                                    *(long *)(lVar11 + 0x28) = lVar6;
+                                                    *(long *)(lVar11 + 0x30) = lVar8;
+                                                    *(long *)(lVar11 + 0x38) = lVar10;
+                                                    *(undefined4 *)(lVar11 + 0x10) = 0x20;
+                                                    *(undefined1 *)(lVar11 + 0x40) = 0;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar11,*(undefined8 *
+                                                                                       )(*plVar9 +
+                                                                                        0x40));
+                                                    puVar4 = StringLiteral_3853;
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 3)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[6] = lVar11;
+                                                    uVar7 = *(undefined8 *)
+                                                             (*(long *)(*(long *)puVar4 + 0xb8) +
+                                                             0x18);
+                                                    uVar12 = *(undefined8 *)
+                                                              (*(long *)(*(long *)puVar4 + 0xb8) +
+                                                              0x38);
+                                                    lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar3
+                                                                              );
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  UnityEngine_InputSystem_LowLevel_InputRuntime_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar5);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb389c(lVar8,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_Unity_Burst_Intrinsics_Arm_Neon_vqshl_s32__
+                                                  );
+                                                  lVar10 = thunk_FUN_00d62348(*(undefined8 *)puVar1)
+                                                  ;
+                                                  if (lVar10 != 0) {
+                                                    FUN_01eb3970(lVar10,0,*(undefined8 *)
+                                                                           PTR_DAT_033f0228);
+                                                    lVar11 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                 puVar2);
+                                                    if (lVar11 != 0) {
+                                                      FUN_017b46ec(lVar11,0);
+                                                      *(undefined8 *)(lVar11 + 0x18) = uVar7;
+                                                      *(undefined8 *)(lVar11 + 0x20) = uVar12;
+                                                      *(long *)(lVar11 + 0x28) = lVar6;
+                                                      *(long *)(lVar11 + 0x30) = lVar8;
+                                                      *(long *)(lVar11 + 0x38) = lVar10;
+                                                      *(undefined4 *)(lVar11 + 0x10) = 0x23;
+                                                      *(undefined1 *)(lVar11 + 0x40) = 0;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar11,*(undefined8
+                                                                                          *)(*plVar9
+                                                                                            + 0x40))
+                                                      ;
+                                                      puVar4 = StringLiteral_3853;
+                                                      if (lVar6 == 0) goto LAB_01eb35e4;
+                                                      if (*(uint *)(plVar9 + 3) < 4)
+                                                      goto LAB_01eb35e0;
+                                                      plVar9[7] = lVar11;
+                                                      uVar7 = *(undefined8 *)
+                                                               (*(long *)(*(long *)puVar4 + 0xb8) +
+                                                               0x40);
+                                                      lVar6 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar3);
+                                                      if (lVar6 != 0) {
+                                                        FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                              StringLiteral_13781);
+                                                        lVar8 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                    puVar1);
+                                                        if (lVar8 != 0) {
+                                                          FUN_01eb3970(lVar8,0,*(undefined8 *)
+                                                                                                                                                                
+                                                  System_Collections_Generic_List<MB2_TexturePackerRegular_Node>_TypeInfo
+                                                  );
+                                                  lVar10 = thunk_FUN_00d62348(*(undefined8 *)puVar2)
+                                                  ;
+                                                  if (lVar10 != 0) {
+                                                    FUN_017b46ec(lVar10,0);
+                                                    *(undefined8 *)(lVar10 + 0x18) = 0;
+                                                    *(undefined8 *)(lVar10 + 0x20) = uVar7;
+                                                    *(long *)(lVar10 + 0x28) = lVar6;
+                                                    *(undefined8 *)(lVar10 + 0x30) = 0;
+                                                    *(long *)(lVar10 + 0x38) = lVar8;
+                                                    *(undefined4 *)(lVar10 + 0x10) = 0x21;
+                                                    *(undefined1 *)(lVar10 + 0x40) = 0;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar10,*(undefined8 *
+                                                                                       )(*plVar9 +
+                                                                                        0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 5)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[8] = lVar10;
+                                                    uVar7 = *(undefined8 *)
+                                                             (*(long *)(*(long *)puVar4 + 0xb8) +
+                                                             0x48);
+                                                    lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar3
+                                                                              );
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Meta_Voice_NLayer_Decoder_MpegFrame_TypeInfo);
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar5);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb389c(lVar8,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_UnityEngine_Mesh_SetSizedArrayForChannel__)
+                                                  ;
+                                                  lVar10 = thunk_FUN_00d62348(*(undefined8 *)puVar1)
+                                                  ;
+                                                  if (lVar10 != 0) {
+                                                    FUN_01eb3970(lVar10,0,*(undefined8 *)
+                                                                                                                                                      
+                                                  Method_UnityEngine__AndroidJNIHelper_GetFieldID__)
+                                                  ;
+                                                  lVar11 = thunk_FUN_00d62348(*(undefined8 *)puVar2)
+                                                  ;
+                                                  if (lVar11 != 0) {
+                                                    FUN_017b46ec(lVar11,0);
+                                                    *(undefined8 *)(lVar11 + 0x18) = 0;
+                                                    *(undefined8 *)(lVar11 + 0x20) = uVar7;
+                                                    *(long *)(lVar11 + 0x28) = lVar6;
+                                                    *(long *)(lVar11 + 0x30) = lVar8;
+                                                    *(long *)(lVar11 + 0x38) = lVar10;
+                                                    *(undefined4 *)(lVar11 + 0x10) = 0x24;
+                                                    *(undefined1 *)(lVar11 + 0x40) = 0;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar11,*(undefined8 *
+                                                                                       )(*plVar9 +
+                                                                                        0x40));
+                                                    puVar5 = StringLiteral_3853;
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (*(uint *)(plVar9 + 3) < 6)
+                                                    goto LAB_01eb35e0;
+                                                    plVar9[9] = lVar11;
+                                                    uVar7 = *(undefined8 *)
+                                                             (*(long *)(*(long *)puVar5 + 0xb8) +
+                                                             0x20);
+                                                    uVar12 = *(undefined8 *)
+                                                              (*(long *)(*(long *)puVar5 + 0xb8) +
+                                                              0x50);
+                                                    lVar6 = thunk_FUN_00d62348(*(undefined8 *)puVar3
+                                                                              );
+                                                    if (lVar6 != 0) {
+                                                      FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                        
+                                                  Method_OVRExtensions_ToNonAlloc<string>__);
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar1);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb3970(lVar8,0,*(undefined8 *)
+                                                                          StringLiteral_9569);
+                                                    lVar10 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                 puVar2);
+                                                    if (lVar10 != 0) {
+                                                      FUN_017b46ec(lVar10,0);
+                                                      *(undefined8 *)(lVar10 + 0x18) = uVar7;
+                                                      *(undefined8 *)(lVar10 + 0x20) = uVar12;
+                                                      *(long *)(lVar10 + 0x28) = lVar6;
+                                                      *(undefined8 *)(lVar10 + 0x30) = 0;
+                                                      *(long *)(lVar10 + 0x38) = lVar8;
+                                                      *(undefined4 *)(lVar10 + 0x10) = 0x22;
+                                                      *(undefined1 *)(lVar10 + 0x40) = 0;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar10,*(undefined8
+                                                                                          *)(*plVar9
+                                                                                            + 0x40))
+                                                      ;
+                                                      puVar5 = StringLiteral_3853;
+                                                      if (lVar6 == 0) goto LAB_01eb35e4;
+                                                      if (*(uint *)(plVar9 + 3) < 7)
+                                                      goto LAB_01eb35e0;
+                                                      plVar9[10] = lVar10;
+                                                      uVar7 = *(undefined8 *)
+                                                               (*(long *)(*(long *)puVar5 + 0xb8) +
+                                                               0x58);
+                                                      lVar6 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar3);
+                                                      if (lVar6 != 0) {
+                                                        FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                            
+                                                  Meta_XR_MRUtilityKit_AnchorPrefabSpawner_AnchorPrefabGroup_TypeInfo
+                                                  );
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar1);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb3970(lVar8,0,*(undefined8 *)
+                                                                          StringLiteral_5056);
+                                                    lVar10 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                 puVar2);
+                                                    if (lVar10 != 0) {
+                                                      FUN_017b46ec(lVar10,0);
+                                                      *(undefined8 *)(lVar10 + 0x18) = 0;
+                                                      *(undefined8 *)(lVar10 + 0x20) = uVar7;
+                                                      *(long *)(lVar10 + 0x28) = lVar6;
+                                                      *(undefined8 *)(lVar10 + 0x30) = 0;
+                                                      *(long *)(lVar10 + 0x38) = lVar8;
+                                                      *(undefined4 *)(lVar10 + 0x10) = 0x25;
+                                                      *(undefined1 *)(lVar10 + 0x40) = 1;
+                                                      lVar6 = thunk_FUN_00d6225c(lVar10,*(undefined8
+                                                                                          *)(*plVar9
+                                                                                            + 0x40))
+                                                      ;
+                                                      if (lVar6 == 0) goto LAB_01eb35e4;
+                                                      if (*(uint *)(plVar9 + 3) < 8) {
+LAB_01eb35e0:
+                    /* WARNING: Subroutine does not return */
+                                                        FUN_00da5194();
+                                                      }
+                                                      plVar9[0xb] = lVar10;
+                                                      uVar7 = *(undefined8 *)
+                                                               (*(long *)(*(long *)puVar5 + 0xb8) +
+                                                               0x60);
+                                                      lVar6 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                  puVar3);
+                                                      if (lVar6 != 0) {
+                                                        FUN_01eb37c4(lVar6,0,*(undefined8 *)
+                                                                                                                                                            
+                                                  Method_HingedCipherWheel_OnRelease__);
+                                                  lVar8 = thunk_FUN_00d62348(*(undefined8 *)puVar1);
+                                                  if (lVar8 != 0) {
+                                                    FUN_01eb3970(lVar8,0,*(undefined8 *)
+                                                                                                                                                    
+                                                  Method_UnityEngine_UIElements_InternalTreeView_GetItemId__
+                                                  );
+                                                  lVar10 = thunk_FUN_00d62348(*(undefined8 *)puVar2)
+                                                  ;
+                                                  if (lVar10 != 0) {
+                                                    FUN_017b46ec(lVar10,0);
+                                                    *(undefined8 *)(lVar10 + 0x18) = 0;
+                                                    *(undefined8 *)(lVar10 + 0x20) = uVar7;
+                                                    *(long *)(lVar10 + 0x28) = lVar6;
+                                                    *(undefined8 *)(lVar10 + 0x30) = 0;
+                                                    *(long *)(lVar10 + 0x38) = lVar8;
+                                                    *(undefined4 *)(lVar10 + 0x10) = 0x25;
+                                                    *(undefined1 *)(lVar10 + 0x40) = 1;
+                                                    lVar6 = thunk_FUN_00d6225c(lVar10,*(undefined8 *
+                                                                                       )(*plVar9 +
+                                                                                        0x40));
+                                                    if (lVar6 == 0) goto LAB_01eb35e4;
+                                                    if (8 < *(uint *)(plVar9 + 3)) {
+                                                      plVar9[0xc] = lVar10;
+                                                      *(long **)(*(long *)(*(long *)puVar5 + 0xb8) +
+                                                                0x68) = plVar9;
+                                                      return;
+                                                    }
+                                                    goto LAB_01eb35e0;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da518c();
+}
+
+

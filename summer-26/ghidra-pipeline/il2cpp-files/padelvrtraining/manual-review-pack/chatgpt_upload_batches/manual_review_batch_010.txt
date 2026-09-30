@@ -1,0 +1,518 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 46
+FUNCTION_NAME: OVRPlugin$$RequestBodyTrackingFidelity
+ENTRY_POINT: 0748471c
+MANUAL_PRIORITY_SCORE: 204
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 107
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_9', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_107', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0748471c_OVRPlugin$$RequestBodyTrackingFidelity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\046_p204_OVRPlugin$$RequestBodyTrackingFidelity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$RequestBodyTrackingFidelity
+ENTRY_POINT: 0748471c
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 107
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_9;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin__RequestBodyTrackingFidelity(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long *plVar3;
+  long lVar4;
+  long lVar5;
+  undefined8 uVar6;
+  
+  puVar2 = PTR_DAT_092237a0;
+  puVar1 = PTR_DAT_09223798;
+  if ((DAT_09845a4b & 1) == 0) {
+    FUN_03d2d2b0(PTR_DAT_09223798);
+    FUN_03d2d2b0(PTR_DAT_092237a0);
+    DAT_09845a4b = 1;
+  }
+  plVar3 = (long *)FUN_03d2d394(*(undefined8 *)puVar1,5);
+  lVar4 = thunk_FUN_03d2ef40(*(undefined8 *)puVar2);
+  FUN_07484918(lVar4,0);
+  if (plVar3 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d548();
+  }
+  if ((lVar4 != 0) &&
+     (lVar5 = thunk_FUN_03d2ee44(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0)) {
+LAB_07484908:
+    uVar6 = thunk_FUN_03d3c630();
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d414(uVar6,0);
+  }
+  if ((int)plVar3[3] != 0) {
+    plVar3[4] = lVar4;
+    thunk_FUN_03d1023c(plVar3 + 4,lVar4);
+    lVar4 = thunk_FUN_03d2ef40(*(undefined8 *)puVar2);
+    FUN_07484918(lVar4,1);
+    if ((lVar4 != 0) &&
+       (lVar5 = thunk_FUN_03d2ee44(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+    goto LAB_07484908;
+    if (1 < *(uint *)(plVar3 + 3)) {
+      plVar3[5] = lVar4;
+      thunk_FUN_03d1023c(plVar3 + 5,lVar4);
+      lVar4 = thunk_FUN_03d2ef40(*(undefined8 *)puVar2);
+      FUN_07484918(lVar4,2);
+      if ((lVar4 != 0) &&
+         (lVar5 = thunk_FUN_03d2ee44(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+      goto LAB_07484908;
+      if (2 < *(uint *)(plVar3 + 3)) {
+        plVar3[6] = lVar4;
+        thunk_FUN_03d1023c(plVar3 + 6,lVar4);
+        lVar4 = thunk_FUN_03d2ef40(*(undefined8 *)puVar2);
+        FUN_07484918(lVar4,3);
+        if ((lVar4 != 0) &&
+           (lVar5 = thunk_FUN_03d2ee44(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+        goto LAB_07484908;
+        if (3 < *(uint *)(plVar3 + 3)) {
+          plVar3[7] = lVar4;
+          thunk_FUN_03d1023c(plVar3 + 7,lVar4);
+          lVar4 = thunk_FUN_03d2ef40(*(undefined8 *)puVar2);
+          FUN_07484918(lVar4,4);
+          if ((lVar4 != 0) &&
+             (lVar5 = thunk_FUN_03d2ee44(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+          goto LAB_07484908;
+          if (4 < *(uint *)(plVar3 + 3)) {
+            plVar3[8] = lVar4;
+            thunk_FUN_03d1023c(plVar3 + 8,lVar4);
+            *(long *)(param_1 + 0x10) = (long)plVar3;
+            thunk_FUN_03d1023c((long *)(param_1 + 0x10),plVar3);
+            FUN_071bc31c(param_1,0);
+            return;
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03d2d550();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 47
+FUNCTION_NAME: Meta.XR.MetaXRFeature$$OnSessionStateChange
+ENTRY_POINT: 074437ec
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_9', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\074437ec_Meta.XR.MetaXRFeature$$OnSessionStateChange.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\047_p203_Meta.XR.MetaXRFeature$$OnSessionStateChange.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MetaXRFeature$$OnSessionStateChange
+ENTRY_POINT: 074437ec
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_9;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MetaXRFeature__OnSessionStateChange
+               (undefined1 param_1 [16],float param_2,float param_3,undefined1 param_4 [16])
+
+{
+  undefined *puVar1;
+  ulong uVar2;
+  undefined1 in_w8;
+  long lVar3;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 uVar4;
+  float fVar5;
+  float fVar6;
+  float fVar7;
+  undefined4 uVar8;
+  float fVar9;
+  undefined4 uVar10;
+  undefined4 uVar11;
+  float fVar12;
+  float fVar13;
+  undefined4 uVar14;
+  undefined4 uVar15;
+  float fVar16;
+  float fVar17;
+  float fVar18;
+  float fVar19;
+  
+  uVar15 = param_4._4_4_;
+  uVar14 = param_4._0_4_;
+  *(undefined1 *)(unaff_x20 + 0x714) = in_w8;
+  if (DAT_09836325 == '\0') {
+    FUN_03d2d2b0(PTR_DAT_091a0f88);
+    DAT_09836325 = '\x01';
+  }
+  if (*(long *)(unaff_x19 + 0x20) != 0) {
+    lVar3 = *(long *)(*(long *)PTR_DAT_091a0f88 + 0xb8);
+    fVar16 = *(float *)(lVar3 + 0x1c);
+    fVar17 = *(float *)(lVar3 + 0x20);
+    fVar19 = *(float *)(lVar3 + 0x18);
+    fVar5 = (float)FUN_08abf9b0(*(long *)(unaff_x19 + 0x20),0);
+    if (*(long *)(unaff_x19 + 0x20) != 0) {
+      fVar18 = *(float *)(unaff_x19 + 0x28);
+      lVar3 = FUN_08a4d98c(*(long *)(unaff_x19 + 0x20),0);
+      if (lVar3 != 0) {
+        fVar6 = (float)FUN_08a5d3f4(lVar3,0);
+        if ((*(long *)(unaff_x19 + 0x20) != 0) &&
+           (fVar9 = param_2, fVar12 = param_3, lVar3 = FUN_08a4d98c(*(long *)(unaff_x19 + 0x20),0),
+           lVar3 != 0)) {
+          fVar7 = (float)FUN_08a5d3f4(lVar3,0);
+          if (*(long *)(unaff_x19 + 0x20) != 0) {
+            fVar13 = fVar12;
+            lVar3 = FUN_08a4d98c(*(long *)(unaff_x19 + 0x20),0);
+            puVar1 = PTR_DAT_091a0c40;
+            if (lVar3 != 0) {
+              fVar18 = fVar5 * 0.5 + fVar18;
+              uVar10 = 0;
+              uVar11 = 0;
+              if (fVar18 <= 0.0) {
+                fVar18 = 0.0;
+              }
+              uVar8 = FUN_08a5bb30(lVar3,0);
+              uVar4 = *(undefined8 *)(unaff_x19 + 0x40);
+              if (*(int *)(*(long *)puVar1 + 0xe0) == 0) {
+                thunk_FUN_03db619c();
+              }
+              fVar19 = fVar19 * fVar18;
+              fVar16 = fVar16 * fVar18;
+              fVar17 = fVar17 * fVar18;
+              uVar2 = FUN_08a508b0(uVar4,0,0);
+              if ((uVar2 & 1) != 0) {
+                if ((*(long *)(unaff_x19 + 0x40) == 0) ||
+                   (lVar3 = FUN_08a4d98c(*(long *)(unaff_x19 + 0x40),0), lVar3 == 0))
+                goto LAB_074439e8;
+                FUN_08a5e270(fVar19 + fVar6,fVar16 + param_2,fVar17 + param_3,uVar8,
+                             CONCAT44(uVar11,uVar10),fVar13,CONCAT44(uVar15,uVar14),lVar3,0);
+              }
+              uVar4 = *(undefined8 *)(unaff_x19 + 0x48);
+              if (*(int *)(*(long *)puVar1 + 0xe0) == 0) {
+                thunk_FUN_03db619c();
+              }
+              uVar2 = FUN_08a508b0(uVar4,0,0);
+              if ((uVar2 & 1) == 0) {
+                return;
+              }
+              if ((*(long *)(unaff_x19 + 0x48) != 0) &&
+                 (lVar3 = FUN_08a4d98c(*(long *)(unaff_x19 + 0x48),0), lVar3 != 0)) {
+                FUN_08a5e270(fVar7 - fVar19,fVar9 - fVar16,fVar12 - fVar17,uVar8,
+                             CONCAT44(uVar11,uVar10),fVar13,CONCAT44(uVar15,uVar14),lVar3,0);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_074439e8:
+                    /* WARNING: Subroutine does not return */
+  FUN_03d2d548();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 48
+FUNCTION_NAME: Meta.XR.MRUtilityKit.MRUKTrackable$$set_MarkerPayloadBytes
+ENTRY_POINT: 06e36f70
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_4', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\06e36f70_Meta.XR.MRUtilityKit.MRUKTrackable$$set_MarkerPayloadBytes.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\048_p203_Meta.XR.MRUtilityKit.MRUKTrackable$$set_MarkerPayloadBytes.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MRUtilityKit.MRUKTrackable$$set_MarkerPayloadBytes
+ENTRY_POINT: 06e36f70
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_4;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+bool Meta_XR_MRUtilityKit_MRUKTrackable__set_MarkerPayloadBytes(long param_1,long *param_2)
+
+{
+  uint uVar1;
+  uint uVar2;
+  long lVar3;
+  uint uVar4;
+  long lVar5;
+  
+  if (param_1 != 0) {
+    if (*(int *)((long)param_2 + 0xc) != *(int *)(param_1 + 0x2c)) {
+      FUN_07199bdc(0);
+      param_1 = *param_2;
+      if (param_1 == 0) goto LAB_06e37014;
+    }
+    uVar1 = *(uint *)(param_1 + 0x20);
+    uVar2 = *(uint *)(param_2 + 1);
+    do {
+      uVar4 = uVar2;
+      if (uVar1 <= uVar4) {
+        *(uint *)(param_2 + 1) = uVar1 + 1;
+        param_2[2] = 0;
+        param_2[3] = 0;
+        goto LAB_06e37004;
+      }
+      lVar3 = *(long *)(param_1 + 0x18);
+      *(uint *)(param_2 + 1) = uVar4 + 1;
+      if (lVar3 == 0) goto LAB_06e37014;
+      if (*(uint *)(lVar3 + 0x18) <= uVar4) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03d2d550();
+      }
+      uVar2 = uVar4 + 1;
+    } while (*(int *)(lVar3 + (long)(int)uVar4 * 0x30 + 0x20) < 0);
+    lVar3 = lVar3 + (long)(int)uVar4 * 0x30;
+    lVar5 = *(long *)(lVar3 + 0x28);
+    param_2[3] = *(long *)(lVar3 + 0x30);
+    param_2[2] = lVar5;
+LAB_06e37004:
+    return uVar4 < uVar1;
+  }
+LAB_06e37014:
+                    /* WARNING: Subroutine does not return */
+  FUN_03d2d548();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 49
+FUNCTION_NAME: Meta.XR.MRUtilityKit.MRUKTrackable$$get_MarkerPayloadBytes
+ENTRY_POINT: 06e36f68
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_4', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\06e36f68_Meta.XR.MRUtilityKit.MRUKTrackable$$get_MarkerPayloadBytes.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\049_p203_Meta.XR.MRUtilityKit.MRUKTrackable$$get_MarkerPayloadBytes.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MRUtilityKit.MRUKTrackable$$get_MarkerPayloadBytes
+ENTRY_POINT: 06e36f68
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_4;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+bool Meta_XR_MRUtilityKit_MRUKTrackable__get_MarkerPayloadBytes(long *param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  long lVar3;
+  long lVar4;
+  uint uVar5;
+  
+  lVar3 = *param_1;
+  if (lVar3 != 0) {
+    if (*(int *)((long)param_1 + 0xc) != *(int *)(lVar3 + 0x2c)) {
+      FUN_07199bdc(0);
+      lVar3 = *param_1;
+      if (lVar3 == 0) goto LAB_06e37014;
+    }
+    uVar1 = *(uint *)(lVar3 + 0x20);
+    uVar2 = *(uint *)(param_1 + 1);
+    do {
+      uVar5 = uVar2;
+      if (uVar1 <= uVar5) {
+        *(uint *)(param_1 + 1) = uVar1 + 1;
+        param_1[2] = 0;
+        param_1[3] = 0;
+        goto LAB_06e37004;
+      }
+      lVar4 = *(long *)(lVar3 + 0x18);
+      *(uint *)(param_1 + 1) = uVar5 + 1;
+      if (lVar4 == 0) goto LAB_06e37014;
+      if (*(uint *)(lVar4 + 0x18) <= uVar5) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03d2d550();
+      }
+      uVar2 = uVar5 + 1;
+    } while (*(int *)(lVar4 + (long)(int)uVar5 * 0x30 + 0x20) < 0);
+    lVar4 = lVar4 + (long)(int)uVar5 * 0x30;
+    lVar3 = *(long *)(lVar4 + 0x28);
+    param_1[3] = *(long *)(lVar4 + 0x30);
+    param_1[2] = lVar3;
+LAB_06e37004:
+    return uVar5 < uVar1;
+  }
+LAB_06e37014:
+                    /* WARNING: Subroutine does not return */
+  FUN_03d2d548();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 50
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionBegin
+ENTRY_POINT: 074a1e64
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 100
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_100', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\074a1e64_OVRPlugin.UnityOpenXR$$OnSessionBegin.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\050_p203_OVRPlugin.UnityOpenXR$$OnSessionBegin.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionBegin
+ENTRY_POINT: 074a1e64
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 100
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_1;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin_UnityOpenXR__OnSessionBegin(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  undefined8 *puVar3;
+  long lVar4;
+  
+  puVar1 = PTR_DAT_091f94d8;
+  if ((DAT_09845ba7 & 1) == 0) {
+    FUN_03d2d2b0(PTR_DAT_091f94d8);
+    DAT_09845ba7 = 1;
+  }
+  lVar2 = *(long *)puVar1;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_03db619c();
+    lVar2 = *(long *)puVar1;
+  }
+  lVar4 = *(long *)(*(long *)(lVar2 + 0xb8) + 0x18);
+  *(undefined1 *)(*(long *)(lVar2 + 0xb8) + 0x10) = 1;
+  if (lVar4 != 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_03db619c();
+      lVar4 = *(long *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x18);
+    }
+    FUN_074a1ae0(lVar4);
+    lVar2 = *(long *)puVar1;
+  }
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_03db619c();
+    lVar2 = *(long *)puVar1;
+  }
+  puVar3 = (undefined8 *)(*(long *)(lVar2 + 0xb8) + 0x18);
+  *puVar3 = 0;
+  thunk_FUN_03d1023c(puVar3,0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

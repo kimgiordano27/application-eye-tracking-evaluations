@@ -1,0 +1,1410 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 29
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported
+ENTRY_POINT: 05d3d5ec
+MANUAL_PRIORITY_SCORE: 433
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 287
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'telemetry', 'structure_combo', 'active_gaze_retrieval', 'active_gaze_interaction', 'active_gaze_collection']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_10', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_1', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_287', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\05d3d5ec_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\029_p433_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported
+ENTRY_POINT: 05d3d5ec
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 287
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;telemetry;structure_combo;active_gaze_retrieval;active_gaze_interaction;active_gaze_collection
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_10;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_1;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;active_gaze_values_flow_to_collection_or_telemetry_sink;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XROcclusionSubsystemDescriptor__get_environmentDepthConfidenceImageSupported
+               (void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  FUN_0333f21c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x90) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UserInputActionSet>__ctor__);
+    FUN_04d6d0b8(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeArray<quaternion>_Dispose__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x90);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333e54c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x98) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Item__);
+    FUN_04d6d220(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<ARPointCloudManager_PointCloudRaycastInfo>__ctor__
+                 ,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x98);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333ebb4();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0xa0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_AddRange__);
+    FUN_04d6cde8(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<ARPointCloudManager_PointCloudRaycastInfo>_Dispose__
+                 ,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa0);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333d87c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0xa8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_get_Capacity__
+                              );
+    FUN_04d6ce9c(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<MeshGenerator_TessellationJobParameters>__ctor__
+                 ,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa8);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333dbb0();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0xb0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_ToArray__
+                              );
+    FUN_04d69bc4(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<MeshGenerator_TessellationJobParameters>_Dispose__
+                 ,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xb0);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_03337530();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0xb8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<URPProfileId>_GetEnumerator__
+                              );
+    FUN_04d69ffc(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<OVRLocatable_TrackingSpacePose>__ctor__,0);
+    puVar3 = (undefined8 *
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+  lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Add__)
+    ;
+    FUN_04d6ee24(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeHashMap<int,_int>_TryGetValue__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b0,uVar2);
+  }
+  FUN_03344bcc();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Item__);
+    Interop_Sys__GetNonCryptographicallySecureRandomBytes
+              (uVar2,uVar4,
+               *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b8,uVar2);
+  }
+  FUN_03344230();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_GetEnumerator__
+                              );
+    FUN_04d6ef8c(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_AsArray__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c0,uVar2);
+  }
+  FUN_03345234();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Clear__);
+    FUN_04d6ecbc(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Dispose__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c8,uVar2);
+  }
+  FUN_03344564();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_Clear__);
+    FUN_04d6f040(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeList<AttachmentDescriptor>_ElementAt__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d0,uVar2);
+  }
+  FUN_03345568();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UsageHint>_GetEnumerator__);
+    FUN_04d6ed70(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Resize__,0
+                );
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d8,uVar2);
+  }
+  FUN_03344898();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>__ctor__);
+    FUN_04d6f0f4(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e0,uVar2);
+  }
+  FUN_0334589c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Sort__);
+    FUN_04d6eed8(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>_Clear__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e8,uVar2);
+  }
+  FUN_03344f00();
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  FUN_0638a53c();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 30
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi
+ENTRY_POINT: 05d3d130
+MANUAL_PRIORITY_SCORE: 433
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 287
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'telemetry', 'structure_combo', 'active_gaze_retrieval', 'active_gaze_interaction', 'active_gaze_collection']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_8', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_1', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_287', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\05d3d130_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\030_p433_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi
+ENTRY_POINT: 05d3d130
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 287
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;telemetry;structure_combo;active_gaze_retrieval;active_gaze_interaction;active_gaze_collection
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_8;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_1;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;active_gaze_values_flow_to_collection_or_telemetry_sink;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XROcclusionSubsystem_Provider__get_environmentDepthConfidenceCpuImageApi
+               (void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  undefined8 unaff_x20;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  FUN_04d68878();
+  *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x48) = unaff_x20;
+  thunk_FUN_02dd37b4();
+  FUN_03331c14();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x50) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>_Clear__);
+    FUN_04d68440(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<IndirectBufferContext>_Clear__,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x50);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_033308dc();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x58) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_RemoveAt__);
+    FUN_04d684f4(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeArray<float2>_GetSubArray__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x58);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_03330c10();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x60) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Count__);
+    Mono_Math_BigInteger_ModulusRing__Pow
+              (uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float3>__ctor__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x60);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333d548();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x68) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_set_Item__);
+    FUN_04d6d16c(uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float3>_Dispose__,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x68);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333e880();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x70) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>__ctor__);
+    FUN_04d6cf50(uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float4>__ctor__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x70);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333dee4();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x78) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Capacity__);
+    FUN_04d6d2d4(uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float4>_Dispose__,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x78);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333eee8();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+  lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Add__)
+    ;
+    FUN_04d6ee24(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeHashMap<int,_int>_TryGetValue__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b0,uVar2);
+  }
+  FUN_03344bcc();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Item__);
+    Interop_Sys__GetNonCryptographicallySecureRandomBytes
+              (uVar2,uVar4,
+               *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b8,uVar2);
+  }
+  FUN_03344230();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_GetEnumerator__
+                              );
+    FUN_04d6ef8c(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_AsArray__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c0,uVar2);
+  }
+  FUN_03345234();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Clear__);
+    FUN_04d6ecbc(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Dispose__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c8,uVar2);
+  }
+  FUN_03344564();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_Clear__);
+    FUN_04d6f040(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeList<AttachmentDescriptor>_ElementAt__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d0,uVar2);
+  }
+  FUN_03345568();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UsageHint>_GetEnumerator__);
+    FUN_04d6ed70(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Resize__,0
+                );
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d8,uVar2);
+  }
+  FUN_03344898();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>__ctor__);
+    FUN_04d6f0f4(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e0,uVar2);
+  }
+  FUN_0334589c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Sort__);
+    FUN_04d6eed8(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>_Clear__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e8,uVar2);
+  }
+  FUN_03344f00();
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  FUN_0638a53c();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 31
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryGetEnvironmentDepthConfidence
+ENTRY_POINT: 05d3d098
+MANUAL_PRIORITY_SCORE: 433
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 287
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'telemetry', 'structure_combo', 'active_gaze_retrieval', 'active_gaze_interaction', 'active_gaze_collection']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_8', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_1', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_287', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\05d3d098_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryGetEnvironmentDepthConfidence.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\031_p433_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryGetEnvironmentDepthConfidence.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryGetEnvironmentDepthConfidence
+ENTRY_POINT: 05d3d098
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 287
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;telemetry;structure_combo;active_gaze_retrieval;active_gaze_interaction;active_gaze_collection
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_8;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_1;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;active_gaze_values_flow_to_collection_or_telemetry_sink;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XROcclusionSubsystem_Provider__TryGetEnvironmentDepthConfidence
+               (undefined8 *param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  undefined8 unaff_x20;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  FUN_04d68a94(param_2,param_3,*param_1);
+  *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x40) = unaff_x20;
+  thunk_FUN_02dd37b4();
+  FUN_033325b0();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x48) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>__ctor__);
+    FUN_04d68878(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeList<GPUInstanceComponentDesc>_get_IsCreated__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x48);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_03331c14();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x50) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>_Clear__);
+    FUN_04d68440(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<IndirectBufferContext>_Clear__,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x50);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_033308dc();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x58) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_RemoveAt__);
+    FUN_04d684f4(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeArray<float2>_GetSubArray__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x58);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_03330c10();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x60) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Count__);
+    Mono_Math_BigInteger_ModulusRing__Pow
+              (uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float3>__ctor__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x60);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333d548();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x68) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_set_Item__);
+    FUN_04d6d16c(uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float3>_Dispose__,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x68);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333e880();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x70) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>__ctor__);
+    FUN_04d6cf50(uVar2,uVar4,*(undefined8 *)Method_Unity_Collections_NativeArray<float4>__ctor__,0);
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x70);
+    *puVar3 = uVar2;
+    thunk_FUN_02dd37b4(puVar3,uVar2);
+  }
+  FUN_0333dee4();
+  lVar1 = *unaff_x22;
+  if (*
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+  lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Add__)
+    ;
+    FUN_04d6ee24(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeHashMap<int,_int>_TryGetValue__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b0,uVar2);
+  }
+  FUN_03344bcc();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1b8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Item__);
+    Interop_Sys__GetNonCryptographicallySecureRandomBytes
+              (uVar2,uVar4,
+               *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1b8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1b8,uVar2);
+  }
+  FUN_03344230();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_GetEnumerator__
+                              );
+    FUN_04d6ef8c(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_AsArray__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c0,uVar2);
+  }
+  FUN_03345234();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1c8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Clear__);
+    FUN_04d6ecbc(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Dispose__,
+                 0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1c8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1c8,uVar2);
+  }
+  FUN_03344564();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_Clear__);
+    FUN_04d6f040(uVar2,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeList<AttachmentDescriptor>_ElementAt__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d0,uVar2);
+  }
+  FUN_03345568();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1d8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UsageHint>_GetEnumerator__);
+    FUN_04d6ed70(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Resize__,0
+                );
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1d8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1d8,uVar2);
+  }
+  FUN_03344898();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e0) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>__ctor__);
+    FUN_04d6f0f4(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>__ctor__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e0) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e0,uVar2);
+  }
+  FUN_0334589c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x1e8) == 0) {
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Sort__);
+    FUN_04d6eed8(uVar2,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>_Clear__,0);
+    lVar1 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar1 + 0x1e8) = uVar2;
+    thunk_FUN_02dd37b4(lVar1 + 0x1e8,uVar2);
+  }
+  FUN_03344f00();
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  FUN_0638a53c();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 32
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor.Cinfo$$get_environmentDepthConfidenceImageSupportedDelegate
+ENTRY_POINT: 05d3d750
+MANUAL_PRIORITY_SCORE: 432
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 286
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'telemetry', 'structure_combo', 'active_gaze_retrieval', 'active_gaze_interaction', 'active_gaze_collection']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_9', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_1', 'telemetry_or_network_hits_1', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_286', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\05d3d750_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor.Cinfo$$get_environmentDepthConfidenceImageSupportedDelegate.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\032_p432_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor.Cinfo$$get_environmentDepthConfidenceImageSupportedDelegate.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor.Cinfo$$get_environmentDepthConfidenceImageSupportedDelegate
+ENTRY_POINT: 05d3d750
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 286
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;telemetry;structure_combo;active_gaze_retrieval;active_gaze_interaction;active_gaze_collection
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_9;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_1;telemetry_or_network_hits_1;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;active_gaze_values_flow_to_collection_or_telemetry_sink;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_1
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XROcclusionSubsystemDescriptor_Cinfo__get_environmentDepthConfidenceImageSupportedDelegate
+               (long param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 *puVar2;
+  long lVar3;
+  int in_w8;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  if (in_w8 == 0) {
+    thunk_FUN_02dbd7b4();
+    param_1 = *unaff_x22;
+  }
+  uVar4 = **(undefined8 **)(param_1 + 0xb8);
+  uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                              Method_System_Collections_Generic_List<VisualElement>_AddRange__);
+  FUN_04d6cde8(uVar1,uVar4,
+               *(undefined8 *)
+                Method_Unity_Collections_NativeArray<ARPointCloudManager_PointCloudRaycastInfo>_Dispose__
+               ,0);
+  puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa0);
+  *puVar2 = uVar1;
+  thunk_FUN_02dd37b4(puVar2,uVar1);
+  FUN_0333d87c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xa8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_get_Capacity__
+                              );
+    FUN_04d6ce9c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<MeshGenerator_TessellationJobParameters>__ctor__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333dbb0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xb0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_ToArray__
+                              );
+    FUN_04d69bc4(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<MeshGenerator_TessellationJobParameters>_Dispose__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xb0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337530();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xb8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<URPProfileId>_GetEnumerator__
+                              );
+    FUN_04d69ffc(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<OVRLocatable_TrackingSpacePose>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xb8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338868();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xc0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>__ctor__);
+    FUN_04d69de0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<OVRLocatable_TrackingSpacePose>_Dispose__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xc0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337ecc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 200) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_set_Capacity__);
+    FUN_04d6a164(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeArray<OVRLocatable_TrackingSpacePose>_Dispose__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 200);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338ed0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+  lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1b0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Add__)
+    ;
+    FUN_04d6ee24(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeHashMap<int,_int>_TryGetValue__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1b0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1b0,uVar1);
+  }
+  FUN_03344bcc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1b8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Item__);
+    Interop_Sys__GetNonCryptographicallySecureRandomBytes
+              (uVar1,uVar4,
+               *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1b8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1b8,uVar1);
+  }
+  FUN_03344230();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1c0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_GetEnumerator__
+                              );
+    FUN_04d6ef8c(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_AsArray__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1c0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1c0,uVar1);
+  }
+  FUN_03345234();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1c8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Clear__);
+    FUN_04d6ecbc(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Dispose__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1c8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1c8,uVar1);
+  }
+  FUN_03344564();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1d0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_Clear__);
+    FUN_04d6f040(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Collections_NativeList<AttachmentDescriptor>_ElementAt__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1d0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1d0,uVar1);
+  }
+  FUN_03345568();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1d8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UsageHint>_GetEnumerator__);
+    FUN_04d6ed70(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<AttachmentDescriptor>_Resize__,0
+                );
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1d8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1d8,uVar1);
+  }
+  FUN_03344898();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1e0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>__ctor__);
+    FUN_04d6f0f4(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1e0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1e0,uVar1);
+  }
+  FUN_0334589c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1e8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Sort__);
+    FUN_04d6eed8(uVar1,uVar4,
+                 *(undefined8 *)Method_Unity_Collections_NativeList<DebugOccluderStats>_Clear__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1e8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1e8,uVar1);
+  }
+  FUN_03344f00();
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  FUN_0638a53c();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

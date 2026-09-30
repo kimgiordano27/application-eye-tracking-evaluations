@@ -1,0 +1,145 @@
+/*
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPassthroughLayer.SerializedSurfaceGeometry>$$System.Collections.IEnumerator.Reset
+ENTRY_POINT: 04ca9d0c
+PROGRAM: Untangled-libil2cpp.so
+SCORE: 80
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;paired_state_refs;telemetry
+EVIDENCE: validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_structure_only;telemetry_or_network_hits_2
+*/
+
+
+undefined8
+System_Array_EmptyInternalEnumerator<OVRPassthroughLayer_SerializedSurfaceGeometry>__System_Collections_IEnumerator_Reset
+          (long param_1,undefined8 param_2,long param_3)
+
+{
+  undefined4 uVar1;
+  undefined8 *puVar2;
+  long *plVar3;
+  ulong uVar4;
+  long lVar5;
+  ulong uVar6;
+  int *piVar7;
+  long unaff_x19;
+  uint uVar8;
+  ulong unaff_x20;
+  ulong unaff_x21;
+  long *unaff_x23;
+  undefined8 uVar9;
+  uint uVar10;
+  ulong unaff_x25;
+  ulong unaff_x26;
+  long unaff_x27;
+  int unaff_w28;
+  int *unaff_x29;
+  undefined8 uVar11;
+  long in_stack_00000008;
+  undefined8 *in_stack_00000010;
+  long in_stack_00000018;
+  
+code_r0x04ca9d0c:
+  uVar10 = (uint)unaff_x25;
+  uVar8 = (uint)unaff_x20;
+  uVar9 = *(undefined8 *)(param_1 + 0x28);
+  if ((*(byte *)(param_3 + 0x135) & 1) == 0) {
+    param_3 = FUN_02eea768(param_3);
+  }
+  lVar5 = *unaff_x23;
+  uVar6 = (ulong)*(ushort *)(lVar5 + 0x12e);
+  if (uVar6 != 0) {
+    piVar7 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar7 + -2) == param_3) {
+        puVar2 = (undefined8 *)(lVar5 + (long)*piVar7 * 0x10 + 0x138);
+        goto LAB_04ca9db4;
+      }
+      uVar6 = uVar6 - 1;
+      piVar7 = piVar7 + 4;
+    } while (uVar6 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_02eea86c(unaff_x23,param_3,0);
+LAB_04ca9db4:
+  uVar4 = (*(code *)*puVar2)(unaff_x23,uVar9);
+  uVar6 = unaff_x25;
+  unaff_x25 = unaff_x26;
+  do {
+    if ((uVar4 & 1) != 0) {
+      if ((int)uVar8 < 0) {
+        lVar5 = *(long *)(unaff_x19 + 0x10);
+        if (lVar5 == 0) goto LAB_04ca9ec4;
+        if ((uint)in_stack_00000008 < *(uint *)(lVar5 + 0x18)) {
+          *(int *)(lVar5 + in_stack_00000008 * 4 + 0x20) =
+               *(int *)(unaff_x27 + unaff_x25 * 0x28 + 0x24) + 1;
+          goto LAB_04ca9e78;
+        }
+      }
+      else {
+        lVar5 = *(long *)(unaff_x19 + 0x18);
+        if (lVar5 == 0) goto LAB_04ca9ec4;
+        if (uVar8 < *(uint *)(lVar5 + 0x18)) {
+          *(undefined4 *)(lVar5 + (ulong)uVar8 * 0x28 + 0x24) =
+               *(undefined4 *)(unaff_x27 + unaff_x25 * 0x28 + 0x24);
+LAB_04ca9e78:
+          lVar5 = unaff_x27 + unaff_x25 * 0x28;
+          uVar11 = *(undefined8 *)(lVar5 + 0x38);
+          uVar9 = *(undefined8 *)(lVar5 + 0x30);
+          in_stack_00000010[2] = *(undefined8 *)(lVar5 + 0x40);
+          in_stack_00000010[1] = uVar11;
+          *in_stack_00000010 = uVar9;
+          *unaff_x29 = -1;
+          uVar1 = *(undefined4 *)(unaff_x19 + 0x24);
+          *(undefined8 *)(lVar5 + 0x28) = 0;
+          *(undefined4 *)(lVar5 + 0x24) = uVar1;
+          *(uint *)(unaff_x19 + 0x24) = uVar10;
+          *(ulong *)(unaff_x19 + 0x28) =
+               CONCAT44((int)((ulong)*(undefined8 *)(unaff_x19 + 0x28) >> 0x20) + 1,
+                        (int)*(undefined8 *)(unaff_x19 + 0x28) + 1);
+          return 1;
+        }
+      }
+LAB_04ca9ec8:
+                    /* WARNING: Subroutine does not return */
+      FUN_02f080c8();
+    }
+    do {
+      uVar10 = *(uint *)(unaff_x27 + unaff_x25 * unaff_x21 + 0x24);
+      unaff_x25 = (ulong)uVar10;
+      unaff_x20 = uVar6 & 0xffffffff;
+      uVar8 = (uint)uVar6;
+      if ((int)uVar10 < 0) {
+        *in_stack_00000010 = 0;
+        in_stack_00000010[1] = 0;
+        in_stack_00000010[2] = 0;
+        return 0;
+      }
+      unaff_x27 = *(long *)(unaff_x19 + 0x18);
+      if (unaff_x27 == 0) goto LAB_04ca9ec4;
+      if (*(uint *)(unaff_x27 + 0x18) <= uVar10) goto LAB_04ca9ec8;
+      unaff_x29 = (int *)(unaff_x27 + unaff_x25 * (unaff_x21 & 0xffffffff) + 0x20);
+      uVar6 = unaff_x25;
+    } while (*unaff_x29 != unaff_w28);
+    unaff_x23 = *(long **)(unaff_x19 + 0x30);
+    if (unaff_x23 != (long *)0x0) break;
+    plVar3 = (long *)FUN_03378db8(*(undefined8 *)
+                                   (*(long *)(*(long *)(in_stack_00000018 + 0x20) + 0xc0) + 0x18));
+    if (plVar3 == (long *)0x0) goto LAB_04ca9ec4;
+    uVar4 = (**(code **)(*plVar3 + 0x1b8))
+                      (plVar3,*(undefined8 *)(unaff_x27 + unaff_x25 * unaff_x21 + 0x28));
+  } while( true );
+  if (unaff_x23 == (long *)0x0) {
+LAB_04ca9ec4:
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  param_3 = *(long *)(*(long *)(*(long *)(in_stack_00000018 + 0x20) + 0xc0) + 8);
+  param_1 = unaff_x27 + unaff_x25 * unaff_x21;
+  unaff_x26 = unaff_x25;
+  goto code_r0x04ca9d0c;
+}
+
+

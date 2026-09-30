@@ -1,0 +1,1472 @@
+/*
+FUNCTION_NAME: FUN_069424ec
+ENTRY_POINT: 069424ec
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 164
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;data_collection;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_13;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_2;strong_file_logging_hits_13;telemetry_or_network_hits_8;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void FUN_069424ec(void)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  long lVar12;
+  undefined8 uVar13;
+  long lVar14;
+  long lVar15;
+  long lVar16;
+  undefined8 uVar17;
+  undefined8 uVar18;
+  long lVar19;
+  long lVar20;
+  long lVar21;
+  undefined8 uVar22;
+  
+  puVar3 = System_Xml_XmlBaseReader_QuotaNameTable_TypeInfo;
+  if ((DAT_07559a89 & 1) == 0) {
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlAttributeNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_QuotaNameTable_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlAttributeTextNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlCDataNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo);
+    FUN_03188a78(PTR_DAT_070c2cb8);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlComplexTextNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlDeclarationNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlElementNode_TypeInfo);
+    FUN_03188a78(PTR_DAT_070c25c8);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlEndElementNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlEndOfFileNode_TypeInfo);
+    FUN_03188a78(System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo);
+    FUN_03188a78(PTR_DAT_070c25e8);
+    FUN_03188a78(UnityEngine_Rendering_DebugUI_RenderingLayerField_<>c__DisplayClass5_0_TypeInfo);
+    FUN_03188a78(System_Collections_Generic_IEnumerator<Expression>_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_Background_PropertyBag_TextureProperty_TypeInfo);
+    FUN_03188a78(UnityEngine_Rendering_DebugUI_RuntimeDebugShadersMessageBox_<>c_TypeInfo);
+    FUN_03188a78(PTR_DAT_070f4598);
+    FUN_03188a78(UnityEngine_Rendering_DebugUI_Table_Row_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_DefaultEventSystem_InputForUIProcessor_<>c_TypeInfo);
+    FUN_03188a78(PTR_DAT_07137b40);
+    FUN_03188a78(
+                UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass13_0_TypeInfo
+                );
+    FUN_03188a78(PTR_DAT_071048a0);
+    FUN_03188a78(
+                UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass15_0_TypeInfo
+                );
+    FUN_03188a78(
+                UnityEngine_UIElements_DefaultEventSystem_InputForUIProcessor_<>c__DisplayClass14_0_TypeInfo
+                );
+    FUN_03188a78(UnityEngine_UIElements_DetachFromPanelEvent_<>c_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_BackgroundPosition_PropertyBag_OffsetProperty_TypeInfo);
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+                );
+    FUN_03188a78(UnityEngine_Rendering_DebugUI_EnumField_<>c_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_BackgroundRepeat_PropertyBag_YProperty_TypeInfo);
+    FUN_03188a78(System_Collections_Generic_List<OpenXRLoaderBase_LoaderState>_TypeInfo);
+    FUN_03188a78(System_Xml_XmlDownloadManager_<>c__DisplayClass4_0_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_<>c_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_IInput_TypeInfo);
+    FUN_03188a78(OVR_OpenVR_IVROverlay__HideKeyboard_TypeInfo);
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<CAPI_ovrAvatar2RequestId,_OvrAvatarManager_RequestDelegate>_TypeInfo
+                );
+    FUN_03188a78(
+                UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                );
+    FUN_03188a78(System_Collections_Generic_List<NetSyncSession>_TypeInfo);
+    FUN_03188a78(
+                UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass2_0_TypeInfo
+                );
+    FUN_03188a78(UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_Input_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_BackgroundSize_PropertyBag_XProperty_TypeInfo);
+    FUN_03188a78(OVR_OpenVR_IVROverlay__HideOverlay_TypeInfo);
+    FUN_03188a78(UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_NoInput_TypeInfo);
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<JsonTypeInfo_ParameterLookupKey,_JsonTypeInfo_ParameterLookupValue>_TypeInfo
+                );
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+                );
+    FUN_03188a78(OVR_OpenVR_IVROverlay__IsDashboardVisible_TypeInfo);
+    FUN_03188a78(PTR_DAT_0711dfd0);
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<OVRPassthroughLayer_ColorMapEditorType,_OVRPlugin_InsightPassthroughColorMapType>_TypeInfo
+                );
+    FUN_03188a78(PTR_DAT_0711dfd8);
+    FUN_03188a78(
+                UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass8_0_TypeInfo
+                );
+    FUN_03188a78(
+                System_ComponentModel_Design_DesignerOptionService_DesignerOptionCollection_WrappedPropertyDescriptor_TypeInfo
+                );
+    FUN_03188a78(OVR_OpenVR_IVROverlay__IsOverlayVisible_TypeInfo);
+    FUN_03188a78(OVR_OpenVR_IVROverlay__MoveGamepadFocusToNeighbor_TypeInfo);
+    FUN_03188a78(UnityEngine_TextAsset_EncodingUtility_TypeInfo);
+    FUN_03188a78(OVR_OpenVR_IVROverlay__PollNextOverlayEvent_TypeInfo);
+    FUN_03188a78(
+                System_Collections_Generic_Dictionary<OVRSkeleton_BoneId,_Tuple<OVRSkeleton_BoneId,_OVRSkeleton_BoneId>>_TypeInfo
+                );
+    FUN_03188a78(PTR_DAT_070c20c8);
+    FUN_03188a78(System_Xml_Schema_XmlSchemaParticle_EmptyParticle_TypeInfo);
+    FUN_03188a78(
+                UnityEngine_Rendering_DebugDisplaySettingsVolume_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                );
+    FUN_03188a78(
+                System_ComponentModel_Design_DesignerOptionService_DesignerOptionConverter_OptionPropertyDescriptor_TypeInfo
+                );
+    FUN_03188a78(UnityEngine_UIElements_EasingFunction_PropertyBag_ModeProperty_TypeInfo);
+    FUN_03188a78(System_Runtime_CompilerServices_YieldAwaitable_YieldAwaiter_TypeInfo);
+    FUN_03188a78(
+                UnityEngine_Rendering_DebugDisplaySettingsVolume_WidgetFactory_<>c__DisplayClass7_0_TypeInfo
+                );
+    FUN_03188a78(System_Dynamic_ExpandoObject_KeyCollection_<GetEnumerator>d__15_TypeInfo);
+    FUN_03188a78(
+                Unity_Burst_BurstCompiler_BurstCompilerHelper_IsBurstEnabled_00000146_BurstDirectCall_TypeInfo
+                );
+    DAT_07559a89 = 1;
+  }
+  lVar12 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                     (*(undefined8 *)puVar3);
+  FUN_05971910(lVar12,0);
+  puVar11 = UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_IInput_TypeInfo;
+  puVar9 = System_Xml_XmlBaseReader_XmlDeclarationNode_TypeInfo;
+  puVar8 = System_Xml_XmlBaseReader_XmlAttributeTextNode_TypeInfo;
+  puVar4 = System_Collections_Generic_List<OpenXRLoaderBase_LoaderState>_TypeInfo;
+  puVar3 = PTR_DAT_070c20c8;
+  if (lVar12 != 0) {
+    uVar17 = *(undefined8 *)UnityEngine_Rendering_DebugUI_EnumField_<>c_TypeInfo;
+    uVar22 = *(undefined8 *)
+              UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_IInput_TypeInfo;
+    uVar13 = *(undefined8 *)System_Xml_XmlBaseReader_XmlEndElementNode_TypeInfo;
+    *(undefined8 *)(lVar12 + 0x10) =
+         *(undefined8 *)UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_<>c_TypeInfo;
+    *(undefined8 *)(lVar12 + 0x18) = uVar17;
+    uVar17 = *(undefined8 *)puVar4;
+    uVar18 = *(undefined8 *)puVar3;
+    *(undefined8 *)(lVar12 + 0x30) = uVar22;
+    *(undefined8 *)(lVar12 + 0x38) = uVar17;
+    *(undefined8 *)(lVar12 + 0x40) = uVar18;
+    lVar14 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed(uVar13);
+    FUN_042e4268(lVar14,*(undefined8 *)puVar9);
+    lVar15 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                       (*(undefined8 *)puVar8);
+    FUN_05971910(lVar15,0);
+    puVar3 = System_Xml_Schema_XmlSchemaParticle_EmptyParticle_TypeInfo;
+    if (lVar15 != 0) {
+      *(undefined4 *)(lVar15 + 0x10) = 0x164;
+      *(undefined8 *)(lVar15 + 0x18) = *(undefined8 *)puVar3;
+      puVar3 = System_Xml_XmlBaseReader_XmlCDataNode_TypeInfo;
+      if (lVar14 != 0) {
+        lVar16 = *(long *)(lVar14 + 0x10);
+        lVar19 = *(long *)System_Xml_XmlBaseReader_XmlCDataNode_TypeInfo;
+        *(int *)(lVar14 + 0x1c) = *(int *)(lVar14 + 0x1c) + 1;
+        if (lVar16 != 0) {
+          uVar2 = *(uint *)(lVar14 + 0x18);
+          if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+            *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+            *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20) = lVar15;
+          }
+          else {
+            FUN_042e4a64(lVar14,lVar15,
+                         *(undefined8 *)(*(long *)(*(long *)(lVar19 + 0x20) + 0xc0) + 0x70));
+          }
+          lVar15 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                             (*(undefined8 *)puVar8);
+          FUN_05971910(lVar15,0);
+          puVar4 = System_Xml_XmlDownloadManager_<>c__DisplayClass4_0_TypeInfo;
+          if (lVar15 != 0) {
+            iVar1 = *(int *)(lVar14 + 0x1c);
+            *(undefined4 *)(lVar15 + 0x10) = 0x264;
+            lVar19 = *(long *)puVar3;
+            uVar13 = *(undefined8 *)puVar4;
+            lVar16 = *(long *)(lVar14 + 0x10);
+            *(int *)(lVar14 + 0x1c) = iVar1 + 1;
+            *(undefined8 *)(lVar15 + 0x18) = uVar13;
+            puVar8 = System_Xml_XmlBaseReader_XmlEndOfFileNode_TypeInfo;
+            puVar4 = System_Xml_XmlBaseReader_XmlComplexTextNode_TypeInfo;
+            puVar3 = System_Xml_XmlBaseReader_XmlAttributeNode_TypeInfo;
+            if (lVar16 != 0) {
+              uVar2 = *(uint *)(lVar14 + 0x18);
+              if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20) = lVar15;
+              }
+              else {
+                FUN_042e4a64(lVar14,lVar15,
+                             *(undefined8 *)(*(long *)(*(long *)(lVar19 + 0x20) + 0xc0) + 0x70));
+              }
+              uVar13 = *(undefined8 *)puVar8;
+              *(long *)(lVar12 + 0x20) = lVar14;
+              lVar14 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                 (uVar13);
+              FUN_042e4268(lVar14,*(undefined8 *)puVar4);
+              lVar15 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                 (*(undefined8 *)puVar3);
+              FUN_05971910(lVar15,0);
+              puVar8 = PTR_DAT_0711dfd0;
+              puVar4 = PTR_DAT_070c25c8;
+              if (lVar15 != 0) {
+                uVar17 = *(undefined8 *)PTR_DAT_0711dfd0;
+                uVar13 = *(undefined8 *)PTR_DAT_070c25e8;
+                *(undefined8 *)(lVar15 + 0x10) =
+                     *(undefined8 *)
+                      System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+                ;
+                *(undefined8 *)(lVar15 + 0x20) = uVar17;
+                *(undefined4 *)(lVar15 + 0x18) = 1;
+                lVar16 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                   (uVar13);
+                FUN_042e4268(lVar16,*(undefined8 *)puVar4);
+                puVar4 = PTR_DAT_070c2cb8;
+                if (lVar16 != 0) {
+                  lVar19 = *(long *)(lVar16 + 0x10);
+                  uVar13 = *(undefined8 *)puVar8;
+                  lVar20 = *(long *)PTR_DAT_070c2cb8;
+                  *(int *)(lVar16 + 0x1c) = *(int *)(lVar16 + 0x1c) + 1;
+                  puVar10 = System_Xml_XmlBaseReader_XmlInitialNode_TypeInfo;
+                  puVar9 = System_Xml_XmlBaseReader_XmlElementNode_TypeInfo;
+                  puVar8 = System_Xml_XmlBaseReader_XmlAtomicTextNode_TypeInfo;
+                  if (lVar19 != 0) {
+                    uVar2 = *(uint *)(lVar16 + 0x18);
+                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                      *(undefined8 *)(lVar19 + (long)(int)uVar2 * 8 + 0x20) = uVar13;
+                    }
+                    else {
+                      FUN_042e4a64(lVar16,uVar13,
+                                   *(undefined8 *)
+                                    (*(long *)(*(long *)(lVar20 + 0x20) + 0xc0) + 0x70));
+                    }
+                    uVar13 = *(undefined8 *)puVar10;
+                    *(long *)(lVar15 + 0x30) = lVar16;
+                    lVar16 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                       (uVar13);
+                    FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                    lVar19 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                       (*(undefined8 *)puVar8);
+                    FUN_05971910(lVar19,0);
+                    puVar5 = 
+                    UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_Input_TypeInfo;
+                    if (lVar19 != 0) {
+                      uVar13 = *(undefined8 *)
+                                UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_Input_TypeInfo
+                      ;
+                      *(undefined8 *)(lVar19 + 0x10) = *(undefined8 *)puVar11;
+                      *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                      if (lVar16 != 0) {
+                        lVar20 = *(long *)(lVar16 + 0x10);
+                        lVar21 = *(long *)System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                        *(int *)(lVar16 + 0x1c) = *(int *)(lVar16 + 0x1c) + 1;
+                        if (lVar20 != 0) {
+                          uVar2 = *(uint *)(lVar16 + 0x18);
+                          if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                            *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                            *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20) = lVar19;
+                          }
+                          else {
+                            FUN_042e4a64(lVar16,lVar19,
+                                         *(undefined8 *)
+                                          (*(long *)(*(long *)(lVar21 + 0x20) + 0xc0) + 0x70));
+                          }
+                          *(long *)(lVar15 + 0x28) = lVar16;
+                          if (lVar14 != 0) {
+                            lVar16 = *(long *)(lVar14 + 0x10);
+                            lVar19 = *(long *)System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                            *(int *)(lVar14 + 0x1c) = *(int *)(lVar14 + 0x1c) + 1;
+                            if (lVar16 != 0) {
+                              uVar2 = *(uint *)(lVar14 + 0x18);
+                              if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20) = lVar15;
+                              }
+                              else {
+                                FUN_042e4a64(lVar14,lVar15,
+                                             *(undefined8 *)
+                                              (*(long *)(*(long *)(lVar19 + 0x20) + 0xc0) + 0x70));
+                              }
+                              lVar15 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                 (*(undefined8 *)puVar3);
+                              FUN_05971910(lVar15,0);
+                              if (lVar15 != 0) {
+                                uVar13 = *(undefined8 *)
+                                          UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass2_0_TypeInfo
+                                ;
+                                *(undefined8 *)(lVar15 + 0x10) =
+                                     *(undefined8 *)
+                                      System_Collections_Generic_Dictionary<CAPI_ovrAvatar2RequestId,_OvrAvatarManager_RequestDelegate>_TypeInfo
+                                ;
+                                puVar6 = PTR_DAT_070c25e8;
+                                *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                *(undefined4 *)(lVar15 + 0x18) = 0;
+                                lVar16 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                   (*(undefined8 *)puVar6);
+                                FUN_042e4268(lVar16,*(undefined8 *)PTR_DAT_070c25c8);
+                                if (lVar16 != 0) {
+                                  lVar19 = *(long *)(lVar16 + 0x10);
+                                  uVar13 = *(undefined8 *)
+                                            OVR_OpenVR_IVROverlay__IsDashboardVisible_TypeInfo;
+                                  lVar20 = *(long *)puVar4;
+                                  *(int *)(lVar16 + 0x1c) = *(int *)(lVar16 + 0x1c) + 1;
+                                  if (lVar19 != 0) {
+                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                      *(undefined8 *)(lVar19 + (long)(int)uVar2 * 8 + 0x20) = uVar13
+                                      ;
+                                    }
+                                    else {
+                                      FUN_042e4a64(lVar16,uVar13,
+                                                   *(undefined8 *)
+                                                    (*(long *)(*(long *)(lVar20 + 0x20) + 0xc0) +
+                                                    0x70));
+                                    }
+                                    uVar13 = *(undefined8 *)puVar10;
+                                    *(long *)(lVar15 + 0x30) = lVar16;
+                                    lVar16 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                       (uVar13);
+                                    FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                    lVar19 = Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                       (*(undefined8 *)puVar8);
+                                    FUN_05971910(lVar19,0);
+                                    if (lVar19 != 0) {
+                                      uVar13 = *(undefined8 *)puVar5;
+                                      *(undefined8 *)(lVar19 + 0x10) = *(undefined8 *)puVar11;
+                                      *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                      if (lVar16 != 0) {
+                                        lVar20 = *(long *)(lVar16 + 0x10);
+                                        lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                        *(int *)(lVar16 + 0x1c) = *(int *)(lVar16 + 0x1c) + 1;
+                                        puVar5 = PTR_DAT_070c25c8;
+                                        if (lVar20 != 0) {
+                                          uVar2 = *(uint *)(lVar16 + 0x18);
+                                          if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                            *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                            *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20) = lVar19
+                                            ;
+                                          }
+                                          else {
+                                            FUN_042e4a64(lVar16,lVar19,
+                                                         *(undefined8 *)
+                                                          (*(long *)(*(long *)(lVar21 + 0x20) + 0xc0
+                                                                    ) + 0x70));
+                                          }
+                                          *(long *)(lVar15 + 0x28) = lVar16;
+                                          lVar16 = *(long *)(lVar14 + 0x10);
+                                          lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                          *(int *)(lVar14 + 0x1c) = *(int *)(lVar14 + 0x1c) + 1;
+                                          if (lVar16 != 0) {
+                                            uVar2 = *(uint *)(lVar14 + 0x18);
+                                            if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                              *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                              *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20) =
+                                                   lVar15;
+                                            }
+                                            else {
+                                              FUN_042e4a64(lVar14,lVar15,
+                                                           *(undefined8 *)
+                                                            (*(long *)(*(long *)(lVar19 + 0x20) +
+                                                                      0xc0) + 0x70));
+                                            }
+                                            lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                            FUN_05971910(lVar15,0);
+                                            if (lVar15 != 0) {
+                                              uVar13 = *(undefined8 *)PTR_DAT_07137b40;
+                                              *(undefined8 *)(lVar15 + 0x10) =
+                                                   *(undefined8 *)PTR_DAT_070f4598;
+                                              puVar6 = PTR_DAT_070c25e8;
+                                              *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                              *(undefined4 *)(lVar15 + 0x18) = 0;
+                                              lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                              FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                              if (lVar16 != 0) {
+                                                lVar19 = *(long *)(lVar16 + 0x10);
+                                                uVar13 = *(undefined8 *)
+                                                                                                                    
+                                                  OVR_OpenVR_IVROverlay__IsOverlayVisible_TypeInfo;
+                                                lVar20 = *(long *)puVar4;
+                                                *(int *)(lVar16 + 0x1c) =
+                                                     *(int *)(lVar16 + 0x1c) + 1;
+                                                if (lVar19 != 0) {
+                                                  uVar2 = *(uint *)(lVar16 + 0x18);
+                                                  if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                    *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                    *(undefined8 *)
+                                                     (lVar19 + (long)(int)uVar2 * 8 + 0x20) = uVar13
+                                                    ;
+                                                  }
+                                                  else {
+                                                    FUN_042e4a64(lVar16,uVar13,
+                                                                 *(undefined8 *)
+                                                                  (*(long *)(*(long *)(lVar20 + 0x20
+                                                                                      ) + 0xc0) +
+                                                                  0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass13_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_DetachFromPanelEvent_<>c_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  System_Collections_Generic_IEnumerator<Expression>_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 0;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_EasingFunction_PropertyBag_ModeProperty_TypeInfo
+                                                  ;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_DebugUI_RuntimeDebugShadersMessageBox_<>c_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  puVar6 = PTR_DAT_0711dfd8;
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)PTR_DAT_0711dfd8;
+                                                    *(undefined8 *)(lVar15 + 0x10) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+                                                  ;
+                                                  puVar7 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 1;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar7);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)puVar6;
+                                                    lVar20 = *(long *)puVar4;
+                                                    *(int *)(lVar16 + 0x1c) =
+                                                         *(int *)(lVar16 + 0x1c) + 1;
+                                                    if (lVar19 != 0) {
+                                                      uVar2 = *(uint *)(lVar16 + 0x18);
+                                                      if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                        *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                        *(undefined8 *)
+                                                         (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                             uVar13;
+                                                      }
+                                                      else {
+                                                        FUN_042e4a64(lVar16,uVar13,
+                                                                     *(undefined8 *)
+                                                                      (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass8_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_DebugDisplaySettingsVolume_WidgetFactory_<>c__DisplayClass7_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  System_Collections_Generic_Dictionary<JsonTypeInfo_ParameterLookupKey,_JsonTypeInfo_ParameterLookupValue>_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 0;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  OVR_OpenVR_IVROverlay__HideOverlay_TypeInfo;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  System_ComponentModel_Design_DesignerOptionService_DesignerOptionConverter_OptionPropertyDescriptor_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  System_ComponentModel_Design_DesignerOptionService_DesignerOptionCollection_WrappedPropertyDescriptor_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  System_Collections_Generic_Dictionary<OVRSkeleton_BoneId,_Tuple<OVRSkeleton_BoneId,_OVRSkeleton_BoneId>>_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 2;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  OVR_OpenVR_IVROverlay__HideKeyboard_TypeInfo;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_DefaultEventSystem_InputForUIProcessor_<>c_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_DebugUI_Table_Row_TypeInfo;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  System_Collections_Generic_Dictionary<OVRPassthroughLayer_ColorMapEditorType,_OVRPlugin_InsightPassthroughColorMapType>_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 0;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  OVR_OpenVR_IVROverlay__PollNextOverlayEvent_TypeInfo
+                                                  ;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  System_Dynamic_ExpandoObject_KeyCollection_<GetEnumerator>d__15_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_DebugUI_RenderingLayerField_<>c__DisplayClass5_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  UnityEngine_UIElements_DefaultEventSystem_LegacyInputProcessor_NoInput_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 0;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  OVR_OpenVR_IVROverlay__MoveGamepadFocusToNeighbor_TypeInfo
+                                                  ;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_DefaultEventSystem_InputForUIProcessor_<>c__DisplayClass14_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_BackgroundSize_PropertyBag_XProperty_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  UnityEngine_UIElements_BackgroundPosition_PropertyBag_OffsetProperty_TypeInfo
+                                                  ;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 3;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  System_Runtime_CompilerServices_YieldAwaitable_YieldAwaiter_TypeInfo
+                                                  ;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  Unity_Burst_BurstCompiler_BurstCompilerHelper_IsBurstEnabled_00000146_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_Background_PropertyBag_TextureProperty_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)PTR_DAT_071048a0;
+                                                  puVar6 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 3;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar6);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  System_Collections_Generic_List<NetSyncSession>_TypeInfo
+                                                  ;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_UIElements_BackgroundRepeat_PropertyBag_YProperty_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar13;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,lVar19,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar21 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar14,lVar15,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar19 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  lVar15 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_05971910(lVar15,0);
+                                                  if (lVar15 != 0) {
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar15 + 0x10) =
+                                                       *(undefined8 *)
+                                                                                                                
+                                                  UnityEngine_Rendering_DebugDisplaySettingsVolume_WidgetFactory_<>c__DisplayClass1_0_TypeInfo
+                                                  ;
+                                                  puVar3 = PTR_DAT_070c25e8;
+                                                  *(undefined8 *)(lVar15 + 0x20) = uVar13;
+                                                  *(undefined4 *)(lVar15 + 0x18) = 4;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar3);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar5);
+                                                  if (lVar16 != 0) {
+                                                    lVar19 = *(long *)(lVar16 + 0x10);
+                                                    uVar13 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_TextAsset_EncodingUtility_TypeInfo;
+                                                  lVar20 = *(long *)puVar4;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar19 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar19 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(undefined8 *)
+                                                       (lVar19 + (long)(int)uVar2 * 8 + 0x20) =
+                                                           uVar13;
+                                                    }
+                                                    else {
+                                                      FUN_042e4a64(lVar16,uVar13,
+                                                                   *(undefined8 *)
+                                                                    (*(long *)(*(long *)(lVar20 + 
+                                                  0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  uVar13 = *(undefined8 *)puVar10;
+                                                  *(long *)(lVar15 + 0x30) = lVar16;
+                                                  lVar16 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (uVar13);
+                                                  FUN_042e4268(lVar16,*(undefined8 *)puVar9);
+                                                  lVar19 = 
+                                                  Best_HTTP_Profiler_Network_NetworkStatsCollector__get_ReceivedAndUnprocessed
+                                                            (*(undefined8 *)puVar8);
+                                                  uVar13 = FUN_05971910(lVar19,0);
+                                                  if (lVar19 != 0) {
+                                                    uVar17 = *(undefined8 *)
+                                                                                                                            
+                                                  UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass15_0_TypeInfo
+                                                  ;
+                                                  *(undefined8 *)(lVar19 + 0x10) =
+                                                       *(undefined8 *)puVar11;
+                                                  *(undefined8 *)(lVar19 + 0x18) = uVar17;
+                                                  if (lVar16 != 0) {
+                                                    lVar20 = *(long *)(lVar16 + 0x10);
+                                                    lVar21 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlClosedNode_TypeInfo;
+                                                  *(int *)(lVar16 + 0x1c) =
+                                                       *(int *)(lVar16 + 0x1c) + 1;
+                                                  if (lVar20 != 0) {
+                                                    uVar2 = *(uint *)(lVar16 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar20 + 0x18)) {
+                                                      *(uint *)(lVar16 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar20 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar19;
+                                                    }
+                                                    else {
+                                                      uVar13 = FUN_042e4a64(lVar16,lVar19,
+                                                                            *(undefined8 *)
+                                                                             (*(long *)(*(long *)(
+                                                  lVar21 + 0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar15 + 0x28) = lVar16;
+                                                  lVar16 = *(long *)(lVar14 + 0x10);
+                                                  lVar19 = *(long *)
+                                                  System_Xml_XmlBaseReader_XmlCommentNode_TypeInfo;
+                                                  *(int *)(lVar14 + 0x1c) =
+                                                       *(int *)(lVar14 + 0x1c) + 1;
+                                                  if (lVar16 != 0) {
+                                                    uVar2 = *(uint *)(lVar14 + 0x18);
+                                                    if (uVar2 < *(uint *)(lVar16 + 0x18)) {
+                                                      *(uint *)(lVar14 + 0x18) = uVar2 + 1;
+                                                      *(long *)(lVar16 + (long)(int)uVar2 * 8 + 0x20
+                                                               ) = lVar15;
+                                                    }
+                                                    else {
+                                                      uVar13 = FUN_042e4a64(lVar14,lVar15,
+                                                                            *(undefined8 *)
+                                                                             (*(long *)(*(long *)(
+                                                  lVar19 + 0x20) + 0xc0) + 0x70));
+                                                  }
+                                                  *(long *)(lVar12 + 0x28) = lVar14;
+                                                  FUN_06938d58(uVar13,lVar12);
+                                                  return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+

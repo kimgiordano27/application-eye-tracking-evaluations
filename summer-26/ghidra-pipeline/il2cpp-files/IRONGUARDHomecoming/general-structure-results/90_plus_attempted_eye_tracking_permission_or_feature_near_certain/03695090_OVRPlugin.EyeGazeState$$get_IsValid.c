@@ -1,0 +1,30 @@
+/*
+FUNCTION_NAME: OVRPlugin.EyeGazeState$$get_IsValid
+ENTRY_POINT: 03695090
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 98
+LABEL: attempted_eye_tracking_permission_or_feature_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_3;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void OVRPlugin_EyeGazeState__get_IsValid(void)
+
+{
+  int in_w8;
+  long unaff_x19;
+  undefined4 unaff_s8;
+  
+  if (in_w8 == 0) {
+    thunk_FUN_01ee6d7c();
+  }
+  *(undefined4 *)(unaff_x19 + 8) = unaff_s8;
+  return;
+}
+
+

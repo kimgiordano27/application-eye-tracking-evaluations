@@ -1,0 +1,23 @@
+/*
+FUNCTION_NAME: OVRPermissionsRequester_Request_mE24346F59325F8846898FF68A44ABE4295695906
+ENTRY_POINT: 02da6638
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 84
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;telemetry;attempted_use
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_4;telemetry_or_network_hits_6;attempted_eye_tracking_permission_or_feature_enable
+*/
+
+
+void OVRPermissionsRequester_Request_mE24346F59325F8846898FF68A44ABE4295695906(undefined8 param_1)
+
+{
+  OVRPermissionsRequester_RequestPermissions_m7FE841760BF121F7829BA1B9283ADA8D81459675(param_1,0);
+  return;
+}
+
+

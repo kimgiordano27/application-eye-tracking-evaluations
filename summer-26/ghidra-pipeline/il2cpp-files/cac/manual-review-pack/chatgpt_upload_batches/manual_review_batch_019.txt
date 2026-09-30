@@ -1,0 +1,692 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 91
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings.<>c__DisplayClass93_0$$.ctor
+ENTRY_POINT: 0744dc4c
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_8', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\general-structure-results\70_high_general_structure_review_high\0744dc4c_Newtonsoft.Json.JsonSerializerSettings._c__DisplayClass93_0$$.ctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\manual-review-pack\A_must_review\091_p194_Newtonsoft.Json.JsonSerializerSettings._c__DisplayClass93_0$$.ctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings.<>c__DisplayClass93_0$$.ctor
+ENTRY_POINT: 0744dc4c
+PROGRAM: cac-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_8;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void Newtonsoft_Json_JsonSerializerSettings_<>c__DisplayClass93_0___ctor(undefined8 *param_1)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  int iVar3;
+  int iVar4;
+  long lVar5;
+  undefined8 uVar6;
+  long lVar7;
+  long lVar8;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 *puVar9;
+  long *plVar10;
+  long lVar11;
+  ulong uVar12;
+  
+  puVar9 = *(undefined8 **)(unaff_x20 + 0x250);
+  lVar5 = thunk_FUN_03f4e68c(*param_1);
+  FUN_056b0068(lVar5,*puVar9);
+  puVar2 = PTR_DAT_09131240;
+  lVar11 = *(long *)(unaff_x19 + 0x18);
+  if (lVar11 != 0) {
+    uVar1 = *(uint *)(lVar11 + 0x18);
+    if (0 < (int)uVar1) {
+      uVar12 = 0;
+      do {
+        if (uVar1 <= uVar12) {
+                    /* WARNING: Subroutine does not return */
+          FUN_03f13634();
+        }
+        plVar10 = *(long **)(lVar11 + uVar12 * 8 + 0x20);
+        if (plVar10 == (long *)0x0) goto LAB_0744dda8;
+        iVar3 = (**(code **)(*plVar10 + 0x178))(plVar10,*(undefined8 *)(*plVar10 + 0x180));
+        if (0 < iVar3) {
+          iVar3 = 0;
+          do {
+            uVar6 = (**(code **)(*plVar10 + 0x188))(plVar10,iVar3,*(undefined8 *)(*plVar10 + 400));
+            if (lVar5 == 0) goto LAB_0744dda8;
+            lVar7 = *(long *)(lVar5 + 0x10);
+            lVar8 = *(long *)puVar2;
+            *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+            if (lVar7 == 0) goto LAB_0744dda8;
+            uVar1 = *(uint *)(lVar5 + 0x18);
+            if (uVar1 < *(uint *)(lVar7 + 0x18)) {
+              *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+              *(undefined8 *)(lVar7 + (long)(int)uVar1 * 8 + 0x20) = uVar6;
+              thunk_FUN_03f86000();
+            }
+            else {
+              FUN_056b08d0(lVar5,uVar6,
+                           *(undefined8 *)(*(long *)(*(long *)(lVar8 + 0x20) + 0xc0) + 0x70));
+            }
+            iVar3 = iVar3 + 1;
+            iVar4 = (**(code **)(*plVar10 + 0x178))(plVar10,*(undefined8 *)(*plVar10 + 0x180));
+          } while (iVar3 < iVar4);
+        }
+        uVar1 = *(uint *)(lVar11 + 0x18);
+        uVar12 = uVar12 + 1;
+      } while ((int)uVar12 < (int)uVar1);
+    }
+    puVar2 = PTR_DAT_09131248;
+    if (lVar5 != 0) {
+      FUN_056b0ae0(lVar5,*(undefined8 *)(unaff_x19 + 0x10),*(undefined8 *)PTR_DAT_09131280);
+      FUN_056b23bc(lVar5,*(undefined8 *)puVar2);
+      return;
+    }
+  }
+LAB_0744dda8:
+                    /* WARNING: Subroutine does not return */
+  FUN_03f1362c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 92
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_TraceWriter
+ENTRY_POINT: 0744dc6c
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_7', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\general-structure-results\70_high_general_structure_review_high\0744dc6c_Newtonsoft.Json.JsonSerializerSettings$$set_TraceWriter.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\manual-review-pack\A_must_review\092_p194_Newtonsoft.Json.JsonSerializerSettings$$set_TraceWriter.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_TraceWriter
+ENTRY_POINT: 0744dc6c
+PROGRAM: cac-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_7;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void Newtonsoft_Json_JsonSerializerSettings__set_TraceWriter(void)
+
+{
+  uint uVar1;
+  int iVar2;
+  int iVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long unaff_x20;
+  long *plVar6;
+  long unaff_x23;
+  ulong uVar7;
+  
+  uVar1 = *(uint *)(unaff_x23 + 0x18);
+  if (0 < (int)uVar1) {
+    uVar7 = 0;
+    do {
+      if (uVar1 <= uVar7) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03f13634();
+      }
+      plVar6 = *(long **)(unaff_x23 + uVar7 * 8 + 0x20);
+      if (plVar6 == (long *)0x0) goto LAB_0744dda8;
+      iVar2 = (**(code **)(*plVar6 + 0x178))(plVar6,*(undefined8 *)(*plVar6 + 0x180));
+      if (0 < iVar2) {
+        iVar2 = 0;
+        do {
+          uVar4 = (**(code **)(*plVar6 + 0x188))(plVar6,iVar2,*(undefined8 *)(*plVar6 + 400));
+          if (unaff_x20 == 0) goto LAB_0744dda8;
+          lVar5 = *(long *)(unaff_x20 + 0x10);
+          *(int *)(unaff_x20 + 0x1c) = *(int *)(unaff_x20 + 0x1c) + 1;
+          if (lVar5 == 0) goto LAB_0744dda8;
+          uVar1 = *(uint *)(unaff_x20 + 0x18);
+          if (uVar1 < *(uint *)(lVar5 + 0x18)) {
+            *(uint *)(unaff_x20 + 0x18) = uVar1 + 1;
+            *(undefined8 *)(lVar5 + (long)(int)uVar1 * 8 + 0x20) = uVar4;
+            thunk_FUN_03f86000();
+          }
+          else {
+            FUN_056b08d0();
+          }
+          iVar2 = iVar2 + 1;
+          iVar3 = (**(code **)(*plVar6 + 0x178))(plVar6,*(undefined8 *)(*plVar6 + 0x180));
+        } while (iVar2 < iVar3);
+      }
+      uVar1 = *(uint *)(unaff_x23 + 0x18);
+      uVar7 = uVar7 + 1;
+    } while ((int)uVar7 < (int)uVar1);
+  }
+  if (unaff_x20 != 0) {
+    FUN_056b0ae0();
+    FUN_056b23bc();
+    return;
+  }
+LAB_0744dda8:
+                    /* WARNING: Subroutine does not return */
+  FUN_03f1362c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 93
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_StringEscapeHandling
+ENTRY_POINT: 0744e464
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_14', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\general-structure-results\70_high_general_structure_review_high\0744e464_Newtonsoft.Json.JsonSerializerSettings$$set_StringEscapeHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\manual-review-pack\A_must_review\093_p194_Newtonsoft.Json.JsonSerializerSettings$$set_StringEscapeHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_StringEscapeHandling
+ENTRY_POINT: 0744e464
+PROGRAM: cac-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_14;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void Newtonsoft_Json_JsonSerializerSettings__set_StringEscapeHandling(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  byte bVar3;
+  int iVar4;
+  int iVar5;
+  long *plVar6;
+  ulong uVar7;
+  long lVar8;
+  uint in_w8;
+  uint uVar9;
+  long unaff_x19;
+  ulong unaff_x20;
+  byte *unaff_x21;
+  uint uVar10;
+  byte *unaff_x22;
+  long *unaff_x24;
+  undefined8 uVar11;
+  long *plVar12;
+  long lVar13;
+  long *in_stack_00000000;
+  long *in_stack_00000008;
+  
+  plVar12 = unaff_x24;
+  plVar6 = in_stack_00000008;
+  if (0 < (int)in_w8) {
+    lVar13 = 0;
+    do {
+      if (in_w8 <= (uint)lVar13) goto LAB_0744e920;
+      plVar12 = *(long **)(param_1 + 0x20 + lVar13 * 8);
+      if (plVar12 == (long *)0x0) goto LAB_0744e91c;
+      iVar4 = (**(code **)(*plVar12 + 0x248))(plVar12,*(undefined8 *)(*plVar12 + 0x250));
+      iVar5 = (**(code **)(*unaff_x24 + 0x248))();
+      plVar6 = plVar12;
+      if (iVar4 == iVar5) break;
+      in_w8 = *(uint *)(param_1 + 0x18);
+      lVar13 = lVar13 + 1;
+      plVar12 = unaff_x24;
+      plVar6 = in_stack_00000008;
+    } while ((int)lVar13 < (int)in_w8);
+  }
+  in_stack_00000008 = plVar6;
+  puVar1 = PTR_DAT_0910b550;
+  uVar11 = *(undefined8 *)PTR_DAT_091312c8;
+  if (*(int *)(*(long *)(PTR_DAT_0910b550 + 0xe0) + 0xe4) == 0) {
+    thunk_FUN_03f6fea8();
+  }
+  plVar6 = (long *)FUN_074c4a14(uVar11,0);
+  puVar2 = PTR_DAT_091312d0;
+  if (plVar6 != (long *)0x0) {
+    bVar3 = (**(code **)(*plVar6 + 0x2d8))();
+    *unaff_x21 = bVar3 & 1;
+    uVar11 = FUN_074c4a14(*(undefined8 *)puVar2,0);
+    uVar7 = FUN_073e6bc8(plVar12,uVar11,0);
+    if ((uVar7 & 1) != 0) {
+      *unaff_x22 = 1;
+      return;
+    }
+    uVar11 = *(undefined8 *)puVar2;
+    if (*(int *)(*(long *)(puVar1 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_03f6fea8();
+    }
+    FUN_074c4a14(uVar11,0);
+    bVar3 = FUN_073e6bc8();
+    *unaff_x22 = bVar3 & 1;
+    if ((bVar3 & 1) != 0) {
+      return;
+    }
+    if (*unaff_x21 != 0) {
+      FUN_0744e928(&stack0x00000008);
+    }
+    if ((unaff_x20 & 1) == 0) {
+      if (unaff_x19 == 0) goto LAB_0744e91c;
+    }
+    else {
+      FUN_074fcefc(0);
+      if (unaff_x19 == 0) goto LAB_0744e91c;
+      FUN_07331848();
+    }
+    FUN_07331848();
+    if (in_stack_00000000 != (long *)0x0) {
+      (**(code **)(*in_stack_00000000 + 0x168))
+                (in_stack_00000000,*(undefined8 *)(*in_stack_00000000 + 0x170));
+      FUN_07331848();
+      FUN_07331848();
+      if (in_stack_00000008 != (long *)0x0) {
+        (**(code **)(*in_stack_00000008 + 0x1b8))
+                  (in_stack_00000008,*(undefined8 *)(*in_stack_00000008 + 0x1c0));
+        FUN_07331848();
+        if (in_stack_00000008 != (long *)0x0) {
+          uVar7 = (**(code **)(*in_stack_00000008 + 0x358))
+                            (in_stack_00000008,*(undefined8 *)(*in_stack_00000008 + 0x360));
+          if ((uVar7 & 1) != 0) {
+            if (in_stack_00000008 == (long *)0x0) goto LAB_0744e91c;
+            lVar13 = *in_stack_00000008;
+            bVar3 = *(byte *)(*(long *)PTR_DAT_09113e70 + 0x130);
+            if ((*(byte *)(lVar13 + 0x130) < bVar3) ||
+               (*(long *)(*(long *)(lVar13 + 200) + (ulong)bVar3 * 8 + -8) !=
+                *(long *)PTR_DAT_09113e70)) {
+                    /* WARNING: Subroutine does not return */
+              FUN_03f139ac();
+            }
+            in_stack_00000008 =
+                 (long *)(**(code **)(lVar13 + 0x448))
+                                   (in_stack_00000008,*(undefined8 *)(lVar13 + 0x450));
+            if (in_stack_00000008 == (long *)0x0) goto LAB_0744e91c;
+            lVar13 = (**(code **)(*in_stack_00000008 + 0x378))
+                               (in_stack_00000008,*(undefined8 *)(*in_stack_00000008 + 0x380));
+            FUN_07331848();
+            if (lVar13 == 0) goto LAB_0744e91c;
+            uVar9 = *(uint *)(lVar13 + 0x18);
+            if (0 < (int)uVar9) {
+              uVar10 = 0;
+              do {
+                if (uVar10 != 0) {
+                  FUN_07331848();
+                  uVar9 = *(uint *)(lVar13 + 0x18);
+                }
+                if (uVar9 <= uVar10) goto LAB_0744e920;
+                plVar12 = *(long **)(lVar13 + (long)(int)uVar10 * 8 + 0x20);
+                if (plVar12 == (long *)0x0) goto LAB_0744e91c;
+                (**(code **)(*plVar12 + 0x1b8))(plVar12,*(undefined8 *)(*plVar12 + 0x1c0));
+                FUN_07331848();
+                uVar9 = *(uint *)(lVar13 + 0x18);
+                uVar10 = uVar10 + 1;
+              } while ((int)uVar10 < (int)uVar9);
+            }
+            FUN_07331848();
+          }
+          if (in_stack_00000008 != (long *)0x0) {
+            lVar13 = (**(code **)(*in_stack_00000008 + 600))
+                               (in_stack_00000008,*(undefined8 *)(*in_stack_00000008 + 0x260));
+            FUN_07331848();
+            if (lVar13 != 0) {
+              uVar9 = *(uint *)(lVar13 + 0x18);
+              if (0 < (int)uVar9) {
+                uVar10 = 0;
+                do {
+                  if (uVar10 != 0) {
+                    FUN_07331848();
+                    uVar9 = *(uint *)(lVar13 + 0x18);
+                  }
+                  if (uVar9 <= uVar10) {
+LAB_0744e920:
+                    /* WARNING: Subroutine does not return */
+                    FUN_03f13634();
+                  }
+                  plVar6 = (long *)(lVar13 + (long)(int)uVar10 * 8 + 0x20);
+                  plVar12 = (long *)*plVar6;
+                  if (((plVar12 == (long *)0x0) ||
+                      (plVar12 = (long *)(**(code **)(*plVar12 + 0x1e8))
+                                                   (plVar12,*(undefined8 *)(*plVar12 + 0x1f0)),
+                      plVar12 == (long *)0x0)) ||
+                     ((uVar7 = (**(code **)(*plVar12 + 0x3f8))
+                                         (plVar12,*(undefined8 *)(*plVar12 + 0x400)),
+                      (uVar7 & 1) != 0 &&
+                      ((uVar7 = (**(code **)(*plVar12 + 0x408))
+                                          (plVar12,*(undefined8 *)(*plVar12 + 0x410)),
+                       (uVar7 & 1) == 0 &&
+                       (plVar12 = (long *)(**(code **)(*plVar12 + 0x488))
+                                                    (plVar12,*(undefined8 *)(*plVar12 + 0x490)),
+                       plVar12 == (long *)0x0)))))) goto LAB_0744e91c;
+                  (**(code **)(*plVar12 + 0x168))(plVar12,*(undefined8 *)(*plVar12 + 0x170));
+                  FUN_07331848();
+                  if (*(uint *)(lVar13 + 0x18) <= uVar10) goto LAB_0744e920;
+                  plVar12 = (long *)*plVar6;
+                  if (plVar12 == (long *)0x0) goto LAB_0744e91c;
+                  lVar8 = (**(code **)(*plVar12 + 0x1d8))(plVar12,*(undefined8 *)(*plVar12 + 0x1e0))
+                  ;
+                  if (lVar8 != 0) {
+                    FUN_07331848();
+                    if (*(uint *)(lVar13 + 0x18) <= uVar10) goto LAB_0744e920;
+                    plVar6 = (long *)*plVar6;
+                    if (plVar6 == (long *)0x0) goto LAB_0744e91c;
+                    (**(code **)(*plVar6 + 0x1d8))(plVar6,*(undefined8 *)(*plVar6 + 0x1e0));
+                    FUN_07331848();
+                  }
+                  uVar9 = *(uint *)(lVar13 + 0x18);
+                  uVar10 = uVar10 + 1;
+                } while ((int)uVar10 < (int)uVar9);
+              }
+              FUN_07331848();
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_0744e91c:
+                    /* WARNING: Subroutine does not return */
+  FUN_03f1362c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 94
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_ReferenceResolverProvider
+ENTRY_POINT: 0744dc5c
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_8', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\general-structure-results\70_high_general_structure_review_high\0744dc5c_Newtonsoft.Json.JsonSerializerSettings$$set_ReferenceResolverProvider.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\manual-review-pack\A_must_review\094_p194_Newtonsoft.Json.JsonSerializerSettings$$set_ReferenceResolverProvider.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_ReferenceResolverProvider
+ENTRY_POINT: 0744dc5c
+PROGRAM: cac-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_8;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void Newtonsoft_Json_JsonSerializerSettings__set_ReferenceResolverProvider(long param_1)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  int iVar3;
+  int iVar4;
+  undefined8 uVar5;
+  long lVar6;
+  long lVar7;
+  long unaff_x19;
+  long *plVar8;
+  long lVar9;
+  ulong uVar10;
+  
+  FUN_056b0068();
+  puVar2 = PTR_DAT_09131240;
+  lVar9 = *(long *)(unaff_x19 + 0x18);
+  if (lVar9 != 0) {
+    uVar1 = *(uint *)(lVar9 + 0x18);
+    if (0 < (int)uVar1) {
+      uVar10 = 0;
+      do {
+        if (uVar1 <= uVar10) {
+                    /* WARNING: Subroutine does not return */
+          FUN_03f13634();
+        }
+        plVar8 = *(long **)(lVar9 + uVar10 * 8 + 0x20);
+        if (plVar8 == (long *)0x0) goto LAB_0744dda8;
+        iVar3 = (**(code **)(*plVar8 + 0x178))(plVar8,*(undefined8 *)(*plVar8 + 0x180));
+        if (0 < iVar3) {
+          iVar3 = 0;
+          do {
+            uVar5 = (**(code **)(*plVar8 + 0x188))(plVar8,iVar3,*(undefined8 *)(*plVar8 + 400));
+            if (param_1 == 0) goto LAB_0744dda8;
+            lVar6 = *(long *)(param_1 + 0x10);
+            lVar7 = *(long *)puVar2;
+            *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + 1;
+            if (lVar6 == 0) goto LAB_0744dda8;
+            uVar1 = *(uint *)(param_1 + 0x18);
+            if (uVar1 < *(uint *)(lVar6 + 0x18)) {
+              *(uint *)(param_1 + 0x18) = uVar1 + 1;
+              *(undefined8 *)(lVar6 + (long)(int)uVar1 * 8 + 0x20) = uVar5;
+              thunk_FUN_03f86000();
+            }
+            else {
+              FUN_056b08d0(param_1,uVar5,
+                           *(undefined8 *)(*(long *)(*(long *)(lVar7 + 0x20) + 0xc0) + 0x70));
+            }
+            iVar3 = iVar3 + 1;
+            iVar4 = (**(code **)(*plVar8 + 0x178))(plVar8,*(undefined8 *)(*plVar8 + 0x180));
+          } while (iVar3 < iVar4);
+        }
+        uVar1 = *(uint *)(lVar9 + 0x18);
+        uVar10 = uVar10 + 1;
+      } while ((int)uVar10 < (int)uVar1);
+    }
+    puVar2 = PTR_DAT_09131248;
+    if (param_1 != 0) {
+      FUN_056b0ae0(param_1,*(undefined8 *)(unaff_x19 + 0x10),*(undefined8 *)PTR_DAT_09131280);
+      FUN_056b23bc(param_1,*(undefined8 *)puVar2);
+      return;
+    }
+  }
+LAB_0744dda8:
+                    /* WARNING: Subroutine does not return */
+  FUN_03f1362c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 95
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_NullValueHandling
+ENTRY_POINT: 0744d804
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_5', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\general-structure-results\70_high_general_structure_review_high\0744d804_Newtonsoft.Json.JsonSerializerSettings$$set_NullValueHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\cac\manual-review-pack\A_must_review\095_p194_Newtonsoft.Json.JsonSerializerSettings$$set_NullValueHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializerSettings$$set_NullValueHandling
+ENTRY_POINT: 0744d804
+PROGRAM: cac-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_5;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void Newtonsoft_Json_JsonSerializerSettings__set_NullValueHandling(void)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  ulong uVar7;
+  long *plVar8;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  long lVar11;
+  long lVar12;
+  long unaff_x19;
+  byte unaff_w20;
+  long unaff_x21;
+  int unaff_w22;
+  int iVar13;
+  
+  FUN_03f13384();
+  FUN_03f13384(PTR_DAT_09131248);
+  FUN_03f13384(PTR_DAT_09131250);
+  FUN_03f13384(PTR_DAT_09131258);
+  FUN_03f13384(PTR_DAT_09131260);
+  *(undefined1 *)(unaff_x21 + 0x41) = 1;
+  puVar3 = PTR_DAT_09131260;
+  puVar2 = PTR_DAT_09131250;
+  if (unaff_w22 < 0) {
+    thunk_FUN_03f786f8(PTR_DAT_0910bbd0);
+    uVar6 = thunk_FUN_03f4e68c();
+    uVar9 = thunk_FUN_03f786f8(PTR_DAT_091281c8);
+    uVar10 = thunk_FUN_03f786f8(PTR_DAT_09131268);
+    FUN_07416834(uVar6,uVar9,uVar10,0);
+    uVar9 = thunk_FUN_03f786f8(PTR_DAT_09131270);
+                    /* WARNING: Subroutine does not return */
+    FUN_03f134f0(uVar6,uVar9);
+  }
+  lVar4 = thunk_FUN_03f4e68c(*(undefined8 *)PTR_DAT_09131258);
+  FUN_056b0068(lVar4,*(undefined8 *)puVar2);
+  plVar5 = (long *)thunk_FUN_03f4e68c(*(undefined8 *)puVar3);
+  FUN_0744d37c(plVar5,unaff_w22 + 2,unaff_w20 & 1);
+  puVar2 = PTR_DAT_09131240;
+  if (plVar5 == (long *)0x0) {
+LAB_0744d944:
+    *(byte *)(unaff_x19 + 0x20) = unaff_w20 & 1;
+    if (lVar4 == 0) {
+LAB_0744d984:
+                    /* WARNING: Subroutine does not return */
+      FUN_03f1362c();
+    }
+  }
+  else {
+    iVar13 = unaff_w22 + 3;
+    do {
+      uVar6 = (**(code **)(*plVar5 + 0x1b8))(plVar5,*(undefined8 *)(*plVar5 + 0x1c0));
+      uVar7 = FUN_073dfe84(uVar6,0,0);
+      if ((uVar7 & 1) == 0) goto LAB_0744d944;
+      if (lVar4 == 0) goto LAB_0744d984;
+      lVar11 = *(long *)(lVar4 + 0x10);
+      lVar12 = *(long *)puVar2;
+      *(int *)(lVar4 + 0x1c) = *(int *)(lVar4 + 0x1c) + 1;
+      if (lVar11 == 0) goto LAB_0744d984;
+      uVar1 = *(uint *)(lVar4 + 0x18);
+      if (uVar1 < *(uint *)(lVar11 + 0x18)) {
+        *(uint *)(lVar4 + 0x18) = uVar1 + 1;
+        plVar8 = (long *)(lVar11 + (long)(int)uVar1 * 8 + 0x20);
+        *plVar8 = (long)plVar5;
+        thunk_FUN_03f86000(plVar8,plVar5);
+      }
+      else {
+        FUN_056b08d0(lVar4,plVar5,*(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70)
+                    );
+      }
+      plVar5 = (long *)thunk_FUN_03f4e68c(*(undefined8 *)puVar3);
+      FUN_0744d37c(plVar5,iVar13,unaff_w20 & 1);
+      iVar13 = iVar13 + 1;
+    } while (plVar5 != (long *)0x0);
+    *(byte *)(unaff_x19 + 0x20) = unaff_w20 & 1;
+  }
+  uVar6 = FUN_056b23bc(lVar4,*(undefined8 *)PTR_DAT_09131248);
+  *(undefined8 *)(unaff_x19 + 0x10) = uVar6;
+  thunk_FUN_03f86000((undefined8 *)(unaff_x19 + 0x10),uVar6);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

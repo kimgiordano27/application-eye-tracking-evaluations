@@ -1,0 +1,452 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 1
+FUNCTION_NAME: FUN_02ff9804
+ENTRY_POINT: 02ff9804
+MANUAL_PRIORITY_SCORE: 278
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 152
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'telemetry_or_network_hits_1', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_permission_setup', 'functionality_foveated_rendering', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_152', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02ff9804_FUN_02ff9804.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\001_p278_FUN_02ff9804.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_02ff9804
+ENTRY_POINT: 02ff9804
+PROGRAM: simulator-libil2cpp.so
+SCORE: 152
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;foveated_rendering;data_collection_or_telemetry;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;telemetry;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;telemetry_or_network_hits_1;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_permission_setup;functionality_foveated_rendering;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+bool FUN_02ff9804(void)
+
+{
+  char cVar1;
+  char *local_40;
+  undefined8 uStack_38;
+  char *local_30;
+  undefined8 uStack_28;
+  undefined8 local_20;
+  undefined4 local_18;
+  undefined1 local_14;
+  
+  if (DAT_036cab10 == (code *)0x0) {
+    local_18 = 0;
+    local_40 = "UnityOpenXR";
+    uStack_38 = 0xb;
+    local_30 = "OculusFoveation_HasRequestedEyeTrackingPermissions";
+    uStack_28 = 0x32;
+    local_20 = DAT_009ce750;
+    local_14 = 0;
+    DAT_036cab10 = (code *)thunk_FUN_018af574(&local_40);
+  }
+  cVar1 = (*DAT_036cab10)();
+  return cVar1 != '\0';
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 2
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions
+ENTRY_POINT: 02ef9804
+MANUAL_PRIORITY_SCORE: 212
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 101
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_14', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_101', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_framework_support_only_near_certain\02ef9804_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\002_p212_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions
+ENTRY_POINT: 02ef9804
+PROGRAM: simulator-libil2cpp.so
+SCORE: 101
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_14;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_XR_OpenXR_OpenXRSettings__Internal_HasRequestedEyeTrackingPermissions
+               (undefined1 param_1 [16],undefined4 param_2,undefined4 param_3)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  ulong uVar3;
+  long lVar4;
+  long unaff_x19;
+  uint unaff_w20;
+  long unaff_x21;
+  long *plVar5;
+  long lVar6;
+  long unaff_x25;
+  undefined4 uVar7;
+  long in_stack_00000028;
+  
+  FUN_0308a9e0();
+  lVar4 = *(long *)(unaff_x19 + 0x20);
+  if (lVar4 != 0) {
+    if (*(uint *)(lVar4 + 0x18) <= unaff_w20) goto LAB_02ef99bc;
+    lVar4 = *(long *)(lVar4 + unaff_x25 * 8 + 0x20);
+    if (lVar4 != 0) {
+      lVar6 = *(long *)(unaff_x19 + 0x30);
+      uVar2 = FUN_01b5eed0(lVar4,*(undefined8 *)PTR_DAT_034c6ec8);
+      if (lVar6 != 0) {
+        if (*(uint *)(lVar6 + 0x18) <= unaff_w20) {
+LAB_02ef99bc:
+                    /* WARNING: Subroutine does not return */
+          FUN_018c4b04();
+        }
+        *(undefined8 *)(lVar6 + unaff_x25 * 8 + 0x20) = uVar2;
+        puVar1 = PTR_DAT_03499cd8;
+        uVar7 = DAT_009cf868;
+        lVar4 = *(long *)(unaff_x19 + 0x30);
+        if (lVar4 != 0) {
+          if (*(uint *)(lVar4 + 0x18) <= unaff_w20) goto LAB_02ef99bc;
+          lVar4 = *(long *)(lVar4 + unaff_x25 * 8 + 0x20);
+          if (lVar4 != 0) {
+            FUN_0305c38c(DAT_009cf868,lVar4,0);
+            FUN_0305c304(uVar7,lVar4,0);
+            lVar4 = *(long *)puVar1;
+            if (*(int *)(lVar4 + 0xe0) == 0) {
+              thunk_FUN_018cd5b0();
+              lVar4 = *(long *)puVar1;
+            }
+            if (unaff_x21 != 0) {
+              lVar4 = **(long **)(lVar4 + 0xb8);
+              uVar7 = FUN_0308a1c8();
+              if (lVar4 != 0) {
+                if (*(uint *)(lVar4 + 0x18) < 2) goto LAB_02ef99bc;
+                *(undefined4 *)(lVar4 + 0x30) = param_2;
+                *(undefined4 *)(lVar4 + 0x34) = param_3;
+                *(undefined4 *)(lVar4 + 0x20) = uVar7;
+                *(undefined4 *)(lVar4 + 0x24) = param_2;
+                *(undefined4 *)(lVar4 + 0x28) = param_3;
+                *(undefined4 *)(lVar4 + 0x2c) = uVar7;
+                lVar4 = *(long *)(unaff_x19 + 0x30);
+                if (lVar4 != 0) {
+                  if (*(uint *)(lVar4 + 0x18) <= unaff_w20) goto LAB_02ef99bc;
+                  lVar4 = *(long *)(lVar4 + unaff_x25 * 8 + 0x20);
+                  if (lVar4 != 0) {
+                    FUN_0305c924(lVar4,**(undefined8 **)(*(long *)puVar1 + 0xb8),0);
+                    lVar4 = *(long *)(unaff_x19 + 0x20);
+                    if (lVar4 != 0) {
+                      if (*(uint *)(lVar4 + 0x18) <= unaff_w20) goto LAB_02ef99bc;
+                      lVar4 = *(long *)(lVar4 + unaff_x25 * 8 + 0x20);
+                      if (lVar4 != 0) {
+                        uVar3 = FUN_01b601ec(lVar4,&stack0x00000028,*(undefined8 *)PTR_DAT_034c6ed0)
+                        ;
+                        lVar4 = in_stack_00000028;
+                        if ((uVar3 & 1) != 0) {
+                          plVar5 = *(long **)(unaff_x19 + 0x38);
+                          if (plVar5 == (long *)0x0) goto LAB_02ef99b8;
+                          if ((in_stack_00000028 != 0) &&
+                             (lVar6 = thunk_FUN_018af234(in_stack_00000028,
+                                                         *(undefined8 *)(*plVar5 + 0x40)),
+                             lVar6 == 0)) {
+                            uVar2 = thunk_FUN_01867f60();
+                    /* WARNING: Subroutine does not return */
+                            FUN_018c49d0(uVar2,0);
+                          }
+                          if (*(uint *)(plVar5 + 3) <= unaff_w20) goto LAB_02ef99bc;
+                          plVar5[unaff_x25 + 4] = lVar4;
+                        }
+                        return;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_02ef99b8:
+                    /* WARNING: Subroutine does not return */
+  FUN_018c4afc();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 3
+FUNCTION_NAME: Obi.ObiNativeList<TriangleMeshHeader>$$Upload<TriangleMeshHeader>
+ENTRY_POINT: 01900b90
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_6', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_general_structure_review_high\01900b90_Obi.ObiNativeList_TriangleMeshHeader_$$Upload_TriangleMeshHeader_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\003_p194_Obi.ObiNativeList_TriangleMeshHeader_$$Upload_TriangleMeshHeader_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Obi.ObiNativeList<TriangleMeshHeader>$$Upload<TriangleMeshHeader>
+ENTRY_POINT: 01900b90
+PROGRAM: simulator-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_6;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+long Obi_ObiNativeList<TriangleMeshHeader>__Upload<TriangleMeshHeader>(long param_1,long param_2)
+
+{
+  ulong uVar1;
+  ulong uVar2;
+  undefined8 uVar3;
+  ulong uVar4;
+  long lVar5;
+  char *unaff_x19;
+  ulong unaff_x21;
+  ulong unaff_x22;
+  int unaff_w23;
+  long unaff_x24;
+  long unaff_x25;
+  long unaff_x26;
+  
+  do {
+    uVar4 = param_2 + unaff_x22;
+    unaff_x22 = uVar4;
+    if (param_2 != param_1 + -1) {
+      close(unaff_w23);
+      if (unaff_x21 < uVar4) {
+        (**(code **)(unaff_x26 + 0x458))();
+      }
+      if ((unaff_x21 <= uVar4) && (uVar4 < *(ulong *)(unaff_x24 + 0x720))) {
+        lVar5 = *(long *)(unaff_x25 + 0x4d8);
+        *(undefined1 *)(lVar5 + uVar4) = 0;
+        return lVar5;
+      }
+      while (*(ulong *)(unaff_x24 + 0x720) <= uVar4) {
+        FUN_018fdfe8(*(undefined8 *)(unaff_x25 + 0x4d8));
+        uVar2 = *(ulong *)(unaff_x24 + 0x720);
+        if (uVar2 <= uVar4) {
+          do {
+            uVar1 = uVar2 << 1;
+            uVar2 = uVar2 << 1;
+          } while (uVar1 <= uVar4);
+          *(ulong *)(unaff_x24 + 0x720) = uVar2;
+        }
+        uVar3 = FUN_018f4eb4();
+        *(undefined8 *)(unaff_x25 + 0x4d8) = uVar3;
+        uVar4 = FUN_01900a6c();
+        if (uVar4 == 0) {
+          return 0;
+        }
+        if (*(long *)(unaff_x25 + 0x4d8) == 0) {
+          return 0;
+        }
+      }
+      unaff_w23 = open(unaff_x19,0);
+      if (unaff_w23 == -1) {
+        return 0;
+      }
+      param_1 = *(long *)(unaff_x24 + 0x720);
+      unaff_x22 = 0;
+      unaff_x21 = uVar4;
+    }
+    param_2 = FUN_019009f0(unaff_w23,*(undefined8 *)(unaff_x25 + 0x4d8),param_1 + -1);
+    if (param_2 < 1) {
+      close(unaff_w23);
+      return 0;
+    }
+    param_1 = *(long *)(unaff_x24 + 0x720);
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 4
+FUNCTION_NAME: FUN_02ff9bc0
+ENTRY_POINT: 02ff9bc0
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 127
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_1', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_permission_setup', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_127', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02ff9bc0_FUN_02ff9bc0.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\004_p190_FUN_02ff9bc0.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_02ff9bc0
+ENTRY_POINT: 02ff9bc0
+PROGRAM: simulator-libil2cpp.so
+SCORE: 127
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_3;validity_or_gating_hits_1;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_permission_setup;functionality_foveated_rendering
+*/
+
+
+bool FUN_02ff9bc0(void)
+
+{
+  char cVar1;
+  char *local_40;
+  undefined8 uStack_38;
+  char *local_30;
+  undefined8 uStack_28;
+  undefined8 local_20;
+  undefined4 local_18;
+  undefined1 local_14;
+  
+  if (DAT_036cab18 == (code *)0x0) {
+    local_18 = 0;
+    local_40 = "UnityOpenXR";
+    uStack_38 = 0xb;
+    local_30 = "OculusFoveation_GetHasEyeTrackingPermissions";
+    uStack_28 = 0x2c;
+    local_20 = DAT_009ce750;
+    local_14 = 0;
+    DAT_036cab18 = (code *)thunk_FUN_018af574(&local_40);
+  }
+  cVar1 = (*DAT_036cab18)();
+  return cVar1 != '\0';
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 5
+FUNCTION_NAME: FUN_02ff8dbc
+ENTRY_POINT: 02ff8dbc
+MANUAL_PRIORITY_SCORE: 188
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 125
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_foveation_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_permission_setup', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_125', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02ff8dbc_FUN_02ff8dbc.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\A_must_review\005_p188_FUN_02ff8dbc.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_02ff8dbc
+ENTRY_POINT: 02ff8dbc
+PROGRAM: simulator-libil2cpp.so
+SCORE: 125
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_foveation_hits_1;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_permission_setup;functionality_foveated_rendering
+*/
+
+
+void FUN_02ff8dbc(uint param_1)
+
+{
+  char *local_50;
+  undefined8 uStack_48;
+  char *local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined4 local_28;
+  undefined1 local_24;
+  
+  if (DAT_036cab20 == (code *)0x0) {
+    local_50 = "UnityOpenXR";
+    uStack_48 = 0xb;
+    local_40 = "OculusFoveation_SetHasEyeTrackingPermissions";
+    uStack_38 = 0x2c;
+    local_28 = 4;
+    local_30 = DAT_009ce750;
+    local_24 = 0;
+    DAT_036cab20 = (code *)thunk_FUN_018af574(&local_50);
+  }
+  (*DAT_036cab20)(param_1 & 1);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

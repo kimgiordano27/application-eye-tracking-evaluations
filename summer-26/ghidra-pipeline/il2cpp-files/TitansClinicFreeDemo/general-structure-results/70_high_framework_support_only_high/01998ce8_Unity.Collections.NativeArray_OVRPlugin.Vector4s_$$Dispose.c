@@ -1,0 +1,87 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.Vector4s>$$Dispose
+ENTRY_POINT: 01998ce8
+PROGRAM: TitansClinicFreeDemo-libil2cpp.so
+SCORE: 83
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_7;strong_pose_or_ray_construction_hits_6;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+long Unity_Collections_NativeArray<OVRPlugin_Vector4s>__Dispose(void)
+
+{
+  uint uVar1;
+  long lVar2;
+  ulong uVar3;
+  long lVar4;
+  long unaff_x19;
+  long unaff_x20;
+  long unaff_x21;
+  undefined8 uVar5;
+  long lVar6;
+  ulong uVar7;
+  long lVar8;
+  code *pcVar9;
+  
+  if ((*(byte *)(**(long **)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0x135) & 1) == 0) {
+    FUN_0122e748();
+  }
+  lVar2 = thunk_FUN_0124bba8();
+  FUN_01997a68(lVar2,*(undefined8 *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0x110));
+  if (0 < *(int *)(unaff_x21 + 0x18)) {
+    uVar7 = 0;
+    lVar8 = 0x20;
+    do {
+      lVar4 = *(long *)(unaff_x21 + 0x10);
+      if (lVar4 == 0) goto LAB_01998e70;
+      if (*(uint *)(lVar4 + 0x18) <= uVar7) {
+LAB_01998e74:
+                    /* WARNING: Subroutine does not return */
+        FUN_01230ca8();
+      }
+      memcpy(&stack0x00000070,(void *)(lVar4 + lVar8),0x6c);
+      if (unaff_x20 == 0) goto LAB_01998e70;
+      pcVar9 = *(code **)(unaff_x20 + 0x18);
+      uVar5 = *(undefined8 *)(unaff_x20 + 0x40);
+      memcpy(&stack0x000000e0,&stack0x00000070,0x6c);
+      uVar3 = (*pcVar9)(uVar5,&stack0x000000e0,*(undefined8 *)(unaff_x20 + 0x28));
+      if ((uVar3 & 1) != 0) {
+        lVar4 = *(long *)(unaff_x21 + 0x10);
+        if (lVar4 == 0) goto LAB_01998e70;
+        if (*(uint *)(lVar4 + 0x18) <= uVar7) goto LAB_01998e74;
+        memcpy(&stack0x00000000,(void *)(lVar4 + lVar8),0x6c);
+        if (lVar2 == 0) {
+LAB_01998e70:
+                    /* WARNING: Subroutine does not return */
+          FUN_01230ca0();
+        }
+        lVar6 = *(long *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0x80);
+        memcpy(&stack0x00000070,&stack0x00000000,0x6c);
+        lVar4 = *(long *)(lVar2 + 0x10);
+        *(int *)(lVar2 + 0x1c) = *(int *)(lVar2 + 0x1c) + 1;
+        if (lVar4 == 0) goto LAB_01998e70;
+        uVar1 = *(uint *)(lVar2 + 0x18);
+        if (uVar1 < *(uint *)(lVar4 + 0x18)) {
+          *(uint *)(lVar2 + 0x18) = uVar1 + 1;
+          memcpy((void *)(lVar4 + (long)(int)uVar1 * 0x6c + 0x20),&stack0x00000070,0x6c);
+        }
+        else {
+          uVar5 = *(undefined8 *)(*(long *)(*(long *)(lVar6 + 0x20) + 0xc0) + 0x70);
+          memcpy(&stack0x000000e0,&stack0x00000070,0x6c);
+          FUN_0199837c(lVar2,&stack0x000000e0,uVar5);
+        }
+      }
+      uVar7 = uVar7 + 1;
+      lVar8 = lVar8 + 0x6c;
+    } while ((long)uVar7 < (long)*(int *)(unaff_x21 + 0x18));
+  }
+  return lVar2;
+}
+
+

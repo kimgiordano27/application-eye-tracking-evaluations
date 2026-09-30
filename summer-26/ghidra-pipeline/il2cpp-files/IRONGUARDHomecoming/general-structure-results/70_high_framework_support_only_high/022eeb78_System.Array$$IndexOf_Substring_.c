@@ -1,0 +1,132 @@
+/*
+FUNCTION_NAME: System.Array$$IndexOf<Substring>
+ENTRY_POINT: 022eeb78
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 75
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_4;strong_pose_or_ray_construction_hits_4;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x022eed1c) */
+
+uint System_Array__IndexOf<Substring>(long param_1,undefined8 param_2,long param_3)
+
+{
+  uint uVar1;
+  undefined8 *puVar2;
+  long lVar3;
+  long lVar4;
+  ulong in_x9;
+  ulong uVar5;
+  int *piVar6;
+  long *unaff_x19;
+  long unaff_x20;
+  long *unaff_x23;
+  uint unaff_w24;
+  long *unaff_x27;
+  
+  do {
+    piVar6 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) == param_3) {
+        puVar2 = (undefined8 *)(param_1 + (long)*piVar6 * 0x10 + 0x138);
+        goto LAB_022eebb4;
+      }
+      in_x9 = in_x9 - 1;
+      piVar6 = piVar6 + 4;
+    } while (in_x9 != 0);
+    do {
+      puVar2 = (undefined8 *)FUN_01ecb238();
+LAB_022eebb4:
+      (*(code *)*puVar2)();
+      if (unaff_x23 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08a3c();
+      }
+      lVar3 = **(long **)(unaff_x20 + 0x38);
+      if ((*(byte *)(lVar3 + 0x135) & 1) == 0) {
+        lVar3 = FUN_01ecaf44(lVar3);
+      }
+      lVar4 = *unaff_x23;
+      uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+      if (uVar5 != 0) {
+        piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar6 + -2) == lVar3) {
+            puVar2 = (undefined8 *)(lVar4 + (long)*piVar6 * 0x10 + 0x138);
+            goto LAB_022eec30;
+          }
+          uVar5 = uVar5 - 1;
+          piVar6 = piVar6 + 4;
+        } while (uVar5 != 0);
+      }
+      puVar2 = (undefined8 *)FUN_01ecb238();
+LAB_022eec30:
+      uVar5 = (*(code *)*puVar2)();
+      if ((uVar5 & 1) != 0) {
+        uVar1 = unaff_w24;
+        if (unaff_x19 == (long *)0x0) goto LAB_022eecc8;
+LAB_022eec68:
+        unaff_w24 = uVar1;
+        lVar3 = *unaff_x19;
+        uVar5 = (ulong)*(ushort *)(lVar3 + 0x12e);
+        if (uVar5 == 0) goto LAB_022eeca0;
+        piVar6 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+        goto LAB_022eec88;
+      }
+      lVar3 = *unaff_x19;
+      uVar5 = (ulong)*(ushort *)(lVar3 + 0x12e);
+      if (uVar5 != 0) {
+        piVar6 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar6 + -2) == *unaff_x27) {
+            puVar2 = (undefined8 *)(lVar3 + (long)*piVar6 * 0x10 + 0x138);
+            goto LAB_022eeb3c;
+          }
+          uVar5 = uVar5 - 1;
+          piVar6 = piVar6 + 4;
+        } while (uVar5 != 0);
+      }
+      puVar2 = (undefined8 *)FUN_01ecb238();
+LAB_022eeb3c:
+      unaff_w24 = (*(code *)*puVar2)();
+      if ((unaff_w24 & 1) == 0) {
+        unaff_w24 = 0;
+        uVar1 = 0;
+        if (unaff_x19 != (long *)0x0) goto LAB_022eec68;
+        goto LAB_022eecc8;
+      }
+      param_3 = *(long *)(*(long *)(unaff_x20 + 0x38) + 0x30);
+      if ((*(byte *)(param_3 + 0x135) & 1) == 0) {
+        param_3 = FUN_01ecaf44(param_3);
+      }
+      param_1 = *unaff_x19;
+      in_x9 = (ulong)*(ushort *)(param_1 + 0x12e);
+    } while (in_x9 == 0);
+  } while( true );
+  while( true ) {
+    uVar5 = uVar5 - 1;
+    piVar6 = piVar6 + 4;
+    if (uVar5 == 0) break;
+LAB_022eec88:
+    if (*(long *)(piVar6 + -2) ==
+        *(long *)Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__) {
+      puVar2 = (undefined8 *)(lVar3 + (long)*piVar6 * 0x10 + 0x138);
+      goto LAB_022eecbc;
+    }
+  }
+LAB_022eeca0:
+  puVar2 = (undefined8 *)FUN_01ecb238();
+LAB_022eecbc:
+  (*(code *)*puVar2)();
+LAB_022eecc8:
+  return unaff_w24 & 1;
+}
+
+

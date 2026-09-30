@@ -1,0 +1,293 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.Utils.InstanceCache$$UnregisterHandle
+ENTRY_POINT: 01438e48
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 85
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_1;validity_or_gating_hits_21;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Meta_XR_ImmersiveDebugger_Utils_InstanceCache__UnregisterHandle(long param_1)
+
+{
+  int *piVar1;
+  uint *puVar2;
+  uint *puVar3;
+  uint uVar4;
+  uint uVar5;
+  int iVar6;
+  int iVar7;
+  int iVar8;
+  int iVar9;
+  uint uVar10;
+  long *plVar11;
+  float fVar12;
+  undefined *puVar13;
+  undefined *puVar14;
+  long lVar15;
+  long lVar16;
+  undefined8 uVar17;
+  uint uVar18;
+  undefined8 unaff_x22;
+  long unaff_x23;
+  long lVar19;
+  ulong uVar20;
+  float fVar21;
+  long in_stack_00000010;
+  long in_stack_00000018;
+  long in_stack_00000020;
+  int iStack000000000000002c;
+  long in_stack_00000030;
+  long in_stack_00000038;
+  long in_stack_00000068;
+  
+  do {
+    puVar13 = 
+    Method_Unity_Collections_NativeSlice<MB3_MeshCombinerSingle_MB_MeshCombinerSingle_MeshNativeArrayHelper_SIZER_148>_SliceWithStride<Color32>__
+    ;
+    if (*(int *)(param_1 + 0x18) == 0) goto LAB_014394c4;
+    lVar19 = *(long *)(param_1 + 0x20);
+    if (lVar19 == 0) {
+      if (*(int *)(unaff_x23 + 0x18) < 1) goto LAB_01438ef8;
+      goto LAB_01438e74;
+    }
+    FUN_013b1b6c();
+    param_1 = *(long *)(lVar19 + 0x18);
+  } while (param_1 != 0);
+LAB_014394c0:
+                    /* WARNING: Subroutine does not return */
+  FUN_00da518c();
+LAB_01438e74:
+  do {
+    FUN_013b1910();
+    lVar19 = in_stack_00000030;
+    if (in_stack_00000030 == 0) goto LAB_014394c0;
+    if (*(int *)(in_stack_00000030 + 0x10) == 1) {
+      FUN_00bbfad8(in_stack_00000020,in_stack_00000030,*(undefined8 *)puVar13);
+    }
+    lVar19 = *(long *)(lVar19 + 0x18);
+    if (lVar19 == 0) goto LAB_014394c0;
+    if (*(uint *)(lVar19 + 0x18) < 2) {
+LAB_014394c4:
+                    /* WARNING: Subroutine does not return */
+      FUN_00da5194();
+    }
+    for (lVar19 = *(long *)(lVar19 + 0x28); lVar19 != 0; lVar19 = *(long *)(lVar19 + 0x20)) {
+      FUN_013b1b6c();
+      lVar19 = *(long *)(lVar19 + 0x18);
+      if (lVar19 == 0) goto LAB_014394c0;
+      if (*(int *)(lVar19 + 0x18) == 0) goto LAB_014394c4;
+    }
+  } while (0 < *(int *)(unaff_x23 + 0x18));
+LAB_01438ef8:
+  puVar13 = System_Data_AutoIncrementBigInteger_TypeInfo;
+  fVar12 = DAT_0293f7bc;
+  if (0 < *(int *)(in_stack_00000020 + 0x18)) {
+    iStack000000000000002c = 0;
+    do {
+      lVar19 = thunk_FUN_00d62348(*(undefined8 *)PTR_DAT_033f3ef8);
+      if (lVar19 == 0) goto LAB_014394c0;
+      FUN_01320e50(lVar19,*(undefined8 *)StringLiteral_8754);
+      FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                   *(undefined8 *)
+                    Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                  );
+      FUN_01436c38(in_stack_00000030,lVar19);
+      lVar15 = FUN_00da4fb8(*(undefined8 *)Method_Obi_ObiNativeList<TriangleMeshHeader>__ctor__,
+                            *(undefined4 *)(lVar19 + 0x18));
+      lVar16 = FUN_00da4fb8(*(undefined8 *)Method_Unity_Burst_Intrinsics_Arm_Neon_vmaxnmv_f32__,
+                            *(undefined4 *)(lVar19 + 0x18));
+      if (0 < *(int *)(lVar19 + 0x18)) {
+        uVar20 = 0;
+        do {
+          FUN_0132138c(lVar19,uVar20 & 0xffffffff,&stack0x00000030,*(undefined8 *)puVar13);
+          if (in_stack_00000030 == 0) goto LAB_014394c0;
+          iVar6 = *(int *)(in_stack_00000030 + 0x1c);
+          FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                       *(undefined8 *)
+                        Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                      );
+          if ((in_stack_00000030 == 0) || (*(long *)(in_stack_00000030 + 0x20) == 0))
+          goto LAB_014394c0;
+          iVar7 = *(int *)(*(long *)(in_stack_00000030 + 0x20) + 0x10);
+          FUN_0132138c(lVar19,uVar20 & 0xffffffff,&stack0x00000030,*(undefined8 *)puVar13);
+          if (in_stack_00000030 == 0) goto LAB_014394c0;
+          iVar8 = *(int *)(in_stack_00000030 + 0x20);
+          FUN_0132138c(lVar19,uVar20 & 0xffffffff,&stack0x00000030,*(undefined8 *)puVar13);
+          if (in_stack_00000030 == 0) goto LAB_014394c0;
+          iVar9 = *(int *)(in_stack_00000030 + 0x14);
+          FUN_0132138c(lVar19,uVar20 & 0xffffffff,&stack0x00000030,*(undefined8 *)puVar13);
+          if (in_stack_00000030 == 0) goto LAB_014394c0;
+          piVar1 = (int *)(in_stack_00000030 + 0x18);
+          in_stack_00000030 = 0;
+          in_stack_00000038 = 0;
+          FUN_0268834c((float)(iVar6 - iVar7),(float)iVar8,(float)iVar9,(float)*piVar1,
+                       &stack0x00000030,0);
+          if (lVar15 == 0) goto LAB_014394c0;
+          if (*(uint *)(lVar15 + 0x18) <= uVar20) goto LAB_014394c4;
+          plVar11 = (long *)(lVar15 + 0x20 + uVar20 * 0x10);
+          plVar11[1] = in_stack_00000038;
+          *plVar11 = in_stack_00000030;
+          FUN_0132138c(lVar19,uVar20 & 0xffffffff,&stack0x00000068,*(undefined8 *)puVar13);
+          if ((in_stack_00000068 == 0) || (lVar16 == 0)) goto LAB_014394c0;
+          if (*(uint *)(lVar16 + 0x18) <= uVar20) goto LAB_014394c4;
+          *(undefined4 *)(lVar16 + 0x20 + uVar20 * 4) = *(undefined4 *)(in_stack_00000068 + 0x10);
+          uVar20 = uVar20 + 1;
+        } while ((long)uVar20 < (long)*(int *)(lVar19 + 0x18));
+      }
+      if (in_stack_00000010 == 0) goto LAB_014394c0;
+      uVar17 = FUN_01325140(in_stack_00000010,*(undefined8 *)StringLiteral_9168);
+      lVar19 = thunk_FUN_00d62348(*(undefined8 *)
+                                   Method_OVRTaskBuilder<OVRPlugin_Result>_SetStateMachine__);
+      if (lVar19 == 0) goto LAB_014394c0;
+      FUN_017b46ec(lVar19,0);
+      *(undefined8 *)(lVar19 + 0x28) = uVar17;
+      puVar14 = 
+      Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__;
+      FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                   *(undefined8 *)
+                    Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                  );
+      puVar2 = (uint *)(lVar19 + 0x18);
+      puVar3 = (uint *)(lVar19 + 0x1c);
+      FUN_01437adc(in_stack_00000018,in_stack_00000030,puVar2,puVar3);
+      iVar6 = *(int *)(lVar19 + 0x18);
+      FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,*(undefined8 *)puVar14)
+      ;
+      if ((in_stack_00000030 == 0) || (*(long *)(in_stack_00000030 + 0x20) == 0)) goto LAB_014394c0;
+      *puVar2 = iVar6 - *(int *)(*(long *)(in_stack_00000030 + 0x20) + 0x10);
+      FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                   *(undefined8 *)
+                    Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                  );
+      if ((in_stack_00000030 == 0) ||
+         (((*(long *)(in_stack_00000030 + 0x20) == 0 ||
+           (FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                         *(undefined8 *)
+                          Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                        ), in_stack_00000030 == 0)) || (*(long *)(in_stack_00000030 + 0x20) == 0))))
+      goto LAB_014394c0;
+      if (*(char *)(in_stack_00000018 + 0x14) == '\0') {
+        uVar10 = *puVar3;
+        uVar18 = *puVar2;
+      }
+      else {
+        fVar21 = logf((float)(int)*puVar2);
+        fVar21 = exp2f((float)(int)(fVar21 / fVar12));
+        uVar5 = 0x80000000;
+        if (fVar21 != INFINITY) {
+          uVar5 = (int)fVar21;
+        }
+        if (uVar5 < 3) {
+          uVar5 = 2;
+        }
+        FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                     *(undefined8 *)
+                      Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                    );
+        if ((in_stack_00000030 == 0) || (*(long *)(in_stack_00000030 + 0x20) == 0))
+        goto LAB_014394c0;
+        uVar10 = *(uint *)(*(long *)(in_stack_00000030 + 0x20) + 0x18);
+        if ((int)uVar10 <= (int)uVar5) {
+          uVar5 = uVar10;
+        }
+        fVar21 = logf((float)(int)*puVar3);
+        fVar21 = exp2f((float)(int)(fVar21 / fVar12));
+        uVar18 = 0x80000000;
+        if (fVar21 != INFINITY) {
+          uVar18 = (int)fVar21;
+        }
+        if (uVar18 < 3) {
+          uVar18 = 2;
+        }
+        FUN_0132138c(in_stack_00000020,iStack000000000000002c,&stack0x00000030,
+                     *(undefined8 *)
+                      Method_System_ComponentModel_TypeDescriptor_TypeDescriptionNode_GetExtendedTypeDescriptor__
+                    );
+        if ((in_stack_00000030 == 0) || (*(long *)(in_stack_00000030 + 0x20) == 0))
+        goto LAB_014394c0;
+        uVar10 = *(uint *)(*(long *)(in_stack_00000030 + 0x20) + 0x1c);
+        if ((int)uVar10 <= (int)uVar18) {
+          uVar18 = uVar10;
+        }
+        uVar4 = uVar5;
+        if ((int)uVar5 < 0) {
+          uVar4 = uVar5 + 1;
+        }
+        uVar10 = (int)uVar4 >> 1;
+        if ((int)uVar4 >> 1 <= (int)uVar18) {
+          uVar10 = uVar18;
+        }
+        uVar4 = uVar10;
+        if ((int)uVar10 < 0) {
+          uVar4 = uVar10 + 1;
+        }
+        uVar18 = (int)uVar4 >> 1;
+        if ((int)uVar4 >> 1 <= (int)uVar5) {
+          uVar18 = uVar5;
+        }
+      }
+      *(uint *)(lVar19 + 0x10) = uVar18;
+      *(uint *)(lVar19 + 0x14) = uVar10;
+      *(long *)(lVar19 + 0x20) = lVar15;
+      *(long *)(lVar19 + 0x30) = lVar16;
+      FUN_014359a0(lVar19);
+      FUN_00bbfcc8(unaff_x22,lVar19,*(undefined8 *)PTR_DAT_033f3448);
+      uVar17 = FUN_0132138c(in_stack_00000010,iStack000000000000002c,&stack0x00000030,
+                            *(undefined8 *)StringLiteral_4419);
+      FUN_01436444(uVar17,lVar19,in_stack_00000030);
+      if (3 < *(int *)(in_stack_00000018 + 0x10)) {
+        lVar15 = *(long *)Method_System_Data_SqlTypes_SqlMoney_op_UnaryNegation__;
+        lVar19 = *(long *)(lVar15 + 0x38);
+        if (lVar19 == 0) {
+          FUN_00d59478(lVar15);
+          lVar19 = *(long *)(lVar15 + 0x38);
+        }
+        lVar19 = *(long *)(lVar19 + 0x10);
+        if ((*(byte *)(lVar19 + 0x132) & 1) == 0) {
+          lVar19 = FUN_00d5941c();
+        }
+        if (*(int *)(lVar19 + 0xe0) == 0) {
+          thunk_FUN_00d32864();
+        }
+        lVar19 = *(long *)(*(long *)(lVar15 + 0x38) + 0x10);
+        if ((*(byte *)(lVar19 + 0x132) & 1) == 0) {
+          lVar19 = FUN_00d5941c();
+        }
+        uVar17 = FUN_01600be4(*(undefined8 *)PTR_DAT_033ee248,**(undefined8 **)(lVar19 + 0xb8),0);
+        lVar15 = *(long *)Method_System_Data_SqlTypes_SqlMoney_op_UnaryNegation__;
+        lVar19 = *(long *)(lVar15 + 0x38);
+        if (lVar19 == 0) {
+          FUN_00d59478(lVar15);
+          lVar19 = *(long *)(lVar15 + 0x38);
+        }
+        lVar19 = *(long *)(lVar19 + 0x10);
+        if ((*(byte *)(lVar19 + 0x132) & 1) == 0) {
+          lVar19 = FUN_00d5941c();
+        }
+        if (*(int *)(lVar19 + 0xe0) == 0) {
+          thunk_FUN_00d32864();
+        }
+        lVar19 = *(long *)(*(long *)(lVar15 + 0x38) + 0x10);
+        if ((*(byte *)(lVar19 + 0x132) & 1) == 0) {
+          lVar19 = FUN_00d5941c();
+        }
+        FUN_013f38b0(uVar17,**(undefined8 **)(lVar19 + 0xb8),0);
+      }
+      iStack000000000000002c = iStack000000000000002c + 1;
+    } while (iStack000000000000002c < *(int *)(in_stack_00000020 + 0x18));
+  }
+  FUN_01325140(unaff_x22,
+               *(undefined8 *)
+                Method_GreenroomCipherWheel_<LerpTo_Coroutine>d__24_System_Collections_IEnumerator_Reset__
+              );
+  return;
+}
+
+

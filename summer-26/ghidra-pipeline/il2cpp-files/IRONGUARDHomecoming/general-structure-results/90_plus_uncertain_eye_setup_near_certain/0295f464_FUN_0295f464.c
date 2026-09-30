@@ -1,0 +1,71 @@
+/*
+FUNCTION_NAME: FUN_0295f464
+ENTRY_POINT: 0295f464
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 102
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_3;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_6;functionality_eye_api_context_without_clear_sink_hits_3
+*/
+
+
+void FUN_0295f464(long param_1,long param_2)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  ulong uVar3;
+  int *piVar4;
+  long *plVar5;
+  
+                    /* try { // try from 0295f480 to 02a5f4c3 has its CatchHandler @ 0295f528 */
+  if ((DAT_04830c25 & 1) == 0) {
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+    DAT_04830c25 = 1;
+  }
+  plVar5 = *(long **)(param_1 + 0x40);
+  if (plVar5 != (long *)0x0) {
+    lVar2 = *plVar5;
+    uVar3 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar3 != 0) {
+      piVar4 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar4 + -2) ==
+            *(long *)Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__) {
+                    /* try { // try from 0295f4f4 to 02a5f4f7 has its CatchHandler @ 0295f524 */
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar4 * 0x10 + 0x138);
+          goto LAB_0295f4f8;
+        }
+        uVar3 = uVar3 - 1;
+        piVar4 = piVar4 + 4;
+      } while (uVar3 != 0);
+    }
+    puVar1 = (undefined8 *)
+             FUN_01ecb238(plVar5,*(long *)
+                                  Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__
+                          ,0);
+LAB_0295f4f8:
+                    /* try { // try from 0295f4f8 to 02a5f50b has its CatchHandler @ 0295f52c */
+    (*(code *)*puVar1)(plVar5,puVar1[1]);
+  }
+                    /* try { // try from 0295f50c to 02a5f51b has its CatchHandler @ 0295f2c8 */
+  *(undefined8 *)(param_1 + 0x40) = 0;
+  thunk_FUN_01f51358((undefined8 *)(param_1 + 0x40),0);
+                    /* try { // try from 0295f51c to 02a5f51f has its CatchHandler @ 0295f520 */
+                    /* catch(type#1 @ 042b3198) { ... } // from try @ 0295f51c with catch @ 0295f520
+                       try { // try from 0295f520 to 02a5f543 has its CatchHandler @ 0295f2c8 */
+                    /* catch(type#1 @ 042b3198) { ... } // from try @ 0295f4f4 with catch @ 0295f524
+                        */
+                    /* catch(type#1 @ 042b3198) { ... } // from try @ 0295f480 with catch @ 0295f528
+                        */
+                    /* catch(type#1 @ 042b3198) { ... } // from try @ 0295f4f8 with catch @ 0295f52c
+                        */
+  FUN_02fb627c(param_1,*(undefined8 *)(*(long *)(*(long *)(param_2 + 0x20) + 0xc0) + 0x48));
+  return;
+}
+
+

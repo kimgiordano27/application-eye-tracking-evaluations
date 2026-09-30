@@ -1,0 +1,1084 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 57
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.CurveVisualController.GetClosestPointOnLine_00000D25$PostfixBurstDelegate$$BeginInvoke
+ENTRY_POINT: 05cdb74c
+MANUAL_PRIORITY_SCORE: 232
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 84
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_4', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'negative_framework_namespace_without_eye_use_flow']
+PRIORITY_REASONS: ['base_scanner_score_84', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_general_structure_review_high\05cdb74c_UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.CurveVisualController.GetClosestPointOnLine_00000D25$PostfixBurstDelegate$$BeginInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\057_p232_UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.CurveVisualController.GetClosestPointOnLine_00000D25$PostfixBurstDelegate$$BeginInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.CurveVisualController.GetClosestPointOnLine_00000D25$PostfixBurstDelegate$$BeginInvoke
+ENTRY_POINT: 05cdb74c
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 84
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_4;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;negative_framework_namespace_without_eye_use_flow
+*/
+
+
+undefined4
+UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_GetClosestPointOnLine_00000D25_PostfixBurstDelegate__BeginInvoke
+          (long param_1,undefined1 param_2 [16],ulong param_3)
+
+{
+  undefined4 uVar1;
+  byte bVar2;
+  short sVar3;
+  float fVar4;
+  undefined *puVar5;
+  bool bVar6;
+  uint uVar7;
+  int iVar8;
+  int iVar9;
+  undefined4 uVar10;
+  uint uVar11;
+  int iVar12;
+  ulong uVar13;
+  undefined8 *puVar14;
+  ulong uVar15;
+  long lVar16;
+  long lVar17;
+  long lVar18;
+  long *plVar19;
+  long lVar20;
+  long lVar21;
+  undefined4 *puVar22;
+  uint unaff_w19;
+  int unaff_w20;
+  uint uVar23;
+  long unaff_x21;
+  uint uVar24;
+  long *plVar25;
+  long unaff_x24;
+  ulong uVar26;
+  long *unaff_x25;
+  undefined8 uVar27;
+  uint *puVar28;
+  long unaff_x27;
+  undefined8 uVar29;
+  uint unaff_w28;
+  long lVar30;
+  long *unaff_x29;
+  float fVar31;
+  float fVar32;
+  float fVar33;
+  float fVar34;
+  undefined1 auVar35 [16];
+  uint in_stack_00000010;
+  uint uStack0000000000000014;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined8 in_stack_00000028;
+  long *in_stack_00000030;
+  undefined4 uStack0000000000000038;
+  uint uStack000000000000003c;
+  long in_stack_00000058;
+  long in_stack_00000060;
+  long in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined8 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined8 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined8 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined8 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined8 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined8 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined4 in_stack_00000100;
+  undefined8 in_stack_00000140;
+  undefined8 in_stack_00000148;
+  undefined8 in_stack_00000150;
+  long in_stack_00000158;
+  uint uStack0000000000000168;
+  undefined1 uStack000000000000016c;
+  
+code_r0x05cdb74c:
+  lVar17 = *(long *)(param_1 + 0x38);
+  if (lVar17 != 0) {
+    if (*(uint *)(lVar17 + 0x18) <= *(uint *)(unaff_x24 + 0x4a0)) goto LAB_05cdc664;
+    lVar17 = *(long *)(lVar17 + (long)(int)*(uint *)(unaff_x24 + 0x4a0) * (long)unaff_w20 + 0x38);
+    if ((lVar17 == 0) && (lVar17 = *(long *)(unaff_x27 + 0x20), lVar17 == 0)) goto LAB_05cdc5cc;
+    iVar9 = FUN_05f85034(lVar17,0);
+    if (0 < iVar9) {
+      uVar27 = *(undefined8 *)(unaff_x24 + 0x100);
+      uVar29 = *(undefined8 *)(unaff_x24 + 0x118);
+      if (*(int *)(*(long *)
+                    Method_PlayFab_PlayFabProgressionInstanceAPI_UnlinkLeaderboardFromStatistic__ +
+                  0xe4) == 0) {
+        thunk_FUN_02dabd98();
+      }
+      uVar27 = FUN_05d27104(uVar27,uVar29,iVar9,0);
+      *(undefined8 *)(unaff_x24 + 0x118) = uVar27;
+      thunk_FUN_02dc1ef0(unaff_x24 + 0x118,uVar27);
+      lVar17 = *unaff_x25;
+      uVar27 = *(undefined8 *)(unaff_x24 + 0x118);
+      uVar29 = *(undefined8 *)(unaff_x24 + 0x100);
+      if (*(int *)(lVar17 + 0xe4) == 0) {
+        thunk_FUN_02dabd98();
+        lVar17 = *unaff_x25;
+      }
+      unaff_w20 = 0x178;
+      uVar10 = FUN_05ccd970(uVar27,uVar29,*(long *)(lVar17 + 0xb8),
+                            *(undefined8 *)(*(long *)(lVar17 + 0xb8) + 8));
+      *(undefined4 *)(unaff_x24 + 0x120) = uVar10;
+      uStack000000000000003c = 1;
+    }
+    if (*(int *)(*(long *)(PTR_DAT_066462a0 + 0x88) + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+    }
+    uVar13 = FUN_04f72380(unaff_w28,0);
+    if (((uVar13 & 1) == 0) && (unaff_w28 != 0x200b)) {
+      lVar17 = *unaff_x25;
+      if (*(int *)(lVar17 + 0xe4) == 0) {
+        thunk_FUN_02dabd98();
+        lVar17 = *unaff_x25;
+      }
+      lVar18 = **(long **)(lVar17 + 0xb8);
+      if (lVar18 == 0) goto LAB_05cdc5cc;
+      uVar11 = *(uint *)(unaff_x24 + 0x120);
+      if (*(uint *)(lVar18 + 0x18) <= uVar11) goto LAB_05cdc664;
+      if (*(int *)(lVar18 + (long)(int)uVar11 * 0x38 + 0x54) < 0x3fff) {
+        if (*(int *)(lVar17 + 0xe4) == 0) {
+          thunk_FUN_02dabd98();
+          plVar19 = *(long **)(*unaff_x25 + 0xb8);
+          goto LAB_05cdba64;
+        }
+LAB_05cdba6c:
+        uVar11 = *(uint *)(unaff_x24 + 0x120);
+        uVar23 = *(uint *)(lVar18 + 0x18);
+      }
+      else {
+        if (uStack000000000000003c != 0) {
+          if (*(long *)(unaff_x24 + 0x7b8) != 0) {
+            uVar13 = FUN_047c90ec(*(long *)(unaff_x24 + 0x7b8),(long)(int)uVar11,
+                                  (long)&stack0x00000140 + 4,*(undefined8 *)PTR_DAT_066495e8);
+            puVar5 = Method_PlayFab_PlayFabMultiplayerInstanceAPI_UpdateBuildAlias__;
+            if ((uVar13 & 1) == 0) {
+LAB_05cdb910:
+              uVar29 = *(undefined8 *)(unaff_x24 + 0x118);
+              uVar27 = thunk_FUN_02d8a638(*(undefined8 *)PTR_DAT_0664ed78);
+              FUN_05eb4804(uVar27,uVar29,0);
+              puVar5 = Method_PlayFab_PlayFabMultiplayerInstanceAPI_UpdateBuildAlias__;
+              uVar29 = *(undefined8 *)(unaff_x24 + 0x100);
+              lVar17 = *(long *)Method_PlayFab_PlayFabMultiplayerInstanceAPI_UpdateBuildAlias__;
+              if (*(int *)(lVar17 + 0xe4) == 0) {
+                thunk_FUN_02dabd98();
+                lVar17 = *(long *)puVar5;
+
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+dc5cc;
+        if (*(uint *)(lVar16 + 0x18) <= uVar26) goto LAB_05cdc664;
+        lVar20 = *(long *)(lVar20 + uVar26 * 8 + 0x20);
+        if (lVar20 == 0) goto LAB_05cdc5cc;
+        *(undefined8 *)(lVar20 + 0x100) = *(undefined8 *)(lVar16 + lVar18 + -0xc);
+        thunk_FUN_02dc1ef0(lVar20 + 0x100);
+      }
+    }
+    lVar20 = *unaff_x25;
+    if (*(int *)(lVar20 + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+      lVar20 = *unaff_x25;
+    }
+    unaff_x25 = (long *)Method_PlayFab_PlayFabMultiplayerInstanceAPI_UpdateBuildAlias__;
+    lVar20 = **(long **)(lVar20 + 0xb8);
+    if (lVar20 == 0) goto LAB_05cdc5cc;
+    if (*(uint *)(lVar20 + 0x18) <= uVar26) goto LAB_05cdc664;
+    if ((*unaff_x29 == 0) || (lVar16 = *(long *)(*unaff_x29 + 0x60), lVar16 == 0))
+    goto LAB_05cdc5cc;
+    if (*(uint *)(lVar16 + 0x18) <= uVar26) goto LAB_05cdc664;
+    lVar21 = lVar16 + lVar17;
+    uVar23 = *(uint *)(lVar20 + lVar18);
+    if (*(long *)(lVar21 + 0x30) == 0) {
+      if (uVar26 == 0) {
+        in_stack_00000088 = 0;
+        in_stack_00000080 = 0;
+        in_stack_00000098 = 0;
+        in_stack_00000090 = 0;
+        in_stack_000000a8 = 0;
+        in_stack_000000a0 = 0;
+        in_stack_000000b8 = 0;
+        in_stack_000000b0 = 0;
+        in_stack_00000078 = 0;
+        in_stack_00000070 = 0;
+        FUN_05d281bc(&stack0x00000070,*(undefined8 *)(unaff_x24 + 0x3d8),uVar23 + 1,0);
+        if (*(int *)(lVar16 + 0x18) == 0) goto LAB_05cdc664;
+      }
+      else {
+        lVar20 = *plVar19;
+        if (lVar20 == 0) goto LAB_05cdc5cc;
+        if (*(uint *)(lVar20 + 0x18) <= uVar26) goto LAB_05cdc664;
+        lVar20 = *(long *)(lVar20 + uVar26 * 8 + 0x20);
+        if (lVar20 == 0) goto LAB_05cdc5cc;
+        uVar27 = FUN_05d34208(lVar20,0);
+        in_stack_00000088 = 0;
+        in_stack_00000080 = 0;
+        in_stack_00000098 = 0;
+        in_stack_00000090 = 0;
+        in_stack_000000a8 = 0;
+        in_stack_000000a0 = 0;
+        in_stack_000000b8 = 0;
+        in_stack_000000b0 = 0;
+        in_stack_00000078 = 0;
+        in_stack_00000070 = 0;
+        FUN_05d281bc(&stack0x00000070,uVar27,uVar23 + 1,0);
+        if (*(uint *)(lVar16 + 0x18) <= uVar26) goto LAB_05cdc664;
+        lVar16 = lVar16 + lVar17;
+      }
+      memmove((void *)(lVar16 + 0x20),&stack0x00000070,0x50);
+      thunk_FUN_02dc1ef0(lVar21 + 0x20,0);
+      unaff_x25 = (long *)Method_PlayFab_PlayFabMultiplayerInstanceAPI_UpdateBuildAlias__;
+    }
+    else {
+      iVar9 = *(int *)(*(long *)(lVar21 + 0x30) + 0x18);
+      if (iVar9 < (int)(uVar23 * 4)) {
+        if ((int)uVar23 < 0x401) {
+          uVar23 = uVar23 | (int)uVar23 >> 0x10;
+          uVar23 = uVar23 | (int)uVar23 >> 8;
+          uVar23 = uVar23 | (int)uVar23 >> 4;
+          uVar23 = uVar23 | (int)uVar23 >> 2;
+          uVar23 = uVar23 | (int)uVar23 >> 1;
+
+          UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_XRInteractorLineVisual__get_stopLineAtFirstRaycastHit
+          :
+          iVar9 = uVar23 + 1;
+        }
+        else {
+LAB_05cdc33c:
+          iVar9 = uVar23 + 0x100;
+        }
+        if (*(int *)(*(long *)PTR_DAT_06649d28 + 0xe4) == 0) {
+          thunk_FUN_02dabd98();
+        }
+        UnityEngine_XR_Interaction_Toolkit_AffordanceSystem_State_XRInteractableAffordanceStateProvider__OnHoverExited
+                  (lVar21 + 0x20,iVar9,0);
+      }
+      else if ((*(char *)(unaff_x24 + 0x359) != '\0') && (0 < (int)uVar23)) {
+        iVar12 = iVar9 + 3;
+        if (-1 < iVar9) {
+          iVar12 = iVar9;
+        }
+        if (0x100 < (int)((iVar12 >> 2) - uVar23)) {
+          if (uVar23 < 0x401) {
+            uVar23 = uVar23 >> 4 | uVar23 >> 8 | uVar23;
+            uVar23 = uVar23 | uVar23 >> 2;
+            uVar23 = uVar23 | uVar23 >> 1;
+            goto 
+            UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_XRInteractorLineVisual__get_stopLineAtFirstRaycastHit
+            ;
+          }
+          goto LAB_05cdc33c;
+        }
+      }
+    }
+    if ((*in_stack_00000030 == 0) || (lVar20 = *(long *)(*in_stack_00000030 + 0x60), lVar20 == 0))
+    goto LAB_05cdc5cc;
+    lVar16 = *unaff_x25;
+    if (*(int *)(lVar16 + 0xe4) == 0) {
+      thunk_FUN_02dabd98();
+      lVar16 = *unaff_x25;
+    }
+    lVar16 = **(long **)(lVar16 + 0xb8);
+    if (lVar16 == 0) goto LAB_05cdc5cc;
+    if ((*(uint *)(lVar16 + 0x18) <= uVar26) || (*(uint *)(lVar20 + 0x18) <= uVar26))
+    goto LAB_05cdc664;
+    *(undefined8 *)(lVar20 + lVar17 + 0x68) = *(undefined8 *)(lVar16 + lVar18 + -0x1c);
+    thunk_FUN_02dc1ef0();
+    uVar26 = uVar26 + 1;
+    lVar17 = lVar17 + 0x50;
+    lVar18 = lVar18 + 0x38;
+    lVar30 = lVar30 + 8;
+    unaff_x29 = in_stack_00000030;
+  } while (uVar13 != uVar26);
+LAB_05cdc510:
+  lVar17 = *plVar19;
+  if (lVar17 != 0) {
+    lVar18 = (long)(int)uVar11 + 4;
+    do {
+      uVar11 = (uint)*(undefined8 *)(lVar17 + 0x18);
+      if ((long)(int)uVar11 <= lVar18 + -4) {
+LAB_05cdbc7c:
+        return *(undefined4 *)(unaff_x24 + 0x4a0);
+      }
+      uVar23 = (uint)uVar13;
+      if (uVar11 <= uVar23) {
+LAB_05cdc664:
+                    /* WARNING: Subroutine does not return */
+        FUN_02d4def0();
+      }
+      uVar27 = *(undefined8 *)(lVar17 + lVar18 * 8);
+      if (*(int *)(*(long *)PTR_DAT_066462d0 + 0xe4) == 0) {
+        thunk_FUN_02dabd98();
+      }
+      uVar13 = FUN_05ee1474(uVar27,0,0);
+      if ((uVar13 & 1) == 0) goto LAB_05cdbc7c;
+      if ((*unaff_x29 == 0) || (lVar17 = *(long *)(*unaff_x29 + 0x60), lVar17 == 0)) break;
+      if (lVar18 + -4 < (long)*(int *)(lVar17 + 0x18)) {
+        lVar17 = *plVar19;
+        if (lVar17 == 0) break;
+        if (*(uint *)(lVar17 + 0x18) <= uVar23) goto LAB_05cdc664;
+        lVar17 = *(long *)(lVar17 + lVar18 * 8);
+        if ((lVar17 == 0) || (lVar17 = FUN_05fd9268(lVar17,0), lVar17 == 0)) break;
+        FUN_061b2e18(lVar17,0,0);
+      }
+      lVar17 = *plVar19;
+      lVar18 = lVar18 + 1;
+      uVar13 = (ulong)(uVar23 + 1);
+    } while (lVar17 != 0);
+  }
+LAB_05cdc5cc:
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4dee8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 58
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$get_SupportsNamespaceDeclarationInChunks
+ENTRY_POINT: 0550d4b0
+MANUAL_PRIORITY_SCORE: 232
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_8', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_16', 'negative_generic_rendering_without_foveation_or_eye_source']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_3_bonus_12', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550d4b0_System.Xml.QueryOutputWriter$$get_SupportsNamespaceDeclarationInChunks.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\058_p232_System.Xml.QueryOutputWriter$$get_SupportsNamespaceDeclarationInChunks.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$get_SupportsNamespaceDeclarationInChunks
+ENTRY_POINT: 0550d4b0
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 82
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_21;ray_or_cast_sink_hits_8;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_2;telemetry_or_network_hits_16;negative_generic_rendering_without_foveation_or_eye_source
+*/
+
+
+void System_Xml_QueryOutputWriter__get_SupportsNamespaceDeclarationInChunks(long param_1)
+
+{
+  undefined *puVar1;
+  long unaff_x19;
+  
+  *(undefined8 *)(unaff_x19 + 0x358) = **(undefined8 **)(param_1 + 0xbe8);
+  thunk_FUN_02dc1ef0(unaff_x19 + 0x358);
+  if (0x68 < *(uint *)(unaff_x19 + 0x18)) {
+    *(undefined8 *)(unaff_x19 + 0x360) = *(undefined8 *)Core_<>c__DisplayClass47_0_TypeInfo;
+    thunk_FUN_02dc1ef0(unaff_x19 + 0x360);
+    if (0x69 < *(uint *)(unaff_x19 + 0x18)) {
+      *(undefined8 *)(unaff_x19 + 0x368) =
+           *(undefined8 *)
+            UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000357_BurstDirectCall_TypeInfo
+      ;
+      thunk_FUN_02dc1ef0(unaff_x19 + 0x368);
+      if (0x6a < *(uint *)(unaff_x19 + 0x18)) {
+        *(undefined8 *)(unaff_x19 + 0x370) =
+             *(undefined8 *)
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000443_BurstDirectCall_TypeInfo
+        ;
+        thunk_FUN_02dc1ef0(unaff_x19 + 0x370);
+        if (0x6b < *(uint *)(unaff_x19 + 0x18)) {
+          *(undefined8 *)(unaff_x19 + 0x378) =
+               *(undefined8 *)
+                UnityEngine_Rendering_Universal_Internal_CopyDepthPass_ShaderConstants_TypeInfo;
+          thunk_FUN_02dc1ef0(unaff_x19 + 0x378);
+          if (0x6c < *(uint *)(unaff_x19 + 0x18)) {
+            *(undefined8 *)(unaff_x19 + 0x380) =
+                 *(undefined8 *)
+                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035B_BurstDirectCall_TypeInfo
+            ;
+            thunk_FUN_02dc1ef0(unaff_x19 + 0x380);
+            if (0x6d < *(uint *)(unaff_x19 + 0x18)) {
+              *(undefined8 *)(unaff_x19 + 0x388) =
+                   *(undefined8 *)Unity_Burst_BurstString_NumberFormatKind_TypeInfo;
+              thunk_FUN_02dc1ef0(unaff_x19 + 0x388);
+              if (0x6e < *(uint *)(unaff_x19 + 0x18)) {
+                *(undefined8 *)(unaff_x19 + 0x390) =
+                     *(undefined8 *)
+                      UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035C_PostfixBurstDelegate_TypeInfo
+                ;
+                thunk_FUN_02dc1ef0(unaff_x19 + 0x390);
+                if (0x6f < *(uint *)(unaff_x19 + 0x18)) {
+                  *(undefined8 *)(unaff_x19 + 0x398) =
+                       *(undefined8 *)Oculus_Platform_Callback_RequestCallback_TypeInfo;
+                  thunk_FUN_02dc1ef0(unaff_x19 + 0x398);
+                  if (0x70 < *(uint *)(unaff_x19 + 0x18)) {
+                    *(undefined8 *)(unaff_x19 + 0x3a0) =
+                         *(undefined8 *)
+                          System_Net_CookieCollection_CookieCollectionEnumerator_TypeInfo;
+                    thunk_FUN_02dc1ef0(unaff_x19 + 0x3a0);
+                    if (0x71 < *(uint *)(unaff_x19 + 0x18)) {
+                      *(undefined8 *)(unaff_x19 + 0x3a8) =
+                           *(undefined8 *)
+                            Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass0_0_TypeInfo;
+                      thunk_FUN_02dc1ef0(unaff_x19 + 0x3a8);
+                      if (0x72 < *(uint *)(unaff_x19 + 0x18)) {
+                        *(undefined8 *)(unaff_x19 + 0x3b0) = *(undefined8 *)Core_<>c_TypeInfo;
+                        thunk_FUN_02dc1ef0(unaff_x19 + 0x3b0);
+                        if (0x73 < *(uint *)(unaff_x19 + 0x18)) {
+                          *(undefined8 *)(unaff_x19 + 0x3b8) =
+                               *(undefined8 *)
+                                System_Net_CredentialCache_CredentialEnumerator_TypeInfo;
+                          thunk_FUN_02dc1ef0(unaff_x19 + 0x3b8);
+                          if (0x74 < *(uint *)(unaff_x19 + 0x18)) {
+                            *(undefined8 *)(unaff_x19 + 0x3c0) =
+                                 *(undefined8 *)CosmeticKiosk_<>c_TypeInfo;
+                            thunk_FUN_02dc1ef0(unaff_x19 + 0x3c0);
+                            if (0x75 < *(uint *)(unaff_x19 + 0x18)) {
+                              *(undefined8 *)(unaff_x19 + 0x3c8) =
+                                   *(undefined8 *)
+                                    UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Orthogonal_0000035E_PostfixBurstDelegate_TypeInfo
+                              ;
+                              thunk_FUN_02dc1ef0(unaff_x19 + 0x3c8);
+                              if (0x76 < *(uint *)(unaff_x19 + 0x18)) {
+                                *(undefined8 *)(unaff_x19 + 0x3d0) =
+                                     *(undefined8 *)
+                                      UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000346_PostfixBurstDelegate_TypeInfo
+                                ;
+                                thunk_FUN_02dc1ef0(unaff_x19 + 0x3d0);
+                                if (0x77 < *(uint *)(unaff_x19 + 0x18)) {
+                                  *(undefined8 *)(unaff_x19 + 0x3d8) =
+                                       *(undefined8 *)
+                                        UnityEngine_UIElements_ComputedTransitionUtils_<>c_TypeInfo;
+                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x3d8);
+                                  if (0x78 < *(uint *)(unaff_x19 + 0x18)) {
+                                    *(undefine
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+                                                    *(undefined8 *)(unaff_x19 + 0x540) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000353_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x540);
+                                                  if (0xa5 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x548) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_AdjustCastHitEndPoint_00000D26_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x548);
+                                                  if (0xa6 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x550) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_Rendering_Universal_Internal_ColorGradingLutPass_<>c_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x550);
+                                                  puVar1 = 
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BezierLerp_00000344_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  if (0xa7 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x558) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x558);
+                                                  *(long *)(*(long *)(*(long *)puVar1 + 0xb8) + 8) =
+                                                       unaff_x19;
+                                                  thunk_FUN_02dc1ef0();
+                                                  return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 59
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$WriteNamespaceDeclaration
+ENTRY_POINT: 0550d490
+MANUAL_PRIORITY_SCORE: 232
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_8', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_16', 'negative_generic_rendering_without_foveation_or_eye_source']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_3_bonus_12', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550d490_System.Xml.QueryOutputWriter$$WriteNamespaceDeclaration.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\059_p232_System.Xml.QueryOutputWriter$$WriteNamespaceDeclaration.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$WriteNamespaceDeclaration
+ENTRY_POINT: 0550d490
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 82
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_21;ray_or_cast_sink_hits_8;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_2;telemetry_or_network_hits_16;negative_generic_rendering_without_foveation_or_eye_source
+*/
+
+
+void System_Xml_QueryOutputWriter__WriteNamespaceDeclaration(long param_1)
+
+{
+  undefined *puVar1;
+  long unaff_x19;
+  
+  *(undefined8 *)(unaff_x19 + 0x350) = **(undefined8 **)(param_1 + 0xa88);
+  thunk_FUN_02dc1ef0();
+  if (0x67 < *(uint *)(unaff_x19 + 0x18)) {
+    *(undefined8 *)(unaff_x19 + 0x358) =
+         *(undefined8 *)
+          UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleCubicBezierPoint_00000440_BurstDirectCall_TypeInfo
+    ;
+    thunk_FUN_02dc1ef0(unaff_x19 + 0x358);
+    if (0x68 < *(uint *)(unaff_x19 + 0x18)) {
+      *(undefined8 *)(unaff_x19 + 0x360) = *(undefined8 *)Core_<>c__DisplayClass47_0_TypeInfo;
+      thunk_FUN_02dc1ef0(unaff_x19 + 0x360);
+      if (0x69 < *(uint *)(unaff_x19 + 0x18)) {
+        *(undefined8 *)(unaff_x19 + 0x368) =
+             *(undefined8 *)
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000357_BurstDirectCall_TypeInfo
+        ;
+        thunk_FUN_02dc1ef0(unaff_x19 + 0x368);
+        if (0x6a < *(uint *)(unaff_x19 + 0x18)) {
+          *(undefined8 *)(unaff_x19 + 0x370) =
+               *(undefined8 *)
+                UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000443_BurstDirectCall_TypeInfo
+          ;
+          thunk_FUN_02dc1ef0(unaff_x19 + 0x370);
+          if (0x6b < *(uint *)(unaff_x19 + 0x18)) {
+            *(undefined8 *)(unaff_x19 + 0x378) =
+                 *(undefined8 *)
+                  UnityEngine_Rendering_Universal_Internal_CopyDepthPass_ShaderConstants_TypeInfo;
+            thunk_FUN_02dc1ef0(unaff_x19 + 0x378);
+            if (0x6c < *(uint *)(unaff_x19 + 0x18)) {
+              *(undefined8 *)(unaff_x19 + 0x380) =
+                   *(undefined8 *)
+                    UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035B_BurstDirectCall_TypeInfo
+              ;
+              thunk_FUN_02dc1ef0(unaff_x19 + 0x380);
+              if (0x6d < *(uint *)(unaff_x19 + 0x18)) {
+                *(undefined8 *)(unaff_x19 + 0x388) =
+                     *(undefined8 *)Unity_Burst_BurstString_NumberFormatKind_TypeInfo;
+                thunk_FUN_02dc1ef0(unaff_x19 + 0x388);
+                if (0x6e < *(uint *)(unaff_x19 + 0x18)) {
+                  *(undefined8 *)(unaff_x19 + 0x390) =
+                       *(undefined8 *)
+                        UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035C_PostfixBurstDelegate_TypeInfo
+                  ;
+                  thunk_FUN_02dc1ef0(unaff_x19 + 0x390);
+                  if (0x6f < *(uint *)(unaff_x19 + 0x18)) {
+                    *(undefined8 *)(unaff_x19 + 0x398) =
+                         *(undefined8 *)Oculus_Platform_Callback_RequestCallback_TypeInfo;
+                    thunk_FUN_02dc1ef0(unaff_x19 + 0x398);
+                    if (0x70 < *(uint *)(unaff_x19 + 0x18)) {
+                      *(undefined8 *)(unaff_x19 + 0x3a0) =
+                           *(undefined8 *)
+                            System_Net_CookieCollection_CookieCollectionEnumerator_TypeInfo;
+                      thunk_FUN_02dc1ef0(unaff_x19 + 0x3a0);
+                      if (0x71 < *(uint *)(unaff_x19 + 0x18)) {
+                        *(undefined8 *)(unaff_x19 + 0x3a8) =
+                             *(undefined8 *)
+                              Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass0_0_TypeInfo
+                        ;
+                        thunk_FUN_02dc1ef0(unaff_x19 + 0x3a8);
+                        if (0x72 < *(uint *)(unaff_x19 + 0x18)) {
+                          *(undefined8 *)(unaff_x19 + 0x3b0) = *(undefined8 *)Core_<>c_TypeInfo;
+                          thunk_FUN_02dc1ef0(unaff_x19 + 0x3b0);
+                          if (0x73 < *(uint *)(unaff_x19 + 0x18)) {
+                            *(undefined8 *)(unaff_x19 + 0x3b8) =
+                                 *(undefined8 *)
+                                  System_Net_CredentialCache_CredentialEnumerator_TypeInfo;
+                            thunk_FUN_02dc1ef0(unaff_x19 + 0x3b8);
+                            if (0x74 < *(uint *)(unaff_x19 + 0x18)) {
+                              *(undefined8 *)(unaff_x19 + 0x3c0) =
+                                   *(undefined8 *)CosmeticKiosk_<>c_TypeInfo;
+                              thunk_FUN_02dc1ef0(unaff_x19 + 0x3c0);
+                              if (0x75 < *(uint *)(unaff_x19 + 0x18)) {
+                                *(undefined8 *)(unaff_x19 + 0x3c8) =
+                                     *(undefined8 *)
+                                      UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Orthogonal_0000035E_PostfixBurstDelegate_TypeInfo
+                                ;
+                                thunk_FUN_02dc1ef0(unaff_x19 + 0x3c8);
+                                if (0x76 < *(uint *)(unaff_x19 + 0x18)) {
+                                  *(undefined8 *)(unaff_x19 + 0x3d0) =
+                                       *(undefined8 *)
+                                        UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000346_PostfixBurstDelegate_TypeInfo
+                                  ;
+                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x3d0);
+                                  if (0x77 < *(uint *)(unaff_x19 + 0x18)) {
+   
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+*(undefined8 *)(unaff_x19 + 0x540) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000353_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x540);
+                                                  if (0xa5 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x548) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_AdjustCastHitEndPoint_00000D26_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x548);
+                                                  if (0xa6 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x550) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_Rendering_Universal_Internal_ColorGradingLutPass_<>c_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x550);
+                                                  puVar1 = 
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BezierLerp_00000344_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  if (0xa7 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x558) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x558);
+                                                  *(long *)(*(long *)(*(long *)puVar1 + 0xb8) + 8) =
+                                                       unaff_x19;
+                                                  thunk_FUN_02dc1ef0();
+                                                  return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 60
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$WriteEndNamespaceDeclaration
+ENTRY_POINT: 0550d4f0
+MANUAL_PRIORITY_SCORE: 232
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_8', 'ui_or_gameplay_sink_hits_3', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_16', 'negative_generic_rendering_without_foveation_or_eye_source']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_3_bonus_12', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550d4f0_System.Xml.QueryOutputWriter$$WriteEndNamespaceDeclaration.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\060_p232_System.Xml.QueryOutputWriter$$WriteEndNamespaceDeclaration.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Xml.QueryOutputWriter$$WriteEndNamespaceDeclaration
+ENTRY_POINT: 0550d4f0
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 82
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_21;ray_or_cast_sink_hits_8;ui_or_gameplay_sink_hits_3;strong_file_logging_hits_2;telemetry_or_network_hits_16;negative_generic_rendering_without_foveation_or_eye_source
+*/
+
+
+void System_Xml_QueryOutputWriter__WriteEndNamespaceDeclaration(void)
+
+{
+  undefined *puVar1;
+  bool in_ZR;
+  bool in_CY;
+  long unaff_x19;
+  
+  if (in_CY && !in_ZR) {
+    *(undefined8 *)(unaff_x19 + 0x368) =
+         *(undefined8 *)
+          UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000357_BurstDirectCall_TypeInfo
+    ;
+    thunk_FUN_02dc1ef0(unaff_x19 + 0x368);
+    if (0x6a < *(uint *)(unaff_x19 + 0x18)) {
+      *(undefined8 *)(unaff_x19 + 0x370) =
+           *(undefined8 *)
+            UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000443_BurstDirectCall_TypeInfo
+      ;
+      thunk_FUN_02dc1ef0(unaff_x19 + 0x370);
+      if (0x6b < *(uint *)(unaff_x19 + 0x18)) {
+        *(undefined8 *)(unaff_x19 + 0x378) =
+             *(undefined8 *)
+              UnityEngine_Rendering_Universal_Internal_CopyDepthPass_ShaderConstants_TypeInfo;
+        thunk_FUN_02dc1ef0(unaff_x19 + 0x378);
+        if (0x6c < *(uint *)(unaff_x19 + 0x18)) {
+          *(undefined8 *)(unaff_x19 + 0x380) =
+               *(undefined8 *)
+                UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035B_BurstDirectCall_TypeInfo
+          ;
+          thunk_FUN_02dc1ef0(unaff_x19 + 0x380);
+          if (0x6d < *(uint *)(unaff_x19 + 0x18)) {
+            *(undefined8 *)(unaff_x19 + 0x388) =
+                 *(undefined8 *)Unity_Burst_BurstString_NumberFormatKind_TypeInfo;
+            thunk_FUN_02dc1ef0(unaff_x19 + 0x388);
+            if (0x6e < *(uint *)(unaff_x19 + 0x18)) {
+              *(undefined8 *)(unaff_x19 + 0x390) =
+                   *(undefined8 *)
+                    UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035C_PostfixBurstDelegate_TypeInfo
+              ;
+              thunk_FUN_02dc1ef0(unaff_x19 + 0x390);
+              if (0x6f < *(uint *)(unaff_x19 + 0x18)) {
+                *(undefined8 *)(unaff_x19 + 0x398) =
+                     *(undefined8 *)Oculus_Platform_Callback_RequestCallback_TypeInfo;
+                thunk_FUN_02dc1ef0(unaff_x19 + 0x398);
+                if (0x70 < *(uint *)(unaff_x19 + 0x18)) {
+                  *(undefined8 *)(unaff_x19 + 0x3a0) =
+                       *(undefined8 *)
+                        System_Net_CookieCollection_CookieCollectionEnumerator_TypeInfo;
+                  thunk_FUN_02dc1ef0(unaff_x19 + 0x3a0);
+                  if (0x71 < *(uint *)(unaff_x19 + 0x18)) {
+                    *(undefined8 *)(unaff_x19 + 0x3a8) =
+                         *(undefined8 *)
+                          Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass0_0_TypeInfo;
+                    thunk_FUN_02dc1ef0(unaff_x19 + 0x3a8);
+                    if (0x72 < *(uint *)(unaff_x19 + 0x18)) {
+                      *(undefined8 *)(unaff_x19 + 0x3b0) = *(undefined8 *)Core_<>c_TypeInfo;
+                      thunk_FUN_02dc1ef0(unaff_x19 + 0x3b0);
+                      if (0x73 < *(uint *)(unaff_x19 + 0x18)) {
+                        *(undefined8 *)(unaff_x19 + 0x3b8) =
+                             *(undefined8 *)System_Net_CredentialCache_CredentialEnumerator_TypeInfo
+                        ;
+                        thunk_FUN_02dc1ef0(unaff_x19 + 0x3b8);
+                        if (0x74 < *(uint *)(unaff_x19 + 0x18)) {
+                          *(undefined8 *)(unaff_x19 + 0x3c0) =
+                               *(undefined8 *)CosmeticKiosk_<>c_TypeInfo;
+                          thunk_FUN_02dc1ef0(unaff_x19 + 0x3c0);
+                          if (0x75 < *(uint *)(unaff_x19 + 0x18)) {
+                            *(undefined8 *)(unaff_x19 + 0x3c8) =
+                                 *(undefined8 *)
+                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Orthogonal_0000035E_PostfixBurstDelegate_TypeInfo
+                            ;
+                            thunk_FUN_02dc1ef0(unaff_x19 + 0x3c8);
+                            if (0x76 < *(uint *)(unaff_x19 + 0x18)) {
+                              *(undefined8 *)(unaff_x19 + 0x3d0) =
+                                   *(undefined8 *)
+                                    UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000346_PostfixBurstDelegate_TypeInfo
+                              ;
+                              thunk_FUN_02dc1ef0(unaff_x19 + 0x3d0);
+                              if (0x77 < *(uint *)(unaff_x19 + 0x18)) {
+                                *(undefined8 *)(unaff_x19 + 0x3d8) =
+                                     *(undefined8 *)
+                                      UnityEngine_UIElements_ComputedTransitionUtils_<>c_TypeInfo;
+                                thunk_FUN_02dc1ef0(unaff_x19 + 0x3d8);
+                                if (0x78 < *(uint *)(unaff_x19 + 0x18)) {
+                                  *(undefined8 *)(unaff_x19 + 0x3e0) =
+                                       *(undefined8 *)
+                                        UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_PostfixBurstDelegate_TypeInfo
+                                  ;
+                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x3e0);
+                                  if (0x79 < *(uint *)(unaff_x19 + 0x18)) {
+                                    *(undefined8 *)(unaf
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+          if (0xa4 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x540) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000353_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x540);
+                                                  if (0xa5 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x548) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_AdjustCastHitEndPoint_00000D26_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x548);
+                                                  if (0xa6 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x550) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_Rendering_Universal_Internal_ColorGradingLutPass_<>c_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x550);
+                                                  puVar1 = 
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BezierLerp_00000344_PostfixBurstDelegate_TypeInfo
+                                                  ;
+                                                  if (0xa7 < *(uint *)(unaff_x19 + 0x18)) {
+                                                    *(undefined8 *)(unaff_x19 + 0x558) =
+                                                         *(undefined8 *)
+                                                                                                                    
+                                                  UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_BurstDirectCall_TypeInfo
+                                                  ;
+                                                  thunk_FUN_02dc1ef0(unaff_x19 + 0x558);
+                                                  *(long *)(*(long *)(*(long *)puVar1 + 0xb8) + 8) =
+                                                       unaff_x19;
+                                                  thunk_FUN_02dc1ef0();
+                                                  return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION

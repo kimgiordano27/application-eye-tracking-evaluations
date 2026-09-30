@@ -1,0 +1,1168 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 89
+FUNCTION_NAME: FUN_063ad548
+ENTRY_POINT: 063ad548
+MANUAL_PRIORITY_SCORE: 258
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 143
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_5', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_7', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_6', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_143', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\063ad548_FUN_063ad548.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\manual-review-pack\A_must_review\089_p258_FUN_063ad548.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_063ad548
+ENTRY_POINT: 063ad548
+PROGRAM: Untangled-libil2cpp.so
+SCORE: 143
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_5;weak_xr_or_state_hits_5;validity_or_gating_hits_7;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_6;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+void FUN_063ad548(long param_1,long param_2,undefined8 *param_3,undefined8 *param_4,void *param_5)
+
+{
+  void *__dest;
+  undefined *puVar1;
+  undefined4 uVar2;
+  undefined8 uVar3;
+  long *plVar4;
+  long lVar5;
+  long lVar6;
+  undefined8 uVar7;
+  undefined8 local_458;
+  undefined8 uStack_450;
+  undefined8 local_448;
+  undefined8 uStack_440;
+  undefined8 local_1a0;
+  undefined8 uStack_198;
+  undefined8 uStack_190;
+  undefined8 uStack_188;
+  undefined8 local_180;
+  undefined8 uStack_178;
+  undefined4 local_170;
+  undefined8 local_160;
+  undefined8 uStack_158;
+  undefined8 uStack_150;
+  undefined8 uStack_148;
+  undefined8 local_140;
+  undefined8 uStack_138;
+  undefined4 local_130;
+  undefined8 local_120;
+  undefined8 uStack_118;
+  undefined8 local_110;
+  undefined8 uStack_108;
+  undefined8 local_100;
+  undefined8 uStack_f8;
+  undefined4 local_f0;
+  undefined8 local_e0;
+  undefined8 uStack_d8;
+  undefined8 local_d0;
+  undefined8 uStack_c8;
+  undefined8 local_c0;
+  undefined8 uStack_b8;
+  undefined4 local_b0;
+  undefined8 local_a0;
+  undefined8 uStack_98;
+  undefined8 local_90;
+  undefined8 uStack_88;
+  undefined8 uStack_80;
+  undefined8 uStack_78;
+  undefined4 local_70;
+  long local_68;
+  undefined8 local_60;
+  undefined8 uStack_58;
+  undefined8 local_50;
+  undefined8 uStack_48;
+  
+  if ((DAT_071cd4f4 & 1) == 0) {
+    FUN_02f07e70(UnityEngine_UIElements_FocusController_FocusedElement_var);
+    FUN_02f07e70(System_Action<InputAction_CallbackContext>_TypeInfo);
+    FUN_02f07e70(System_Action<InputStateHistory_Record>_TypeInfo);
+    FUN_02f07e70(System_Action<OVRColocationSession_Data>_TypeInfo);
+    FUN_02f07e70(System_Action<OVRHand_MicrogestureType>_TypeInfo);
+    FUN_02f07e70(System_Action<OVRManager_PassthroughInitializationState>_TypeInfo);
+    FUN_02f07e70(PlayFab_CloudScriptModels_ExecuteEntityCloudScriptRequest_var);
+    FUN_02f07e70(System_Action<OVRPlugin_BoundaryVisibility>_TypeInfo);
+    FUN_02f07e70(Unity_VisualScripting_FullSerializer_fsPropertyAttribute_var);
+    FUN_02f07e70(UnityEngine_InputSystem_InputActionMap_BindingOverrideListJson_var);
+    DAT_071cd4f4 = 1;
+  }
+  local_68 = 0;
+  local_70 = 0;
+  local_b0 = 0;
+  uStack_48 = 0;
+  local_50 = 0;
+  uStack_58 = 0;
+  local_60 = 0;
+  uStack_88 = 0;
+  local_90 = 0;
+  uStack_78 = 0;
+  uStack_80 = 0;
+  uStack_98 = 0;
+  local_a0 = 0;
+  uStack_c8 = 0;
+  local_d0 = 0;
+  uStack_b8 = 0;
+  local_c0 = 0;
+  uStack_d8 = 0;
+  local_e0 = 0;
+  if (param_2 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  FUN_03b648f8(&local_458,param_2,
+               *(undefined8 *)System_Action<OVRPlugin_BoundaryVisibility>_TypeInfo,&local_68,
+               *(undefined8 *)(param_1 + 0x38),
+               *(undefined8 *)System_Action<OVRColocationSession_Data>_TypeInfo);
+  uStack_58 = uStack_450;
+  local_60 = local_458;
+  uStack_48 = uStack_440;
+  local_50 = local_448;
+  local_70 = *(undefined4 *)((long)param_5 + 0x120);
+  uStack_88 = *(undefined8 *)((long)param_5 + 0x108);
+  local_90 = *(undefined8 *)((long)param_5 + 0x100);
+  uStack_78 = *(undefined8 *)((long)param_5 + 0x118);
+  uStack_80 = *(undefined8 *)((long)param_5 + 0x110);
+  uStack_98 = *(undefined8 *)((long)param_5 + 0xf8);
+  local_a0 = *(undefined8 *)((long)param_5 + 0xf0);
+  FUN_066b5b18(&local_a0,0,0);
+  uStack_88 = CONCAT44(0x5e,(undefined4)uStack_88);
+  FUN_066b5c2c(&local_a0,0x20,0);
+  uStack_98 = CONCAT44(uStack_98._4_4_,1);
+  uStack_108 = uStack_88;
+  local_110 = local_90;
+  uStack_f8 = uStack_78;
+  local_100 = uStack_80;
+  local_f0 = local_70;
+  uStack_118 = uStack_98;
+  local_120 = local_a0;
+  if (*(int *)(*(long *)PlayFab_CloudScriptModels_ExecuteEntityCloudScriptRequest_var + 0xe0) == 0)
+  {
+    thunk_FUN_02f12b58();
+  }
+  uStack_158 = uStack_118;
+  local_160 = local_120;
+  uStack_148 = uStack_108;
+  uStack_150 = local_110;
+  uStack_138 = uStack_f8;
+  local_140 = local_100;
+  local_130 = local_f0;
+  uVar3 = FUN_06385084(param_2,&local_160,
+                       *(undefined8 *)Unity_VisualScripting_FullSerializer_fsPropertyAttribute_var,1
+                       ,0,1,0);
+  *param_4 = uVar3;
+  local_b0 = *(undefined4 *)((long)param_5 + 0x120);
+  uStack_c8 = *(undefined8 *)((long)param_5 + 0x108);
+  local_d0 = *(undefined8 *)((long)param_5 + 0x100);
+  uStack_b8 = *(undefined8 *)((long)param_5 + 0x118);
+  local_c0 = *(undefined8 *)((long)param_5 + 0x110);
+  uStack_d8 = *(undefined8 *)((long)param_5 + 0xf8);
+  local_e0 = *(undefined8 *)((long)param_5 + 0xf0);
+  FUN_066b5c2c(&local_e0,0,0);
+  uStack_d8 = CONCAT44(uStack_d8._4_4_,1);
+  if (*(int *)(*(long *)UnityEngine_UIElements_FocusController_FocusedElement_var + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+  }
+  uVar2 = FUN_063acd6c();
+  FUN_066b5b18(&local_e0,uVar2,0);
+  uStack_198 = uStack_d8;
+  local_1a0 = local_e0;
+  uStack_188 = uStack_c8;
+  uStack_190 = local_d0;
+  uStack_178 = uStack_b8;
+  local_180 = local_c0;
+  local_170 = local_b0;
+  uVar3 = FUN_06385084(param_2,&local_1a0,
+                       *(undefined8 *)
+                        UnityEngine_InputSystem_InputActionMap_BindingOverrideListJson_var,1,0,1,0);
+  lVar5 = local_68;
+  *param_3 = uVar3;
+  uVar3 = FUN_0628b3b4(&local_60,param_3,0,0);
+  lVar6 = local_68;
+  if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  *(undefined8 *)(lVar5 + 0x18) = uVar3;
+  uVar3 = FUN_0628b58c(&local_60,param_4,2,0);
+  lVar5 = local_68;
+  if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  *(undefined8 *)(lVar6 + 0x10) = uVar3;
+  memcpy(&local_458,param_5,0x2b8);
+  if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  __dest = (void *)(lVar5 + 0x20);
+  memcpy(__dest,&local_458,0x2b8);
+  thunk_FUN_02f411dc(__dest,0);
+  if (local_68 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02f080c0();
+  }
+  *(undefined8 *)(local_68 + 0x2d8) = *(undefined8 *)(param_1 + 0xe0);
+  thunk_FUN_02f411dc(local_68 + 0x2d8);
+  uVar7 = *(undefined8 *)(param_1 + 0x10c);
+  uVar3 = *(undefined8 *)(param_1 + 0x104);
+  if (local_68 != 0) {
+    *(undefined8 *)(local_68 + 0x2f0) = *(undefined8 *)(param_1 + 0x114);
+    *(undefined8 *)(local_68 + 0x2e8) = uVar7;
+    *(undefined8 *)(local_68 + 0x2e0) = uVar3;
+    *(undefined1 *)(local_68 + 0x2f8) = *(undefined1 *)(param_1 + 0x100);
+    FUN_06282c94(&local_60,0,0);
+    puVar1 = System_Action<OVRManager_PassthroughInitializationState>_TypeInfo;
+    lVar5 = *(long *)System_Action<OVRManager_PassthroughInitializationState>_TypeInfo;
+    if (*(int *)(lVar5 + 0xe0) == 0) {
+      thunk_FUN_02f12b58(lVar5);
+      lVar5 = *(long *)puVar1;
+    }
+    lVar6 = *(long *)(*(long *)(lVar5 + 0xb8) + 8);
+    if (lVar6 == 0) {
+      if (*(int *)(lVar5 + 0xe0) == 0) {
+        thunk_FUN_02f12b58(lVar5);
+        lVar5 = *(long *)puVar1;
+      }
+      uVar3 = **(undefined8 **)(lVar5 + 0xb8);
+      lVar6 = thunk_FUN_02ef1808(*(undefined8 *)System_Action<InputAction_CallbackContext>_TypeInfo)
+      ;
+      FUN_045fdd18(lVar6,uVar3,*(undefined8 *)System_Action<OVRHand_MicrogestureType>_TypeInfo,0);
+      plVar4 = (long *)(*(long *)(*(long *)puVar1 + 0xb8) + 8);
+      *plVar4 = lVar6;
+      thunk_FUN_02f411dc(plVar4,lVar6);
+    }
+    FUN_03b64a64(&local_60,lVar6,*(undefined8 *)System_Action<InputStateHistory_Record>_TypeInfo);
+    FUN_0628be4c(&local_60,0);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02f080c0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 90
+FUNCTION_NAME: Unity.VisualScripting.GraphInstances$$Instantiate
+ENTRY_POINT: 06391b58
+MANUAL_PRIORITY_SCORE: 258
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 136
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'ray_interaction', 'ui_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_3', 'weak_xr_or_state_hits_13', 'ray_or_cast_sink_hits_4', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_5', 'functionality_data_collection_or_telemetry_hits_5']
+PRIORITY_REASONS: ['base_scanner_score_136', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\06391b58_Unity.VisualScripting.GraphInstances$$Instantiate.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\manual-review-pack\A_must_review\090_p258_Unity.VisualScripting.GraphInstances$$Instantiate.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.VisualScripting.GraphInstances$$Instantiate
+ENTRY_POINT: 06391b58
+PROGRAM: Untangled-libil2cpp.so
+SCORE: 136
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;ray_interaction;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_13;ray_or_cast_sink_hits_4;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_5;functionality_data_collection_or_telemetry_hits_5
+*/
+
+
+void Unity_VisualScripting_GraphInstances__Instantiate(void)
+
+{
+  undefined4 uVar1;
+  long *unaff_x19;
+  undefined8 *unaff_x20;
+  undefined8 *unaff_x21;
+  long unaff_x22;
+  undefined8 *unaff_x23;
+  undefined8 *unaff_x24;
+  undefined8 *unaff_x25;
+  undefined8 *unaff_x26;
+  undefined8 *unaff_x27;
+  undefined8 *unaff_x28;
+  undefined8 *unaff_x29;
+  
+  FUN_02f07e70();
+  FUN_02f07e70(OVRSpatialAnchor_MultiAnchorDelegatePair_var);
+  FUN_02f07e70(OVRPassthroughLayer_DeferredPassthroughMeshAddition_var);
+  FUN_02f07e70(System_Xml_Serialization_XmlEnumAttribute_var);
+  FUN_02f07e70(OVRVirtualKeyboard_VirtualKeyboardTextureInfo_var);
+  FUN_02f07e70(PlayFab_ClientModels_GetSharedGroupDataRequest_var);
+  FUN_02f07e70(OVRVirtualKeyboardSampleControls_OVRVirtualKeyboardBackup_var);
+  FUN_02f07e70(
+              UnityEngine_XR_OpenXR_Features_Interactions_OculusTouchControllerProfile_OculusTouchController_var
+              );
+  FUN_02f07e70(UnityEngine_InputSystem_OnScreen_OnScreenControl_OnScreenDeviceInfo_var);
+  FUN_02f07e70(OVROverlay_LayerTexture_var);
+  FUN_02f07e70(UnityEngine_XR_OpenXR_OpenXRAnalytics_InitializeEvent_var);
+  FUN_02f07e70(PTR_DAT_06d963a0);
+  FUN_02f07e70(UnityEngine_XR_OpenXR_Features_Interactions_PalmPoseInteraction_PalmPose_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_Burst_var);
+  FUN_02f07e70(PTR_DAT_06d96398);
+  FUN_02f07e70(UnityEngine_ParticleSystem_CollisionModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_ColorBySpeedModule_var);
+  FUN_02f07e70(System_Xml_Serialization_XmlIncludeAttribute_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_ColorOverLifetimeModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_CustomDataModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_EmissionModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_ExternalForcesModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_ForceOverLifetimeModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_InheritVelocityModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_LightsModule_var);
+  FUN_02f07e70(PTR_DAT_06d96388);
+  FUN_02f07e70(UnityEngine_ParticleSystem_LimitVelocityOverLifetimeModule_var);
+  FUN_02f07e70(
+              Unity_VisualScripting_StaticActionInvoker<TParam0,_TParam1,_TParam2,_TParam3,_TParam4>_var
+              );
+  FUN_02f07e70(UnityEngine_ParticleSystem_MainModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_MinMaxCurve_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_MinMaxGradient_var);
+  FUN_02f07e70(OVRAnchor_FetchTaskData_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_NoiseModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_RotationBySpeedModule_var);
+  FUN_02f07e70(OVRLocatable_TrackingSpacePose_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_RotationOverLifetimeModule_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_ShapeModule_var);
+  FUN_02f07e70(PlayFab_GroupsModels_ApplyToGroupResponse_var);
+  FUN_02f07e70(UnityEngine_ParticleSystem_SizeBySpeedModule_var);
+  *(undefined1 *)(unaff_x22 + 0x43e) = 1;
+  uVar1 = FUN_066a0664(*unaff_x23,0);
+  **(undefined4 **)(*unaff_x19 + 0xb8) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x21,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 4) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x20,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 8) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x29,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xc) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x28,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x10) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x27,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x14) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x26,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x18) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x25,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x1c) = uVar1;
+  uVar1 = FUN_066a0664(*unaff_x24,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x20) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_CollisionModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x24) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_LightsModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x28) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRSpatialAnchor_MultiAnchorDelegatePair_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x2c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)
+                        UnityEngine_XR_OpenXR_Features_Interactions_PalmPoseInteraction_PalmPose_var
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x30) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_InheritVelocityModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x34) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_NoiseModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x38) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRPlugin_VirtualKeyboardModelAnimationState_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x3c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_ExternalForcesModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x40) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_EmissionModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x44) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_ForceOverLifetimeModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x48) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_MainModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x4c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRPlugin_Vector3f_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x50) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRSpaceQuery_Options_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x54) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRSpatialAnchor_LoadOptions_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x58) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_RotationOverLifetimeModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x5c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)
+                        UnityEngine_XR_OpenXR_Features_Interactions_OculusTouchControllerProfile_OculusTouchController_var
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x60) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRPassthroughLayer_Settings_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 100) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_CustomDataModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x68) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_MinMaxCurve_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x6c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_RotationBySpeedModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x70) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_SizeBySpeedModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x74) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRVirtualKeyboardSampleControls_OVRVirtualKeyboardBackup_var,
+                       0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x78) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRRaycaster_RaycastHit_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x7c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_MinMaxGradient_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x80) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)System_Xml_Serialization_XmlEnumAttribute_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x84) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)System_Xml_Serialization_XmlIncludeAttribute_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x88) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)PlayFab_ClientModels_GetSharedGroupDataRequest_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x8c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_Burst_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x90) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRSceneLoader_SceneInfo_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x94) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRPlugin_SpaceQueryResult_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x98) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)OVRVirtualKeyboard_VirtualKeyboardTextureInfo_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x9c) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)PlayFab_GroupsModels_ApplyToGroupResponse_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa0) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)System_Array_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa4) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)PTR_DAT_06d96388,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa8) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)PTR_DAT_06d96398,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xac) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)PTR_DAT_06d963a0,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb0) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)
+                        PlayFab_ClientModels_GetPlayFabIDsFromNintendoServiceAccountIdsRequest_var,0
+                      );
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb4) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)
+                        UnityEngine_InputSystem_OnScreen_OnScreenControl_OnScreenDeviceInfo_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb8) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_XR_OpenXR_OpenXRAnalytics_InitializeEvent_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xbc) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_LimitVelocityOverLifetimeModule_var
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xc0) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_ColorBySpeedModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xc4) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)
+                        Unity_VisualScripting_StaticActionInvoker<TParam0,_TParam1,_TParam2,_TParam3,_TParam4>_var
+                       ,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 200) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_ColorOverLifetimeModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xcc) = uVar1;
+  uVar1 = FUN_066a0664(*(undefined8 *)UnityEngine_ParticleSystem_ShapeModule_var,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xd0) = uVar1;
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 91
+FUNCTION_NAME: UnityEngine.XR.ARFoundation.VisualScripting.SessionStateChangedEventUnit$$StopListening
+ENTRY_POINT: 064e7220
+MANUAL_PRIORITY_SCORE: 256
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 134
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_1', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_1', 'telemetry_or_network_hits_3', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_data_collection_or_telemetry_hits_3']
+PRIORITY_REASONS: ['base_scanner_score_134', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\general-structure-results\90_plus_framework_support_only_near_certain\064e7220_UnityEngine.XR.ARFoundation.VisualScripting.SessionStateChangedEventUnit$$StopListening.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\manual-review-pack\A_must_review\091_p256_UnityEngine.XR.ARFoundation.VisualScripting.SessionStateChangedEventUnit$$StopListening.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARFoundation.VisualScripting.SessionStateChangedEventUnit$$StopListening
+ENTRY_POINT: 064e7220
+PROGRAM: Untangled-libil2cpp.so
+SCORE: 134
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_1;telemetry_or_network_hits_3;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_3
+*/
+
+
+void UnityEngine_XR_ARFoundation_VisualScripting_SessionStateChangedEventUnit__StopListening(void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  FUN_02f07e70();
+  FUN_02f07e70(PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeletePSNResponse>_TypeInfo);
+  FUN_02f07e70(PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteStatisticsResponse>_TypeInfo);
+  FUN_02f07e70(PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteSteamResponse>_TypeInfo);
+  FUN_02f07e70(
+              PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteFacebookInstantGamesResponse>_TypeInfo
+              );
+  FUN_02f07e70(
+              OVRTask<OVRResult<List<OVRSpatialAnchor_UnboundAnchor>,_OVRAnchor_FetchResult>>_TypeInfo
+              );
+  FUN_02f07e70(
+              OVRTask<OVRResult<List<OVRSpatialAnchor_UnboundAnchor>,_OVRSpatialAnchor_OperationResult>>_TypeInfo
+              );
+  FUN_02f07e70(OVRTask<OVRResult<Guid,_Int32Enum>>_TypeInfo);
+  FUN_02f07e70(OVRTask<OVRResult<Guid,_OVRColocationSession_Result>>_TypeInfo);
+  FUN_02f07e70(OVRTask<OVRResult<ulong,_Int32Enum>>_TypeInfo);
+  FUN_02f07e70(OVRTask<OVRResult<ulong,_OVRPlugin_Result>>_TypeInfo);
+  FUN_02f07e70(OVRTask<ValueTuple<Int32Enum,_int>>_TypeInfo);
+  FUN_02f07e70(OVRTask<ValueTuple<OVRSceneManager_LoadSceneModelResult,_int>>_TypeInfo);
+  FUN_02f07e70(OVRTask<OVRSpatialAnchor_UnboundAnchor[]>_TypeInfo);
+  FUN_02f07e70(OVRTask<bool>_TypeInfo);
+  FUN_02f07e70(OVRTask<Int32Enum>_TypeInfo);
+  FUN_02f07e70(PTR_DAT_06d6fdb8);
+  FUN_02f07e70(PTR_DAT_06d70408);
+  FUN_02f07e70(PTR_DAT_06d70d98);
+  *(undefined1 *)(unaff_x20 + 299) = 1;
+  FUN_0652792c();
+  lVar1 = *unaff_x22;
+  if (*(int *)(lVar1 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar1 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar1 + 0xb8) + 8) == 0) {
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+    uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<uint>_TypeInfo);
+    FUN_05136200(uVar2,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteFacebookResponse>_TypeInfo,0
+                );
+    puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 8);
+    *puVar3 = uVar2;
+    thunk_FUN_02f411dc(puVar3,uVar2);
+  }
+  if (unaff_x19 != 0) {
+    FUN_03ba9cac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x10) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<ulong>_TypeInfo);
+      FUN_0516795c(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteGoogleResponse>_TypeInfo,0
+                  );
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x10);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa36c();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x18) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)OVRResult<Int32Enum>_TypeInfo);
+      FUN_0513751c(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteInventoryCollectionResponse>_TypeInfo
+                   ,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x18);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa00c();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x20) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<Vector3>_TypeInfo);
+      FUN_051698f8(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteInventoryItemsResponse>_TypeInfo
+                   ,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x20);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa5ac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x28) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)OVRResult<object,_Int32Enum>_TypeInfo);
+      FUN_05137c24(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteItemResponse>_TypeInfo,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x28);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa12c();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x30) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<ushort>_TypeInfo);
+      FUN_051699ac(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteKongregateResponse>_TypeInfo
+                   ,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x30);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa6cc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x38) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<TimeSpan>_TypeInfo);
+      FUN_05138a34(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteNintendoResponse>_TypeInfo
+                   ,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x38);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa24c();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x40) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)OVRResult<Guid,_Int32Enum>_TypeInfo);
+      FUN_05169d30(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeletePSNResponse>_TypeInfo,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x40);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa7ec();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x48) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)OVRResult<OVRAnchor_SaveResult>_TypeInfo);
+      FUN_05168148(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteStatisticsResponse>_TypeInfo
+                   ,0);
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x48);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03baa48c();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x50) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<sbyte>_TypeInfo);
+      FUN_051369c0(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteSteamResponse>_TypeInfo,0)
+      ;
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x50);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03ba9dcc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar1 = *unaff_x22;
+    }
+    if (*(long *)(*(long *)(lVar1 + 0xb8) + 0x58) == 0) {
+      if (*(int *)(lVar1 + 0xe0) == 0) {
+        thunk_FUN_02f12b58();
+        lVar1 = *unaff_x22;
+      }
+      uVar4 = **(undefined8 **)(lVar1 + 0xb8);
+      uVar2 = thunk_FUN_02ef1808(*(undefined8 *)System_Nullable<float>_TypeInfo);
+      FUN_05136bdc(uVar2,uVar4,
+                   *(undefined8 *)
+                    PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteFilesResponse>_TypeInfo,0)
+      ;
+      puVar3 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x58);
+      *puVar3 = uVar2;
+      thunk_FUN_02f411dc(puVar3,uVar2);
+    }
+    FUN_03ba9eec();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02f080c0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 92
+FUNCTION_NAME: UnityEngine.XR.ARFoundation.ARFace$$UpdateEyes
+ENTRY_POINT: 064e0310
+MANUAL_PRIORITY_SCORE: 252
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'keyword_support']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_4', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'eye_or_gaze_keyword_boost_only', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\general-structure-results\70_high_likely_false_positive_high\064e0310_UnityEngine.XR.ARFoundation.ARFace$$UpdateEyes.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Untangled\manual-review-pack\A_must_review\092_p252_UnityEngine.XR.ARFoundation.ARFace$$UpdateEyes.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.ARFoundation.ARFace$$UpdateEyes
+ENTRY_POINT: 064e0310
+PROGRAM: Untangled-libil2cpp.so
+SCORE: 89
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;keyword_support
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_4;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;eye_or_gaze_keyword_boost_only;cap_below_near_certain_without_eye_anchor_or_ordered_structure;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void UnityEngine_XR_ARFoundation_ARFace__UpdateEyes(undefined8 param_1)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  undefined8 uVar3;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  FUN_0516c320();
+  puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x40);
+  *puVar1 = param_1;
+  thunk_FUN_02f411dc(puVar1,param_1);
+  FUN_037cdec4();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x48) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)System_Collections_Generic_List<UICharInfo>_TypeInfo);
+    FUN_0516c104(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateOrUpdateNintendoResponse>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x48);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037cd4ec();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x50) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<VirtualMeshContainer>_TypeInfo);
+    FUN_0516bccc(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<DeleteEntityItemReviewsResponse>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x50);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037cc13c();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x58) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<UserCapability>_TypeInfo);
+    FUN_0516bd80(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabRequestEvent<UnlinkNintendoServiceAccountRequest>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x58);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037cc484();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x60) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<XRCameraSubsystemDescriptor>_TypeInfo
+                              );
+    FUN_05171f48(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabRequestEvent<UnlinkNintendoSwitchDeviceIdRequest>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x60);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037d82d4();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x68) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<XRInputSubsystem>_TypeInfo);
+    FUN_05172380(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabRequestEvent<UnlinkOpenIdConnectRequest>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x68);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037d9684();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x70) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<WeakReference>_TypeInfo);
+    FUN_05172164(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabRequestEvent<UnlinkPSNAccountRequest>_TypeInfo
+                 ,0);
+    puVar1 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x70);
+    *puVar1 = uVar3;
+    thunk_FUN_02f411dc(puVar1,uVar3);
+  }
+  FUN_037d8cac();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+                        System_Collections_Generic_List<WaypointSettings>_TypeInfo);
+    FUN_0517481c(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateBuildWithCustomContainerResponse>_TypeInfo
+                 ,0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x268) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x268,uVar3);
+  }
+  FUN_037e2a2c();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x270) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)System_Collections_Generic_List<Uri>_TypeInfo);
+    FUN_05174600(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateBuildWithManagedContainerResponse>_TypeInfo
+                 ,0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x270) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x270,uVar3);
+  }
+  FUN_037e2054();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x278) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)System_Collections_Generic_List<XRView>_TypeInfo);
+    FUN_0517427c(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateBuildWithProcessBasedServerResponse>_TypeInfo
+                 ,0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x278) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x278,uVar3);
+  }
+  FUN_037e0fec();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x280) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)System_Collections_Generic_List<Variable>_TypeInfo);
+    FUN_05174330(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateDraftItemResponse>_TypeInfo,
+                 0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x280) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x280,uVar3);
+  }
+  FUN_037e1334();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x288) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)System_Collections_Generic_List<Usable>_TypeInfo);
+    FUN_05172704(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateExperimentResult>_TypeInfo,0
+                );
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x288) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x288,uVar3);
+  }
+  FUN_037da3a4();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x290) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<XmlReflectionMember>_TypeInfo);
+    FUN_05172a88(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateGroupResponse>_TypeInfo,0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x290) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x290,uVar3);
+  }
+  FUN_037db40c();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x298) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<AnimationOutputWeightProcessor_WeightInfo>_TypeInfo
+                              );
+    FUN_0517286c(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateGroupRoleResponse>_TypeInfo,
+                 0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x298) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x298,uVar3);
+  }
+  FUN_037daa34();
+  lVar2 = *unaff_x22;
+  if (*(int *)(lVar2 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+    lVar2 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar2 + 0xb8) + 0x2a0) == 0) {
+    if (*(int *)(lVar2 + 0xe0) == 0) {
+      thunk_FUN_02f12b58();
+      lVar2 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar2 + 0xb8);
+    uVar3 = thunk_FUN_02ef1808(*(undefined8 *)
+                                System_Collections_Generic_List<BsonReader_ContainerContext>_TypeInfo
+                              );
+    FUN_05172d58(uVar3,uVar4,
+                 *(undefined8 *)
+                  PlayFab_Events_PlayFabEvents_PlayFabResultEvent<CreateLobbyResult>_TypeInfo,0);
+    lVar2 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar2 + 0x2a0) = uVar3;
+    thunk_FUN_02f411dc(lVar2 + 0x2a0,uVar3);
+  }
+  FUN_037dba9c();
+  if (*(int *)(*unaff_x22 + 0xe0) == 0) {
+    thunk_FUN_02f12b58();
+  }
+  FUN_06931a5c();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

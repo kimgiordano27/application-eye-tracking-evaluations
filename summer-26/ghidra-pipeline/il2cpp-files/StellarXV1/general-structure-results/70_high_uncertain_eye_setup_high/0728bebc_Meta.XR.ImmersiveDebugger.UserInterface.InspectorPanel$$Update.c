@@ -1,0 +1,64 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.UserInterface.InspectorPanel$$Update
+ENTRY_POINT: 0728bebc
+PROGRAM: StellarXV1-libil2cpp.so
+SCORE: 78
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;paired_state_refs;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_7;paired_field_refs_with_eye_source;frame_or_lifecycle_behavior;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+long Meta_XR_ImmersiveDebugger_UserInterface_InspectorPanel__Update(long param_1)
+
+{
+  undefined8 uVar1;
+  long unaff_x19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x23;
+  long unaff_x24;
+  
+  do {
+    if (*(long *)(unaff_x21 + 0x30) != unaff_x24) {
+      if ((((unaff_x24 == 0) || (*(long *)(unaff_x24 + 0x28) == 0)) ||
+          (*(long *)(unaff_x19 + 0x18) == 0)) ||
+         (uVar1 = FUN_0728a2f0(param_1,*(undefined8 *)(unaff_x19 + 0x10),
+                               *(undefined8 *)(*(long *)(unaff_x24 + 0x28) + 0x38),unaff_x24),
+         *(long *)(unaff_x19 + 0x18) == 0)) {
+Meta_XR_ImmersiveDebugger_UserInterface_InspectorPanel___ctor:
+                    /* WARNING: Subroutine does not return */
+        FUN_04077830();
+      }
+      FUN_0728a2f0(uVar1,*(undefined8 *)(unaff_x19 + 0x10),unaff_x21,unaff_x24);
+    }
+    uVar1 = FUN_0728bdd8();
+    unaff_x21 = *(long *)(unaff_x23 + 0x10);
+    if (unaff_x23 == unaff_x20) {
+      return unaff_x21;
+    }
+    *(undefined1 *)(unaff_x23 + 0x27) = 0;
+    unaff_x23 = FUN_0728b8fc(uVar1,unaff_x23);
+    if (((unaff_x23 == 0) || (unaff_x24 = *(long *)(unaff_x23 + 0x10), unaff_x24 == 0)) ||
+       (unaff_x21 == 0)) goto Meta_XR_ImmersiveDebugger_UserInterface_InspectorPanel___ctor;
+    param_1 = unaff_x23;
+    if (*(long *)(unaff_x24 + 0x40) != *(long *)(unaff_x21 + 0x40)) {
+      if (*(char *)(unaff_x23 + 0x27) == '\0') {
+        FUN_0728bdd8();
+        return unaff_x21;
+      }
+      if ((*(long *)(unaff_x21 + 0x30) == 0) || (*(long *)(unaff_x19 + 0x18) == 0))
+      goto Meta_XR_ImmersiveDebugger_UserInterface_InspectorPanel___ctor;
+      unaff_x24 = FUN_0728aa54(unaff_x23,*(undefined8 *)(unaff_x19 + 0x10),
+                               *(undefined8 *)(*(long *)(unaff_x21 + 0x30) + 0x28),
+                               *(undefined8 *)(unaff_x24 + 0x28));
+      param_1 = FUN_0728bb14();
+    }
+  } while( true );
+}
+
+

@@ -1,0 +1,23 @@
+/*
+FUNCTION_NAME: OVREyeGaze_Start_m22CA5C2D945BC3EA30FACDCD2BCA546416B80198
+ENTRY_POINT: 02d440a0
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 70
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;frame_behavior;attempted_use
+EVIDENCE: strong_eye_source_hits_3;frame_or_lifecycle_behavior;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void OVREyeGaze_Start_m22CA5C2D945BC3EA30FACDCD2BCA546416B80198(undefined8 param_1)
+
+{
+  OVREyeGaze_PrepareHeadDirection_m5814DB40FD6B9C1C704D62071459A11F61EAD32B(param_1,0);
+  return;
+}
+
+

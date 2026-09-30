@@ -1,0 +1,357 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 31
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 01d68c54
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 144
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_144', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d68c54_OVRManager$$get_eyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\031_p210_OVRManager$$get_eyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 01d68c54
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+undefined8 OVRManager__get_eyeTrackedFoveatedRenderingSupported(void)
+
+{
+  undefined **ppuVar1;
+  uint unaff_w19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  FUN_00fdc2e4(PTR_DAT_02357970);
+  FUN_00fdc2e4(PTR_DAT_02358700);
+  FUN_00fdc2e4(PTR_DAT_02358708);
+  FUN_00fdc2e4(PTR_DAT_0234be38);
+  FUN_00fdc2e4(PTR_DAT_0234cf08);
+  FUN_00fdc2e4(PTR_DAT_02358710);
+  FUN_00fdc2e4(PTR_DAT_02358718);
+  FUN_00fdc2e4(PTR_DAT_02358720);
+  FUN_00fdc2e4(PTR_DAT_0234d708);
+  FUN_00fdc2e4(PTR_DAT_02358728);
+  FUN_00fdc2e4(PTR_DAT_0234d1c8);
+  FUN_00fdc2e4(PTR_DAT_02358730);
+  FUN_00fdc2e4(PTR_DAT_02358738);
+  FUN_00fdc2e4(PTR_DAT_02357980);
+  FUN_00fdc2e4(PTR_DAT_02358740);
+  FUN_00fdc2e4(PTR_DAT_0234d1d8);
+  FUN_00fdc2e4(PTR_DAT_02358748);
+  FUN_00fdc2e4(PTR_DAT_02358750);
+  FUN_00fdc2e4(PTR_DAT_02358758);
+  FUN_00fdc2e4(PTR_DAT_02358760);
+  FUN_00fdc2e4(PTR_DAT_02358768);
+  FUN_00fdc2e4(PTR_DAT_02358770);
+  FUN_00fdc2e4(PTR_DAT_023576b8);
+  FUN_00fdc2e4(PTR_DAT_02358778);
+  FUN_00fdc2e4(PTR_DAT_02358780);
+  FUN_00fdc2e4(PTR_DAT_0234cef0);
+  *(undefined1 *)(unaff_x21 + 0x724) = 1;
+  ppuVar1 = &PTR_DAT_02233230 + (int)unaff_w19;
+  if (0x2d < unaff_w19) {
+    ppuVar1 = (undefined **)(*unaff_x20 + 0xb8);
+  }
+  return *(undefined8 *)*ppuVar1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 32
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68cf0
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 144
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_1', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_144', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d68cf0_OVRManager$$get_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\032_p210_OVRManager$$get_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68cf0
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+undefined8 OVRManager__get_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  undefined **ppuVar1;
+  uint unaff_w19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  FUN_00fdc2e4(PTR_DAT_02357980);
+  FUN_00fdc2e4(PTR_DAT_02358740);
+  FUN_00fdc2e4(PTR_DAT_0234d1d8);
+  FUN_00fdc2e4(PTR_DAT_02358748);
+  FUN_00fdc2e4(PTR_DAT_02358750);
+  FUN_00fdc2e4(PTR_DAT_02358758);
+  FUN_00fdc2e4(PTR_DAT_02358760);
+  FUN_00fdc2e4(PTR_DAT_02358768);
+  FUN_00fdc2e4(PTR_DAT_02358770);
+  FUN_00fdc2e4(PTR_DAT_023576b8);
+  FUN_00fdc2e4(PTR_DAT_02358778);
+  FUN_00fdc2e4(PTR_DAT_02358780);
+  FUN_00fdc2e4(PTR_DAT_0234cef0);
+  *(undefined1 *)(unaff_x21 + 0x724) = 1;
+  ppuVar1 = &PTR_DAT_02233230 + (int)unaff_w19;
+  if (0x2d < unaff_w19) {
+    ppuVar1 = (undefined **)(*unaff_x20 + 0xb8);
+  }
+  return *(undefined8 *)*ppuVar1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 33
+FUNCTION_NAME: OVRManager$$SetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68f44
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 144
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_144', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d68f44_OVRManager$$SetEyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\033_p210_OVRManager$$SetEyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$SetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68f44
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+undefined8 OVRManager__SetEyeTrackedFoveatedRenderingEnabled(void)
+
+{
+  undefined **ppuVar1;
+  uint unaff_w19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  FUN_00fdc2e4(PTR_DAT_0234be48);
+  FUN_00fdc2e4(PTR_DAT_0234cbe0);
+  FUN_00fdc2e4(PTR_DAT_023587b0);
+  FUN_00fdc2e4(PTR_DAT_023587b8);
+  *(undefined1 *)(unaff_x21 + 0x722) = 1;
+  ppuVar1 = &PTR_DAT_022333a0 + (int)unaff_w19;
+  if (0x17 < unaff_w19) {
+    ppuVar1 = (undefined **)(*unaff_x20 + 0xb8);
+  }
+  return *(undefined8 *)*ppuVar1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 34
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 01d68ca0
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 144
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_144', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d68ca0_OVRManager$$GetEyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\034_p210_OVRManager$$GetEyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 01d68ca0
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+undefined8 OVRManager__GetEyeTrackedFoveatedRenderingSupported(long param_1)
+
+{
+  undefined **ppuVar1;
+  uint unaff_w19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  FUN_00fdc2e4(*(undefined8 *)(param_1 + 0x718));
+  FUN_00fdc2e4(PTR_DAT_02358720);
+  FUN_00fdc2e4(PTR_DAT_0234d708);
+  FUN_00fdc2e4(PTR_DAT_02358728);
+  FUN_00fdc2e4(PTR_DAT_0234d1c8);
+  FUN_00fdc2e4(PTR_DAT_02358730);
+  FUN_00fdc2e4(PTR_DAT_02358738);
+  FUN_00fdc2e4(PTR_DAT_02357980);
+  FUN_00fdc2e4(PTR_DAT_02358740);
+  FUN_00fdc2e4(PTR_DAT_0234d1d8);
+  FUN_00fdc2e4(PTR_DAT_02358748);
+  FUN_00fdc2e4(PTR_DAT_02358750);
+  FUN_00fdc2e4(PTR_DAT_02358758);
+  FUN_00fdc2e4(PTR_DAT_02358760);
+  FUN_00fdc2e4(PTR_DAT_02358768);
+  FUN_00fdc2e4(PTR_DAT_02358770);
+  FUN_00fdc2e4(PTR_DAT_023576b8);
+  FUN_00fdc2e4(PTR_DAT_02358778);
+  FUN_00fdc2e4(PTR_DAT_02358780);
+  FUN_00fdc2e4(PTR_DAT_0234cef0);
+  *(undefined1 *)(unaff_x21 + 0x724) = 1;
+  ppuVar1 = &PTR_DAT_02233230 + (int)unaff_w19;
+  if (0x2d < unaff_w19) {
+    ppuVar1 = (undefined **)(*unaff_x20 + 0xb8);
+  }
+  return *(undefined8 *)*ppuVar1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 35
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68d3c
+MANUAL_PRIORITY_SCORE: 210
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 144
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_1', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_144', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d68d3c_OVRManager$$GetEyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\035_p210_OVRManager$$GetEyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d68d3c
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+undefined8 OVRManager__GetEyeTrackedFoveatedRenderingEnabled(long param_1)
+
+{
+  undefined **ppuVar1;
+  uint unaff_w19;
+  long *unaff_x20;
+  long unaff_x21;
+  
+  FUN_00fdc2e4(*(undefined8 *)(param_1 + 0x760));
+  FUN_00fdc2e4(PTR_DAT_02358768);
+  FUN_00fdc2e4(PTR_DAT_02358770);
+  FUN_00fdc2e4(PTR_DAT_023576b8);
+  FUN_00fdc2e4(PTR_DAT_02358778);
+  FUN_00fdc2e4(PTR_DAT_02358780);
+  FUN_00fdc2e4(PTR_DAT_0234cef0);
+  *(undefined1 *)(unaff_x21 + 0x724) = 1;
+  ppuVar1 = &PTR_DAT_02233230 + (int)unaff_w19;
+  if (0x2d < unaff_w19) {
+    ppuVar1 = (undefined **)(*unaff_x20 + 0xb8);
+  }
+  return *(undefined8 *)*ppuVar1;
+}
+
+
+
+END_DECOMPILED_FUNCTION

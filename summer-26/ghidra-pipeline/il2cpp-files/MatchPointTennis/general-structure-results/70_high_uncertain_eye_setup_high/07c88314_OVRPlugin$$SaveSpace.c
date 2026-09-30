@@ -1,0 +1,148 @@
+/*
+FUNCTION_NAME: OVRPlugin$$SaveSpace
+ENTRY_POINT: 07c88314
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 87
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_5;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRPlugin__SaveSpace(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  ulong uVar4;
+  ulong uVar5;
+  undefined8 *puVar6;
+  long lVar7;
+  code *in_x9;
+  int *piVar8;
+  long unaff_x19;
+  long *plVar9;
+  long *unaff_x22;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  undefined4 uStack0000000000000030;
+  undefined8 uStack0000000000000034;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined4 uStack0000000000000050;
+  undefined8 uStack0000000000000054;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  ulong in_stack_00000070;
+  undefined8 in_stack_00000080;
+  undefined4 uStack0000000000000088;
+  undefined4 uStack000000000000008c;
+  undefined4 uStack0000000000000090;
+  undefined4 uStack0000000000000094;
+  undefined4 in_stack_00000098;
+  
+  puVar3 = PTR_DAT_09f50aa8;
+  puVar2 = PTR_DAT_09f4db90;
+  puVar1 = PTR_DAT_09f4db88;
+                    /* try { // try from 07c8831c to 07d88333 has its CatchHandler @ 07c884fc */
+                    /* try { // try from 07c88334 to 07d8833f has its CatchHandler @ 07c884f8 */
+  (*in_x9)(&stack0x00000080);
+  in_stack_00000068 = CONCAT44(uStack000000000000008c,uStack0000000000000088);
+  in_stack_00000070 = CONCAT44(uStack0000000000000094,uStack0000000000000090);
+  in_stack_00000060 = in_stack_00000080;
+  do {
+                    /* try { // try from 07c8834c to 07d88367 has its CatchHandler @ 07c884f4 */
+    uVar5 = FUN_0767900c(&stack0x00000060,*(undefined8 *)puVar2);
+    uVar4 = in_stack_00000070;
+    if ((uVar5 & 1) == 0) {
+      FUN_07679008(&stack0x00000060,*(undefined8 *)puVar1);
+      lVar7 = *(long *)(unaff_x19 + 0x20);
+      if (lVar7 != 0) {
+        (**(code **)(lVar7 + 0x18))(*(undefined8 *)(lVar7 + 0x40),*(undefined8 *)(lVar7 + 0x28));
+        return;
+      }
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    plVar9 = *(long **)(unaff_x19 + 0x30);
+    if (plVar9 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    lVar7 = *plVar9;
+                    /* try { // try from 07c8836c to 07d88383 has its CatchHandler @ 07c886ac */
+    uVar5 = (ulong)*(ushort *)(lVar7 + 0x12e);
+    if (uVar5 != 0) {
+      piVar8 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+      do {
+                    /* try { // try from 07c88384 to 07d8838f has its CatchHandler @ 07c884ec */
+        if (*(long *)(piVar8 + -2) == *unaff_x22) {
+          puVar6 = (undefined8 *)(lVar7 + (long)(*piVar8 + 7) * 0x10 + 0x138);
+          goto LAB_07c883b8;
+        }
+        uVar5 = uVar5 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar5 != 0);
+    }
+                    /* try { // try from 07c88398 to 07d883cb has its CatchHandler @ 07c884e8 */
+    puVar6 = (undefined8 *)FUN_044822ac(plVar9,*unaff_x22,7);
+LAB_07c883b8:
+    uVar5 = (*(code *)*puVar6)(plVar9,uVar4 & 0xffffffff,&stack0x00000040,puVar6[1]);
+                    /* try { // try from 07c883cc to 07d883fb has its CatchHandler @ 07c884d8 */
+    if ((uVar5 & 1) != 0) {
+      if (*(long *)(unaff_x19 + 0x40) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      uStack0000000000000088 = in_stack_00000048;
+      in_stack_00000080 = in_stack_00000040;
+      uStack0000000000000094 = (undefined4)uStack0000000000000054;
+      in_stack_00000098 = SUB84(uStack0000000000000054,4);
+      uStack0000000000000090 = uStack0000000000000050;
+                    /* try { // try from 07c88400 to 07d8841b has its CatchHandler @ 07c884f4 */
+      FUN_0737a2c8(*(long *)(unaff_x19 + 0x40),uVar4 & 0xffffffff,&stack0x00000080,
+                   *(undefined8 *)puVar3);
+    }
+    plVar9 = *(long **)(unaff_x19 + 0x30);
+    if (plVar9 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_04447e44();
+    }
+    lVar7 = *plVar9;
+    uVar5 = (ulong)*(ushort *)(lVar7 + 0x12e);
+    if (uVar5 != 0) {
+      piVar8 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *unaff_x22) {
+          puVar6 = (undefined8 *)(lVar7 + (long)(*piVar8 + 8) * 0x10 + 0x138);
+          goto LAB_07c88460;
+        }
+        uVar5 = uVar5 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar5 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_044822ac(plVar9,*unaff_x22,8);
+LAB_07c88460:
+    uVar5 = (*(code *)*puVar6)(plVar9,uVar4 & 0xffffffff,&stack0x00000020,puVar6[1]);
+    if ((uVar5 & 1) != 0) {
+      if (*(long *)(unaff_x19 + 0x48) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      uStack0000000000000088 = in_stack_00000028;
+      in_stack_00000080 = in_stack_00000020;
+      uStack0000000000000094 = (undefined4)uStack0000000000000034;
+      in_stack_00000098 = SUB84(uStack0000000000000034,4);
+      uStack0000000000000090 = uStack0000000000000030;
+      FUN_0737a2c8(*(long *)(unaff_x19 + 0x48),uVar4 & 0xffffffff,&stack0x00000080,
+                   *(undefined8 *)puVar3);
+    }
+  } while( true );
+}
+
+

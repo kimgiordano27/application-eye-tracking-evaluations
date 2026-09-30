@@ -1,0 +1,339 @@
+# Manual Review Pack Summary: BowlingAlley
+
+Selected functions: 100
+
+## Tier counts
+
+- A_must_review: 100
+
+## Top functions
+
+### 1. System.Xml.XmlEncodedRawTextWriter$$WriteRaw
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\001_p552_System.Xml.XmlEncodedRawTextWriter$$WriteRaw.c
+
+### 2. System.Xml.TextEncodedRawTextWriter$$WriteWhitespace
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\002_p552_System.Xml.TextEncodedRawTextWriter$$WriteWhitespace.c
+
+### 3. System.Xml.TextEncodedRawTextWriter$$WriteSurrogateCharEntity
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\003_p552_System.Xml.TextEncodedRawTextWriter$$WriteSurrogateCharEntity.c
+
+### 4. System.Xml.TextEncodedRawTextWriter$$WriteString
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\004_p552_System.Xml.TextEncodedRawTextWriter$$WriteString.c
+
+### 5. System.Xml.TextEncodedRawTextWriter$$WriteProcessingInstruction
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\005_p552_System.Xml.TextEncodedRawTextWriter$$WriteProcessingInstruction.c
+
+### 6. System.Xml.TextEncodedRawTextWriter$$WriteEntityRef
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\006_p552_System.Xml.TextEncodedRawTextWriter$$WriteEntityRef.c
+
+### 7. System.Xml.TextEncodedRawTextWriter$$WriteChars
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\007_p552_System.Xml.TextEncodedRawTextWriter$$WriteChars.c
+
+### 8. System.Xml.TextEncodedRawTextWriter$$WriteCharEntity
+
+- Manual priority score: 552
+- Manual tier: A_must_review
+- Original scanner score: 358
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_358; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\008_p552_System.Xml.TextEncodedRawTextWriter$$WriteCharEntity.c
+
+### 9. System.Xml.TextUtf8RawTextWriter$$get_SupportsNamespaceDeclarationInChunks
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\009_p548_System.Xml.TextUtf8RawTextWriter$$get_SupportsNamespaceDeclarationInChunks.c
+
+### 10. System.Xml.TextUtf8RawTextWriter$$WriteXmlDeclaration
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\010_p548_System.Xml.TextUtf8RawTextWriter$$WriteXmlDeclaration.c
+
+### 11. System.Xml.TextUtf8RawTextWriter$$WriteXmlDeclaration
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\011_p548_System.Xml.TextUtf8RawTextWriter$$WriteXmlDeclaration.c
+
+### 12. System.Xml.TextUtf8RawTextWriter$$WriteWhitespace
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\012_p548_System.Xml.TextUtf8RawTextWriter$$WriteWhitespace.c
+
+### 13. System.Xml.TextUtf8RawTextWriter$$WriteSurrogateCharEntity
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\013_p548_System.Xml.TextUtf8RawTextWriter$$WriteSurrogateCharEntity.c
+
+### 14. System.Xml.TextUtf8RawTextWriter$$WriteString
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\014_p548_System.Xml.TextUtf8RawTextWriter$$WriteString.c
+
+### 15. System.Xml.TextUtf8RawTextWriter$$WriteStartElement
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\015_p548_System.Xml.TextUtf8RawTextWriter$$WriteStartElement.c
+
+### 16. System.Xml.TextUtf8RawTextWriter$$WriteStartAttribute
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\016_p548_System.Xml.TextUtf8RawTextWriter$$WriteStartAttribute.c
+
+### 17. System.Xml.TextUtf8RawTextWriter$$WriteRaw
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\017_p548_System.Xml.TextUtf8RawTextWriter$$WriteRaw.c
+
+### 18. System.Xml.TextUtf8RawTextWriter$$WriteRaw
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\018_p548_System.Xml.TextUtf8RawTextWriter$$WriteRaw.c
+
+### 19. System.Xml.TextUtf8RawTextWriter$$WriteProcessingInstruction
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\019_p548_System.Xml.TextUtf8RawTextWriter$$WriteProcessingInstruction.c
+
+### 20. System.Xml.TextUtf8RawTextWriter$$WriteNamespaceDeclaration
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\020_p548_System.Xml.TextUtf8RawTextWriter$$WriteNamespaceDeclaration.c
+
+### 21. System.Xml.TextUtf8RawTextWriter$$WriteFullEndElement
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\021_p548_System.Xml.TextUtf8RawTextWriter$$WriteFullEndElement.c
+
+### 22. System.Xml.TextUtf8RawTextWriter$$WriteEntityRef
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\022_p548_System.Xml.TextUtf8RawTextWriter$$WriteEntityRef.c
+
+### 23. System.Xml.TextUtf8RawTextWriter$$WriteEndElement
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\023_p548_System.Xml.TextUtf8RawTextWriter$$WriteEndElement.c
+
+### 24. System.Xml.TextUtf8RawTextWriter$$WriteEndAttribute
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\024_p548_System.Xml.TextUtf8RawTextWriter$$WriteEndAttribute.c
+
+### 25. System.Xml.TextUtf8RawTextWriter$$WriteDocType
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_18; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\025_p548_System.Xml.TextUtf8RawTextWriter$$WriteDocType.c
+
+### 26. System.Xml.TextUtf8RawTextWriter$$WriteComment
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\026_p548_System.Xml.TextUtf8RawTextWriter$$WriteComment.c
+
+### 27. System.Xml.TextUtf8RawTextWriter$$WriteChars
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\027_p548_System.Xml.TextUtf8RawTextWriter$$WriteChars.c
+
+### 28. System.Xml.TextUtf8RawTextWriter$$WriteCharEntity
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\028_p548_System.Xml.TextUtf8RawTextWriter$$WriteCharEntity.c
+
+### 29. System.Xml.TextUtf8RawTextWriter$$WriteCData
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\029_p548_System.Xml.TextUtf8RawTextWriter$$WriteCData.c
+
+### 30. System.Xml.TextUtf8RawTextWriter$$StartElementContent
+
+- Manual priority score: 548
+- Manual tier: A_must_review
+- Original scanner score: 354
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; data_collection; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_2; weak_xr_or_state_hits_6; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_1; ray_or_cast_sink_hits_8; ui_or_gameplay_sink_hits_4; strong_file_logging_hits_2; telemetry_or_network_hits_4; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_12; functionality_data_collection_or_telemetry_hits_6; functionality_possible_biometrics_hits_4
+- Priority reasons: base_scanner_score_354; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_data_collection_22; module_bonus_telemetry_20; module_bonus_frame_behavior_5
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BowlingAlley\manual-review-pack\A_must_review\030_p548_System.Xml.TextUtf8RawTextWriter$$StartElementContent.c

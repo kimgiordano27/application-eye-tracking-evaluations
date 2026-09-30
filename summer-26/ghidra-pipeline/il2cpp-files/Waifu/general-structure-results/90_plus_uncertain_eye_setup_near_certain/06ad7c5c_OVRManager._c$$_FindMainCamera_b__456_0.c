@@ -1,0 +1,73 @@
+/*
+FUNCTION_NAME: OVRManager.<>c$$<FindMainCamera>b__456_0
+ENTRY_POINT: 06ad7c5c
+PROGRAM: Waifu-libil2cpp.so
+SCORE: 91
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_4;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+long OVRManager_<>c__<FindMainCamera>b__456_0(long param_1)
+
+{
+  ulong *puVar1;
+  char cVar2;
+  bool bVar3;
+  long lVar4;
+  undefined8 uVar5;
+  undefined8 *puVar6;
+  long unaff_x19;
+  
+  FUN_07a0dda4();
+  if (param_1 != 0) {
+    if (DAT_086ef250 == (code *)0x0) {
+      DAT_086ef250 = (code *)FUN_033d1b68("UnityEngine.GameObject::get_transform()");
+    }
+    lVar4 = (*DAT_086ef250)(param_1);
+    if (lVar4 != 0) {
+      if (DAT_086ef840 == (code *)0x0) {
+        DAT_086ef840 = (code *)FUN_033d1b68(
+                                           "UnityEngine.Transform::SetParent(UnityEngine.Transform,System.Boolean)"
+                                           );
+      }
+      (*DAT_086ef840)(lVar4);
+      if (DAT_086ef278 == (code *)0x0) {
+        DAT_086ef278 = (code *)FUN_033d1b68("UnityEngine.GameObject::SetActive(System.Boolean)");
+      }
+      (*DAT_086ef278)(param_1,0);
+      lVar4 = FUN_03fa1ab4(param_1,DAT_0840c5c8);
+      if ((unaff_x19 != 0) && (uVar5 = FUN_03c8a52c(), lVar4 != 0)) {
+        puVar6 = (undefined8 *)(lVar4 + 200);
+        *puVar6 = uVar5;
+        if (DAT_08908cd0 != 0) {
+          puVar1 = &DAT_0873ccb0 + ((ulong)puVar6 >> 0x12 & 0x7fff);
+          do {
+            cVar2 = '\x01';
+            bVar3 = (bool)ExclusiveMonitorPass(puVar1,0x10);
+            if (bVar3) {
+              *puVar1 = *puVar1 | 1L << ((ulong)puVar6 >> 0xc & 0x3f);
+              cVar2 = ExclusiveMonitorsStatus();
+            }
+          } while (cVar2 != '\0');
+        }
+        uVar5 = FUN_03c8a52c();
+        FUN_05062970(lVar4,uVar5,DAT_083fb7f8);
+        if (DAT_086ef278 == (code *)0x0) {
+          DAT_086ef278 = (code *)FUN_033d1b68("UnityEngine.GameObject::SetActive(System.Boolean)");
+        }
+        (*DAT_086ef278)(param_1,1);
+        return lVar4;
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_033d1d3c();
+}
+
+

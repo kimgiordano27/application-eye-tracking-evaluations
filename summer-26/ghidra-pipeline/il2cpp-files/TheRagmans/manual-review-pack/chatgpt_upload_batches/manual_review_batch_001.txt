@@ -1,0 +1,735 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 1
+FUNCTION_NAME: FUN_005ff8d0
+ENTRY_POINT: 005ff8d0
+MANUAL_PRIORITY_SCORE: 197
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_1', 'validity_or_gating_hits_16', 'strong_pose_or_ray_construction_hits_1', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_3_bonus_12']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\general-structure-results\70_high_general_structure_review_high\005ff8d0_FUN_005ff8d0.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\manual-review-pack\A_must_review\001_p197_FUN_005ff8d0.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_005ff8d0
+ENTRY_POINT: 005ff8d0
+PROGRAM: TheRagmans-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;frame_behavior;structure_combo
+EVIDENCE: weak_xr_or_state_hits_1;validity_or_gating_hits_16;strong_pose_or_ray_construction_hits_1;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void FUN_005ff8d0(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  
+  puVar1 = PTR_DAT_015701f8;
+  if ((DAT_01634009 & 1) == 0) {
+    thunk_FUN_00556484(PTR_DAT_01569a68);
+    thunk_FUN_00556484(PTR_DAT_015704b8);
+    thunk_FUN_00556484(PTR_DAT_01569090);
+    thunk_FUN_00556484(PTR_DAT_0155fcf0);
+    thunk_FUN_00556484(PTR_DAT_015786d0);
+    thunk_FUN_00556484(PTR_DAT_0156f3a0);
+    thunk_FUN_00556484(PTR_DAT_01557cf8);
+    thunk_FUN_00556484(PTR_DAT_01571610);
+    thunk_FUN_00556484(PTR_DAT_0156a9d0);
+    thunk_FUN_00556484(PTR_DAT_0157aba0);
+    thunk_FUN_00556484(PTR_DAT_0157bb70);
+    thunk_FUN_00556484(PTR_DAT_01577c68);
+    thunk_FUN_00556484(PTR_DAT_0155ff50);
+    thunk_FUN_00556484(PTR_DAT_0157d680);
+    thunk_FUN_00556484(PTR_DAT_01573060);
+    thunk_FUN_00556484(PTR_DAT_0156af00);
+    thunk_FUN_00556484(PTR_DAT_01574a58);
+    thunk_FUN_00556484(PTR_DAT_015701f8);
+    DAT_01634009 = 1;
+  }
+  lVar4 = *(long *)(param_1 + 0x18);
+  lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+  if ((lVar3 != 0) && (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_01569a68,0), lVar4 != 0)) {
+    System_Array__InternalArray__Insert<ushort>(lVar4,lVar3,0);
+    lVar4 = *(long *)(param_1 + 0x18);
+    lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+    if ((lVar3 != 0) && (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_015786d0,0), lVar4 != 0))
+    {
+      System_Array__InternalArray__Insert<Vector2>(lVar4,lVar3,0);
+      lVar4 = *(long *)(param_1 + 0x18);
+      lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+      if ((lVar3 != 0) &&
+         (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_015704b8,0), lVar4 != 0)) {
+        System_Array__InternalArray__Insert<WordWrapState>(lVar4,lVar3,0);
+        lVar4 = *(long *)(param_1 + 0x18);
+        lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+        if ((lVar3 != 0) &&
+           (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0157bb70,0), lVar4 != 0)) {
+          System_Array__InternalArray__Insert<BaseStyleMatcher_MatchContext>(lVar4,lVar3,0);
+          lVar4 = *(long *)(param_1 + 0x18);
+          lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+          if ((lVar3 != 0) &&
+             (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_01569090,0), lVar4 != 0)) {
+            System_Array__InternalArray__Insert<RenderChain_RenderNodeData>(lVar4,lVar3,0);
+            lVar4 = *(long *)(param_1 + 0x18);
+            lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+            if ((lVar3 != 0) &&
+               (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0155fcf0,0),
+               puVar2 = PTR_DAT_01574a58, lVar4 != 0)) {
+              System_Array__InternalArray__Insert<StylePropertyAnimationSystem_ElementPropertyPair>
+                        (lVar4,lVar3,0);
+              lVar4 = *(long *)(param_1 + 0x18);
+              lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar2);
+              if ((lVar3 != 0) &&
+                 (FUN_0063841c(lVar3,param_1,*(undefined8 *)PTR_DAT_0156f3a0,0), lVar4 != 0)) {
+                System_Array__InternalArray__Insert<TextureBlitter_BlitInfo>(lVar4,lVar3,0);
+                lVar4 = *(long *)(param_1 + 0x18);
+                lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar2);
+                if ((lVar3 != 0) &&
+                   (FUN_0063841c(lVar3,param_1,*(undefined8 *)PTR_DAT_01557cf8,0), lVar4 != 0)) {
+                  System_Array__InternalArray__Insert<TrackedPoseDriverDataDescription_PoseData>
+                            (lVar4,lVar3,0);
+                  lVar4 = *(long *)(param_1 + 0x18);
+                  lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar2);
+                  if ((lVar3 != 0) &&
+                     (FUN_0063841c(lVar3,param_1,*(undefined8 *)PTR_DAT_01571610,0), lVar4 != 0)) {
+                    System_Array__InternalArray__Insert<UIRenderDevice_AllocToUpdate>(lVar4,lVar3,0)
+                    ;
+                    lVar4 = *(long *)(param_1 + 0x18);
+                    lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar2);
+                    if ((lVar3 != 0) &&
+                       (FUN_0063841c(lVar3,param_1,*(undefined8 *)PTR_DAT_0156a9d0,0), lVar4 != 0))
+                    {
+                      System_Array__InternalArray__Insert<VisualTreeAsset_SlotDefinition>
+                                (lVar4,lVar3,0);
+                      lVar4 = *(long *)(param_1 + 0x18);
+                      lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                      if ((lVar3 != 0) &&
+                         (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0157aba0,0), lVar4 != 0)
+                         ) {
+                        System_Array__InternalArray__Insert<InternalTreeView_TreeViewItemWrapper>
+                                  (lVar4,lVar3,0);
+                        lVar4 = *(long *)(param_1 + 0x18);
+                        lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                        if ((lVar3 != 0) &&
+                           (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0155ff50,0),
+                           lVar4 != 0)) {
+                          System_Array__InternalArray__Insert<PointerDeviceState_PointerLocation>
+                                    (lVar4,lVar3,0);
+                          lVar4 = *(long *)(param_1 + 0x18);
+                          lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                          if ((lVar3 != 0) &&
+                             (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_01577c68,0),
+                             lVar4 != 0)) {
+                            System_Array__InternalArray__Insert<Camera_RenderRequest>(lVar4,lVar3,0)
+                            ;
+                            lVar4 = *(long *)(param_1 + 0x18);
+                            lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                            if ((lVar3 != 0) &&
+                               (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0156af00,0),
+                               lVar4 != 0)) {
+                              System_Array__InternalArray__Insert<FlagBanner_Flag>(lVar4,lVar3,0);
+                              lVar4 = *(long *)(param_1 + 0x18);
+                              lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                              if ((lVar3 != 0) &&
+                                 (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_0157d680,0),
+                                 lVar4 != 0)) {
+                                System_Array__InternalArray__Insert<Translate>(lVar4,lVar3,0);
+                                lVar4 = *(long *)(param_1 + 0x18);
+                                lVar3 = thunk_FUN_005690e8(*(undefined8 *)puVar1);
+                                if ((lVar3 != 0) &&
+                                   (FUN_00638294(lVar3,param_1,*(undefined8 *)PTR_DAT_01573060,0),
+                                   lVar4 != 0)) {
+                                  System_Array__InternalArray__Insert<VelocityTimePair>
+                                            (lVar4,lVar3,0);
+                                  return;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_005251b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 2
+FUNCTION_NAME: Autohand.GrabbablePoseAdvanced$$GetClosestRotation
+ENTRY_POINT: 00515728
+MANUAL_PRIORITY_SCORE: 186
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'data_collection', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_1', 'validity_or_gating_hits_15', 'strong_pose_or_ray_construction_hits_2', 'paired_field_refs_with_structure_only', 'strong_file_logging_hits_2', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_data_collection_22', 'module_bonus_structure_combo_18', 'sensitive_sink_data_collection_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\general-structure-results\70_high_general_structure_review_high\00515728_Autohand.GrabbablePoseAdvanced$$GetClosestRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\manual-review-pack\A_must_review\002_p186_Autohand.GrabbablePoseAdvanced$$GetClosestRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Autohand.GrabbablePoseAdvanced$$GetClosestRotation
+ENTRY_POINT: 00515728
+PROGRAM: TheRagmans-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;data_collection;structure_combo
+EVIDENCE: weak_xr_or_state_hits_1;validity_or_gating_hits_15;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_structure_only;strong_file_logging_hits_2;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void Autohand_GrabbablePoseAdvanced__GetClosestRotation(void)
+
+{
+  long *plVar1;
+  ushort uVar2;
+  ulong uVar3;
+  long lVar4;
+  uint uVar5;
+  undefined8 *unaff_x19;
+  long unaff_x20;
+  ulong unaff_x21;
+  uint unaff_w22;
+  long unaff_x23;
+  long unaff_x24;
+  long unaff_x25;
+  long *unaff_x26;
+  size_t unaff_x27;
+  void *unaff_x28;
+  long *unaff_x29;
+  ulong in_stack_00000000;
+  undefined8 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  
+code_r0x00515728:
+  plVar1 = (long *)((long)unaff_x28 + unaff_x24 * 0x10);
+  *plVar1 = unaff_x25;
+  plVar1[1] = unaff_x20;
+  if (0 < (long)unaff_x27) {
+    memcpy(unaff_x28,unaff_x26,unaff_x27);
+  }
+  *unaff_x19 = unaff_x28;
+  unaff_x19[1] = plVar1 + 2;
+  unaff_x19[2] = (void *)((long)unaff_x28 + unaff_x21 * 0x10);
+  if (unaff_x29 != unaff_x26) {
+    lVar4 = (long)unaff_x26 - (long)unaff_x29;
+    do {
+      lVar4 = lVar4 + 0x10;
+    } while (lVar4 != 0);
+  }
+  if (unaff_x26 != (long *)0x0) {
+    operator_delete(unaff_x26);
+  }
+LAB_00515780:
+  do {
+    unaff_x25 = FUN_00551460();
+    if (unaff_x25 == 0) {
+      return;
+    }
+    lVar4 = *(long *)(unaff_x25 + 0x10);
+    if (((lVar4 == 0) || ((*(ushort *)(lVar4 + 0x4c) & 7) != 6)) &&
+       ((*(long *)(unaff_x25 + 0x18) == 0 ||
+        ((*(ushort *)(*(long *)(unaff_x25 + 0x18) + 0x4c) & 7) != 6)))) {
+      uVar5 = 0x20;
+    }
+    else {
+      uVar5 = 0x10;
+    }
+  } while ((uVar5 & unaff_w22) == 0);
+  if (unaff_x23 == unaff_x20) goto LAB_00515664;
+  if ((lVar4 == 0) || (uVar2 = *(ushort *)(lVar4 + 0x4c), (uVar2 & 7) == 1)) goto LAB_0051564c;
+  goto LAB_0051566c;
+LAB_0051564c:
+  if ((*(long *)(unaff_x25 + 0x18) == 0) ||
+     ((*(ushort *)(*(long *)(unaff_x25 + 0x18) + 0x4c) & 7) == 1)) goto LAB_00515780;
+LAB_00515664:
+  if (lVar4 == 0) {
+    if ((*(long *)(unaff_x25 + 0x18) == 0) ||
+       ((*(byte *)(*(long *)(unaff_x25 + 0x18) + 0x4c) >> 4 & 1) == 0)) goto LAB_00515688;
+  }
+  else {
+    uVar2 = *(ushort *)(lVar4 + 0x4c);
+LAB_0051566c:
+    if ((uVar2 >> 4 & 1) == 0) {
+LAB_00515688:
+      if ((unaff_w22 >> 2 & 1) == 0) goto LAB_00515780;
+      goto LAB_0051568c;
+    }
+  }
+  if ((in_stack_00000000 & 0x100000000) != 0) goto LAB_00515780;
+LAB_0051568c:
+  uVar3 = FUN_004e85e4(in_stack_00000008,in_stack_00000010,*(undefined8 *)(unaff_x25 + 8));
+  if (((uVar3 & 1) == 0) || (uVar3 = FUN_005157d4(), (uVar3 & 1) != 0)) goto LAB_00515780;
+  unaff_x29 = (long *)unaff_x19[1];
+  if (unaff_x29 < (long *)unaff_x19[2]) {
+    *unaff_x29 = unaff_x25;
+    unaff_x29[1] = unaff_x20;
+    unaff_x19[1] = unaff_x29 + 2;
+    goto LAB_00515780;
+  }
+  unaff_x26 = (long *)*unaff_x19;
+  unaff_x27 = (long)unaff_x29 - (long)unaff_x26;
+  unaff_x24 = (long)unaff_x27 >> 4;
+  unaff_x21 = unaff_x24 + 1;
+  if (unaff_x21 >> 0x3c != 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_004e1b28();
+  }
+  lVar4 = (long)unaff_x19[2] - (long)unaff_x26;
+  if ((ulong)(lVar4 >> 4) < 0x7ffffffffffffff) {
+    uVar3 = lVar4 >> 3;
+    if (unaff_x21 <= uVar3) {
+      unaff_x21 = uVar3;
+    }
+    if (unaff_x21 == 0) {
+      unaff_x28 = (void *)0x0;
+      goto code_r0x00515728;
+    }
+    if (unaff_x21 >> 0x3c != 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_004e07a8("allocator<T>::allocate(size_t n) \'n\' exceeds maximum supported size");
+    }
+  }
+  else {
+    unaff_x21 = 0xfffffffffffffff;
+  }
+  unaff_x28 = operator_new(unaff_x21 << 4);
+  goto code_r0x00515728;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 3
+FUNCTION_NAME: Autohand.GrabbablePoseCombiner$$GetClosestPose
+ENTRY_POINT: 00516edc
+MANUAL_PRIORITY_SCORE: 178
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'data_collection', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'strong_file_logging_hits_2', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_data_collection_22', 'module_bonus_structure_combo_18', 'sensitive_sink_data_collection_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\general-structure-results\70_high_general_structure_review_high\00516edc_Autohand.GrabbablePoseCombiner$$GetClosestPose.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\manual-review-pack\A_must_review\003_p178_Autohand.GrabbablePoseCombiner$$GetClosestPose.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Autohand.GrabbablePoseCombiner$$GetClosestPose
+ENTRY_POINT: 00516edc
+PROGRAM: TheRagmans-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;data_collection;structure_combo
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;strong_file_logging_hits_2;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+undefined8 Autohand_GrabbablePoseCombiner__GetClosestPose(void)
+
+{
+  void *pvVar1;
+  void *pvVar2;
+  byte bVar3;
+  int iVar4;
+  size_t sVar5;
+  void *pvVar6;
+  char *pcVar7;
+  size_t sVar8;
+  uint *unaff_x19;
+  undefined8 uVar9;
+  uint unaff_w20;
+  uint uVar10;
+  char *__s;
+  long unaff_x21;
+  long lVar11;
+  int unaff_w22;
+  long unaff_x23;
+  void *unaff_x24;
+  undefined1 unaff_w25;
+  void *unaff_x26;
+  byte in_stack_00000000;
+  size_t in_stack_00000008;
+  void *in_stack_00000010;
+  byte in_stack_00000018;
+  void *in_stack_00000028;
+  
+  do {
+    unaff_w20 = tolower(unaff_w20);
+    *(char *)((long)unaff_x26 + unaff_x21) = (char)unaff_w20;
+    do {
+      if ((unaff_w20 & 0xff) == 0x2d) {
+        *(undefined1 *)((long)unaff_x26 + unaff_x21) = unaff_w25;
+      }
+      if (unaff_x23 == unaff_x21) {
+        lVar11 = 0;
+        uVar10 = 0;
+        pcVar7 = (char *)0x1;
+        goto LAB_00516f24;
+      }
+      unaff_x21 = unaff_x21 + 1;
+      unaff_x26 = unaff_x24;
+      if ((in_stack_00000000 & 1) != 0) {
+        unaff_x26 = in_stack_00000010;
+      }
+      unaff_w20 = (uint)*(byte *)((long)unaff_x26 + unaff_x21);
+      iVar4 = isalpha((uint)*(byte *)((long)unaff_x26 + unaff_x21));
+    } while (iVar4 == 0);
+  } while( true );
+LAB_00516f24:
+  do {
+    lVar11 = lVar11 + 1;
+    __s = pcVar7;
+    while ((char *)0x6 < __s) {
+      sVar5 = strlen(__s);
+      sVar8 = (ulong)(in_stack_00000000 >> 1);
+      if ((in_stack_00000000 & 1) != 0) {
+        sVar8 = in_stack_00000008;
+      }
+      if ((sVar5 == sVar8) && (iVar4 = FUN_004e92cc(), iVar4 == 0)) {
+        *unaff_x19 = uVar10;
+        goto LAB_00516fa0;
+      }
+      __s = *(char **)(&UNK_015509d8 + lVar11 * 8);
+      lVar11 = lVar11 + 1;
+      if (lVar11 == 0x25) goto LAB_00516fa0;
+    }
+    pcVar7 = *(char **)(&UNK_015509d8 + lVar11 * 8);
+    uVar10 = (uint)__s;
+  } while (lVar11 != 0x24);
+LAB_00516fa0:
+  bVar3 = in_stack_00000000;
+  sVar8 = (ulong)(in_stack_00000000 >> 1);
+  pvVar2 = (void *)((ulong)&stack0x00000000 | 1);
+  if ((in_stack_00000000 & 1) != 0) {
+    sVar8 = in_stack_00000008;
+    pvVar2 = in_stack_00000010;
+  }
+  if (4 < (long)sVar8) {
+    pvVar1 = (void *)((long)pvVar2 + sVar8);
+    pvVar6 = pvVar2;
+    do {
+      if ((sVar8 - 4 == 0) || (pvVar6 = memchr(pvVar6,0x75,sVar8 - 4), pvVar6 == (void *)0x0))
+      break;
+      iVar4 = memcmp(pvVar6,"utf_8",5);
+      if (iVar4 == 0) {
+        if ((pvVar6 != pvVar1) && ((long)pvVar6 - (long)pvVar2 != -1)) {
+          *unaff_x19 = *unaff_x19 | 0x10000000;
+        }
+        break;
+      }
+      pvVar6 = (void *)((long)pvVar6 + 1);
+      sVar8 = (long)pvVar1 - (long)pvVar6;
+    } while (4 < (long)sVar8);
+  }
+  if ((unaff_w22 == 0) || (*unaff_x19 != 0xffffffff)) {
+    uVar9 = 0;
+  }
+  else {
+    pvVar2 = (void *)((ulong)&stack0x00000018 | 1);
+    if ((in_stack_00000018 & 1) != 0) {
+      pvVar2 = in_stack_00000028;
+    }
+    uVar9 = FUN_005644c0(pvVar2);
+    bVar3 = in_stack_00000000;
+  }
+  if ((bVar3 & 1) != 0) {
+    operator_delete(in_stack_00000010);
+  }
+  if ((in_stack_00000018 & 1) != 0) {
+    operator_delete(in_stack_00000028);
+  }
+  return uVar9;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 4
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$GetFoveationLevel
+ENTRY_POINT: 00ce259c
+MANUAL_PRIORITY_SCORE: 155
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 71
+ORIGINAL_SCANNER_LABEL: 70_high_framework_foveated_rendering_support_or_attempt_high
+MODULES: ['validity_gate', 'foveation_rendering', 'keyword_support', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['validity_or_gating_hits_3', 'strong_foveation_hits_2', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_71', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'module_bonus_keyword_support_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\general-structure-results\70_high_framework_foveated_rendering_support_or_attempt_high\00ce259c_Unity.XR.Oculus.Utils$$GetFoveationLevel.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\manual-review-pack\B_high_priority\004_p155_Unity.XR.Oculus.Utils$$GetFoveationLevel.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$GetFoveationLevel
+ENTRY_POINT: 00ce259c
+PROGRAM: TheRagmans-libil2cpp.so
+SCORE: 71
+LABEL: framework_foveated_rendering_support_or_attempt_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: validity_gate;foveation_rendering;keyword_support;attempted_use;dynamic_foveation_possible
+EVIDENCE: validity_or_gating_hits_3;strong_foveation_hits_2;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+undefined8
+Unity_XR_Oculus_Utils__GetFoveationLevel(long *param_1,long param_2,int param_3,int param_4)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  undefined8 uVar4;
+  int in_w8;
+  int in_w9;
+  
+  if (in_w9 < param_4) {
+    thunk_FUN_00556484(PTR_DAT_01558760);
+    uVar2 = thunk_FUN_005690e8();
+    FUN_00437fc4();
+    uVar3 = thunk_FUN_00556484(PTR_DAT_01563088);
+    uVar4 = thunk_FUN_00556484(PTR_DAT_0157af50);
+    FUN_00b7217c(uVar2,uVar3,uVar4,0);
+    uVar3 = thunk_FUN_00556484(PTR_DAT_01566780);
+                    /* WARNING: Subroutine does not return */
+    FUN_0052517c(uVar2,uVar3);
+  }
+  if (param_4 != 0) {
+    lVar1 = 0;
+    if (in_w8 != 0) {
+      lVar1 = param_2 + 0x20;
+    }
+                    /* WARNING: Could not recover jumptable at 0x00ce25d4. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+    uVar2 = (**(code **)(*param_1 + 0x298))
+                      (param_1,lVar1 + param_3,param_4,0,*(undefined8 *)(*param_1 + 0x2a0));
+    return uVar2;
+  }
+  return 0;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 5
+FUNCTION_NAME: FUN_00598f58
+ENTRY_POINT: 00598f58
+MANUAL_PRIORITY_SCORE: 145
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 70
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_4', 'validity_or_gating_hits_18', 'telemetry_or_network_hits_3']
+PRIORITY_REASONS: ['base_scanner_score_70', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\general-structure-results\70_high_general_structure_review_high\00598f58_FUN_00598f58.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\TheRagmans\manual-review-pack\B_high_priority\005_p145_FUN_00598f58.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_00598f58
+ENTRY_POINT: 00598f58
+PROGRAM: TheRagmans-libil2cpp.so
+SCORE: 70
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;telemetry
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_18;telemetry_or_network_hits_3
+*/
+
+
+undefined8 FUN_00598f58(undefined8 param_1,int *param_2)
+
+{
+  int iVar1;
+  char *pcVar2;
+  
+  iVar1 = *param_2;
+  if (iVar1 < 0x3000000) {
+    if (iVar1 < 0x2000000) {
+      switch(iVar1) {
+      case 0x1000000:
+        pcVar2 = "Out of memory";
+        break;
+      case 0x1000001:
+        pcVar2 = "Out of system resources";
+        break;
+      case 0x1000002:
+        pcVar2 = "Invalid address range";
+        break;
+      case 0x1000003:
+        pcVar2 = "Invalid argument";
+        break;
+      case 0x1000004:
+        pcVar2 = "Invalid buffer size";
+        break;
+      case 0x1000005:
+        pcVar2 = "Invalid state";
+        break;
+      case 0x1000006:
+        pcVar2 = "Not supported";
+        break;
+      case 0x1000007:
+        pcVar2 = "Time out";
+        break;
+      default:
+        if (iVar1 == -1) {
+          pcVar2 = "Unexpected error";
+        }
+        else {
+          if (iVar1 != 0) goto switchD_00599064_default;
+          pcVar2 = "Success";
+        }
+      }
+    }
+    else {
+      switch(iVar1) {
+      case 0x2000000:
+        pcVar2 = "Unsupported alignment";
+        break;
+      case 0x2000001:
+        pcVar2 = "Invalid page size";
+        break;
+      case 0x2000002:
+        pcVar2 = "Invalid page count";
+        break;
+      case 0x2000003:
+        pcVar2 = "Unsupported page state";
+        break;
+      default:
+        goto switchD_00599064_default;
+      }
+    }
+  }
+  else if (iVar1 < 0x5000000) {
+    switch(iVar1) {
+    case 0x4000000:
+      pcVar2 = "Network initialization error";
+      break;
+    case 0x4000001:
+      pcVar2 = "Address in use";
+      break;
+    case 0x4000002:
+      pcVar2 = "Address unreachable";
+      break;
+    case 0x4000003:
+      pcVar2 = "Address family not supported";
+      break;
+    case 0x4000004:
+      pcVar2 = "Disconnected";
+      break;
+    default:
+      if (iVar1 != 0x3000000) goto switchD_00599064_default;
+      pcVar2 = "Thread can not join itself";
+    }
+  }
+  else if (iVar1 < 0x5000002) {
+    if (iVar1 == 0x5000000) {
+      pcVar2 = "Invalid pathname";
+    }
+    else {
+      if (iVar1 != 0x5000001) goto switchD_00599064_default;
+      pcVar2 = "Requested access is not allowed";
+    }
+  }
+  else if (iVar1 == 0x5000002) {
+    pcVar2 = "General IO error";
+  }
+  else if (iVar1 == 0x6000000) {
+    pcVar2 = "Failed to open the requested dynamic library";
+  }
+  else {
+    if (iVar1 != 0x6000001) goto switchD_00599064_default;
+    pcVar2 = "The requested function was not found";
+  }
+  FUN_005991d4(param_1,"%s",pcVar2);
+switchD_00599064_default:
+  FUN_005991d4(param_1," (0x%08x)",*param_2);
+  return param_1;
+}
+
+
+
+END_DECOMPILED_FUNCTION

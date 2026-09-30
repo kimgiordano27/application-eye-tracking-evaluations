@@ -1,0 +1,621 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 17
+FUNCTION_NAME: FUN_072586ec
+ENTRY_POINT: 072586ec
+MANUAL_PRIORITY_SCORE: 415
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 244
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_17', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_7', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_21', 'ui_or_gameplay_sink_hits_21', 'telemetry_or_network_hits_16', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_interaction_hits_21', 'functionality_data_collection_or_telemetry_hits_8']
+PRIORITY_REASONS: ['base_scanner_score_244', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\072586ec_FUN_072586ec.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\017_p415_FUN_072586ec.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_072586ec
+ENTRY_POINT: 072586ec
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 244
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_17;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_7;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_21;ui_or_gameplay_sink_hits_21;telemetry_or_network_hits_16;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_interaction_hits_21;functionality_data_collection_or_telemetry_hits_8
+*/
+
+
+void FUN_072586ec(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  long *plVar7;
+  long lVar8;
+  undefined8 uVar9;
+  
+  puVar5 = System_Collections_Generic_List<OVRRaycaster_RaycastHit>_TypeInfo;
+  puVar4 = System_Collections_Generic_List<OVRPlugin_SpaceComponentType>_TypeInfo;
+  puVar3 = System_Collections_Generic_List<OVRPassthroughLayer_SerializedSurfaceGeometry>_TypeInfo;
+  puVar2 = PTR_DAT_07dc6350;
+  puVar1 = PTR_DAT_07d86598;
+  if ((DAT_082688c0 & 1) == 0) {
+    FUN_0373b518(System_Collections_Generic_List<KerningPair>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LabelScopeInfo>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LayoutManager>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LayoutObject>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LayoutObject>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LeaderBoardTableSteam>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Leaderboard>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LeaderboardEntries>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LeaderboardEntry>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LeaderboardsBoxColumn>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LeaderboardsBoxLine>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LedCommand>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Level2Map>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LevelSettingsSO>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LigatureSubstitutionRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LigatureSubstitutionRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Light2D>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LinkedAccount>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LocalDataStore>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LocomotionProvider>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LocomotionVignetteProvider>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LogEntry>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<LogicalExpression>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB3_MeshBakerCommon>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB_MaterialAndUVRect>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB_TexArrayForProperty>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB_TexArraySlice>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB_TexArraySliceRendererMatPair>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MB_TexSet>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<ManipulatorActivationFilter>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MarkToBaseAdjustmentRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MarkToBaseAdjustmentRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MarkToMarkAdjustmentRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MarkToMarkAdjustmentRecord>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MatAndTransformToMerged>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Match>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Material>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MaterialPropertyBlock>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Matrix4x4>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MemberInfo>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Mesh>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MeshFilter>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MeshGenerationNodeImpl>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MeshInfo>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MeshRenderer>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MeshWriteData>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MethodBase>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MethodInfo>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Missile>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<MockTouch>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<ModifierSpec>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<Module>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NameAndParameters>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NameValueHeaderValue>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NativePassData>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NavMeshBuildMarkup>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NavMeshBuildSource>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_List<NavMeshLink>_TypeInfo);
+    F
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+t<SkinnedMeshRenderer>_TypeInfo);
+      FUN_044ad3dc(lVar8,uVar9,
+                   *(undefined8 *)
+                    UnityEngine_UIElements_Layout_ManagedObjectStore<LayoutMeasureFunction>_TypeInfo
+                   ,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x2d8) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x2d8,lVar8);
+    }
+    FUN_03eb0df8(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<Light2D>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x2e0);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)
+                                  System_Collections_Generic_List<SkinSettings>_TypeInfo);
+      FUN_044adba4(lVar8,uVar9,*(undefined8 *)System_Buffers_MemoryPool<IntPtr>_TypeInfo,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x2e0) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x2e0,lVar8);
+    }
+    FUN_03eb1dfc(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<LevelSettingsSO>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x2e8);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)System_Collections_Generic_List<RegexFC>_TypeInfo);
+      FUN_044ad6f4(lVar8,uVar9,*(undefined8 *)Oculus_Platform_Message<bool>_TypeInfo,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x2e8) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x2e8,lVar8);
+    }
+    FUN_03eb1460(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<LinkedAccount>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x2f0);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)
+                                  System_Collections_Generic_List<PropertyInfo>_TypeInfo);
+      FUN_044add34(lVar8,uVar9,
+                   *(undefined8 *)Pico_Platform_Message<AchievementDefinitionList>_TypeInfo,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x2f0) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x2f0,lVar8);
+    }
+    FUN_03eb2130(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<LigatureSubstitutionRecord>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x2f8);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)
+                                  System_Collections_Generic_List<PlayableDirector>_TypeInfo);
+      FUN_044ad884(lVar8,uVar9,
+                   *(undefined8 *)Pico_Platform_Message<AchievementProgressList>_TypeInfo,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x2f8) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x2f8,lVar8);
+    }
+    FUN_03eb1794(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<LocalDataStore>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x300);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)
+                                  System_Collections_Generic_List<ScriptableRendererFeature>_TypeInfo
+                                );
+      FUN_044adec4(lVar8,uVar9,*(undefined8 *)Pico_Platform_Message<AchievementUpdate>_TypeInfo,0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x300) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x300,lVar8);
+    }
+    FUN_03eb2464(param_1,lVar8,0,*(undefined8 *)puVar1);
+    lVar6 = *(long *)puVar5;
+    if (*(int *)(lVar6 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+      lVar6 = *(long *)puVar5;
+    }
+    puVar1 = System_Collections_Generic_List<LigatureSubstitutionRecord>_TypeInfo;
+    lVar8 = *(long *)(*(long *)(lVar6 + 0xb8) + 0x308);
+    if (lVar8 == 0) {
+      if (*(int *)(lVar6 + 0xe4) == 0) {
+        thunk_FUN_03798b70();
+        lVar6 = *(long *)puVar5;
+      }
+      uVar9 = **(undefined8 **)(lVar6 + 0xb8);
+      lVar8 = thunk_FUN_037788cc(*(undefined8 *)
+                                  System_Collections_Generic_List<RangePositionInfo>_TypeInfo);
+      FUN_044ada14(lVar8,uVar9,*(undefined8 *)Pico_Platform_Message<ApplicationInviteList>_TypeInfo,
+                   0);
+      lVar6 = *(long *)(*(long *)puVar5 + 0xb8);
+      *(long *)(lVar6 + 0x308) = lVar8;
+      thunk_FUN_037aeb94(lVar6 + 0x308,lVar8);
+    }
+    FUN_03eb1ac8(param_1,lVar8,0,*(undefined8 *)puVar1);
+    if (*(int *)(*(long *)puVar5 + 0xe4) == 0) {
+      thunk_FUN_03798b70();
+    }
+    FUN_078d9ffc();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 18
+FUNCTION_NAME: thunk_FUN_071fa2fc
+ENTRY_POINT: 071fa2f8
+MANUAL_PRIORITY_SCORE: 414
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 289
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo', 'ordered_structure', 'active_gaze_retrieval', 'active_gaze_collection', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_289', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\071fa2f8_thunk_FUN_071fa2fc.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\018_p414_thunk_FUN_071fa2fc.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: thunk_FUN_071fa2fc
+ENTRY_POINT: 071fa2f8
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 289
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo;ordered_structure;active_gaze_retrieval;active_gaze_collection;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_collection_or_telemetry_sink;possible_biometric_feature_from_active_eye_context;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_4
+*/
+
+
+void thunk_FUN_071fa2fc(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long *plVar7;
+  
+  puVar3 = System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo;
+  puVar1 = PTR_DAT_07d889b8;
+  if ((DAT_082684cc & 1) == 0) {
+    FUN_0373b518(PTR_DAT_07d889b8);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                );
+    DAT_082684cc = 1;
+  }
+  uVar4 = FUN_03f0da94(param_1,*(undefined8 *)puVar1);
+  *(undefined8 *)(param_1 + 0x30) = uVar4;
+  thunk_FUN_037aeb94();
+  lVar5 = thunk_FUN_037788cc(*(undefined8 *)puVar2);
+  FUN_049ce6c0(lVar5,*(undefined8 *)puVar3);
+  plVar7 = (long *)(param_1 + 0x28);
+  *plVar7 = lVar5;
+  thunk_FUN_037aeb94(plVar7,lVar5);
+  lVar6 = *plVar7;
+  lVar5 = FUN_075a7484(param_1,0);
+  if ((lVar5 != 0) &&
+     (uVar4 = FUN_03fe2b68(lVar5,*(undefined8 *)
+                                  System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo
+                          ), lVar6 != 0)) {
+    FUN_049cf100(lVar6,uVar4,
+                 *(undefined8 *)
+                  System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 19
+FUNCTION_NAME: thunk_FUN_071fa2fc
+ENTRY_POINT: 071fa408
+MANUAL_PRIORITY_SCORE: 414
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 289
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo', 'ordered_structure', 'active_gaze_retrieval', 'active_gaze_collection', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_289', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\071fa408_thunk_FUN_071fa2fc.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\019_p414_thunk_FUN_071fa2fc.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: thunk_FUN_071fa2fc
+ENTRY_POINT: 071fa408
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 289
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo;ordered_structure;active_gaze_retrieval;active_gaze_collection;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_collection_or_telemetry_sink;possible_biometric_feature_from_active_eye_context;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_4
+*/
+
+
+void thunk_FUN_071fa2fc(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long *plVar7;
+  
+  puVar3 = System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo;
+  puVar1 = PTR_DAT_07d889b8;
+  if ((DAT_082684cc & 1) == 0) {
+    FUN_0373b518(PTR_DAT_07d889b8);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                );
+    DAT_082684cc = 1;
+  }
+  uVar4 = FUN_03f0da94(param_1,*(undefined8 *)puVar1);
+  *(undefined8 *)(param_1 + 0x30) = uVar4;
+  thunk_FUN_037aeb94();
+  lVar5 = thunk_FUN_037788cc(*(undefined8 *)puVar2);
+  FUN_049ce6c0(lVar5,*(undefined8 *)puVar3);
+  plVar7 = (long *)(param_1 + 0x28);
+  *plVar7 = lVar5;
+  thunk_FUN_037aeb94(plVar7,lVar5);
+  lVar6 = *plVar7;
+  lVar5 = FUN_075a7484(param_1,0);
+  if ((lVar5 != 0) &&
+     (uVar4 = FUN_03fe2b68(lVar5,*(undefined8 *)
+                                  System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo
+                          ), lVar6 != 0)) {
+    FUN_049cf100(lVar6,uVar4,
+                 *(undefined8 *)
+                  System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 20
+FUNCTION_NAME: Unity.VisualScripting.FlowGraphData$$.ctor
+ENTRY_POINT: 071fa304
+MANUAL_PRIORITY_SCORE: 414
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 289
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo', 'ordered_structure', 'active_gaze_retrieval', 'active_gaze_collection', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_289', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\071fa304_Unity.VisualScripting.FlowGraphData$$.ctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\020_p414_Unity.VisualScripting.FlowGraphData$$.ctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.VisualScripting.FlowGraphData$$.ctor
+ENTRY_POINT: 071fa304
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 289
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo;ordered_structure;active_gaze_retrieval;active_gaze_collection;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_collection_or_telemetry_sink;possible_biometric_feature_from_active_eye_context;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_4
+*/
+
+
+void Unity_VisualScripting_FlowGraphData___ctor(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long *plVar7;
+  
+  puVar3 = System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo;
+  puVar1 = PTR_DAT_07d889b8;
+  if ((DAT_082684cc & 1) == 0) {
+    FUN_0373b518(PTR_DAT_07d889b8);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                );
+    DAT_082684cc = 1;
+  }
+  uVar4 = FUN_03f0da94(param_1,*(undefined8 *)puVar1);
+  *(undefined8 *)(param_1 + 0x30) = uVar4;
+  thunk_FUN_037aeb94();
+  lVar5 = thunk_FUN_037788cc(*(undefined8 *)puVar2);
+  FUN_049ce6c0(lVar5,*(undefined8 *)puVar3);
+  plVar7 = (long *)(param_1 + 0x28);
+  *plVar7 = lVar5;
+  thunk_FUN_037aeb94(plVar7,lVar5);
+  lVar6 = *plVar7;
+  lVar5 = FUN_075a7484(param_1,0);
+  if ((lVar5 != 0) &&
+     (uVar4 = FUN_03fe2b68(lVar5,*(undefined8 *)
+                                  System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo
+                          ), lVar6 != 0)) {
+    FUN_049cf100(lVar6,uVar4,
+                 *(undefined8 *)
+                  System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 21
+FUNCTION_NAME: FUN_071fa2fc
+ENTRY_POINT: 071fa2fc
+MANUAL_PRIORITY_SCORE: 414
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 289
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo', 'ordered_structure', 'active_gaze_retrieval', 'active_gaze_collection', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_289', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\071fa2fc_FUN_071fa2fc.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\AimAssaultDemo\manual-review-pack\A_must_review\021_p414_FUN_071fa2fc.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_071fa2fc
+ENTRY_POINT: 071fa2fc
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 289
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo;ordered_structure;active_gaze_retrieval;active_gaze_collection;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_collection_or_telemetry_sink;possible_biometric_feature_from_active_eye_context;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_4
+*/
+
+
+void FUN_071fa2fc(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long *plVar7;
+  
+  puVar3 = System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo;
+  puVar2 = System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo;
+  puVar1 = PTR_DAT_07d889b8;
+  if ((DAT_082684cc & 1) == 0) {
+    FUN_0373b518(PTR_DAT_07d889b8);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_TypeInfo);
+    FUN_0373b518(System_Collections_Generic_HashSet<MB3_MeshCombinerSingle_BoneAndBindpose>_TypeInfo
+                );
+    DAT_082684cc = 1;
+  }
+  uVar4 = FUN_03f0da94(param_1,*(undefined8 *)puVar1);
+  *(undefined8 *)(param_1 + 0x30) = uVar4;
+  thunk_FUN_037aeb94();
+  lVar5 = thunk_FUN_037788cc(*(undefined8 *)puVar2);
+  FUN_049ce6c0(lVar5,*(undefined8 *)puVar3);
+  plVar7 = (long *)(param_1 + 0x28);
+  *plVar7 = lVar5;
+  thunk_FUN_037aeb94(plVar7,lVar5);
+  lVar6 = *plVar7;
+  lVar5 = FUN_075a7484(param_1,0);
+  if ((lVar5 != 0) &&
+     (uVar4 = FUN_03fe2b68(lVar5,*(undefined8 *)
+                                  System_Collections_Generic_HashSet<OVRManager_EventListener>_TypeInfo
+                          ), lVar6 != 0)) {
+    FUN_049cf100(lVar6,uVar4,
+                 *(undefined8 *)
+                  System_Collections_Generic_HashSet<OVRPermissionsRequester_Permission>_TypeInfo);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+
+
+END_DECOMPILED_FUNCTION

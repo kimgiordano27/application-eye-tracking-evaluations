@@ -1,0 +1,45 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.SpaceDiscoveryResult>$$CopyFrom
+ENTRY_POINT: 03b5dbb8
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 97
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_4;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Unity_Collections_NativeArray<OVRPlugin_SpaceDiscoveryResult>__CopyFrom(long param_1)
+
+{
+  long unaff_x19;
+  uint unaff_w20;
+  undefined4 unaff_s8;
+  undefined4 unaff_s9;
+  undefined4 unaff_s10;
+  undefined4 unaff_s11;
+  
+  if (param_1 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+  if (unaff_w20 < *(uint *)(param_1 + 0x18)) {
+    param_1 = param_1 + (long)(int)unaff_w20 * 0x10;
+    *(undefined4 *)(param_1 + 0x20) = unaff_s11;
+    *(undefined4 *)(param_1 + 0x24) = unaff_s10;
+    *(undefined4 *)(param_1 + 0x28) = unaff_s9;
+    *(undefined4 *)(param_1 + 0x2c) = unaff_s8;
+    *(ulong *)(unaff_x19 + 0x18) =
+         CONCAT44((int)((ulong)*(undefined8 *)(unaff_x19 + 0x18) >> 0x20) + 1,
+                  (int)*(undefined8 *)(unaff_x19 + 0x18) + 1);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c84();
+}
+
+

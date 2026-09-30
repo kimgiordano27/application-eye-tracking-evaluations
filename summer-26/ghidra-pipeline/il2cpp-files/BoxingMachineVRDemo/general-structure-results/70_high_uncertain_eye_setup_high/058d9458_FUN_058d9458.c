@@ -1,0 +1,119 @@
+/*
+FUNCTION_NAME: FUN_058d9458
+ENTRY_POINT: 058d9458
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 89
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_7;validity_or_gating_hits_9;functionality_eye_api_context_without_clear_sink_hits_7
+*/
+
+
+void FUN_058d9458(undefined8 *param_1,long param_2,long param_3)
+
+{
+  int iVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  long lVar4;
+  undefined8 uVar5;
+  undefined8 uVar6;
+  long lVar7;
+  int iVar8;
+  undefined1 auStack_90 [80];
+  
+  if ((DAT_06b80b24 & 1) == 0) {
+    FUN_02d6084c(OVRPlugin_OVRP_1_39_0_TypeInfo);
+    FUN_02d6084c(PTR_DAT_0676e350);
+    FUN_02d6084c(PTR_DAT_06786148);
+    FUN_02d6084c(PTR_DAT_06786150);
+    FUN_02d6084c(OVRPlugin_OVRP_1_3_0_TypeInfo);
+    DAT_06b80b24 = 1;
+  }
+  puVar3 = OVRPlugin_OVRP_1_3_0_TypeInfo;
+  if (param_3 == 0) {
+    thunk_FUN_02dc61f4(PTR_DAT_06764070);
+    uVar5 = thunk_FUN_02d9d534();
+    uVar6 = thunk_FUN_02dc61f4(OVRPlugin_OVRP_1_40_0_TypeInfo);
+    FUN_04f77010(uVar5,uVar6,0);
+    uVar6 = thunk_FUN_02dc61f4(OVRPlugin_OVRP_1_41_0_TypeInfo);
+                    /* WARNING: Subroutine does not return */
+    FUN_02d609b4(uVar5,uVar6);
+  }
+  if (*(int *)(param_3 + 0x194) == 3) {
+    lVar4 = *(long *)OVRPlugin_OVRP_1_3_0_TypeInfo;
+    if (*(int *)(lVar4 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar4 = *(long *)puVar3;
+    }
+    puVar2 = OVRPlugin_OVRP_1_39_0_TypeInfo;
+    if (**(int **)(lVar4 + 0xb8) < 1) goto LAB_058d95b4;
+    iVar8 = 0;
+    while( true ) {
+      if (*(int *)(lVar4 + 0xe4) == 0) {
+        thunk_FUN_02dbd7b4();
+        lVar4 = *(long *)puVar3;
+      }
+      if (**(int **)(lVar4 + 0xb8) <= iVar8) {
+        param_1[7] = 0;
+        param_1[6] = 0;
+        param_1[9] = 0;
+        param_1[8] = 0;
+        param_1[3] = 0;
+        param_1[2] = 0;
+        param_1[5] = 0;
+        param_1[4] = 0;
+        param_1[1] = 0;
+        *param_1 = 0;
+        return;
+      }
+      if (*(int *)(lVar4 + 0xe4) == 0) {
+        thunk_FUN_02dbd7b4();
+        lVar4 = *(long *)puVar3;
+      }
+      lVar4 = FUN_03797d3c(*(undefined8 *)(lVar4 + 0xb8),iVar8,*(undefined8 *)puVar2);
+      lVar7 = *(long *)(param_2 + 0x20);
+      if (lVar7 == 0) goto LAB_058d9660;
+      iVar1 = *(int *)(lVar7 + 0x18);
+      *(undefined4 *)(lVar7 + 0x18) = 0;
+      *(int *)(lVar7 + 0x1c) = *(int *)(lVar7 + 0x1c) + 1;
+      if (0 < iVar1) {
+        FUN_05029664(*(undefined8 *)(lVar7 + 0x10),0,iVar1,0);
+      }
+      if (lVar4 == 0) goto LAB_058d9660;
+      FUN_058d96ac(lVar4,param_3,*(undefined8 *)(param_2 + 0x20));
+      lVar4 = *(long *)(param_2 + 0x20);
+      if (lVar4 == 0) goto LAB_058d9660;
+      if (0 < *(int *)(lVar4 + 0x18)) break;
+      lVar4 = *(long *)puVar3;
+      iVar8 = iVar8 + 1;
+    }
+    FUN_03adaf8c(auStack_90,lVar4,0,*(undefined8 *)PTR_DAT_06786150);
+  }
+  else {
+LAB_058d95b4:
+    if (*(long *)(param_2 + 0x38) == 0) goto LAB_058d9660;
+    FUN_0636c074(*(long *)(param_2 + 0x38),param_3,*(undefined8 *)(param_2 + 0x20),0);
+    FUN_0636fb0c(auStack_90,*(undefined8 *)(param_2 + 0x20),0);
+  }
+  memcpy(param_1,auStack_90,0x50);
+  lVar4 = *(long *)(param_2 + 0x20);
+  if (lVar4 != 0) {
+    iVar8 = *(int *)(lVar4 + 0x18);
+    *(undefined4 *)(lVar4 + 0x18) = 0;
+    *(int *)(lVar4 + 0x1c) = *(int *)(lVar4 + 0x1c) + 1;
+    if (0 < iVar8) {
+      FUN_05029664(*(undefined8 *)(lVar4 + 0x10),0,iVar8,0);
+    }
+    return;
+  }
+LAB_058d9660:
+                    /* WARNING: Subroutine does not return */
+  FUN_02d60ae8();
+}
+
+

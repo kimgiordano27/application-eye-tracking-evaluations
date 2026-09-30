@@ -1,0 +1,57 @@
+/*
+FUNCTION_NAME: Meta.XR.MRUtilityKit.SceneDecorator.SceneDecorator$$DecorateScene
+ENTRY_POINT: 072e9cec
+PROGRAM: StellarXV1-libil2cpp.so
+SCORE: 72
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_5;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Meta_XR_MRUtilityKit_SceneDecorator_SceneDecorator__DecorateScene(undefined8 param_1)
+
+{
+  long lVar1;
+  long lVar2;
+  undefined8 uVar3;
+  long unaff_x20;
+  long unaff_x24;
+  long unaff_x25;
+  
+  lVar1 = FUN_04077674(param_1,3);
+  if (lVar1 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_04077830();
+  }
+  if ((unaff_x25 != 0) && (lVar2 = thunk_FUN_040b4e00(), lVar2 == 0)) {
+LAB_072e9dc4:
+    uVar3 = thunk_FUN_040c2a64();
+                    /* WARNING: Subroutine does not return */
+    FUN_040776f4(uVar3,0);
+  }
+  if (*(int *)(lVar1 + 0x18) != 0) {
+    *(long *)(lVar1 + 0x20) = unaff_x25;
+    thunk_FUN_040ec700();
+    if ((unaff_x24 != 0) && (lVar2 = thunk_FUN_040b4e00(), lVar2 == 0)) goto LAB_072e9dc4;
+    if ((*(uint *)(lVar1 + 0x18) & 0xfffffffe) != 0) {
+      *(long *)(lVar1 + 0x28) = unaff_x24;
+      thunk_FUN_040ec700();
+      if ((unaff_x20 != 0) && (lVar2 = thunk_FUN_040b4e00(), lVar2 == 0)) goto LAB_072e9dc4;
+      if (2 < *(uint *)(lVar1 + 0x18)) {
+        *(long *)(lVar1 + 0x30) = unaff_x20;
+        thunk_FUN_040ec700();
+        FUN_072e914c();
+        return;
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04077838();
+}
+
+

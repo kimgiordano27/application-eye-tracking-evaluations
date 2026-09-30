@@ -1,0 +1,518 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 6
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation
+ENTRY_POINT: 00e89fb4
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\general-structure-results\90_plus_possible_eye_biometrics_near_certain\00e89fb4_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\manual-review-pack\A_must_review\006_p169_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation
+ENTRY_POINT: 00e89fb4
+PROGRAM: JustAnotherCookingGame-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__set_leftEyeRotation(long param_1,undefined4 *param_2)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long lVar3;
+  long unaff_x25;
+  ulong unaff_x26;
+  undefined4 *unaff_x27;
+  undefined4 *puVar4;
+  undefined4 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000028;
+  
+  while( true ) {
+    uVar1 = thunk_FUN_005bb628(param_1,param_2);
+    if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) break;
+    in_stack_00000028._4_4_ = *unaff_x27;
+    lVar3 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0x88);
+    if ((*(byte *)(lVar3 + 0x132) & 1) == 0) {
+      FUN_005c1b60(lVar3);
+    }
+    uVar2 = thunk_FUN_005bb628(lVar3,(long)&stack0x00000028 + 4);
+    in_stack_00000010 = 0;
+    in_stack_00000018 = 0;
+    FUN_00ae282c(&stack0x00000010,uVar1,uVar2,0);
+    if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_006281b8();
+    }
+    if (*(uint *)(unaff_x22 + 0x18) <= unaff_w19) break;
+    lVar3 = unaff_x22 + (long)(int)unaff_w19 * 0x10;
+    unaff_w19 = unaff_w19 + 1;
+    *(undefined8 *)(lVar3 + 0x28) = in_stack_00000018;
+    *(undefined8 *)(lVar3 + 0x20) = in_stack_00000010;
+    do {
+      puVar4 = unaff_x27;
+      unaff_x26 = unaff_x26 + 1;
+      unaff_x27 = puVar4 + 4;
+      if ((long)*(int *)(unaff_x21 + 0x20) <= (long)unaff_x26) {
+        return;
+      }
+      if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) goto LAB_00e8a144;
+    } while ((int)puVar4[1] < 0);
+    in_stack_00000008 = puVar4[3];
+    param_1 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0xd8);
+    if ((*(byte *)(param_1 + 0x132) & 1) == 0) {
+      FUN_005c1b60(param_1);
+    }
+    param_2 = &stack0x00000008;
+  }
+LAB_00e8a144:
+  uVar1 = thunk_FUN_005c3bd0();
+                    /* WARNING: Subroutine does not return */
+  FUN_00628184(uVar1,0);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 7
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyePosition
+ENTRY_POINT: 00e89fa4
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\general-structure-results\90_plus_possible_eye_biometrics_near_certain\00e89fa4_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyePosition.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\manual-review-pack\A_must_review\007_p169_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyePosition.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyePosition
+ENTRY_POINT: 00e89fa4
+PROGRAM: JustAnotherCookingGame-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__set_leftEyePosition(void)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  long lVar3;
+  long unaff_x25;
+  ulong unaff_x26;
+  undefined4 *unaff_x27;
+  undefined4 *puVar4;
+  undefined4 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000028;
+  
+  do {
+    FUN_005c1b60(unaff_x23);
+    do {
+      uVar1 = thunk_FUN_005bb628(unaff_x23,&stack0x00000008);
+      if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) {
+LAB_00e8a144:
+        uVar1 = thunk_FUN_005c3bd0();
+                    /* WARNING: Subroutine does not return */
+        FUN_00628184(uVar1,0);
+      }
+      in_stack_00000028._4_4_ = *unaff_x27;
+      lVar3 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0x88);
+      if ((*(byte *)(lVar3 + 0x132) & 1) == 0) {
+        FUN_005c1b60(lVar3);
+      }
+      uVar2 = thunk_FUN_005bb628(lVar3,(long)&stack0x00000028 + 4);
+      in_stack_00000010 = 0;
+      in_stack_00000018 = 0;
+      FUN_00ae282c(&stack0x00000010,uVar1,uVar2,0);
+      if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_006281b8();
+      }
+      if (*(uint *)(unaff_x22 + 0x18) <= unaff_w19) goto LAB_00e8a144;
+      lVar3 = unaff_x22 + (long)(int)unaff_w19 * 0x10;
+      unaff_w19 = unaff_w19 + 1;
+      *(undefined8 *)(lVar3 + 0x28) = in_stack_00000018;
+      *(undefined8 *)(lVar3 + 0x20) = in_stack_00000010;
+      do {
+        puVar4 = unaff_x27;
+        unaff_x26 = unaff_x26 + 1;
+        unaff_x27 = puVar4 + 4;
+        if ((long)*(int *)(unaff_x21 + 0x20) <= (long)unaff_x26) {
+          return;
+        }
+        if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) goto LAB_00e8a144;
+      } while ((int)puVar4[1] < 0);
+      in_stack_00000008 = puVar4[3];
+      unaff_x23 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0xd8);
+    } while ((*(byte *)(unaff_x23 + 0x132) & 1) != 0);
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 8
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_rightEyeRotation
+ENTRY_POINT: 00e89ffc
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\general-structure-results\90_plus_possible_eye_biometrics_near_certain\00e89ffc_Unity.XR.Oculus.Input.OculusHMD$$get_rightEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\manual-review-pack\A_must_review\008_p169_Unity.XR.Oculus.Input.OculusHMD$$get_rightEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_rightEyeRotation
+ENTRY_POINT: 00e89ffc
+PROGRAM: JustAnotherCookingGame-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__get_rightEyeRotation
+               (undefined8 param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  undefined8 uVar1;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long lVar2;
+  undefined8 unaff_x23;
+  long unaff_x25;
+  ulong unaff_x26;
+  undefined4 *unaff_x27;
+  undefined4 *puVar3;
+  undefined4 in_stack_00000008;
+  undefined8 uStack0000000000000010;
+  undefined8 uStack0000000000000018;
+  undefined8 in_stack_00000028;
+  
+  while( true ) {
+    uStack0000000000000010 = 0;
+    uStack0000000000000018 = 0;
+    FUN_00ae282c(&stack0x00000010,unaff_x23,param_3,0);
+    if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_006281b8();
+    }
+    if (*(uint *)(unaff_x22 + 0x18) <= unaff_w19) break;
+    lVar2 = unaff_x22 + (long)(int)unaff_w19 * 0x10;
+    unaff_w19 = unaff_w19 + 1;
+    *(undefined8 *)(lVar2 + 0x28) = uStack0000000000000018;
+    *(undefined8 *)(lVar2 + 0x20) = uStack0000000000000010;
+    do {
+      puVar3 = unaff_x27;
+      unaff_x26 = unaff_x26 + 1;
+      unaff_x27 = puVar3 + 4;
+      if ((long)*(int *)(unaff_x21 + 0x20) <= (long)unaff_x26) {
+        return;
+      }
+      if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) goto LAB_00e8a144;
+    } while ((int)puVar3[1] < 0);
+    in_stack_00000008 = puVar3[3];
+    lVar2 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0xd8);
+    if ((*(byte *)(lVar2 + 0x132) & 1) == 0) {
+      FUN_005c1b60(lVar2);
+    }
+    unaff_x23 = thunk_FUN_005bb628(lVar2,&stack0x00000008);
+    if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) break;
+    in_stack_00000028._4_4_ = *unaff_x27;
+    lVar2 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0x88);
+    if ((*(byte *)(lVar2 + 0x132) & 1) == 0) {
+      FUN_005c1b60(lVar2);
+    }
+    param_3 = thunk_FUN_005bb628(lVar2,(long)&stack0x00000028 + 4);
+  }
+LAB_00e8a144:
+  uVar1 = thunk_FUN_005c3bd0();
+                    /* WARNING: Subroutine does not return */
+  FUN_00628184(uVar1,0);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 9
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_rightEyePosition
+ENTRY_POINT: 00e89fec
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\general-structure-results\90_plus_possible_eye_biometrics_near_certain\00e89fec_Unity.XR.Oculus.Input.OculusHMD$$get_rightEyePosition.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\manual-review-pack\A_must_review\009_p169_Unity.XR.Oculus.Input.OculusHMD$$get_rightEyePosition.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_rightEyePosition
+ENTRY_POINT: 00e89fec
+PROGRAM: JustAnotherCookingGame-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__get_rightEyePosition(void)
+
+{
+  undefined8 uVar1;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long lVar2;
+  undefined8 unaff_x23;
+  long unaff_x24;
+  long unaff_x25;
+  ulong unaff_x26;
+  undefined4 *unaff_x27;
+  undefined4 *puVar3;
+  undefined4 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000028;
+  
+  while( true ) {
+    uVar1 = thunk_FUN_005bb628(unaff_x24,(long)&stack0x00000028 + 4);
+    in_stack_00000010 = 0;
+    in_stack_00000018 = 0;
+    FUN_00ae282c(&stack0x00000010,unaff_x23,uVar1,0);
+    if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_006281b8();
+    }
+    if (*(uint *)(unaff_x22 + 0x18) <= unaff_w19) break;
+    lVar2 = unaff_x22 + (long)(int)unaff_w19 * 0x10;
+    unaff_w19 = unaff_w19 + 1;
+    *(undefined8 *)(lVar2 + 0x28) = in_stack_00000018;
+    *(undefined8 *)(lVar2 + 0x20) = in_stack_00000010;
+    do {
+      puVar3 = unaff_x27;
+      unaff_x26 = unaff_x26 + 1;
+      unaff_x27 = puVar3 + 4;
+      if ((long)*(int *)(unaff_x21 + 0x20) <= (long)unaff_x26) {
+        return;
+      }
+      if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) goto LAB_00e8a144;
+    } while ((int)puVar3[1] < 0);
+    in_stack_00000008 = puVar3[3];
+    lVar2 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0xd8);
+    if ((*(byte *)(lVar2 + 0x132) & 1) == 0) {
+      FUN_005c1b60(lVar2);
+    }
+    unaff_x23 = thunk_FUN_005bb628(lVar2,&stack0x00000008);
+    if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) break;
+    in_stack_00000028._4_4_ = *unaff_x27;
+    unaff_x24 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0x88);
+    if ((*(byte *)(unaff_x24 + 0x132) & 1) == 0) {
+      FUN_005c1b60(unaff_x24);
+    }
+  }
+LAB_00e8a144:
+  uVar1 = thunk_FUN_005c3bd0();
+                    /* WARNING: Subroutine does not return */
+  FUN_00628184(uVar1,0);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 10
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation
+ENTRY_POINT: 00e89fac
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\general-structure-results\90_plus_possible_eye_biometrics_near_certain\00e89fac_Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\JustAnotherCookingGame\manual-review-pack\A_must_review\010_p169_Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation
+ENTRY_POINT: 00e89fac
+PROGRAM: JustAnotherCookingGame-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__get_leftEyeRotation(void)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  long lVar3;
+  long unaff_x25;
+  ulong unaff_x26;
+  undefined4 *unaff_x27;
+  undefined4 *puVar4;
+  undefined4 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000028;
+  
+  while( true ) {
+    uVar1 = thunk_FUN_005bb628(unaff_x23,&stack0x00000008);
+    if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) break;
+    in_stack_00000028._4_4_ = *unaff_x27;
+    lVar3 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0x88);
+    if ((*(byte *)(lVar3 + 0x132) & 1) == 0) {
+      FUN_005c1b60(lVar3);
+    }
+    uVar2 = thunk_FUN_005bb628(lVar3,(long)&stack0x00000028 + 4);
+    in_stack_00000010 = 0;
+    in_stack_00000018 = 0;
+    FUN_00ae282c(&stack0x00000010,uVar1,uVar2,0);
+    if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_006281b8();
+    }
+    if (*(uint *)(unaff_x22 + 0x18) <= unaff_w19) break;
+    lVar3 = unaff_x22 + (long)(int)unaff_w19 * 0x10;
+    unaff_w19 = unaff_w19 + 1;
+    *(undefined8 *)(lVar3 + 0x28) = in_stack_00000018;
+    *(undefined8 *)(lVar3 + 0x20) = in_stack_00000010;
+    do {
+      puVar4 = unaff_x27;
+      unaff_x26 = unaff_x26 + 1;
+      unaff_x27 = puVar4 + 4;
+      if ((long)*(int *)(unaff_x21 + 0x20) <= (long)unaff_x26) {
+        return;
+      }
+      if (*(uint *)(unaff_x25 + 0x18) <= unaff_x26) goto LAB_00e8a144;
+    } while ((int)puVar4[1] < 0);
+    in_stack_00000008 = puVar4[3];
+    unaff_x23 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x18) + 0xc0) + 0xd8);
+    if ((*(byte *)(unaff_x23 + 0x132) & 1) == 0) {
+      FUN_005c1b60(unaff_x23);
+    }
+  }
+LAB_00e8a144:
+  uVar1 = thunk_FUN_005c3bd0();
+                    /* WARNING: Subroutine does not return */
+  FUN_00628184(uVar1,0);
+}
+
+
+
+END_DECOMPILED_FUNCTION

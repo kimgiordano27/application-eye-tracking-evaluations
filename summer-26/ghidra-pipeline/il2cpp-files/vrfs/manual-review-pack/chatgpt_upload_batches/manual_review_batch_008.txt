@@ -1,0 +1,738 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 35
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonContract$$InvokeOnDeserialized
+ENTRY_POINT: 01bb1e28
+MANUAL_PRIORITY_SCORE: 217
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ui_interaction', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_11', 'ui_or_gameplay_sink_hits_2', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\general-structure-results\70_high_general_structure_review_high\01bb1e28_Newtonsoft.Json.Serialization.JsonContract$$InvokeOnDeserialized.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\manual-review-pack\A_must_review\035_p217_Newtonsoft.Json.Serialization.JsonContract$$InvokeOnDeserialized.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonContract$$InvokeOnDeserialized
+ENTRY_POINT: 01bb1e28
+PROGRAM: vrfs-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ui_interaction;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_11;ui_or_gameplay_sink_hits_2;strong_file_logging_hits_2;telemetry_or_network_hits_2;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x01bb1fb4) */
+
+void Newtonsoft_Json_Serialization_JsonContract__InvokeOnDeserialized
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  undefined1 in_ZR;
+  int iVar1;
+  undefined8 *puVar2;
+  ulong uVar3;
+  long lVar4;
+  long lVar5;
+  ulong uVar6;
+  ulong in_x9;
+  int *in_x10;
+  int *piVar7;
+  long unaff_x19;
+  long unaff_x20;
+  ulong unaff_x21;
+  long unaff_x22;
+  long *unaff_x23;
+  long *unaff_x24;
+  long *unaff_x25;
+  long unaff_x26;
+  long unaff_x29;
+  
+code_r0x01bb1e28:
+  if (!(bool)in_ZR) goto LAB_01bb1e14;
+LAB_01bb1e2c:
+  puVar2 = (undefined8 *)FUN_015c2a80();
+  do {
+    (*(code *)*puVar2)();
+    iVar1 = (**(code **)(*(long *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0x1a0) + 8))();
+    if (-1 < iVar1) {
+      if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_0160eeb4();
+      }
+      ICSharpCode_SharpZipLib_Zip_Compression_Inflater__SetInput();
+    }
+    lVar4 = *unaff_x23;
+    uVar6 = (ulong)*(ushort *)(lVar4 + 0x12a);
+    if (uVar6 != 0) {
+      piVar7 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar7 + -2) == *unaff_x24) {
+          puVar2 = (undefined8 *)(lVar4 + (long)*piVar7 * 0x10 + 0x138);
+          goto LAB_01bb1dd0;
+        }
+        uVar6 = uVar6 - 1;
+        piVar7 = piVar7 + 4;
+      } while (uVar6 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_015c2a80();
+LAB_01bb1dd0:
+    uVar6 = (*(code *)*puVar2)();
+    if ((uVar6 & 1) == 0) {
+      if (unaff_x23 == (long *)0x0) goto code_r0x01bb1ef0;
+      lVar4 = *unaff_x23;
+      uVar6 = (ulong)*(ushort *)(lVar4 + 0x12a);
+      if (uVar6 == 0) goto LAB_01bb1ec4;
+      piVar7 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      break;
+    }
+    param_3 = *(long *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0xf8);
+    if ((*(byte *)(param_3 + 0x132) & 1) == 0) {
+      param_3 = FUN_015c2790(param_3);
+    }
+    param_1 = *unaff_x23;
+    in_x9 = (ulong)*(ushort *)(param_1 + 0x12a);
+    if (in_x9 == 0) goto LAB_01bb1e2c;
+    in_x10 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+LAB_01bb1e14:
+    if (*(long *)(in_x10 + -2) != param_3) {
+      in_x9 = in_x9 - 1;
+      in_ZR = in_x9 == 0;
+      in_x10 = in_x10 + 4;
+      goto code_r0x01bb1e28;
+    }
+    puVar2 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+  } while( true );
+  while( true ) {
+    uVar6 = uVar6 - 1;
+    piVar7 = piVar7 + 4;
+    if (uVar6 == 0) break;
+    if (*(long *)(piVar7 + -2) == *unaff_x25) {
+      puVar2 = (undefined8 *)(lVar4 + (long)*piVar7 * 0x10 + 0x138);
+      goto LAB_01bb1ee0;
+    }
+  }
+LAB_01bb1ec4:
+  puVar2 = (undefined8 *)FUN_015c2a80();
+LAB_01bb1ee0:
+  (*(code *)*puVar2)();
+code_r0x01bb1ef0:
+  if (0 < (int)unaff_x21) {
+    uVar6 = 0;
+    lVar4 = 0x20;
+    do {
+      lVar5 = *(long *)(unaff_x20 + 0x18);
+      if (lVar5 == 0) goto LAB_01bb1fa4;
+      if (*(uint *)(lVar5 + 0x18) <= uVar6) {
+LAB_01bb1fa8:
+                    /* WARNING: Subroutine does not return */
+        FUN_0160eebc();
+      }
+      if (-1 < *(int *)(lVar5 + lVar4)) {
+        if (unaff_x22 == 0) {
+LAB_01bb1fa4:
+                    /* WARNING: Subroutine does not return */
+          FUN_0160eeb4();
+        }
+        uVar3 = FUN_01abde3c();
+        if ((uVar3 & 1) == 0) {
+          if (*(long *)(unaff_x20 + 0x18) == 0) goto LAB_01bb1fa4;
+                    /* try { // try from 01bb1f44 to 01cb1f47 has its CatchHandler @ 01bb1f64 */
+          if (*(uint *)(*(long *)(unaff_x20 + 0x18) + 0x18) <= uVar6) goto LAB_01bb1fa8;
+                    /* try { // try from 01bb1f48 to 01cb1f4b has its CatchHandler @ 01bb1f60 */
+                    /* try { // try from 01bb1f4c to 01cb1f4f has its CatchHandler @ 01bb1c04 */
+                    /* try { // try from 01bb1f50 to 01cb1f53 has its CatchHandler @ 01bb1f5c */
+                    /* try { // try from 01bb1f54 to 01cb1f83 has its CatchHandler @ 01bb1c04 */
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1f50 with catch @ 01bb1f5c
+                        */
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1f48 with catch @ 01bb1f60
+                        */
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1f44 with catch @ 01bb1f64
+                        */
+          (**(code **)(*(long *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 0x120) + 8))();
+        }
+      }
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1e14 with catch @ 01bb1f68
+                        */
+      uVar6 = uVar6 + 1;
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1dec with catch @ 01bb1f6c
+                        */
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1db8 with catch @ 01bb1f70
+                        */
+      lVar4 = lVar4 + 0x10;
+                    /* catch(type#1 @ 06a5a440) { ... } // from try @ 01bb1d5c with catch @ 01bb1f74
+                        */
+    } while (unaff_x21 != uVar6);
+  }
+                    /* try { // try from 01bb1f84 to 01cb1f87 has its CatchHandler @ 01bb2004 */
+  if (*(long *)(unaff_x26 + 0x28) != *(long *)(unaff_x29 + -0x48)) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 36
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 039e318c
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 148
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_8', 'paired_field_refs_with_eye_source', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_148', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\039e318c_Unity.XR.Oculus.Utils$$set_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\manual-review-pack\A_must_review\036_p216_Unity.XR.Oculus.Utils$$set_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 039e318c
+PROGRAM: vrfs-libil2cpp.so
+SCORE: 148
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_8;paired_field_refs_with_eye_source;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_Utils__set_eyeTrackedFoveatedRenderingEnabled(ulong param_1)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  long unaff_x19;
+  int iVar3;
+  long lVar4;
+  ulong unaff_x21;
+  long *unaff_x22;
+  long *unaff_x23;
+  undefined8 *unaff_x24;
+  undefined8 *unaff_x25;
+  long unaff_x26;
+  
+  while ((long)unaff_x21 < (long)(int)param_1) {
+    if (param_1 <= unaff_x21) {
+LAB_039e3328:
+                    /* WARNING: Subroutine does not return */
+      FUN_0160eebc();
+    }
+    lVar4 = unaff_x22[unaff_x21 + 4];
+    if (*(int *)(*unaff_x23 + 0xe0) == 0) {
+      thunk_FUN_016466fc();
+    }
+    lVar4 = FUN_039e3690(lVar4);
+    if ((lVar4 != 0) &&
+       (lVar1 = thunk_FUN_015d0480(lVar4,*(undefined8 *)(*unaff_x22 + 0x40)), lVar1 == 0)) {
+                    /* try { // try from 039e332c to 03ae3343 has its CatchHandler @ 039e3378 */
+      uVar2 = thunk_FUN_015f0d94();
+                    /* WARNING: Subroutine does not return */
+      FUN_0160ee7c(uVar2,0);
+    }
+    if (*(uint *)(unaff_x22 + 3) <= unaff_x21) goto LAB_039e3328;
+    unaff_x22[unaff_x21 + 4] = lVar4;
+    thunk_FUN_01656ef8((long)unaff_x22 + unaff_x26,lVar4);
+    unaff_x22 = *(long **)(unaff_x19 + 0x50);
+    unaff_x21 = unaff_x21 + 1;
+    unaff_x26 = unaff_x26 + 8;
+    if (unaff_x22 == (long *)0x0) goto LAB_039e330c;
+    param_1 = (ulong)*(uint *)(unaff_x22 + 3);
+  }
+  lVar4 = *(long *)(unaff_x19 + 0xd8);
+  if (lVar4 != 0) {
+    iVar3 = 0;
+    do {
+      if (*(int *)(lVar4 + 0x18) <= iVar3) {
+        lVar4 = *(long *)(unaff_x19 + 0xd0);
+        if (lVar4 != 0) {
+          iVar3 = 0;
+          goto Unity_XR_Oculus_Utils__SetFoveationLevel;
+        }
+        break;
+      }
+      lVar4 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar4,iVar3,*unaff_x24);
+      if (lVar4 != 0) {
+        lVar4 = *(long *)(unaff_x19 + 0xd8);
+        if (lVar4 == 0) break;
+                    /* try { // try from 039e3238 to 03ae323f has its CatchHandler @ 039e3310 */
+        uVar2 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                          (lVar4,iVar3,*unaff_x24);
+        if (*(int *)(*unaff_x23 + 0xe0) == 0) {
+                    /* try { // try from 039e325c to 03ae32a3 has its CatchHandler @ 039e3314 */
+          thunk_FUN_016466fc(*unaff_x23);
+        }
+        uVar2 = FUN_039e3690(uVar2);
+        FUN_043c219c(lVar4,iVar3,uVar2,*unaff_x25);
+      }
+      lVar4 = *(long *)(unaff_x19 + 0xd8);
+      iVar3 = iVar3 + 1;
+    } while (lVar4 != 0);
+  }
+  goto LAB_039e330c;
+Unity_XR_Oculus_Utils__SetFoveationLevel:
+  do {
+    if (*(int *)(lVar4 + 0x18) <= iVar3) {
+      return;
+    }
+    lVar4 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                      (lVar4,iVar3,*unaff_x24);
+    if (lVar4 != 0) {
+      lVar4 = *(long *)(unaff_x19 + 0xd0);
+      if (lVar4 == 0) break;
+      uVar2 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar4,iVar3,*unaff_x24);
+      if (*(int *)(*unaff_x23 + 0xe0) == 0) {
+        thunk_FUN_016466fc(*unaff_x23);
+      }
+      uVar2 = FUN_039e3690(uVar2);
+      FUN_043c219c(lVar4,iVar3,uVar2,*unaff_x25);
+    }
+    lVar4 = *(long *)(unaff_x19 + 0xd0);
+    iVar3 = iVar3 + 1;
+  } while (lVar4 != 0);
+LAB_039e330c:
+                    /* WARNING: Subroutine does not return */
+  FUN_0160eeb4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 37
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 039e3160
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 148
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_8', 'paired_field_refs_with_eye_source', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_148', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\039e3160_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\manual-review-pack\A_must_review\037_p216_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 039e3160
+PROGRAM: vrfs-libil2cpp.so
+SCORE: 148
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_8;paired_field_refs_with_eye_source;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_Utils__get_eyeTrackedFoveatedRenderingSupported(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  long lVar4;
+  undefined8 uVar5;
+  long unaff_x19;
+  int iVar6;
+  long lVar7;
+  ulong uVar8;
+  long *plVar9;
+  long lVar10;
+  
+  puVar3 = PTR_DAT_06e298a8;
+  puVar2 = PTR_DAT_06e07ce0;
+  puVar1 = PTR_DAT_06dfc7f8;
+  plVar9 = *(long **)(unaff_x19 + 0x50);
+  if (plVar9 != (long *)0x0) {
+    uVar8 = 0;
+    lVar10 = 0x20;
+    do {
+      if ((long)(int)*(uint *)(plVar9 + 3) <= (long)uVar8) {
+        lVar10 = *(long *)(unaff_x19 + 0xd8);
+        if (lVar10 != 0) {
+          iVar6 = 0;
+          goto LAB_039e3214;
+        }
+        break;
+      }
+      if (*(uint *)(plVar9 + 3) <= uVar8) {
+LAB_039e3328:
+                    /* WARNING: Subroutine does not return */
+        FUN_0160eebc();
+      }
+      lVar7 = plVar9[uVar8 + 4];
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc();
+      }
+      lVar7 = FUN_039e3690(lVar7);
+      if ((lVar7 != 0) &&
+         (lVar4 = thunk_FUN_015d0480(lVar7,*(undefined8 *)(*plVar9 + 0x40)), lVar4 == 0)) {
+        uVar5 = thunk_FUN_015f0d94();
+                    /* WARNING: Subroutine does not return */
+        FUN_0160ee7c(uVar5,0);
+      }
+      if (*(uint *)(plVar9 + 3) <= uVar8) goto LAB_039e3328;
+      plVar9[uVar8 + 4] = lVar7;
+      thunk_FUN_01656ef8((long)plVar9 + lVar10,lVar7);
+      plVar9 = *(long **)(unaff_x19 + 0x50);
+      uVar8 = uVar8 + 1;
+      lVar10 = lVar10 + 8;
+    } while (plVar9 != (long *)0x0);
+  }
+  goto LAB_039e330c;
+  while( true ) {
+    lVar10 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                       (lVar10,iVar6,*(undefined8 *)puVar1);
+    if (lVar10 != 0) {
+      lVar10 = *(long *)(unaff_x19 + 0xd8);
+      if (lVar10 == 0) break;
+      uVar5 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar10,iVar6,*(undefined8 *)puVar1);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc(*(long *)puVar3);
+      }
+      uVar5 = FUN_039e3690(uVar5);
+      FUN_043c219c(lVar10,iVar6,uVar5,*(undefined8 *)puVar2);
+    }
+    lVar10 = *(long *)(unaff_x19 + 0xd8);
+    iVar6 = iVar6 + 1;
+    if (lVar10 == 0) break;
+LAB_039e3214:
+    if (*(int *)(lVar10 + 0x18) <= iVar6) {
+      lVar10 = *(long *)(unaff_x19 + 0xd0);
+      if (lVar10 != 0) {
+        iVar6 = 0;
+        goto Unity_XR_Oculus_Utils__SetFoveationLevel;
+      }
+      break;
+    }
+  }
+  goto LAB_039e330c;
+Unity_XR_Oculus_Utils__SetFoveationLevel:
+  do {
+    if (*(int *)(lVar10 + 0x18) <= iVar6) {
+      return;
+    }
+    lVar10 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                       (lVar10,iVar6,*(undefined8 *)puVar1);
+    if (lVar10 != 0) {
+      lVar10 = *(long *)(unaff_x19 + 0xd0);
+      if (lVar10 == 0) break;
+      uVar5 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar10,iVar6,*(undefined8 *)puVar1);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc(*(long *)puVar3);
+      }
+      uVar5 = FUN_039e3690(uVar5);
+      FUN_043c219c(lVar10,iVar6,uVar5,*(undefined8 *)puVar2);
+    }
+    lVar10 = *(long *)(unaff_x19 + 0xd0);
+    iVar6 = iVar6 + 1;
+  } while (lVar10 != 0);
+LAB_039e330c:
+                    /* WARNING: Subroutine does not return */
+  FUN_0160eeb4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 38
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 039e3164
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 148
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_8', 'paired_field_refs_with_eye_source', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_148', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\039e3164_Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\manual-review-pack\A_must_review\038_p216_Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 039e3164
+PROGRAM: vrfs-libil2cpp.so
+SCORE: 148
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_8;paired_field_refs_with_eye_source;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_NativeMethods__GetEyeTrackedFoveatedRenderingSupported(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  long lVar4;
+  undefined8 uVar5;
+  long unaff_x19;
+  int iVar6;
+  long lVar7;
+  ulong uVar8;
+  long *unaff_x22;
+  long lVar9;
+  
+  puVar3 = PTR_DAT_06e298a8;
+  puVar2 = PTR_DAT_06e07ce0;
+  puVar1 = PTR_DAT_06dfc7f8;
+  if (unaff_x22 != (long *)0x0) {
+    uVar8 = 0;
+    lVar9 = 0x20;
+    do {
+      if ((long)(int)*(uint *)(unaff_x22 + 3) <= (long)uVar8) {
+        lVar9 = *(long *)(unaff_x19 + 0xd8);
+        if (lVar9 != 0) {
+          iVar6 = 0;
+          goto LAB_039e3214;
+        }
+        break;
+      }
+      if (*(uint *)(unaff_x22 + 3) <= uVar8) {
+LAB_039e3328:
+                    /* WARNING: Subroutine does not return */
+        FUN_0160eebc();
+      }
+      lVar7 = unaff_x22[uVar8 + 4];
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc();
+      }
+      lVar7 = FUN_039e3690(lVar7);
+      if ((lVar7 != 0) &&
+         (lVar4 = thunk_FUN_015d0480(lVar7,*(undefined8 *)(*unaff_x22 + 0x40)), lVar4 == 0)) {
+        uVar5 = thunk_FUN_015f0d94();
+                    /* WARNING: Subroutine does not return */
+        FUN_0160ee7c(uVar5,0);
+      }
+      if (*(uint *)(unaff_x22 + 3) <= uVar8) goto LAB_039e3328;
+      unaff_x22[uVar8 + 4] = lVar7;
+      thunk_FUN_01656ef8((long)unaff_x22 + lVar9,lVar7);
+      unaff_x22 = *(long **)(unaff_x19 + 0x50);
+      uVar8 = uVar8 + 1;
+      lVar9 = lVar9 + 8;
+    } while (unaff_x22 != (long *)0x0);
+  }
+  goto LAB_039e330c;
+  while( true ) {
+    lVar9 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                      (lVar9,iVar6,*(undefined8 *)puVar1);
+    if (lVar9 != 0) {
+      lVar9 = *(long *)(unaff_x19 + 0xd8);
+      if (lVar9 == 0) break;
+      uVar5 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar9,iVar6,*(undefined8 *)puVar1);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc(*(long *)puVar3);
+      }
+      uVar5 = FUN_039e3690(uVar5);
+      FUN_043c219c(lVar9,iVar6,uVar5,*(undefined8 *)puVar2);
+    }
+    lVar9 = *(long *)(unaff_x19 + 0xd8);
+    iVar6 = iVar6 + 1;
+    if (lVar9 == 0) break;
+LAB_039e3214:
+    if (*(int *)(lVar9 + 0x18) <= iVar6) {
+      lVar9 = *(long *)(unaff_x19 + 0xd0);
+      if (lVar9 != 0) {
+        iVar6 = 0;
+        goto Unity_XR_Oculus_Utils__SetFoveationLevel;
+      }
+      break;
+    }
+  }
+  goto LAB_039e330c;
+Unity_XR_Oculus_Utils__SetFoveationLevel:
+  do {
+    if (*(int *)(lVar9 + 0x18) <= iVar6) {
+      return;
+    }
+    lVar9 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                      (lVar9,iVar6,*(undefined8 *)puVar1);
+    if (lVar9 != 0) {
+      lVar9 = *(long *)(unaff_x19 + 0xd0);
+      if (lVar9 == 0) break;
+      uVar5 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar9,iVar6,*(undefined8 *)puVar1);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_016466fc(*(long *)puVar3);
+      }
+      uVar5 = FUN_039e3690(uVar5);
+      FUN_043c219c(lVar9,iVar6,uVar5,*(undefined8 *)puVar2);
+    }
+    lVar9 = *(long *)(unaff_x19 + 0xd0);
+    iVar6 = iVar6 + 1;
+  } while (lVar9 != 0);
+LAB_039e330c:
+                    /* WARNING: Subroutine does not return */
+  FUN_0160eeb4();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 39
+FUNCTION_NAME: System.Array$$InternalArray__set_Item<OVRRaycaster.RaycastHit>
+ENTRY_POINT: 03098c68
+MANUAL_PRIORITY_SCORE: 216
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 142
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_1', 'validity_or_gating_hits_6', 'strong_pose_or_ray_construction_hits_4', 'ray_or_cast_sink_hits_5', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_interaction_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_142', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_structure_combo_18', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\general-structure-results\90_plus_framework_support_only_near_certain\03098c68_System.Array$$InternalArray__set_Item_OVRRaycaster.RaycastHit_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrfs\manual-review-pack\A_must_review\039_p216_System.Array$$InternalArray__set_Item_OVRRaycaster.RaycastHit_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array$$InternalArray__set_Item<OVRRaycaster.RaycastHit>
+ENTRY_POINT: 03098c68
+PROGRAM: vrfs-libil2cpp.so
+SCORE: 142
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;structure_combo
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_6;strong_pose_or_ray_construction_hits_4;ray_or_cast_sink_hits_5;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_4
+*/
+
+
+undefined8
+System_Array__InternalArray__set_Item<OVRRaycaster_RaycastHit>
+          (long param_1,undefined8 param_2,undefined8 param_3)
+
+{
+  long lVar1;
+  ulong uVar2;
+  long unaff_x19;
+  long unaff_x20;
+  int unaff_w21;
+  long *unaff_x22;
+  undefined8 *unaff_x23;
+  undefined8 *unaff_x24;
+  
+  while (lVar1 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                           (param_1,unaff_w21,param_3), lVar1 != 0) {
+    uVar2 = Unity_Collections_NativeArray<OVRPlugin_Qpl_Annotation>__Copy(lVar1,0);
+    if ((uVar2 & 1) == 0) {
+      return 0;
+    }
+    do {
+      if ((*(long *)(unaff_x19 + 0xf0) == 0) ||
+         (lVar1 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                            (*(long *)(unaff_x19 + 0xf0),unaff_w21,*unaff_x24), lVar1 == 0))
+      goto LAB_03098ce4;
+      uVar2 = FUN_036e1c40(lVar1,0);
+      if ((uVar2 & 1) != 0) {
+        return 1;
+      }
+      lVar1 = *(long *)(unaff_x19 + 0xf0);
+      unaff_w21 = unaff_w21 + 1;
+      if (lVar1 == 0) goto LAB_03098ce4;
+      while (*(int *)(lVar1 + 0x18) <= unaff_w21) {
+        unaff_x20 = Fusion_CloudServices_<get_CommittedPlayerInternal>d__112__System_Collections_Generic_IEnumerable<Fusion_PlayerRef>_GetEnumerator
+                              (unaff_x20,0);
+        if (*(int *)(*unaff_x22 + 0xe0) == 0) {
+          thunk_FUN_016466fc();
+        }
+        uVar2 = FUN_051d2ac0(unaff_x20,0,0);
+        if ((uVar2 & 1) == 0) {
+          return 1;
+        }
+        if (unaff_x20 == 0) goto LAB_03098ce4;
+        FUN_0431b25c(unaff_x20,*(undefined8 *)(unaff_x19 + 0xf0),*unaff_x23);
+        lVar1 = *(long *)(unaff_x19 + 0xf0);
+        if (lVar1 == 0) goto LAB_03098ce4;
+        unaff_w21 = 0;
+      }
+      lVar1 = System_Collections_ObjectModel_ReadOnlyCollection<ComputedTransitionProperty>__System_Collections_Generic_IList<T>_set_Item
+                        (lVar1,unaff_w21,*unaff_x24);
+      if (lVar1 == 0) goto LAB_03098ce4;
+      uVar2 = FUN_051de2f8(lVar1,0);
+    } while ((uVar2 & 1) == 0);
+    param_1 = *(long *)(unaff_x19 + 0xf0);
+    if (param_1 == 0) break;
+    param_3 = *unaff_x24;
+  }
+LAB_03098ce4:
+                    /* WARNING: Subroutine does not return */
+  FUN_0160eeb4();
+}
+
+
+
+END_DECOMPILED_FUNCTION

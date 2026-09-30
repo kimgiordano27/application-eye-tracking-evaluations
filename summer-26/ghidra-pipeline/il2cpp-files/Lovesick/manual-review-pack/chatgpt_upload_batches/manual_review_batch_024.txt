@@ -1,0 +1,1095 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 93
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$EnsureWriteBuffer
+ENTRY_POINT: 0172ce40
+MANUAL_PRIORITY_SCORE: 480
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_5', 'weak_xr_or_state_hits_10', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_20', 'ray_or_cast_sink_hits_7', 'ui_or_gameplay_sink_hits_8', 'strong_file_logging_hits_8', 'telemetry_or_network_hits_13', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_12', 'functionality_data_collection_or_telemetry_hits_19']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\0172ce40_Newtonsoft.Json.JsonTextWriter$$EnsureWriteBuffer.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\093_p480_Newtonsoft.Json.JsonTextWriter$$EnsureWriteBuffer.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$EnsureWriteBuffer
+ENTRY_POINT: 0172ce40
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 280
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_5;weak_xr_or_state_hits_10;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_20;ray_or_cast_sink_hits_7;ui_or_gameplay_sink_hits_8;strong_file_logging_hits_8;telemetry_or_network_hits_13;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_12;functionality_data_collection_or_telemetry_hits_19
+*/
+
+
+void Newtonsoft_Json_JsonTextWriter__EnsureWriteBuffer(long param_1)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  bool in_ZR;
+  bool in_CY;
+  int iVar13;
+  long lVar14;
+  uint in_w8;
+  undefined8 uVar15;
+  undefined8 *unaff_x27;
+  
+  if (in_CY && !in_ZR) {
+    *(undefined8 *)(param_1 + 0x1a0) =
+         *(undefined8 *)
+          Method_Oculus_Interaction_InteractableRegistry_InteractableSet_Enumerator<RayInteractor,_RayInteractable>_get_Current__
+    ;
+    *(undefined8 *)(param_1 + 0x1a8) = 0x51bc;
+    if (in_w8 != 0x19) {
+      *(undefined8 *)(param_1 + 0x1b0) = *(undefined8 *)StringLiteral_9793;
+      *(undefined8 *)(param_1 + 0x1b8) = 0x474;
+      if (0x1a < in_w8) {
+        *(undefined8 *)(param_1 + 0x1c0) =
+             *(undefined8 *)DG_Tweening_Core_DOTweenExternalCommand_TypeInfo;
+        *(undefined8 *)(param_1 + 0x1c8) = 0x475;
+        if (in_w8 != 0x1b) {
+          *(undefined8 *)(param_1 + 0x1d0) =
+               *(undefined8 *)
+                Field_<PrivateImplementationDetails>_5CF7BD3F1944E22A14D44389108F5092C7A77217102E21BBDC75DE2C932E35A1
+          ;
+          *(undefined8 *)(param_1 + 0x1d8) = 0x476;
+          if (0x1c < in_w8) {
+            *(undefined8 *)(param_1 + 0x1e0) =
+                 *(undefined8 *)Method_System_Collections_Generic_Dictionary<string,_string>__ctor__
+            ;
+            *(undefined8 *)(param_1 + 0x1e8) = 0x477;
+            if (in_w8 != 0x1d) {
+              *(undefined8 *)(param_1 + 0x1f0) = *(undefined8 *)StringLiteral_10300;
+              *(undefined8 *)(param_1 + 0x1f8) = 0x478;
+              if (0x1e < in_w8) {
+                uVar15 = *(undefined8 *)PTR_DAT_033f6308;
+                *(undefined8 *)(param_1 + 0x208) = 0x479;
+                *(undefined8 *)(param_1 + 0x200) = uVar15;
+                if (in_w8 != 0x1f) {
+                  uVar15 = *(undefined8 *)
+                            Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<Stream>_get_Task__
+                  ;
+                  *(undefined8 *)(param_1 + 0x218) = 0x47a;
+                  *(undefined8 *)(param_1 + 0x210) = uVar15;
+                  if (0x20 < in_w8) {
+                    uVar15 = *(undefined8 *)
+                              Method_System_Collections_Generic_List_Enumerator<PlacePoint>_Dispose__
+                    ;
+                    *(undefined8 *)(param_1 + 0x228) = 0x47b;
+                    *(undefined8 *)(param_1 + 0x220) = uVar15;
+                    if (in_w8 != 0x21) {
+                      uVar15 = *(undefined8 *)StringLiteral_2147;
+                      *(undefined8 *)(param_1 + 0x238) = 0x47c;
+                      *(undefined8 *)(param_1 + 0x230) = uVar15;
+                      if (0x22 < in_w8) {
+                        uVar15 = *(undefined8 *)Method_System_Linq_Enumerable_Contains<int>__;
+                        *(undefined8 *)(param_1 + 0x248) = 0x47d;
+                        *(undefined8 *)(param_1 + 0x240) = uVar15;
+                        if (in_w8 != 0x23) {
+                          uVar15 = *(undefined8 *)
+                                    Method_System_Collections_Generic_Dictionary<char,_char>_Add__;
+                          *(undefined8 *)(param_1 + 600) = 0x25;
+                          *(undefined8 *)(param_1 + 0x250) = uVar15;
+                          if (0x24 < in_w8) {
+                            uVar15 = *(undefined8 *)System_Xml_Linq_XObject_TypeInfo;
+                            *(undefined8 *)(param_1 + 0x268) = 0x5221;
+                            *(undefined8 *)(param_1 + 0x260) = uVar15;
+                            if (in_w8 != 0x25) {
+                              uVar15 = *(undefined8 *)
+                                        Method_System_Collections_Generic_Dictionary_Enumerator<XmlQualifiedName,_SchemaElementDecl>_Dispose__
+                              ;
+                              *(undefined8 *)(param_1 + 0x278) = 0x402;
+                              *(undefined8 *)(param_1 + 0x270) = uVar15;
+                              if (0x26 < in_w8) {
+                                uVar15 = *(undefined8 *)
+                                          Method_System_Collections_Generic_Dictionary<XmlQualifiedName,_SchemaElementDecl>_Add__
+                                ;
+                                *(undefined8 *)(param_1 + 0x288) = 0x4e8;
+                                *(undefined8 *)(param_1 + 0x280) = uVar15;
+                                if (in_w8 != 0x27) {
+                                  uVar15 = *(undefined8 *)
+                                            Method_UnityEngine_ProBuilder_MeshOperations_ElementSelection_<>c_<FindHoles>b__26_0__
+                                  ;
+                                  *(undefined8 *)(param_1 + 0x298) = 0x4f31;
+                                  *(
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da5194();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 94
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync
+ENTRY_POINT: 0172b820
+MANUAL_PRIORITY_SCORE: 480
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_9', 'weak_xr_or_state_hits_19', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_13', 'ui_or_gameplay_sink_hits_16', 'strong_file_logging_hits_13', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_21', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\0172b820_Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\094_p480_Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync
+ENTRY_POINT: 0172b820
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 280
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_9;weak_xr_or_state_hits_19;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_13;ui_or_gameplay_sink_hits_16;strong_file_logging_hits_13;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_21;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void Newtonsoft_Json_JsonTextWriter__DoWriteValueAsync(long param_1)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  undefined *puVar13;
+  int iVar14;
+  long lVar15;
+  undefined8 uVar16;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  thunk_FUN_00d48444(*(undefined8 *)(param_1 + 0xef8));
+  thunk_FUN_00d48444(StringLiteral_12994);
+                    /* try { // try from 0172b834 to 0182b847 has its CatchHandler @ 0172bc58 */
+  thunk_FUN_00d48444(StringLiteral_1707);
+  thunk_FUN_00d48444(OVRPlugin_OVRP_1_16_0_TypeInfo);
+                    /* try { // try from 0172b84c to 0182b857 has its CatchHandler @ 0172bcf4 */
+  thunk_FUN_00d48444(
+                    Method_System_Linq_Expressions_Interpreter_CastInstruction_CastInstructionT<ulong>__ctor__
+                    );
+                    /* try { // try from 0172b85c to 0182b863 has its CatchHandler @ 0172bc60 */
+  thunk_FUN_00d48444(PTR_DAT_033ef550);
+  thunk_FUN_00d48444(Method_System_Reflection_SignatureType_get_CustomAttributes__);
+  thunk_FUN_00d48444(UnityEngine_UIElements_TextureRegistry_TypeInfo);
+                    /* try { // try from 0172b880 to 0182b88b has its CatchHandler @ 0172bc70 */
+  thunk_FUN_00d48444(System_Collections_Hashtable_bucket___TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary_ValueCollection_Enumerator<XmlQualifiedName,_SchemaAttDef>_Dispose__
+                    );
+                    /* try { // try from 0172b89c to 0182b8a3 has its CatchHandler @ 0172bc54 */
+  thunk_FUN_00d48444(StringLiteral_12907);
+                    /* try { // try from 0172b8a4 to 0182b8af has its CatchHandler @ 0172bc6c */
+  thunk_FUN_00d48444(PTR_DAT_033f4138);
+  thunk_FUN_00d48444(Method_System_Xml_Schema_XsdBuilder_InitComplexType__);
+                    /* try { // try from 0172b8c0 to 0182b8c7 has its CatchHandler @ 0172bc50 */
+  thunk_FUN_00d48444(Method_Unity_Burst_Intrinsics_Arm_Neon_veorq_s8__);
+  thunk_FUN_00d48444(StringLiteral_259);
+                    /* try { // try from 0172b8d4 to 0182b9ab has its CatchHandler @ 0172bc8c */
+  thunk_FUN_00d48444(UnityEngine_Keyframe_var);
+  thunk_FUN_00d48444(
+                    Method_System_Threading_Tasks_Task<CustomMatchmaking_RoomOperationResult>_GetAwaiter__
+                    );
+  thunk_FUN_00d48444(System_Collections_Generic_Dictionary<string,_List<string>>_TypeInfo);
+  thunk_FUN_00d48444(UnityEngine_UIElements_MinMaxSlider_UxmlFactory_TypeInfo);
+  thunk_FUN_00d48444(System_ComponentModel_PropertyDescriptor_TypeInfo);
+  thunk_FUN_00d48444(PTR_DAT_033f6520);
+  thunk_FUN_00d48444(PTR_DAT_033f4bb0);
+  thunk_FUN_00d48444(StringLiteral_12604);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_List<SizeOptimizedBinaryWriter_WriteCommand>__ctor__
+                    );
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_InputSystem_LowLevel_InputStateHistory<__Il2CppFullySharedGenericStructType>_set_Item__
+                    );
+  thunk_FUN_00d48444(Meta_XR_ImmersiveDebugger_UserInterface_Generic_InteractableController_TypeInfo
+                    );
+  thunk_FUN_00d48444(
+                    Field_<PrivateImplementationDetails>_73E6E64B64CCADF091BE8790DD4A758DB959C64B0FB0C09024A160357331B89E
+                    );
+  thunk_FUN_00d48444(StringLiteral_12588);
+  thunk_FUN_00d48444(PTR_DAT_033f3d00);
+  thunk_FUN_00d48444(StringLiteral_1396);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary<XmlQualifiedName,_SchemaElementDecl>_Add__
+                    );
+  thunk_FUN_00d48444(Method_System_Collections_Generic_List<RaycastHit>__ctor__);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_List<TimeNotificationBehaviour_NotificationEntry>_Add__
+                    );
+  thunk_FUN_00d48444(OVR_OpenVR_IVROverlay__SetOverlayTextureColorSpace_TypeInfo);
+  thunk_FUN_00d48444(Obi_VoxelPathFinder_<>c__DisplayClass7_0_TypeInfo);
+  thunk_FUN_00d48444(UnityEngine_UI_ILayoutElement_TypeInfo);
+  thunk_FUN_00d48444(PTR_DAT_033f49f0);
+  thunk_FUN_00d48444(Method_UnityEngine_InputSystem_InputManager_GetUnsupportedDevices__);
+  thunk_FUN_00d48444(UnityEngine_UIElements_UIR_TextureSlotManager_TypeInfo);
+  thunk_FUN_00d48444(PTR_DAT_033eead8);
+  thunk_FUN_00d48444(Method_System_IO_FileStream_InitBuffer__);
+  thunk_FUN_00d48444(Method_Unity_Burst_Intrinsics_Arm_Neon_vqdmulls_laneq_s32__);
+  thunk_FUN_00d48444(UnityEngine_Pool_IObjectPool<HashSet<int>>_TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_2359);
+  thunk_FUN_00d48444(Method_System_Nullable<Configuration>__ctor__);
+  thunk_FUN_00d48444(UnityEngine_ProBuilder_Poly2Tri_PointSet_TypeInfo);
+  thunk_FUN_00d48444(UnityEngine_Rendering_TextureCurveParameter_TypeInfo);
+  thunk_FUN_00d48444(UnityEngine_XR_ARFoundation
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da5194();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 95
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync
+ENTRY_POINT: 0172bcc8
+MANUAL_PRIORITY_SCORE: 480
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_16', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_11', 'ui_or_gameplay_sink_hits_14', 'strong_file_logging_hits_11', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_21', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\0172bcc8_Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\095_p480_Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteValueAsync
+ENTRY_POINT: 0172bcc8
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 280
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_16;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_11;ui_or_gameplay_sink_hits_14;strong_file_logging_hits_11;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_21;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void Newtonsoft_Json_JsonTextWriter__DoWriteValueAsync(void)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  undefined *puVar13;
+  int iVar14;
+  long lVar15;
+  undefined8 uVar16;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  thunk_FUN_00d48444();
+  thunk_FUN_00d48444(char___var);
+  thunk_FUN_00d48444(UnityEngine_Rendering_Vector2Parameter_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_InputSystem_InputSystem_RegisterLayout<AndroidGamepadWithDpadButtons>__
+                    );
+                    /* catch() { ... } // from try @ 0172b408 with catch @ 0172bcf4
+                       catch() { ... } // from try @ 0172b6c8 with catch @ 0172bcf4
+                       catch() { ... } // from try @ 0172b814 with catch @ 0172bcf4
+                       catch() { ... } // from try @ 0172b84c with catch @ 0172bcf4
+                       catch() { ... } // from try @ 0172c4dc with catch @ 0172bcf4 */
+  thunk_FUN_00d48444(
+                    Sirenix_OdinInspector_SelfValidationResultItemExtensions_<>c__DisplayClass8_0_TypeInfo
+                    );
+  thunk_FUN_00d48444(System_Func<Vector2,_TriangulationPoint>_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<Stream>_get_Task__
+                    );
+  thunk_FUN_00d48444(PTR_DAT_033edd00);
+  thunk_FUN_00d48444(System_Collections_Generic_List<DebugGizmoType>_TypeInfo);
+  thunk_FUN_00d48444(Method_UnityEngine_XR_Interaction_Toolkit_XRSocketInteractor_OnContactRemoved__
+                    );
+  thunk_FUN_00d48444(Method_System_Linq_Enumerable_Contains<int>__);
+  thunk_FUN_00d48444(StringLiteral_11892);
+                    /* try { // try from 0172bd50 to 0182bd7b has its CatchHandler @ 0172c7b8 */
+  thunk_FUN_00d48444(StringLiteral_6317);
+  thunk_FUN_00d48444(Method_Unity_Burst_Intrinsics_Arm_Neon_vrhadd_u8__);
+  thunk_FUN_00d48444(StringLiteral_8629);
+  thunk_FUN_00d48444(UnityEngine_XR_ARSubsystems_XRDepthSubsystemDescriptor_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary<IInteractorView,_List<IInteractorView>>_get_Item__
+                    );
+  thunk_FUN_00d48444(System_Predicate<Camera>_TypeInfo);
+  thunk_FUN_00d48444(
+                    Field_<PrivateImplementationDetails>_F352EC09EA2A771F127ED6C5C17DEED5559EA0F490AB35C9D5CC4B7BFABDC02E
+                    );
+  thunk_FUN_00d48444(
+                    Method_Oculus_Interaction_InteractableRegistry_InteractableSet_Enumerator<RayInteractor,_RayInteractable>_get_Current__
+                    );
+  thunk_FUN_00d48444(StringLiteral_519);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_List<PolyNode>_Add__);
+  thunk_FUN_00d48444(StringLiteral_14128);
+  thunk_FUN_00d48444(UIPlacementManager_<>c__DisplayClass6_0_TypeInfo);
+  thunk_FUN_00d48444(Method_UnityEngine_Events_UnityEvent<AudioClip>__ctor__);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary_Enumerator<XmlQualifiedName,_SchemaElementDecl>_Dispose__
+                    );
+  thunk_FUN_00d48444(StringLiteral_12676);
+  thunk_FUN_00d48444(Method_System_Memory<byte>_Equals__);
+  thunk_FUN_00d48444(System_ComponentModel_CultureInfoConverter_CultureComparer_TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_10300);
+  thunk_FUN_00d48444(StringLiteral_2);
+  thunk_FUN_00d48444(PTR_DAT_033f03b8);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary<InternedString,_InputControlLayout_Collection_PrecompiledLayout>_set_Item__
+                    );
+  thunk_FUN_00d48444(Method_Unity_Burst_Intrinsics_Arm_Neon_vsubd_s64__);
+  thunk_FUN_00d48444(Method_UnityEngine_Object_FindObjectOfType<SongManager>__);
+  thunk_FUN_00d48444(StringLiteral_13418);
+  thunk_FUN_00d48444(UnityEngine_ProBuilder_MeshOperations_ExtrudeElements_<>c_TypeInfo);
+  thunk_FUN_00d48444(OVR_OpenVR_IVROverlay__SetOverlayTransformAbsolute_TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_11311);
+  thunk_FUN_00d48444(System_NotSupportedException_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_XR_ARFoundation_SubsystemLifecycleManager<XRReferencePointSubsystem,_XRReferencePointSubsystemDescriptor,_XRReferencePointSubsystem_Provider>_get_subsystem__
+                    );
+  thunk_FUN_00d48444(Newtonsoft_Json_Serialization_IValueProvider_TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_9059);
+  thunk_FUN_00d48444(PTR_DAT_033f6700);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_List_Enumerator<PlacePoint>_Dispose__);
+  thunk_FUN_00d48444(PTR_DAT_033f3278);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_UIElements_PointerCaptureEventBase<PointerCaptureOutEvent>_GetPooled__
+                    );
+  thunk_FUN_00d48444(OVRTrackedKeyboardHands_TypeInfo)
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da5194();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 96
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteRawValueAsync
+ENTRY_POINT: 0172bf0c
+MANUAL_PRIORITY_SCORE: 480
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_15', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_11', 'ui_or_gameplay_sink_hits_13', 'strong_file_logging_hits_11', 'telemetry_or_network_hits_21', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_20', 'functionality_data_collection_or_telemetry_hits_21']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\0172bf0c_Newtonsoft.Json.JsonTextWriter$$DoWriteRawValueAsync.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Lovesick\manual-review-pack\A_must_review\096_p480_Newtonsoft.Json.JsonTextWriter$$DoWriteRawValueAsync.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonTextWriter$$DoWriteRawValueAsync
+ENTRY_POINT: 0172bf0c
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 280
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;data_collection;telemetry;frame_behavior;structure_combo
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_15;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_11;ui_or_gameplay_sink_hits_13;strong_file_logging_hits_11;telemetry_or_network_hits_21;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_20;functionality_data_collection_or_telemetry_hits_21
+*/
+
+
+void Newtonsoft_Json_JsonTextWriter__DoWriteRawValueAsync(void)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  undefined *puVar13;
+  int iVar14;
+  long lVar15;
+  undefined8 uVar16;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  thunk_FUN_00d48444(PTR_DAT_033f1d60);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_Dictionary<Pushable,_Hand>_Remove__);
+  thunk_FUN_00d48444(Method_AnimatorDisabler_<Disable>d__3_System_Collections_IEnumerator_Reset__);
+  thunk_FUN_00d48444(Method_OVRBounded2D_TryGetBoundaryPoints__);
+  thunk_FUN_00d48444(System_Linq_Expressions_MethodCallExpression0_TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_1564);
+  thunk_FUN_00d48444(StringLiteral_8182);
+  thunk_FUN_00d48444(
+                    Field_<PrivateImplementationDetails>_5CF7BD3F1944E22A14D44389108F5092C7A77217102E21BBDC75DE2C932E35A1
+                    );
+  thunk_FUN_00d48444(StringLiteral_10683);
+  thunk_FUN_00d48444(Unity_Mathematics_double2_TypeInfo);
+  thunk_FUN_00d48444(PTR_DAT_033ece40);
+  thunk_FUN_00d48444(Method_UnityEngine_GameObject_GetComponentInChildren<AudioSource>__);
+  thunk_FUN_00d48444(OVR_OpenVR_IVRChaperoneSetup__GetLiveSeatedZeroPoseToRawTrackingPose_TypeInfo);
+                    /* try { // try from 0172bfac to 0182bfb7 has its CatchHandler @ 0172c7a0 */
+  thunk_FUN_00d48444(Method_UnityEngine_AndroidJavaObject_Get<AndroidJavaObject>__);
+  thunk_FUN_00d48444(TMPro_FastAction_TypeInfo);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_List<RectInt>_get_Item__);
+  thunk_FUN_00d48444(System_Data_ExpressionNode___TypeInfo);
+  thunk_FUN_00d48444(Method_UnityEngine_Playables_ScriptPlayable<ParticleControlPlayable>_Create__);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_UIElements_BaseFieldTraits<int,_UxmlIntAttributeDescription>_Init__
+                    );
+  thunk_FUN_00d48444(System_Collections_Generic_IEqualityComparer<string>_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_Dictionary_KeyCollection<OVRGrabbable,_int>_GetEnumerator__
+                    );
+  thunk_FUN_00d48444(
+                    Method_System_Collections_Generic_List<ValueTuple<string,_string,_LogType>>_Add__
+                    );
+  thunk_FUN_00d48444(
+                    Method_Polenter_Serialization_Advanced_SizeOptimizedBinaryReader_readHeader<Type>__
+                    );
+  thunk_FUN_00d48444(UnityEngine_XR_XRDevice_TypeInfo);
+  thunk_FUN_00d48444(
+                    Method_Newtonsoft_Json_Serialization_JsonSerializerInternalWriter_CheckForCircularReference__
+                    );
+  thunk_FUN_00d48444(StringLiteral_11548);
+  thunk_FUN_00d48444(PTR_DAT_033f3360);
+  thunk_FUN_00d48444(Method_UnityEngine_Mesh_SetNormals<__Il2CppFullySharedGenericStructType>__);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_XR_Management_XRLoader_GetLoadedSubsystem<XRSessionSubsystem>__
+                    );
+  thunk_FUN_00d48444(Method_System_ThrowHelper_ThrowArgumentException__);
+  thunk_FUN_00d48444(Method_UnityEngine_GameObject_TryGetComponent<DebugUIHandlerColor>__);
+  thunk_FUN_00d48444(PTR_DAT_033f54e8);
+  thunk_FUN_00d48444(PTR_DAT_033f3808);
+  thunk_FUN_00d48444(StringLiteral_12345);
+  thunk_FUN_00d48444(Oculus_Interaction_PointableCanvasModule_<>c__DisplayClass32_0_TypeInfo);
+  thunk_FUN_00d48444(PTR_DAT_033f67a0);
+  thunk_FUN_00d48444(PTR_DAT_033f2e48);
+  thunk_FUN_00d48444(PTR_DAT_033ef9a8);
+  thunk_FUN_00d48444(StringLiteral_12719);
+  thunk_FUN_00d48444(Method_UnityEngine_Events_UnityEvent<Collider>__ctor__);
+  thunk_FUN_00d48444(PTR_DAT_033f00e0);
+  thunk_FUN_00d48444(Method_UnityEngine_Component_GetComponent<MaterialPropertyBlockEditor>__);
+  thunk_FUN_00d48444(StringLiteral_10252);
+  thunk_FUN_00d48444(Method_System_Xml_Serialization_XmlCustomFormatter_FromEnum__);
+  thunk_FUN_00d48444(Oculus_Interaction_Body_PoseDetection_BodyPoseData_<>c_TypeInfo);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_Dictionary<char,_char>_Add__);
+  thunk_FUN_00d48444(Meta_WitAi_Data_Entities_WitDynamicEntity___TypeInfo);
+  thunk_FUN_00d48444(StringLiteral_11270);
+  thunk_FUN_00d48444(StringLiteral_2147);
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_InputSystem_Utilities_CallbackArray<InputDeviceCommandDelegate>_get_Item__
+                    );
+  thunk_FUN_00d48444(
+                    Method_UnityEngine_InputSystem_Utilities_ReadOnlyArray<InputEventTrace_DeviceInfo>_op_Implicit__
+                    );
+  thunk_FUN_00d48444(PTR_DAT_033ed060);
+  thunk_FUN_00d48444(Method_System_Xml_Schema_Parser_StartParsing__);
+  thunk_FUN_00d48444(System_Action<DebugUIHandlerPanel>_TypeInfo);
+  thunk_FUN_00d48444(Method_System_Collections_Generic_List<PlayableDirector>_get_Item__);
+  thunk_FUN_00d48444(
+                    DigitalOpus_MB_Co
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da5194();
+}
+
+
+
+END_DECOMPILED_FUNCTION

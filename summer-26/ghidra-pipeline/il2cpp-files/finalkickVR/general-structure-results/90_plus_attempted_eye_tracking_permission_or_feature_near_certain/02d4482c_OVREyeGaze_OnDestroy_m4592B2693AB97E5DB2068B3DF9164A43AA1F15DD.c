@@ -1,0 +1,24 @@
+/*
+FUNCTION_NAME: OVREyeGaze_OnDestroy_m4592B2693AB97E5DB2068B3DF9164A43AA1F15DD
+ENTRY_POINT: 02d4482c
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 110
+LABEL: attempted_eye_tracking_permission_or_feature_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;gaze_retrieval;data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;telemetry;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;telemetry_or_network_hits_1;attempted_eye_tracking_permission_or_feature_enable;functionality_permission_setup;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void OVREyeGaze_OnDestroy_m4592B2693AB97E5DB2068B3DF9164A43AA1F15DD(long param_1)
+
+{
+  OVRPermissionsRequester_remove_PermissionGranted_mE435AF3A1F8791C5EC6DE9E9F82F957999E95A73
+            (*(undefined8 *)(param_1 + 0x68),0);
+  return;
+}
+
+

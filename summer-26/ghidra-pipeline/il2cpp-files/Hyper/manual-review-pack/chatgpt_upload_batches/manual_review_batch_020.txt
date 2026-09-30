@@ -1,0 +1,1100 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 96
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_ObjectCreationHandling
+ENTRY_POINT: 08e0a0bc
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_9', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\general-structure-results\70_high_general_structure_review_high\08e0a0bc_Newtonsoft.Json.JsonSerializer$$get_ObjectCreationHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\manual-review-pack\A_must_review\096_p199_Newtonsoft.Json.JsonSerializer$$get_ObjectCreationHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_ObjectCreationHandling
+ENTRY_POINT: 08e0a0bc
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_9;strong_file_logging_hits_2;telemetry_or_network_hits_4
+*/
+
+
+void Newtonsoft_Json_JsonSerializer__get_ObjectCreationHandling(long param_1,undefined8 param_2)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined8 uVar5;
+  undefined8 *puVar6;
+  undefined8 uVar7;
+  long lVar8;
+  ulong uVar9;
+  int *piVar10;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  undefined8 *unaff_x22;
+  long *plVar11;
+  long lVar12;
+  long *unaff_x25;
+  
+  uVar5 = (**(code **)(param_1 + 0x548))(param_2,*(undefined8 *)(param_1 + 0x550));
+  FUN_08bcc3c0(uVar5,*(undefined8 *)PTR_DAT_0ac6a538,0);
+  FUN_09f7cf00();
+  plVar11 = (long *)*unaff_x22;
+  if (plVar11 != (long *)0x0) {
+    lVar8 = *plVar11;
+    uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    uVar5 = *(undefined8 *)PTR_DAT_0ac6a530;
+    if (uVar9 != 0) {
+      piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar10 + -2) == *(long *)PTR_DAT_0ac36df8) {
+          puVar6 = (undefined8 *)(lVar8 + (long)*piVar10 * 0x10 + 0x138);
+          goto LAB_08e0a178;
+        }
+        uVar9 = uVar9 - 1;
+        piVar10 = piVar10 + 4;
+      } while (uVar9 != 0);
+    }
+    puVar6 = (undefined8 *)FUN_04980e68(plVar11,*(long *)PTR_DAT_0ac36df8,0);
+LAB_08e0a178:
+    uVar9 = (*(code *)*puVar6)(plVar11,uVar5,puVar6[1]);
+    if ((uVar9 & 1) == 0) {
+      if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+         (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar8 == 0))
+      goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+      FUN_0a17ba14(lVar8,0,0);
+    }
+    lVar8 = *(long *)(unaff_x19 + 0x28);
+    uVar5 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+    FUN_08cc3ad0();
+    if (lVar8 != 0) {
+      FUN_05291894(lVar8,uVar5,0);
+      if (((*(long *)(unaff_x19 + 0x28) != 0) &&
+          (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x28),0), lVar8 != 0)) &&
+         (FUN_0a17ba14(lVar8,0,0), puVar2 = PTR_DAT_0ac09ea8, puVar1 = PTR_DAT_0ac09cd0,
+         unaff_x20 != (long *)0x0)) {
+        lVar8 = *unaff_x20;
+        uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+        if (uVar9 != 0) {
+          piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar10 + -2) == *unaff_x25) {
+              puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 4) * 0x10 + 0x138);
+              goto LAB_08e0a27c;
+            }
+            uVar9 = uVar9 - 1;
+            piVar10 = piVar10 + 4;
+          } while (uVar9 != 0);
+        }
+        puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a27c:
+        puVar4 = PTR_DAT_0ac6a510;
+        puVar3 = PTR_DAT_0ac6a4f8;
+        uVar5 = (*(code *)*puVar6)();
+        uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+        FUN_05f878c4();
+        uVar5 = FUN_05d0896c(uVar5,uVar7,*(undefined8 *)puVar2);
+        *(undefined8 *)(unaff_x21 + 0x30) = uVar5;
+        thunk_FUN_049ee3d8();
+        lVar8 = *unaff_x20;
+        uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+        if (uVar9 != 0) {
+          piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar10 + -2) == *unaff_x25) {
+              puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 5) * 0x10 + 0x138);
+              goto LAB_08e0a334;
+            }
+            uVar9 = uVar9 - 1;
+            piVar10 = piVar10 + 4;
+          } while (uVar9 != 0);
+        }
+        puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a334:
+        uVar5 = (*(code *)*puVar6)();
+        uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar3);
+        FUN_05f851bc();
+        uVar5 = FUN_05d0806c(uVar5,uVar7,*(undefined8 *)puVar4);
+        *(undefined8 *)(unaff_x21 + 0x28) = uVar5;
+        thunk_FUN_049ee3d8();
+        lVar8 = *unaff_x20;
+        lVar12 = *(long *)(unaff_x19 + 0x30);
+        uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+        if (uVar9 != 0) {
+          piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar10 + -2) == *unaff_x25) {
+              puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 2) * 0x10 + 0x138);
+              goto LAB_08e0a3d8;
+            }
+            uVar9 = uVar9 - 1;
+            piVar10 = piVar10 + 4;
+          } while (uVar9 != 0);
+        }
+        puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a3d8:
+        uVar5 = (*(code *)*puVar6)();
+        uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+        uVar9 = (ulong)*(ushort *)(*unaff_x20 + 0x12e);
+        if (uVar9 != 0) {
+          lVar8 = *(long *)(*unaff_x20 + 0xb0) + 8;
+          do {
+            if (*(long *)(lVar8 + -8) == *unaff_x25) goto LAB_08e0a448;
+            uVar9 = uVar9 - 1;
+            lVar8 = lVar8 + 0x10;
+          } while (uVar9 != 0);
+        }
+        FUN_04980e68();
+LAB_08e0a448:
+        FUN_05f878c4(uVar7);
+        puVar3 = PTR_DAT_0ac37c00;
+        puVar2 = PTR_DAT_0ac0a0f8;
+        puVar1 = PTR_DAT_0ac09e20;
+        if (lVar12 != 0) {
+          uVar5 = FUN_04d0b2fc(lVar12,uVar5,uVar7,0);
+          uVar7 = FUN_08aa1c24();
+          FUN_05b466fc(uVar5,uVar7,*(undefined8 *)puVar3);
+          uVar5 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+          FUN_08cc3ad0();
+          if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+            thunk_FUN_049a583c();
+          }
+          uVar5 = FUN_09b8bbb0(uVar5,0);
+          uVar7 = FUN_08aa1c24();
+          FUN_05b466fc(uVar5,uVar7,*(undefined8 *)puVar1);
+          return;
+        }
+      }
+    }
+  }
+Newtonsoft_Json_JsonSerializer__get_DateParseHandling:
+                    /* WARNING: Subroutine does not return */
+  FUN_0494818c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 97
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_NullValueHandling
+ENTRY_POINT: 08e09ff4
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_12', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_7']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\general-structure-results\70_high_general_structure_review_high\08e09ff4_Newtonsoft.Json.JsonSerializer$$get_NullValueHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\manual-review-pack\A_must_review\097_p199_Newtonsoft.Json.JsonSerializer$$get_NullValueHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_NullValueHandling
+ENTRY_POINT: 08e09ff4
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_12;strong_file_logging_hits_2;telemetry_or_network_hits_7
+*/
+
+
+void Newtonsoft_Json_JsonSerializer__get_NullValueHandling(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined8 *puVar6;
+  undefined8 uVar7;
+  long lVar8;
+  ulong uVar9;
+  int *piVar10;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  undefined8 *unaff_x22;
+  long lVar11;
+  long *plVar12;
+  undefined8 *unaff_x24;
+  undefined8 uVar13;
+  long unaff_x25;
+  undefined8 *unaff_x26;
+  
+  FUN_08a9d344();
+  if (unaff_x25 != 0) {
+    FUN_09f7cf00();
+    puVar2 = PTR_DAT_0ac6a500;
+    plVar12 = (long *)*unaff_x24;
+    if (plVar12 != (long *)0x0) {
+      lVar8 = *plVar12;
+      uVar13 = *unaff_x26;
+      uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar9 != 0) {
+        piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar10 + -2) == *(long *)PTR_DAT_0ac6a500) {
+            puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 7) * 0x10 + 0x138);
+            goto LAB_08e0a070;
+          }
+          uVar9 = uVar9 - 1;
+          piVar10 = piVar10 + 4;
+        } while (uVar9 != 0);
+      }
+      puVar6 = (undefined8 *)FUN_04980e68(plVar12,*(long *)PTR_DAT_0ac6a500,7);
+LAB_08e0a070:
+      uVar9 = (*(code *)*puVar6)(plVar12,uVar13,puVar6[1]);
+      if ((uVar9 & 1) == 0) {
+        if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+           (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar8 == 0))
+        goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+        FUN_0a17ba14(lVar8,0,0);
+      }
+      else {
+        plVar12 = *(long **)(unaff_x19 + 0x40);
+        if (plVar12 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+        (**(code **)(*plVar12 + 0x2a8))
+                  (0,0x3f800000,0,0x3f800000,plVar12,*(undefined8 *)(*plVar12 + 0x2b0));
+        plVar12 = *(long **)(unaff_x19 + 0x40);
+        if (plVar12 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+        uVar13 = (**(code **)(*plVar12 + 0x548))(plVar12,*(undefined8 *)(*plVar12 + 0x550));
+        uVar13 = FUN_08bcc3c0(uVar13,*(undefined8 *)PTR_DAT_0ac6a538,0);
+        FUN_09f7cf00(plVar12,uVar13,0);
+      }
+      plVar12 = (long *)*unaff_x22;
+      if (plVar12 != (long *)0x0) {
+        lVar8 = *plVar12;
+        uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+        uVar13 = *(undefined8 *)PTR_DAT_0ac6a530;
+        if (uVar9 != 0) {
+          piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar10 + -2) == *(long *)PTR_DAT_0ac36df8) {
+              puVar6 = (undefined8 *)(lVar8 + (long)*piVar10 * 0x10 + 0x138);
+              goto LAB_08e0a178;
+            }
+            uVar9 = uVar9 - 1;
+            piVar10 = piVar10 + 4;
+          } while (uVar9 != 0);
+        }
+        puVar6 = (undefined8 *)FUN_04980e68(plVar12,*(long *)PTR_DAT_0ac36df8,0);
+LAB_08e0a178:
+        uVar9 = (*(code *)*puVar6)(plVar12,uVar13,puVar6[1]);
+        if ((uVar9 & 1) == 0) {
+          if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+             (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar8 == 0))
+          goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+          FUN_0a17ba14(lVar8,0,0);
+        }
+        lVar8 = *(long *)(unaff_x19 + 0x28);
+        uVar13 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+        FUN_08cc3ad0();
+        if (lVar8 != 0) {
+          FUN_05291894(lVar8,uVar13,0);
+          if (((*(long *)(unaff_x19 + 0x28) != 0) &&
+              (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x28),0), lVar8 != 0)) &&
+             (FUN_0a17ba14(lVar8,0,0), puVar3 = PTR_DAT_0ac09ea8, puVar1 = PTR_DAT_0ac09cd0,
+             unaff_x20 != (long *)0x0)) {
+            lVar8 = *unaff_x20;
+            uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+            if (uVar9 != 0) {
+              piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar10 + -2) == *(long *)puVar2) {
+                  puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 4) * 0x10 + 0x138);
+                  goto LAB_08e0a27c;
+                }
+                uVar9 = uVar9 - 1;
+                piVar10 = piVar10 + 4;
+              } while (uVar9 != 0);
+            }
+            puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a27c:
+            puVar5 = PTR_DAT_0ac6a510;
+            puVar4 = PTR_DAT_0ac6a4f8;
+            uVar13 = (*(code *)*puVar6)();
+            uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+            FUN_05f878c4();
+            uVar13 = FUN_05d0896c(uVar13,uVar7,*(undefined8 *)puVar3);
+            *(undefined8 *)(unaff_x21 + 0x30) = uVar13;
+            thunk_FUN_049ee3d8();
+            lVar8 = *unaff_x20;
+            uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+            if (uVar9 != 0) {
+              piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar10 + -2) == *(long *)puVar2) {
+                  puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 5) * 0x10 + 0x138);
+                  goto LAB_08e0a334;
+                }
+                uVar9 = uVar9 - 1;
+                piVar10 = piVar10 + 4;
+              } while (uVar9 != 0);
+            }
+            puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a334:
+            uVar13 = (*(code *)*puVar6)();
+            uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar4);
+            FUN_05f851bc();
+            uVar13 = FUN_05d0806c(uVar13,uVar7,*(undefined8 *)puVar5);
+            *(undefined8 *)(unaff_x21 + 0x28) = uVar13;
+            thunk_FUN_049ee3d8();
+            lVar8 = *unaff_x20;
+            lVar11 = *(long *)(unaff_x19 + 0x30);
+            uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+            if (uVar9 != 0) {
+              piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+              do {
+                if (*(long *)(piVar10 + -2) == *(long *)puVar2) {
+                  puVar6 = (undefined8 *)(lVar8 + (long)(*piVar10 + 2) * 0x10 + 0x138);
+                  goto LAB_08e0a3d8;
+                }
+                uVar9 = uVar9 - 1;
+                piVar10 = piVar10 + 4;
+              } while (uVar9 != 0);
+            }
+            puVar6 = (undefined8 *)FUN_04980e68();
+LAB_08e0a3d8:
+            uVar13 = (*(code *)*puVar6)();
+            uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+            uVar9 = (ulong)*(ushort *)(*unaff_x20 + 0x12e);
+            if (uVar9 != 0) {
+              lVar8 = *(long *)(*unaff_x20 + 0xb0) + 8;
+              do {
+                if (*(long *)(lVar8 + -8) == *(long *)puVar2) goto LAB_08e0a448;
+                uVar9 = uVar9 - 1;
+                lVar8 = lVar8 + 0x10;
+              } while (uVar9 != 0);
+            }
+            FUN_04980e68();
+LAB_08e0a448:
+            FUN_05f878c4(uVar7);
+            puVar3 = PTR_DAT_0ac37c00;
+            puVar1 = PTR_DAT_0ac0a0f8;
+            puVar2 = PTR_DAT_0ac09e20;
+            if (lVar11 != 0) {
+              uVar13 = FUN_04d0b2fc(lVar11,uVar13,uVar7,0);
+              uVar7 = FUN_08aa1c24();
+              FUN_05b466fc(uVar13,uVar7,*(undefined8 *)puVar3);
+              uVar13 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+              FUN_08cc3ad0();
+              if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+                thunk_FUN_049a583c();
+              }
+              uVar13 = FUN_09b8bbb0(uVar13,0);
+              uVar7 = FUN_08aa1c24();
+              FUN_05b466fc(uVar13,uVar7,*(undefined8 *)puVar2);
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+Newtonsoft_Json_JsonSerializer__get_DateParseHandling:
+                    /* WARNING: Subroutine does not return */
+  FUN_0494818c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 98
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_MissingMemberHandling
+ENTRY_POINT: 08e09f90
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_13', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_7']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\general-structure-results\70_high_general_structure_review_high\08e09f90_Newtonsoft.Json.JsonSerializer$$get_MissingMemberHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\manual-review-pack\A_must_review\098_p199_Newtonsoft.Json.JsonSerializer$$get_MissingMemberHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_MissingMemberHandling
+ENTRY_POINT: 08e09f90
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_13;strong_file_logging_hits_2;telemetry_or_network_hits_7
+*/
+
+
+void Newtonsoft_Json_JsonSerializer__get_MissingMemberHandling(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  ulong uVar8;
+  int *piVar9;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  undefined8 *puVar10;
+  long lVar11;
+  long *plVar12;
+  undefined8 unaff_x24;
+  undefined8 *puVar13;
+  long lVar14;
+  undefined8 *unaff_x26;
+  
+  puVar10 = (undefined8 *)(unaff_x22 + 0x60);
+  *puVar10 = unaff_x24;
+  thunk_FUN_049ee3d8(puVar10);
+  puVar13 = (undefined8 *)(unaff_x19 + 0x58);
+  *puVar13 = unaff_x20;
+  thunk_FUN_049ee3d8(puVar13);
+  puVar2 = PTR_DAT_0ac37530;
+  if (*(long *)(unaff_x19 + 0x40) != 0) {
+    FUN_09f7cf00();
+    lVar14 = *(long *)(unaff_x19 + 0x38);
+    if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+      thunk_FUN_049a583c();
+    }
+    uVar6 = FUN_08a9d668();
+    uVar6 = FUN_08a9d344(uVar6,0);
+    if (lVar14 != 0) {
+      FUN_09f7cf00(lVar14,uVar6,0);
+      puVar2 = PTR_DAT_0ac6a500;
+      plVar12 = (long *)*puVar13;
+      if (plVar12 != (long *)0x0) {
+        lVar14 = *plVar12;
+        uVar6 = *unaff_x26;
+        uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+        if (uVar8 != 0) {
+          piVar9 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar9 + -2) == *(long *)PTR_DAT_0ac6a500) {
+              puVar13 = (undefined8 *)(lVar14 + (long)(*piVar9 + 7) * 0x10 + 0x138);
+              goto LAB_08e0a070;
+            }
+            uVar8 = uVar8 - 1;
+            piVar9 = piVar9 + 4;
+          } while (uVar8 != 0);
+        }
+        puVar13 = (undefined8 *)FUN_04980e68(plVar12,*(long *)PTR_DAT_0ac6a500,7);
+LAB_08e0a070:
+        uVar8 = (*(code *)*puVar13)(plVar12,uVar6,puVar13[1]);
+        if ((uVar8 & 1) == 0) {
+          if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+             (lVar14 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar14 == 0))
+          goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+          FUN_0a17ba14(lVar14,0,0);
+        }
+        else {
+          plVar12 = *(long **)(unaff_x19 + 0x40);
+          if (plVar12 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+          (**(code **)(*plVar12 + 0x2a8))
+                    (0,0x3f800000,0,0x3f800000,plVar12,*(undefined8 *)(*plVar12 + 0x2b0));
+          plVar12 = *(long **)(unaff_x19 + 0x40);
+          if (plVar12 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+          uVar6 = (**(code **)(*plVar12 + 0x548))(plVar12,*(undefined8 *)(*plVar12 + 0x550));
+          uVar6 = FUN_08bcc3c0(uVar6,*(undefined8 *)PTR_DAT_0ac6a538,0);
+          FUN_09f7cf00(plVar12,uVar6,0);
+        }
+        plVar12 = (long *)*puVar10;
+        if (plVar12 != (long *)0x0) {
+          lVar14 = *plVar12;
+          uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+          uVar6 = *(undefined8 *)PTR_DAT_0ac6a530;
+          if (uVar8 != 0) {
+            piVar9 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar9 + -2) == *(long *)PTR_DAT_0ac36df8) {
+                puVar10 = (undefined8 *)(lVar14 + (long)*piVar9 * 0x10 + 0x138);
+                goto LAB_08e0a178;
+              }
+              uVar8 = uVar8 - 1;
+              piVar9 = piVar9 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar10 = (undefined8 *)FUN_04980e68(plVar12,*(long *)PTR_DAT_0ac36df8,0);
+LAB_08e0a178:
+          uVar8 = (*(code *)*puVar10)(plVar12,uVar6,puVar10[1]);
+          if ((uVar8 & 1) == 0) {
+            if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+               (lVar14 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar14 == 0))
+            goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+            FUN_0a17ba14(lVar14,0,0);
+          }
+          lVar14 = *(long *)(unaff_x19 + 0x28);
+          uVar6 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+          FUN_08cc3ad0();
+          if (lVar14 != 0) {
+            FUN_05291894(lVar14,uVar6,0);
+            if (((*(long *)(unaff_x19 + 0x28) != 0) &&
+                (lVar14 = FUN_0a178414(*(long *)(unaff_x19 + 0x28),0), lVar14 != 0)) &&
+               (FUN_0a17ba14(lVar14,0,0), puVar3 = PTR_DAT_0ac09ea8, puVar1 = PTR_DAT_0ac09cd0,
+               unaff_x20 != (long *)0x0)) {
+              lVar14 = *unaff_x20;
+              uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+              if (uVar8 != 0) {
+                piVar9 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar9 + -2) == *(long *)puVar2) {
+                    puVar10 = (undefined8 *)(lVar14 + (long)(*piVar9 + 4) * 0x10 + 0x138);
+                    goto LAB_08e0a27c;
+                  }
+                  uVar8 = uVar8 - 1;
+                  piVar9 = piVar9 + 4;
+                } while (uVar8 != 0);
+              }
+              puVar10 = (undefined8 *)FUN_04980e68();
+LAB_08e0a27c:
+              puVar5 = PTR_DAT_0ac6a510;
+              puVar4 = PTR_DAT_0ac6a4f8;
+              uVar6 = (*(code *)*puVar10)();
+              uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+              FUN_05f878c4();
+              uVar6 = FUN_05d0896c(uVar6,uVar7,*(undefined8 *)puVar3);
+              *(undefined8 *)(unaff_x21 + 0x30) = uVar6;
+              thunk_FUN_049ee3d8();
+              lVar14 = *unaff_x20;
+              uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+              if (uVar8 != 0) {
+                piVar9 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar9 + -2) == *(long *)puVar2) {
+                    puVar10 = (undefined8 *)(lVar14 + (long)(*piVar9 + 5) * 0x10 + 0x138);
+                    goto LAB_08e0a334;
+                  }
+                  uVar8 = uVar8 - 1;
+                  piVar9 = piVar9 + 4;
+                } while (uVar8 != 0);
+              }
+              puVar10 = (undefined8 *)FUN_04980e68();
+LAB_08e0a334:
+              uVar6 = (*(code *)*puVar10)();
+              uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar4);
+              FUN_05f851bc();
+              uVar6 = FUN_05d0806c(uVar6,uVar7,*(undefined8 *)puVar5);
+              *(undefined8 *)(unaff_x21 + 0x28) = uVar6;
+              thunk_FUN_049ee3d8();
+              lVar14 = *unaff_x20;
+              lVar11 = *(long *)(unaff_x19 + 0x30);
+              uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+              if (uVar8 != 0) {
+                piVar9 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar9 + -2) == *(long *)puVar2) {
+                    puVar10 = (undefined8 *)(lVar14 + (long)(*piVar9 + 2) * 0x10 + 0x138);
+                    goto LAB_08e0a3d8;
+                  }
+                  uVar8 = uVar8 - 1;
+                  piVar9 = piVar9 + 4;
+                } while (uVar8 != 0);
+              }
+              puVar10 = (undefined8 *)FUN_04980e68();
+LAB_08e0a3d8:
+              uVar6 = (*(code *)*puVar10)();
+              uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+              uVar8 = (ulong)*(ushort *)(*unaff_x20 + 0x12e);
+              if (uVar8 != 0) {
+                lVar14 = *(long *)(*unaff_x20 + 0xb0) + 8;
+                do {
+                  if (*(long *)(lVar14 + -8) == *(long *)puVar2) goto LAB_08e0a448;
+                  uVar8 = uVar8 - 1;
+                  lVar14 = lVar14 + 0x10;
+                } while (uVar8 != 0);
+              }
+              FUN_04980e68();
+LAB_08e0a448:
+              FUN_05f878c4(uVar7);
+              puVar3 = PTR_DAT_0ac37c00;
+              puVar1 = PTR_DAT_0ac0a0f8;
+              puVar2 = PTR_DAT_0ac09e20;
+              if (lVar11 != 0) {
+                uVar6 = FUN_04d0b2fc(lVar11,uVar6,uVar7,0);
+                uVar7 = FUN_08aa1c24();
+                FUN_05b466fc(uVar6,uVar7,*(undefined8 *)puVar3);
+                uVar6 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+                FUN_08cc3ad0();
+                if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+                  thunk_FUN_049a583c();
+                }
+                uVar6 = FUN_09b8bbb0(uVar6,0);
+                uVar7 = FUN_08aa1c24();
+                FUN_05b466fc(uVar6,uVar7,*(undefined8 *)puVar2);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+Newtonsoft_Json_JsonSerializer__get_DateParseHandling:
+                    /* WARNING: Subroutine does not return */
+  FUN_0494818c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 99
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_DefaultValueHandling
+ENTRY_POINT: 08e0a058
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_10', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_7']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\general-structure-results\70_high_general_structure_review_high\08e0a058_Newtonsoft.Json.JsonSerializer$$get_DefaultValueHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\manual-review-pack\A_must_review\099_p199_Newtonsoft.Json.JsonSerializer$$get_DefaultValueHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_DefaultValueHandling
+ENTRY_POINT: 08e0a058
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_10;strong_file_logging_hits_2;telemetry_or_network_hits_7
+*/
+
+
+void Newtonsoft_Json_JsonSerializer__get_DefaultValueHandling(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined8 *puVar5;
+  ulong uVar6;
+  long *plVar7;
+  undefined8 uVar8;
+  undefined8 uVar9;
+  long lVar10;
+  int *piVar11;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  undefined8 *unaff_x22;
+  long lVar12;
+  long *unaff_x25;
+  
+  puVar5 = (undefined8 *)FUN_04980e68();
+  uVar6 = (*(code *)*puVar5)();
+  if ((uVar6 & 1) == 0) {
+    if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+       (lVar10 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar10 == 0))
+    goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+    FUN_0a17ba14(lVar10,0,0);
+  }
+  else {
+    plVar7 = *(long **)(unaff_x19 + 0x40);
+    if (plVar7 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+    (**(code **)(*plVar7 + 0x2a8))
+              (0,0x3f800000,0,0x3f800000,plVar7,*(undefined8 *)(*plVar7 + 0x2b0));
+    plVar7 = *(long **)(unaff_x19 + 0x40);
+    if (plVar7 == (long *)0x0) goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+    uVar8 = (**(code **)(*plVar7 + 0x548))(plVar7,*(undefined8 *)(*plVar7 + 0x550));
+    uVar8 = FUN_08bcc3c0(uVar8,*(undefined8 *)PTR_DAT_0ac6a538,0);
+    FUN_09f7cf00(plVar7,uVar8,0);
+  }
+  plVar7 = (long *)*unaff_x22;
+  if (plVar7 != (long *)0x0) {
+    lVar10 = *plVar7;
+    uVar6 = (ulong)*(ushort *)(lVar10 + 0x12e);
+    uVar8 = *(undefined8 *)PTR_DAT_0ac6a530;
+    if (uVar6 != 0) {
+      piVar11 = (int *)(*(long *)(lVar10 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar11 + -2) == *(long *)PTR_DAT_0ac36df8) {
+          puVar5 = (undefined8 *)(lVar10 + (long)*piVar11 * 0x10 + 0x138);
+          goto LAB_08e0a178;
+        }
+        uVar6 = uVar6 - 1;
+        piVar11 = piVar11 + 4;
+      } while (uVar6 != 0);
+    }
+    puVar5 = (undefined8 *)FUN_04980e68(plVar7,*(long *)PTR_DAT_0ac36df8,0);
+LAB_08e0a178:
+    uVar6 = (*(code *)*puVar5)(plVar7,uVar8,puVar5[1]);
+    if ((uVar6 & 1) == 0) {
+      if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+         (lVar10 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar10 == 0))
+      goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+      FUN_0a17ba14(lVar10,0,0);
+    }
+    lVar10 = *(long *)(unaff_x19 + 0x28);
+    uVar8 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+    FUN_08cc3ad0();
+    if (lVar10 != 0) {
+      FUN_05291894(lVar10,uVar8,0);
+      if (((*(long *)(unaff_x19 + 0x28) != 0) &&
+          (lVar10 = FUN_0a178414(*(long *)(unaff_x19 + 0x28),0), lVar10 != 0)) &&
+         (FUN_0a17ba14(lVar10,0,0), puVar2 = PTR_DAT_0ac09ea8, puVar1 = PTR_DAT_0ac09cd0,
+         unaff_x20 != (long *)0x0)) {
+        lVar10 = *unaff_x20;
+        uVar6 = (ulong)*(ushort *)(lVar10 + 0x12e);
+        if (uVar6 != 0) {
+          piVar11 = (int *)(*(long *)(lVar10 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar11 + -2) == *unaff_x25) {
+              puVar5 = (undefined8 *)(lVar10 + (long)(*piVar11 + 4) * 0x10 + 0x138);
+              goto LAB_08e0a27c;
+            }
+            uVar6 = uVar6 - 1;
+            piVar11 = piVar11 + 4;
+          } while (uVar6 != 0);
+        }
+        puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a27c:
+        puVar4 = PTR_DAT_0ac6a510;
+        puVar3 = PTR_DAT_0ac6a4f8;
+        uVar8 = (*(code *)*puVar5)();
+        uVar9 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+        FUN_05f878c4();
+        uVar8 = FUN_05d0896c(uVar8,uVar9,*(undefined8 *)puVar2);
+        *(undefined8 *)(unaff_x21 + 0x30) = uVar8;
+        thunk_FUN_049ee3d8();
+        lVar10 = *unaff_x20;
+        uVar6 = (ulong)*(ushort *)(lVar10 + 0x12e);
+        if (uVar6 != 0) {
+          piVar11 = (int *)(*(long *)(lVar10 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar11 + -2) == *unaff_x25) {
+              puVar5 = (undefined8 *)(lVar10 + (long)(*piVar11 + 5) * 0x10 + 0x138);
+              goto LAB_08e0a334;
+            }
+            uVar6 = uVar6 - 1;
+            piVar11 = piVar11 + 4;
+          } while (uVar6 != 0);
+        }
+        puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a334:
+        uVar8 = (*(code *)*puVar5)();
+        uVar9 = thunk_FUN_04983f60(*(undefined8 *)puVar3);
+        FUN_05f851bc();
+        uVar8 = FUN_05d0806c(uVar8,uVar9,*(undefined8 *)puVar4);
+        *(undefined8 *)(unaff_x21 + 0x28) = uVar8;
+        thunk_FUN_049ee3d8();
+        lVar10 = *unaff_x20;
+        lVar12 = *(long *)(unaff_x19 + 0x30);
+        uVar6 = (ulong)*(ushort *)(lVar10 + 0x12e);
+        if (uVar6 != 0) {
+          piVar11 = (int *)(*(long *)(lVar10 + 0xb0) + 8);
+          do {
+            if (*(long *)(piVar11 + -2) == *unaff_x25) {
+              puVar5 = (undefined8 *)(lVar10 + (long)(*piVar11 + 2) * 0x10 + 0x138);
+              goto LAB_08e0a3d8;
+            }
+            uVar6 = uVar6 - 1;
+            piVar11 = piVar11 + 4;
+          } while (uVar6 != 0);
+        }
+        puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a3d8:
+        uVar8 = (*(code *)*puVar5)();
+        uVar9 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+        uVar6 = (ulong)*(ushort *)(*unaff_x20 + 0x12e);
+        if (uVar6 != 0) {
+          lVar10 = *(long *)(*unaff_x20 + 0xb0) + 8;
+          do {
+            if (*(long *)(lVar10 + -8) == *unaff_x25) goto LAB_08e0a448;
+            uVar6 = uVar6 - 1;
+            lVar10 = lVar10 + 0x10;
+          } while (uVar6 != 0);
+        }
+        FUN_04980e68();
+LAB_08e0a448:
+        FUN_05f878c4(uVar9);
+        puVar3 = PTR_DAT_0ac37c00;
+        puVar2 = PTR_DAT_0ac0a0f8;
+        puVar1 = PTR_DAT_0ac09e20;
+        if (lVar12 != 0) {
+          uVar8 = FUN_04d0b2fc(lVar12,uVar8,uVar9,0);
+          uVar9 = FUN_08aa1c24();
+          FUN_05b466fc(uVar8,uVar9,*(undefined8 *)puVar3);
+          uVar8 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+          FUN_08cc3ad0();
+          if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+            thunk_FUN_049a583c();
+          }
+          uVar8 = FUN_09b8bbb0(uVar8,0);
+          uVar9 = FUN_08aa1c24();
+          FUN_05b466fc(uVar8,uVar9,*(undefined8 *)puVar1);
+          return;
+        }
+      }
+    }
+  }
+Newtonsoft_Json_JsonSerializer__get_DateParseHandling:
+                    /* WARNING: Subroutine does not return */
+  FUN_0494818c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 100
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_ConstructorHandling
+ENTRY_POINT: 08e0a120
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_9', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\general-structure-results\70_high_general_structure_review_high\08e0a120_Newtonsoft.Json.JsonSerializer$$get_ConstructorHandling.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Hyper\manual-review-pack\A_must_review\100_p199_Newtonsoft.Json.JsonSerializer$$get_ConstructorHandling.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$get_ConstructorHandling
+ENTRY_POINT: 08e0a120
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_9;strong_file_logging_hits_2;telemetry_or_network_hits_4
+*/
+
+
+void Newtonsoft_Json_JsonSerializer__get_ConstructorHandling(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined8 *puVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  long lVar8;
+  ulong uVar9;
+  long in_x10;
+  int *piVar10;
+  long unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  long *unaff_x22;
+  long lVar11;
+  long *unaff_x25;
+  
+  lVar8 = *unaff_x22;
+  uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+  if (uVar9 != 0) {
+    piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar10 + -2) == **(long **)(in_x10 + 0xdf8)) {
+        puVar5 = (undefined8 *)(lVar8 + (long)*piVar10 * 0x10 + 0x138);
+        goto LAB_08e0a178;
+      }
+      uVar9 = uVar9 - 1;
+      piVar10 = piVar10 + 4;
+    } while (uVar9 != 0);
+  }
+  puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a178:
+  uVar9 = (*(code *)*puVar5)();
+  if ((uVar9 & 1) == 0) {
+    if ((*(long *)(unaff_x19 + 0x30) == 0) ||
+       (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x30),0), lVar8 == 0))
+    goto Newtonsoft_Json_JsonSerializer__get_DateParseHandling;
+    FUN_0a17ba14(lVar8,0,0);
+  }
+  lVar8 = *(long *)(unaff_x19 + 0x28);
+  uVar6 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+  FUN_08cc3ad0();
+  if (lVar8 != 0) {
+    FUN_05291894(lVar8,uVar6,0);
+    if (((*(long *)(unaff_x19 + 0x28) != 0) &&
+        (lVar8 = FUN_0a178414(*(long *)(unaff_x19 + 0x28),0), lVar8 != 0)) &&
+       (FUN_0a17ba14(lVar8,0,0), puVar2 = PTR_DAT_0ac09ea8, puVar1 = PTR_DAT_0ac09cd0,
+       unaff_x20 != (long *)0x0)) {
+      lVar8 = *unaff_x20;
+      uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar9 != 0) {
+        piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar10 + -2) == *unaff_x25) {
+            puVar5 = (undefined8 *)(lVar8 + (long)(*piVar10 + 4) * 0x10 + 0x138);
+            goto LAB_08e0a27c;
+          }
+          uVar9 = uVar9 - 1;
+          piVar10 = piVar10 + 4;
+        } while (uVar9 != 0);
+      }
+      puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a27c:
+      puVar4 = PTR_DAT_0ac6a510;
+      puVar3 = PTR_DAT_0ac6a4f8;
+      uVar6 = (*(code *)*puVar5)();
+      uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+      FUN_05f878c4();
+      uVar6 = FUN_05d0896c(uVar6,uVar7,*(undefined8 *)puVar2);
+      *(undefined8 *)(unaff_x21 + 0x30) = uVar6;
+      thunk_FUN_049ee3d8();
+      lVar8 = *unaff_x20;
+      uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar9 != 0) {
+        piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar10 + -2) == *unaff_x25) {
+            puVar5 = (undefined8 *)(lVar8 + (long)(*piVar10 + 5) * 0x10 + 0x138);
+            goto LAB_08e0a334;
+          }
+          uVar9 = uVar9 - 1;
+          piVar10 = piVar10 + 4;
+        } while (uVar9 != 0);
+      }
+      puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a334:
+      uVar6 = (*(code *)*puVar5)();
+      uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar3);
+      FUN_05f851bc();
+      uVar6 = FUN_05d0806c(uVar6,uVar7,*(undefined8 *)puVar4);
+      *(undefined8 *)(unaff_x21 + 0x28) = uVar6;
+      thunk_FUN_049ee3d8();
+      lVar8 = *unaff_x20;
+      lVar11 = *(long *)(unaff_x19 + 0x30);
+      uVar9 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar9 != 0) {
+        piVar10 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar10 + -2) == *unaff_x25) {
+            puVar5 = (undefined8 *)(lVar8 + (long)(*piVar10 + 2) * 0x10 + 0x138);
+            goto LAB_08e0a3d8;
+          }
+          uVar9 = uVar9 - 1;
+          piVar10 = piVar10 + 4;
+        } while (uVar9 != 0);
+      }
+      puVar5 = (undefined8 *)FUN_04980e68();
+LAB_08e0a3d8:
+      uVar6 = (*(code *)*puVar5)();
+      uVar7 = thunk_FUN_04983f60(*(undefined8 *)puVar1);
+      uVar9 = (ulong)*(ushort *)(*unaff_x20 + 0x12e);
+      if (uVar9 != 0) {
+        lVar8 = *(long *)(*unaff_x20 + 0xb0) + 8;
+        do {
+          if (*(long *)(lVar8 + -8) == *unaff_x25) goto LAB_08e0a448;
+          uVar9 = uVar9 - 1;
+          lVar8 = lVar8 + 0x10;
+        } while (uVar9 != 0);
+      }
+      FUN_04980e68();
+LAB_08e0a448:
+      FUN_05f878c4(uVar7);
+      puVar3 = PTR_DAT_0ac37c00;
+      puVar2 = PTR_DAT_0ac0a0f8;
+      puVar1 = PTR_DAT_0ac09e20;
+      if (lVar11 != 0) {
+        uVar6 = FUN_04d0b2fc(lVar11,uVar6,uVar7,0);
+        uVar7 = FUN_08aa1c24();
+        FUN_05b466fc(uVar6,uVar7,*(undefined8 *)puVar3);
+        uVar6 = thunk_FUN_04983f60(*(undefined8 *)PTR_DAT_0ac09d30);
+        FUN_08cc3ad0();
+        if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+          thunk_FUN_049a583c();
+        }
+        uVar6 = FUN_09b8bbb0(uVar6,0);
+        uVar7 = FUN_08aa1c24();
+        FUN_05b466fc(uVar6,uVar7,*(undefined8 *)puVar1);
+        return;
+      }
+    }
+  }
+Newtonsoft_Json_JsonSerializer__get_DateParseHandling:
+                    /* WARNING: Subroutine does not return */
+  FUN_0494818c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

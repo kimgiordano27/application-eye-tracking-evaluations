@@ -1,0 +1,100 @@
+/*
+FUNCTION_NAME: System.Collections.Generic.List<OVRPassthroughLayer.SerializedSurfaceGeometry>$$ToArray
+ENTRY_POINT: 02d1e308
+PROGRAM: gunraiders-libil2cpp.so
+SCORE: 79
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;pose_vector;telemetry
+EVIDENCE: validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_4;telemetry_or_network_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x02d1e388) */
+/* WARNING: Removing unreachable block (ram,0x02d1e384) */
+/* WARNING: Removing unreachable block (ram,0x02d1e3cc) */
+
+void System_Collections_Generic_List<OVRPassthroughLayer_SerializedSurfaceGeometry>__ToArray(void)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long unaff_x19;
+  long unaff_x20;
+  long *unaff_x23;
+  long *unaff_x24;
+  undefined8 in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined4 in_stack_00000050;
+  
+  do {
+    lVar2 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *unaff_x24) {
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_02d1e240;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_01c72498();
+LAB_02d1e240:
+    uVar4 = (*(code *)*puVar1)();
+    if ((uVar4 & 1) == 0) break;
+    lVar2 = *(long *)(*(long *)(*(long *)(unaff_x20 + 0x20) + 0xc0) + 0x140);
+    if ((*(byte *)(lVar2 + 0x135) & 1) == 0) {
+      lVar2 = FUN_01c72394(lVar2);
+    }
+    lVar3 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == lVar2) {
+          puVar1 = (undefined8 *)(lVar3 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_02d1e2b8;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_01c72498();
+LAB_02d1e2b8:
+    (*(code *)*puVar1)(&stack0x00000030);
+    FUN_02d1dc88();
+  } while( true );
+  if (unaff_x23 != (long *)0x0) {
+    lVar2 = *unaff_x23;
+    uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_0422fce8) {
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_02d1e36c;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_01c72498();
+LAB_02d1e36c:
+    (*(code *)*puVar1)();
+  }
+  *(int *)(unaff_x19 + 0x1c) = *(int *)(unaff_x19 + 0x1c) + 1;
+  return;
+}
+
+

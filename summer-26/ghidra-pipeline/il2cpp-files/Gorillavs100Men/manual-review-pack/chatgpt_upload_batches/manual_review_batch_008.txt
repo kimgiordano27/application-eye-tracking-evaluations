@@ -1,0 +1,490 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 36
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_rightEyeRotation
+ENTRY_POINT: 03f1b4c8
+MANUAL_PRIORITY_SCORE: 175
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 137
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_137', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_possible_eye_biometrics_near_certain\03f1b4c8_Unity.XR.Oculus.Input.OculusHMD$$set_rightEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\036_p175_Unity.XR.Oculus.Input.OculusHMD$$set_rightEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_rightEyeRotation
+ENTRY_POINT: 03f1b4c8
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 137
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+long Unity_XR_Oculus_Input_OculusHMD__set_rightEyeRotation(ulong param_1)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  ulong uVar4;
+  long lVar5;
+  undefined8 uVar6;
+  long lVar7;
+  long lVar8;
+  long unaff_x19;
+  undefined8 uVar9;
+  undefined8 in_stack_00000000;
+  undefined8 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000048;
+  undefined8 in_stack_00000050;
+  undefined8 in_stack_00000058;
+  
+  if ((param_1 & 1) == 0) {
+    FUN_020612a4(PTR_DAT_046bf1d8);
+    FUN_020612a4(PTR_DAT_046bf1e0);
+    FUN_020612a4(PTR_DAT_046bf1e8);
+    FUN_020612a4(PTR_DAT_046bf1f0);
+    FUN_020612a4(StringLiteral_8731);
+    *(undefined1 *)(unaff_x19 + 0xade) = 1;
+  }
+  puVar2 = StringLiteral_8731;
+  FUN_03f0c2e8();
+  if (*(int *)(*(long *)puVar2 + 0xe4) == 0) {
+    thunk_FUN_020b5864();
+  }
+  uVar4 = FUN_040cbf6c();
+  puVar3 = PTR_DAT_046bf1e8;
+  puVar2 = PTR_DAT_046bf1d8;
+  if ((uVar4 & 1) != 0) {
+    lVar5 = thunk_FUN_02094760(*(undefined8 *)PTR_DAT_046bf1f0);
+    FUN_034b1d4c(lVar5,*(undefined8 *)puVar3);
+    uVar6 = thunk_FUN_040cfa2c();
+    uVar9 = *(undefined8 *)puVar2;
+    if (*(int *)(*(long *)(StringLiteral_8735 + 0xe0) + 0xe4) == 0) {
+      thunk_FUN_020b5864(*(long *)(StringLiteral_8735 + 0xe0));
+    }
+    uVar9 = FUN_03842574(uVar9,0);
+    FUN_040e5244(uVar6,0,uVar9,0);
+    if (lVar5 != 0) {
+      lVar7 = *(long *)(lVar5 + 0x10);
+      lVar8 = *(long *)PTR_DAT_046bf1e0;
+      *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+      if (lVar7 != 0) {
+        uVar1 = *(uint *)(lVar5 + 0x18);
+        if (uVar1 < *(uint *)(lVar7 + 0x18)) {
+          lVar7 = lVar7 + (long)(int)uVar1 * 0x20;
+          *(uint *)(lVar5 + 0x18) = uVar1 + 1;
+          *(undefined8 *)(lVar7 + 0x28) = in_stack_00000008;
+          *(undefined8 *)(lVar7 + 0x20) = in_stack_00000000;
+          *(undefined8 *)(lVar7 + 0x38) = in_stack_00000018;
+          *(undefined8 *)(lVar7 + 0x30) = in_stack_00000010;
+          thunk_FUN_020ccb58(lVar7 + 0x20,0);
+        }
+        else {
+          in_stack_00000048 = in_stack_00000008;
+          in_stack_00000040 = in_stack_00000000;
+          in_stack_00000058 = in_stack_00000018;
+          in_stack_00000050 = in_stack_00000010;
+          FUN_034b2640(lVar5,&stack0x00000040,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar8 + 0x20) + 0xc0) + 0x70));
+        }
+        return lVar5;
+      }
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_0206154c();
+  }
+  lVar5 = FUN_03f0eae8();
+  return lVar5;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 37
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_SetSymmetricProjection
+ENTRY_POINT: 03f1e444
+MANUAL_PRIORITY_SCORE: 175
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 72
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_1', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_72', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_framework_support_only_high\03f1e444_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_SetSymmetricProjection.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\037_p175_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_SetSymmetricProjection.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_SetSymmetricProjection
+ENTRY_POINT: 03f1e444
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 72
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_7;validity_or_gating_hits_2;telemetry_or_network_hits_1;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+undefined8 UnityEngine_XR_OpenXR_OpenXRSettings__Internal_SetSymmetricProjection(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  ulong uVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long *unaff_x23;
+  long unaff_x24;
+  
+  FUN_020612a4();
+  FUN_020612a4(PTR_DAT_046befc8);
+  FUN_020612a4(PTR_DAT_046bf330);
+  FUN_020612a4(PTR_DAT_046befd8);
+  *(undefined1 *)(unaff_x24 + 0xb0f) = 1;
+  puVar1 = PTR_DAT_046befd8;
+  if (*(int *)(*unaff_x23 + 0xe4) == 0) {
+    thunk_FUN_020b5864();
+  }
+  uVar3 = FUN_040cbf6c();
+  puVar2 = PTR_DAT_046bf330;
+  if ((uVar3 & 1) == 0) {
+    if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+      thunk_FUN_020b5864();
+    }
+    uVar4 = FUN_02a22720();
+    lVar5 = FUN_02a2311c();
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0206154c();
+    }
+    UnityEngine_XR_OpenXR_OpenXRSettings__Internal_HasRequestedEyeTrackingPermissions();
+  }
+  else {
+    if (*(int *)(*(long *)puVar1 + 0xe4) == 0) {
+      thunk_FUN_020b5864();
+    }
+    uVar4 = FUN_02a226a4(*(undefined8 *)puVar2);
+  }
+  return uVar4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 38
+FUNCTION_NAME: Unity.AI.Navigation.Samples.GloballyUpdatedNavMeshSurface$$RequestNavMeshUpdate
+ENTRY_POINT: 038a3a88
+MANUAL_PRIORITY_SCORE: 171
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 76
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'telemetry', 'frame_behavior']
+EVIDENCE: ['validity_or_gating_hits_10', 'ray_or_cast_sink_hits_1', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior']
+PRIORITY_REASONS: ['base_scanner_score_76', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_general_structure_review_high\038a3a88_Unity.AI.Navigation.Samples.GloballyUpdatedNavMeshSurface$$RequestNavMeshUpdate.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\038_p171_Unity.AI.Navigation.Samples.GloballyUpdatedNavMeshSurface$$RequestNavMeshUpdate.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.AI.Navigation.Samples.GloballyUpdatedNavMeshSurface$$RequestNavMeshUpdate
+ENTRY_POINT: 038a3a88
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 76
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry;frame_behavior
+EVIDENCE: validity_or_gating_hits_10;ray_or_cast_sink_hits_1;telemetry_or_network_hits_2;frame_or_lifecycle_behavior
+*/
+
+
+ulong Unity_AI_Navigation_Samples_GloballyUpdatedNavMeshSurface__RequestNavMeshUpdate(void)
+
+{
+  ushort uVar1;
+  byte bVar2;
+  byte *pbVar3;
+  ushort uVar4;
+  int iVar5;
+  long lVar6;
+  int iVar7;
+  ulong uVar8;
+  ushort *unaff_x19;
+  long unaff_x20;
+  byte *unaff_x21;
+  int unaff_w23;
+  int unaff_w24;
+  byte *pbVar9;
+  long *plVar10;
+  byte *unaff_x26;
+  long unaff_x27;
+  ushort *puVar11;
+  ushort *puVar12;
+  byte *pbVar13;
+  ushort *in_stack_00000008;
+  
+  iVar7 = (int)unaff_x21;
+  if (unaff_x20 == 0) {
+    plVar10 = *(long **)(unaff_x27 + 0x30);
+    if (plVar10 != (long *)0x0) goto LAB_038a3aa0;
+LAB_038a3b54:
+    lVar6 = RootMotion_Dynamics_Muscle__get_colliders(*(undefined8 *)StringLiteral_8732,1);
+    plVar10 = (long *)0x0;
+    pbVar9 = unaff_x21;
+    puVar11 = unaff_x19;
+    do {
+      pbVar13 = pbVar9;
+      puVar12 = puVar11;
+      pbVar3 = pbVar9;
+      if (unaff_x26 <= pbVar9) goto joined_r0x038a3c54;
+      while( true ) {
+        bVar2 = *pbVar13;
+        pbVar9 = pbVar13 + 1;
+        if ((char)bVar2 < '\0') break;
+        if (unaff_x19 + unaff_w24 <= puVar11) goto LAB_038a3c3c;
+        puVar12 = puVar11 + 1;
+        *puVar11 = (ushort)bVar2;
+        puVar11 = puVar12;
+        pbVar13 = pbVar9;
+        pbVar3 = unaff_x26;
+        if (unaff_x26 == pbVar9) goto joined_r0x038a3c54;
+      }
+      if (plVar10 == (long *)0x0) {
+        if (unaff_x20 == 0) {
+          plVar10 = *(long **)(unaff_x27 + 0x30);
+          if (plVar10 == (long *)0x0) goto LAB_038a3ca8;
+          plVar10 = (long *)(**(code **)(*plVar10 + 0x178))
+                                      (plVar10,*(undefined8 *)(*plVar10 + 0x180));
+        }
+        else {
+          plVar10 = (long *)FUN_038a39cc();
+        }
+        if (plVar10 == (long *)0x0) goto LAB_038a3ca8;
+        plVar10[2] = (long)unaff_x21;
+        plVar10[3] = (long)(unaff_x19 + unaff_w24);
+      }
+      if (lVar6 == 0) goto LAB_038a3ca8;
+      if (*(int *)(lVar6 + 0x18) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_02061554();
+      }
+      *(byte *)(lVar6 + 0x20) = bVar2;
+      in_stack_00000008 = puVar11;
+      uVar8 = (**(code **)(*plVar10 + 0x1a8))
+                        (plVar10,lVar6,pbVar9,&stack0x00000008,*(undefined8 *)(*plVar10 + 0x1b0));
+      puVar11 = in_stack_00000008;
+    } while ((uVar8 & 1) != 0);
+    plVar10[2] = 0;
+    (**(code **)(*plVar10 + 0x198))(plVar10,*(undefined8 *)(*plVar10 + 0x1a0));
+LAB_038a3c3c:
+    FUN_038b824c(unaff_x27);
+    puVar12 = puVar11;
+    pbVar3 = pbVar13;
+joined_r0x038a3c54:
+    if (unaff_x20 == 0) goto LAB_038a3c6c;
+    iVar7 = (int)pbVar3 - iVar7;
+  }
+  else {
+    plVar10 = *(long **)(unaff_x20 + 0x10);
+    if (plVar10 == (long *)0x0) goto LAB_038a3b54;
+LAB_038a3aa0:
+    lVar6 = *(long *)PTR_DAT_0469b388;
+    if ((*plVar10 != lVar6) ||
+       (iVar5 = (**(code **)(lVar6 + 0x188))(plVar10,*(undefined8 *)(lVar6 + 400)), iVar5 != 1))
+    goto LAB_038a3b54;
+    if (plVar10[2] == 0) {
+LAB_038a3ca8:
+                    /* WARNING: Subroutine does not return */
+      FUN_0206154c();
+    }
+    uVar4 = FUN_0372ef60(plVar10[2],0,0);
+    puVar12 = unaff_x19;
+    if (unaff_w24 < unaff_w23) {
+      FUN_038b824c();
+      unaff_x26 = unaff_x21 + unaff_w24;
+    }
+    while (unaff_x21 < unaff_x26) {
+      bVar2 = *unaff_x21;
+      unaff_x21 = unaff_x21 + 1;
+      uVar1 = uVar4;
+      if (-1 < (char)bVar2) {
+        uVar1 = (ushort)bVar2;
+      }
+      *puVar12 = uVar1;
+      puVar12 = puVar12 + 1;
+    }
+    if (unaff_x20 == 0) goto LAB_038a3c6c;
+    iVar7 = (int)unaff_x21 - iVar7;
+  }
+  *(int *)(unaff_x20 + 0x2c) = iVar7;
+LAB_038a3c6c:
+  uVar8 = (long)puVar12 - (long)unaff_x19;
+  if ((long)uVar8 < 0) {
+    uVar8 = uVar8 + 1;
+  }
+  return uVar8 >> 1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 39
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation
+ENTRY_POINT: 03f1b450
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_possible_eye_biometrics_near_certain\03f1b450_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\039_p169_Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$set_leftEyeRotation
+ENTRY_POINT: 03f1b450
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__set_leftEyeRotation(long *param_1)
+
+{
+  long unaff_x21;
+  
+  if ((*(byte *)(unaff_x21 + 0xad9) & 1) == 0) {
+    FUN_020612a4(PTR_DAT_046beda8);
+    *(undefined1 *)(unaff_x21 + 0xad9) = 1;
+  }
+  if (*param_1 != 0) {
+    FUN_034a2d04();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 40
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation
+ENTRY_POINT: 03f1b448
+MANUAL_PRIORITY_SCORE: 169
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'active_gaze_retrieval', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'active_gaze_state_retrieval_with_validity_and_pose', 'possible_biometric_feature_from_active_eye_context', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_possible_eye_biometrics_near_certain\03f1b448_Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\040_p169_Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_leftEyeRotation
+ENTRY_POINT: 03f1b448
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 131
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__get_leftEyeRotation(long *param_1,undefined8 param_2)
+
+{
+  if ((DAT_04922ad9 & 1) == 0) {
+    FUN_020612a4(PTR_DAT_046beda8);
+    DAT_04922ad9 = 1;
+  }
+  if (*param_1 != 0) {
+    FUN_034a2d04(*param_1,param_2,*(undefined8 *)PTR_DAT_046beda8);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

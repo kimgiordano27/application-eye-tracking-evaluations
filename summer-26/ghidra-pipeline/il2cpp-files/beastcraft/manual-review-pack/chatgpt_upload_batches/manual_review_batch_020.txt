@@ -1,0 +1,1147 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 87
+FUNCTION_NAME: Oculus.Platform.Callback$$RunLimitedCallbacks
+ENTRY_POINT: 05611cc4
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_16', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_general_structure_review_high\05611cc4_Oculus.Platform.Callback$$RunLimitedCallbacks.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\087_p194_Oculus.Platform.Callback$$RunLimitedCallbacks.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Oculus.Platform.Callback$$RunLimitedCallbacks
+ENTRY_POINT: 05611cc4
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_16;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+undefined4 Oculus_Platform_Callback__RunLimitedCallbacks(void)
+
+{
+  ushort uVar1;
+  bool bVar2;
+  undefined *puVar3;
+  long lVar4;
+  uint unaff_w20;
+  int iVar5;
+  ulong uVar6;
+  ushort *puVar7;
+  long unaff_x21;
+  ulong *unaff_x22;
+  uint unaff_w23;
+  uint uVar8;
+  uint uVar9;
+  undefined4 uVar10;
+  ulong uVar11;
+  int unaff_w29;
+  uint uStack000000000000000c;
+  undefined1 *in_stack_00000018;
+  
+  puVar3 = PTR_DAT_06a808e8;
+  uVar8 = 0;
+  if (*(int *)(*(long *)PTR_DAT_06a808e8 + 0xe4) == 0) {
+    thunk_FUN_02e9a04c();
+  }
+  uVar9 = unaff_w29 - 0x30;
+  if (uVar9 < 10) {
+    uStack000000000000000c = unaff_w20;
+    if (unaff_w29 == 0x30) {
+      do {
+        uVar8 = uVar8 + 1;
+        if (unaff_w23 <= uVar8) {
+          uVar11 = 0;
+          uVar10 = 1;
+          goto LAB_05611ff4;
+        }
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+        uVar6 = (ulong)uVar1;
+      } while (uVar1 == 0x30);
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      uVar9 = uVar1 - 0x30;
+      if (uVar9 < 10) goto Oculus_Platform_Callback__FlushJoinIntentNotificationQueue;
+      uVar11 = 0;
+      uVar9 = uVar8;
+LAB_05611f10:
+      uVar8 = (uint)uVar6;
+      bVar2 = false;
+LAB_05611f14:
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      if ((uVar8 - 9 < 5) || (uVar8 == 0x20)) {
+        if ((uStack000000000000000c >> 1 & 1) == 0) goto LAB_05611fec;
+        uVar9 = uVar9 + 1;
+        if ((int)uVar9 < (int)unaff_w23) {
+          puVar7 = (ushort *)(unaff_x21 + (long)(int)uVar9 * 2);
+          do {
+            if (unaff_w23 <= uVar9) {
+                    /* WARNING: Subroutine does not return */
+              FUN_02e3cccc();
+            }
+            uVar1 = *puVar7;
+            if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c();
+            }
+            if ((4 < uVar1 - 9) && (uVar1 != 0x20))
+            goto Oculus_Platform_Callback_RequestCallback___ctor;
+            uVar9 = uVar9 + 1;
+            puVar7 = puVar7 + 1;
+          } while (unaff_w23 != uVar9);
+          if (bVar2) goto LAB_05612038;
+          goto LAB_05612020;
+        }
+Oculus_Platform_Callback_RequestCallback___ctor:
+        if (unaff_w23 <= uVar9) goto FUN_05611fe4;
+      }
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      uVar6 = FUN_0561292c();
+      if ((uVar6 & 1) == 0) goto LAB_05611fec;
+FUN_05611fe4:
+      if (!bVar2) goto LAB_05612020;
+    }
+    else {
+Oculus_Platform_Callback__FlushJoinIntentNotificationQueue:
+      uVar11 = (ulong)uVar9;
+      uVar9 = uVar8 + 0x13;
+      iVar5 = 1;
+      do {
+        if (unaff_w23 <= uVar8 + iVar5) goto LAB_05612020;
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)(uVar8 + iVar5) * 2);
+        if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        if (9 < uVar1 - 0x30) {
+          uVar9 = uVar8 + iVar5;
+          uVar6 = (ulong)(uint)uVar1;
+          goto LAB_05611f10;
+        }
+        iVar5 = iVar5 + 1;
+        uVar11 = ((ulong)uVar1 + uVar11 * 10) - 0x30;
+      } while (iVar5 != 0x13);
+      if (unaff_w23 <= uVar9) {
+LAB_05612020:
+        uVar10 = 1;
+        goto LAB_05611ff4;
+      }
+      uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar9 * 2);
+      uVar6 = (ulong)uVar1;
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      if (9 < uVar1 - 0x30) goto LAB_05611f10;
+      uVar9 = uVar8 + 0x14;
+      if ((0x1999999999999999 < uVar11) ||
+         ((bVar2 = false, uVar11 == 0x1999999999999999 && (0x35 < uVar1)))) {
+        bVar2 = true;
+      }
+      uVar11 = (uVar6 + uVar11 * 10) - 0x30;
+      if (unaff_w23 <= uVar9) goto FUN_05611fe4;
+      lVar4 = *(long *)puVar3;
+      do {
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar9 * 2);
+        uVar8 = (uint)uVar1;
+        if (*(int *)(lVar4 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+          lVar4 = *(long *)puVar3;
+        }
+        if (9 < uVar1 - 0x30) goto LAB_05611f14;
+        uVar9 = uVar9 + 1;
+        bVar2 = true;
+      } while (unaff_w23 != uVar9);
+    }
+LAB_05612038:
+    uVar11 = 0;
+    uVar10 = 0;
+    *in_stack_00000018 = 1;
+  }
+  else {
+LAB_05611fec:
+    uVar11 = 0;
+    uVar10 = 0;
+  }
+LAB_05611ff4:
+  *unaff_x22 = uVar11;
+  return uVar10;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 88
+FUNCTION_NAME: Oculus.Platform.Callback$$OnApplicationQuit
+ENTRY_POINT: 05611d4c
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_18', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_general_structure_review_high\05611d4c_Oculus.Platform.Callback$$OnApplicationQuit.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\088_p194_Oculus.Platform.Callback$$OnApplicationQuit.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Oculus.Platform.Callback$$OnApplicationQuit
+ENTRY_POINT: 05611d4c
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_18;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+uint Oculus_Platform_Callback__OnApplicationQuit(void)
+
+{
+  ushort uVar1;
+  bool bVar2;
+  undefined *puVar3;
+  long lVar4;
+  int iVar5;
+  ulong uVar6;
+  ushort *puVar7;
+  long unaff_x21;
+  ulong *unaff_x22;
+  uint unaff_w23;
+  uint unaff_w24;
+  uint uVar8;
+  uint unaff_w25;
+  uint unaff_w27;
+  ulong unaff_x28;
+  uint uVar9;
+  uint uStack000000000000000c;
+  undefined1 *in_stack_00000018;
+  
+  puVar3 = PTR_DAT_06a808e8;
+  if (unaff_w23 <= unaff_w24) goto LAB_05611ff4;
+  uVar1 = *(ushort *)(unaff_x21 + (long)(int)unaff_w24 * 2);
+  if (*(int *)(*(long *)PTR_DAT_06a808e8 + 0xe4) == 0) {
+    thunk_FUN_02e9a04c();
+  }
+  uVar9 = (uint)uVar1;
+  uVar8 = uVar9 - 0x30;
+  if (uVar8 < 10) {
+    uStack000000000000000c = unaff_w27;
+    if (uVar9 == 0x30) {
+      do {
+        unaff_w24 = unaff_w24 + 1;
+        if (unaff_w23 <= unaff_w24) {
+          unaff_x28 = 0;
+          unaff_w25 = 1;
+          goto LAB_05611ff4;
+        }
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)unaff_w24 * 2);
+        uVar6 = (ulong)uVar1;
+      } while (uVar1 == 0x30);
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      uVar8 = uVar1 - 0x30;
+      if (uVar8 < 10) goto Oculus_Platform_Callback__FlushJoinIntentNotificationQueue;
+      unaff_x28 = 0;
+      uVar8 = unaff_w24;
+LAB_05611f10:
+      uVar9 = (uint)uVar6;
+      bVar2 = false;
+LAB_05611f14:
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      if ((uVar9 - 9 < 5) || (uVar9 == 0x20)) {
+        if ((uStack000000000000000c >> 1 & 1) == 0) goto LAB_05611fec;
+        uVar8 = uVar8 + 1;
+        if ((int)uVar8 < (int)unaff_w23) {
+          puVar7 = (ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+          do {
+            if (unaff_w23 <= uVar8) {
+                    /* WARNING: Subroutine does not return */
+              FUN_02e3cccc();
+            }
+            uVar1 = *puVar7;
+            if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c();
+            }
+            if ((4 < uVar1 - 9) && (uVar1 != 0x20))
+            goto Oculus_Platform_Callback_RequestCallback___ctor;
+            uVar8 = uVar8 + 1;
+            puVar7 = puVar7 + 1;
+          } while (unaff_w23 != uVar8);
+          if (bVar2) goto LAB_05612038;
+          goto LAB_05612020;
+        }
+Oculus_Platform_Callback_RequestCallback___ctor:
+        if (unaff_w23 <= uVar8) goto FUN_05611fe4;
+      }
+      if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      uVar6 = FUN_0561292c();
+      if ((uVar6 & 1) == 0) goto LAB_05611fec;
+FUN_05611fe4:
+      if (!bVar2) goto LAB_05612020;
+    }
+    else {
+Oculus_Platform_Callback__FlushJoinIntentNotificationQueue:
+      unaff_x28 = (ulong)uVar8;
+      uVar8 = unaff_w24 + 0x13;
+      iVar5 = 1;
+      do {
+        if (unaff_w23 <= unaff_w24 + iVar5) goto LAB_05612020;
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)(unaff_w24 + iVar5) * 2);
+        if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        if (9 < uVar1 - 0x30) {
+          uVar8 = unaff_w24 + iVar5;
+          uVar6 = (ulong)(uint)uVar1;
+          goto LAB_05611f10;
+        }
+        iVar5 = iVar5 + 1;
+        unaff_x28 = ((ulong)uVar1 + unaff_x28 * 10) - 0x30;
+      } while (iVar5 != 0x13);
+      if (uVar8 < unaff_w23) {
+        uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+        uVar6 = (ulong)uVar1;
+        if (*(int *)(*(long *)puVar3 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        if (9 < uVar1 - 0x30) goto LAB_05611f10;
+        uVar8 = unaff_w24 + 0x14;
+        if ((0x1999999999999999 < unaff_x28) ||
+           ((bVar2 = false, unaff_x28 == 0x1999999999999999 && (0x35 < uVar1)))) {
+          bVar2 = true;
+        }
+        unaff_x28 = (uVar6 + unaff_x28 * 10) - 0x30;
+        if (unaff_w23 <= uVar8) goto FUN_05611fe4;
+        lVar4 = *(long *)puVar3;
+        do {
+          uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+          uVar9 = (uint)uVar1;
+          if (*(int *)(lVar4 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c();
+            lVar4 = *(long *)puVar3;
+          }
+          if (9 < uVar1 - 0x30) goto LAB_05611f14;
+          uVar8 = uVar8 + 1;
+          bVar2 = true;
+        } while (unaff_w23 != uVar8);
+      }
+      else {
+LAB_05612020:
+        if (unaff_x28 == 0) {
+          unaff_w25 = 1;
+        }
+        if ((unaff_w25 & 1) != 0) {
+          unaff_w25 = 1;
+          goto LAB_05611ff4;
+        }
+      }
+    }
+LAB_05612038:
+    unaff_x28 = 0;
+    unaff_w25 = 0;
+    *in_stack_00000018 = 1;
+  }
+  else {
+LAB_05611fec:
+    unaff_x28 = 0;
+    unaff_w25 = 0;
+  }
+LAB_05611ff4:
+  *unaff_x22 = unaff_x28;
+  return unaff_w25;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 89
+FUNCTION_NAME: Oculus.Platform.Callback$$HandleMessage
+ENTRY_POINT: 05611aa8
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_21', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_general_structure_review_high\05611aa8_Oculus.Platform.Callback$$HandleMessage.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\089_p194_Oculus.Platform.Callback$$HandleMessage.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Oculus.Platform.Callback$$HandleMessage
+ENTRY_POINT: 05611aa8
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_21;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+int Oculus_Platform_Callback__HandleMessage(long param_1)
+
+{
+  long lVar1;
+  ushort uVar2;
+  bool bVar3;
+  undefined *puVar4;
+  undefined8 uVar5;
+  long lVar6;
+  ulong uVar7;
+  undefined4 uVar8;
+  long unaff_x19;
+  long lVar9;
+  int iVar10;
+  ulong uVar11;
+  ushort *puVar12;
+  ushort *unaff_x21;
+  ulong *unaff_x22;
+  uint uVar13;
+  uint uVar14;
+  ulong unaff_x23;
+  uint uVar15;
+  int iVar16;
+  long unaff_x25;
+  undefined1 *unaff_x26;
+  uint unaff_w27;
+  ulong uVar17;
+  uint uVar18;
+  uint uStack000000000000000c;
+  
+  FUN_02e3ca1c(*(undefined8 *)(param_1 + 0x8e8));
+  FUN_02e3ca1c(PTR_DAT_06a403d0);
+  FUN_02e3ca1c(PTR_DAT_06a3a278);
+  FUN_02e3ca1c(PTR_DAT_06a7da68);
+  FUN_02e3ca1c(PTR_DAT_06a6cb50);
+  *(undefined1 *)(unaff_x19 + 0x850) = 1;
+  puVar4 = PTR_DAT_06a808e8;
+  uVar13 = (uint)unaff_x23;
+  if (uVar13 != 0) {
+    uVar2 = *unaff_x21;
+    if ((unaff_w27 & 1) != 0) {
+      if (*(int *)(*(long *)PTR_DAT_06a808e8 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      if ((uVar2 - 9 < 5) || (uVar2 == 0x20)) {
+        if (uVar13 != 1) {
+          lVar6 = *(long *)puVar4;
+          uVar15 = 1;
+          do {
+            uVar2 = unaff_x21[(int)uVar15];
+            if (*(int *)(lVar6 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c();
+              lVar6 = *(long *)puVar4;
+            }
+            if ((4 < uVar2 - 9) && (uVar2 != 0x20)) goto LAB_05611af8;
+            uVar15 = uVar15 + 1;
+          } while (uVar13 != uVar15);
+        }
+        goto LAB_05611ff0;
+      }
+    }
+    uVar15 = 0;
+LAB_05611af8:
+    uVar18 = (uint)uVar2;
+    uVar17 = unaff_x23 >> 0x20;
+    if ((unaff_w27 >> 2 & 1) == 0) {
+LAB_05611b04:
+      iVar16 = 1;
+      uVar7 = uVar17;
+      goto LAB_05611d80;
+    }
+    if (unaff_x25 == 0) goto LAB_0561205c;
+    lVar6 = *(long *)(unaff_x25 + 0x28);
+    lVar1 = *(long *)(unaff_x25 + 0x30);
+    uVar7 = thunk_FUN_0548b788(lVar6,*(undefined8 *)PTR_DAT_06a7da68,0);
+    if (((uVar7 & 1) == 0) ||
+       (uVar7 = thunk_FUN_0548b788(lVar1,*(undefined8 *)PTR_DAT_06a6cb50,0), (uVar7 & 1) == 0)) {
+      uVar14 = uVar13 - uVar15;
+      unaff_x23 = (ulong)uVar14;
+      lVar9 = *(long *)PTR_DAT_06a403d0;
+      if (uVar13 < uVar15) {
+        FUN_056265f0(0);
+      }
+      if ((*(ushort *)(*(long *)(lVar9 + 0x20) + 0x135) & 1) == 0) {
+        FUN_02e7568c();
+      }
+      unaff_x21 = unaff_x21 + (int)uVar15;
+      uVar17 = FUN_0548ca18(lVar6,0);
+      if ((uVar17 & 1) == 0) {
+        if (DAT_06e860f0 == '\0') {
+          FUN_02e3ca1c(PTR_DAT_06a3a270);
+          DAT_06e860f0 = '\x01';
+        }
+        if (lVar6 == 0) {
+          uVar5 = 0;
+          uVar8 = 0;
+        }
+        else {
+          uVar5 = FUN_0548a2e4(lVar6,0);
+          uVar8 = *(undefined4 *)(lVar6 + 0x10);
+        }
+        uVar17 = FUN_0324ba64(unaff_x21,unaff_x23,uVar5,uVar8,*(undefined8 *)PTR_DAT_06a403c8);
+        if ((uVar17 & 1) != 0) {
+          if (lVar6 == 0) goto LAB_0561205c;
+          uVar15 = *(uint *)(lVar6 + 0x10);
+          uVar17 = 0;
+          if (uVar14 <= uVar15) goto LAB_05611ff0;
+          iVar16 = 1;
+          goto LAB_05611d7c;
+        }
+      }
+      uVar17 = FUN_0548ca18(lVar1,0);
+      if ((uVar17 & 1) == 0) {
+        if (DAT_06e860f0 == '\0') {
+          FUN_02e3ca1c(PTR_DAT_06a3a270);
+          DAT_06e860f0 = '\x01';
+        }
+        if (lVar1 == 0) {
+          uVar5 = 0;
+          uVar8 = 0;
+        }
+        else {
+          uVar5 = FUN_0548a2e4(lVar1,0);
+          uVar8 = *(undefined4 *)(lVar1 + 0x10);
+        }
+        uVar17 = FUN_0324ba64(unaff_x21,unaff_x23,uVar5,uVar8,*(undefined8 *)PTR_DAT_06a403c8);
+        if ((uVar17 & 1) != 0) {
+          if (lVar1 == 0) {
+LAB_0561205c:
+                    /* WARNING: Subroutine does not return */
+            FUN_02e3ccc4();
+          }
+          uVar15 = *(uint *)(lVar1 + 0x10);
+          iVar16 = 0;
+          uVar17 = 0;
+          if (uVar14 <= uVar15) goto LAB_05611ff4;
+          goto LAB_05611d7c;
+        }
+        uVar7 = 0;
+        uVar15 = 0;
+        iVar16 = 1;
+      }
+      else {
+        uVar7 = 0;
+        uVar15 = 0;
+        iVar16 = 1;
+      }
+    }
+    else {
+      if (uVar18 == 0x2d) {
+        uVar15 = uVar15 + 1;
+        iVar16 = 0;
+        if (uVar13 <= uVar15) {
+          uVar17 = 0;
+          goto LAB_05611ff4;
+        }
+      }
+      else {
+        if (uVar18 != 0x2b) goto LAB_05611b04;
+        uVar15 = uVar15 + 1;
+        if (uVar13 <= uVar15) goto LAB_05611ff0;
+        iVar16 = 1;
+      }
+LAB_05611d7c:
+      uVar18 = (uint)unaff_x21[(int)uVar15];
+      uVar7 = uVar17;
+    }
+LAB_05611d80:
+    puVar4 = PTR_DAT_06a808e8;
+    if (*(int *)(*(long *)PTR_DAT_06a808e8 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    uVar13 = uVar18 - 0x30;
+    if (uVar13 < 10) {
+      uVar14 = (uint)unaff_x23;
+      uStack000000000000000c = unaff_w27;
+      if (uVar18 == 0x30) {
+        do {
+          uVar15 = uVar15 + 1;
+          if (uVar14 <= uVar15) {
+            uVar17 = 0;
+            iVar16 = 1;
+            goto LAB_05611ff4;
+          }
+          uVar2 = unaff_x21[(int)uVar15];
+          uVar11 = (ulong)uVar2;
+        } while (uVar2 == 0x30);
+        if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        uVar13 = uVar2 - 0x30;
+        if (uVar13 < 10) goto Oculus_Platform_Callback__FlushJoinIntentNotificationQueue;
+        uVar17 = 0;
+        uVar13 = uVar15;
+LAB_05611f10:
+        uVar15 = (uint)uVar11;
+        bVar3 = false;
+LAB_05611f14:
+        if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        if ((uVar15 - 9 < 5) || (uVar15 == 0x20)) {
+          if ((uStack000000000000000c >> 1 & 1) == 0) goto LAB_05611ff0;
+          uVar13 = uVar13 + 1;
+          if ((int)uVar13 < (int)uVar14) {
+            puVar12 = unaff_x21 + (int)uVar13;
+            do {
+              if (uVar14 <= uVar13) {
+                    /* WARNING: Subroutine does not return */
+                FUN_02e3cccc();
+              }
+              uVar2 = *puVar12;
+              if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+                thunk_FUN_02e9a04c();
+              }
+              if ((4 < uVar2 - 9) && (uVar2 != 0x20))
+              goto Oculus_Platform_Callback_RequestCallback___ctor;
+              uVar13 = uVar13 + 1;
+              puVar12 = puVar12 + 1;
+            } while (uVar14 != uVar13);
+            if (bVar3) goto LAB_05612038;
+            goto LAB_05612020;
+          }
+Oculus_Platform_Callback_RequestCallback___ctor:
+          if (uVar14 <= uVar13) goto FUN_05611fe4;
+        }
+        if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        uVar7 = FUN_0561292c(unaff_x21,unaff_x23 & 0xffffffff | uVar7 << 0x20,uVar13);
+        if ((uVar7 & 1) == 0) goto LAB_05611ff0;
+FUN_05611fe4:
+        if (!bVar3) goto LAB_05612020;
+      }
+      else {
+Oculus_Platform_Callback__FlushJoinIntentNotificationQueue:
+        uVar17 = (ulong)uVar13;
+        uVar13 = uVar15 + 0x13;
+        iVar10 = 1;
+        do {
+          if (uVar14 <= uVar15 + iVar10) goto LAB_05612020;
+          uVar2 = unaff_x21[(int)(uVar15 + iVar10)];
+          if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c();
+          }
+          if (9 < uVar2 - 0x30) {
+            uVar13 = uVar15 + iVar10;
+            uVar11 = (ulong)(uint)uVar2;
+            goto LAB_05611f10;
+          }
+          iVar10 = iVar10 + 1;
+          uVar17 = ((ulong)uVar2 + uVar17 * 10) - 0x30;
+        } while (iVar10 != 0x13);
+        if (uVar13 < uVar14) {
+          uVar2 = unaff_x21[(int)uVar13];
+          uVar11 = (ulong)uVar2;
+          if (*(int *)(*(long *)puVar4 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c();
+          }
+          if (9 < uVar2 - 0x30) goto LAB_05611f10;
+          uVar13 = uVar15 + 0x14;
+          if ((0x1999999999999999 < uVar17) ||
+             ((bVar3 = false, uVar17 == 0x1999999999999999 && (0x35 < uVar2)))) {
+            bVar3 = true;
+          }
+          uVar17 = (uVar11 + uVar17 * 10) - 0x30;
+          if (uVar14 <= uVar13) goto FUN_05611fe4;
+          lVar6 = *(long *)puVar4;
+          do {
+            uVar2 = unaff_x21[(int)uVar13];
+            uVar15 = (uint)uVar2;
+            if (*(int *)(lVar6 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c();
+              lVar6 = *(long *)puVar4;
+            }
+            if (9 < uVar2 - 0x30) goto LAB_05611f14;
+            uVar13 = uVar13 + 1;
+            bVar3 = true;
+          } while (uVar14 != uVar13);
+        }
+        else {
+LAB_05612020:
+          if (uVar17 == 0) {
+            iVar16 = 1;
+          }
+          if (iVar16 != 0) {
+            iVar16 = 1;
+            goto LAB_05611ff4;
+          }
+        }
+      }
+LAB_05612038:
+      uVar17 = 0;
+      iVar16 = 0;
+      *unaff_x26 = 1;
+      goto LAB_05611ff4;
+    }
+  }
+LAB_05611ff0:
+  uVar17 = 0;
+  iVar16 = 0;
+LAB_05611ff4:
+  *unaff_x22 = uVar17;
+  return iVar16;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 90
+FUNCTION_NAME: Oculus.Platform.Callback$$FlushJoinIntentNotificationQueue
+ENTRY_POINT: 05611df0
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_13', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_general_structure_review_high\05611df0_Oculus.Platform.Callback$$FlushJoinIntentNotificationQueue.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\090_p194_Oculus.Platform.Callback$$FlushJoinIntentNotificationQueue.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Oculus.Platform.Callback$$FlushJoinIntentNotificationQueue
+ENTRY_POINT: 05611df0
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_13;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+undefined4 Oculus_Platform_Callback__FlushJoinIntentNotificationQueue(ulong param_1)
+
+{
+  ushort uVar1;
+  bool bVar2;
+  long lVar3;
+  int iVar4;
+  uint uVar5;
+  ulong uVar6;
+  ushort *puVar7;
+  long unaff_x21;
+  ulong *unaff_x22;
+  uint unaff_w23;
+  int unaff_w24;
+  uint uVar8;
+  uint unaff_w25;
+  undefined4 uVar9;
+  long *unaff_x26;
+  undefined8 in_stack_00000008;
+  undefined1 *in_stack_00000018;
+  
+  param_1 = param_1 & 0xffffffff;
+  uVar8 = unaff_w24 + 0x13;
+  iVar4 = 1;
+  do {
+    if (unaff_w23 <= (uint)(unaff_w24 + iVar4)) goto LAB_05612020;
+    uVar1 = *(ushort *)(unaff_x21 + (long)(unaff_w24 + iVar4) * 2);
+    if (*(int *)(*unaff_x26 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    if (9 < uVar1 - 0x30) {
+      uVar8 = unaff_w24 + iVar4;
+      uVar6 = (ulong)(uint)uVar1;
+      goto LAB_05611f10;
+    }
+    iVar4 = iVar4 + 1;
+    param_1 = ((ulong)uVar1 + param_1 * 10) - 0x30;
+  } while (iVar4 != 0x13);
+  if (uVar8 < unaff_w23) {
+    uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+    uVar6 = (ulong)uVar1;
+    if (*(int *)(*unaff_x26 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+    }
+    if (9 < uVar1 - 0x30) {
+LAB_05611f10:
+      uVar5 = (uint)uVar6;
+      bVar2 = false;
+LAB_05611f14:
+      if (*(int *)(*unaff_x26 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+      }
+      if ((uVar5 - 9 < 5) || (uVar5 == 0x20)) {
+        if ((in_stack_00000008._4_4_ >> 1 & 1) != 0) {
+          uVar8 = uVar8 + 1;
+          if ((int)uVar8 < (int)unaff_w23) {
+            puVar7 = (ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+            do {
+              if (unaff_w23 <= uVar8) {
+                    /* WARNING: Subroutine does not return */
+                FUN_02e3cccc();
+              }
+              uVar1 = *puVar7;
+              if (*(int *)(*unaff_x26 + 0xe4) == 0) {
+                thunk_FUN_02e9a04c();
+              }
+              if ((4 < uVar1 - 9) && (uVar1 != 0x20))
+              goto Oculus_Platform_Callback_RequestCallback___ctor;
+              uVar8 = uVar8 + 1;
+              puVar7 = puVar7 + 1;
+            } while (unaff_w23 != uVar8);
+          }
+          else {
+Oculus_Platform_Callback_RequestCallback___ctor:
+            if (uVar8 < unaff_w23) goto LAB_05611fa8;
+          }
+          goto joined_r0x0561201c;
+        }
+      }
+      else {
+LAB_05611fa8:
+        if (*(int *)(*unaff_x26 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c();
+        }
+        uVar6 = FUN_0561292c();
+        if ((uVar6 & 1) != 0) {
+joined_r0x0561201c:
+          if (!bVar2) goto LAB_05612020;
+          goto LAB_05612038;
+        }
+      }
+      param_1 = 0;
+      uVar9 = 0;
+      goto LAB_05611ff4;
+    }
+    uVar8 = unaff_w24 + 0x14;
+    if ((0x1999999999999999 < param_1) ||
+       ((bVar2 = false, param_1 == 0x1999999999999999 && (0x35 < uVar1)))) {
+      bVar2 = true;
+    }
+    param_1 = (uVar6 + param_1 * 10) - 0x30;
+    if (unaff_w23 <= uVar8) goto joined_r0x0561201c;
+    lVar3 = *unaff_x26;
+    do {
+      uVar1 = *(ushort *)(unaff_x21 + (long)(int)uVar8 * 2);
+      uVar5 = (uint)uVar1;
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02e9a04c();
+        lVar3 = *unaff_x26;
+      }
+      if (9 < uVar1 - 0x30) goto LAB_05611f14;
+      uVar8 = uVar8 + 1;
+      bVar2 = true;
+    } while (unaff_w23 != uVar8);
+  }
+  else {
+LAB_05612020:
+    if (param_1 == 0) {
+      unaff_w25 = 1;
+    }
+    if ((unaff_w25 & 1) != 0) {
+      uVar9 = 1;
+      goto LAB_05611ff4;
+    }
+  }
+LAB_05612038:
+  param_1 = 0;
+  uVar9 = 0;
+  *in_stack_00000018 = 1;
+LAB_05611ff4:
+  *unaff_x22 = param_1;
+  return uVar9;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 91
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$ShouldWriteProperty
+ENTRY_POINT: 055dd388
+MANUAL_PRIORITY_SCORE: 194
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_6', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\general-structure-results\70_high_general_structure_review_high\055dd388_Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$ShouldWriteProperty.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\beastcraft\manual-review-pack\A_must_review\091_p194_Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$ShouldWriteProperty.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$ShouldWriteProperty
+ENTRY_POINT: 055dd388
+PROGRAM: beastcraft-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_6;strong_file_logging_hits_2;telemetry_or_network_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x055dd560) */
+/* WARNING: Removing unreachable block (ram,0x055dd564) */
+/* WARNING: Removing unreachable block (ram,0x055dd56c) */
+/* WARNING: Removing unreachable block (ram,0x055dd57c) */
+
+void Newtonsoft_Json_Serialization_JsonSerializerInternalWriter__ShouldWriteProperty(long param_1)
+
+{
+  uint uVar1;
+  short sVar2;
+  undefined *puVar3;
+  bool bVar4;
+  short sVar5;
+  long lVar6;
+  uint uVar7;
+  long lVar8;
+  long lVar9;
+  short unaff_w20;
+  int iVar10;
+  int iVar11;
+  int iVar12;
+  long *unaff_x21;
+  uint uVar13;
+  int unaff_w24;
+  int iVar14;
+  
+  lVar6 = *(long *)(param_1 + 0xb8);
+  if (*(short *)(lVar6 + 10) != unaff_w20) {
+    if (*(int *)(param_1 + 0xe4) == 0) {
+      thunk_FUN_02e9a04c();
+      lVar6 = *(long *)(*unaff_x21 + 0xb8);
+    }
+    puVar3 = PTR_DAT_06a368c0;
+    if (*(short *)(lVar6 + 8) == unaff_w20) {
+      return;
+    }
+    iVar10 = 0;
+    if (unaff_w24 < 1) {
+      iVar14 = 0;
+      bVar4 = true;
+    }
+    else {
+      iVar14 = 0;
+      iVar11 = 0;
+      iVar12 = 0;
+      do {
+        sVar5 = FUN_05487524();
+        lVar6 = *(long *)puVar3;
+        if (*(int *)(lVar6 + 0xe4) == 0) {
+          thunk_FUN_02e9a04c(lVar6);
+          lVar6 = *(long *)puVar3;
+        }
+        lVar8 = *(long *)(lVar6 + 0xb8);
+        if (*(short *)(lVar8 + 10) == sVar5) {
+LAB_055dd43c:
+          if (*(int *)(lVar6 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c(lVar6);
+            lVar6 = *(long *)puVar3;
+          }
+          sVar2 = *(short *)(*(long *)(lVar6 + 0xb8) + 8);
+          if (*(short *)(*(long *)(lVar6 + 0xb8) + 10) != sVar2) {
+            if (*(int *)(lVar6 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c(lVar6);
+              sVar2 = *(short *)(*(long *)(*(long *)puVar3 + 0xb8) + 8);
+            }
+            if (sVar2 == sVar5) {
+              iVar11 = iVar11 + 1;
+            }
+          }
+          if (iVar12 + 1 != unaff_w24) {
+            sVar5 = FUN_05487524();
+            lVar6 = *(long *)puVar3;
+            if (*(int *)(lVar6 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c(lVar6);
+              lVar6 = *(long *)puVar3;
+            }
+            lVar8 = *(long *)(lVar6 + 0xb8);
+            if (*(short *)(lVar8 + 10) != sVar5) {
+              if (*(int *)(lVar6 + 0xe4) == 0) {
+                thunk_FUN_02e9a04c(lVar6);
+                lVar8 = *(long *)(*(long *)puVar3 + 0xb8);
+              }
+              if (*(short *)(lVar8 + 8) != sVar5) goto LAB_055dd500;
+            }
+          }
+          iVar14 = iVar14 + 1;
+        }
+        else {
+          if (*(int *)(lVar6 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c(lVar6);
+            lVar6 = *(long *)puVar3;
+            lVar8 = *(long *)(lVar6 + 0xb8);
+          }
+                    /* try { // try from 055dd430 to 056dd457 has its CatchHandler @ 055dddf0 */
+          if (*(short *)(lVar8 + 8) == sVar5) goto LAB_055dd43c;
+        }
+LAB_055dd500:
+        iVar12 = iVar12 + 1;
+      } while (iVar12 != unaff_w24);
+      bVar4 = iVar11 == 0;
+      if (iVar14 != 0) goto LAB_055dd544;
+    }
+    if (!bVar4) {
+LAB_055dd544:
+      lVar6 = FUN_02e3cb08(*(undefined8 *)PTR_DAT_06a2f548,unaff_w24 - iVar14);
+      puVar3 = PTR_DAT_06a368c0;
+      if (0 < unaff_w24) {
+        if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_02e3ccc4();
+        }
+        iVar14 = unaff_w24 + -1;
+        uVar13 = 0;
+        do {
+          if (*(int *)(lVar6 + 0x18) <= (int)uVar13) break;
+          sVar5 = FUN_05487524();
+          lVar8 = *(long *)puVar3;
+          if (*(int *)(lVar8 + 0xe4) == 0) {
+            thunk_FUN_02e9a04c(lVar8);
+            lVar8 = *(long *)puVar3;
+          }
+          lVar9 = *(long *)(lVar8 + 0xb8);
+          if (*(short *)(lVar9 + 10) == sVar5) {
+LAB_055dd608:
+            uVar7 = *(uint *)(lVar6 + 0x18);
+            uVar1 = uVar13 + 1;
+            if (uVar1 != uVar7) {
+              if (*(int *)(lVar8 + 0xe4) == 0) {
+                thunk_FUN_02e9a04c(lVar8);
+                uVar7 = *(uint *)(lVar6 + 0x18);
+              }
+              if (uVar7 <= uVar13) {
+LAB_055dd71c:
+                    /* WARNING: Subroutine does not return */
+                FUN_02e3cccc();
+              }
+              *(undefined2 *)(lVar6 + (long)(int)uVar13 * 2 + 0x20) =
+                   *(undefined2 *)(*(long *)(*(long *)puVar3 + 0xb8) + 10);
+              iVar11 = iVar10;
+              uVar13 = uVar1;
+              if (iVar10 < iVar14) {
+                do {
+                  iVar12 = iVar11 + 1;
+                  sVar5 = FUN_05487524();
+                  lVar8 = *(long *)puVar3;
+                  if (*(int *)(lVar8 + 0xe4) == 0) {
+                    thunk_FUN_02e9a04c(lVar8);
+                    lVar8 = *(long *)puVar3;
+                  }
+                  lVar9 = *(long *)(lVar8 + 0xb8);
+                  if (*(short *)(lVar9 + 10) != sVar5) {
+                    if (*(int *)(lVar8 + 0xe4) == 0) {
+                      thunk_FUN_02e9a04c(lVar8);
+                      lVar9 = *(long *)(*(long *)puVar3 + 0xb8);
+                    }
+                    iVar10 = iVar11;
+                    if (*(short *)(lVar9 + 8) != sVar5) break;
+                  }
+                  iVar10 = iVar14;
+                  iVar11 = iVar12;
+                } while (iVar14 != iVar12);
+              }
+            }
+          }
+          else {
+            if (*(int *)(lVar8 + 0xe4) == 0) {
+              thunk_FUN_02e9a04c(lVar8);
+              lVar8 = *(long *)puVar3;
+              lVar9 = *(long *)(lVar8 + 0xb8);
+            }
+            if (*(short *)(lVar9 + 8) == sVar5) goto LAB_055dd608;
+            if (*(uint *)(lVar6 + 0x18) <= uVar13) goto LAB_055dd71c;
+            *(short *)(lVar6 + (long)(int)uVar13 * 2 + 0x20) = sVar5;
+            uVar13 = uVar13 + 1;
+          }
+          iVar10 = iVar10 + 1;
+        } while (iVar10 < unaff_w24);
+      }
+      FUN_0548a2b0(0,lVar6,0);
+      return;
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

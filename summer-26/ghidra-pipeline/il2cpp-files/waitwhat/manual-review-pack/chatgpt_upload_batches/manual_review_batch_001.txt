@@ -1,0 +1,906 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 1
+FUNCTION_NAME: UnityEngine.InputSystem.FastTouchscreen$$Initialize_ctrlTouchscreentouch3startPosition
+ENTRY_POINT: 0642fc30
+MANUAL_PRIORITY_SCORE: 516
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 353
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_eye_data_collection_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'attempted_use', 'active_gaze_retrieval', 'active_gaze_interaction', 'active_gaze_collection', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_8', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_2', 'ray_or_cast_sink_hits_4', 'ui_or_gameplay_sink_hits_21', 'telemetry_or_network_hits_17', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'active_gaze_values_flow_to_collection_or_telemetry_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_21', 'functionality_data_collection_or_telemetry_hits_12', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_353', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_confirmed_eye_data_collection_near_certain\0642fc30_UnityEngine.InputSystem.FastTouchscreen$$Initialize_ctrlTouchscreentouch3startPosition.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\001_p516_UnityEngine.InputSystem.FastTouchscreen$$Initialize_ctrlTouchscreentouch3startPosition.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.InputSystem.FastTouchscreen$$Initialize_ctrlTouchscreentouch3startPosition
+ENTRY_POINT: 0642fc30
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 353
+LABEL: confirmed_eye_data_collection_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_data_collection
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;attempted_use;active_gaze_retrieval;active_gaze_interaction;active_gaze_collection;possible_biometrics
+EVIDENCE: strong_eye_source_hits_8;weak_xr_or_state_hits_21;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_2;ray_or_cast_sink_hits_4;ui_or_gameplay_sink_hits_21;telemetry_or_network_hits_17;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;active_gaze_values_flow_to_collection_or_telemetry_sink;possible_biometric_feature_from_active_eye_context;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_21;functionality_data_collection_or_telemetry_hits_12;functionality_possible_biometrics_hits_4
+*/
+
+
+long UnityEngine_InputSystem_FastTouchscreen__Initialize_ctrlTouchscreentouch3startPosition
+               (long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  long unaff_x20;
+  undefined8 *unaff_x21;
+  
+  FUN_03188a78(*(undefined8 *)(param_1 + 0x230));
+  FUN_03188a78(PTR_DAT_071039b8);
+  FUN_03188a78(UnityEngine_InputSystem_HID_HIDParser_HIDItemStateLocal_var);
+  FUN_03188a78(PTR_DAT_071039c0);
+  FUN_03188a78(
+              UnityEngine_XR_OpenXR_Features_Interactions_HPReverbG2ControllerProfile_ReverbG2Controller_var
+              );
+  FUN_03188a78(
+              UnityEngine_XR_OpenXR_Features_Interactions_HTCViveControllerProfile_ViveController_var
+              );
+  FUN_03188a78(
+              UnityEngine_XR_OpenXR_Features_Interactions_HandCommonPosesInteraction_HandInteractionPoses_var
+              );
+  FUN_03188a78(PTR_DAT_071039d0);
+  FUN_03188a78(Oculus_Interaction_HandGrab_Recorder_HandGrabPoseLiveRecorder_RecorderStep_var);
+  FUN_03188a78(Oculus_Interaction_HandGrab_HandGrabUtils_HandGrabInteractableData_var);
+  FUN_03188a78(Oculus_Interaction_HandGrab_HandGrabUtils_HandGrabPoseData_var);
+  FUN_03188a78(
+              UnityEngine_XR_OpenXR_Features_Interactions_HandInteractionProfile_HandInteraction_var
+              );
+  FUN_03188a78(UnityEngine_XR_Hands_OpenXR_HandTracking_DestroyingSubsystemEventArgs_var);
+  FUN_03188a78(UnityEngine_XR_Hands_OpenXR_HandTracking_SubsystemCreatedEventArgs_var);
+  FUN_03188a78(Unity_Hierarchy_HierarchyNodeTypeHandlerBaseEnumerable_Enumerator_var);
+  FUN_03188a78(Unity_Hierarchy_HierarchyViewModel_Enumerator_var);
+  FUN_03188a78(System_Net_HttpWebRequest_AuthorizationState_var);
+  FUN_03188a78(IAPManager_IAPPack_var);
+  FUN_03188a78(Oisoi_UI_ImageBrowser_ImageBrowserEntryDesc_var);
+  FUN_03188a78(System_Reflection_Internal_ImmutableByteArrayInterop_ByteArrayUnion_var);
+  FUN_03188a78(UnityEngine_UIElements_InlineStyleAccess_InlineRule_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputAction_CallbackContext_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionMap_BindingOverrideListJson_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionMap_DeviceArray_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionRebindingExtensions_Parameter_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionRebindingExtensions_ParameterEnumerable_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionRebindingExtensions_ParameterEnumerator_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionSetupExtensions_BindingSyntax_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionSetupExtensions_CompositeSyntax_var);
+  FUN_03188a78(PTR_DAT_071039e8);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionSetupExtensions_ControlSchemeSyntax_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputActionState_GlobalState_var);
+  FUN_03188a78(UnityEngine_InputSystem_Utilities_InputActionTrace_ActionEventPtr_var);
+  FUN_03188a78(UnityEngine_InputSystem_Utilities_InputActionTrace_Enumerator_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputBindingCompositeContext_PartBinding_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputControlExtensions_ControlBuilder_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputControlExtensions_DeviceBuilder_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputControlExtensions_InputEventControlCollection_var);
+  FUN_03188a78(PTR_DAT_071039f0);
+  FUN_03188a78(UnityEngine_InputSystem_InputControlExtensions_InputEventControlEnumerator_var);
+  FUN_03188a78(UnityEngine_InputSystem_Layouts_InputControlLayout_Cache_var);
+  FUN_03188a78(UnityEngine_InputSystem_Layouts_InputControlLayout_Collection_var);
+  FUN_03188a78(PTR_DAT_071039f8);
+  FUN_03188a78(UnityEngine_InputSystem_Layouts_InputControlLayout_ControlItem_var);
+  FUN_03188a78(UnityEngine_InputSystem_Layouts_InputControlLayout_LayoutJson_var);
+  FUN_03188a78(
+              UnityEngine_InputSystem_Layouts_InputControlLayout_LayoutJsonNameAndDescriptorOnly_var
+              );
+  FUN_03188a78(UnityEngine_InputSystem_InputControlPath_ParsedPathComponent_var);
+  FUN_03188a78(PTR_DAT_07103a00);
+  FUN_03188a78(UnityEngine_InputSystem_InputControlPath_PathParser_var);
+  FUN_03188a78(UnityEngine_InputSystem_Layouts_InputDeviceMatcher_MatcherJson_var);
+  FUN_03188a78(UnityEngine_InputSystem_InputManager_StateChangeMonitorListener_var);
+  FUN_03188a78(PTR_DAT_070c20c8);
+  FUN_03188a7
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)OVRSimpleJSON_JSONNode_Enumerator_var,
+                 *(undefined8 *)ExitGames_Client_Photon_StructWrapping_StructWrapper_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_InputSystem_Utilities_JsonParser_JsonValue_var,
+                 *(undefined8 *)PTR_DAT_07103978,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)System_Xml_Serialization_XmlTypeMapMemberFlatList_var,
+                 *(undefined8 *)Fusion_FusionUnityLoggerBase_LogContext_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)System_Runtime_Serialization_XmlReaderDelegator_var,
+                 *(undefined8 *)PTR_DAT_070c3e58,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         System_Text_Json_Serialization_Converters_SmallObjectWithParameterizedConstructorConverter<T,_TArg0,_TArg1,_TArg2,_TArg3>_var
+                 ,*(undefined8 *)System_Drawing_Size_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         System_Runtime_Remoting_Channels_CrossAppDomainSink_ProcessMessageRes_var,
+                 *(undefined8 *)PTR_DAT_07103770,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)ExitGames_Client_Photon_SocketUdp_var,
+                 *(undefined8 *)PTR_DAT_07102388,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)Oculus_Avatar2_CAPI_ovrAvatar2Quatf_var,
+                 *(undefined8 *)
+                  System_Reflection_Internal_ImmutableByteArrayInterop_ByteArrayUnion_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_UI_SpriteState_var,
+                 *(undefined8 *)PTR_DAT_07102680,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)OVRPlugin_Vector3f_var,
+                 *(undefined8 *)System_Xml_XPath_XPathNavigator_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         System_Runtime_CompilerServices_ConfiguredValueTaskAwaitable_ConfiguredValueTaskAwaiter_var
+                 ,*(undefined8 *)UnityEngine_UIElements_UIR_MeshGenerator_RectangleParams_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_Rendering_Universal_UniversalRenderPipeline_var,
+                 *(undefined8 *)UnityEngine_UIElements_StyleFontDefinition_var,*(undefined8 *)puVar1
+                );
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_GPUInstanceDataBufferUploader_GPUResources_var,
+                 *(undefined8 *)PTR_DAT_07103928,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_InputSystem_InputManager_StateChangeMonitorTimeout_var,
+                 *(undefined8 *)
+                  System_Runtime_Serialization_CollectionDataContract_GenericDictionaryEnumerator<K,_V>_var
+                 ,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_Rendering_GPUSort_SystemResources_var,
+                 *(undefined8 *)Fusion_SimulationBehaviourListScope_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_UIElements_StyleSheet_var,
+                 *(undefined8 *)PTR_DAT_07103a00,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)Fusion_Statistics_FusionStatsGraphBase_FusionStatBuffer_var,
+                 *(undefined8 *)Fusion_LagCompensation_SphereOverlapQueryParams_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)System_Runtime_Serialization_XmlWriterDelegator_var,
+                 *(undefined8 *)PTR_DAT_07103a48,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_Rendering_VolumeParameter_var,
+                 *(undefined8 *)UnityEngine_PlayerLoop_EarlyUpdate_XRUpdate_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)System_Xml_Schema_XmlSchemaElement_var,
+                 *(undefined8 *)
+                  UnityEngine_InputSystem_Utilities_InputActionTrace_ActionEventPtr_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_XR_OpenXR_Features_Interactions_HandCommonPosesInteraction_HandInteractionPoses_var
+                 ,*(undefined8 *)PTR_DAT_071038c0,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_InputSystem_OnScreen_OnScreenControl_OnScreenDeviceInfo_var,
+                 *(undefined8 *)OVRSimpleJSON_JSONNode_ValueEnumerator_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_InputSystem_Layouts_InputControlLayout_LayoutJsonNameAndDescriptorOnly_var
+                 ,*(undefined8 *)System_Data_DataTable_RowDiffIdUsageSection_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_Universal_LightCookieManager_LightCookieMapping_var,
+                 *(undefined8 *)System_Threading_Tasks_Task_var,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)
+                         UnityEngine_InputSystem_InputControlExtensions_InputEventControlEnumerator_var
+                 ,*(undefined8 *)
+                   UnityEngine_XR_OpenXR_Features_Interactions_MicrosoftHandInteraction_HoloLensHand_var
+                 ,*(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)UnityEngine_Rendering_Blitter_BlitColorAndDepthPassNames_var,
+                 *(undefined8 *)UnityEngine_InputForUI_EventProvider_Registration_var,
+                 *(undefined8 *)puVar1);
+    FUN_0524b264(lVar11,*(undefined8 *)Oculus_Interaction_Locomotion_TeleportHit_var,
+                 *(undefined8 *)UnityEngine_Rendering_GPUPrefixSum_SupportResources_var,
+                 *(undefined8 *)puVar1);
+    return lVar11;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 2
+FUNCTION_NAME: FUN_06bbe694
+ENTRY_POINT: 06bbe694
+MANUAL_PRIORITY_SCORE: 463
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 300
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_21', 'ray_or_cast_sink_hits_10', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_12', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_14', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_300', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\06bbe694_FUN_06bbe694.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\002_p463_FUN_06bbe694.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_06bbe694
+ENTRY_POINT: 06bbe694
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 300
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_6;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_21;ray_or_cast_sink_hits_10;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_12;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_14;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_06bbe694(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  
+  puVar2 = 
+  Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_NumberHandling__
+  ;
+  puVar1 = 
+  Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_KeyInfo__
+  ;
+  if ((DAT_07560426 & 1) == 0) {
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_ObjectCreator__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_NumberHandling__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_KeyInfo__
+                );
+    FUN_03188a78(Method_System_Collections_Generic_List_Enumerator<OVRSceneAnchor>_MoveNext__);
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<Dictionary<string,_object>>_set_SerializeHandler__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>__ctor__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_ElementInfo__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_KeyInfo__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_NumberHandling__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_ObjectCreator__
+                );
+    FUN_03188a78(
+                Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_SerializeHandler__
+                );
+    FUN_03188a78(
+                Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<string>_Start<SerializableExtensions_<SerializeToStringAsync>d__0>__
+                );
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<Nullable<IntPtr>>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<Nullable<UIntPtr>>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<byte[]>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<bool>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<byte>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<char>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<DateTime>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<DateTimeOffset>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<Decimal>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<double>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<Guid>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<short>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<int>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<long>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<IntPtr>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonArray>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonDocument>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonElement>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonNode>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonObject>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<JsonValue>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<object>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<object>_TryWrite__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<sbyte>__ctor__);
+    FUN_03188a78(PTR_DAT_0710d3e0);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<float>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<string>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<TimeSpan>__ctor__);
+    FUN_03188a78(Method_System_Text_Json_Serialization_JsonConverter<ush
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ed8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>__ctor__
+                 ,0xff993366,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e0,0xff0000ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_RTHandle[]>_get_Value__
+                 ,0xff8f8fbc,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonPropertyInfo>_get_List__
+                 ,0xffe16941,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<byte,_PhotonTeam>_GetEnumerator__
+                 ,0xff13458b,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<IUIInteractor,_TrackedDeviceGraphicRaycaster>_get_Key__
+                 ,0xff7280fa,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Key__
+                 ,0xff60a4f4,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InitConfigOptions,_bool>_get_Key__
+                 ,0xff578b2e,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_List<Volume>>_get_Value__
+                 ,0xffeef5ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<JsonArray>__ctor__,
+                 0xff2d52a0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<string,_SQLiteConnection_IndexInfo>_GetEnumerator__
+                 ,0xffc0c0c0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<DateTimeOffset>__ctor__
+                 ,0xffebce87,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_Dictionary<byte,_RemoteVoice>>_get_Value__
+                 ,0xffcd5a6a,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InstanceHandle,_Inspector>_get_Value__
+                 ,0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<TimeSpan>__ctor__,
+                 0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonPropertyInfo<object>__ctor__
+                 ,0xfffafaff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<Collider,_IXRInteractable>_GetEnumerator__
+                 ,0xff7fff00,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Key__,
+                 0xffb48246,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<string>_Start<SerializableExtensions_<SerializeToStringAsync>d__0>__
+                 ,0xff8cb4d2,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<byte>__ctor__,
+                 0xff808000,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<int,_IInitializablePackage>_GetEnumerator__
+                 ,0xffd8bfd8,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_TryGetValue__,
+                 0xff4763ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<object,_object>_GetEnumerator__
+                 ,0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_KeyInfo__
+                 ,0xffd0e040,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<HTTP2Settings,_uint>__ctor__
+                 ,0xffee82ee,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_SetValue__,
+                 0xffb3def5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e8,0xffffffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Value__
+                 ,0xfff5f5f5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_070cb820,0xff00ffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_byte[]>_get_Value__,
+                 0xff32cd9a,*(undefined8 *)puVar1);
+    **(long **)(*(long *)
+                 Method_System_Collections_Generic_List_Enumerator<OVRSceneAnchor>_MoveNext__ + 0xb8
+               ) = lVar11;
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 3
+FUNCTION_NAME: UnityEngine.EventSystems.PointerInputModule$$RemovePointerData
+ENTRY_POINT: 06bbeb34
+MANUAL_PRIORITY_SCORE: 443
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_5', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_15', 'ray_or_cast_sink_hits_9', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_8', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_interaction_hits_13', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\06bbeb34_UnityEngine.EventSystems.PointerInputModule$$RemovePointerData.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\003_p443_UnityEngine.EventSystems.PointerInputModule$$RemovePointerData.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.EventSystems.PointerInputModule$$RemovePointerData
+ENTRY_POINT: 06bbeb34
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 280
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_5;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_15;ray_or_cast_sink_hits_9;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_8;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_13;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_EventSystems_PointerInputModule__RemovePointerData(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  long unaff_x20;
+  undefined8 *unaff_x21;
+  
+  FUN_03188a78(*(undefined8 *)(param_1 + 0x338));
+  FUN_03188a78(
+              Method_System_Collections_Generic_Dictionary_KeyCollection<string,_SQLiteConnection_IndexInfo>_GetEnumerator__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_Dictionary_KeyCollection<string,_ServicePointScheduler_ConnectionGroup>_CopyTo__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_Dictionary_KeyCollection<TerrainTileCoord,_Terrain>_GetEnumerator__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_Dictionary_KeyCollection<AxisAlignedBox_BoxSurface,_float>_GetEnumerator__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_Dictionary_KeyCollection<OVRSkeleton_BoneId,_HumanBodyBones>_GetEnumerator__
+              );
+  FUN_03188a78(Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_Dispose__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_GetEnumerator__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_MoveNext__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_get_Current__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_Dispose__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_GetEnumerator__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_MoveNext__
+              );
+  FUN_03188a78(PTR_DAT_070cb820);
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_get_Current__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<KeyValuePair<Type,_XmlRootAttribute>,_XmlSerializer>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<KeyValuePair<Type,_XmlRootAttribute>,_XmlSerializer>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>__ctor__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>_get_Value__);
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<BodyJointId,_BodySkeletonMapping_JointInfo<OVRPlugin_BoneId>>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<BodyJointId,_BodySkeletonMapping_JointInfo<OVRPlugin_BoneId>>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_LocalVoice>_get_Value__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Value__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_RemoteVoice>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_RemoteVoice>_get_Value__);
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<Category,_Dictionary<Type,_Dictionary<InstanceHandle,_Inspector>>>_Deconstruct__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Column,_float>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Column,_float>_get_Value__);
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Value__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<GameObject,_OVRPassthroughLayer_PassthroughMeshInstance>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<GameObject,_OVRPassthroughLayer_PassthroughMeshInstance>_get_Value__
+              );
+  FUN_031
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ed8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>__ctor__
+                 ,0xff993366,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e0,0xff0000ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_RTHandle[]>_get_Value__
+                 ,0xff8f8fbc,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonPropertyInfo>_get_List__
+                 ,0xffe16941,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<byte,_PhotonTeam>_GetEnumerator__
+                 ,0xff13458b,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<IUIInteractor,_TrackedDeviceGraphicRaycaster>_get_Key__
+                 ,0xff7280fa,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Key__
+                 ,0xff60a4f4,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InitConfigOptions,_bool>_get_Key__
+                 ,0xff578b2e,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_List<Volume>>_get_Value__
+                 ,0xffeef5ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<JsonArray>__ctor__,
+                 0xff2d52a0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<string,_SQLiteConnection_IndexInfo>_GetEnumerator__
+                 ,0xffc0c0c0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<DateTimeOffset>__ctor__
+                 ,0xffebce87,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_Dictionary<byte,_RemoteVoice>>_get_Value__
+                 ,0xffcd5a6a,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InstanceHandle,_Inspector>_get_Value__
+                 ,0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<TimeSpan>__ctor__,
+                 0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonPropertyInfo<object>__ctor__
+                 ,0xfffafaff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<Collider,_IXRInteractable>_GetEnumerator__
+                 ,0xff7fff00,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Key__,
+                 0xffb48246,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<string>_Start<SerializableExtensions_<SerializeToStringAsync>d__0>__
+                 ,0xff8cb4d2,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<byte>__ctor__,
+                 0xff808000,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<int,_IInitializablePackage>_GetEnumerator__
+                 ,0xffd8bfd8,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_TryGetValue__,
+                 0xff4763ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<object,_object>_GetEnumerator__
+                 ,0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_KeyInfo__
+                 ,0xffd0e040,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<HTTP2Settings,_uint>__ctor__
+                 ,0xffee82ee,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_SetValue__,
+                 0xffb3def5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e8,0xffffffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Value__
+                 ,0xfff5f5f5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_070cb820,0xff00ffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_byte[]>_get_Value__,
+                 0xff32cd9a,*(undefined8 *)puVar1);
+    **(long **)(*(long *)
+                 Method_System_Collections_Generic_List_Enumerator<OVRSceneAnchor>_MoveNext__ + 0xb8
+               ) = lVar11;
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 4
+FUNCTION_NAME: UnityEngine.EventSystems.PointerInputModule$$GetTouchPointerEventData
+ENTRY_POINT: 06bbeb90
+MANUAL_PRIORITY_SCORE: 443
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 280
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_15', 'ray_or_cast_sink_hits_9', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_8', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_interaction_hits_13', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_280', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\general-structure-results\90_plus_framework_support_only_near_certain\06bbeb90_UnityEngine.EventSystems.PointerInputModule$$GetTouchPointerEventData.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\waitwhat\manual-review-pack\A_must_review\004_p443_UnityEngine.EventSystems.PointerInputModule$$GetTouchPointerEventData.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.EventSystems.PointerInputModule$$GetTouchPointerEventData
+ENTRY_POINT: 06bbeb90
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 280
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ray_interaction;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_7;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_15;ray_or_cast_sink_hits_9;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_8;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_13;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_EventSystems_PointerInputModule__GetTouchPointerEventData(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  undefined8 *unaff_x19;
+  long unaff_x20;
+  undefined8 *unaff_x21;
+  
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_MoveNext__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<byte,_object>_get_Current__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_Dispose__
+              );
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_GetEnumerator__
+              );
+                    /* try { // try from 06bbebc8 to 06cbec93 has its CatchHandler @ 06bbebc8
+                       catch() { ... } // from try @ 06bbebc8 with catch @ 06bbebc8
+                       catch() { ... } // from try @ 06bbed84 with catch @ 06bbebc8
+                       catch() { ... } // from try @ 06bbef28 with catch @ 06bbebc8
+                       catch() { ... } // from try @ 06bbef4c with catch @ 06bbebc8
+                       catch() { ... } // from try @ 06bbef7c with catch @ 06bbebc8
+                       catch() { ... } // from try @ 06bbf008 with catch @ 06bbebc8 */
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_MoveNext__
+              );
+  FUN_03188a78(PTR_DAT_070cb820);
+  FUN_03188a78(
+              Method_ExitGames_Client_Photon_NonAllocDictionary_KeyIterator<int,_NCommand>_get_Current__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<KeyValuePair<Type,_XmlRootAttribute>,_XmlSerializer>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<KeyValuePair<Type,_XmlRootAttribute>,_XmlSerializer>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>__ctor__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte[],_Encoding>_get_Value__);
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<BodyJointId,_BodySkeletonMapping_JointInfo<OVRPlugin_BoneId>>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<BodyJointId,_BodySkeletonMapping_JointInfo<OVRPlugin_BoneId>>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_LocalVoice>_get_Value__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Value__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_RemoteVoice>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<byte,_RemoteVoice>_get_Value__);
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<Category,_Dictionary<Type,_Dictionary<InstanceHandle,_Inspector>>>_Deconstruct__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Key__);
+                    /* try { // try from 06bbec94 to 06cbec9f has its CatchHandler @ 06bbefd0 */
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Value__
+              );
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Column,_float>_get_Key__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Column,_float>_get_Value__);
+                    /* try { // try from 06bbecb8 to 06cbecc3 has its CatchHandler @ 06bbef9c */
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Value__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<GameObject,_OVRPassthroughLayer_PassthroughMeshInstance>_get_Key__
+              );
+  FUN_03188a78(
+              Method_System_Collections_Generic_KeyValuePair<GameObject,_OVRPassthroughLayer_PassthroughMeshInstance>_get_Value__
+              );
+                    /* try { // try from 06bbece4 to 06cbeceb has its CatchHandler @ 06bbef98 */
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<Guid,_SubCategory>_get_Value__);
+  FUN_03188a78(Method_System_Collections_Generic_KeyValuePair<HTTP2Settings,_uint>__ctor__);
+  FUN_03188a7
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ed8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>__ctor__
+                 ,0xff993366,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e0,0xff0000ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_RTHandle[]>_get_Value__
+                 ,0xff8f8fbc,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonPropertyInfo>_get_List__
+                 ,0xffe16941,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<byte,_PhotonTeam>_GetEnumerator__
+                 ,0xff13458b,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<IUIInteractor,_TrackedDeviceGraphicRaycaster>_get_Key__
+                 ,0xff7280fa,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<Collider,_IXRInteractable>_get_Key__
+                 ,0xff60a4f4,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InitConfigOptions,_bool>_get_Key__
+                 ,0xff578b2e,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_List<Volume>>_get_Value__
+                 ,0xffeef5ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<JsonArray>__ctor__,
+                 0xff2d52a0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<string,_SQLiteConnection_IndexInfo>_GetEnumerator__
+                 ,0xffc0c0c0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<DateTimeOffset>__ctor__
+                 ,0xffebce87,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_Dictionary<byte,_RemoteVoice>>_get_Value__
+                 ,0xffcd5a6a,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<InstanceHandle,_Inspector>_get_Value__
+                 ,0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<TimeSpan>__ctor__,
+                 0xff908070,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonPropertyInfo<object>__ctor__
+                 ,0xfffafaff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<Collider,_IXRInteractable>_GetEnumerator__
+                 ,0xff7fff00,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<byte,_object>_get_Key__,
+                 0xffb48246,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Runtime_CompilerServices_AsyncTaskMethodBuilder<string>_Start<SerializableExtensions_<SerializeToStringAsync>d__0>__
+                 ,0xff8cb4d2,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_JsonConverter<byte>__ctor__,
+                 0xff808000,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<int,_IInitializablePackage>_GetEnumerator__
+                 ,0xffd8bfd8,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_TryGetValue__,
+                 0xff4763ff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_Dictionary_KeyCollection<object,_object>_GetEnumerator__
+                 ,0,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_Serialization_Metadata_JsonCollectionInfoValues<GrowableArray<int>>_set_KeyInfo__
+                 ,0xffd0e040,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<HTTP2Settings,_uint>__ctor__
+                 ,0xffee82ee,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Text_Json_JsonPropertyDictionary<JsonNode>_SetValue__,
+                 0xffb3def5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_0710d3e8,0xffffffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<DiscardReasonWithCategory,_int>_get_Value__
+                 ,0xfff5f5f5,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)PTR_DAT_070cb820,0xff00ffff,*(undefined8 *)puVar1);
+    FUN_052345a8(lVar11,*(undefined8 *)
+                         Method_System_Collections_Generic_KeyValuePair<int,_byte[]>_get_Value__,
+                 0xff32cd9a,*(undefined8 *)puVar1);
+    **(long **)(*(long *)
+                 Method_System_Collections_Generic_List_Enumerator<OVRSceneAnchor>_MoveNext__ + 0xb8
+               ) = lVar11;
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03188cd8();
+}
+
+
+
+END_DECOMPILED_FUNCTION

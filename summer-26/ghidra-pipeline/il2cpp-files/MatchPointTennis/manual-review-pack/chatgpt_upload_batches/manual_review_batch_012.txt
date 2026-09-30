@@ -1,0 +1,854 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 51
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StartDiscoveringColocationSessions>d__21$$SetStateMachine
+ENTRY_POINT: 07766208
+MANUAL_PRIORITY_SCORE: 214
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 110
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_110', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\07766208_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StartDiscoveringColocationSessions_d__21$$SetStateMachine.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\051_p214_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StartDiscoveringColocationSessions_d__21$$SetStateMachine.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StartDiscoveringColocationSessions>d__21$$SetStateMachine
+ENTRY_POINT: 07766208
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 110
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_21;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking_<StartDiscoveringColocationSessions>d__21__SetStateMachine
+               (long param_1,undefined1 param_2 [16],undefined8 param_3)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long *plVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long lVar7;
+  long lVar8;
+  undefined8 uVar9;
+  int iVar10;
+  long lVar11;
+  long lVar12;
+  int in_w10;
+  undefined8 *puVar13;
+  int unaff_w20;
+  long unaff_x21;
+  long *unaff_x22;
+  long unaff_x23;
+  ulong uVar14;
+  uint uVar15;
+  undefined8 *unaff_x24;
+  float *pfVar16;
+  float unaff_w26;
+  int iVar17;
+  long unaff_x27;
+  long unaff_x28;
+  int unaff_w29;
+  float fVar18;
+  float fVar19;
+  int iVar20;
+  int iVar21;
+  int iVar22;
+  int iVar23;
+  undefined4 uStack0000000000000058;
+  undefined4 uStack000000000000005c;
+  int iStack0000000000000060;
+  int iStack0000000000000064;
+  long in_stack_00000068;
+  long in_stack_00000070;
+  undefined8 in_stack_00000078;
+  long in_stack_00000090;
+  
+  while (*(int *)(unaff_x27 + 0x1c) = in_w10 + 1, param_1 != 0) {
+    uVar15 = *(uint *)(unaff_x27 + 0x18);
+    if (uVar15 < *(uint *)(param_1 + 0x18)) {
+      *(uint *)(unaff_x27 + 0x18) = uVar15 + 1;
+      plVar3 = (long *)(param_1 + (long)(int)uVar15 * 8 + 0x20);
+      *plVar3 = unaff_x21;
+      thunk_FUN_044bb4b4(plVar3,unaff_x21);
+      uVar4 = param_3;
+    }
+    else {
+      FUN_05bade44();
+      uVar4 = param_3;
+    }
+    unaff_w20 = unaff_w20 + 1;
+    if (*(int *)(unaff_x28 + 0x18) <= unaff_w20) {
+      uVar4 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32ca8);
+      FUN_07a80df4(uVar4,0);
+      puVar2 = PTR_DAT_09f32e40;
+      puVar1 = PTR_DAT_09f32e28;
+      if (unaff_x27 != 0) {
+        FUN_05baf864();
+        lVar5 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32d18);
+        FUN_05bad610(lVar5,*(undefined8 *)PTR_DAT_09f32ce0);
+        lVar6 = thunk_FUN_0448520c(*(undefined8 *)puVar2);
+        FUN_05c211ac(lVar6,*(undefined8 *)puVar1);
+        iVar21 = 0;
+        goto LAB_07766304;
+      }
+      break;
+    }
+    fVar18 = (float)FUN_05d0cfbc();
+    FUN_05d0cfbc();
+    if (unaff_x23 == 0) break;
+    param_3 = uVar4;
+    uVar14 = FUN_05a28f70(unaff_x23,unaff_w20,*unaff_x24);
+    unaff_x21 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32cb0);
+    iVar21 = unaff_w29;
+    if (fVar18 != unaff_w26) {
+      iVar21 = (int)fVar18;
+    }
+    iVar17 = unaff_w29;
+    if ((float)uVar4 != unaff_w26) {
+      iVar17 = (int)(float)uVar4;
+    }
+    FUN_07a80df4(unaff_x21,0);
+    iVar21 = ((uint)(uVar14 >> 0x1f) & 0xfffffffe) + iVar21;
+    if (iVar21 <= iStack0000000000000060) {
+      iVar21 = iStack0000000000000060;
+    }
+    iVar17 = iVar17 + (int)uVar14 * 2;
+    *(int *)(unaff_x21 + 0x10) = unaff_w20;
+    *(int *)(unaff_x21 + 0x14) = iVar21;
+    if (iVar17 <= iStack0000000000000064) {
+      iVar17 = iStack0000000000000064;
+    }
+    *(int *)(unaff_x21 + 0x18) = iVar17;
+    iVar21 = FUN_05a28f70(in_stack_00000068,unaff_w20,*unaff_x24);
+    *(int *)(unaff_x21 + 0x18) = iVar17 + iVar21 * -2;
+    if (unaff_x27 == 0) break;
+    in_w10 = *(int *)(unaff_x27 + 0x1c);
+    unaff_x22 = (long *)PTR_DAT_09f32bf0;
+    unaff_x23 = in_stack_00000068;
+    param_1 = *(long *)(unaff_x27 + 0x10);
+  }
+LAB_07766980:
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+LAB_07766304:
+  iVar17 = 0;
+  iVar20 = 0;
+  uVar15 = in_stack_00000078._4_4_;
+  while( true ) {
+    fVar18 = DAT_01c7661c;
+    if (*(int *)(unaff_x27 + 0x18) < 1) {
+      if (lVar5 == 0) goto LAB_07766980;
+      if (*(int *)(lVar5 + 0x18) < 1) {
+        if (in_stack_00000070 == 0) goto LAB_07766980;
+        iVar21 = *(int *)(in_stack_00000070 + 0x18);
+        if (iVar21 < 1) goto LAB_077668c0;
+        iVar17 = 0;
+        goto LAB_07766754;
+      }
+    }
+    else if (lVar5 == 0) goto LAB_07766980;
+    lVar7 = Meta_XR_MultiplayerBlocks_Colocation_AutomaticColocationLauncher__ColocateAutomaticallyInternal
+                      (in_stack_00000090,unaff_x27,uVar15,in_stack_00000078._4_4_,
+                       *(int *)(lVar5 + 0x18) == 0);
+    puVar13 = (undefined8 *)PTR_DAT_09f32ba8;
+    if (lVar7 == 0) break;
+    *(int *)(lVar7 + 0x1c) = iVar20;
+    *(undefined4 *)(lVar7 + 0x20) = 0;
+    lVar11 = *(long *)(lVar5 + 0x10);
+    lVar12 = *unaff_x22;
+    *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+    if (lVar11 == 0) goto LAB_07766980;
+    uVar15 = *(uint *)(lVar5 + 0x18);
+    if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+      *(uint *)(lVar5 + 0x18) = uVar15 + 1;
+      plVar3 = (long *)(lVar11 + (long)(int)uVar15 * 8 + 0x20);
+      *plVar3 = lVar7;
+      thunk_FUN_044bb4b4(plVar3,lVar7);
+    }
+    else {
+      FUN_05bade44(lVar5,lVar7,*(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70));
+    }
+    if (lVar6 == 0) goto LAB_07766980;
+    iVar21 = *(int *)(lVar7 + 0x14);
+    iVar22 = *(int *)(lVar7 + 0x18);
+    lVar11 = *(long *)(lVar6 + 0x10);
+    lVar12 = *(long *)PTR_DAT_09f32e10;
+    *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+    if (lVar11 == 0) goto LAB_07766980;
+    uVar15 = *(uint *)(lVar6 + 0x18);
+    if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+      lVar11 = lVar11 + (long)(int)uVar15 * 0x10;
+      *(uint *)(lVar6 + 0x18) = uVar15 + 1;
+      *(float *)(lVar11 + 0x20) = (float)iVar20;
+      *(undefined4 *)(lVar11 + 0x24) = 0;
+  
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+0 = iVar21;
+  }
+  if (3 < *(int *)(in_stack_00000090 + 0x10)) {
+    if (*(int *)(*(long *)PTR_DAT_09f1e540 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    FUN_094c652c(*(undefined8 *)PTR_DAT_09f32e48,0);
+  }
+  if (unaff_x23 == 0) goto LAB_07766980;
+  uVar4 = FUN_05a2ad3c(unaff_x23,*(undefined8 *)PTR_DAT_09f32cc8);
+  lVar7 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32c88);
+  FUN_07a80df4(lVar7,0);
+  *(undefined8 *)(lVar7 + 0x28) = uVar4;
+  thunk_FUN_044bb4b4((undefined8 *)(lVar7 + 0x28),uVar4);
+  *(int *)(lVar7 + 0x10) = iVar21;
+  *(int *)(lVar7 + 0x14) = iVar17;
+  lVar11 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f313a0,*(undefined4 *)(lVar5 + 0x18));
+  lVar12 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f1e6a8,*(undefined4 *)(lVar5 + 0x18));
+  if (0 < *(int *)(lVar5 + 0x18)) {
+    uVar14 = 0;
+    pfVar16 = (float *)(lVar11 + 0x2c);
+    do {
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) {
+LAB_07766970:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      iVar20 = *(int *)(lVar8 + 0x1c);
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) goto LAB_07766970;
+      iVar22 = *(int *)(lVar8 + 0x20);
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) goto LAB_07766970;
+      iVar23 = *(int *)(lVar8 + 0x14);
+      iVar10 = iVar17;
+      if (*(char *)(in_stack_00000090 + 0x1c) == '\0') {
+        lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*(undefined8 *)PTR_DAT_09f32ba8);
+        if (lVar8 == 0) goto LAB_07766970;
+        iVar10 = *(int *)(lVar8 + 0x18);
+      }
+      puVar13 = (undefined8 *)PTR_DAT_09f32ba8;
+      if (lVar11 == 0) goto LAB_07766970;
+      if (*(uint *)(lVar11 + 0x18) <= uVar14) {
+LAB_07766984:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e4c();
+      }
+      pfVar16[-3] = (float)iVar20;
+      pfVar16[-2] = (float)iVar22;
+      pfVar16[-1] = (float)iVar23;
+      *pfVar16 = (float)iVar10;
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if ((lVar8 == 0) || (lVar12 == 0)) goto LAB_07766970;
+      if (*(uint *)(lVar12 + 0x18) <= uVar14) goto LAB_07766984;
+      pfVar16 = pfVar16 + 4;
+      *(undefined4 *)(lVar12 + 0x20 + uVar14 * 4) = *(undefined4 *)(lVar8 + 0x10);
+      uVar14 = uVar14 + 1;
+      unaff_x23 = in_stack_00000068;
+    } while ((long)uVar14 < (long)*(int *)(lVar5 + 0x18));
+  }
+  *(long *)(lVar7 + 0x20) = lVar11;
+  thunk_FUN_044bb4b4();
+  *(long *)(lVar7 + 0x30) = lVar12;
+  thunk_FUN_044bb4b4((long *)(lVar7 + 0x30),lVar12);
+  FUN_077606dc(lVar7);
+  iVar17 = *(int *)(lVar5 + 0x18);
+  *(undefined4 *)(lVar5 + 0x18) = 0;
+  *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+  if (0 < iVar17) {
+    FUN_07a61000(*(undefined8 *)(lVar5 + 0x10),0,iVar17,0);
+  }
+  unaff_x22 = (long *)PTR_DAT_09f32bf0;
+  if (lVar6 == 0) goto LAB_07766980;
+  *(undefined4 *)(lVar6 + 0x18) = 0;
+  *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+  if (in_stack_00000070 == 0) goto LAB_07766980;
+  lVar11 = *(long *)(in_stack_00000070 + 0x10);
+  lVar12 = *(long *)PTR_DAT_09f32cb8;
+  *(int *)(in_stack_00000070 + 0x1c) = *(int *)(in_stack_00000070 + 0x1c) + 1;
+  if (lVar11 == 0) goto LAB_07766980;
+  uVar15 = *(uint *)(in_stack_00000070 + 0x18);
+  if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+    *(uint *)(in_stack_00000070 + 0x18) = uVar15 + 1;
+    plVar3 = (long *)(lVar11 + (long)(int)uVar15 * 8 + 0x20);
+    *plVar3 = lVar7;
+    thunk_FUN_044bb4b4(plVar3,lVar7);
+  }
+  else {
+    FUN_05bade44(in_stack_00000070,lVar7,
+                 *(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70));
+  }
+  goto LAB_07766304;
+  while( true ) {
+    uVar15 = *(uint *)(lVar6 + 0x10);
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    if (*(char *)(in_stack_00000090 + 0x14) != '\0') {
+      fVar19 = logf((float)(int)uVar15);
+      fVar19 = exp2f((float)(int)(fVar19 / fVar18));
+      uVar15 = 0x80000000;
+      if (fVar19 != INFINITY) {
+        uVar15 = (int)fVar19;
+      }
+      if (uVar15 < 3) {
+        uVar15 = 2;
+      }
+    }
+    if ((int)in_stack_00000078._4_4_ <= (int)uVar15) {
+      uVar15 = in_stack_00000078._4_4_;
+    }
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    *(uint *)(lVar6 + 0x10) = uVar15;
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    iVar21 = *(int *)(lVar6 + 0x10);
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if ((lVar6 == 0) || (in_stack_00000068 == 0)) goto LAB_07766980;
+    iVar20 = *(int *)(lVar6 + 0x14);
+    uVar4 = FUN_05a28f70(in_stack_00000068,0,*(undefined8 *)PTR_DAT_09f32c78);
+    FUN_07760c44((float)iVar21,(float)iVar20,in_stack_00000090,lVar5,in_stack_00000078._4_4_,
+                 uStack000000000000005c,uVar4,iStack0000000000000060,iStack0000000000000064,
+                 uStack0000000000000058);
+    iVar17 = iVar17 + 1;
+    iVar21 = *(int *)(in_stack_00000070 + 0x18);
+    unaff_x23 = in_stack_00000068;
+    if (iVar21 <= iVar17) break;
+LAB_07766754:
+    puVar1 = PTR_DAT_09f32e38;
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)PTR_DAT_09f32e38);
+    if (lVar6 == 0) goto LAB_07766980;
+  }
+LAB_077668c0:
+  puVar1 = PTR_DAT_09f32e38;
+  if (0 < iVar21) {
+    iVar21 = 0;
+    do {
+      uVar4 = FUN_05badb74(in_stack_00000070,iVar21,*(undefined8 *)puVar1);
+      if (unaff_x23 == 0) goto LAB_07766980;
+      uVar9 = FUN_05a28f70(unaff_x23,iVar21,*(undefined8 *)PTR_DAT_09f32c78);
+      FUN_07761148(uVar9,uVar4,uVar9);
+      lVar5 = FUN_05badb74(in_stack_00000070,iVar21,*(undefined8 *)puVar1);
+      if (lVar5 == 0) goto LAB_07766980;
+      FUN_077606dc();
+      iVar21 = iVar21 + 1;
+    } while (iVar21 < *(int *)(in_stack_00000070 + 0x18));
+  }
+  FUN_05baf9bc(in_stack_00000070,*(undefined8 *)PTR_DAT_09f32cd0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 52
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 07c5b408
+MANUAL_PRIORITY_SCORE: 213
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 147
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_147', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\07c5b408_OVRManager$$GetEyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\052_p213_OVRManager$$GetEyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 07c5b408
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 147
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_2;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__GetEyeTrackedFoveatedRenderingSupported
+               (float param_1,float param_2,float param_3,long param_4)
+
+{
+  undefined8 *unaff_x19;
+  long unaff_x20;
+  float fVar1;
+  undefined8 uVar2;
+  float fVar3;
+  ulong uVar4;
+  float fVar5;
+  ulong uVar6;
+  float fVar7;
+  float unaff_s8;
+  float unaff_s9;
+  float unaff_s10;
+  float unaff_s12;
+  float unaff_s14;
+  undefined8 in_stack_00000048;
+  ulong uVar8;
+  
+  if (param_4 != 0) {
+    fVar5 = param_3;
+    fVar3 = param_2;
+    fVar1 = (float)FUN_0953a6a4(param_4,0);
+    if (*(long *)(unaff_x20 + 0x30) != 0) {
+      uVar6 = (ulong)(uint)(unaff_s9 * fVar5);
+      uVar4 = (ulong)(uint)(unaff_s9 * fVar3);
+      fVar7 = unaff_s8 * unaff_s14 + unaff_s10 * param_3;
+      uVar8 = (ulong)(uint)fVar7;
+      uVar2 = FUN_09537fe0(*(long *)(unaff_x20 + 0x30),0);
+      unaff_x19[1] = 0;
+      unaff_x19[2] = 0;
+      *unaff_x19 = 0;
+      *(undefined4 *)(unaff_x19 + 3) = 0;
+      FUN_09537b20(unaff_s8 * in_stack_00000048._4_4_ + unaff_s10 * param_1 + unaff_s9 * fVar1,
+                   unaff_s8 * unaff_s12 + unaff_s10 * param_2 + unaff_s9 * fVar3,
+                   fVar7 + unaff_s9 * fVar5,uVar2,uVar4,uVar6,uVar8);
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 53
+FUNCTION_NAME: Meta.XR.EnvironmentDepthRaycaster$$WorldPosToNonNormalizedTextureCoords
+ENTRY_POINT: 07702e98
+MANUAL_PRIORITY_SCORE: 212
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 106
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_2', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_106', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\07702e98_Meta.XR.EnvironmentDepthRaycaster$$WorldPosToNonNormalizedTextureCoords.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\053_p212_Meta.XR.EnvironmentDepthRaycaster$$WorldPosToNonNormalizedTextureCoords.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.EnvironmentDepthRaycaster$$WorldPosToNonNormalizedTextureCoords
+ENTRY_POINT: 07702e98
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 106
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_2;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_EnvironmentDepthRaycaster__WorldPosToNonNormalizedTextureCoords(long param_1)
+
+{
+  undefined *puVar1;
+  undefined8 uVar2;
+  long unaff_x19;
+  long lVar3;
+  long unaff_x22;
+  undefined8 *puVar4;
+  undefined8 in_stack_00000008;
+  
+  puVar4 = *(undefined8 **)(unaff_x22 + 0xe18);
+  if (*(char *)(param_1 + 0x10) == '\0') {
+    in_stack_00000008 = *(undefined8 *)(param_1 + 0x20);
+    uVar2 = thunk_FUN_04484e3c(*(undefined8 *)PTR_DAT_09f2f838,&stack0x00000008);
+    FUN_078ab14c(*(undefined8 *)PTR_DAT_09f2fff0,uVar2,0);
+    FUN_076f1130();
+  }
+  lVar3 = *(long *)(unaff_x19 + 0xe8);
+  uVar2 = thunk_FUN_0448520c(*puVar4);
+  FUN_076fe208();
+  puVar1 = PTR_DAT_09f2fe20;
+  if (lVar3 != 0) {
+    FUN_076fbcb8(lVar3,uVar2);
+    lVar3 = *(long *)(unaff_x19 + 0xe8);
+    uVar2 = thunk_FUN_0448520c(*(undefined8 *)puVar1);
+    FUN_076fe350();
+    if (lVar3 != 0) {
+      FUN_076fbf28(lVar3,uVar2);
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 54
+FUNCTION_NAME: Meta.XR.EnvironmentDepthRaycaster$$WorldPosToLinearDepth
+ENTRY_POINT: 0770308c
+MANUAL_PRIORITY_SCORE: 212
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 106
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_2', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_106', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0770308c_Meta.XR.EnvironmentDepthRaycaster$$WorldPosToLinearDepth.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\054_p212_Meta.XR.EnvironmentDepthRaycaster$$WorldPosToLinearDepth.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.EnvironmentDepthRaycaster$$WorldPosToLinearDepth
+ENTRY_POINT: 0770308c
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 106
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_2;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_EnvironmentDepthRaycaster__WorldPosToLinearDepth(void)
+
+{
+  uint uVar1;
+  long unaff_x19;
+  long lVar2;
+  uint unaff_w22;
+  
+  FUN_094c1400();
+  if ((*(long *)(unaff_x19 + 0xb8) != 0) &&
+     (lVar2 = *(long *)(*(long *)(unaff_x19 + 0xb8) + 0x20), lVar2 != 0)) {
+    uVar1 = FUN_094c134c(lVar2,0);
+    FUN_094c1400(lVar2,uVar1 | unaff_w22,0);
+    if ((*(long *)(unaff_x19 + 200) != 0) &&
+       (lVar2 = *(long *)(*(long *)(unaff_x19 + 200) + 0x20), lVar2 != 0)) {
+      uVar1 = FUN_094c134c(lVar2,0);
+      FUN_094c1400(lVar2,uVar1 | unaff_w22,0);
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 55
+FUNCTION_NAME: FUN_096dc394
+ENTRY_POINT: 096dc394
+MANUAL_PRIORITY_SCORE: 211
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_3', 'validity_or_gating_hits_21', 'strong_pose_or_ray_construction_hits_4', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\70_high_likely_false_positive_high\096dc394_FUN_096dc394.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\055_p211_FUN_096dc394.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_096dc394
+ENTRY_POINT: 096dc394
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 89
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo
+EVIDENCE: weak_xr_or_state_hits_3;validity_or_gating_hits_21;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void FUN_096dc394(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long *plVar3;
+  long lVar4;
+  long lVar5;
+  undefined8 uVar6;
+  ulong uVar7;
+  ulong uVar8;
+  uint *puVar9;
+  
+  puVar2 = System_MissingFieldException_var;
+  puVar1 = System_Reflection_Missing_var;
+  if ((DAT_0a54718d & 1) == 0) {
+    FUN_04447ba8(System_Reflection_Missing_var);
+    FUN_04447ba8(System_Data_MissingSchemaAction_var);
+    FUN_04447ba8(ETD_PAM_MocapShotMovementData_var);
+    FUN_04447ba8(System_Reflection_Module_var);
+    FUN_04447ba8(UnityEngine_MonoBehaviour_var);
+    FUN_04447ba8(System_MonoCustomAttrs_var);
+    FUN_04447ba8(System_Reflection_MonoEventInfo_var);
+    FUN_04447ba8(System_Reflection_MonoMethodInfo_var);
+    FUN_04447ba8(System_Runtime_Remoting_Messaging_MonoMethodMessage_var);
+    FUN_04447ba8(System_Reflection_MonoPropertyInfo_var);
+    FUN_04447ba8(System_MonoTypeInfo_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Mouse_var);
+    FUN_04447ba8(UnityEngine_XR_Interaction_Toolkit_UI_MouseButtonModel_var);
+    FUN_04447ba8(UnityEngine_XR_Interaction_Toolkit_UI_MouseModel_var);
+    FUN_04447ba8(UnityEngine_Scripting_APIUpdating_MovedFromAttribute_var);
+    FUN_04447ba8(UnityEngine_Animations_Rigging_MultiAimConstraintData_var);
+    FUN_04447ba8(Sirenix_Serialization_MultiDimensionalArrayFormatter<TArray,_TElement>_var);
+    FUN_04447ba8(UnityEngine_Animations_Rigging_MultiParentConstraintData_var);
+    FUN_04447ba8(UnityEngine_Animations_Rigging_MultiPositionConstraintData_var);
+    FUN_04447ba8(UnityEngine_Animations_Rigging_MultiReferentialConstraintData_var);
+    FUN_04447ba8(UnityEngine_Animations_Rigging_MultiRotationConstraintData_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Interactions_MultiTapInteraction_var);
+    FUN_04447ba8(System_MulticastDelegate_var);
+    FUN_04447ba8(Unity_Services_Matchmaker_Models_MultiplayAssignment_var);
+    FUN_04447ba8(ETD_PAM_MultiplayerBounce_var);
+    FUN_04447ba8(ETD_PAM_MusicClip_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Utilities_NameAndParameters_var);
+    FUN_04447ba8(System_Data_NameNode_var);
+    FUN_04447ba8(Unity_Netcode_NamedMessage_var);
+    FUN_04447ba8(System_Xml_Linq_NamespaceCache_var);
+    FUN_04447ba8(System_Xml_Linq_NamespaceResolver_var);
+    FUN_04447ba8(UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassData_var
+                );
+    FUN_04447ba8(Unity_Collections_NativeSlice<T>_var);
+    FUN_04447ba8(UnityEngine_TextCore_Text_NativeTextInfo_var);
+    FUN_04447ba8(UnityEngine_UI_Navigation_var);
+    FUN_04447ba8(UnityEngine_InputSystem_UI_NavigationModel_var);
+    FUN_04447ba8(Meta_XR_MultiplayerBlocks_Shared_NetworkBootstrapperParams_var);
+    FUN_04447ba8(Unity_Netcode_Transports_UTP_NetworkMetricsPipelineStage_var);
+    FUN_04447ba8(Unity_Multiplayer_Tools_NetworkSolutionInterfaceParameters_var);
+    FUN_04447ba8(System_Net_Sockets_NetworkStream_var);
+    FUN_04447ba8(Unity_Netcode_NetworkTransformMessage_var);
+    FUN_04447ba8(Unity_Netcode_NetworkUpdateStage_var);
+    FUN_04447ba8(Unity_Netcode_NetworkVariableDeltaMessage_var);
+    FUN_04447ba8(Unity_Netcode_NetworkVariable<T>_var);
+    FUN_04447ba8(ETD_PAM_News_var);
+    FUN_04447ba8(ETD_PAM_NewsContent_var);
+    FUN_04447ba8(Sirenix_Serialization_NodeInfo_var);
+    FUN_04447ba8(System_NonSerializedAttribute_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Processors_NormalizeProcessor_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Processors_NormalizeVector2Processor_var);
+    FUN_04447ba8(UnityEngine_InputSystem_Processors_NormalizeVector3Processor_var);
+    FUN_04447ba8(System_NullReferenceException_var);
+    FUN_04447ba8(System_Collections_Generic_NullableComparer<T>_var);
+    FUN_04447ba8(System_MissingFieldException_var);
+    FUN_04447ba8(System_ComponentModel_NullableConverter_var);
+    FUN_04447ba8(System_Collections_Generic_NullableEqualityComparer<T>_var);
+    DAT_0a54718d = 1;
+  }
+  plVar3 = (long *)FUN_04447c90(*(undefined8 *)puVar1,0x37);
+  lVar4 = thunk_FUN_0448520c(*(undefined8 *)puVar2);
+  FUN_096d65cc();
+  if (plVar3 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_04447e44();
+  }
+  if ((lVar4 != 0) &&
+     (lVar5 = thunk_FUN_04485110(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0)) {
+LAB_096dd7dc:
+    uVar6 = thunk_FUN_04491d98();
+                    /* WARNING: Subroutine does not return */
+    FUN_04447d10(uVar6,0);
+  }
+  puVar1 = System_Collections_Generic_NullableEqualityComparer<T>_var;
+  puVar9 = (uint *)(plVar3 + 3);
+  if (*puVar9 != 0) {
+    plVar3[4] = lVar4;
+    thunk_FUN_044bb4b4(plVar3 + 4,lVar4);
+    lVar4 = thunk_FUN_0448520c(*(undefined8 *)puVar1);
+    FUN_096d6a0c();
+    if ((lVar4 != 0) &&
+       (lVar5 = thunk_FUN_04485110(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+    goto LAB_096dd7dc;
+    puVar1 = System_ComponentModel_NullableConverter_var;
+    if (1 < *puVar9) {
+      plVar3[5] = lVar4;
+      thunk_FUN_044bb4b4(plVar3 + 5,lVar4);
+      lVar4 = thunk_FUN_0448520c(*(undefined8 *)puVar1);
+      FUN_096d67d8();
+      if ((lVar4 != 0) &&
+         (lVar5 = thunk_FUN_04485110(lVar4,*(undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+      goto LAB_096dd7dc;
+      puVar1 = System_Data_MissingSchemaAction_var;
+      if (2 < *puVar9) {
+        plVar3[6] = lVar4;
+        thunk_FUN_044bb4b4(plVar3 + 6,lVar4);
+        lVar
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+                                                          );
+                                                    FUN_097526c0(lVar4,0);
+                                                    if ((lVar4 != 0) &&
+                                                       (lVar5 = thunk_FUN_04485110(lVar4,*(
+                                                  undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+                                                  goto LAB_096dd7dc;
+                                                  puVar1 = 
+                                                  Meta_XR_MultiplayerBlocks_Shared_NetworkBootstrapperParams_var
+                                                  ;
+                                                  if (0x34 < *puVar9) {
+                                                    plVar3[0x38] = lVar4;
+                                                    thunk_FUN_044bb4b4(plVar3 + 0x38,lVar4);
+                                                    lVar4 = thunk_FUN_0448520c(*(undefined8 *)puVar1
+                                                                              );
+                                                    FUN_0978e004(lVar4,0);
+                                                    if ((lVar4 != 0) &&
+                                                       (lVar5 = thunk_FUN_04485110(lVar4,*(
+                                                  undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+                                                  goto LAB_096dd7dc;
+                                                  puVar1 = 
+                                                  UnityEngine_InputSystem_Processors_NormalizeVector3Processor_var
+                                                  ;
+                                                  if (0x35 < *puVar9) {
+                                                    plVar3[0x39] = lVar4;
+                                                    thunk_FUN_044bb4b4(plVar3 + 0x39,lVar4);
+                                                    lVar4 = thunk_FUN_0448520c(*(undefined8 *)puVar1
+                                                                              );
+                                                    FUN_09791ba8(lVar4,0);
+                                                    if ((lVar4 != 0) &&
+                                                       (lVar5 = thunk_FUN_04485110(lVar4,*(
+                                                  undefined8 *)(*plVar3 + 0x40)), lVar5 == 0))
+                                                  goto LAB_096dd7dc;
+                                                  if (0x36 < *puVar9) {
+                                                    plVar3[0x3a] = lVar4;
+                                                    thunk_FUN_044bb4b4(plVar3 + 0x3a,lVar4);
+                                                    if (0 < (int)plVar3[3]) {
+                                                      uVar8 = 0;
+                                                      uVar7 = plVar3[3] & 0xffffffff;
+                                                      do {
+                                                        if (uVar7 <= uVar8) goto LAB_096dd7d8;
+                                                        FUN_096ddab0(plVar3[uVar8 + 4]);
+                                                        uVar7 = (ulong)*puVar9;
+                                                        uVar8 = uVar8 + 1;
+                                                      } while ((long)uVar8 < (long)(int)*puVar9);
+                                                    }
+                                                    return;
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_096dd7d8:
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e4c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

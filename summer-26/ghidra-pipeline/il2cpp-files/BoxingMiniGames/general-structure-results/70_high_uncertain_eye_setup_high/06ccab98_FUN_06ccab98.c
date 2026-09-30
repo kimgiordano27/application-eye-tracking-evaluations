@@ -1,0 +1,51 @@
+/*
+FUNCTION_NAME: FUN_06ccab98
+ENTRY_POINT: 06ccab98
+PROGRAM: BoxingMiniGames-libil2cpp.so
+SCORE: 74
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_3;validity_or_gating_hits_1;functionality_eye_api_context_without_clear_sink_hits_3
+*/
+
+
+ulong FUN_06ccab98(char *param_1,long *param_2)
+
+{
+  byte bVar1;
+  long *plVar2;
+  ulong uVar3;
+  
+  if ((DAT_07eea53e & 1) == 0) {
+    FUN_03642964(OVRPlugin_GetBoneSkeleton2Delegate___TypeInfo);
+    FUN_03642964(PTR_DAT_07a29790);
+    DAT_07eea53e = 1;
+  }
+  if (*param_1 == '\0') {
+    if ((param_2 != (long *)0x0) && (*param_2 != *(long *)PTR_DAT_07a29790)) {
+      param_2 = (long *)0x0;
+    }
+    plVar2 = (long *)FUN_06cca888(param_1);
+    return (ulong)(plVar2 == param_2);
+  }
+  if (param_2 != (long *)0x0) {
+    bVar1 = *(byte *)(*(long *)OVRPlugin_GetBoneSkeleton2Delegate___TypeInfo + 0x130);
+    if (bVar1 <= *(byte *)(*param_2 + 0x130)) {
+      if (*(long *)(*(long *)(*param_2 + 200) + (ulong)bVar1 * 8 + -8) !=
+          *(long *)OVRPlugin_GetBoneSkeleton2Delegate___TypeInfo) {
+        param_2 = (long *)0x0;
+      }
+      goto LAB_06ccac54;
+    }
+  }
+  param_2 = (long *)0x0;
+LAB_06ccac54:
+  uVar3 = FUN_06ccab2c(param_1,param_2);
+  return uVar3;
+}
+
+

@@ -1,0 +1,31 @@
+/*
+FUNCTION_NAME: Meta.XR.EnvironmentDepthRaycaster$$<ReconstructNormal>g__ClosestDerivativeToAdjacentExtrapolations|36_0
+ENTRY_POINT: 04a5d114
+PROGRAM: vrealmfunverse-libil2cpp.so
+SCORE: 86
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;ray_interaction;data_collection
+EVIDENCE: strong_eye_source_hits_1;ray_or_cast_sink_hits_2;strong_file_logging_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_EnvironmentDepthRaycaster__<ReconstructNormal>g__ClosestDerivativeToAdjacentExtrapolations_36_0
+               (long param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  
+  thunk_FUN_02ba3594(*(undefined8 *)(param_1 + 0xbd8));
+  uVar1 = thunk_FUN_02b79644();
+  uVar2 = thunk_FUN_02ba3594(PTR_DAT_06322bb8);
+  FUN_04cf4a4c(uVar1,uVar2,0);
+                    /* WARNING: Subroutine does not return */
+  FUN_02b3c988(uVar1);
+}
+
+

@@ -1,0 +1,410 @@
+/*
+FUNCTION_NAME: UnityEngine.XR.ARFoundation.ARSession.<Initialize>d__39$$System.Collections.IEnumerator.Reset
+ENTRY_POINT: 0243ec90
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 123
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ray_interaction;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_3;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_2;functionality_possible_biometrics_hits_2
+*/
+
+
+void UnityEngine_XR_ARFoundation_ARSession_<Initialize>d__39__System_Collections_IEnumerator_Reset
+               (long param_1)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  char cVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined *puVar12;
+  undefined *puVar13;
+  bool bVar14;
+  byte bVar15;
+  int iVar16;
+  long lVar17;
+  long lVar18;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 *unaff_x21;
+  undefined8 uVar19;
+  long *unaff_x23;
+  undefined8 uVar20;
+  undefined8 uVar21;
+  undefined8 uVar22;
+  long *plVar23;
+  undefined8 *puVar24;
+  long unaff_x29;
+  undefined4 in_stack_00000030;
+  undefined4 in_stack_000000c0;
+  undefined4 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined8 in_stack_000000e8;
+  
+  if (*(int *)(param_1 + 0xe0) == 0) {
+    thunk_FUN_00d32864();
+  }
+  *(undefined2 *)(unaff_x19 + 0x187) = 0x101;
+  puVar6 = StringLiteral_10232;
+  if (*(int *)(*unaff_x23 + 0xe0) == 0) {
+    thunk_FUN_00d32864();
+  }
+                    /* try { // try from 0243ecc0 to 0253ece7 has its CatchHandler @ 0243ed04 */
+  bVar15 = FUN_0243e674();
+  *(byte *)(unaff_x19 + 0x188) = ~bVar15 & 1;
+  uVar19 = *(undefined8 *)(unaff_x19 + 0x430);
+  bVar15 = *(byte *)(unaff_x20 + 0x81);
+  uVar1 = *(uint *)(unaff_x20 + 0x84);
+  lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+  puVar6 = Unity_Collections_NativeSlice<Color>_TypeInfo;
+  if (lVar17 != 0) {
+    FUN_02467f10(lVar17,uVar19,(ulong)bVar15 | (ulong)uVar1 << 0x20,0);
+    *(long *)(unaff_x19 + 0x400) = lVar17;
+    *(undefined8 *)(unaff_x19 + 0x410) = *(undefined8 *)(unaff_x20 + 0x74);
+    *(undefined4 *)(unaff_x19 + 0x418) = *(undefined4 *)(unaff_x20 + 0x7c);
+    bVar14 = false;
+    if (*(char *)(unaff_x20 + 0x38) != '\0') {
+      iVar16 = FUN_02681fdc(0);
+      bVar14 = iVar16 != 8;
+    }
+    *(bool *)(unaff_x19 + 0x185) = bVar14;
+    *(undefined1 *)(unaff_x19 + 0x41c) = 0;
+    lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+    puVar6 = Unity_Mathematics_quaternion_TypeInfo;
+    if (lVar17 != 0) {
+      FUN_02472864(lVar17,0x32,0);
+      *(long *)(unaff_x19 + 0x1b0) = lVar17;
+      lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+      puVar6 = System_OrdinalComparer_var;
+      if (lVar17 != 0) {
+        FUN_024641a8(lVar17,0x32,0);
+        *(long *)(unaff_x19 + 0x1b8) = lVar17;
+        lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+        puVar24 = (undefined8 *)StringLiteral_2133;
+        if (lVar17 != 0) {
+          FUN_02431aec(lVar17,0xfa);
+          *(long *)(unaff_x19 + 0x238) = lVar17;
+          uVar19 = *(undefined8 *)(unaff_x19 + 0x448);
+          lVar17 = thunk_FUN_00d62348(*puVar24);
+          puVar6 = StringLiteral_115;
+          plVar23 = (long *)
+                    Method_System_Collections_Generic_Dictionary_Enumerator<IUIInteractor,_TrackedDeviceGraphicRaycaster>_Dispose__
+          ;
+          if (lVar17 != 0) {
+            FUN_0246deac(lVar17,0x3ea,uVar19,0);
+            *(long *)(unaff_x19 + 0x240) = lVar17;
+            if (*(int *)(*plVar23 + 0xe0) == 0) {
+              thunk_FUN_00d32864();
+            }
+            uVar19 = FUN_026b2fe4(0);
+            uVar2 = *(undefined4 *)(unaff_x20 + 0x5c);
+            lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+            puVar6 = OVR_OpenVR_EVRScreenshotType_TypeInfo;
+            if (lVar17 != 0) {
+              FUN_0246fa70(lVar17,0x96,uVar19,uVar2,0);
+              *(long *)(unaff_x19 + 400) = lVar17;
+              uVar19 = FUN_026b2fe4(0);
+              uVar2 = *(undefined4 *)(unaff_x20 + 0x5c);
+              lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+              puVar6 = System_Func<STMQuadData,_string>_TypeInfo;
+              if (lVar17 != 0) {
+                FUN_0246ee30(lVar17,0x96,uVar19,uVar2,0);
+                *(long *)(unaff_x19 + 0x198) = lVar17;
+                uVar19 = *(undefined8 *)(unaff_x19 + 0x470);
+                uVar20 = *(undefined8 *)(unaff_x19 + 0x478);
+                lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                if (lVar17 != 0) {
+                  FUN_024740c4(lVar17,uVar19,uVar20,0);
+                  iVar16 = *(int *)(unaff_x19 + 0x410);
+                  *(long *)(unaff_x19 + 0x1a8) = lVar17;
+                  if (iVar16 == 0) {
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x448);
+                    lVar17 = thunk_FUN_00d62348(*puVar24);
+                    if (lVar17 == 0) goto LAB_0243f5d0;
+                    FUN_0246deac(lVar17,200,uVar19,0);
+                    iVar16 = *(int *)(unaff_x19 + 0x410);
+                    *(long *)(unaff_x19 + 0x1a0) = lVar17;
+                  }
+                  if (iVar16 == 1) {
+                    uVar20 = *(undefined8 *)(unaff_x19 + 0x458);
+                    uVar21 = *(undefined8 *)(unaff_x19 + 0x460);
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x468);
+                    uVar22 = *(undefined8 *)(unaff_x19 + 0x430);
+                    cVar5 = *(char *)(unaff_x19 + 0x185);
+                    lVar17 = thunk_FUN_00d62348(*(undefined8 *)
+                                                 RhythmGameStarter_TrackManager_<>c__DisplayClass28_0_TypeInfo
+                                               );
+                    if (lVar17 == 0) goto LAB_0243f5d0;
+                    in_stack_000000d0 = uVar20;
+                    in_stack_000000d8 = uVar21;
+                    in_stack_000000e0 = uVar19;
+                    in_stack_000000e8 = uVar22;
+                    FUN_02457844(lVar17,&stack0x000000d0,cVar5 != '\0',0);
+                    *(long *)(unaff_x19 + 0x408) = lVar17;
+                    FUN_024575c4(lVar17,*(undefined1 *)(unaff_x20 + 0x80),0);
+                    if (*(long *)(unaff_x19 + 0x408) == 0) goto LAB_0243f5d0;
+                    *(undefined1 *)(*(long *)(unaff_x19 + 0x408) + 0x15) = 0;
+                    puVar6 = 
+                    Method_System_Collections_Generic_HashSet<OVRFaceExpressions_FaceExpression>_Contains__
+                    ;
+                    if (*(int *)(*(long *)
+                                  Method_System_Collections_Generic_Dictionary_Enumerator<IUIInteractor,_TrackedDeviceGraphicRaycaster>_Dispose__
+                                + 0xe0) == 0) {
+                      thunk_FUN_00d32864();
+                    }
+                    uVar19 = FUN_026b2fe4(0);
+                    uVar2 = *(undefined4 *)(unaff_x20 + 0x5c);
+                    uVar20 = *unaff_x21;
+                    uVar3 = *(undefined4 *)(unaff_x21 + 1);
+                    uVar4 = *(undefined4 *)(unaff_x29 + 0x14);
+                    uVar21 = *(undefined8 *)(unaff_x19 + 0x408);
+                    lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                    if (lVar17 == 0) goto LAB_0243f5d0;
+                    FUN_02471a80(lVar17,0xd2,uVar19,uVar2,uVar20,uVar3,uVar4,uVar21);
+                    *(long *)(unaff_x19 + 0x1c0) = lVar17;
+                    uVar19 = *unaff_x21;
+                    uVar2 = *(undefined4 *)(unaff_x21 + 1);
+                    if (*(int *)(*(long *)
+                                  RhythmGameStarter_TrackManager_<>c__DisplayClass28_0_TypeInfo +
+                                0xe0) == 0) {
+                      thunk_FUN_00d32864();
+                    }
+                    FUN_0245be48(uVar19,uVar2,0x60,0);
+                    lVar17 = FUN_00da4fb8(*(undefined8 *)
+                                           Method_Oculus_Interaction_Interactor<LocomotionTurnerInteractor,_LocomotionTurnerInteractable>_HandleEnabled__
+                                          ,3);
+                    in_stack_00000030 = 0;
+                    FUN_026b1be4(&stack0x00000030,
+                                 *(undefined8 *)
+                                  Method_System_Collections_Generic_Dictionary<Type,_AttributeUsageAttribute>_TryGetValue__
+                                 ,0);
+                    puVar6 = Oculus_Interaction_Input_SyntheticHand_<>c_TypeInfo;
+                    if (lVar17 == 0) goto LAB_0243f5d0;
+                    if (*(int *)(lVar17 + 0x18) == 0) {
+LAB_0243f5d4:
+                    /* WARNING: Subroutine does not return */
+                      FUN_00da5194();
+                    }
+                    *(undefined4 *)(lVar17 + 0x20) = in_stack_00000030;
+                    in_stack_000000c8 = 0;
+                    FUN_026b1be4(&stack0x000000c8,*(undefined8 *)puVar6,0);
+                    puVar6 = PTR_DAT_033ed538;
+                    if (*(uint *)(lVar17 + 0x18) < 2) goto LAB_0243f5d4;
+                    *(undefined4 *)(lVar17 + 0x24) = in_stack_000000c8;
+                    in_stack_000000c0 = 0;
+                    FUN_026b1be4(&stack0x000000c0,*(undefined8 *)puVar6,0);
+                    if (*(uint *)(lVar17 + 0x18) < 3) goto LAB_0243f5d4;
+                    *(undefined4 *)(lVar17 + 0x28) = in_stack_000000c0;
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x448);
+                    lVar18 = thunk_FUN_00d62348(*(undefined8 *)StringLiteral_2133);
+                    puVar6 = 
+                    Method_UnityEngine_UIElements_PointerEventBase<PointerMoveEvent>_get_localPosition__
+                    ;
+                    if (lVar18 == 0) goto LAB_0243f5d0;
+                    FUN_0246deac(lVar18,0xd3,uVar19,0);
+                    *(long *)(unaff_x19 + 0x1c8) = lVar18;
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x408);
+                    lVar18 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                    if (lVar18 == 0) goto LAB_0243f5d0;
+                    FUN_0247fd7c(lVar18,0xd4,uVar19,0,0);
+                    *(long *)(unaff_x19 + 0x1d0) = lVar18;
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x408);
+                    lVar18 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                    puVar6 = 
+                    DigitalOpus_MB_Core_MB3_TextureCombiner_CreateAtlasesCoroutineResult_TypeInfo;
+                    if (lVar18 == 0) goto LAB_0243f5d0;
+                    FUN_0247fd7c(lVar18,0xd5,uVar19,1,0);
+                    *(long *)(unaff_x19 + 0x1d8) = lVar18;
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x408);
+                    lVar18 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                    if (lVar18 == 0) goto LAB_0243f5d0;
+                    FUN_0246eb5c(lVar18,0xe6,uVar19,0);
+                    *(long *)(unaff_x19 + 0x1e0) = lVar18;
+                    uVar19 = FUN_026b2fe4(0);
+                    uVar2 = *(undefined4 *)(unaff_x20 + 0x5c);
+                    lVar18 = thunk_FUN_00d62348(*(undefined8 *)
+                                                 System_Collections_Generic_List<JToken>_TypeInfo);
+                    if (lVar18 == 0) goto LAB_0243f5d0;
+                    FUN_024702e4(lVar18,*(undefined8 *)
+                                         Method_AutoExtensions_CanGetComponent<HoveringObject>__,
+                                 lVar17,1,0xfa,uVar19,uVar2);
+                    *(long *)(unaff_x19 + 0x1e8) = lVar18;
+                    plVar23 = (long *)
+                              Method_System_Collections_Generic_Dictionary_Enumerator<IUIInteractor,_TrackedDeviceGraphicRaycaster>_Dispose__
+                    ;
+                    puVar24 = (undefined8 *)StringLiteral_2133;
+                  }
+                  if (*(int *)(*plVar23 + 0xe0) == 0) {
+                    thunk_FUN_00d32864();
+                  }
+                  uVar19 = FUN_026b2fe4(0);
+                  uVar2 = *(undefined4 *)(unaff_x20 + 0x5c);
+                  uVar20 = *unaff_x21;
+                  uVar3 = *(undefined4 *)(unaff_x21 + 1);
+                  lVar17 = thunk_FUN_00d62348(*(undefined8 *)
+                                               System_Collections_Generic_List<JToken>_TypeInfo);
+                  if (lVar17 != 0) {
+                    FUN_024706f8(lVar17,9,1,0xfa,uVar19,uVar2,uVar20,uVar3);
+                    *(long *)(unaff_x19 + 0x1f0) = lVar17;
+                    uVar19 = *(undefined8 *)(unaff_x19 + 0x448);
+                    lVar17 = thunk_FUN_00d62348(*puVar24);
+                    puVar6 = 
+                    Method_System_Collections_Generic_List<WitEntityKeywordInfo>_get_Count__;
+                    if (lVar17 != 0) {
+                      FUN_0246deac(lVar17,400,uVar19,0);
+                      *(long *)(unaff_x19 + 0x200) = lVar17;
+                      lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                      puVar6 = OVR_OpenVR_IVROverlay__GetOverlayFlag_TypeInfo;
+                      if (lVar17 != 0) {
+                        FUN_02431240(lVar17,0x15e);
+                        *(long *)(unaff_x19 + 0x1f8) = lVar17;
+                        uVar19 = *(undefined8 *)(unaff_x19 + 0x450);
+                        uVar20 = *(undefined8 *)(unaff_x19 + 0x440);
+                        lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                        puVar6 = 
+                        Method_Unity_Burst_Intrinsics_X86_Sse4_2_ComputeStrCmpIntRes2<short>__;
+                        if (lVar17 != 0) {
+                          FUN_0246d328(lVar17,400,uVar19,uVar20,0);
+                          *(long *)(unaff_x19 + 0x208) = lVar17;
+                          cVar5 = *(char *)(unaff_x20 + 0x70);
+                          lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                          if (lVar17 != 0) {
+                            FUN_02431788(lVar17,0x1c2,cVar5 != '\0');
+                            *(long *)(unaff_x19 + 0x210) = lVar17;
+                            uVar19 = FUN_026b2fec(0);
+                            uVar2 = *(undefined4 *)(unaff_x20 + 0x60);
+                            uVar20 = *unaff_x21;
+                            uVar3 = *(undefined4 *)(unaff_x21 + 1);
+                            lVar17 = thunk_FUN_00d62348(*(undefined8 *)
+                                                                                                                  
+                                                  System_Collections_Generic_List<JToken>_TypeInfo);
+                            puVar6 = 
+                            Method_UnityEngine_Rendering_Universal_Internal_TileDepthRangePass_OnCameraCleanup__
+                            ;
+                            if (lVar17 != 0) {
+                              FUN_024706f8(lVar17,10,0,0x1c2,uVar19,uVar2,uVar20,uVar3);
+                              *(long *)(unaff_x19 + 0x218) = lVar17;
+                              lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                              puVar6 = Method_MedleyHingedComboLock_CheckPuzzleComplete__;
+                              if (lVar17 != 0) {
+                                FUN_02431698(lVar17,0x226);
+                                *(long *)(unaff_x19 + 0x220) = lVar17;
+                                uVar19 = *(undefined8 *)(unaff_x20 + 0x40);
+                                uVar20 = *(undefined8 *)(unaff_x19 + 0x440);
+                                memset(&stack0x00000030,0,0x90);
+                                FUN_02431cf8(&stack0x00000030,uVar19,uVar20);
+                                memcpy((void *)(unaff_x19 + 0x480),&stack0x00000030,0x90);
+                                lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                                puVar6 = Method_OVRPlugin_<>c_<_cctor>b__796_7__;
+                                if (lVar17 != 0) {
+                                  FUN_02430c78(lVar17,1000);
+                                  *(long *)(unaff_x19 + 0x230) = lVar17;
+                                  uVar19 = *(undefined8 *)(unaff_x19 + 0x440);
+                                  lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                                  puVar6 = Method_Unity_Burst_Intrinsics_Arm_Neon_vabds_f32__;
+                                  if (lVar17 != 0) {
+                                    FUN_02470ed0(lVar17,0x3e9,uVar19,0);
+                                    *(long *)(unaff_x19 + 0x228) = lVar17;
+                                    lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar6);
+                                    puVar13 = StringLiteral_6311;
+                                    puVar12 = StringLiteral_1130;
+                                    puVar11 = StringLiteral_672;
+                                    puVar10 = StringLiteral_127;
+                                    puVar9 = Method_Newtonsoft_Json_Linq_JToken_WriteToAsync__;
+                                    puVar8 = 
+                                    Method_System_Collections_Generic_List<RectTransform>__ctor__;
+                                    puVar7 = 
+                                    Method_System_Collections_Generic_List<IXRSelectInteractable>_AddRange__
+                                    ;
+                                    puVar6 = 
+                                    Method_UnityEngine_XR_Interaction_Toolkit_Utilities_ExposedRegistrationList<IXRSelectFilter>_RegisterReferences<Object>__
+                                    ;
+                                    if (lVar17 != 0) {
+                                      FUN_024803cc(lVar17,*(undefined8 *)PTR_DAT_033f53e0,0);
+                                      *(long *)(unaff_x19 + 0x248) = lVar17;
+                                      if (*(int *)(*(long *)puVar7 + 0xe0) == 0) {
+                                        thunk_FUN_00d32864();
+                                      }
+                                      FUN_02431dd4(unaff_x19 + 0x2e0,*(undefined8 *)puVar13);
+                                      FUN_02431dd4(unaff_x19 + 0x310,*(undefined8 *)puVar8);
+                                      FUN_02431dd4(unaff_x19 + 0x340,*(undefined8 *)puVar9);
+                                      FUN_02431dd4(unaff_x19 + 0x370,*(undefined8 *)puVar12);
+                                      FUN_02431dd4(unaff_x19 + 0x3a0,*(undefined8 *)puVar11);
+                                      FUN_02431dd4(unaff_x19 + 0x3d0,*(undefined8 *)puVar6);
+                                      lVar17 = thunk_FUN_00d62348(*(undefined8 *)puVar10);
+                                      if (lVar17 != 0) {
+                                        FUN_02423ad4(lVar17,0);
+                                        puVar6 = StringLiteral_5516;
+                                        if (*(int *)(*(long *)StringLiteral_5516 + 0xe0) == 0) {
+                                          thunk_FUN_00d32864();
+                                        }
+                                        *(long *)(unaff_x19 + 0xe0) = lVar17;
+                                        if (*(int *)(unaff_x19 + 0x410) == 1) {
+                                          if (*(int *)(*(long *)puVar6 + 0xe0) == 0) {
+                                            thunk_FUN_00d32864();
+                                            lVar17 = *(long *)(unaff_x19 + 0xe0);
+                                          }
+                                          puVar6 = 
+                                          System_Func<DropdownMenuAction,_DropdownMenuAction_Status>_TypeInfo
+                                          ;
+                                          if (lVar17 == 0) goto LAB_0243f5d0;
+                                          *(undefined1 *)(lVar17 + 0x11) = 0;
+                                          puVar7 = 
+                                          Method_Meta_XR_ImmersiveDebugger_UserInterface_Generic_Controller_Append<TextArea>__
+                                          ;
+                                          uVar19 = FUN_00da4fb8(*(undefined8 *)puVar6,3);
+                                          FUN_016a34e8(uVar19,*(undefined8 *)puVar7,0);
+                                          *(undefined8 *)(unaff_x19 + 0xe8) = uVar19;
+                                        }
+                                        puVar6 = 
+                                        Method_UnityEngine_InputSystem_Keyboard_add_onIMECompositionChange__
+                                        ;
+                                        lVar17 = *(long *)
+                                                  Method_UnityEngine_InputSystem_Keyboard_add_onIMECompositionChange__
+                                        ;
+                                        if (*(int *)(lVar17 + 0xe0) == 0) {
+                                          thunk_FUN_00d32864();
+                                          lVar17 = *(long *)puVar6;
+                                        }
+                                        *(undefined8 *)(*(long *)(lVar17 + 0xb8) + 0x1c) =
+                                             DAT_028ab160;
+                                        TMPro_TMP_Dropdown__OnPointerClick(0);
+                                        return;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+LAB_0243f5d0:
+                    /* WARNING: Subroutine does not return */
+  FUN_00da518c();
+}
+
+

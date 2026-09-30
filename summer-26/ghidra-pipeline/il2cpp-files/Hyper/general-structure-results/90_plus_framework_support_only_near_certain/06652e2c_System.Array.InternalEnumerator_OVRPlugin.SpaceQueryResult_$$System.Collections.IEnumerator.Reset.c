@@ -1,0 +1,116 @@
+/*
+FUNCTION_NAME: System.Array.InternalEnumerator<OVRPlugin.SpaceQueryResult>$$System.Collections.IEnumerator.Reset
+ENTRY_POINT: 06652e2c
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 95
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_4;strong_pose_or_ray_construction_hits_2;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x06652f64) */
+
+void System_Array_InternalEnumerator<OVRPlugin_SpaceQueryResult>__System_Collections_IEnumerator_Reset
+               (long param_1)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  ushort in_w8;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long unaff_x19;
+  long *unaff_x21;
+  long *unaff_x22;
+  long *unaff_x23;
+  long *in_stack_00000018;
+  
+  do {
+    if ((in_w8 & 1) == 0) {
+      param_1 = FUN_04980b34();
+    }
+    lVar2 = *(long *)(*(long *)(param_1 + 0xc0) + 0x38);
+    if ((*(ushort *)(lVar2 + 0x135) & 1) == 0) {
+      lVar2 = FUN_04980b34(lVar2);
+    }
+    lVar3 = *unaff_x21;
+    uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == lVar2) {
+          puVar1 = (undefined8 *)(lVar3 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_06652e9c;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_04980e68(unaff_x21,lVar2,0);
+LAB_06652e9c:
+    (*(code *)*puVar1)(unaff_x21,puVar1[1]);
+    if ((*(ushort *)(*(long *)(unaff_x19 + 0x20) + 0x135) & 1) == 0) {
+      FUN_04980b34();
+    }
+    FUN_06652a60();
+    if (in_stack_00000018 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0494818c();
+    }
+    lVar2 = *in_stack_00000018;
+    uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *unaff_x23) {
+          puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+          goto LAB_06652e08;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_04980e68(in_stack_00000018,*unaff_x23,0);
+LAB_06652e08:
+    uVar4 = (*(code *)*puVar1)(in_stack_00000018,puVar1[1]);
+    if ((uVar4 & 1) == 0) {
+      if (in_stack_00000018 == (long *)0x0) {
+        return;
+      }
+      lVar2 = *in_stack_00000018;
+      uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+      if (uVar4 == 0) goto LAB_06652f18;
+      piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+      break;
+    }
+    if (in_stack_00000018 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_0494818c();
+    }
+    param_1 = *(long *)(unaff_x19 + 0x20);
+    in_w8 = *(ushort *)(param_1 + 0x135);
+    unaff_x21 = in_stack_00000018;
+  } while( true );
+  while( true ) {
+    uVar4 = uVar4 - 1;
+    piVar5 = piVar5 + 4;
+    if (uVar4 == 0) break;
+    if (*(long *)(piVar5 + -2) == *unaff_x22) {
+      puVar1 = (undefined8 *)(lVar2 + (long)*piVar5 * 0x10 + 0x138);
+      goto FUN_06652f34;
+    }
+  }
+LAB_06652f18:
+  puVar1 = (undefined8 *)FUN_04980e68(in_stack_00000018,*unaff_x22,0);
+FUN_06652f34:
+  (*(code *)*puVar1)(in_stack_00000018,puVar1[1]);
+  return;
+}
+
+

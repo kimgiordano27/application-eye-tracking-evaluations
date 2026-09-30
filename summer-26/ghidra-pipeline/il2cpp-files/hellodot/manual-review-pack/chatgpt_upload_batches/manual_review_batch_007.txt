@@ -1,0 +1,1190 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 30
+FUNCTION_NAME: OVRManager$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 051a034c
+MANUAL_PRIORITY_SCORE: 239
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 165
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_7', 'paired_field_refs_with_eye_source', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_165', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\051a034c_OVRManager$$set_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\030_p239_OVRManager$$set_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 051a034c
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 165
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_7;paired_field_refs_with_eye_source;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__set_eyeTrackedFoveatedRenderingEnabled(ulong param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined8 uVar3;
+  undefined8 *puVar4;
+  ulong uVar5;
+  int *piVar6;
+  long unaff_x19;
+  long unaff_x20;
+  long lVar7;
+  long *plVar8;
+  
+  if ((param_1 & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608500);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065defe0);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8998);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608510);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608518);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066084f8);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608548);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608520);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608528);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608530);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608538);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608540);
+    *(undefined1 *)(unaff_x20 + 0x22d) = 1;
+  }
+  if (*(char *)(unaff_x19 + 0x78) == '\0') {
+    return;
+  }
+  lVar7 = *(long *)(unaff_x19 + 0x20);
+  uVar3 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_065c8998);
+  FUN_04e9e238();
+  puVar1 = PTR_DAT_065defe0;
+  if (lVar7 != 0) {
+    FUN_036c3500(lVar7,uVar3,*(undefined8 *)PTR_DAT_066084f8);
+    lVar7 = *(long *)(unaff_x19 + 0x20);
+    uVar3 = thunk_FUN_02cea894(*(undefined8 *)puVar1);
+    FUN_047b28cc();
+    if (lVar7 != 0) {
+      FUN_036c3144(lVar7,uVar3,*(undefined8 *)PTR_DAT_06608548);
+      puVar1 = PTR_DAT_06608500;
+      if (*(long *)(unaff_x19 + 0x20) != 0) {
+        plVar8 = *(long **)(*(long *)(unaff_x19 + 0x20) + 0xd8);
+        uVar3 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06608500);
+        FUN_047b3b70();
+        puVar2 = PTR_DAT_06608520;
+        if (plVar8 != (long *)0x0) {
+          lVar7 = *plVar8;
+          uVar5 = (ulong)*(ushort *)(lVar7 + 0x12e);
+          if (uVar5 != 0) {
+            piVar6 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar6 + -2) == *(long *)PTR_DAT_06608520) {
+                puVar4 = (undefined8 *)(lVar7 + (long)(*piVar6 + 1) * 0x10 + 0x138);
+                goto LAB_051a052c;
+              }
+              uVar5 = uVar5 - 1;
+              piVar6 = piVar6 + 4;
+            } while (uVar5 != 0);
+          }
+          puVar4 = (undefined8 *)FUN_02ce0a7c(plVar8,*(long *)PTR_DAT_06608520,1);
+LAB_051a052c:
+          (*(code *)*puVar4)(plVar8,uVar3,puVar4[1]);
+          if (*(long *)(unaff_x19 + 0x20) != 0) {
+            plVar8 = *(long **)(*(long *)(unaff_x19 + 0x20) + 0xe0);
+            uVar3 = thunk_FUN_02cea894(*(undefined8 *)puVar1);
+            FUN_047b3b70();
+            if (plVar8 != (long *)0x0) {
+              lVar7 = *plVar8;
+              uVar5 = (ulong)*(ushort *)(lVar7 + 0x12e);
+              if (uVar5 != 0) {
+                piVar6 = (int *)(*(long *)(lVar7 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar6 + -2) == *(long *)puVar2) {
+                    puVar4 = (undefined8 *)(lVar7 + (long)(*piVar6 + 1) * 0x10 + 0x138);
+                    goto LAB_051a05c0;
+                  }
+                  uVar5 = uVar5 - 1;
+                  piVar6 = piVar6 + 4;
+                } while (uVar5 != 0);
+              }
+              puVar4 = (undefined8 *)FUN_02ce0a7c(plVar8,*(long *)puVar2,1);
+LAB_051a05c0:
+              (*(code *)*puVar4)(plVar8,uVar3,puVar4[1]);
+              if (*(long *)(unaff_x19 + 0x28) != 0) {
+                FUN_050e7a24(*(long *)(unaff_x19 + 0x28),0);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 31
+FUNCTION_NAME: FUN_051a0080
+ENTRY_POINT: 051a0080
+MANUAL_PRIORITY_SCORE: 239
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 165
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_7', 'paired_field_refs_with_eye_source', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_165', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\051a0080_FUN_051a0080.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\031_p239_FUN_051a0080.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_051a0080
+ENTRY_POINT: 051a0080
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 165
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_7;paired_field_refs_with_eye_source;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void FUN_051a0080(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined8 uVar4;
+  undefined8 *puVar5;
+  ulong uVar6;
+  int *piVar7;
+  long lVar8;
+  long *plVar9;
+  
+  if ((DAT_06a7122c & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608500);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065defe0);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8998);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066084f0);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608508);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608510);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608518);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608520);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608528);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608530);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608538);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06608540);
+    DAT_06a7122c = 1;
+  }
+  puVar1 = PTR_DAT_06608538;
+  if (*(char *)(param_1 + 0x78) == '\0') {
+    return;
+  }
+  lVar8 = *(long *)(param_1 + 0x20);
+  uVar4 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_065c8998);
+  FUN_04e9e238(uVar4,param_1,*(undefined8 *)puVar1,0);
+  puVar2 = PTR_DAT_06608540;
+  puVar1 = PTR_DAT_065defe0;
+  if (lVar8 != 0) {
+    FUN_036c3464(lVar8,uVar4,*(undefined8 *)PTR_DAT_066084f0);
+    lVar8 = *(long *)(param_1 + 0x20);
+    uVar4 = thunk_FUN_02cea894(*(undefined8 *)puVar1);
+    FUN_047b28cc(uVar4,param_1,*(undefined8 *)puVar2,0);
+    if (lVar8 != 0) {
+      FUN_036c3094(lVar8,uVar4,*(undefined8 *)PTR_DAT_06608508);
+      puVar2 = PTR_DAT_06608528;
+      puVar1 = PTR_DAT_06608500;
+      if (*(long *)(param_1 + 0x20) != 0) {
+        plVar9 = *(long **)(*(long *)(param_1 + 0x20) + 0xd8);
+        uVar4 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06608500);
+        FUN_047b3b70(uVar4,param_1,*(undefined8 *)puVar2,0);
+        puVar2 = PTR_DAT_06608520;
+        if (plVar9 != (long *)0x0) {
+          lVar8 = *plVar9;
+          uVar6 = (ulong)*(ushort *)(lVar8 + 0x12e);
+          if (uVar6 != 0) {
+            piVar7 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar7 + -2) == *(long *)PTR_DAT_06608520) {
+                puVar5 = (undefined8 *)(lVar8 + (long)*piVar7 * 0x10 + 0x138);
+                goto OVRManager__get_eyeTrackedFoveatedRenderingEnabled;
+              }
+              uVar6 = uVar6 - 1;
+              piVar7 = piVar7 + 4;
+            } while (uVar6 != 0);
+          }
+          puVar5 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)PTR_DAT_06608520,0);
+OVRManager__get_eyeTrackedFoveatedRenderingEnabled:
+          (*(code *)*puVar5)(plVar9,uVar4,puVar5[1]);
+          puVar3 = PTR_DAT_06608530;
+          if (*(long *)(param_1 + 0x20) != 0) {
+            plVar9 = *(long **)(*(long *)(param_1 + 0x20) + 0xe0);
+            uVar4 = thunk_FUN_02cea894(*(undefined8 *)puVar1);
+            FUN_047b3b70(uVar4,param_1,*(undefined8 *)puVar3,0);
+            if (plVar9 != (long *)0x0) {
+              lVar8 = *plVar9;
+              uVar6 = (ulong)*(ushort *)(lVar8 + 0x12e);
+              if (uVar6 != 0) {
+                piVar7 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+                do {
+                  if (*(long *)(piVar7 + -2) == *(long *)puVar2) {
+                    puVar5 = (undefined8 *)(lVar8 + (long)*piVar7 * 0x10 + 0x138);
+                    goto LAB_051a0304;
+                  }
+                  uVar6 = uVar6 - 1;
+                  piVar7 = piVar7 + 4;
+                } while (uVar6 != 0);
+              }
+              puVar5 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar2,0);
+LAB_051a0304:
+              (*(code *)*puVar5)(plVar9,uVar4,puVar5[1]);
+              if (*(long *)(param_1 + 0x28) != 0) {
+                FUN_050e7a24(*(long *)(param_1 + 0x28),0);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 32
+FUNCTION_NAME: FUN_0619db18
+ENTRY_POINT: 0619db18
+MANUAL_PRIORITY_SCORE: 239
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 128
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_9', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_128', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0619db18_FUN_0619db18.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\032_p239_FUN_0619db18.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0619db18
+ENTRY_POINT: 0619db18
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 128
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_9;paired_field_refs_with_eye_source;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x0619df3c) */
+/* WARNING: Removing unreachable block (ram,0x0619e154) */
+
+void FUN_0619db18(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  uint uVar7;
+  long lVar8;
+  long *plVar9;
+  undefined8 *puVar10;
+  ulong uVar11;
+  int *piVar12;
+  undefined8 uVar13;
+  long lVar14;
+  undefined8 uVar15;
+  long lVar16;
+  undefined1 auVar17 [16];
+  undefined8 local_98;
+  undefined8 uStack_90;
+  undefined8 local_88;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  
+  puVar1 = OVRPlugin_BodyJointSet_TypeInfo;
+  if ((DAT_06a83d3d & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065e1f90);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyTrackingFidelity2_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06602f80);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df900);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_103_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_104_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_105_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df908);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8a48);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed330);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed338);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8d08);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_106_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_107_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (UnityMeshSimplifier_MeshSimplifier_<ToMeshCoroutine>d__156_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065dc880);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_108_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_109_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_10_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_110_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyJointSet_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_111_0_TypeInfo);
+    DAT_06a83d3d = 1;
+  }
+  lVar8 = *(long *)puVar1;
+  local_80 = 0;
+  uStack_78 = 0;
+  local_70 = 0;
+  uVar13 = *(undefined8 *)(param_1 + 0x38);
+  if (*(int *)(lVar8 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar8 = *(long *)puVar1;
+  }
+  puVar1 = OVRPlugin_BodyTrackingFidelity2_TypeInfo;
+  lVar14 = *(long *)(*(long *)(lVar8 + 0xb8) + 0x28);
+  if (lVar14 == 0) {
+    if (*(int *)(lVar8 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar8 = *(long *)OVRPlugin_BodyJointSet_TypeInfo;
+    }
+    puVar2 = OVRPlugin_BodyJointSet_TypeInfo;
+    uVar15 = **(undefined8 **)(lVar8 + 0xb8);
+    lVar14 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    FUN_04a5701c(lVar14,uVar15,*(undefined8 *)OVRPlugin_OVRP_1_108_0_TypeInfo,0);
+    *(long *)(*(long *)(*(long *)puVar2 + 0xb8) + 0x28) = lVar14;
+  }
+  plVar9 = (long *)FUN_033eb504(uVar13,lVar14,*(undefined8 *)puVar1);
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)PTR_DAT_065ed330) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619dd9c;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)PTR_DAT_065ed330,0);
+LAB_0619dd9c:
+    puVar1 = PTR_DAT_065c8a48;
+    plVar9 = (long *)(*(code *)*puVar10)(plVar9,puVar10[1]);
+    puVar6 = OVRPlugin_OVRP_1_111_0_TypeInfo;
+    puVar5 = UnityMeshSimplifier_MeshSimplifier_<ToMeshCoroutine>d__156_TypeInfo;
+    puVar4 = PTR_DAT_065ed338;
+    puVar3 = PTR_DAT_065dc880;
+    puVar2 = PTR_DAT_065c8d08;
+    if (plVar9 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    do {
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar2) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619de2c;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar2,0);
+LAB_0619de2c:
+      uVar11 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if ((uVar11 & 1) == 0) goto LAB_0619decc;
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar4) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619de88;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar4,0);
+LAB_0619de88:
+      uVar13 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_02cd038c();
+      }
+      uVar7 = FUN_0353b038(uVar13,*(undefined8 *)puVar5);
+      FUN_0615dd3c(uVar7 & 1,*(undefined8 *)puVar6,uVar13,0);
+    } while( true );
+  }
+  goto LAB_0619e14c;
+LAB_0619decc:
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)puVar1) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619df24;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar1,0);
+LAB_0619df24:
+    (*(code *)*puVar10)(plVar9,puVar10[1]);
+  }
+  puVar6 = OVRPlugin_OVRP_1_107_0_TypeInfo;
+  puVar5 = OVRPlugin_OVRP_1_104_0_TypeInfo;
+  puVar4 = System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo;
+  puVar3 = 
+  System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo;
+  puVar2 = PTR_DAT_06602f80;
+  puVar1 = PTR_DAT_065df900;
+  if (*(long *)(param_1 + 0x20) != 0) {
+    FUN_03968dbc(&local_98,*(long *)(param_1 + 0x20),*(undefined8 *)OVRPlugin_OVRP_1_106_0_TypeInfo)
+    ;
+    uStack_78 = uStack_90;
+    local_80 = local_98;
+    local_70 = local_88;
+    plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+    while( true ) {
+      uVar11 = FUN_0481f4e4(&local_80,*(undefined8 *)puVar5);
+      if ((uVar11 & 1) == 0) {
+        FUN_0481f4e0(&local_80,*(undefined8 *)OVRPlugin_OVRP_1_103_0_TypeInfo);
+        return;
+      }
+      lVar8 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_OVRP_1_110_0_TypeInfo);
+      FUN_04f7383c(lVar8,0);
+      if (lVar8 == 0) break;
+      *(undefined8 *)(lVar8 + 0x10) = local_70;
+      uVar15 = *(undefined8 *)(param_1 + 0x38);
+      uVar13 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_065df908);
+      FUN_04a5632c(uVar13,lVar8,*(undefined8 *)OVRPlugin_OVRP_1_10_0_TypeInfo,0);
+      uVar13 = UnityEngine_Rendering_RenderPipeline__IsRenderRequestSupported<__Il2CppFullySharedGenericType>
+                         (uVar15,uVar13,*(undefined8 *)puVar1);
+      lVar14 = *plVar9;
+      if (*(int *)(lVar14 + 0xe0) == 0) {
+        thunk_FUN_02cd038c(lVar14);
+        lVar14 = *plVar9;
+      }
+      lVar16 = *(long *)(*(long *)(lVar14 + 0xb8) + 0x30);
+      if (lVar16 == 0) {
+        if (*(int *)(lVar14 + 0xe0) == 0) {
+          thunk_FUN_02cd038c(lVar14);
+          lVar14 = *plVar9;
+        }
+        uVar15 = **(undefined8 **)(lVar14 + 0xb8);
+        lVar16 = thunk_FUN_02cea894(*(undefined8 *)
+                                     System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+                                   );
+        FUN_04a56ab8(lVar16,uVar15,*(undefined8 *)OVRPlugin_OVRP_1_109_0_TypeInfo,0);
+        plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+        *(long *)(*(long *)(*(long *)OVRPlugin_BodyJointSet_TypeInfo + 0xb8) + 0x30) = lVar16;
+      }
+      uVar13 = FUN_033eac28(uVar13,lVar16,*(undefined8 *)puVar3);
+      uVar13 = ModestTree_ReflectionUtil__ToDebugString<__Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType>
+                         (uVar13,*(undefined8 *)puVar2);
+      auVar17 = FUN_03469bdc(uVar13,*(undefined8 *)puVar4);
+      uVar15 = auVar17._8_8_;
+      if ((auVar17._0_8_ & 1) == 0) {
+        uVar13 = FUN_033d87b4(uVar13,*(undefined8 *)PTR_DAT_065e1f90);
+        auVar17 = FUN_033f2110(uVar13,*(undefined8 *)
+                                       System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo
+                              );
+        uVar15 = auVar17._8_8_;
+        uVar11 = auVar17._0_8_ & 0xffffffff;
+      }
+      else {
+        uVar11 = 0;
+      }
+      if (*(long *)(param_1 + 0x50) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_02ce7c7c(0,uVar15,uVar11);
+      }
+      FUN_04037b90(*(long *)(param_1 + 0x50),*(undefined8 *)(lVar8 + 0x10),uVar11,
+                   *(undefined8 *)puVar6);
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+LAB_0619e14c:
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 33
+FUNCTION_NAME: FUN_0619d384
+ENTRY_POINT: 0619d384
+MANUAL_PRIORITY_SCORE: 239
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 128
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_9', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_128', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0619d384_FUN_0619d384.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\033_p239_FUN_0619d384.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0619d384
+ENTRY_POINT: 0619d384
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 128
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_9;paired_field_refs_with_eye_source;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x0619d7a8) */
+/* WARNING: Removing unreachable block (ram,0x0619d9c0) */
+
+void FUN_0619d384(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  uint uVar7;
+  long lVar8;
+  long *plVar9;
+  undefined8 *puVar10;
+  ulong uVar11;
+  int *piVar12;
+  undefined8 uVar13;
+  long lVar14;
+  undefined8 uVar15;
+  long lVar16;
+  undefined1 auVar17 [16];
+  undefined8 local_98;
+  undefined8 uStack_90;
+  undefined8 local_88;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  
+  puVar1 = OVRPlugin_BodyJointSet_TypeInfo;
+  if ((DAT_06a83d3b & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065e1f90);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyTrackingFidelity2_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06602f80);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df900);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_MeshType_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_0_1_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_0_1_1_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df908);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8a48);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed330);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed338);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8d08);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_0_1_2_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_0_1_3_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (UnityMeshSimplifier_MeshSimplifier_<InitializeCoroutine>d__150_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065dc880);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_0_5_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_0_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_100_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_101_0_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyJointSet_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_OVRP_1_102_0_TypeInfo);
+    DAT_06a83d3b = 1;
+  }
+  lVar8 = *(long *)puVar1;
+  local_80 = 0;
+  uStack_78 = 0;
+  local_70 = 0;
+  uVar13 = *(undefined8 *)(param_1 + 0x30);
+  if (*(int *)(lVar8 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar8 = *(long *)puVar1;
+  }
+  puVar1 = OVRPlugin_BodyTrackingFidelity2_TypeInfo;
+  lVar14 = *(long *)(*(long *)(lVar8 + 0xb8) + 8);
+  if (lVar14 == 0) {
+    if (*(int *)(lVar8 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar8 = *(long *)OVRPlugin_BodyJointSet_TypeInfo;
+    }
+    puVar2 = OVRPlugin_BodyJointSet_TypeInfo;
+    uVar15 = **(undefined8 **)(lVar8 + 0xb8);
+    lVar14 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    FUN_04a5701c(lVar14,uVar15,*(undefined8 *)OVRPlugin_OVRP_0_5_0_TypeInfo,0);
+    *(long *)(*(long *)(*(long *)puVar2 + 0xb8) + 8) = lVar14;
+  }
+  plVar9 = (long *)FUN_033eb504(uVar13,lVar14,*(undefined8 *)puVar1);
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)PTR_DAT_065ed330) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619d608;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)PTR_DAT_065ed330,0);
+LAB_0619d608:
+    puVar1 = PTR_DAT_065c8a48;
+    plVar9 = (long *)(*(code *)*puVar10)(plVar9,puVar10[1]);
+    puVar6 = OVRPlugin_OVRP_1_102_0_TypeInfo;
+    puVar5 = UnityMeshSimplifier_MeshSimplifier_<InitializeCoroutine>d__150_TypeInfo;
+    puVar4 = PTR_DAT_065ed338;
+    puVar3 = PTR_DAT_065dc880;
+    puVar2 = PTR_DAT_065c8d08;
+    if (plVar9 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    do {
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar2) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619d698;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar2,0);
+LAB_0619d698:
+      uVar11 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if ((uVar11 & 1) == 0) goto LAB_0619d738;
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar4) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619d6f4;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar4,0);
+LAB_0619d6f4:
+      uVar13 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_02cd038c();
+      }
+      uVar7 = FUN_0353b038(uVar13,*(undefined8 *)puVar5);
+      FUN_0615dd3c(uVar7 & 1,*(undefined8 *)puVar6,uVar13,0);
+    } while( true );
+  }
+  goto LAB_0619d9b8;
+LAB_0619d738:
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)puVar1) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619d790;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar1,0);
+LAB_0619d790:
+    (*(code *)*puVar10)(plVar9,puVar10[1]);
+  }
+  puVar6 = OVRPlugin_OVRP_0_1_3_TypeInfo;
+  puVar5 = OVRPlugin_OVRP_0_1_0_TypeInfo;
+  puVar4 = System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo;
+  puVar3 = 
+  System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo;
+  puVar2 = PTR_DAT_06602f80;
+  puVar1 = PTR_DAT_065df900;
+  if (*(long *)(param_1 + 0x18) != 0) {
+    FUN_03968dbc(&local_98,*(long *)(param_1 + 0x18),*(undefined8 *)OVRPlugin_OVRP_0_1_2_TypeInfo);
+    uStack_78 = uStack_90;
+    local_80 = local_98;
+    local_70 = local_88;
+    plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+    while( true ) {
+      uVar11 = FUN_0481f4e4(&local_80,*(undefined8 *)puVar5);
+      if ((uVar11 & 1) == 0) {
+        FUN_0481f4e0(&local_80,*(undefined8 *)OVRPlugin_MeshType_TypeInfo);
+        return;
+      }
+      lVar8 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_OVRP_1_101_0_TypeInfo);
+      FUN_04f7383c(lVar8,0);
+      if (lVar8 == 0) break;
+      *(undefined8 *)(lVar8 + 0x10) = local_70;
+      uVar15 = *(undefined8 *)(param_1 + 0x30);
+      uVar13 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_065df908);
+      FUN_04a5632c(uVar13,lVar8,*(undefined8 *)OVRPlugin_OVRP_1_100_0_TypeInfo,0);
+      uVar13 = UnityEngine_Rendering_RenderPipeline__IsRenderRequestSupported<__Il2CppFullySharedGenericType>
+                         (uVar15,uVar13,*(undefined8 *)puVar1);
+      lVar14 = *plVar9;
+      if (*(int *)(lVar14 + 0xe0) == 0) {
+        thunk_FUN_02cd038c(lVar14);
+        lVar14 = *plVar9;
+      }
+      lVar16 = *(long *)(*(long *)(lVar14 + 0xb8) + 0x10);
+      if (lVar16 == 0) {
+        if (*(int *)(lVar14 + 0xe0) == 0) {
+          thunk_FUN_02cd038c(lVar14);
+          lVar14 = *plVar9;
+        }
+        uVar15 = **(undefined8 **)(lVar14 + 0xb8);
+        lVar16 = thunk_FUN_02cea894(*(undefined8 *)
+                                     System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+                                   );
+        FUN_04a56ab8(lVar16,uVar15,*(undefined8 *)OVRPlugin_OVRP_1_0_0_TypeInfo,0);
+        plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+        *(long *)(*(long *)(*(long *)OVRPlugin_BodyJointSet_TypeInfo + 0xb8) + 0x10) = lVar16;
+      }
+      uVar13 = FUN_033eac28(uVar13,lVar16,*(undefined8 *)puVar3);
+      uVar13 = ModestTree_ReflectionUtil__ToDebugString<__Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType>
+                         (uVar13,*(undefined8 *)puVar2);
+      auVar17 = FUN_03469bdc(uVar13,*(undefined8 *)puVar4);
+      uVar15 = auVar17._8_8_;
+      if ((auVar17._0_8_ & 1) == 0) {
+        uVar13 = FUN_033d87b4(uVar13,*(undefined8 *)PTR_DAT_065e1f90);
+        auVar17 = FUN_033f2110(uVar13,*(undefined8 *)
+                                       System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo
+                              );
+        uVar15 = auVar17._8_8_;
+        uVar11 = auVar17._0_8_ & 0xffffffff;
+      }
+      else {
+        uVar11 = 0;
+      }
+      if (*(long *)(param_1 + 0x48) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_02ce7c7c(0,uVar15,uVar11);
+      }
+      FUN_04037b90(*(long *)(param_1 + 0x48),*(undefined8 *)(lVar8 + 0x10),uVar11,
+                   *(undefined8 *)puVar6);
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+LAB_0619d9b8:
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 34
+FUNCTION_NAME: FUN_0619cbf0
+ENTRY_POINT: 0619cbf0
+MANUAL_PRIORITY_SCORE: 239
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 128
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_21', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_9', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_1', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_128', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0619cbf0_FUN_0619cbf0.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\034_p239_FUN_0619cbf0.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0619cbf0
+ENTRY_POINT: 0619cbf0
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 128
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_21;weak_xr_or_state_hits_21;validity_or_gating_hits_9;paired_field_refs_with_eye_source;telemetry_or_network_hits_1;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x0619d014) */
+/* WARNING: Removing unreachable block (ram,0x0619d22c) */
+
+void FUN_0619cbf0(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  uint uVar7;
+  long lVar8;
+  long *plVar9;
+  undefined8 *puVar10;
+  ulong uVar11;
+  int *piVar12;
+  undefined8 uVar13;
+  long lVar14;
+  undefined8 uVar15;
+  long lVar16;
+  undefined1 auVar17 [16];
+  undefined8 local_98;
+  undefined8 uStack_90;
+  undefined8 local_88;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  
+  puVar1 = OVRPlugin_BodyJointSet_TypeInfo;
+  if ((DAT_06a83d3c & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065e1f90);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyTrackingFidelity2_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06602f80);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df900);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_EyeTextureFormat_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_GUID_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_GetBoneSkeleton2Delegate_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065df908);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8a48);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed330);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065ed338);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8d08);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_Hand_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_HandStatus_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (UnityEngine_VFX_SDF_MeshToSDFBaker_ShaderProperties_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065dc880);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_InsightPassthroughColorMapType_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_LayerLayout_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_LogLevel_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_Media_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_BodyJointSet_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(OVRPlugin_Mesh_TypeInfo);
+    DAT_06a83d3c = 1;
+  }
+  lVar8 = *(long *)puVar1;
+  local_80 = 0;
+  uStack_78 = 0;
+  local_70 = 0;
+  uVar13 = *(undefined8 *)(param_1 + 0x28);
+  if (*(int *)(lVar8 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar8 = *(long *)puVar1;
+  }
+  puVar1 = OVRPlugin_BodyTrackingFidelity2_TypeInfo;
+  lVar14 = *(long *)(*(long *)(lVar8 + 0xb8) + 0x18);
+  if (lVar14 == 0) {
+    if (*(int *)(lVar8 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar8 = *(long *)OVRPlugin_BodyJointSet_TypeInfo;
+    }
+    puVar2 = OVRPlugin_BodyJointSet_TypeInfo;
+    uVar15 = **(undefined8 **)(lVar8 + 0xb8);
+    lVar14 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_GetBoneSkeleton3Delegate_TypeInfo);
+    FUN_04a5701c(lVar14,uVar15,*(undefined8 *)OVRPlugin_InsightPassthroughColorMapType_TypeInfo,0);
+    *(long *)(*(long *)(*(long *)puVar2 + 0xb8) + 0x18) = lVar14;
+  }
+  plVar9 = (long *)FUN_033eb504(uVar13,lVar14,*(undefined8 *)puVar1);
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)PTR_DAT_065ed330) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619ce74;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)PTR_DAT_065ed330,0);
+LAB_0619ce74:
+    puVar1 = PTR_DAT_065c8a48;
+    plVar9 = (long *)(*(code *)*puVar10)(plVar9,puVar10[1]);
+    puVar6 = OVRPlugin_Mesh_TypeInfo;
+    puVar5 = UnityEngine_VFX_SDF_MeshToSDFBaker_ShaderProperties_TypeInfo;
+    puVar4 = PTR_DAT_065ed338;
+    puVar3 = PTR_DAT_065dc880;
+    puVar2 = PTR_DAT_065c8d08;
+    if (plVar9 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    do {
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar2) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619cf04;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar2,0);
+LAB_0619cf04:
+      uVar11 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if ((uVar11 & 1) == 0) goto LAB_0619cfa4;
+      lVar8 = *plVar9;
+      uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+      if (uVar11 != 0) {
+        piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar12 + -2) == *(long *)puVar4) {
+            puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+            goto LAB_0619cf60;
+          }
+          uVar11 = uVar11 - 1;
+          piVar12 = piVar12 + 4;
+        } while (uVar11 != 0);
+      }
+      puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar4,0);
+LAB_0619cf60:
+      uVar13 = (*(code *)*puVar10)(plVar9,puVar10[1]);
+      if (*(int *)(*(long *)puVar3 + 0xe0) == 0) {
+        thunk_FUN_02cd038c();
+      }
+      uVar7 = FUN_0353b038(uVar13,*(undefined8 *)puVar5);
+      FUN_0615dd3c(uVar7 & 1,*(undefined8 *)puVar6,uVar13,0);
+    } while( true );
+  }
+  goto LAB_0619d224;
+LAB_0619cfa4:
+  if (plVar9 != (long *)0x0) {
+    lVar8 = *plVar9;
+    uVar11 = (ulong)*(ushort *)(lVar8 + 0x12e);
+    if (uVar11 != 0) {
+      piVar12 = (int *)(*(long *)(lVar8 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar12 + -2) == *(long *)puVar1) {
+          puVar10 = (undefined8 *)(lVar8 + (long)*piVar12 * 0x10 + 0x138);
+          goto LAB_0619cffc;
+        }
+        uVar11 = uVar11 - 1;
+        piVar12 = piVar12 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar10 = (undefined8 *)FUN_02ce0a7c(plVar9,*(long *)puVar1,0);
+LAB_0619cffc:
+    (*(code *)*puVar10)(plVar9,puVar10[1]);
+  }
+  puVar6 = OVRPlugin_HandStatus_TypeInfo;
+  puVar5 = OVRPlugin_GUID_TypeInfo;
+  puVar4 = System_Linq_Expressions_Interpreter_NotInstruction_NotByte_TypeInfo;
+  puVar3 = 
+  System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualSingleLiftedToNull_TypeInfo;
+  puVar2 = PTR_DAT_06602f80;
+  puVar1 = PTR_DAT_065df900;
+  if (*(long *)(param_1 + 0x10) != 0) {
+    FUN_03968dbc(&local_98,*(long *)(param_1 + 0x10),*(undefined8 *)OVRPlugin_Hand_TypeInfo);
+    uStack_78 = uStack_90;
+    local_80 = local_98;
+    local_70 = local_88;
+    plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+    while( true ) {
+      uVar11 = FUN_0481f4e4(&local_80,*(undefined8 *)puVar5);
+      if ((uVar11 & 1) == 0) {
+        FUN_0481f4e0(&local_80,*(undefined8 *)OVRPlugin_EyeTextureFormat_TypeInfo);
+        return;
+      }
+      lVar8 = thunk_FUN_02cea894(*(undefined8 *)OVRPlugin_Media_TypeInfo);
+      FUN_04f7383c(lVar8,0);
+      if (lVar8 == 0) break;
+      *(undefined8 *)(lVar8 + 0x10) = local_70;
+      uVar15 = *(undefined8 *)(param_1 + 0x28);
+      uVar13 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_065df908);
+      FUN_04a5632c(uVar13,lVar8,*(undefined8 *)OVRPlugin_LogLevel_TypeInfo,0);
+      uVar13 = UnityEngine_Rendering_RenderPipeline__IsRenderRequestSupported<__Il2CppFullySharedGenericType>
+                         (uVar15,uVar13,*(undefined8 *)puVar1);
+      lVar14 = *plVar9;
+      if (*(int *)(lVar14 + 0xe0) == 0) {
+        thunk_FUN_02cd038c(lVar14);
+        lVar14 = *plVar9;
+      }
+      lVar16 = *(long *)(*(long *)(lVar14 + 0xb8) + 0x20);
+      if (lVar16 == 0) {
+        if (*(int *)(lVar14 + 0xe0) == 0) {
+          thunk_FUN_02cd038c(lVar14);
+          lVar14 = *plVar9;
+        }
+        uVar15 = **(undefined8 **)(lVar14 + 0xb8);
+        lVar16 = thunk_FUN_02cea894(*(undefined8 *)
+                                     System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt64LiftedToNull_TypeInfo
+                                   );
+        FUN_04a56ab8(lVar16,uVar15,*(undefined8 *)OVRPlugin_LayerLayout_TypeInfo,0);
+        plVar9 = (long *)OVRPlugin_BodyJointSet_TypeInfo;
+        *(long *)(*(long *)(*(long *)OVRPlugin_BodyJointSet_TypeInfo + 0xb8) + 0x20) = lVar16;
+      }
+      uVar13 = FUN_033eac28(uVar13,lVar16,*(undefined8 *)puVar3);
+      uVar13 = ModestTree_ReflectionUtil__ToDebugString<__Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType,___Il2CppFullySharedGenericType>
+                         (uVar13,*(undefined8 *)puVar2);
+      auVar17 = FUN_03469bdc(uVar13,*(undefined8 *)puVar4);
+      uVar15 = auVar17._8_8_;
+      if ((auVar17._0_8_ & 1) == 0) {
+        uVar13 = FUN_033d87b4(uVar13,*(undefined8 *)PTR_DAT_065e1f90);
+        auVar17 = FUN_033f2110(uVar13,*(undefined8 *)
+                                       System_Linq_Expressions_Interpreter_NotEqualInstruction_NotEqualUInt16_TypeInfo
+                              );
+        uVar15 = auVar17._8_8_;
+        uVar11 = auVar17._0_8_ & 0xffffffff;
+      }
+      else {
+        uVar11 = 0;
+      }
+      if (*(long *)(param_1 + 0x40) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_02ce7c7c(0,uVar15,uVar11);
+      }
+      FUN_04037b90(*(long *)(param_1 + 0x40),*(undefined8 *)(lVar8 + 0x10),uVar11,
+                   *(undefined8 *)puVar6);
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+LAB_0619d224:
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

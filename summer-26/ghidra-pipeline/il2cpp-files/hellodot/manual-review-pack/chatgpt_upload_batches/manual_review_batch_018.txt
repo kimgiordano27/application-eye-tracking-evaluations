@@ -1,0 +1,1146 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 85
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionStateChange
+ENTRY_POINT: 051e0214
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 103
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_103', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051e0214_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionStateChange.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\085_p206_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionStateChange.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionStateChange
+ENTRY_POINT: 051e0214
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 103
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 OVRPlugin_OVRP_1_71_0__ovrp_UnityOpenXR_OnSessionStateChange(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long unaff_x19;
+  long lVar4;
+  undefined8 uVar5;
+  long lVar6;
+  long *unaff_x22;
+  
+  AkMIDIEventCallbackInfo__get_byProgramNum();
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06609218);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06609220);
+                    /* try { // try from 051e0234 to 052e0243 has its CatchHandler @ 051e0244 */
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06609228);
+                    /* catch() { ... } // from try @ 051e0234 with catch @ 051e0244 */
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066091f8);
+                    /* catch() { ... } // from try @ 051e01a0 with catch @ 051e0248 */
+                    /* try { // try from 051e024c to 052e024f has its CatchHandler @ 051e0258 */
+  *(undefined1 *)(unaff_x19 + 0x5d9) = 1;
+                    /* try { // try from 051e0250 to 052e025b has its CatchHandler @ 051e00a4 */
+  lVar3 = *unaff_x22;
+                    /* catch(type#2 @ 00000000) { ... } // from try @ 051e024c with catch @ 051e0258
+                        */
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+                    /* try { // try from 051e025c to 052e033f has its CatchHandler @ 051e025c
+                       catch() { ... } // from try @ 051e025c with catch @ 051e025c
+                       catch() { ... } // from try @ 051e0368 with catch @ 051e025c
+                       catch() { ... } // from try @ 051e03b0 with catch @ 051e025c
+                       catch() { ... } // from try @ 051e040c with catch @ 051e025c
+                       catch() { ... } // from try @ 051e0440 with catch @ 051e025c
+                       catch() { ... } // from try @ 051e0478 with catch @ 051e025c */
+    thunk_FUN_02cd038c();
+    lVar3 = *unaff_x22;
+  }
+  lVar4 = *(long *)(*(long *)(lVar3 + 0xb8) + 8);
+  if (lVar4 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar4 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609200);
+    FUN_04a57ae4(lVar4,uVar5,*(undefined8 *)PTR_DAT_06609220,0);
+    lVar3 = *unaff_x22;
+    *(long *)(*(long *)(lVar3 + 0xb8) + 8) = lVar4;
+  }
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar3 = *unaff_x22;
+  }
+  puVar2 = PTR_DAT_06609218;
+  puVar1 = PTR_DAT_06609210;
+  lVar6 = *(long *)(*(long *)(lVar3 + 0xb8) + 0x10);
+  if (lVar6 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar6 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609208);
+    FUN_04a66bf0(lVar6,uVar5,*(undefined8 *)PTR_DAT_06609228,0);
+    *(long *)(*(long *)(*unaff_x22 + 0xb8) + 0x10) = lVar6;
+  }
+  uVar5 = thunk_FUN_02cea894(*(undefined8 *)puVar2);
+  FUN_03d86c78(uVar5,2,lVar4,lVar6,*(undefined8 *)puVar1);
+  return uVar5;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 86
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionDestroy
+ENTRY_POINT: 051e070c
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 103
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_103', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051e070c_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionDestroy.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\086_p206_OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionDestroy.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_71_0$$ovrp_UnityOpenXR_OnSessionDestroy
+ENTRY_POINT: 051e070c
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 103
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 OVRPlugin_OVRP_1_71_0__ovrp_UnityOpenXR_OnSessionDestroy(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long unaff_x19;
+  long lVar4;
+  undefined8 uVar5;
+  long lVar6;
+  long *unaff_x22;
+  
+  AkMIDIEventCallbackInfo__get_byProgramNum();
+                    /* catch(type#2 @ 00000000) { ... } // from try @ 051e0660 with catch @ 051e0710
+                       catch(type#2 @ 00000000) { ... } // from try @ 051e0704 with catch @ 051e0710
+                        */
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066092b0);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066092b8);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066091f8);
+  *(undefined1 *)(unaff_x19 + 0x5dc) = 1;
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar3 = *unaff_x22;
+  }
+  lVar4 = *(long *)(*(long *)(lVar3 + 0xb8) + 0x38);
+  if (lVar4 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar4 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609290);
+    FUN_04a57358(lVar4,uVar5,*(undefined8 *)PTR_DAT_066092b0,0);
+    lVar3 = *unaff_x22;
+    *(long *)(*(long *)(lVar3 + 0xb8) + 0x38) = lVar4;
+  }
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+    lVar3 = *unaff_x22;
+  }
+  puVar2 = PTR_DAT_066092a8;
+  puVar1 = PTR_DAT_066092a0;
+  lVar6 = *(long *)(*(long *)(lVar3 + 0xb8) + 0x40);
+  if (lVar6 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar6 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609298);
+    FUN_04a6419c(lVar6,uVar5,*(undefined8 *)PTR_DAT_066092b8,0);
+    *(long *)(*(long *)(*unaff_x22 + 0xb8) + 0x40) = lVar6;
+  }
+  uVar5 = thunk_FUN_02cea894(*(undefined8 *)puVar2);
+  FUN_03d867bc(uVar5,4,lVar4,lVar6,*(undefined8 *)puVar1);
+  return uVar5;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 87
+FUNCTION_NAME: UnityEngine.Cubemap$$IsRequestedMipmapLevelLoaded
+ENTRY_POINT: 05ddc6e8
+MANUAL_PRIORITY_SCORE: 205
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_3', 'validity_or_gating_hits_20', 'strong_pose_or_ray_construction_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_sdk_3_bonus_9', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\70_high_general_structure_review_high\05ddc6e8_UnityEngine.Cubemap$$IsRequestedMipmapLevelLoaded.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\087_p205_UnityEngine.Cubemap$$IsRequestedMipmapLevelLoaded.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Cubemap$$IsRequestedMipmapLevelLoaded
+ENTRY_POINT: 05ddc6e8
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_3;validity_or_gating_hits_20;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void UnityEngine_Cubemap__IsRequestedMipmapLevelLoaded(void)
+
+{
+  uint uVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  long lVar7;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8918);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<Expression>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<Guid>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<HandJointId>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<IBoundsClipper>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<ICylinderClipper>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<IDisposable>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<IInteractor>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<InputDevice>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06610a88);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c87d8);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<Instruction>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<int>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<OVRSpaceUser>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8668);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<ParameterExpression>_TypeInfo);
+  AkMIDIEventCallbackInfo__get_byProgramNum
+            (System_Collections_Generic_IReadOnlyCollection<Pose>_TypeInfo);
+  *(undefined1 *)(unaff_x19 + 0xfba) = 1;
+  lVar7 = FUN_02ce7ad4(*unaff_x20,0x16);
+  puVar2 = PTR_DAT_065c8668;
+  if (lVar7 != 0) {
+    uVar1 = *(uint *)(lVar7 + 0x18);
+    if (uVar1 != 0) {
+      *(undefined8 *)(lVar7 + 0x20) = *(undefined8 *)PTR_DAT_065c8668;
+      *(undefined8 *)(lVar7 + 0x28) = 0;
+      if (uVar1 != 1) {
+        *(undefined8 *)(lVar7 + 0x30) =
+             *(undefined8 *)System_Collections_Generic_IReadOnlyCollection<Instruction>_TypeInfo;
+        *(undefined8 *)(lVar7 + 0x38) = 1;
+        if (2 < uVar1) {
+          *(undefined8 *)(lVar7 + 0x40) = *(undefined8 *)PTR_DAT_065c87d8;
+          *(undefined8 *)(lVar7 + 0x48) = 2;
+          if (uVar1 != 3) {
+            *(undefined8 *)(lVar7 + 0x50) = *(undefined8 *)PTR_DAT_06610a88;
+            *(undefined8 *)(lVar7 + 0x58) = 2;
+            if (4 < uVar1) {
+              *(undefined8 *)(lVar7 + 0x60) =
+                   *(undefined8 *)
+                    System_Collections_Generic_IReadOnlyCollection<ICylinderClipper>_TypeInfo;
+              *(undefined8 *)(lVar7 + 0x68) = 1;
+              if (uVar1 != 5) {
+                *(undefined8 *)(lVar7 + 0x70) =
+                     *(undefined8 *)
+                      System_Collections_Generic_IReadOnlyCollection<IInteractor>_TypeInfo;
+                *(undefined8 *)(lVar7 + 0x78) = 1;
+                if (6 < uVar1) {
+                  *(undefined8 *)(lVar7 + 0x80) =
+                       *(undefined8 *)
+                        System_Collections_Generic_IReadOnlyCollection<IDisposable>_TypeInfo;
+                  *(undefined8 *)(lVar7 + 0x88) = 1;
+                  if (uVar1 != 7) {
+                    *(undefined8 *)(lVar7 + 0x90) =
+                         *(undefined8 *)
+                          System_Collections_Generic_IReadOnlyCollection<Pose>_TypeInfo;
+                    *(undefined8 *)(lVar7 + 0x98) = 1;
+                    if (8 < uVar1) {
+                      *(undefined8 *)(lVar7 + 0xa0) =
+                           *(undefined8 *)
+                            System_Collections_Generic_IReadOnlyCollection<ParameterExpression>_TypeInfo
+                      ;
+                      *(undefined8 *)(lVar7 + 0xa8) = 1;
+                      if (uVar1 != 9) {
+                        *(undefined8 *)(lVar7 + 0xb0) =
+                             *(undefined8 *)
+                              System_Collections_Generic_IReadOnlyCollection<HandJointId>_TypeInfo;
+                        *(undefined8 *)(lVar7 + 0xb8) = 1;
+                        if (10 < uVar1) {
+                          *(undefined8 *)(lVar7 + 0xc0) =
+                               *(undefined8 *)
+                                System_Collections_Generic_IReadOnlyCollection<OVRSpaceUser>_TypeInfo
+                          ;
+                          *(undefined8 *)(lVar7 + 200) = 1;
+                          if (uVar1 != 0xb) {
+                            *(undefined8 *)(lVar7 + 0xd0) =
+                                 *(undefined8 *)
+                                  System_Collections_Generic_IReadOnlyCollection<int>_TypeInfo;
+                            *(undefined8 *)(lVar7 + 0xd8) = 1;
+                            if (0xc < uVar1) {
+                              *(undefined8 *)(lVar7 + 0xe0) =
+                                   *(undefined8 *)
+                                    System_Collections_Generic_IReadOnlyCollection<Guid>_TypeInfo;
+                              *(undefined8 *)(lVar7 + 0xe8) = 1;
+                              if (uVar1 != 0xd) {
+                                *(undefined8 *)(lVar7 + 0xf0) =
+                                     *(undefined8 *)
+                                      System_Collections_Generic_IReadOnlyCollection<Expression>_TypeInfo
+                                ;
+                                *(undefined8 *)(lVar7 + 0xf8) = 1;
+                                puVar5 = 
+                                System_Collections_Generic_IReadOnlyCollection<IBoundsClipper>_TypeInfo
+                                ;
+                                if (0xe < uVar1) {
+                                  *(undefined8 *)(lVar7 + 0x100) =
+                                       *(undefined8 *)
+                                        System_Collections_Generic_IReadOnlyCollection<IBoundsClipper>_TypeInfo
+                                  ;
+                                  *(undefined8 *)(lVar7 + 0x108) = 3;
+                                  if (uVar1 != 0xf) {
+                                    *(undefined8 *)(lVar7 + 0x110) = *(undefined8 *)puVar5;
+                                    *(undefined8 *)(lVar7 + 0x118) = 4;
+                                    if (0x10 < uVar1) {
+                                      *(undefined8 *)(lVar7 + 0x120) = *(undefined8 *)puVar5;
+                                      *(undefined8 *)(lVar7 + 0x128) = 5;
+                                      if (uVar1 != 0x11) {
+                                        *(undefined8 *)(lVar7 + 0x130) = *(undefined8 *)puVar5;
+                                        *(undefined8 *)(lVar7 + 0x138) = 6;
+                                        puVar6 = 
+                                        System_Collections_Generic_IReadOnlyCollection<InputDevice>_TypeInfo
+                                        ;
+                                        if (0x12 < uVar1) {
+                                          *(undefined8 *)(lVar7 + 0x140) =
+                                               *(undefined8 *)
+                                                System_Collections_Generic_IReadOnlyCollection<InputDevice>_TypeInfo
+                                          ;
+                                          *(undefined8 *)(lVar7 + 0x148) = 3;
+                                          if (uVar1 != 0x13) {
+                                            *(undefined8 *)(lVar7 + 0x150) = *(undefined8 *)puVar6;
+                                            *(undefined8 *)(lVar7 + 0x158) = 4;
+                                            if (0x14 < uVar1) {
+                                              *(undefined8 *)(lVar7 + 0x160) = *(undefined8 *)puVar6
+                                              ;
+                                              *(undefined8 *)(lVar7 + 0x168) = 5;
+                                              puVar4 = System_Func<string,_InternedString>_TypeInfo;
+                                              if (uVar1 != 0x15) {
+                                                *(undefined8 *)(lVar7 + 0x170) =
+                                                     *(undefined8 *)puVar6;
+                                                *(undefined8 *)(lVar7 + 0x178) = 6;
+                                                puVar3 = PTR_DAT_065c8918;
+                                                **(long **)(*(long *)puVar4 + 0xb8) = lVar7;
+                                                lVar7 = FUN_02ce7ad4(*(undefined8 *)puVar3,3);
+                                                if (lVar7 == 0) goto LAB_05ddca7c;
+                                                uVar1 = *(uint *)(lVar7 + 0x18);
+                                                if (((uVar1 != 0) &&
+                                                    (*(undefined8 *)(lVar7 + 0x20) =
+                                                          *(undefined8 *)puVar2, uVar1 != 1)) &&
+                                                   (*(undefined8 *)(lVar7 + 0x28) =
+                                                         *(undefined8 *)puVar5, 2 < uVar1)) {
+                                                  *(undefined8 *)(lVar7 + 0x30) =
+                                                       *(undefined8 *)puVar6;
+                                                  *(long *)(*(long *)(*(long *)puVar4 + 0xb8) + 8) =
+                                                       lVar7;
+                                                  return;
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c84();
+  }
+LAB_05ddca7c:
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 88
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$SetExtensionData
+ENTRY_POINT: 04f34af8
+MANUAL_PRIORITY_SCORE: 205
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_21', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\70_high_general_structure_review_high\04f34af8_Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$SetExtensionData.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\088_p205_Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$SetExtensionData.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$SetExtensionData
+ENTRY_POINT: 04f34af8
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;data_collection;telemetry
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_21;strong_file_logging_hits_2;telemetry_or_network_hits_2;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void Newtonsoft_Json_Serialization_JsonSerializerInternalReader__SetExtensionData(void)
+
+{
+  ushort uVar1;
+  uint uVar2;
+  short sVar3;
+  undefined2 uVar4;
+  undefined4 uVar5;
+  uint unaff_w19;
+  uint unaff_w20;
+  uint uVar6;
+  long lVar7;
+  short *psVar8;
+  long unaff_x22;
+  short *unaff_x23;
+  int unaff_w24;
+  int iVar9;
+  uint uVar10;
+  short sVar11;
+  uint unaff_w26;
+  long lVar12;
+  int unaff_w28;
+  ushort *puVar13;
+  long unaff_x29;
+  
+code_r0x04f34af8:
+  if (0x30 < unaff_w26) goto LAB_04f34c8c;
+  if ((1L << ((ulong)unaff_w26 & 0x3f) & 0x1400800000000U) == 0) goto LAB_04f34c8c;
+  lVar7 = *(long *)(unaff_x29 + -0x48);
+  uVar10 = *(uint *)(unaff_x29 + -0x28);
+  iVar9 = unaff_w24 + 1;
+  *(int *)(unaff_x29 + -0x3c) = unaff_w28 - unaff_w24;
+  do {
+    sVar11 = *unaff_x23;
+    sVar3 = 0x30;
+    if (sVar11 != 0) {
+      unaff_x23 = unaff_x23 + 1;
+      sVar3 = sVar11;
+    }
+    if (DAT_06a6e9d0 == '\0') {
+      AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+      DAT_06a6e9d0 = '\x01';
+    }
+    uVar6 = *(uint *)(unaff_x22 + 0x18);
+    if ((int)uVar6 < (int)*(uint *)(unaff_x22 + 0x10)) {
+      if (*(uint *)(unaff_x22 + 0x10) <= uVar6) goto LAB_04f35628;
+      *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = sVar3;
+      *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+    }
+    else {
+      FUN_04dd5298();
+    }
+    if ((-1 < (int)unaff_w19) && (1 < unaff_w28 && (uVar10 & 1) == 0)) {
+      if (*(uint *)(unaff_x29 + -0x10) <= unaff_w19) goto LAB_04f35628;
+      if (unaff_w28 == *(int *)(*(long *)(unaff_x29 + -0x18) + (ulong)unaff_w19 * 4) + 1) {
+        if (lVar7 == 0) goto LAB_04f3562c;
+        lVar12 = *(long *)(lVar7 + 0x40);
+        if (DAT_06a6f6db == '\0') {
+          AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+          DAT_06a6f6db = '\x01';
+        }
+        if (lVar12 == 0) goto LAB_04f3562c;
+        if (*(int *)(lVar12 + 0x10) == 1) {
+          uVar10 = *(uint *)(unaff_x22 + 0x18);
+          if ((int)*(uint *)(unaff_x22 + 0x10) <= (int)uVar10) goto LAB_04f34c58;
+          if (*(uint *)(unaff_x22 + 0x10) <= uVar10) goto LAB_04f35628;
+          lVar7 = *(long *)(unaff_x22 + 8);
+          uVar4 = FUN_04db48b0(lVar12,0,0);
+          *(undefined2 *)(lVar7 + (long)(int)uVar10 * 2) = uVar4;
+          lVar7 = *(long *)(unaff_x29 + -0x48);
+          *(uint *)(unaff_x22 + 0x18) = uVar10 + 1;
+        }
+        else {
+LAB_04f34c58:
+          FUN_04dd53c4();
+        }
+        uVar10 = *(uint *)(unaff_x29 + -0x28);
+        unaff_w19 = unaff_w19 - 1;
+      }
+    }
+    iVar9 = iVar9 + -1;
+    unaff_w28 = unaff_w28 + -1;
+  } while (1 < iVar9);
+  unaff_w28 = *(int *)(unaff_x29 + -0x3c);
+  unaff_w24 = 0;
+  do {
+    uVar10 = *(int *)(unaff_x29 + -0x38) + 1;
+    if (unaff_w26 < 0x46) {
+      switch(unaff_w26) {
+      case 0x22:
+      case 0x27:
+        if ((int)uVar10 < (int)unaff_w20) {
+          *(int *)(unaff_x29 + -0x3c) = unaff_w28;
+          *(int *)(unaff_x29 + -0x4c) = unaff_w24;
+          lVar7 = (ulong)uVar10 << 0x20;
+          uVar6 = ~*(uint *)(unaff_x29 + -0x38);
+          puVar13 = (ushort *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2);
+          lVar12 = *(long *)(unaff_x29 + -0x88) - (long)(int)uVar10;
+          while( true ) {
+            uVar1 = *puVar13;
+            if ((uVar1 == 0) || (uVar1 == unaff_w26)) break;
+            if (DAT_06a6e9d0 == '\0') {
+              AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+              DAT_06a6e9d0 = '\x01';
+            }
+            uVar10 = *(uint *)(unaff_x22 + 0x18);
+            if ((int)uVar10 < (int)*(uint *)(unaff_x22 + 0x10)) {
+              if (*(uint *)(unaff_x22 + 0x10) <= uVar10) goto LAB_04f35628;
+              *(ushort *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar10 * 2) = uVar1;
+              *(uint *)(unaff_x22 + 0x18) = uVar10 + 1;
+            }
+            else {
+              FUN_04dd5298();
+            }
+            lVar7 = lVar7 + 0x100000000;
+            uVar6 = uVar6 - 1;
+            lVar12 = lVar12 + -1;
+            puVar13 = puVar13 + 1;
+            if (lVar12 == 0) goto LAB_04f354c8;
+          }
+          unaff_w24 = *(int *)(unaff_x29 + -0x4c);
+          unaff_w28 = *(int *)(unaff_x29 + -0x3c);
+          uVar10 = (*(short *)((lVar7 >> 0x1f) + *(long *)(unaff_x29 + -0x58)) != 0) - uVar6;
+        }
+        break;
+      case 0x23:
+      case 0x30:
+        if (unaff_w24 < 0) {
+          unaff_w24 = unaff_w24 + 1;
+          if (unaff_w28 <= *(int *)(unaff_x29 + -0x78)) {
+LAB_04f35160:
+            sVar11 = 0x30;
+            goto LAB_04f35164;
+          }
+        }
+        else {
+          sVar11 = *unaff_x23;
+          if (sVar11 == 0) {
+            if (*(int *)(unaff_x29 + -0x74) < unaff_w28) goto LAB_04f35160;
+          }
+          else {
+            unaff_x23 = unaff_x23 + 1;
+LAB_04f35164:
+            if (DAT_06a6e9d0 == '\0') {
+              AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+              DAT_06a6e9d0 = '\x01';
+            }
+            uVar2 = *(uint *)(unaff_x22 + 0x18);
+            uVar6 = *(uint *)(unaff_x29 + -0x28);
+            if ((int)uVar2 < (int)*(uint *)(unaff_x22 + 0x10)) {
+              if (*(uint *)(unaff_x22 + 0x10) <= uVar2) goto LAB_04f35628;
+              *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar2 * 2) = sVar11;
+              *(uint *)(unaff_x22 + 0x18) = uVar2 + 1;
+            }
+            else {
+              FUN_04dd5298();
+ 
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+  *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+          }
+          else {
+            FUN_04dd5298();
+          }
+          if ((int)uVar10 < (int)unaff_w20) {
+            sVar11 = *(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2);
+            if ((sVar11 == 0x2d) || (sVar11 == 0x2b)) {
+              if (DAT_06a6e9d0 == '\0') {
+                AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                DAT_06a6e9d0 = '\x01';
+              }
+              uVar6 = *(uint *)(unaff_x22 + 0x18);
+              uVar10 = iVar9 + 2;
+              if ((int)uVar6 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                if (*(uint *)(unaff_x22 + 0x10) <= uVar6) goto LAB_04f35628;
+                *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = sVar11;
+                *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+              }
+              else {
+                FUN_04dd5298();
+              }
+            }
+            if ((int)uVar10 < (int)unaff_w20) {
+              psVar8 = (short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2);
+              lVar7 = *(long *)(unaff_x29 + -0x88) - (long)(int)uVar10;
+              while (*psVar8 == 0x30) {
+                if (DAT_06a6e9d0 == '\0') {
+                  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                  DAT_06a6e9d0 = '\x01';
+                }
+                uVar6 = *(uint *)(unaff_x22 + 0x18);
+                if ((int)uVar6 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                  if (*(uint *)(unaff_x22 + 0x10) <= uVar6) goto LAB_04f35628;
+                  *(undefined2 *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = 0x30;
+                  *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+                }
+                else {
+                  FUN_04dd5298();
+                }
+                uVar10 = uVar10 + 1;
+                lVar7 = lVar7 + -1;
+                psVar8 = psVar8 + 1;
+                if (lVar7 == 0) goto LAB_04f354c8;
+              }
+              *(undefined4 *)(unaff_x29 + -0x5c) = 0;
+              break;
+            }
+          }
+        }
+        else {
+          if (((int)uVar10 < (int)unaff_w20) &&
+             (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2) == 0x30)) {
+            uVar5 = 0;
+            goto LAB_04f35394;
+          }
+          iVar9 = *(int *)(unaff_x29 + -0x38) + 2;
+          if ((int)unaff_w20 <= iVar9) {
+LAB_04f353d4:
+            if (DAT_06a6e9d0 == '\0') {
+              AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+              DAT_06a6e9d0 = '\x01';
+            }
+            uVar6 = *(uint *)(unaff_x22 + 0x18);
+            if ((int)uVar6 < (int)*(uint *)(unaff_x22 + 0x10)) {
+              if (*(uint *)(unaff_x22 + 0x10) <= uVar6) goto LAB_04f35628;
+              *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = (short)unaff_w26;
+              *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+            }
+            else {
+              FUN_04dd5298();
+            }
+            *(undefined4 *)(unaff_x29 + -0x5c) = 1;
+            break;
+          }
+          sVar11 = *(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2);
+          if (sVar11 == 0x2d) {
+            if (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)iVar9 * 2) != 0x30)
+            goto LAB_04f353d4;
+            uVar5 = 0;
+          }
+          else {
+            if ((sVar11 != 0x2b) ||
+               (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)iVar9 * 2) != 0x30))
+            goto LAB_04f353d4;
+            uVar5 = 1;
+          }
+LAB_04f35394:
+          uVar6 = *(int *)(unaff_x29 + -0x38) + 2;
+          uVar10 = uVar6;
+          if ((int)uVar6 < (int)unaff_w20) {
+            do {
+              uVar10 = uVar6;
+              if (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar6 * 2) != 0x30) break;
+              uVar6 = uVar6 + 1;
+              uVar10 = unaff_w20;
+            } while (unaff_w20 != uVar6);
+          }
+          if (*(int *)(*(long *)PTR_DAT_065f73a8 + 0xe0) == 0) {
+            *(undefined4 *)(unaff_x29 + -0x38) = uVar5;
+            thunk_FUN_02cd038c();
+          }
+          FUN_04f3a470();
+        }
+        *(undefined4 *)(unaff_x29 + -0x5c) = 0;
+      }
+    }
+    else {
+      if (unaff_w26 != 0x5c) {
+        if (unaff_w26 == 0x65) goto LAB_04f34eac;
+        if (unaff_w26 != 0x2030) goto switchD_04f34cc0_caseD_24;
+        if (lVar7 != 0) {
+          lVar7 = *(long *)(lVar7 + 0x98);
+          goto joined_r0x04f34da8;
+        }
+        goto LAB_04f3562c;
+      }
+      if (((int)unaff_w20 <= (int)uVar10) ||
+         (unaff_w26 = (uint)*(ushort *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar10 * 2),
+         unaff_w26 == 0)) goto switchD_04f34cc0_caseD_2c;
+      if (DAT_06a6e9d0 == '\0') {
+        AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+        DAT_06a6e9d0 = '\x01';
+      }
+      uVar2 = *(uint *)(unaff_x22 + 0x18);
+      uVar6 = *(uint *)(unaff_x22 + 0x10);
+      uVar10 = *(int *)(unaff_x29 + -0x38) + 2;
+      if ((int)uVar6 <= (int)uVar2) goto LAB_04f34e7c;
+LAB_04f34f14:
+      if (uVar6 <= uVar2) goto LAB_04f35628;
+      *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar2 * 2) = (short)unaff_w26;
+      *(uint *)(unaff_x22 + 0x18) = uVar2 + 1;
+    }
+switchD_04f34cc0_caseD_2c:
+    *(int *)(unaff_x29 + -0x4c) = unaff_w24;
+    *(uint *)(unaff_x29 + -0x38) = uVar10;
+    if ((int)unaff_w20 <= (int)uVar10) {
+LAB_04f354c8:
+      if (*(long *)(*(long *)(unaff_x29 + -0x68) + 0x28) == *(long *)(unaff_x29 + -8)) {
+        return;
+      }
+                    /* WARNING: Subroutine does not return */
+      __stack_chk_fail();
+    }
+    uVar1 = *(ushort *)(*(long *)(unaff_x29 + -0x58) + (long)*(int *)(unaff_x29 + -0x38) * 2);
+    unaff_w26 = (uint)uVar1;
+    if ((uVar1 == 0x3b) || (uVar1 == 0)) goto LAB_04f354c8;
+    unaff_w24 = *(int *)(unaff_x29 + -0x4c);
+    if (0 < unaff_w24) goto code_r0x04f34af8;
+LAB_04f34c8c:
+    lVar7 = *(long *)(unaff_x29 + -0x48);
+  } while( true );
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 89
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$ReadExtensionDataValue
+ENTRY_POINT: 04f34a3c
+MANUAL_PRIORITY_SCORE: 205
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['weak_xr_or_state_hits_2', 'validity_or_gating_hits_21', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\70_high_general_structure_review_high\04f34a3c_Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$ReadExtensionDataValue.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\089_p205_Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$ReadExtensionDataValue.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalReader$$ReadExtensionDataValue
+ENTRY_POINT: 04f34a3c
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;data_collection;telemetry
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_21;strong_file_logging_hits_2;telemetry_or_network_hits_2;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void Newtonsoft_Json_Serialization_JsonSerializerInternalReader__ReadExtensionDataValue(void)
+
+{
+  ushort uVar1;
+  short sVar2;
+  undefined2 uVar3;
+  undefined8 uVar4;
+  undefined4 uVar5;
+  uint unaff_w19;
+  uint unaff_w20;
+  uint uVar6;
+  short *psVar7;
+  long unaff_x22;
+  short *psVar8;
+  int iVar9;
+  int iVar10;
+  long lVar11;
+  uint uVar12;
+  short sVar13;
+  uint uVar14;
+  long unaff_x27;
+  long lVar15;
+  int unaff_w28;
+  ushort *puVar16;
+  long unaff_x29;
+  
+  uVar14 = (uint)unaff_x27;
+  if ((int)uVar14 < (int)*(uint *)(unaff_x22 + 0x10)) {
+    if (*(uint *)(unaff_x22 + 0x10) <= uVar14) {
+LAB_04f35628:
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c84();
+    }
+    lVar11 = *(long *)(unaff_x22 + 8);
+    uVar3 = FUN_04db48b0();
+    *(undefined2 *)(lVar11 + unaff_x27 * 2) = uVar3;
+    *(uint *)(unaff_x22 + 0x18) = uVar14 + 1;
+  }
+  else {
+    FUN_04dd53c4();
+  }
+  uVar4 = FUN_034754ac(*(undefined8 *)(unaff_x29 + -0x28));
+  *(undefined8 *)(unaff_x29 + -0x58) = uVar4;
+  if (*(int *)(unaff_x29 + -0x38) < (int)unaff_w20) {
+    psVar8 = *(short **)(unaff_x29 + -0x30);
+    *(undefined4 *)(unaff_x29 + -0x7c) = 0;
+    *(uint *)(unaff_x29 + -0x28) = *(uint *)(unaff_x29 + -0x3c) ^ 1;
+    *(uint *)(unaff_x29 + -0x8c) = unaff_w20 - 2;
+    *(long *)(unaff_x29 + -0x88) = (long)(int)unaff_w20;
+    do {
+      uVar1 = *(ushort *)(*(long *)(unaff_x29 + -0x58) + (long)*(int *)(unaff_x29 + -0x38) * 2);
+      if ((uVar1 == 0x3b) || (uVar1 == 0)) break;
+      iVar10 = *(int *)(unaff_x29 + -0x4c);
+      uVar14 = (uint)uVar1;
+      if ((iVar10 < 1) ||
+         ((0x30 < uVar1 || ((1L << ((ulong)uVar14 & 0x3f) & 0x1400800000000U) == 0)))) {
+        lVar11 = *(long *)(unaff_x29 + -0x48);
+      }
+      else {
+        lVar11 = *(long *)(unaff_x29 + -0x48);
+        uVar12 = *(uint *)(unaff_x29 + -0x28);
+        iVar9 = iVar10 + 1;
+        *(int *)(unaff_x29 + -0x3c) = unaff_w28 - iVar10;
+        do {
+          sVar13 = *psVar8;
+          sVar2 = 0x30;
+          if (sVar13 != 0) {
+            psVar8 = psVar8 + 1;
+            sVar2 = sVar13;
+          }
+          if (DAT_06a6e9d0 == '\0') {
+            AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+            DAT_06a6e9d0 = '\x01';
+          }
+          uVar6 = *(uint *)(unaff_x22 + 0x18);
+          if ((int)uVar6 < (int)*(uint *)(unaff_x22 + 0x10)) {
+            if (*(uint *)(unaff_x22 + 0x10) <= uVar6) goto LAB_04f35628;
+            *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = sVar2;
+            *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+          }
+          else {
+            FUN_04dd5298();
+          }
+          if ((-1 < (int)unaff_w19) && (1 < unaff_w28 && (uVar12 & 1) == 0)) {
+            if (*(uint *)(unaff_x29 + -0x10) <= unaff_w19) goto LAB_04f35628;
+            if (unaff_w28 == *(int *)(*(long *)(unaff_x29 + -0x18) + (ulong)unaff_w19 * 4) + 1) {
+              if (lVar11 == 0) goto LAB_04f3562c;
+              lVar15 = *(long *)(lVar11 + 0x40);
+              if (DAT_06a6f6db == '\0') {
+                AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                DAT_06a6f6db = '\x01';
+              }
+              if (lVar15 == 0) goto LAB_04f3562c;
+              if (*(int *)(lVar15 + 0x10) == 1) {
+                uVar12 = *(uint *)(unaff_x22 + 0x18);
+                if ((int)*(uint *)(unaff_x22 + 0x10) <= (int)uVar12) goto LAB_04f34c58;
+                if (*(uint *)(unaff_x22 + 0x10) <= uVar12) goto LAB_04f35628;
+                lVar11 = *(long *)(unaff_x22 + 8);
+                uVar3 = FUN_04db48b0(lVar15,0,0);
+                *(undefined2 *)(lVar11 + (long)(int)uVar12 * 2) = uVar3;
+                lVar11 = *(long *)(unaff_x29 + -0x48);
+                *(uint *)(unaff_x22 + 0x18) = uVar12 + 1;
+              }
+              else {
+LAB_04f34c58:
+                FUN_04dd53c4();
+              }
+              uVar12 = *(uint *)(unaff_x29 + -0x28);
+              unaff_w19 = unaff_w19 - 1;
+            }
+          }
+          iVar9 = iVar9 + -1;
+          unaff_w28 = unaff_w28 + -1;
+        } while (1 < iVar9);
+        unaff_w28 = *(int *)(unaff_x29 + -0x3c);
+        iVar10 = 0;
+      }
+      uVar12 = *(int *)(unaff_x29 + -0x38) + 1;
+      if (uVar14 < 0x46) {
+        switch(uVar1) {
+        case 0x22:
+        case 0x27:
+          if ((int)uVar12 < (int)unaff_w20) {
+            *(int *)(unaff_x29 + -0x3c) = unaff_w28;
+            *(int *)(unaff_x29 + -0x4c) = iVar10;
+            lVar11 = (ulong)uVar12 << 0x20;
+            uVar6 = ~*(uint *)(unaff_x29 + -0x38);
+            puVar16 = (ushort *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2);
+            lVar15 = *(long *)(unaff_x29 + -0x88) - (long)(int)uVar12;
+            while( true ) {
+              uVar1 = *puVar16;
+              if ((uVar1 == 0) || (uVar1 == uVar14)) break;
+              if (DAT_06a6e9d0 == '\0') {
+                AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                DAT_06a6e9d0 = '\x01';
+              }
+              uVar12 = *(uint *)(unaff_x22 + 0x18);
+              if ((int)uVar12 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                if (*(uint *)(unaff_x22 + 0x10) <= uVar12) goto LAB_04f35628;
+                *(ushort *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar12 * 2) = uVar1;
+                *(uint *)(unaff_x22 + 0x18) = uVar12 + 1;
+              }
+              else {
+                FUN_04dd5298();
+   
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+4) goto LAB_04f35628;
+              *(ushort *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar14 * 2) = uVar1;
+              *(uint *)(unaff_x22 + 0x18) = uVar14 + 1;
+            }
+            else {
+              FUN_04dd5298();
+            }
+            if ((int)uVar12 < (int)unaff_w20) {
+              sVar13 = *(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2);
+              if ((sVar13 == 0x2d) || (sVar13 == 0x2b)) {
+                if (DAT_06a6e9d0 == '\0') {
+                  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                  DAT_06a6e9d0 = '\x01';
+                }
+                uVar14 = *(uint *)(unaff_x22 + 0x18);
+                uVar12 = iVar9 + 2;
+                if ((int)uVar14 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                  if (*(uint *)(unaff_x22 + 0x10) <= uVar14) goto LAB_04f35628;
+                  *(short *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar14 * 2) = sVar13;
+                  *(uint *)(unaff_x22 + 0x18) = uVar14 + 1;
+                }
+                else {
+                  FUN_04dd5298();
+                }
+              }
+              if ((int)uVar12 < (int)unaff_w20) {
+                psVar7 = (short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2);
+                lVar11 = *(long *)(unaff_x29 + -0x88) - (long)(int)uVar12;
+                while (*psVar7 == 0x30) {
+                  if (DAT_06a6e9d0 == '\0') {
+                    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                    DAT_06a6e9d0 = '\x01';
+                  }
+                  uVar14 = *(uint *)(unaff_x22 + 0x18);
+                  if ((int)uVar14 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                    if (*(uint *)(unaff_x22 + 0x10) <= uVar14) goto LAB_04f35628;
+                    *(undefined2 *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar14 * 2) = 0x30;
+                    *(uint *)(unaff_x22 + 0x18) = uVar14 + 1;
+                  }
+                  else {
+                    FUN_04dd5298();
+                  }
+                  uVar12 = uVar12 + 1;
+                  lVar11 = lVar11 + -1;
+                  psVar7 = psVar7 + 1;
+                  if (lVar11 == 0) goto LAB_04f354c8;
+                }
+                *(undefined4 *)(unaff_x29 + -0x5c) = 0;
+                break;
+              }
+            }
+          }
+          else {
+            if (((int)uVar12 < (int)unaff_w20) &&
+               (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2) == 0x30)) {
+              uVar5 = 0;
+              goto LAB_04f35394;
+            }
+            iVar9 = *(int *)(unaff_x29 + -0x38) + 2;
+            if ((int)unaff_w20 <= iVar9) {
+LAB_04f353d4:
+              if (DAT_06a6e9d0 == '\0') {
+                AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+                DAT_06a6e9d0 = '\x01';
+              }
+              uVar14 = *(uint *)(unaff_x22 + 0x18);
+              if ((int)uVar14 < (int)*(uint *)(unaff_x22 + 0x10)) {
+                if (*(uint *)(unaff_x22 + 0x10) <= uVar14) goto LAB_04f35628;
+                *(ushort *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar14 * 2) = uVar1;
+                *(uint *)(unaff_x22 + 0x18) = uVar14 + 1;
+              }
+              else {
+                FUN_04dd5298();
+              }
+              *(undefined4 *)(unaff_x29 + -0x5c) = 1;
+              break;
+            }
+            sVar13 = *(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2);
+            if (sVar13 == 0x2d) {
+              if (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)iVar9 * 2) != 0x30)
+              goto LAB_04f353d4;
+              uVar5 = 0;
+            }
+            else {
+              if ((sVar13 != 0x2b) ||
+                 (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)iVar9 * 2) != 0x30))
+              goto LAB_04f353d4;
+              uVar5 = 1;
+            }
+LAB_04f35394:
+            uVar14 = *(int *)(unaff_x29 + -0x38) + 2;
+            uVar12 = uVar14;
+            if ((int)uVar14 < (int)unaff_w20) {
+              do {
+                uVar12 = uVar14;
+                if (*(short *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar14 * 2) != 0x30) break;
+                uVar14 = uVar14 + 1;
+                uVar12 = unaff_w20;
+              } while (unaff_w20 != uVar14);
+            }
+            if (*(int *)(*(long *)PTR_DAT_065f73a8 + 0xe0) == 0) {
+              *(undefined4 *)(unaff_x29 + -0x38) = uVar5;
+              thunk_FUN_02cd038c();
+            }
+            FUN_04f3a470();
+          }
+          *(undefined4 *)(unaff_x29 + -0x5c) = 0;
+        }
+      }
+      else {
+        if (uVar1 != 0x5c) {
+          if (uVar1 == 0x65) goto LAB_04f34eac;
+          if (uVar1 == 0x2030) {
+            if (lVar11 == 0) goto LAB_04f3562c;
+            lVar11 = *(long *)(lVar11 + 0x98);
+            goto joined_r0x04f34da8;
+          }
+          goto switchD_04f34cc0_caseD_24;
+        }
+        if (((int)unaff_w20 <= (int)uVar12) ||
+           (uVar1 = *(ushort *)(*(long *)(unaff_x29 + -0x58) + (long)(int)uVar12 * 2), uVar1 == 0))
+        goto switchD_04f34cc0_caseD_2c;
+        if (DAT_06a6e9d0 == '\0') {
+          AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065f1cf0);
+          DAT_06a6e9d0 = '\x01';
+        }
+        uVar6 = *(uint *)(unaff_x22 + 0x18);
+        uVar14 = *(uint *)(unaff_x22 + 0x10);
+        uVar12 = *(int *)(unaff_x29 + -0x38) + 2;
+        if ((int)uVar14 <= (int)uVar6) goto LAB_04f34e7c;
+LAB_04f34f14:
+        if (uVar14 <= uVar6) goto LAB_04f35628;
+        *(ushort *)(*(long *)(unaff_x22 + 8) + (long)(int)uVar6 * 2) = uVar1;
+        *(uint *)(unaff_x22 + 0x18) = uVar6 + 1;
+      }
+switchD_04f34cc0_caseD_2c:
+      *(int *)(unaff_x29 + -0x4c) = iVar10;
+      *(uint *)(unaff_x29 + -0x38) = uVar12;
+    } while ((int)uVar12 < (int)unaff_w20);
+  }
+LAB_04f354c8:
+  if (*(long *)(*(long *)(unaff_x29 + -0x68) + 0x28) == *(long *)(unaff_x29 + -8)) {
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  __stack_chk_fail();
+}
+
+
+
+END_DECOMPILED_FUNCTION

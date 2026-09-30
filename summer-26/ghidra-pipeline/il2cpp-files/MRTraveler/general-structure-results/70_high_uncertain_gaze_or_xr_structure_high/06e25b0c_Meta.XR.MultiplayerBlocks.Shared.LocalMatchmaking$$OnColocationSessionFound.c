@@ -1,0 +1,23 @@
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking$$OnColocationSessionFound
+ENTRY_POINT: 06e25b0c
+PROGRAM: MRTraveler-libil2cpp.so
+SCORE: 70
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;telemetry
+EVIDENCE: strong_eye_source_hits_1;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking__OnColocationSessionFound(long param_1)
+
+{
+                    /* try { // try from 06e25b10 to 06f25b17 has its CatchHandler @ 06e25bdc */
+  return *(undefined8 *)(param_1 + 0x70);
+}
+
+

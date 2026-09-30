@@ -1,0 +1,66 @@
+/*
+FUNCTION_NAME: OVR.OpenVR.CVRTrackedCamera$$GetCameraErrorNameFromEnum
+ENTRY_POINT: 02db1e9c
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 77
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_3;validity_or_gating_hits_2;functionality_eye_api_context_without_clear_sink_hits_3
+*/
+
+
+byte OVR_OpenVR_CVRTrackedCamera__GetCameraErrorNameFromEnum(ulong *param_1,undefined8 param_2)
+
+{
+  int iVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x29;
+  ulong *puStack0000000000000010;
+  byte bStack0000000000000027;
+  
+  *(undefined8 *)(unaff_x29 + -0x10) = param_2;
+  puStack0000000000000010 = param_1;
+  if ((OVRPlugin_AreControllerDrivenHandPosesNatural_mC5F1D327BC5B0A79190FEA4433F9FC4F488445A7::
+       s_Il2CppMethodInitialized & 1) == 0) {
+    il2cpp_codegen_initialize_runtime_metadata(param_1);
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)Method_System_Collections_Generic_List<Dropdown_DropdownItem>_Clear__);
+    OVRPlugin_AreControllerDrivenHandPosesNatural_mC5F1D327BC5B0A79190FEA4433F9FC4F488445A7::
+    s_Il2CppMethodInitialized = 1;
+  }
+  *(undefined4 *)(unaff_x29 + -0x14) = 0;
+  il2cpp_codegen_runtime_class_init_inline
+            (*(Il2CppClass **)Method_System_Collections_Generic_List<Dropdown_DropdownItem>_Clear__)
+  ;
+  uVar2 = OVRPlugin_get_version_mF6424FE1E91DF97DE08CD5C7AE1FBC60873A354E();
+  *(undefined8 *)(unaff_x29 + -0x20) = uVar2;
+  il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*puStack0000000000000010);
+  puVar3 = (undefined8 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*puStack0000000000000010);
+  bStack0000000000000027 =
+       Version_op_GreaterThanOrEqual_m792CE284B083EDAAC120E4028150194D1C1284EB
+                 (*(undefined8 *)(unaff_x29 + -0x20),*puVar3,0);
+  bStack0000000000000027 = bStack0000000000000027 & 1;
+  if (bStack0000000000000027 == 0) {
+    *(undefined1 *)(unaff_x29 + -1) = 0;
+  }
+  else {
+    *(undefined4 *)(unaff_x29 + -0x14) = 0;
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*puStack0000000000000010);
+    iVar1 = OVRP_1_87_0_ovrp_AreControllerDrivenHandPosesNatural_m22B99263E6DE2BB28E75C993C88BF190DA75CF98
+                      (unaff_x29 + -0x14,0);
+    if (iVar1 == 0) {
+      *(bool *)(unaff_x29 + -1) = *(int *)(unaff_x29 + -0x14) == 1;
+    }
+    else {
+      *(undefined1 *)(unaff_x29 + -1) = 0;
+    }
+  }
+  return *(byte *)(unaff_x29 + -1) & 1;
+}
+
+

@@ -1,0 +1,79 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray.Enumerator<OVRPlugin.Vector3f>$$System.Collections.IEnumerator.get_Current
+ENTRY_POINT: 014463e8
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 72
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_2;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+uint Unity_Collections_NativeArray_Enumerator<OVRPlugin_Vector3f>__System_Collections_IEnumerator_get_Current
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  uint uVar1;
+  undefined8 *puVar2;
+  ulong uVar3;
+  ulong in_x9;
+  int *in_x10;
+  long in_x11;
+  long unaff_x19;
+  long *unaff_x21;
+  long unaff_x23;
+  int unaff_w24;
+  uint unaff_w25;
+  int unaff_w26;
+  long unaff_x27;
+  
+  do {
+    if (in_x11 == param_3) {
+      puVar2 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+      goto LAB_01446418;
+    }
+    in_x9 = in_x9 - 1;
+    in_x10 = in_x10 + 4;
+    if (in_x9 == 0) {
+      do {
+        puVar2 = (undefined8 *)FUN_0103c348();
+LAB_01446418:
+        uVar3 = (*(code *)*puVar2)();
+        if ((uVar3 & 1) != 0) {
+          return unaff_w25;
+        }
+        uVar1 = *(uint *)(unaff_x23 + 0x18);
+        do {
+          if (uVar1 <= unaff_w25) {
+                    /* WARNING: Subroutine does not return */
+            FUN_00fdc53c();
+          }
+          unaff_w25 = *(uint *)(unaff_x23 + unaff_x27 * 0x10 + 0x24);
+          if ((int)uVar1 <= unaff_w26) {
+            FUN_01d69580(0);
+          }
+          uVar1 = *(uint *)(unaff_x23 + 0x18);
+          unaff_w26 = unaff_w26 + 1;
+          if (uVar1 <= unaff_w25) {
+            return unaff_w25;
+          }
+          unaff_x27 = (long)(int)unaff_w25;
+        } while (*(int *)(unaff_x23 + (long)(int)unaff_w25 * 0x10 + 0x20) != unaff_w24);
+        param_3 = *(long *)(*(long *)(*(long *)(unaff_x19 + 0x20) + 0xc0) + 8);
+        if ((*(byte *)(param_3 + 0x135) & 1) == 0) {
+          param_3 = FUN_0103c244(param_3);
+        }
+        param_1 = *unaff_x21;
+        in_x9 = (ulong)*(ushort *)(param_1 + 0x12e);
+      } while (in_x9 == 0);
+      in_x10 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    }
+    in_x11 = *(long *)(in_x10 + -2);
+  } while( true );
+}
+
+

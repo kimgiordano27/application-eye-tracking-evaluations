@@ -1,0 +1,69 @@
+/*
+FUNCTION_NAME: OVRPlugin.GetBoneSkeleton3Delegate$$Invoke
+ENTRY_POINT: 051dea00
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 95
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRPlugin_GetBoneSkeleton3Delegate__Invoke(undefined1 param_1 [16],undefined1 param_2 [16])
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  long lVar6;
+  long lVar7;
+  undefined8 uVar8;
+  long unaff_x19;
+  long unaff_x20;
+  undefined8 uVar9;
+  undefined8 uVar10;
+  long *unaff_x23;
+  
+  *(long *)(unaff_x20 + 0x368) = param_2._8_8_;
+  *(long *)(unaff_x20 + 0x360) = param_2._0_8_;
+  *(undefined4 *)(unaff_x20 + 0x37c) = 0;
+  if (unaff_x19 != 0) {
+    *(long *)(unaff_x19 + 0x10) = unaff_x20;
+    **(long **)(*unaff_x23 + 0xb8) = unaff_x19;
+    lVar6 = thunk_FUN_02cea894(*unaff_x23);
+    FUN_051ddc10();
+    puVar5 = PTR_DAT_066091b0;
+    puVar4 = PTR_DAT_066091a8;
+    puVar3 = PTR_DAT_066091a0;
+    puVar2 = PTR_DAT_06609198;
+    puVar1 = PTR_DAT_06609190;
+    if (**(long **)(*unaff_x23 + 0xb8) != 0) {
+      lVar7 = *(long *)PTR_DAT_066091b0;
+      uVar9 = *(undefined8 *)(**(long **)(*unaff_x23 + 0xb8) + 0x10);
+      if (*(int *)(lVar7 + 0xe0) == 0) {
+        thunk_FUN_02cd038c();
+        lVar7 = *(long *)puVar5;
+      }
+      uVar10 = **(undefined8 **)(lVar7 + 0xb8);
+      uVar8 = thunk_FUN_02cea894(*(undefined8 *)puVar3);
+      FUN_04a50c34(uVar8,uVar10,*(undefined8 *)puVar4,0);
+      uVar9 = FUN_033e7fdc(uVar9,uVar8,*(undefined8 *)puVar1);
+      uVar9 = FUN_033f6b80(uVar9,*(undefined8 *)puVar2);
+      if (lVar6 != 0) {
+        *(undefined8 *)(lVar6 + 0x10) = uVar9;
+        *(long *)(*(long *)(*unaff_x23 + 0xb8) + 8) = lVar6;
+        return;
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+

@@ -1,0 +1,39 @@
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterActionMapsWithRuntime
+ENTRY_POINT: 073b26fc
+PROGRAM: AimAssaultDemo-libil2cpp.so
+SCORE: 80
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction__RegisterActionMapsWithRuntime
+               (long param_1,undefined8 param_2)
+
+{
+  long *plVar1;
+  long lVar2;
+  
+                    /* try { // try from 073b2704 to 074b2743 has its CatchHandler @ 073b34fc */
+  if (*(int *)(param_1 + 0xe4) == 0) {
+    thunk_FUN_03798b70(param_1);
+  }
+  plVar1 = (long *)FUN_061d5328(0);
+  if (plVar1 != (long *)0x0) {
+    lVar2 = (**(code **)(*plVar1 + 0x1d8))(plVar1,*(undefined8 *)(*plVar1 + 0x1e0));
+    if (lVar2 != 0) {
+      FUN_061c6b20(lVar2,param_2,0);
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0373b7b4();
+}
+
+

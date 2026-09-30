@@ -1,0 +1,65 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.SpaceDiscoveryResult>$$AsSpan
+ENTRY_POINT: 05ea3b2c
+PROGRAM: StellarXV1-libil2cpp.so
+SCORE: 115
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_6;strong_pose_or_ray_construction_hits_4;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+undefined8
+Unity_Collections_NativeArray<OVRPlugin_SpaceDiscoveryResult>__AsSpan
+          (long param_1,long param_2,undefined4 param_3,undefined4 param_4,ulong param_5,
+          long param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  ulong uVar3;
+  undefined8 uVar4;
+  long lVar5;
+  
+  uVar3 = (*(code *)**(undefined8 **)(*(long *)(*(long *)(param_6 + 0x20) + 0xc0) + 0x20))();
+  if (((uVar3 & 1) == 0) && ((param_5 & 1) != 0)) {
+    if (*(long *)(param_1 + 0x20) == 0) goto LAB_05ea3c50;
+    lVar5 = *(long *)(*(long *)(param_1 + 0x20) + 0x28);
+    iVar2 = (*(code *)**(undefined8 **)(*(long *)(*(long *)(param_6 + 0x20) + 0xc0) + 0x10))();
+    if (iVar2 < lVar5) {
+      if (*(long *)(param_1 + 0x20) == 0) goto LAB_05ea3c50;
+      lVar5 = *(long *)(*(long *)(param_1 + 0x20) + 0x28);
+      iVar2 = (*(code *)**(undefined8 **)(*(long *)(*(long *)(param_6 + 0x20) + 0xc0) + 0x10))();
+      *(long *)(param_1 + 0x10) = lVar5 - iVar2;
+    }
+  }
+  uVar3 = (*(code *)**(undefined8 **)(*(long *)(*(long *)(param_6 + 0x20) + 0xc0) + 0x20))(param_1);
+  if ((uVar3 & 1) == 0) {
+    return 0xffffffff;
+  }
+  if (*(long *)(param_1 + 0x20) != 0) {
+    uVar4 = (*(code *)**(undefined8 **)(*(long *)(*(long *)(param_6 + 0x20) + 0xc0) + 0x30))
+                      (*(long *)(param_1 + 0x20),param_2,param_3,param_4,
+                       *(undefined8 *)(param_1 + 0x10));
+    iVar2 = *(int *)(param_1 + 0x18) + (int)uVar4;
+    *(int *)(param_1 + 0x18) = iVar2;
+    *(long *)(param_1 + 0x10) = *(long *)(param_1 + 0x10) + (long)(int)uVar4;
+    if (param_2 != 0) {
+      iVar1 = iVar2 - *(int *)(param_2 + 0x18);
+      if (iVar1 == 0 || iVar2 < *(int *)(param_2 + 0x18)) {
+        return uVar4;
+      }
+      *(int *)(param_1 + 0x18) = iVar1;
+      return uVar4;
+    }
+  }
+LAB_05ea3c50:
+                    /* WARNING: Subroutine does not return */
+  FUN_04077830();
+}
+
+

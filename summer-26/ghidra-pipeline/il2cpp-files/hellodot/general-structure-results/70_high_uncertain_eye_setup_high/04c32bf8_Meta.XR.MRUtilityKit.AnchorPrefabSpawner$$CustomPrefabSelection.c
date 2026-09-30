@@ -1,0 +1,65 @@
+/*
+FUNCTION_NAME: Meta.XR.MRUtilityKit.AnchorPrefabSpawner$$CustomPrefabSelection
+ENTRY_POINT: 04c32bf8
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 80
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;paired_state_refs;ui_interaction
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Meta_XR_MRUtilityKit_AnchorPrefabSpawner__CustomPrefabSelection(void)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long unaff_x20;
+  undefined8 unaff_x21;
+  long *unaff_x22;
+  undefined8 uVar6;
+  long unaff_x25;
+  
+  lVar2 = *unaff_x22;
+  uVar4 = (ulong)*(ushort *)(lVar2 + 0x12e);
+  if (uVar4 != 0) {
+    piVar5 = (int *)(*(long *)(lVar2 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar5 + -2) == unaff_x25) {
+        puVar1 = (undefined8 *)(lVar2 + (long)(*piVar5 + 6) * 0x10 + 0x138);
+        goto LAB_04c32c4c;
+      }
+      uVar4 = uVar4 - 1;
+      piVar5 = piVar5 + 4;
+    } while (uVar4 != 0);
+  }
+  puVar1 = (undefined8 *)FUN_02ce0a7c();
+LAB_04c32c4c:
+  (*(code *)*puVar1)();
+  uVar6 = *(undefined8 *)(unaff_x20 + 0x48);
+  thunk_FUN_02c7737c(PTR_DAT_065e6310);
+  lVar2 = thunk_FUN_02cea894();
+  FUN_04f7383c(lVar2,0);
+  *(undefined4 *)(lVar2 + 0x10) = 4;
+  *(undefined8 *)(lVar2 + 0x18) = uVar6;
+  *(undefined8 *)(lVar2 + 0x20) = unaff_x21;
+  uVar6 = FUN_04e59944();
+  *(undefined8 *)(lVar2 + 0x28) = uVar6;
+  lVar3 = *(long *)(unaff_x20 + 0x60);
+  *(long *)(unaff_x20 + 0x70) = lVar2;
+  if (lVar3 != 0) {
+    (**(code **)(lVar3 + 0x18))(*(undefined8 *)(lVar3 + 0x40),lVar2,*(undefined8 *)(lVar3 + 0x28));
+  }
+  thunk_FUN_02c7737c(PTR_DAT_065e63e0);
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7b54();
+}
+
+

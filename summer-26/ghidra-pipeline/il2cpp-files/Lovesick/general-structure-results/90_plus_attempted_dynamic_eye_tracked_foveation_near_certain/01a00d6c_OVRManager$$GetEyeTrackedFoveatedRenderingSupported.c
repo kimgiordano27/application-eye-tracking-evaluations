@@ -1,0 +1,32 @@
+/*
+FUNCTION_NAME: OVRManager$$GetEyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 01a00d6c
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 144
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;validity_or_gating_hits_1;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRManager__GetEyeTrackedFoveatedRenderingSupported(void)
+
+{
+  long lVar1;
+  long *unaff_x20;
+  
+  lVar1 = thunk_FUN_00d62348();
+  if (lVar1 != 0) {
+    FUN_017b46ec(lVar1,0);
+    **(long **)(*unaff_x20 + 0xb8) = lVar1;
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00da518c();
+}
+
+

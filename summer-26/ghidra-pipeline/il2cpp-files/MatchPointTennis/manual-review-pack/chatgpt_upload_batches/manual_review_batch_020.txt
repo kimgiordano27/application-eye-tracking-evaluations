@@ -1,0 +1,1332 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 90
+FUNCTION_NAME: FUN_0979e538
+ENTRY_POINT: 0979e538
+MANUAL_PRIORITY_SCORE: 204
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'telemetry', 'structure_combo']
+EVIDENCE: ['weak_xr_or_state_hits_18', 'validity_or_gating_hits_13', 'strong_pose_or_ray_construction_hits_2', 'paired_field_refs_with_structure_only', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'cap_below_near_certain_without_eye_anchor_or_ordered_structure']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_2_bonus_8', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\70_high_general_structure_review_high\0979e538_FUN_0979e538.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\090_p204_FUN_0979e538.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0979e538
+ENTRY_POINT: 0979e538
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_18;validity_or_gating_hits_13;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_structure_only;telemetry_or_network_hits_2;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void FUN_0979e538(long param_1,int *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  float fVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined4 uVar6;
+  long lVar7;
+  undefined8 uVar8;
+  long *plVar9;
+  undefined1 *__src;
+  int *piVar10;
+  undefined8 uVar11;
+  undefined8 uVar12;
+  long lVar13;
+  long lVar14;
+  float fVar15;
+  float fVar16;
+  int iVar17;
+  int iVar18;
+  int iVar19;
+  float fVar20;
+  float fVar21;
+  int iVar22;
+  float fVar23;
+  int iVar24;
+  int iVar25;
+  undefined1 auStack_350 [96];
+  undefined1 auStack_2f0 [96];
+  undefined1 auStack_290 [96];
+  undefined1 auStack_230 [96];
+  undefined8 local_1d0;
+  undefined8 uStack_1c8;
+  undefined8 uStack_1c0;
+  undefined8 uStack_1b8;
+  undefined8 local_1b0;
+  undefined8 uStack_1a8;
+  undefined8 uStack_1a0;
+  undefined8 uStack_198;
+  undefined8 local_190;
+  undefined8 uStack_188;
+  undefined8 uStack_180;
+  undefined8 uStack_178;
+  undefined8 local_170;
+  undefined8 local_160;
+  undefined8 uStack_158;
+  undefined8 uStack_150;
+  undefined8 uStack_148;
+  undefined8 local_140;
+  undefined8 uStack_138;
+  undefined8 uStack_130;
+  undefined8 uStack_128;
+  undefined8 local_120;
+  undefined8 uStack_118;
+  undefined8 uStack_110;
+  undefined8 uStack_108;
+  undefined8 local_100;
+  undefined8 local_f8;
+  undefined4 local_f0;
+  
+  __src = auStack_350;
+  if ((DAT_0a54799c & 1) == 0) {
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<fsConfig,_Dictionary<Type,_fsMetaType>>_TypeInfo
+                );
+    FUN_04447ba8(System_Collections_Generic_Dictionary<AxisAlignedBox_BoxSurface,_float>_TypeInfo);
+    FUN_04447ba8(PTR_DAT_09fd4590);
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<BodyPoseComparerActiveState_JointComparerConfig,_BodyPoseComparerActiveState_BodyPoseComparerFeatureState>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<ConversionRegistry_ConverterKey,_Delegate>_TypeInfo
+                );
+    FUN_04447ba8(PTR_DAT_09f27510);
+    FUN_04447ba8(PTR_DAT_09f286b0);
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<GUILayoutOptions_GUILayoutOptionsInstance,_GUILayoutOption[]>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<IDeferredNetworkMessageManager_TriggerType,_Dictionary<ulong,_DeferredMessageManager_TriggerInfo>>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<JointVelocityActiveState_JointVelocityFeatureConfig,_JointVelocityActiveState_JointVelocityFeatureState>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<LckDiscreetAudioController_AudioClip,_AudioClip>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<MB3_MeshCombiner_MBBlendShapeKey,_MB3_MeshCombiner_MBBlendShapeValue>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<MB3_MeshCombinerSingle_BoneAndBindpose,_int>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<MB3_MeshCombinerSingle_MB_DynamicGameObject,_int>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+                );
+    FUN_04447ba8(
+                System_Collections_Generic_Dictionary<NetworkSpawnManager_InstantiateAndSpawnErrorTypes,_string>_TypeInfo
+                );
+    DAT_0a54799c = 1;
+  }
+  puVar5 = PTR_DAT_09fd4590;
+  puVar4 = PTR_DAT_09f286b0;
+  local_100 = 0;
+  uStack_118 = 0;
+  local_120 = 0;
+  uStack_108 = 0;
+  uStack_110 = 0;
+  uStack_138 = 0;
+  local_140 = 0;
+  uStack_128 = 0;
+  uStack_130 = 0;
+  uStack_158 = 0;
+  local_160 = 0;
+  uStack_148 = 0;
+  uStack_150 = 0;
+  iVar18 = param_2[0x14];
+  iVar19 = param_2[2];
+  iVar17 = param_2[3];
+  iVar1 = param_2[8];
+  fVar21 = (float)param_2[4];
+  fVar20 = (float)param_2[5];
+  if (iVar18 == 5) {
+    lVar7 = *(long *)PTR_DAT_09f286b0;
+    if (*(int *)(lVar7 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+      lVar7 = *(long *)puVar4;
+    }
+    piVar10 = (int *)(*(long *)(lVar7 + 0xb8) + 0xc);
+  }
+  else {
+    lVar7 = *(long *)PTR_DAT_09f286b0;
+    if (*(int *)(lVar7 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+      lVar7 = *(long *)puVar4;
+    }
+    if (iVar18 == 4) {
+      piVar10 = (int *)(*(long *)(lVar7 + 0xb8) + 0x14);
+    }
+    else {
+      piVar10 = (int *)(*(long *)(lVar7 + 0xb8) + 8);
+    }
+  }
+  lVar7 = *(long *)puVar5;
+  iVar22 = *piVar10;
+  iVar18 = param_2[1];
+  lVar13 = *(long *)(param_1 + 0x18);
+  if (*(int *)(lVar7 + 0xe4) == 0) {
+    thunk_FUN_044a54b4();
+    lVar7 = *(long *)puVar5;
+  }
+  fVar23 = 0.0;
+  if (lVar13 != **(long **)(lVar7 + 0xb8)) {
+    lVar13 = *(long *)(param_2 + 0x12);
+    lVar14 = *(long *)(param_1 + 0x18);
+    if (*(int *)(lVar7 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    if (DAT_0a5479f9 == '\0') {
+      FUN_04447ba8(PTR_DAT_09fd4590);
+      DAT_0a5479f9 = '\x01';
+    }
+    if (*(int *)(*(long *)puVar5 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    fV
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+edNetworkMessageManager_TriggerType,_Dictionary<ulong,_DeferredMessageManager_TriggerInfo>>_TypeInfo
+                     ,0);
+        plVar9 = (long *)(*(long *)(*(long *)puVar4 + 0xb8) + 0x10);
+        *plVar9 = lVar14;
+        thunk_FUN_044bb4b4(plVar9,lVar14);
+      }
+      memcpy(auStack_290,param_2,0x60);
+      uVar12 = *(undefined8 *)
+                System_Collections_Generic_Dictionary<MB3_MeshCombinerSingle_MB_DynamicGameObject,_int>_TypeInfo
+      ;
+      __src = auStack_290;
+      break;
+    case 4:
+      lVar13 = *(long *)(param_1 + 0x10);
+      local_f8 = 0;
+      FUN_0613c680(&local_f8,iVar1,*(undefined8 *)PTR_DAT_09f27510);
+      puVar4 = 
+      System_Collections_Generic_Dictionary<MB3_MeshCombiner_MBBlendShapeKey,_MB3_MeshCombiner_MBBlendShapeValue>_TypeInfo
+      ;
+      lVar7 = *(long *)
+               System_Collections_Generic_Dictionary<MB3_MeshCombiner_MBBlendShapeKey,_MB3_MeshCombiner_MBBlendShapeValue>_TypeInfo
+      ;
+      if (*(int *)(lVar7 + 0xe4) == 0) {
+        thunk_FUN_044a54b4();
+        lVar7 = *(long *)puVar4;
+      }
+      uVar8 = local_f8;
+      lVar14 = *(long *)(*(long *)(lVar7 + 0xb8) + 0x18);
+      if (lVar14 == 0) {
+        if (*(int *)(lVar7 + 0xe4) == 0) {
+          thunk_FUN_044a54b4();
+          lVar7 = *(long *)puVar4;
+        }
+        uVar12 = **(undefined8 **)(lVar7 + 0xb8);
+        lVar14 = thunk_FUN_0448520c(*(undefined8 *)
+                                     System_Collections_Generic_Dictionary<BodyPoseComparerActiveState_JointComparerConfig,_BodyPoseComparerActiveState_BodyPoseComparerFeatureState>_TypeInfo
+                                   );
+        FUN_05577264(lVar14,uVar12,
+                     *(undefined8 *)
+                      System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+                     ,0);
+        plVar9 = (long *)(*(long *)(*(long *)puVar4 + 0xb8) + 0x18);
+        *plVar9 = lVar14;
+        thunk_FUN_044bb4b4(plVar9,lVar14);
+      }
+      memcpy(auStack_2f0,param_2,0x60);
+      local_170 = 0;
+      uVar12 = *(undefined8 *)
+                System_Collections_Generic_Dictionary<MB3_MeshCombinerSingle_MB_DynamicGameObject,_int>_TypeInfo
+      ;
+      uStack_188 = 0;
+      local_190 = 0;
+      uStack_178 = 0;
+      uStack_180 = 0;
+      uStack_1a8 = 0;
+      local_1b0 = 0;
+      uStack_198 = 0;
+      uStack_1a0 = 0;
+      uStack_1c8 = 0;
+      local_1d0 = 0;
+      uStack_1b8 = 0;
+      uStack_1c0 = 0;
+      memcpy(&local_f8,auStack_2f0,0x60);
+      FUN_06c9a168(fVar23,&local_1d0,&local_f8,iVar18,uVar12);
+      if (lVar13 == 0) goto LAB_0979eea0;
+      uVar11 = *(undefined8 *)
+                System_Collections_Generic_Dictionary<AxisAlignedBox_BoxSurface,_float>_TypeInfo;
+      memcpy(&local_f8,&local_1d0,0x68);
+      uVar12 = 1;
+      goto LAB_0979ee6c;
+    case 5:
+      goto switchD_0979e790_caseD_5;
+    case 6:
+      lVar13 = *(long *)(param_1 + 0x10);
+      local_f8 = 0;
+      FUN_0613c680(&local_f8,iVar1,*(undefined8 *)PTR_DAT_09f27510);
+      puVar4 = 
+      System_Collections_Generic_Dictionary<MB3_MeshCombiner_MBBlendShapeKey,_MB3_MeshCombiner_MBBlendShapeValue>_TypeInfo
+      ;
+      lVar7 = *(long *)
+               System_Collections_Generic_Dictionary<MB3_MeshCombiner_MBBlendShapeKey,_MB3_MeshCombiner_MBBlendShapeValue>_TypeInfo
+      ;
+      if (*(int *)(lVar7 + 0xe4) == 0) {
+        thunk_FUN_044a54b4();
+        lVar7 = *(long *)puVar4;
+      }
+      uVar8 = local_f8;
+      lVar14 = *(long *)(*(long *)(lVar7 + 0xb8) + 0x20);
+      if (lVar14 == 0) {
+        if (*(int *)(lVar7 + 0xe4) == 0) {
+          thunk_FUN_044a54b4();
+          lVar7 = *(long *)puVar4;
+        }
+        uVar12 = **(undefined8 **)(lVar7 + 0xb8);
+        lVar14 = thunk_FUN_0448520c(*(undefined8 *)
+                                     System_Collections_Generic_Dictionary<BodyPoseComparerActiveState_JointComparerConfig,_BodyPoseComparerActiveState_BodyPoseComparerFeatureState>_TypeInfo
+                                   );
+        FUN_05577264(lVar14,uVar12,
+                     *(undefined8 *)
+                      System_Collections_Generic_Dictionary<JointVelocityActiveState_JointVelocityFeatureConfig,_JointVelocityActiveState_JointVelocityFeatureState>_TypeInfo
+                     ,0);
+        plVar9 = (long *)(*(long *)(*(long *)puVar4 + 0xb8) + 0x20);
+        *plVar9 = lVar14;
+        thunk_FUN_044bb4b4(plVar9,lVar14);
+      }
+      memcpy(auStack_350,param_2,0x60);
+      uVar12 = *(undefined8 *)
+                System_Collections_Generic_Dictionary<MB3_MeshCombinerSingle_MB_DynamicGameObject,_int>_TypeInfo
+      ;
+    }
+    local_170 = 0;
+    uStack_178 = 0;
+    uStack_180 = 0;
+    uStack_188 = 0;
+    local_190 = 0;
+    uStack_198 = 0;
+    uStack_1a0 = 0;
+    uStack_1a8 = 0;
+    local_1b0 = 0;
+    uStack_1b8 = 0;
+    uStack_1c0 = 0;
+    uStack_1c8 = 0;
+    local_1d0 = 0;
+    memcpy(&local_f8,__src,0x60);
+    FUN_06c9a168(fVar23,&local_1d0,&local_f8,iVar18,uVar12);
+    if (lVar13 != 0) {
+      uVar11 = *(undefined8 *)
+                System_Collections_Generic_Dictionary<AxisAlignedBox_BoxSurface,_float>_TypeInfo;
+      memcpy(&local_f8,&local_1d0,0x68);
+      uVar12 = 0;
+LAB_0979ee6c:
+      FUN_04cbb64c(iVar19,iVar17,0,fVar21,fVar20,0,lVar13,iVar18,uVar8,lVar14,&local_f8,uVar12,
+                   uVar11);
+      return;
+    }
+  }
+  else {
+switchD_0979e790_caseD_5:
+    lVar7 = *(long *)(param_1 + 0x10);
+    if (lVar7 != 0) {
+      if (*(char *)(lVar7 + 0x3b) == '\0') {
+        return;
+      }
+      memcpy(&local_160,param_2,0x60);
+      uVar8 = FUN_0959da5c(&local_160,0);
+      uVar8 = FUN_078a7764(*(undefined8 *)
+                            System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+                           ,uVar8,0);
+      FUN_0979dd94(lVar7,uVar8);
+      return;
+    }
+  }
+LAB_0979eea0:
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 91
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopDiscoveringColocationSessions>d__22$$MoveNext
+ENTRY_POINT: 077664d8
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077664d8_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopDiscoveringColocationSessions_d__22$$MoveNext.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\091_p203_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopDiscoveringColocationSessions_d__22$$MoveNext.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopDiscoveringColocationSessions>d__22$$MoveNext
+ENTRY_POINT: 077664d8
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_21;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking_<StopDiscoveringColocationSessions>d__22__MoveNext
+               (undefined8 *param_1,undefined8 param_2)
+
+{
+  float fVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  long lVar5;
+  long *plVar6;
+  undefined8 uVar7;
+  undefined8 uVar8;
+  long unaff_x20;
+  int iVar9;
+  long unaff_x23;
+  ulong uVar10;
+  uint uVar11;
+  long unaff_x24;
+  float *pfVar12;
+  int unaff_w25;
+  int unaff_w26;
+  long unaff_x27;
+  long unaff_x28;
+  long unaff_x29;
+  float fVar13;
+  int iVar14;
+  int iVar15;
+  float unaff_s9;
+  int iVar16;
+  long in_stack_00000068;
+  long in_stack_00000070;
+  undefined8 in_stack_00000078;
+  long in_stack_00000090;
+  float fStack00000000000000b4;
+  
+  do {
+    thunk_FUN_044bb4b4(param_1,param_2);
+    *(int *)(unaff_x20 + 0x10) = unaff_w25;
+    *(int *)(unaff_x20 + 0x14) = unaff_w26;
+    lVar3 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f313a0,*(undefined4 *)(unaff_x28 + 0x18));
+    lVar4 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f1e6a8,*(undefined4 *)(unaff_x28 + 0x18));
+    if (0 < *(int *)(unaff_x28 + 0x18)) {
+      uVar10 = 0;
+      pfVar12 = (float *)(lVar3 + 0x2c);
+      do {
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) {
+LAB_07766970:
+          fStack00000000000000b4 = unaff_s9;
+                    /* WARNING: Subroutine does not return */
+          FUN_04447e44();
+        }
+        iVar9 = *(int *)(lVar5 + 0x1c);
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) goto LAB_07766970;
+        iVar14 = *(int *)(lVar5 + 0x20);
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) goto LAB_07766970;
+        iVar16 = *(int *)(lVar5 + 0x14);
+        iVar15 = unaff_w26;
+        if (*(char *)(in_stack_00000090 + 0x1c) == '\0') {
+          lVar5 = FUN_05badb74();
+          if (lVar5 == 0) goto LAB_07766970;
+          iVar15 = *(int *)(lVar5 + 0x18);
+        }
+        unaff_s9 = (float)iVar14;
+        if (lVar3 == 0) goto LAB_07766970;
+        if (*(uint *)(lVar3 + 0x18) <= uVar10) {
+LAB_07766984:
+          fStack00000000000000b4 = unaff_s9;
+                    /* WARNING: Subroutine does not return */
+          FUN_04447e4c();
+        }
+        pfVar12[-3] = (float)iVar9;
+        pfVar12[-2] = unaff_s9;
+        pfVar12[-1] = (float)iVar16;
+        *pfVar12 = (float)iVar15;
+        lVar5 = FUN_05badb74();
+        if ((lVar5 == 0) || (lVar4 == 0)) goto LAB_07766970;
+        if (*(uint *)(lVar4 + 0x18) <= uVar10) goto LAB_07766984;
+        pfVar12 = pfVar12 + 4;
+        *(undefined4 *)(lVar4 + 0x20 + uVar10 * 4) = *(undefined4 *)(lVar5 + 0x10);
+        uVar10 = uVar10 + 1;
+        unaff_x23 = in_stack_00000068;
+        unaff_x24 = in_stack_00000070;
+      } while ((long)uVar10 < (long)*(int *)(unaff_x28 + 0x18));
+    }
+    *(long *)(unaff_x20 + 0x20) = lVar3;
+    thunk_FUN_044bb4b4();
+    *(long *)(unaff_x20 + 0x30) = lVar4;
+    thunk_FUN_044bb4b4((long *)(unaff_x20 + 0x30),lVar4);
+    FUN_077606dc(unaff_x20);
+    iVar9 = *(int *)(unaff_x28 + 0x18);
+    *(undefined4 *)(unaff_x28 + 0x18) = 0;
+    *(int *)(unaff_x28 + 0x1c) = *(int *)(unaff_x28 + 0x1c) + 1;
+    if (0 < iVar9) {
+      FUN_07a61000(*(undefined8 *)(unaff_x28 + 0x10),0,iVar9,0);
+    }
+    fStack00000000000000b4 = unaff_s9;
+    if (unaff_x29 == 0) goto LAB_07766980;
+    *(undefined4 *)(unaff_x29 + 0x18) = 0;
+    *(int *)(unaff_x29 + 0x1c) = *(int *)(unaff_x29 + 0x1c) + 1;
+    if (unaff_x24 == 0) goto LAB_07766980;
+    lVar3 = *(long *)(unaff_x24 + 0x10);
+    lVar4 = *(long *)PTR_DAT_09f32cb8;
+    *(int *)(unaff_x24 + 0x1c) = *(int *)(unaff_x24 + 0x1c) + 1;
+    if (lVar3 == 0) goto LAB_07766980;
+    uVar11 = *(uint *)(unaff_x24 + 0x18);
+    if (uVar11 < *(uint *)(lVar3 + 0x18)) {
+      *(uint *)(unaff_x24 + 0x18) = uVar11 + 1;
+      plVar6 = (long *)(lVar3 + (long)(int)uVar11 * 8 + 0x20);
+      *plVar6 = unaff_x20;
+      thunk_FUN_044bb4b4(plVar6,unaff_x20);
+    }
+    else {
+      FUN_05bade44(unaff_x24,unaff_x20,
+                   *(undefined8 *)(*(long *)(*(long *)(lVar4 + 0x20) + 0xc0) + 0x70));
+    }
+    unaff_w26 = 0;
+    iVar9 = 0;
+    uVar11 = in_stack_00000078._4_4_;
+    while( true ) {
+      fVar1 = DAT_01c7661c;
+      if (*(int *)(unaff_x27 + 0x18) < 1) {
+        if (unaff_x28 == 0) goto LAB_07766980;
+        if (*(int *)(unaff_x28 + 0x18) < 1) {
+          if (unaff_x24 == 0) goto LAB_07766980;
+          iVar9 = *(int *)(unaff_x24 + 0x18);
+          if (iVar9 < 1) goto LAB_077668c0;
+          iVar14 = 0;
+          goto LAB_07766754;
+        }
+      }
+      else if (unaff_x28 == 0) goto LAB_07766980;
+      lVar3 = Meta_XR_MultiplayerBlocks_Colocation_AutomaticColocationLauncher__ColocateAutomaticallyInternal
+                        (in_stack_00000090,unaff_x27,uVar11,in_stack_00000078._4_4_,
+                         *(int *)(unaff_x28 + 0x18) == 0);
+      if (lVar3 == 0) break;
+      *(int *)(lVar3 + 0x1c) = iVar9;
+      *(undefined4 *)(lVar3 + 0x20) = 0;
+      lVar4 = *(long *)(unaff_x28 + 0x10);
+      *(int *)(unaff_x28 + 0x1c) = *(int *)(unaff_x28 + 0x1c) + 1;
+      if (lVar4 == 0) goto LAB_07766980;
+      uVar11 = *(uint *)(unaff_x28 + 0x18);
+      if (uVar11 < *(uint *)(lVar4 + 0x18)) {
+        *(uint *)(unaff_x28 + 0x18) = uVar11 + 1;
+        plVar6 = (long *)(lVar4 + (long)(int)uVar11 * 8 + 0x20);
+        *plVar6 = lVar3;
+        thunk_FUN_044bb4b4(plVar6,lVar3);
+      }
+      else {
+        FUN_05bade44();
+      }
+      if (unaff_x29 == 0) goto LAB_07766980;
+      iVar14 = *(int *)(lVar3 + 0x14);
+      iVar15 = *(int *)(lVar3 + 0x18);
+      lVar4 = *(long *)(unaff_x29 + 0x10);
+      *(int *)(unaff_x29 + 0x1c) = *(int *)(unaff_x29 + 0x1c) + 1;
+      if (lVar4 == 0) goto LAB_07766980;
+      uVar11 = *(uint *)(unaff_x29 + 0x18);
+      if (uVar11 < *(uint *)(lVar4 + 0x18)) {
+        lVar4 = lVar4 + (long)(int)uVar11 * 0x10;
+        *(uint *)(unaff_x29 + 0x18) = uVar11 + 1;
+        *(float *)(lVar4 + 0x20) = (float)iVar9;
+        *(undefined4 *)(lVar4 + 0x24) = 0;
+        *(float *)(lVar4 + 0x28) = (float)iVar14;
+        *(float *)(lVar4 + 0x2c) = (float)iVar15;
+      }
+      else {
+        FUN_05c21a38((float)iVar9,0);
+      }
+      iVar9 = *(int *)(lVar3 + 0x14) + iVar9;
+      if (unaff_w26 <= *(int *)(lVar3 + 0x18)) {
+        unaff_w26 = *(int *)(lVar3 + 0x18);
+      }
+      uVar11 = in_stack_00000078._4_4_ - iVar9;
+      unaff_w25 = iVar9;
+    }
+    if (3 < *(int *)(in_stack_00000090 + 0x10)) {
+      if (*(int *)(*(long *)PTR_DAT_09f1e540 + 0xe4) == 0) {
+        thunk_FUN_044a54b4();
+      }
+      FUN_094c652c(*(undefined8 *)PTR_DAT_09f32e48,0);
+    }
+    if (unaff_x23 == 0) goto LAB_07766980;
+    param_2 = FUN_05a2ad3c(unaff_x23,*(undefined8 *)PTR_DAT_09f32cc8);
+    unaff_x20 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32c88);
+    FUN_07a80df4(unaff_x20,0);
+    param_1 = (undefined8 *)(unaff_x20 + 0x28);
+    *param_1 = param_2;
+  } while( true );
+  while( true ) {
+    uVar11 = *(uint *)(lVar3 + 0x10);
+    lVar3 = FUN_05badb74(unaff_x24,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    if (*(char *)(in_stack_00000090 + 0x14) != '\0') {
+      fVar13 = logf((float)(int)uVar11);
+      fVar13 = exp2f((float)(int)(fVar13 / fVar1));
+      uVar11 = 0x80000000;
+      if (fVar13 != INFINITY) {
+        uVar11 = (int)fVar13;
+      }
+      if (uVar11 < 3) {
+        uVar11 = 2;
+      }
+    }
+    if ((int)in_stack_00000078._4_4_ <= (int)uVar11) {
+      uVar11 = in_stack_00000078._4_4_;
+    }
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    *(uint *)(lVar3 + 0x10) = uVar11;
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    iVar9 = *(int *)(lVar3 + 0x10);
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if ((lVar3 == 0) || (in_stack_00000068 == 0)) goto LAB_07766980;
+    iVar15 = *(int *)(lVar3 + 0x14);
+    FUN_05a28f70(in_stack_00000068,0,*(undefined8 *)PTR_DAT_09f32c78);
+    FUN_07760c44((float)iVar9,(float)iVar15,in_stack_00000090);
+    iVar14 = iVar14 + 1;
+    iVar9 = *(int *)(in_stack_00000070 + 0x18);
+    unaff_x23 = in_stack_00000068;
+    unaff_x24 = in_stack_00000070;
+    if (iVar9 <= iVar14) break;
+LAB_07766754:
+    puVar2 = PTR_DAT_09f32e38;
+    lVar3 = FUN_05badb74(unaff_x24,iVar14,*(undefined8 *)PTR_DAT_09f32e38);
+    if (lVar3 == 0) goto LAB_07766980;
+  }
+LAB_077668c0:
+  puVar2 = PTR_DAT_09f32e38;
+  if (0 < iVar9) {
+    iVar9 = 0;
+    do {
+      uVar7 = FUN_05badb74(unaff_x24,iVar9,*(undefined8 *)puVar2);
+      if (unaff_x23 == 0) {
+LAB_07766980:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      uVar8 = FUN_05a28f70(unaff_x23,iVar9,*(undefined8 *)PTR_DAT_09f32c78);
+      FUN_07761148(uVar8,uVar7,uVar8);
+      lVar3 = FUN_05badb74(unaff_x24,iVar9,*(undefined8 *)puVar2);
+      if (lVar3 == 0) goto LAB_07766980;
+      FUN_077606dc();
+      iVar9 = iVar9 + 1;
+    } while (iVar9 < *(int *)(unaff_x24 + 0x18));
+  }
+  FUN_05baf9bc(unaff_x24,*(undefined8 *)PTR_DAT_09f32cd0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 92
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopAdvertisingColocationSession>d__20$$SetStateMachine
+ENTRY_POINT: 077664cc
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077664cc_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopAdvertisingColocationSession_d__20$$SetStateMachine.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\092_p203_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopAdvertisingColocationSession_d__20$$SetStateMachine.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopAdvertisingColocationSession>d__20$$SetStateMachine
+ENTRY_POINT: 077664cc
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_21;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking_<StopAdvertisingColocationSession>d__20__SetStateMachine
+               (void)
+
+{
+  float fVar1;
+  undefined *puVar2;
+  long lVar3;
+  long lVar4;
+  long lVar5;
+  long *plVar6;
+  undefined8 uVar7;
+  undefined8 uVar8;
+  long unaff_x20;
+  int iVar9;
+  undefined8 unaff_x21;
+  long unaff_x23;
+  ulong uVar10;
+  uint uVar11;
+  long unaff_x24;
+  float *pfVar12;
+  int unaff_w25;
+  int unaff_w26;
+  long unaff_x27;
+  long unaff_x28;
+  long unaff_x29;
+  float fVar13;
+  int iVar14;
+  int iVar15;
+  float unaff_s9;
+  int iVar16;
+  long in_stack_00000068;
+  long in_stack_00000070;
+  undefined8 in_stack_00000078;
+  long in_stack_00000090;
+  float fStack00000000000000b4;
+  
+  do {
+    *(undefined8 *)(unaff_x20 + 0x28) = unaff_x21;
+    thunk_FUN_044bb4b4((undefined8 *)(unaff_x20 + 0x28),unaff_x21);
+    *(int *)(unaff_x20 + 0x10) = unaff_w25;
+    *(int *)(unaff_x20 + 0x14) = unaff_w26;
+    lVar3 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f313a0,*(undefined4 *)(unaff_x28 + 0x18));
+    lVar4 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f1e6a8,*(undefined4 *)(unaff_x28 + 0x18));
+    if (0 < *(int *)(unaff_x28 + 0x18)) {
+      uVar10 = 0;
+      pfVar12 = (float *)(lVar3 + 0x2c);
+      do {
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) {
+LAB_07766970:
+          fStack00000000000000b4 = unaff_s9;
+                    /* WARNING: Subroutine does not return */
+          FUN_04447e44();
+        }
+        iVar9 = *(int *)(lVar5 + 0x1c);
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) goto LAB_07766970;
+        iVar14 = *(int *)(lVar5 + 0x20);
+        lVar5 = FUN_05badb74();
+        if (lVar5 == 0) goto LAB_07766970;
+        iVar16 = *(int *)(lVar5 + 0x14);
+        iVar15 = unaff_w26;
+        if (*(char *)(in_stack_00000090 + 0x1c) == '\0') {
+          lVar5 = FUN_05badb74();
+          if (lVar5 == 0) goto LAB_07766970;
+          iVar15 = *(int *)(lVar5 + 0x18);
+        }
+        unaff_s9 = (float)iVar14;
+        if (lVar3 == 0) goto LAB_07766970;
+        if (*(uint *)(lVar3 + 0x18) <= uVar10) {
+LAB_07766984:
+          fStack00000000000000b4 = unaff_s9;
+                    /* WARNING: Subroutine does not return */
+          FUN_04447e4c();
+        }
+        pfVar12[-3] = (float)iVar9;
+        pfVar12[-2] = unaff_s9;
+        pfVar12[-1] = (float)iVar16;
+        *pfVar12 = (float)iVar15;
+        lVar5 = FUN_05badb74();
+        if ((lVar5 == 0) || (lVar4 == 0)) goto LAB_07766970;
+        if (*(uint *)(lVar4 + 0x18) <= uVar10) goto LAB_07766984;
+        pfVar12 = pfVar12 + 4;
+        *(undefined4 *)(lVar4 + 0x20 + uVar10 * 4) = *(undefined4 *)(lVar5 + 0x10);
+        uVar10 = uVar10 + 1;
+        unaff_x23 = in_stack_00000068;
+        unaff_x24 = in_stack_00000070;
+      } while ((long)uVar10 < (long)*(int *)(unaff_x28 + 0x18));
+    }
+    *(long *)(unaff_x20 + 0x20) = lVar3;
+    thunk_FUN_044bb4b4();
+    *(long *)(unaff_x20 + 0x30) = lVar4;
+    thunk_FUN_044bb4b4((long *)(unaff_x20 + 0x30),lVar4);
+    FUN_077606dc(unaff_x20);
+    iVar9 = *(int *)(unaff_x28 + 0x18);
+    *(undefined4 *)(unaff_x28 + 0x18) = 0;
+    *(int *)(unaff_x28 + 0x1c) = *(int *)(unaff_x28 + 0x1c) + 1;
+    if (0 < iVar9) {
+      FUN_07a61000(*(undefined8 *)(unaff_x28 + 0x10),0,iVar9,0);
+    }
+    fStack00000000000000b4 = unaff_s9;
+    if (unaff_x29 == 0) goto LAB_07766980;
+    *(undefined4 *)(unaff_x29 + 0x18) = 0;
+    *(int *)(unaff_x29 + 0x1c) = *(int *)(unaff_x29 + 0x1c) + 1;
+    if (unaff_x24 == 0) goto LAB_07766980;
+    lVar3 = *(long *)(unaff_x24 + 0x10);
+    lVar4 = *(long *)PTR_DAT_09f32cb8;
+    *(int *)(unaff_x24 + 0x1c) = *(int *)(unaff_x24 + 0x1c) + 1;
+    if (lVar3 == 0) goto LAB_07766980;
+    uVar11 = *(uint *)(unaff_x24 + 0x18);
+    if (uVar11 < *(uint *)(lVar3 + 0x18)) {
+      *(uint *)(unaff_x24 + 0x18) = uVar11 + 1;
+      plVar6 = (long *)(lVar3 + (long)(int)uVar11 * 8 + 0x20);
+      *plVar6 = unaff_x20;
+      thunk_FUN_044bb4b4(plVar6,unaff_x20);
+    }
+    else {
+      FUN_05bade44(unaff_x24,unaff_x20,
+                   *(undefined8 *)(*(long *)(*(long *)(lVar4 + 0x20) + 0xc0) + 0x70));
+    }
+    unaff_w26 = 0;
+    iVar9 = 0;
+    uVar11 = in_stack_00000078._4_4_;
+    while( true ) {
+      fVar1 = DAT_01c7661c;
+      if (*(int *)(unaff_x27 + 0x18) < 1) {
+        if (unaff_x28 == 0) goto LAB_07766980;
+        if (*(int *)(unaff_x28 + 0x18) < 1) {
+          if (unaff_x24 == 0) goto LAB_07766980;
+          iVar9 = *(int *)(unaff_x24 + 0x18);
+          if (iVar9 < 1) goto LAB_077668c0;
+          iVar14 = 0;
+          goto LAB_07766754;
+        }
+      }
+      else if (unaff_x28 == 0) goto LAB_07766980;
+      lVar3 = Meta_XR_MultiplayerBlocks_Colocation_AutomaticColocationLauncher__ColocateAutomaticallyInternal
+                        (in_stack_00000090,unaff_x27,uVar11,in_stack_00000078._4_4_,
+                         *(int *)(unaff_x28 + 0x18) == 0);
+      if (lVar3 == 0) break;
+      *(int *)(lVar3 + 0x1c) = iVar9;
+      *(undefined4 *)(lVar3 + 0x20) = 0;
+      lVar4 = *(long *)(unaff_x28 + 0x10);
+      *(int *)(unaff_x28 + 0x1c) = *(int *)(unaff_x28 + 0x1c) + 1;
+      if (lVar4 == 0) goto LAB_07766980;
+      uVar11 = *(uint *)(unaff_x28 + 0x18);
+      if (uVar11 < *(uint *)(lVar4 + 0x18)) {
+        *(uint *)(unaff_x28 + 0x18) = uVar11 + 1;
+        plVar6 = (long *)(lVar4 + (long)(int)uVar11 * 8 + 0x20);
+        *plVar6 = lVar3;
+        thunk_FUN_044bb4b4(plVar6,lVar3);
+      }
+      else {
+        FUN_05bade44();
+      }
+      if (unaff_x29 == 0) goto LAB_07766980;
+      iVar14 = *(int *)(lVar3 + 0x14);
+      iVar15 = *(int *)(lVar3 + 0x18);
+      lVar4 = *(long *)(unaff_x29 + 0x10);
+      *(int *)(unaff_x29 + 0x1c) = *(int *)(unaff_x29 + 0x1c) + 1;
+      if (lVar4 == 0) goto LAB_07766980;
+      uVar11 = *(uint *)(unaff_x29 + 0x18);
+      if (uVar11 < *(uint *)(lVar4 + 0x18)) {
+        lVar4 = lVar4 + (long)(int)uVar11 * 0x10;
+        *(uint *)(unaff_x29 + 0x18) = uVar11 + 1;
+        *(float *)(lVar4 + 0x20) = (float)iVar9;
+        *(undefined4 *)(lVar4 + 0x24) = 0;
+        *(float *)(lVar4 + 0x28) = (float)iVar14;
+        *(float *)(lVar4 + 0x2c) = (float)iVar15;
+      }
+      else {
+        FUN_05c21a38((float)iVar9,0);
+      }
+      iVar9 = *(int *)(lVar3 + 0x14) + iVar9;
+      if (unaff_w26 <= *(int *)(lVar3 + 0x18)) {
+        unaff_w26 = *(int *)(lVar3 + 0x18);
+      }
+      uVar11 = in_stack_00000078._4_4_ - iVar9;
+      unaff_w25 = iVar9;
+    }
+    if (3 < *(int *)(in_stack_00000090 + 0x10)) {
+      if (*(int *)(*(long *)PTR_DAT_09f1e540 + 0xe4) == 0) {
+        thunk_FUN_044a54b4();
+      }
+      FUN_094c652c(*(undefined8 *)PTR_DAT_09f32e48,0);
+    }
+    if (unaff_x23 == 0) goto LAB_07766980;
+    unaff_x21 = FUN_05a2ad3c(unaff_x23,*(undefined8 *)PTR_DAT_09f32cc8);
+    unaff_x20 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32c88);
+    FUN_07a80df4(unaff_x20,0);
+  } while( true );
+  while( true ) {
+    uVar11 = *(uint *)(lVar3 + 0x10);
+    lVar3 = FUN_05badb74(unaff_x24,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    if (*(char *)(in_stack_00000090 + 0x14) != '\0') {
+      fVar13 = logf((float)(int)uVar11);
+      fVar13 = exp2f((float)(int)(fVar13 / fVar1));
+      uVar11 = 0x80000000;
+      if (fVar13 != INFINITY) {
+        uVar11 = (int)fVar13;
+      }
+      if (uVar11 < 3) {
+        uVar11 = 2;
+      }
+    }
+    if ((int)in_stack_00000078._4_4_ <= (int)uVar11) {
+      uVar11 = in_stack_00000078._4_4_;
+    }
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    *(uint *)(lVar3 + 0x10) = uVar11;
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if (lVar3 == 0) goto LAB_07766980;
+    iVar9 = *(int *)(lVar3 + 0x10);
+    lVar3 = FUN_05badb74(in_stack_00000070,iVar14,*(undefined8 *)puVar2);
+    if ((lVar3 == 0) || (in_stack_00000068 == 0)) goto LAB_07766980;
+    iVar15 = *(int *)(lVar3 + 0x14);
+    FUN_05a28f70(in_stack_00000068,0,*(undefined8 *)PTR_DAT_09f32c78);
+    FUN_07760c44((float)iVar9,(float)iVar15,in_stack_00000090);
+    iVar14 = iVar14 + 1;
+    iVar9 = *(int *)(in_stack_00000070 + 0x18);
+    unaff_x23 = in_stack_00000068;
+    unaff_x24 = in_stack_00000070;
+    if (iVar9 <= iVar14) break;
+LAB_07766754:
+    puVar2 = PTR_DAT_09f32e38;
+    lVar3 = FUN_05badb74(unaff_x24,iVar14,*(undefined8 *)PTR_DAT_09f32e38);
+    if (lVar3 == 0) goto LAB_07766980;
+  }
+LAB_077668c0:
+  puVar2 = PTR_DAT_09f32e38;
+  if (0 < iVar9) {
+    iVar9 = 0;
+    do {
+      uVar7 = FUN_05badb74(unaff_x24,iVar9,*(undefined8 *)puVar2);
+      if (unaff_x23 == 0) {
+LAB_07766980:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      uVar8 = FUN_05a28f70(unaff_x23,iVar9,*(undefined8 *)PTR_DAT_09f32c78);
+      FUN_07761148(uVar8,uVar7,uVar8);
+      lVar3 = FUN_05badb74(unaff_x24,iVar9,*(undefined8 *)puVar2);
+      if (lVar3 == 0) goto LAB_07766980;
+      FUN_077606dc();
+      iVar9 = iVar9 + 1;
+    } while (iVar9 < *(int *)(unaff_x24 + 0x18));
+  }
+  FUN_05baf9bc(unaff_x24,*(undefined8 *)PTR_DAT_09f32cd0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 93
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopAdvertisingColocationSession>d__20$$MoveNext
+ENTRY_POINT: 07766214
+MANUAL_PRIORITY_SCORE: 203
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\07766214_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopAdvertisingColocationSession_d__20$$MoveNext.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\MatchPointTennis\manual-review-pack\A_must_review\093_p203_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StopAdvertisingColocationSession_d__20$$MoveNext.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StopAdvertisingColocationSession>d__20$$MoveNext
+ENTRY_POINT: 07766214
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;paired_state_refs;telemetry
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_21;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking_<StopAdvertisingColocationSession>d__20__MoveNext
+               (long param_1,undefined1 param_2 [16],undefined8 param_3)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long *plVar3;
+  undefined8 uVar4;
+  long lVar5;
+  long lVar6;
+  long lVar7;
+  long lVar8;
+  undefined8 uVar9;
+  int iVar10;
+  long lVar11;
+  long lVar12;
+  undefined8 *puVar13;
+  int unaff_w20;
+  long unaff_x21;
+  long *unaff_x22;
+  long unaff_x23;
+  ulong uVar14;
+  uint uVar15;
+  undefined8 *unaff_x24;
+  float *pfVar16;
+  float unaff_w26;
+  int iVar17;
+  long unaff_x27;
+  long unaff_x28;
+  int unaff_w29;
+  float fVar18;
+  float fVar19;
+  int iVar20;
+  int iVar21;
+  int iVar22;
+  int iVar23;
+  undefined4 uStack0000000000000058;
+  undefined4 uStack000000000000005c;
+  int iStack0000000000000060;
+  int iStack0000000000000064;
+  long in_stack_00000068;
+  long in_stack_00000070;
+  undefined8 in_stack_00000078;
+  long in_stack_00000090;
+  
+  while (param_1 != 0) {
+    uVar15 = *(uint *)(unaff_x27 + 0x18);
+    if (uVar15 < *(uint *)(param_1 + 0x18)) {
+      *(uint *)(unaff_x27 + 0x18) = uVar15 + 1;
+      plVar3 = (long *)(param_1 + (long)(int)uVar15 * 8 + 0x20);
+      *plVar3 = unaff_x21;
+      thunk_FUN_044bb4b4(plVar3,unaff_x21);
+      uVar4 = param_3;
+    }
+    else {
+      FUN_05bade44();
+      uVar4 = param_3;
+    }
+    unaff_w20 = unaff_w20 + 1;
+    if (*(int *)(unaff_x28 + 0x18) <= unaff_w20) {
+      uVar4 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32ca8);
+      FUN_07a80df4(uVar4,0);
+      puVar2 = PTR_DAT_09f32e40;
+      puVar1 = PTR_DAT_09f32e28;
+      if (unaff_x27 != 0) {
+        FUN_05baf864();
+        lVar5 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32d18);
+        FUN_05bad610(lVar5,*(undefined8 *)PTR_DAT_09f32ce0);
+        lVar6 = thunk_FUN_0448520c(*(undefined8 *)puVar2);
+        FUN_05c211ac(lVar6,*(undefined8 *)puVar1);
+        iVar21 = 0;
+        goto LAB_07766304;
+      }
+      break;
+    }
+    fVar18 = (float)FUN_05d0cfbc();
+    FUN_05d0cfbc();
+    if (unaff_x23 == 0) break;
+    param_3 = uVar4;
+    uVar14 = FUN_05a28f70(unaff_x23,unaff_w20,*unaff_x24);
+    unaff_x21 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32cb0);
+    iVar21 = unaff_w29;
+    if (fVar18 != unaff_w26) {
+      iVar21 = (int)fVar18;
+    }
+    iVar17 = unaff_w29;
+    if ((float)uVar4 != unaff_w26) {
+      iVar17 = (int)(float)uVar4;
+    }
+    FUN_07a80df4(unaff_x21,0);
+    iVar21 = ((uint)(uVar14 >> 0x1f) & 0xfffffffe) + iVar21;
+    if (iVar21 <= iStack0000000000000060) {
+      iVar21 = iStack0000000000000060;
+    }
+    iVar17 = iVar17 + (int)uVar14 * 2;
+    *(int *)(unaff_x21 + 0x10) = unaff_w20;
+    *(int *)(unaff_x21 + 0x14) = iVar21;
+    if (iVar17 <= iStack0000000000000064) {
+      iVar17 = iStack0000000000000064;
+    }
+    *(int *)(unaff_x21 + 0x18) = iVar17;
+    iVar21 = FUN_05a28f70(in_stack_00000068,unaff_w20,*unaff_x24);
+    *(int *)(unaff_x21 + 0x18) = iVar17 + iVar21 * -2;
+    unaff_x22 = (long *)PTR_DAT_09f32bf0;
+    if (unaff_x27 == 0) break;
+    param_1 = *(long *)(unaff_x27 + 0x10);
+    *(int *)(unaff_x27 + 0x1c) = *(int *)(unaff_x27 + 0x1c) + 1;
+    unaff_x23 = in_stack_00000068;
+  }
+LAB_07766980:
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+LAB_07766304:
+  iVar17 = 0;
+  iVar20 = 0;
+  uVar15 = in_stack_00000078._4_4_;
+  while( true ) {
+    fVar18 = DAT_01c7661c;
+    if (*(int *)(unaff_x27 + 0x18) < 1) {
+      if (lVar5 == 0) goto LAB_07766980;
+      if (*(int *)(lVar5 + 0x18) < 1) {
+        if (in_stack_00000070 == 0) goto LAB_07766980;
+        iVar21 = *(int *)(in_stack_00000070 + 0x18);
+        if (iVar21 < 1) goto LAB_077668c0;
+        iVar17 = 0;
+        goto LAB_07766754;
+      }
+    }
+    else if (lVar5 == 0) goto LAB_07766980;
+    lVar7 = Meta_XR_MultiplayerBlocks_Colocation_AutomaticColocationLauncher__ColocateAutomaticallyInternal
+                      (in_stack_00000090,unaff_x27,uVar15,in_stack_00000078._4_4_,
+                       *(int *)(lVar5 + 0x18) == 0);
+    puVar13 = (undefined8 *)PTR_DAT_09f32ba8;
+    if (lVar7 == 0) break;
+    *(int *)(lVar7 + 0x1c) = iVar20;
+    *(undefined4 *)(lVar7 + 0x20) = 0;
+    lVar11 = *(long *)(lVar5 + 0x10);
+    lVar12 = *unaff_x22;
+    *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+    if (lVar11 == 0) goto LAB_07766980;
+    uVar15 = *(uint *)(lVar5 + 0x18);
+    if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+      *(uint *)(lVar5 + 0x18) = uVar15 + 1;
+      plVar3 = (long *)(lVar11 + (long)(int)uVar15 * 8 + 0x20);
+      *plVar3 = lVar7;
+      thunk_FUN_044bb4b4(plVar3,lVar7);
+    }
+    else {
+      FUN_05bade44(lVar5,lVar7,*(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70));
+    }
+    if (lVar6 == 0) goto LAB_07766980;
+    iVar21 = *(int *)(lVar7 + 0x14);
+    iVar22 = *(int *)(lVar7 + 0x18);
+    lVar11 = *(long *)(lVar6 + 0x10);
+    lVar12 = *(long *)PTR_DAT_09f32e10;
+    *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+    if (lVar11 == 0) goto LAB_07766980;
+    uVar15 = *(uint *)(lVar6 + 0x18);
+    if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+      lVar11 = lVar11 + (long)(int)uVar15 * 0x10;
+      *(uint *)(lVar6 + 0x18) = uVar15 + 1;
+      *(float *)(lVar11 + 0x20) = (float)iVar20;
+      *(undefined4 *)(lVar11 + 0x24) = 0;
+      *(float *)(lVar11 + 0x28) = (float)iVar21;
+      *(float *)(lVar11 + 0x2c) = (float)iVar
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+0 = iVar21;
+  }
+  if (3 < *(int *)(in_stack_00000090 + 0x10)) {
+    if (*(int *)(*(long *)PTR_DAT_09f1e540 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    FUN_094c652c(*(undefined8 *)PTR_DAT_09f32e48,0);
+  }
+  if (unaff_x23 == 0) goto LAB_07766980;
+  uVar4 = FUN_05a2ad3c(unaff_x23,*(undefined8 *)PTR_DAT_09f32cc8);
+  lVar7 = thunk_FUN_0448520c(*(undefined8 *)PTR_DAT_09f32c88);
+  FUN_07a80df4(lVar7,0);
+  *(undefined8 *)(lVar7 + 0x28) = uVar4;
+  thunk_FUN_044bb4b4((undefined8 *)(lVar7 + 0x28),uVar4);
+  *(int *)(lVar7 + 0x10) = iVar21;
+  *(int *)(lVar7 + 0x14) = iVar17;
+  lVar11 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f313a0,*(undefined4 *)(lVar5 + 0x18));
+  lVar12 = FUN_04447c90(*(undefined8 *)PTR_DAT_09f1e6a8,*(undefined4 *)(lVar5 + 0x18));
+  if (0 < *(int *)(lVar5 + 0x18)) {
+    uVar14 = 0;
+    pfVar16 = (float *)(lVar11 + 0x2c);
+    do {
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) {
+LAB_07766970:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e44();
+      }
+      iVar20 = *(int *)(lVar8 + 0x1c);
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) goto LAB_07766970;
+      iVar22 = *(int *)(lVar8 + 0x20);
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if (lVar8 == 0) goto LAB_07766970;
+      iVar23 = *(int *)(lVar8 + 0x14);
+      iVar10 = iVar17;
+      if (*(char *)(in_stack_00000090 + 0x1c) == '\0') {
+        lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*(undefined8 *)PTR_DAT_09f32ba8);
+        if (lVar8 == 0) goto LAB_07766970;
+        iVar10 = *(int *)(lVar8 + 0x18);
+      }
+      puVar13 = (undefined8 *)PTR_DAT_09f32ba8;
+      if (lVar11 == 0) goto LAB_07766970;
+      if (*(uint *)(lVar11 + 0x18) <= uVar14) {
+LAB_07766984:
+                    /* WARNING: Subroutine does not return */
+        FUN_04447e4c();
+      }
+      pfVar16[-3] = (float)iVar20;
+      pfVar16[-2] = (float)iVar22;
+      pfVar16[-1] = (float)iVar23;
+      *pfVar16 = (float)iVar10;
+      lVar8 = FUN_05badb74(lVar5,uVar14 & 0xffffffff,*puVar13);
+      if ((lVar8 == 0) || (lVar12 == 0)) goto LAB_07766970;
+      if (*(uint *)(lVar12 + 0x18) <= uVar14) goto LAB_07766984;
+      pfVar16 = pfVar16 + 4;
+      *(undefined4 *)(lVar12 + 0x20 + uVar14 * 4) = *(undefined4 *)(lVar8 + 0x10);
+      uVar14 = uVar14 + 1;
+      unaff_x23 = in_stack_00000068;
+    } while ((long)uVar14 < (long)*(int *)(lVar5 + 0x18));
+  }
+  *(long *)(lVar7 + 0x20) = lVar11;
+  thunk_FUN_044bb4b4();
+  *(long *)(lVar7 + 0x30) = lVar12;
+  thunk_FUN_044bb4b4((long *)(lVar7 + 0x30),lVar12);
+  FUN_077606dc(lVar7);
+  iVar17 = *(int *)(lVar5 + 0x18);
+  *(undefined4 *)(lVar5 + 0x18) = 0;
+  *(int *)(lVar5 + 0x1c) = *(int *)(lVar5 + 0x1c) + 1;
+  if (0 < iVar17) {
+    FUN_07a61000(*(undefined8 *)(lVar5 + 0x10),0,iVar17,0);
+  }
+  unaff_x22 = (long *)PTR_DAT_09f32bf0;
+  if (lVar6 == 0) goto LAB_07766980;
+  *(undefined4 *)(lVar6 + 0x18) = 0;
+  *(int *)(lVar6 + 0x1c) = *(int *)(lVar6 + 0x1c) + 1;
+  if (in_stack_00000070 == 0) goto LAB_07766980;
+  lVar11 = *(long *)(in_stack_00000070 + 0x10);
+  lVar12 = *(long *)PTR_DAT_09f32cb8;
+  *(int *)(in_stack_00000070 + 0x1c) = *(int *)(in_stack_00000070 + 0x1c) + 1;
+  if (lVar11 == 0) goto LAB_07766980;
+  uVar15 = *(uint *)(in_stack_00000070 + 0x18);
+  if (uVar15 < *(uint *)(lVar11 + 0x18)) {
+    *(uint *)(in_stack_00000070 + 0x18) = uVar15 + 1;
+    plVar3 = (long *)(lVar11 + (long)(int)uVar15 * 8 + 0x20);
+    *plVar3 = lVar7;
+    thunk_FUN_044bb4b4(plVar3,lVar7);
+  }
+  else {
+    FUN_05bade44(in_stack_00000070,lVar7,
+                 *(undefined8 *)(*(long *)(*(long *)(lVar12 + 0x20) + 0xc0) + 0x70));
+  }
+  goto LAB_07766304;
+  while( true ) {
+    uVar15 = *(uint *)(lVar6 + 0x10);
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    if (*(char *)(in_stack_00000090 + 0x14) != '\0') {
+      fVar19 = logf((float)(int)uVar15);
+      fVar19 = exp2f((float)(int)(fVar19 / fVar18));
+      uVar15 = 0x80000000;
+      if (fVar19 != INFINITY) {
+        uVar15 = (int)fVar19;
+      }
+      if (uVar15 < 3) {
+        uVar15 = 2;
+      }
+    }
+    if ((int)in_stack_00000078._4_4_ <= (int)uVar15) {
+      uVar15 = in_stack_00000078._4_4_;
+    }
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    *(uint *)(lVar6 + 0x10) = uVar15;
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if (lVar6 == 0) goto LAB_07766980;
+    iVar21 = *(int *)(lVar6 + 0x10);
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)puVar1);
+    if ((lVar6 == 0) || (in_stack_00000068 == 0)) goto LAB_07766980;
+    iVar20 = *(int *)(lVar6 + 0x14);
+    uVar4 = FUN_05a28f70(in_stack_00000068,0,*(undefined8 *)PTR_DAT_09f32c78);
+    FUN_07760c44((float)iVar21,(float)iVar20,in_stack_00000090,lVar5,in_stack_00000078._4_4_,
+                 uStack000000000000005c,uVar4,iStack0000000000000060,iStack0000000000000064,
+                 uStack0000000000000058);
+    iVar17 = iVar17 + 1;
+    iVar21 = *(int *)(in_stack_00000070 + 0x18);
+    unaff_x23 = in_stack_00000068;
+    if (iVar21 <= iVar17) break;
+LAB_07766754:
+    puVar1 = PTR_DAT_09f32e38;
+    lVar6 = FUN_05badb74(in_stack_00000070,iVar17,*(undefined8 *)PTR_DAT_09f32e38);
+    if (lVar6 == 0) goto LAB_07766980;
+  }
+LAB_077668c0:
+  puVar1 = PTR_DAT_09f32e38;
+  if (0 < iVar21) {
+    iVar21 = 0;
+    do {
+      uVar4 = FUN_05badb74(in_stack_00000070,iVar21,*(undefined8 *)puVar1);
+      if (unaff_x23 == 0) goto LAB_07766980;
+      uVar9 = FUN_05a28f70(unaff_x23,iVar21,*(undefined8 *)PTR_DAT_09f32c78);
+      FUN_07761148(uVar9,uVar4,uVar9);
+      lVar5 = FUN_05badb74(in_stack_00000070,iVar21,*(undefined8 *)puVar1);
+      if (lVar5 == 0) goto LAB_07766980;
+      FUN_077606dc();
+      iVar21 = iVar21 + 1;
+    } while (iVar21 < *(int *)(in_stack_00000070 + 0x18));
+  }
+  FUN_05baf9bc(in_stack_00000070,*(undefined8 *)PTR_DAT_09f32cd0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

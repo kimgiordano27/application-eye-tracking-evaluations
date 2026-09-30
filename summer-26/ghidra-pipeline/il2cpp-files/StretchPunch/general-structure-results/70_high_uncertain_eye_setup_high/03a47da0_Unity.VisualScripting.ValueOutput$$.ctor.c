@@ -1,0 +1,126 @@
+/*
+FUNCTION_NAME: Unity.VisualScripting.ValueOutput$$.ctor
+ENTRY_POINT: 03a47da0
+PROGRAM: StretchPunch-libil2cpp.so
+SCORE: 71
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void Unity_VisualScripting_ValueOutput___ctor(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  long lVar8;
+  undefined8 uVar9;
+  undefined8 unaff_x19;
+  undefined8 *unaff_x22;
+  undefined8 *unaff_x24;
+  undefined8 *unaff_x27;
+  undefined8 *unaff_x28;
+  
+  puVar1 = Field_UnityEngine_InputSystem_InputActionRebindingExtensions_ParameterEnumerator_m_State;
+  FUN_033a87c8(*(undefined8 *)
+                Field_UnityEngine_InputSystem_InputActionRebindingExtensions_ParameterEnumerator_m_State
+               ,0);
+  FUN_02f17d24();
+  puVar6 = StringLiteral_1556;
+  FUN_033a87c8(*(undefined8 *)StringLiteral_1556,0);
+  FUN_02f17d24();
+  puVar4 = StringLiteral_1170;
+  FUN_033a87c8(*(undefined8 *)StringLiteral_1170,0);
+  FUN_02f17d24();
+  FUN_033a87c8(*unaff_x22,0);
+  FUN_02f17d24();
+  FUN_033a87c8(*(undefined8 *)StringLiteral_1166,0);
+  FUN_02f17d24();
+  puVar7 = StringLiteral_4822;
+  FUN_033a87c8(*(undefined8 *)StringLiteral_4822,0);
+  FUN_02f17d24();
+  FUN_02b23db4();
+  FUN_033a87c8(*(undefined8 *)
+                Field_UnityEngine_InputSystem_InputActionRebindingExtensions_Parameter_field,0);
+  lVar8 = thunk_FUN_01de27b8(*unaff_x27);
+  System_Array_InternalEnumerator<OVRPlugin_Vector4f>__System_Collections_IEnumerator_get_Current
+            (lVar8,*unaff_x28);
+  uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1172,0);
+  if (lVar8 != 0) {
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1165,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    puVar3 = StringLiteral_1168;
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1168,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1555,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)puVar1,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)puVar6,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)puVar4,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    puVar5 = StringLiteral_1367;
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1367,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1166,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    puVar2 = Field_UnityEngine_InputSystem_InputActionSetupExtensions_CompositeSyntax_m_Action;
+    uVar9 = FUN_033a87c8(*(undefined8 *)
+                          Field_UnityEngine_InputSystem_InputActionSetupExtensions_CompositeSyntax_m_Action
+                         ,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    uVar9 = FUN_033a87c8(*(undefined8 *)puVar7,0);
+    FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+    FUN_02b23db4();
+    FUN_033a87c8(*(undefined8 *)puVar7,0);
+    lVar8 = thunk_FUN_01de27b8(*(undefined8 *)StringLiteral_3532);
+    System_Array_InternalEnumerator<OVRPlugin_Vector4f>__System_Collections_IEnumerator_get_Current
+              (lVar8,*(undefined8 *)StringLiteral_3533);
+    uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1172,0);
+    if (lVar8 != 0) {
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1165,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar3,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1555,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar1,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar6,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar4,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar5,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)StringLiteral_1166,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)puVar2,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      uVar9 = FUN_033a87c8(*(undefined8 *)
+                            Field_UnityEngine_InputSystem_InputActionRebindingExtensions_Parameter_field
+                           ,0);
+      FUN_02f17d24(lVar8,uVar9,*unaff_x24);
+      FUN_02b23db4();
+      *(undefined8 *)(*(long *)(*(long *)StringLiteral_1279 + 0xb8) + 0x18) = unaff_x19;
+      thunk_FUN_01e10808();
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_01d7db70();
+}
+
+

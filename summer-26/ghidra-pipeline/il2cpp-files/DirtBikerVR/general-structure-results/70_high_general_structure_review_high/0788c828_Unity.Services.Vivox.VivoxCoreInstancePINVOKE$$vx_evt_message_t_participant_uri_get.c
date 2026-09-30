@@ -1,0 +1,256 @@
+/*
+FUNCTION_NAME: Unity.Services.Vivox.VivoxCoreInstancePINVOKE$$vx_evt_message_t_participant_uri_get
+ENTRY_POINT: 0788c828
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 89
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;paired_state_refs;ui_interaction;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_17;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_structure_only;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x0788ca6c) */
+/* WARNING: Removing unreachable block (ram,0x0788ca70) */
+/* WARNING: Removing unreachable block (ram,0x0788cc48) */
+/* WARNING: Removing unreachable block (ram,0x0788cb68) */
+
+void Unity_Services_Vivox_VivoxCoreInstancePINVOKE__vx_evt_message_t_participant_uri_get
+               (undefined **param_1)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  int iVar3;
+  ulong uVar4;
+  undefined8 uVar5;
+  long lVar6;
+  undefined8 *unaff_x19;
+  undefined4 unaff_w20;
+  long unaff_x21;
+  long unaff_x22;
+  undefined8 *unaff_x23;
+  undefined8 unaff_x24;
+  undefined8 unaff_x25;
+  undefined8 unaff_x26;
+  long *unaff_x28;
+  undefined8 *unaff_x29;
+  long in_stack_00000010;
+  long in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined8 *in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000048;
+  long in_stack_00000050;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined8 *in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined8 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined8 in_stack_00000098;
+  undefined4 in_stack_000000b0;
+  long in_stack_000000b8;
+  
+  do {
+    uVar5 = thunk_FUN_03ac74bc(*(undefined8 *)param_1[0xba]);
+    FUN_05f6dacc(uVar5,*(undefined8 *)
+                        UnityEngine_Rendering_ListPool<ValueTuple<GUIContent,_int>>_TypeInfo);
+    FUN_05ed12f0();
+    do {
+      lVar6 = FUN_05ed1250();
+      if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03a8a9c0();
+      }
+      FUN_05f6e848(lVar6,unaff_x26,unaff_x25,unaff_x24,*unaff_x23);
+LAB_0788c7c8:
+      while( true ) {
+        uVar4 = FUN_06289248(&stack0x00000070,*unaff_x19);
+        unaff_x24 = in_stack_00000090;
+        unaff_x25 = in_stack_00000088;
+        unaff_x26 = in_stack_00000080;
+        puVar1 = System_Collections_Generic_IReadOnlyCollection<VisualElement>_TypeInfo;
+        if ((uVar4 & 1) == 0) {
+          FUN_06289384(&stack0x00000070,
+                       *(undefined8 *)System_Collections_Generic_IReadOnlyCollection<Type>_TypeInfo)
+          ;
+          do {
+            uVar4 = FUN_062727f4(&stack0x000000a0,*(undefined8 *)puVar1);
+            lVar2 = in_stack_000000b8;
+            unaff_w20 = in_stack_000000b0;
+            lVar6 = in_stack_00000050;
+            if ((uVar4 & 1) == 0) {
+              FUN_06272918(in_stack_00000058,
+                           *(undefined8 *)
+                            System_Collections_Generic_IReadOnlyCollection<ulong>_TypeInfo);
+              if (lVar6 != 0) {
+                    /* WARNING: Subroutine does not return */
+                FUN_03a8a9b8(lVar6);
+              }
+              if (in_stack_00000018 != 0) {
+                iVar3 = FUN_05ed0f88(in_stack_00000018,
+                                     *(undefined8 *)
+                                      UnityEngine_Rendering_ListPool<ValueTuple<int,_Vector4>>_TypeInfo
+                                    );
+                if ((0 < iVar3) && (lVar6 = *(long *)(in_stack_00000010 + 0x40), lVar6 != 0)) {
+                  (**(code **)(lVar6 + 0x18))
+                            (*(undefined8 *)(lVar6 + 0x40),in_stack_00000018,
+                             *(undefined8 *)(lVar6 + 0x28));
+                }
+                if (unaff_x22 != 0) {
+                  iVar3 = FUN_05ed0f88();
+                  if ((0 < iVar3) && (lVar6 = *(long *)(in_stack_00000010 + 0x48), lVar6 != 0)) {
+                    (**(code **)(lVar6 + 0x18))(*(undefined8 *)(lVar6 + 0x40));
+                  }
+                  if (unaff_x21 != 0) {
+                    iVar3 = FUN_05ed0f88();
+                    if ((0 < iVar3) && (lVar6 = *(long *)(in_stack_00000010 + 0x50), lVar6 != 0)) {
+                      (**(code **)(lVar6 + 0x18))(*(undefined8 *)(lVar6 + 0x40));
+                    }
+                    return;
+                  }
+                }
+              }
+                    /* WARNING: Subroutine does not return */
+              FUN_03a8a9c0();
+            }
+            if (in_stack_000000b8 != 0) {
+              lVar6 = *(long *)(in_stack_000000b8 + 0x38);
+              if (*(int *)(*(long *)
+                            System_Collections_Generic_IReadOnlyCollection<InputDevice>_TypeInfo +
+                          0xe4) == 0) {
+                thunk_FUN_03ae8be4();
+              }
+              if (lVar6 != 0) goto code_r0x0788c778;
+            }
+            if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_03a8a9c0();
+            }
+            FUN_05ed12f0();
+          } while( true );
+        }
+        in_stack_00000060 = in_stack_00000088;
+        in_stack_00000068 = in_stack_00000090;
+        if (*(int *)(*unaff_x28 + 0xe4) == 0) {
+          thunk_FUN_03ae8be4();
+        }
+        uVar4 = FUN_0584b198(&stack0x00000060,*unaff_x29);
+        if ((uVar4 & 1) != 0) break;
+        in_stack_00000060 = unaff_x25;
+        in_stack_00000068 = unaff_x24;
+        if (*(int *)(*unaff_x28 + 0xe4) == 0) {
+                    /* try { // try from 0788c8a8 to 0798caab has its CatchHandler @ 0788c8a8
+                       catch() { ... } // from try @ 0788c8a8 with catch @ 0788c8a8
+                       catch() { ... } // from try @ 0788d020 with catch @ 0788c8a8
+                       catch() { ... } // from try @ 0788d0c8 with catch @ 0788c8a8
+                       catch() { ... } // from try @ 0788d0f0 with catch @ 0788c8a8
+                       catch() { ... } // from try @ 0788d180 with catch @ 0788c8a8 */
+          thunk_FUN_03ae8be4();
+        }
+        uVar4 = FUN_0584b040(&stack0x00000060,
+                             *(undefined8 *)
+                              System_Collections_Generic_IReadOnlyCollection<KeyValuePair<string,_SessionProperty>>_TypeInfo
+                            );
+        if ((uVar4 & 1) == 0) {
+          in_stack_00000060 = unaff_x25;
+          in_stack_00000068 = unaff_x24;
+          if (*(int *)(*unaff_x28 + 0xe4) == 0) {
+            thunk_FUN_03ae8be4();
+          }
+          uVar4 = FUN_0584b0bc(&stack0x00000060,
+                               *(undefined8 *)
+                                UnityEngine_UIElements_UIR_LinkedPool<MeshHandle>_TypeInfo);
+          if ((uVar4 & 1) != 0) {
+            if (in_stack_00000018 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_03a8a9c0();
+            }
+            uVar4 = FUN_05ed14e4(in_stack_00000018,unaff_w20,
+                                 *(undefined8 *)
+                                  UnityEngine_Rendering_ListChangedEventArgs<DebugUI_Widget>_TypeInfo
+                                );
+            if ((uVar4 & 1) == 0) {
+              uVar5 = thunk_FUN_03ac74bc(*(undefined8 *)
+                                          UnityEngine_Rendering_ListPool<CameraSettings>_TypeInfo);
+              FUN_05f6dacc(uVar5,*(undefined8 *)
+                                  UnityEngine_Rendering_ListPool<ValueTuple<GUIContent,_int>>_TypeInfo
+                          );
+              FUN_05ed12f0(in_stack_00000018,unaff_w20,uVar5,
+                           *(undefined8 *)
+                            UnityEngine_UIElements_UIR_LinkedPool<DynamicAtlas_TextureInfo>_TypeInfo
+                          );
+            }
+            lVar6 = FUN_05ed1250(in_stack_00000018,unaff_w20,
+                                 *(undefined8 *)
+                                  UnityEngine_Rendering_ListPool<AOVRequestData>_TypeInfo);
+            if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_03a8a9c0();
+            }
+            FUN_05f6e848(lVar6,unaff_x26,unaff_x25,unaff_x24,*unaff_x23);
+          }
+        }
+        else {
+          if (unaff_x22 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_03a8a9c0();
+          }
+          uVar4 = FUN_05ed14e4();
+          if ((uVar4 & 1) == 0) {
+            uVar5 = thunk_FUN_03ac74bc(*(undefined8 *)
+                                        UnityEngine_Rendering_ListPool<CameraSettings>_TypeInfo);
+            FUN_05f6dacc(uVar5,*(undefined8 *)
+                                UnityEngine_Rendering_ListPool<ValueTuple<GUIContent,_int>>_TypeInfo
+                        );
+            FUN_05ed12f0();
+          }
+          lVar6 = FUN_05ed1250();
+          if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_03a8a9c0();
+          }
+          FUN_05f6e848(lVar6,unaff_x26,unaff_x25,unaff_x24,*unaff_x23);
+        }
+      }
+      if (unaff_x21 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03a8a9c0();
+      }
+      uVar4 = FUN_05ed14e4();
+    } while ((uVar4 & 1) != 0);
+    param_1 = &Normal_Realtime_IInterpolator<Vector3>_TypeInfo;
+  } while( true );
+code_r0x0788c778:
+  lVar6 = *(long *)(lVar2 + 0x38);
+  if (*(int *)(*(long *)System_Collections_Generic_IReadOnlyCollection<InputDevice>_TypeInfo + 0xe4)
+      == 0) {
+    thunk_FUN_03ae8be4();
+  }
+  if (lVar6 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_03a8a9c0();
+  }
+  FUN_05f6ec70(&stack0x00000020,lVar6,
+               *(undefined8 *)System_Collections_Generic_IReadOnlyCollection<OVRSpaceUser>_TypeInfo)
+  ;
+  in_stack_00000070 = in_stack_00000020;
+  in_stack_00000020 = 0;
+  in_stack_00000078 = in_stack_00000028;
+  in_stack_00000088 = in_stack_00000038;
+  in_stack_00000080 = in_stack_00000030;
+  in_stack_00000098 = in_stack_00000048;
+  in_stack_00000090 = in_stack_00000040;
+  in_stack_00000028 = &stack0x00000070;
+  goto LAB_0788c7c8;
+}
+
+

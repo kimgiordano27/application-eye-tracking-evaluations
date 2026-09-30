@@ -1,0 +1,458 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 35
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$FinishSetup
+ENTRY_POINT: 02f0b26c
+MANUAL_PRIORITY_SCORE: 129
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 95
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_eye_tracking_permission_or_feature_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_95', 'module_bonus_validity_gate_8', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\90_plus_attempted_eye_tracking_permission_or_feature_near_certain\02f0b26c_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$FinishSetup.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\B_high_priority\035_p129_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$FinishSetup.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction.EyeGazeDevice$$FinishSetup
+ENTRY_POINT: 02f0b26c
+PROGRAM: simulator-libil2cpp.so
+SCORE: 95
+LABEL: attempted_eye_tracking_permission_or_feature_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_2;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+void UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction_EyeGazeDevice__FinishSetup
+               (long param_1,undefined8 param_2,long param_3)
+
+{
+  undefined8 *puVar1;
+  long lVar2;
+  long in_x9;
+  int *piVar3;
+  long unaff_x20;
+  
+  if (in_x9 != 0) {
+    piVar3 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar3 + -2) == param_3) {
+        puVar1 = (undefined8 *)(param_1 + (long)(*piVar3 + 8) * 0x10 + 0x138);
+        goto LAB_02f0b2b0;
+      }
+      in_x9 = in_x9 + -1;
+      piVar3 = piVar3 + 4;
+    } while (in_x9 != 0);
+  }
+  puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02f0b2b0:
+  (*(code *)*puVar1)();
+  lVar2 = *(long *)(unaff_x20 + 0x20);
+  if (lVar2 != 0) {
+                    /* WARNING: Could not recover jumptable at 0x02f0b2e0. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+    (**(code **)(lVar2 + 0x18))(*(undefined8 *)(lVar2 + 0x40));
+    return;
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 36
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterActionMapsWithRuntime
+ENTRY_POINT: 02f0acf0
+MANUAL_PRIORITY_SCORE: 117
+MANUAL_TIER: C_likely_review
+ORIGINAL_SCANNER_SCORE: 83
+ORIGINAL_SCANNER_LABEL: 70_high_attempted_eye_tracking_permission_or_feature_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_83', 'module_bonus_validity_gate_8', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_attempted_eye_tracking_permission_or_feature_high\02f0acf0_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterActionMapsWithRuntime.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\C_likely_review\036_p117_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterActionMapsWithRuntime.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterActionMapsWithRuntime
+ENTRY_POINT: 02f0acf0
+PROGRAM: simulator-libil2cpp.so
+SCORE: 83
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8
+UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction__RegisterActionMapsWithRuntime(void)
+
+{
+  ulong uVar1;
+  undefined8 *puVar2;
+  undefined8 uVar3;
+  long lVar4;
+  int *piVar5;
+  long *unaff_x19;
+  long *unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long *unaff_x23;
+  
+  FUN_018c48dc();
+  FUN_018c48dc(PTR_DAT_034c59d8);
+  FUN_018c48dc(PTR_DAT_034c73c0);
+  *(undefined1 *)(unaff_x22 + 0xd4) = 1;
+  if (*(int *)(*unaff_x23 + 0xe0) == 0) {
+    thunk_FUN_018cd5b0();
+  }
+  uVar1 = FUN_02f0aaa8();
+  if (((uVar1 & 1) == 0) ||
+     (uVar1 = FUN_02f3eea8(*(undefined8 *)(unaff_x21 + 0x78)), (uVar1 & 1) == 0)) {
+    return 0;
+  }
+  if (unaff_x19 != (long *)0x0) {
+    lVar4 = *unaff_x19;
+    uVar1 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar1 != 0) {
+      piVar5 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c59d8) {
+          puVar2 = (undefined8 *)(lVar4 + (long)(*piVar5 + 7) * 0x10 + 0x138);
+          goto LAB_02f0ada8;
+        }
+        uVar1 = uVar1 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar1 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_018a8460();
+LAB_02f0ada8:
+    uVar1 = (*(code *)*puVar2)();
+    if ((uVar1 & 1) == 0) {
+      return 0;
+    }
+    if (unaff_x20 != (long *)0x0) {
+      lVar4 = *unaff_x20;
+      uVar1 = (ulong)*(ushort *)(lVar4 + 0x12e);
+      if (uVar1 != 0) {
+        piVar5 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c5938) {
+            puVar2 = (undefined8 *)(lVar4 + (long)(*piVar5 + 8) * 0x10 + 0x138);
+            goto LAB_02f0ae2c;
+          }
+          uVar1 = uVar1 - 1;
+          piVar5 = piVar5 + 4;
+        } while (uVar1 != 0);
+      }
+      puVar2 = (undefined8 *)FUN_018a8460();
+LAB_02f0ae2c:
+                    /* WARNING: Could not recover jumptable at 0x02f0ae44. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      uVar3 = (*(code *)*puVar2)();
+      return uVar3;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_018c4afc();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 37
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$OnInstanceCreate
+ENTRY_POINT: 02f0a9a4
+MANUAL_PRIORITY_SCORE: 117
+MANUAL_TIER: C_likely_review
+ORIGINAL_SCANNER_SCORE: 83
+ORIGINAL_SCANNER_LABEL: 70_high_attempted_eye_tracking_permission_or_feature_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_83', 'module_bonus_validity_gate_8', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_attempted_eye_tracking_permission_or_feature_high\02f0a9a4_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$OnInstanceCreate.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\C_likely_review\037_p117_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$OnInstanceCreate.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$OnInstanceCreate
+ENTRY_POINT: 02f0a9a4
+PROGRAM: simulator-libil2cpp.so
+SCORE: 83
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8
+UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction__OnInstanceCreate(ulong param_1)
+
+{
+  undefined8 *puVar1;
+  undefined8 uVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long *unaff_x19;
+  long *unaff_x20;
+  
+  if ((param_1 & 1) == 0) {
+    return 0;
+  }
+  if (unaff_x19 != (long *)0x0) {
+    lVar3 = *unaff_x19;
+    uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+    if (uVar4 != 0) {
+      piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c7320) {
+          puVar1 = (undefined8 *)(lVar3 + (long)(*piVar5 + 5) * 0x10 + 0x138);
+          goto LAB_02f0aa04;
+        }
+        uVar4 = uVar4 - 1;
+        piVar5 = piVar5 + 4;
+      } while (uVar4 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02f0aa04:
+    uVar4 = (*(code *)*puVar1)();
+    if ((uVar4 & 1) == 0) {
+      return 0;
+    }
+    if (unaff_x20 != (long *)0x0) {
+      lVar3 = *unaff_x20;
+      uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+      if (uVar4 != 0) {
+        piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c7278) {
+            puVar1 = (undefined8 *)(lVar3 + (long)(*piVar5 + 6) * 0x10 + 0x138);
+            goto LAB_02f0aa88;
+          }
+          uVar4 = uVar4 - 1;
+          piVar5 = piVar5 + 4;
+        } while (uVar4 != 0);
+      }
+      puVar1 = (undefined8 *)FUN_018a8460();
+LAB_02f0aa88:
+                    /* WARNING: Could not recover jumptable at 0x02f0aaa0. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+      uVar2 = (*(code *)*puVar1)();
+      return uVar2;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_018c4afc();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 38
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterDeviceLayout
+ENTRY_POINT: 02f0aa0c
+MANUAL_PRIORITY_SCORE: 114
+MANUAL_TIER: C_likely_review
+ORIGINAL_SCANNER_SCORE: 80
+ORIGINAL_SCANNER_LABEL: 70_high_attempted_eye_tracking_permission_or_feature_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_80', 'module_bonus_validity_gate_8', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_attempted_eye_tracking_permission_or_feature_high\02f0aa0c_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterDeviceLayout.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\C_likely_review\038_p114_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterDeviceLayout.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$RegisterDeviceLayout
+ENTRY_POINT: 02f0aa0c
+PROGRAM: simulator-libil2cpp.so
+SCORE: 80
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8
+UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction__RegisterDeviceLayout(code *param_1)
+
+{
+  ulong uVar1;
+  undefined8 *puVar2;
+  undefined8 uVar3;
+  long lVar4;
+  int *piVar5;
+  long *unaff_x20;
+  
+  uVar1 = (*param_1)();
+  if ((uVar1 & 1) == 0) {
+    return 0;
+  }
+  if (unaff_x20 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_018c4afc();
+  }
+  lVar4 = *unaff_x20;
+  uVar1 = (ulong)*(ushort *)(lVar4 + 0x12e);
+  if (uVar1 != 0) {
+    piVar5 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c7278) {
+        puVar2 = (undefined8 *)(lVar4 + (long)(*piVar5 + 6) * 0x10 + 0x138);
+        goto LAB_02f0aa88;
+      }
+      uVar1 = uVar1 - 1;
+      piVar5 = piVar5 + 4;
+    } while (uVar1 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_018a8460();
+LAB_02f0aa88:
+                    /* WARNING: Could not recover jumptable at 0x02f0aaa0. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  uVar3 = (*(code *)*puVar2)();
+  return uVar3;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 39
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$GetInteractionProfileType
+ENTRY_POINT: 02f0abf4
+MANUAL_PRIORITY_SCORE: 114
+MANUAL_TIER: C_likely_review
+ORIGINAL_SCANNER_SCORE: 80
+ORIGINAL_SCANNER_LABEL: 70_high_attempted_eye_tracking_permission_or_feature_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'attempted_use']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'attempted_eye_tracking_permission_or_feature_enable', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_80', 'module_bonus_validity_gate_8', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\general-structure-results\70_high_attempted_eye_tracking_permission_or_feature_high\02f0abf4_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$GetInteractionProfileType.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\simulator\manual-review-pack\C_likely_review\039_p114_UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$GetInteractionProfileType.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.Features.Interactions.EyeGazeInteraction$$GetInteractionProfileType
+ENTRY_POINT: 02f0abf4
+PROGRAM: simulator-libil2cpp.so
+SCORE: 80
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: gaze_retrieval;attempted_eye_tracking_use
+MODULES: eye_source;weak_source_state;validity_gate;attempted_use
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;attempted_eye_tracking_permission_or_feature_enable;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8
+UnityEngine_XR_OpenXR_Features_Interactions_EyeGazeInteraction__GetInteractionProfileType
+          (undefined8 param_1,long *param_2,undefined8 param_3)
+
+{
+  undefined8 *puVar1;
+  undefined8 uVar2;
+  long lVar3;
+  ulong uVar4;
+  int *piVar5;
+  long unaff_x22;
+  
+  if ((*(byte *)(unaff_x22 + 0xd3) & 1) == 0) {
+    FUN_018c48dc(PTR_DAT_034c59d8);
+    *(undefined1 *)(unaff_x22 + 0xd3) = 1;
+  }
+  if (param_2 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_018c4afc();
+  }
+  lVar3 = *param_2;
+  uVar4 = (ulong)*(ushort *)(lVar3 + 0x12e);
+  if (uVar4 != 0) {
+    piVar5 = (int *)(*(long *)(lVar3 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar5 + -2) == *(long *)PTR_DAT_034c59d8) {
+        puVar1 = (undefined8 *)(lVar3 + (long)(*piVar5 + 5) * 0x10 + 0x138);
+        goto LAB_02f0ac78;
+      }
+      uVar4 = uVar4 - 1;
+      piVar5 = piVar5 + 4;
+    } while (uVar4 != 0);
+  }
+  puVar1 = (undefined8 *)FUN_018a8460(param_2,*(long *)PTR_DAT_034c59d8,5);
+LAB_02f0ac78:
+  uVar4 = (*(code *)*puVar1)(param_2,puVar1[1]);
+  if ((uVar4 & 1) != 0) {
+    uVar2 = FUN_02f0acbc(param_1,param_2,param_3);
+    return uVar2;
+  }
+  return 0;
+}
+
+
+
+END_DECOMPILED_FUNCTION

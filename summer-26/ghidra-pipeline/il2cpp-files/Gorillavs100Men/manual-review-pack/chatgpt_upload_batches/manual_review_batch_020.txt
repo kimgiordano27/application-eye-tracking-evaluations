@@ -1,0 +1,1217 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 96
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeVelocity
+ENTRY_POINT: 03986658
+MANUAL_PRIORITY_SCORE: 133
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'ray_interaction']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_21', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_framework_support_only_high\03986658_Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeVelocity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\B_high_priority\096_p133_Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeVelocity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeVelocity
+ENTRY_POINT: 03986658
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 82
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;paired_state_refs;ray_interaction
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_21;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_OpenVR_OpenVRHMD__set_leftEyeVelocity(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  long unaff_x20;
+  long unaff_x21;
+  long *unaff_x22;
+  undefined8 *unaff_x23;
+  uint *unaff_x24;
+  undefined8 in_stack_00000010;
+  undefined4 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined4 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined8 in_stack_00000050;
+  undefined4 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined4 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined4 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined4 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined4 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined4 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined4 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined4 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined4 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined4 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined4 in_stack_00000108;
+  undefined8 in_stack_00000110;
+  undefined4 in_stack_00000118;
+  undefined8 in_stack_00000120;
+  undefined4 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined4 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined4 in_stack_00000148;
+  undefined8 in_stack_00000150;
+  undefined4 in_stack_00000158;
+  undefined8 in_stack_00000160;
+  undefined4 in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined4 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  undefined4 in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined4 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined4 in_stack_000001a8;
+  undefined8 in_stack_000001b0;
+  undefined4 in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined4 in_stack_000001c8;
+  undefined8 in_stack_000001d0;
+  undefined4 in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined4 in_stack_000001e8;
+  
+  *(undefined8 *)(unaff_x21 + 0x20) = param_2;
+  thunk_FUN_020ccb58((undefined8 *)(unaff_x21 + 0x20));
+  if ((*(uint *)(unaff_x21 + 0x18) & 0xfffffffe) != 0) {
+    *(undefined8 *)(unaff_x20 + 0x28) = *(undefined8 *)PTR_DAT_046a0be0;
+    thunk_FUN_020ccb58();
+    if (0x59 < *unaff_x24) {
+      *(long *)(unaff_x19 + 0x2e8) = unaff_x20;
+      thunk_FUN_020ccb58(unaff_x19 + 0x2e8);
+      lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+      if (lVar2 == 0) {
+LAB_039888e8:
+                    /* WARNING: Subroutine does not return */
+        FUN_0206154c();
+      }
+      if (*(int *)(lVar2 + 0x18) != 0) {
+        *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0b60;
+        thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+        if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+          *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0e30;
+          thunk_FUN_020ccb58();
+          if (0x5a < *unaff_x24) {
+            *(long *)(unaff_x19 + 0x2f0) = lVar2;
+            thunk_FUN_020ccb58(unaff_x19 + 0x2f0,lVar2);
+            lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+            if (lVar2 == 0) goto LAB_039888e8;
+            if (*(int *)(lVar2 + 0x18) != 0) {
+              *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0da0;
+              thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+              if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0c40;
+                thunk_FUN_020ccb58();
+                if (0x5b < *unaff_x24) {
+                  *(long *)(unaff_x19 + 0x2f8) = lVar2;
+                  thunk_FUN_020ccb58(unaff_x19 + 0x2f8,lVar2);
+                  lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                  if (lVar2 == 0) goto LAB_039888e8;
+                  if (*(int *)(lVar2 + 0x18) != 0) {
+                    *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0bd0;
+                    thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                    if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                      *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0f20;
+                      thunk_FUN_020ccb58();
+                      if (0x5c < *unaff_x24) {
+                        *(long *)(unaff_x19 + 0x300) = lVar2;
+                        thunk_FUN_020ccb58(unaff_x19 + 0x300,lVar2);
+                        lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                        if (lVar2 == 0) goto LAB_039888e8;
+                        if (*(int *)(lVar2 + 0x18) != 0) {
+                          *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a06e8;
+                          thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                          if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                            *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0a68;
+                            thunk_FUN_020ccb58();
+                            if (0x5d < *unaff_x24) {
+                              *(long *)(unaff_x19 + 0x308) = lVar2;
+                
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02061554();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 97
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeAngularVelocity
+ENTRY_POINT: 03986670
+MANUAL_PRIORITY_SCORE: 133
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'ray_interaction']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_21', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_framework_support_only_high\03986670_Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeAngularVelocity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\B_high_priority\097_p133_Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeAngularVelocity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$set_leftEyeAngularVelocity
+ENTRY_POINT: 03986670
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 82
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;paired_state_refs;ray_interaction
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_21;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_OpenVR_OpenVRHMD__set_leftEyeAngularVelocity(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  long unaff_x20;
+  long *unaff_x22;
+  undefined8 *unaff_x23;
+  uint *unaff_x24;
+  undefined8 in_stack_00000010;
+  undefined4 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined4 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined8 in_stack_00000050;
+  undefined4 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined4 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined4 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined4 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined4 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined4 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined4 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined4 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined4 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined4 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined4 in_stack_00000108;
+  undefined8 in_stack_00000110;
+  undefined4 in_stack_00000118;
+  undefined8 in_stack_00000120;
+  undefined4 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined4 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined4 in_stack_00000148;
+  undefined8 in_stack_00000150;
+  undefined4 in_stack_00000158;
+  undefined8 in_stack_00000160;
+  undefined4 in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined4 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  undefined4 in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined4 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined4 in_stack_000001a8;
+  undefined8 in_stack_000001b0;
+  undefined4 in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined4 in_stack_000001c8;
+  undefined8 in_stack_000001d0;
+  undefined4 in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined4 in_stack_000001e8;
+  
+  *(undefined8 *)(unaff_x20 + 0x28) = *(undefined8 *)PTR_DAT_046a0be0;
+  thunk_FUN_020ccb58();
+  if (0x59 < *unaff_x24) {
+    *(long *)(unaff_x19 + 0x2e8) = unaff_x20;
+    thunk_FUN_020ccb58(unaff_x19 + 0x2e8);
+    lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+    if (lVar2 == 0) {
+LAB_039888e8:
+                    /* WARNING: Subroutine does not return */
+      FUN_0206154c();
+    }
+    if (*(int *)(lVar2 + 0x18) != 0) {
+      *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0b60;
+      thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+      if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+        *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0e30;
+        thunk_FUN_020ccb58();
+        if (0x5a < *unaff_x24) {
+          *(long *)(unaff_x19 + 0x2f0) = lVar2;
+          thunk_FUN_020ccb58(unaff_x19 + 0x2f0,lVar2);
+          lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+          if (lVar2 == 0) goto LAB_039888e8;
+          if (*(int *)(lVar2 + 0x18) != 0) {
+            *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0da0;
+            thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+            if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+              *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0c40;
+              thunk_FUN_020ccb58();
+              if (0x5b < *unaff_x24) {
+                *(long *)(unaff_x19 + 0x2f8) = lVar2;
+                thunk_FUN_020ccb58(unaff_x19 + 0x2f8,lVar2);
+                lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                if (lVar2 == 0) goto LAB_039888e8;
+                if (*(int *)(lVar2 + 0x18) != 0) {
+                  *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0bd0;
+                  thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                  if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                    *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0f20;
+                    thunk_FUN_020ccb58();
+                    if (0x5c < *unaff_x24) {
+                      *(long *)(unaff_x19 + 0x300) = lVar2;
+                      thunk_FUN_020ccb58(unaff_x19 + 0x300,lVar2);
+                      lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                      if (lVar2 == 0) goto LAB_039888e8;
+                      if (*(int *)(lVar2 + 0x18) != 0) {
+                        *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a06e8;
+                        thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                        if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                          *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0a68;
+                          thunk_FUN_020ccb58();
+                          if (0x5d < *unaff_x24) {
+                            *(long *)(unaff_x19 + 0x308) = lVar2;
+                            thunk_FUN_020ccb58(unaff_x19 + 0x308,lVar2);
+                            lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                            if (lVar2 == 0) goto LAB_039888e8;
+                            if (*(int *)(lVar2 + 0x18) != 0) {
+                     
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02061554();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 98
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeVelocity
+ENTRY_POINT: 03986680
+MANUAL_PRIORITY_SCORE: 133
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'ray_interaction']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_21', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_framework_support_only_high\03986680_Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeVelocity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\B_high_priority\098_p133_Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeVelocity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeVelocity
+ENTRY_POINT: 03986680
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 82
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;paired_state_refs;ray_interaction
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_21;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_OpenVR_OpenVRHMD__get_rightEyeVelocity(long param_1,undefined8 param_2)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 unaff_x20;
+  long *unaff_x22;
+  undefined8 *unaff_x23;
+  uint *unaff_x24;
+  undefined8 in_stack_00000010;
+  undefined4 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined4 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined8 in_stack_00000050;
+  undefined4 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined4 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined4 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined4 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined4 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined4 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined4 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined4 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined4 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined4 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined4 in_stack_00000108;
+  undefined8 in_stack_00000110;
+  undefined4 in_stack_00000118;
+  undefined8 in_stack_00000120;
+  undefined4 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined4 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined4 in_stack_00000148;
+  undefined8 in_stack_00000150;
+  undefined4 in_stack_00000158;
+  undefined8 in_stack_00000160;
+  undefined4 in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined4 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  undefined4 in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined4 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined4 in_stack_000001a8;
+  undefined8 in_stack_000001b0;
+  undefined4 in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined4 in_stack_000001c8;
+  undefined8 in_stack_000001d0;
+  undefined4 in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined4 in_stack_000001e8;
+  
+  *(undefined8 *)(param_1 + 0x28) = param_2;
+  thunk_FUN_020ccb58();
+  if (0x59 < *unaff_x24) {
+    *(undefined8 *)(unaff_x19 + 0x2e8) = unaff_x20;
+    thunk_FUN_020ccb58(unaff_x19 + 0x2e8);
+    lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+    if (lVar2 == 0) {
+LAB_039888e8:
+                    /* WARNING: Subroutine does not return */
+      FUN_0206154c();
+    }
+    if (*(int *)(lVar2 + 0x18) != 0) {
+      *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0b60;
+      thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+      if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+        *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0e30;
+        thunk_FUN_020ccb58();
+        if (0x5a < *unaff_x24) {
+          *(long *)(unaff_x19 + 0x2f0) = lVar2;
+          thunk_FUN_020ccb58(unaff_x19 + 0x2f0,lVar2);
+          lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+          if (lVar2 == 0) goto LAB_039888e8;
+          if (*(int *)(lVar2 + 0x18) != 0) {
+            *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0da0;
+            thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+            if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+              *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0c40;
+              thunk_FUN_020ccb58();
+              if (0x5b < *unaff_x24) {
+                *(long *)(unaff_x19 + 0x2f8) = lVar2;
+                thunk_FUN_020ccb58(unaff_x19 + 0x2f8,lVar2);
+                lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                if (lVar2 == 0) goto LAB_039888e8;
+                if (*(int *)(lVar2 + 0x18) != 0) {
+                  *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0bd0;
+                  thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                  if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                    *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0f20;
+                    thunk_FUN_020ccb58();
+                    if (0x5c < *unaff_x24) {
+                      *(long *)(unaff_x19 + 0x300) = lVar2;
+                      thunk_FUN_020ccb58(unaff_x19 + 0x300,lVar2);
+                      lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                      if (lVar2 == 0) goto LAB_039888e8;
+                      if (*(int *)(lVar2 + 0x18) != 0) {
+                        *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a06e8;
+                        thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                        if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                          *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0a68;
+                          thunk_FUN_020ccb58();
+                          if (0x5d < *unaff_x24) {
+                            *(long *)(unaff_x19 + 0x308) = lVar2;
+                            thunk_FUN_020ccb58(unaff_x19 + 0x308,lVar2);
+                            lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                            if (lVar2 == 0) goto LAB_039888e8;
+                            if (*(int *)(lVar2 + 0x18) != 0) {
+                    
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02061554();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 99
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeAngularVelocity
+ENTRY_POINT: 03986698
+MANUAL_PRIORITY_SCORE: 133
+MANUAL_TIER: B_high_priority
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'validity_gate', 'paired_state_refs', 'ray_interaction']
+EVIDENCE: ['strong_eye_source_hits_2', 'validity_or_gating_hits_21', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_21', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_framework_support_only_high\03986698_Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeAngularVelocity.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\B_high_priority\099_p133_Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeAngularVelocity.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.OpenVR.OpenVRHMD$$get_rightEyeAngularVelocity
+ENTRY_POINT: 03986698
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 82
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;paired_state_refs;ray_interaction
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_21;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_21;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_OpenVR_OpenVRHMD__get_rightEyeAngularVelocity(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 unaff_x20;
+  long *unaff_x22;
+  undefined8 *unaff_x23;
+  uint *unaff_x24;
+  undefined8 in_stack_00000010;
+  undefined4 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined4 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined4 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined4 in_stack_00000048;
+  undefined8 in_stack_00000050;
+  undefined4 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined4 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined4 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined4 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined4 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined4 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined4 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined4 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined4 in_stack_000000d8;
+  undefined8 in_stack_000000e0;
+  undefined4 in_stack_000000e8;
+  undefined8 in_stack_000000f0;
+  undefined4 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined4 in_stack_00000108;
+  undefined8 in_stack_00000110;
+  undefined4 in_stack_00000118;
+  undefined8 in_stack_00000120;
+  undefined4 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined4 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined4 in_stack_00000148;
+  undefined8 in_stack_00000150;
+  undefined4 in_stack_00000158;
+  undefined8 in_stack_00000160;
+  undefined4 in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined4 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  undefined4 in_stack_00000188;
+  undefined8 in_stack_00000190;
+  undefined4 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined4 in_stack_000001a8;
+  undefined8 in_stack_000001b0;
+  undefined4 in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined4 in_stack_000001c8;
+  undefined8 in_stack_000001d0;
+  undefined4 in_stack_000001d8;
+  undefined8 in_stack_000001e0;
+  undefined4 in_stack_000001e8;
+  
+  *(undefined8 *)(unaff_x19 + 0x2e8) = unaff_x20;
+  thunk_FUN_020ccb58();
+  lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+  if (lVar2 != 0) {
+    if (*(int *)(lVar2 + 0x18) != 0) {
+      *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0b60;
+      thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+      if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+        *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0e30;
+        thunk_FUN_020ccb58();
+        if (0x5a < *unaff_x24) {
+          *(long *)(unaff_x19 + 0x2f0) = lVar2;
+          thunk_FUN_020ccb58(unaff_x19 + 0x2f0,lVar2);
+          lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+          if (lVar2 == 0) goto LAB_039888e8;
+          if (*(int *)(lVar2 + 0x18) != 0) {
+            *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0da0;
+            thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+            if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+              *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0c40;
+              thunk_FUN_020ccb58();
+              if (0x5b < *unaff_x24) {
+                *(long *)(unaff_x19 + 0x2f8) = lVar2;
+                thunk_FUN_020ccb58(unaff_x19 + 0x2f8,lVar2);
+                lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                if (lVar2 == 0) goto LAB_039888e8;
+                if (*(int *)(lVar2 + 0x18) != 0) {
+                  *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0bd0;
+                  thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                  if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                    *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0f20;
+                    thunk_FUN_020ccb58();
+                    if (0x5c < *unaff_x24) {
+                      *(long *)(unaff_x19 + 0x300) = lVar2;
+                      thunk_FUN_020ccb58(unaff_x19 + 0x300,lVar2);
+                      lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                      if (lVar2 == 0) goto LAB_039888e8;
+                      if (*(int *)(lVar2 + 0x18) != 0) {
+                        *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a06e8;
+                        thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                        if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+                          *(undefined8 *)(lVar2 + 0x28) = *(undefined8 *)PTR_DAT_046a0a68;
+                          thunk_FUN_020ccb58();
+                          if (0x5d < *unaff_x24) {
+                            *(long *)(unaff_x19 + 0x308) = lVar2;
+                            thunk_FUN_020ccb58(unaff_x19 + 0x308,lVar2);
+                            lVar2 = RootMotion_Dynamics_Muscle__get_colliders(*unaff_x23,2);
+                            if (lVar2 == 0) goto LAB_039888e8;
+                            if (*(int *)(lVar2 + 0x18) != 0) {
+                              *(undefined8 *)(lVar2 + 0x20) = *(undefined8 *)PTR_DAT_046a0870;
+                              thunk_FUN_020ccb58((undefined8 *)(lVar2 + 0x20));
+                              if ((*(uint *)(lVar2 + 0x18) & 0xfffffffe) != 0) {
+  
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+                      }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_02061554();
+  }
+LAB_039888e8:
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

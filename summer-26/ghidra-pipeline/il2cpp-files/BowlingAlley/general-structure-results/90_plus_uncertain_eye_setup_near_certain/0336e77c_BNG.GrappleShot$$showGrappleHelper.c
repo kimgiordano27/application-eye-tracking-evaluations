@@ -1,0 +1,289 @@
+/*
+FUNCTION_NAME: BNG.GrappleShot$$showGrappleHelper
+ENTRY_POINT: 0336e77c
+PROGRAM: BowlingAlley-libil2cpp.so
+SCORE: 113
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_21;ray_or_cast_sink_hits_4;functionality_eye_api_context_without_clear_sink_hits_4
+*/
+
+
+void BNG_GrappleShot__showGrappleHelper(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  int iVar3;
+  __shared_count *p_Var4;
+  __locale_t p_Var5;
+  ulong uVar6;
+  long lVar7;
+  long in_x9;
+  ulong uVar8;
+  long *unaff_x20;
+  long unaff_x21;
+  long *plVar9;
+  ulong uVar10;
+  long *unaff_x24;
+  long unaff_x25;
+  long unaff_x28;
+  long unaff_x29;
+  long *plStack0000000000000010;
+  undefined8 uStack0000000000000020;
+  
+  plVar9 = *(long **)(unaff_x21 + 0x1d0);
+  DAT_07901770 = in_x9 + 0x10;
+  DAT_07901778 = 0;
+  uStack0000000000000020 = 0;
+  plStack0000000000000010 = plVar9;
+  if (*plVar9 != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<Mic>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)(int)plVar9[1];
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_07901770);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(long **)(lVar7 + uVar10 * 8) = &DAT_07901770;
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<OVRManager>__;
+  DAT_07901780 = Method_UnityEngine_Object_FindObjectOfType<OVRCameraRig>__ + 0x10;
+  DAT_07901790 = Method_UnityEngine_Object_FindObjectOfType<OVRCameraRig>__ + 0x70;
+  plStack0000000000000010 = (long *)Method_UnityEngine_Object_FindObjectOfType<OVRManager>__;
+  DAT_07901788 = 0;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<OVRManager>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<OVRManager>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar1 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_07901780);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_07901780;
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<PlaneCollisionHandler>__;
+  DAT_079017a0 = Method_UnityEngine_Object_FindObjectOfType<OvrAvatarLipSyncContext>__ + 0x10;
+  DAT_079017b0 = Method_UnityEngine_Object_FindObjectOfType<OvrAvatarLipSyncContext>__ + 0x70;
+  plStack0000000000000010 =
+       (long *)Method_UnityEngine_Object_FindObjectOfType<PlaneCollisionHandler>__;
+  DAT_079017a8 = 0;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<PlaneCollisionHandler>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<PlaneCollisionHandler>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar1 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_079017a0);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_079017a0;
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<PlayerClimbingXR>__;
+  DAT_079017c0 = Method_UnityEngine_Object_FindObjectOfType<PlayerClimbingXR>__ + 0x10;
+  DAT_079017c8 = 0;
+  if (((DAT_07900bf0 & 1) == 0) && (iVar3 = __cxa_guard_acquire(&DAT_07900bf0), iVar3 != 0)) {
+    p_Var5 = newlocale(0x1fbf,"C",(__locale_t)0x0);
+    *(__locale_t *)(unaff_x28 + 0xbe8) = p_Var5;
+    __cxa_guard_release(&DAT_07900bf0);
+  }
+  puVar2 = Method_UnityEngine_Object_FindObjectOfType<ScreenFader>__;
+  DAT_079017d0 = *(undefined8 *)(unaff_x28 + 0xbe8);
+  DAT_079017c0 = Method_UnityEngine_Object_FindObjectOfType<RoomMeshEvent>__ + 0x10;
+  plStack0000000000000010 = (long *)Method_UnityEngine_Object_FindObjectOfType<ScreenFader>__;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<ScreenFader>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<ScreenFader>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar2 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_079017c0);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_079017c0;
+  DAT_079017e0 = puVar1 + 0x10;
+  DAT_079017e8 = 0;
+  if (((DAT_07900bf0 & 1) == 0) && (iVar3 = __cxa_guard_acquire(&DAT_07900bf0), iVar3 != 0)) {
+    p_Var5 = newlocale(0x1fbf,"C",(__locale_t)0x0);
+    *(__locale_t *)(unaff_x28 + 0xbe8) = p_Var5;
+    __cxa_guard_release(&DAT_07900bf0);
+  }
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<SimpleAvatarCreator>__;
+  DAT_079017f0 = *(undefined8 *)(unaff_x28 + 0xbe8);
+  DAT_079017e0 = Method_UnityEngine_Object_FindObjectOfType<SharedSpatialAnchorCore>__ + 0x10;
+  plStack0000000000000010 =
+       (long *)Method_UnityEngine_Object_FindObjectOfType<SimpleAvatarCreator>__;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<SimpleAvatarCreator>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<SimpleAvatarCreator>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar1 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_079017e0);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_079017e0;
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<TTSWit>__;
+  DAT_07901800 = Method_UnityEngine_Object_FindObjectOfType<TTSDiskCache>__ + 0x10;
+  plStack0000000000000010 = (long *)Method_UnityEngine_Object_FindObjectOfType<TTSWit>__;
+  DAT_07901808 = 0;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<TTSWit>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<TTSWit>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar1 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_07901800);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_07901800;
+  puVar1 = Method_UnityEngine_Object_FindObjectOfType<VRKeyboard>__;
+  DAT_07901810 = Method_UnityEngine_Object_FindObjectOfType<UserInput>__ + 0x10;
+  plStack0000000000000010 = (long *)Method_UnityEngine_Object_FindObjectOfType<VRKeyboard>__;
+  DAT_07901818 = 0;
+  uStack0000000000000020 = 0;
+  if (*(long *)Method_UnityEngine_Object_FindObjectOfType<VRKeyboard>__ != -1) {
+    *(long *)(unaff_x29 + -0x18) = unaff_x29 + -0x10;
+    *(long ***)(unaff_x29 + -0x10) = &stack0x00000010;
+    std::__ndk1::__call_once
+              ((ulong *)Method_UnityEngine_Object_FindObjectOfType<VRKeyboard>__,
+               (void *)(unaff_x29 + -0x18),FUN_03383c04);
+  }
+  uVar6 = (ulong)*(int *)(puVar1 + 8);
+  uVar10 = uVar6 - 1;
+  std::__ndk1::__shared_count::__add_shared((__shared_count *)&DAT_07901810);
+  lVar7 = *unaff_x20;
+  uVar8 = *unaff_x24 - lVar7 >> 3;
+  if (uVar8 <= uVar10) {
+    if (uVar8 < uVar6) {
+      FUN_03383ab4();
+      lVar7 = *unaff_x20;
+    }
+    else if (uVar6 < uVar8) {
+      *unaff_x24 = lVar7 + uVar6 * 8;
+    }
+  }
+  p_Var4 = *(__shared_count **)(lVar7 + uVar10 * 8);
+  if (p_Var4 != (__shared_count *)0x0) {
+    std::__ndk1::__shared_count::__release_shared(p_Var4);
+    lVar7 = *unaff_x20;
+  }
+  *(undefined ***)(lVar7 + uVar10 * 8) = &DAT_07901810;
+  if (*(long *)(unaff_x25 + 0x28) == *(long *)(unaff_x29 + -8)) {
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  __stack_chk_fail();
+}
+
+

@@ -1,0 +1,114 @@
+/*
+FUNCTION_NAME: Meta.XR.MRUtilityKit.SceneDecorator.RayDistanceMask$$.ctor
+ENTRY_POINT: 077539ec
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 72
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;paired_state_refs
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_12;paired_field_refs_with_eye_source;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Meta_XR_MRUtilityKit_SceneDecorator_RayDistanceMask___ctor(undefined8 param_1)
+
+{
+  int iVar1;
+  int *piVar2;
+  uint uVar3;
+  undefined4 uVar4;
+  long in_x9;
+  ulong in_x10;
+  long lVar5;
+  uint uVar6;
+  long in_x11;
+  long lVar7;
+  int *in_x12;
+  undefined4 *puVar8;
+  int unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  long unaff_x22;
+  long unaff_x23;
+  uint unaff_w24;
+  
+  while (in_x10 != 0) {
+    in_x11 = in_x11 + -1;
+    in_x10 = in_x10 - 1;
+    *in_x12 = *in_x12 + unaff_w19;
+    in_x12 = in_x12 + 1;
+    if (in_x11 == 0) {
+      do {
+        do {
+          if (*(char *)(unaff_x20 + 0x69) != '\0') {
+            if (unaff_x22 == 0) goto LAB_07753b14;
+            uVar3 = *(uint *)(unaff_x22 + 0x18);
+            if (0 < (int)uVar3) {
+              uVar6 = 1;
+              do {
+                if ((uVar3 <= uVar6 - 1) || (uVar3 <= uVar6)) goto LAB_07753b38;
+                lVar5 = unaff_x22 + (long)(int)uVar6 * 4;
+                puVar8 = (undefined4 *)(unaff_x22 + (long)(int)(uVar6 - 1) * 4 + 0x20);
+                uVar4 = *puVar8;
+                iVar1 = uVar6 + 2;
+                uVar6 = uVar6 + 3;
+                *puVar8 = *(undefined4 *)(lVar5 + 0x20);
+                *(undefined4 *)(lVar5 + 0x20) = uVar4;
+              } while (iVar1 < (int)uVar3);
+            }
+          }
+          lVar5 = *(long *)(unaff_x20 + 0x80);
+          if (lVar5 == 0) {
+LAB_07753b14:
+                    /* WARNING: Subroutine does not return */
+            FUN_04447e44();
+          }
+          if (*(uint *)(lVar5 + 0x18) <= unaff_w24) goto LAB_07753b38;
+          lVar7 = *(long *)(unaff_x21 + 0x130);
+          if (lVar7 == 0) goto LAB_07753b14;
+          uVar3 = *(uint *)(lVar5 + in_x9 * 4 + 0x20);
+          lVar5 = (long)(int)uVar3;
+          if (*(uint *)(lVar7 + 0x18) <= uVar3) goto LAB_07753b38;
+          lVar7 = *(long *)(lVar7 + lVar5 * 8 + 0x20);
+          if (lVar7 == 0) goto LAB_07753b14;
+          if ((uint)param_1 <= uVar3) goto LAB_07753b38;
+          if (unaff_x22 == 0) goto LAB_07753b14;
+          piVar2 = (int *)(unaff_x23 + lVar5 * 4 + 0x20);
+          FUN_07a61200(unaff_x22,*(undefined8 *)(lVar7 + 0x10),*piVar2,0);
+          lVar7 = *(long *)(unaff_x20 + 0x78);
+          if (lVar7 == 0) goto LAB_07753b14;
+          if (*(uint *)(lVar7 + 0x18) <= uVar3) goto LAB_07753b38;
+          lVar7 = lVar7 + lVar5 * 4;
+          iVar1 = *(int *)(unaff_x22 + 0x18);
+          *(int *)(lVar7 + 0x20) = *(int *)(lVar7 + 0x20) + iVar1;
+          param_1 = *(undefined8 *)(unaff_x23 + 0x18);
+          if ((uint)param_1 <= uVar3) goto LAB_07753b38;
+          unaff_w24 = unaff_w24 + 1;
+          *piVar2 = *piVar2 + iVar1;
+          lVar5 = *(long *)(unaff_x20 + 0xd0);
+          if (lVar5 == 0) goto LAB_07753b14;
+          if ((int)*(uint *)(lVar5 + 0x18) <= (int)unaff_w24) {
+            return;
+          }
+          if (*(uint *)(lVar5 + 0x18) <= unaff_w24) goto LAB_07753b38;
+          in_x9 = (long)(int)unaff_w24;
+          lVar5 = *(long *)(lVar5 + in_x9 * 8 + 0x20);
+          if (lVar5 == 0) goto LAB_07753b14;
+          unaff_x22 = *(long *)(lVar5 + 0x10);
+        } while (unaff_w19 == 0);
+        if (unaff_x22 == 0) goto LAB_07753b14;
+        in_x10 = (ulong)*(uint *)(unaff_x22 + 0x18);
+      } while ((long)(in_x10 << 0x20) < 1);
+      in_x11 = (long)(int)*(uint *)(unaff_x22 + 0x18);
+      in_x12 = (int *)(unaff_x22 + 0x20);
+    }
+  }
+LAB_07753b38:
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e4c();
+}
+
+

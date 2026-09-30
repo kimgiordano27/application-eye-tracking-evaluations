@@ -1,0 +1,915 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 78
+FUNCTION_NAME: PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE
+ENTRY_POINT: 045b44b8
+MANUAL_PRIORITY_SCORE: 356
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 219
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_8', 'ui_or_gameplay_sink_hits_20', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_20', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_219', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\045b44b8_PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\078_p356_PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE
+ENTRY_POINT: 045b44b8
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 219
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_8;ui_or_gameplay_sink_hits_20;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_20;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE
+               (undefined1 param_1 [16],undefined4 param_2,undefined4 param_3,undefined8 param_4,
+               Il2CppObject *param_5,Il2CppObject *param_6)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  bool bVar5;
+  byte bVar6;
+  undefined4 uVar7;
+  Il2CppObject *pIVar8;
+  Il2CppObject *pIVar9;
+  void *pvVar10;
+  long lVar11;
+  long lVar12;
+  Il2CppObject *pIVar13;
+  undefined4 uVar14;
+  
+  puVar4 = 
+  PTR_EventBase_1_TypeId_m7AE234E99435C4E00BF686FA957F859C1E6FFDB1_RuntimeMethod_var_048de070;
+  puVar3 = PTR_EventBase_1_tBD3A3272CA5474A0EF4F4EFF8E1751F89428D493_il2cpp_TypeInfo_var_048dd788;
+  puVar2 = Method_Oculus_Platform_Request<DestinationList>__ctor__;
+  puVar1 = Method_Oculus_Platform_Request<ChallengeList>__ctor__;
+  if ((PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE::
+       s_Il2CppMethodInitialized & 1) == 0) {
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)Method_UnityEngine_InputSystem_Utilities_ReadOnlyArray<string>__ctor__);
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)Method_Unity_Collections_NativeArray<int4>_Dispose__);
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar4);
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               PTR_EventBase_1_TypeId_mECB64534E7784E4F149108516B906000134DA10E_RuntimeMethod_var_048de078
+              );
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               PTR_EventBase_1_t49C5D050F7E36AA2230E042A0ACB06DE32E81034_il2cpp_TypeInfo_var_048dd7c0
+              );
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar3);
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar1);
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar2);
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)Method_OVRMeshJobs_NativeArrayHelper<OVRPlugin_Vector3f>__ctor__);
+    PointerCaptureDispatchingStrategy_DispatchEvent_m26632E7E4527CCCF030F8062C1CE45C38E838AAE::
+    s_Il2CppMethodInitialized = 1;
+  }
+  pIVar8 = (Il2CppObject *)IsInst(param_5,*(Il2CppClass **)puVar2);
+  if (pIVar8 != (Il2CppObject *)0x0) {
+    NullCheck(pIVar8);
+    uVar7 = InterfaceFuncInvoker0<int>::Invoke(0,*(Il2CppClass **)puVar2,pIVar8);
+    pIVar9 = (Il2CppObject *)
+             PointerCaptureHelper_GetCapturingElement_m30DED02760CA5544CF35162656E2E3959DC8103E
+                       (param_6,uVar7,0);
+    if (pIVar9 != (Il2CppObject *)0x0) {
+      pvVar10 = (void *)IsInstClass(pIVar9,*(Il2CppClass **)
+                                            Method_OVRMeshJobs_NativeArrayHelper<OVRPlugin_Vector3f>__ctor__
+                                   );
+      NullCheck(param_5);
+      lVar11 = VirtualFuncInvoker0<long>::Invoke(5,param_5);
+      il2cpp_codegen_runtime_class_init_inline(*(Il2CppClass **)puVar3);
+      lVar12 = EventBase_1_TypeId_m7AE234E99435C4E00BF686FA957F859C1E6FFDB1(*(MethodInfo **)puVar4);
+      if ((lVar11 == lVar12) || (pvVar10 == (void *)0x0)) {
+        bVar5 = false;
+      }
+      else {
+        NullCheck(pvVar10);
+        lVar11 = VisualElement_get_panel_m44AEFA3041785E57641AA3F895D11215C841BED1(pvVar10,0);
+        bVar5 = lVar11 == 0;
+      }
+      if (bVar5) {
+        NullCheck(pIVar8);
+        uVar7 = InterfaceFuncInvoker0<int>::Invoke(0,*(Il2CppClass **)puVar2,pIVar8);
+        PointerCaptureHelper_ReleasePointer_mE9ABEA39360504C8B5A9CF1C067A63F7535CDECB
+                  (param_6,uVar7,0);
+      }
+      else {
+        NullCheck(param_5);
+        lVar11 = EventBase_get_target_m9E5CB6AC9A51E9F61D9540D279BFA53C04AD010E(param_5,0);
+        if (lVar11 == 0) {
+          bVar5 = false;
+        }
+        else {
+          NullCheck(param_5);
+          pIVar13 = (Il2CppObject *)
+                    EventBase_get_target_m9E5CB6AC9A51E9F61D9540D279BFA53C04AD010E(param_5,0);
+          bVar5 = pIVar13 != pIVar9;
+        }
+        if (!bVar5) {
+          if ((param_6 == (Il2CppObject *)0x0) || (pvVar10 == (void *)0x0)) {
+            bVar5 = false;
+          }
+          else {
+            NullCheck(pvVar10);
+            pIVar13 = (Il2CppObject *)
+                      VisualElement_get_panel_m44AEFA3041785E57641AA3F895D11215C841BED1(pvVar10,0);
+            bVar5 = pIVar13 != param_6;
+          }
+          if (!bVar5) {
+            NullCheck(param_5);
+            lVar11 = VirtualFuncInvoker0<long>::Invoke(5,param_5);
+            il2cpp_codegen_runtime_class_init_inline
+                      (*(Il2CppClass **)
+                        PTR_EventBase_1_t49C5D050F7E36AA2230E042A0ACB06DE32E81034_il2cpp_TypeInfo_var_048dd7c0
+                      );
+            lVar12 = EventBase_1_TypeId_mECB64534E7784E4F149108516B906000134DA10E
+                               (*(MethodInfo **)
+                                 PTR_EventBase_1_TypeId_mECB64534E7784E4F149108516B906000134DA10E_RuntimeMethod_var_048de078
+                               );
+            if (lVar11 == lVar12) {
+              bVar5 = false;
+            }
+            else {
+              NullCheck(param_5);
+              lVar11 = VirtualFuncInvoker0<long>::Invoke(5,param_5);
+              il2cpp_codegen_runtime_class_init_inline(*(Il2CppClass **)puVar3);
+              lVar12 = EventBase_1_TypeId_m7AE234E99435C4E00BF686FA957F859C1E6FFDB1
+                                 (*(MethodInfo **)puVar4);
+              bVar5 = lVar11 != lVar12;
+            }
+            if (bVar5) {
+              NullCheck(pIVar8);
+              uVar7 = InterfaceFuncInvoker0<int>::Invoke(0,*(Il2CppClass **)puVar2,pIVar8);
+              PointerCaptureHelper_ProcessPointerCapture_mD1AE918F21A8FA12782FDDB44BC51B4449F0B160
+                        (param_6,uVar7,0);
+            }
+            pvVar10 = (void *)IsInstClass(param_6,*(Il2CppClass **)
+                                                                                                      
+                                                  Method_UnityEngine_InputSystem_Utilities_ReadOnlyArray<string>__ctor__
+                                         );
+            if (pvVar10 != (void *)0x0) {
+              pIVar13 = (Il2CppObject *)IsInst(pIVar8,*(Il2CppClass **)puVar1);
+              if (pIVar13 == (Il2CppObject *)0x0) {
+                bVar6 = 1;
+              }
+              else {
+                NullCheck(pIVar13);
+                bVar6 = InterfaceFuncInvoker0<bool>::Invoke(2,*(Il2CppClass **)puVar1,pIVar13);
+                bVar6 = bVar6 & 1;
+              }
+              if (bVar6 != 0) {
+                NullCheck(pIVar8);
+                uVar7 = InterfaceFuncInvoker0<int>::Invoke(0,*(Il2CppClass **)puVar2,pIVar8);
+                NullCheck(pIVar8);
+                uVar14 = InterfaceFuncInvoker0<Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2>::
+                         Invoke(5,*(Il2CppClass **)puVar2,pIVar8);
+                uVar14 = Vector2_op_Implicit_mE8EBEE9291F11BB02F062D6E000F4798968CBD96_inline
+                                   (uVar14,param_2,param_3);
+                NullCheck(pvVar10);
+                BaseVisualElementPanel_RecomputeTopElementUnderPointer_mF3D6110A28FCCF72408FE62A21A4F57E4AC717AF
+                          (uVar14,param_2,pvVar10,uVar7,param_5,0);
+              }
+            }
+            NullCheck(param_5);
+            EventBase_set_dispatch_m6FFDCFE9444A5C96E0511099D29F2CE72D8EAAD5(param_5,1);
+            NullCheck(param_5);
+            EventBase_set_target_mBDBE0FB1321254FEDFC4B0EF34DBDA8105FFCBA2(param_5,pIVar9,0);
+            NullCheck(param_5);
+            EventBase_set_skipDisabledElements_mCD199A8D744CA42DC9A331A2795DAEB2CCA9243D
+                      (param_5,0,0);
+            pvVar10 = (void *)IsInstClass(pIVar9,*(Il2CppClass **)
+                                                  Method_Unity_Collections_NativeArray<int4>_Dispose__
+                                         );
+            if (pvVar10 != (void *)0x0) {
+              NullCheck(pvVar10);
+              CallbackEventHandler_HandleEventAtTargetPhase_m681B23C2CCCF3064FEC2DFF49645043E7F909B18
+                        (pvVar10,param_5,0);
+            }
+            NullCheck(param_5);
+            VirtualActionInvoker1<Il2CppObject*>::Invoke(0xb,param_5,(Il2CppObject *)0x0);
+            NullCheck(param_5);
+            EventBase_set_propagationPhase_mC66AE0DFD3D62A90A809387B2BF2833F5CED3B8B_inline
+                      ((EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C *)param_5,0,
+                       (MethodInfo *)0x0);
+            NullCheck(param_5);
+            EventBase_set_dispatch_m6FFDCFE9444A5C96E0511099D29F2CE72D8EAAD5(param_5,0,0);
+            NullCheck(param_5);
+            EventBase_set_stopDispatch_m4B24B3101AADAEAAEAB2617E3AF8ED4257681870(param_5,1,0);
+            NullCheck(param_5);
+            EventBase_set_propagateToIMGUI_mEE39524D804DF059C390FBC08462CC2892770981(param_5,0,0);
+          }
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 79
+FUNCTION_NAME: ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310
+ENTRY_POINT: 044410cc
+MANUAL_PRIORITY_SCORE: 351
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 212
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_1', 'validity_or_gating_hits_2', 'strong_pose_or_ray_construction_hits_4', 'ui_or_gameplay_sink_hits_6', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_6', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_212', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\044410cc_ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\079_p351_ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310
+ENTRY_POINT: 044410cc
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 212
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_6;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_6;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+/* WARNING: Restarted to delay deadcode elimination for space: stack */
+
+void ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310
+               (undefined1 param_1 [16],undefined4 param_2,undefined4 param_3,long param_4,
+               Il2CppObject *param_5,undefined8 param_6)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  void *pvVar3;
+  EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C *pEVar4;
+  Il2CppObject *pIVar5;
+  undefined8 uVar6;
+  undefined1 auVar7 [16];
+  EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C **local_1c0;
+  FinallyHelper<ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310::__9,false>
+  aFStack_1b8 [16];
+  EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C *local_1a8;
+  undefined4 local_19c;
+  void *local_198;
+  Il2CppObject *local_190;
+  undefined1 local_181;
+  Il2CppObject *local_180;
+  Il2CppObject *local_178;
+  Il2CppObject *local_170;
+  Il2CppObject *local_168;
+  void *local_160;
+  void *local_158;
+  undefined1 local_14d;
+  int local_14c;
+  void *local_148;
+  long local_140;
+  void *local_138;
+  undefined1 local_129;
+  undefined4 local_128;
+  undefined4 uStack_124;
+  byte local_119;
+  undefined4 local_110;
+  undefined4 local_108;
+  undefined8 local_100;
+  undefined4 local_f4;
+  undefined4 uStack_f0;
+  undefined4 local_ec;
+  undefined8 local_e8;
+  undefined4 local_e0;
+  Il2CppObject *local_d8;
+  long local_d0;
+  long local_c8;
+  Il2CppObject *local_c0;
+  Il2CppObject *local_b8;
+  void *local_b0;
+  int local_a4;
+  Il2CppObject *local_a0;
+  List_1_tBDD12EAD3C5C46706730C230F223EE020C6822D6 *local_98;
+  undefined1 local_89;
+  Il2CppObject *local_88;
+  Il2CppObject *local_80;
+  uint local_78;
+  uint local_74;
+  EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C *local_70;
+  undefined1 local_61;
+  Il2CppObject *local_60;
+  undefined1 local_53;
+  undefined1 local_52;
+  undefined1 local_51;
+  long local_50;
+  void *local_48;
+  Il2CppObject *local_40;
+  undefined8 local_38;
+  Il2CppObject *local_30;
+  long local_28;
+  
+  puVar2 = Method_Oculus_Platform_Request<DestinationList>__ctor__;
+  puVar1 = Method_OVRMeshJobs_NativeArrayHelper<OVRPlugin_Vector3f>__ctor__;
+  local_38 = param_6;
+  local_30 = param_5;
+  local_28 = param_4;
+  if ((ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310::
+       s_Il2CppMethodInitialized & 1) == 0) {
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               PTR_ClickDetector_t6B5A82C99CFD12E051D8E84A7C8F7488355B8F31_il2cpp_TypeInfo_var_048d81e0
+              );
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               PTR_ClickEvent_t30651949F0BA68E61187B63F5D325323E92CC318_il2cpp_TypeInfo_var_048d8210
+              );
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               Method_System_Collections_Generic_Dictionary<int,_IServiceComponent>_get_Keys__);
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar2);
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)
+               PTR_List_1_get_Item_m97E4330A4B3A01D99AD2ACC1BAE011F8FD18C7BB_RuntimeMethod_var_048d8208
+              );
+    il2cpp_codegen_initialize_runtime_metadata
+              ((ulong *)Method_Unity_Collections_NativeArray<Matrix4x4>_Copy__);
+    il2cpp_codegen_initialize_runtime_metadata((ulong *)puVar1);
+    ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310::
+    s_Il2CppMethodInitialized = 1;
+  }
+  local_40 = (Il2CppObject *)0x0;
+  local_48 = (void *)0x0;
+  local_50 = 0;
+  local_51 = 0;
+  local_52 = 0;
+  local_53 = 0;
+  local_60 = (Il2CppObject *)0x0;
+  local_61 = 0;
+  local_70 = (EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C *)0x0;
+  local_74 = 0;
+  local_78 = 0;
+  local_80 = local_30;
+  local_a0 = (Il2CppObject *)IsInst(local_30,*(Il2CppClass **)puVar2);
+  local_89 = local_a0 == (Il2CppObject *)0x0;
+  if (!(bool)local_89) {
+    local_98 = *(List_1_tBDD12EAD3C5C46706730C230F223EE020C6822D6 **)(local_28 + 0x10);
+    local_51 = local_89;
+    local_88 = local_a0;
+    local_40 = local_a0;
+    NullCheck(local_a0);
+    local_a4 = InterfaceFuncInvoker0<int>::Invoke(0,*(Il2CppClass **)puVar2,local_a0);
+    NullCheck(local_98);
+    local_b0 = (void *)List_1_get_Item_m97E4330A4B3A01D99AD2ACC1BAE011F8FD18C7BB
+                                 (local_98,local_a4,
+                                  *(MethodInfo **)
+                                   PTR_List_1_get_Item_m97E4330A4B3A01D99AD2ACC1BAE011F8FD18C7BB_RuntimeMethod_var_048d8208
+                                 );
+    local_b8 = local_30;
+    local_48 = local_b0;
+    NullCheck(local_30);
+    local_c0 = (Il2CppObject *)
+               EventBase_get_target_m9E5CB6AC9A51E9F61D9540D279BFA53C04AD010E(local_b8,0);
+    local_c8 = IsInstClass(local_c0,*(Il2CppClass **)puVar1);
+    local_50 = local_c8;
+    if (local_c8 == 0) {
+      local_74 = 0;
+    }
+    else {
+      local_d8 = local_40;
+      local_d0 = local_c8;
+      NullCheck(local_40);
+      local_f4 = InterfaceFuncInvoker0<Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2>::Invoke
+                           (5,*(Il2CppClass **)puVar2,local_d8);
+      local_e8 = CONCAT44(param_2,local_f4);
+      local_110 = param_3;
+      uStack_f0 = param_2;
+      local_ec = param_3;
+      local_e0 = param_3;
+      local_108 = Vector2_op_Implicit_mE8EBEE9291F11BB02F062D6E000F4798968CBD96_inline
+                            (local_f4,param_2,param_3);
+      local_100 = CONCAT44(param_2,local_108);
+      il2cpp_codegen_runtime_class_init_inline
+                (*(Il2CppClass **)
+                  PTR_ClickDetector_t6B5A82C99CFD12E051D8E84A7C8F7488355B8F31_il2cpp_TypeInfo_var_048d81e0
+                );
+      uStack_124 = (undefined4)((ulong)local_100 >> 0x20);
+      local_128 = (undefined4)local_100;
+      local_119 = ClickDetector_ContainsPointer_m958B2DA338E9A24A5DF005639A981469DEA48852
+                            (local_128,uStack_124,local_d0,0);
+      local_119 = local_119 & 1;
+      local_74 = (uint)local_119;
+    }
+    local_129 = local_74 != 0;
+    if ((bool)local_129) {
+      local_138 = local_48;
+      local_52 = local_129;
+      NullCheck(local_48);
+      local_140 = *(long *)((long)local_138 + 0x10);
+      if (local_140 == 0) {
+        local_78 = 0;
+      }
+      else {
+        local_148 = local_48;
+        NullCheck(local_48);
+        local_14c = *(int *)((long)local_148 + 0x30);
+        local_78 = (uint)(0 < local_14c);
+      }
+      local_14d = local_78 != 0;
+      if ((bool)local_14d) {
+        local_158 = local_48;
+        local_53 = local_14d;
+        NullCheck(local_48);
+        local_160 = *(void **)((long)local_158 + 0x10);
+        local_168 = local_30;
+        NullCheck(local_30);
+        local_170 = (Il2CppObject *)
+                    EventBase_get_target_m9E5CB6AC9A51E9F61D9540D279BFA53C04AD010E(local_168);
+        NullCheck(local_160);
+        pvVar3 = local_160;
+        uVar6 = IsInstClass(local_170,*(Il2CppClass **)puVar1);
+        local_180 = (Il2CppObject *)
+                    VisualElement_FindCommonAncestor_m464F5AAEF24D4BC3A2847581F314630BE8C5B18B
+                              (pvVar3,uVar6,0);
+        local_181 = local_180 != (Il2CppObject *)0x0;
+        if ((bool)local_181) {
+          local_190 = local_30;
+          local_198 = local_48;
+          local_61 = local_181;
+          local_178 = local_180;
+          local_60 = local_180;
+          NullCheck(local_48);
+          local_19c = *(undefined4 *)((long)local_198 + 0x30);
+          il2cpp_codegen_runtime_class_init_inline
+                    (*(Il2CppClass **)
+                      PTR_ClickEvent_t30651949F0BA68E61187B63F5D325323E92CC318_il2cpp_TypeInfo_var_048d8210
+                    );
+          uVar6 = IsInstSealed(local_190,
+                               *(Il2CppClass **)
+                                Method_Unity_Collections_NativeArray<Matrix4x4>_Copy__);
+          auVar7 = ClickEvent_GetPooled_m55055E410F3604AF4D748B94C32566D6C9770653(uVar6,local_19c,0)
+          ;
+          local_1a8 = auVar7._0_8_;
+          local_1c0 = &local_70;
+          local_70 = local_1a8;
+          il2cpp::utils::
+          Finally<ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310::__9>
+                    ((utils *)&local_1c0,auVar7._8_8_);
+          pIVar5 = local_60;
+          pEVar4 = local_70;
+          NullCheck(local_70);
+          EventBase_set_target_mBDBE0FB1321254FEDFC4B0EF34DBDA8105FFCBA2(pEVar4,pIVar5,0);
+          pIVar5 = local_60;
+          pEVar4 = local_70;
+          NullCheck(local_60);
+          VirtualActionInvoker1<EventBase_tD7F89B936EB8074AE31E7B15976C072277371F7C*>::Invoke
+                    (6,pIVar5,pEVar4);
+          il2cpp::utils::
+          FinallyHelper<ClickDetector_SendClickEvent_m3AC03E996C28D79AAB47D49BEA01887AFF21B310::$_9,false>
+          ::~FinallyHelper(aFStack_1b8);
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 80
+FUNCTION_NAME: OVR.OpenVR.IVRCompositor._PostPresentHandoff$$EndInvoke
+ENTRY_POINT: 02d90560
+MANUAL_PRIORITY_SCORE: 340
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 200
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_3', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_4', 'strong_pose_or_ray_construction_hits_4', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_200', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_3_bonus_9', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\02d90560_OVR.OpenVR.IVRCompositor._PostPresentHandoff$$EndInvoke.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\080_p340_OVR.OpenVR.IVRCompositor._PostPresentHandoff$$EndInvoke.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVR.OpenVR.IVRCompositor._PostPresentHandoff$$EndInvoke
+ENTRY_POINT: 02d90560
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 200
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_3;validity_or_gating_hits_4;strong_pose_or_ray_construction_hits_4;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+byte OVR_OpenVR_IVRCompositor__PostPresentHandoff__EndInvoke
+               (OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D *param_1,ulong param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  undefined4 uVar5;
+  byte bVar6;
+  int iVar7;
+  undefined4 uVar8;
+  undefined4 uVar9;
+  undefined8 uVar10;
+  undefined8 *puVar11;
+  int *piVar12;
+  OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D *this;
+  Il2CppArray *this_00;
+  long lVar13;
+  OVROverlay_t236C8597A48845938E1DE1D591224817058AC43D *pOVar14;
+  long unaff_x29;
+  undefined8 *in_stack_00000060;
+  undefined8 *in_stack_00000068;
+  undefined8 *in_stack_00000070;
+  undefined8 *in_stack_00000078;
+  undefined8 *in_stack_00000080;
+  undefined4 uStack000000000000008c;
+  byte bStack0000000000000093;
+  undefined4 uStack0000000000000094;
+  int iStack0000000000000114;
+  Il2CppObject *in_stack_00000118;
+  long in_stack_00000120;
+  byte bStack00000000000001a7;
+  undefined8 in_stack_000001a8;
+  undefined4 in_stack_000001b0;
+  
+  while( true ) {
+    uVar10 = OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D::GetAt(param_1,param_2);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000080);
+    bVar6 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(uVar10,0);
+    if ((bVar6 & 1) != 0) break;
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000070);
+    puVar11 = (undefined8 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000070);
+    this = (OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D *)*puVar11;
+    iVar1 = *(int *)(unaff_x29 + -0xb8);
+    NullCheck(this);
+    uVar10 = OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D::GetAt(this,(long)iVar1);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000080);
+    bVar6 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605
+                      (uVar10,*(undefined8 *)(unaff_x29 + -0x18),0);
+    if ((bVar6 & 1) != 0) break;
+    uVar9 = il2cpp_codegen_add<int,int>(*(int *)(unaff_x29 + -0xb8),1);
+    *(undefined4 *)(unaff_x29 + -0xb8) = uVar9;
+    if (0xe < *(int *)(unaff_x29 + -0xb8)) goto LAB_02d906a8;
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000070);
+    puVar11 = (undefined8 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000070);
+    param_1 = (OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D *)*puVar11;
+    iVar1 = *(int *)(unaff_x29 + -0xb8);
+    NullCheck(param_1);
+    param_2 = (ulong)iVar1;
+  }
+  *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0x1b0) = *(undefined4 *)(unaff_x29 + -0xb8);
+  il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000070);
+  puVar11 = (undefined8 *)il2cpp_codegen_static_fields_for((Il2CppClass *)*in_stack_00000070);
+  this_00 = (Il2CppArray *)*puVar11;
+  iVar1 = *(int *)(unaff_x29 + -0xb8);
+  NullCheck(this_00);
+  ArrayElementTypeCheck(this_00,*(void **)(unaff_x29 + -0x18));
+  OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D::SetAt
+            ((OVROverlayU5BU5D_t0787D5D37FCAE59BD91C1125190EAF75B940B44D *)this_00,(long)iVar1,
+             *(OVROverlay_t236C8597A48845938E1DE1D591224817058AC43D **)(unaff_x29 + -0x18));
+LAB_02d906a8:
+  if ((((((*(byte *)(*(long *)(unaff_x29 + -0x18) + 0x120) & 1) == 0) &&
+        (*(int *)(*(long *)(unaff_x29 + -0x18) + 0x140) == *(int *)(unaff_x29 + -0x1c))) &&
+       (*(int *)(*(long *)(unaff_x29 + -0x18) + 0x144) == *(int *)(unaff_x29 + -0x20))) &&
+      ((*(int *)(*(long *)(unaff_x29 + -0x18) + 0x148) == *(int *)(unaff_x29 + -0x24) &&
+       (iVar1 = *(int *)(*(long *)(unaff_x29 + -0x18) + 0x134),
+       iVar7 = OVROverlay_get_layout_m4893928952320613F6AAD4E58DCEBDD373B621C8
+                         (*(undefined8 *)(unaff_x29 + -0x18),0), iVar1 == iVar7)))) &&
+     (*(int *)(*(long *)(unaff_x29 + -0x18) + 0x14c) == *(int *)(unaff_x29 + -0x28))) {
+    lVar13 = *(long *)(unaff_x29 + -0x18);
+    uVar10 = *in_stack_00000060;
+    il2cpp_codegen_runtime_class_init_inline
+              (*(Il2CppClass **)
+                Method_UnityEngine_Rendering_Universal_DebugDisplaySettingsRendering_WidgetFactory_<>c__DisplayClass11_0_<CreatePixelValidationChannels>b__1__
+              );
+    bVar6 = Sizei_Equals_mCD498318CBD1F49F2CA7C33ACF59A2A5B70FCD17(lVar13 + 0x138,uVar10,0);
+    if (((bVar6 & 1) != 0) &&
+       (*(int *)(*(long *)(unaff_x29 + -0x18) + 0x130) == *(int *)(unaff_x29 + -0x2c))) {
+      *(uint *)(unaff_x29 + -0xbc) =
+           (uint)(*(int *)(*(long *)(unaff_x29 + -0x18) + 0xe0) !=
+                 *(int *)(*(long *)(unaff_x29 + -0x18) + 0xdc));
+      goto LAB_02d908ac;
+    }
+  }
+  *(undefined4 *)(unaff_x29 + -0xbc) = 1;
+LAB_02d908ac:
+  if (*(int *)(unaff_x29 + -0xbc) == 0) {
+    *(undefined1 *)(unaff_x29 + -1) = 0;
+  }
+  else {
+    uVar9 = *(undefined4 *)(unaff_x29 + -0x2c);
+    uVar8 = OVROverlay_get_layout_m4893928952320613F6AAD4E58DCEBDD373B621C8
+                      (*(undefined8 *)(unaff_x29 + -0x18));
+    uVar10 = *in_stack_00000060;
+    uVar2 = *(undefined4 *)(unaff_x29 + -0x1c);
+    uVar3 = *(undefined4 *)(unaff_x29 + -0x20);
+    uVar4 = *(undefined4 *)(unaff_x29 + -0x24);
+    uVar5 = *(undefined4 *)(unaff_x29 + -0x28);
+    il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000078);
+    OVRPlugin_CalculateLayerDesc_m1C5C994D88D2EB1BC56103558F7DB7AFDFDF04C9
+              (uVar9,uVar8,uVar10,uVar2,uVar3,uVar4,uVar5,0);
+    memcpy(&stack0x000002b4,&stack0x00000238,0x7c);
+    memcpy((void *)(unaff_x29 + -0xb4),&stack0x000002b4,0x7c);
+    memcpy(&stack0x000001b4,(void *)(unaff_x29 + -0xb4),0x7c);
+    in_stack_000001b0 = *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0xdc);
+    in_stack_000001a8 = *(undefined8 *)(*(long *)(unaff_x29 + -0x18) + 0x1c0);
+    memcpy(&stack0x00000128,&stack0x000001b4,0x7c);
+    bStack00000000000001a7 =
+         OVRPlugin_EnqueueSetupLayer_mA1D5C761EE406503F0AA37B6C55C0AC87D61023F
+                   (&stack0x00000128,in_stack_000001b0,in_stack_000001a8,0);
+    bStack00000000000001a7 = bStack00000000000001a7 & 1;
+    in_stack_00000120 = *(long *)(unaff_x29 + -0x18) + 0x1b8;
+    in_stack_00000118 =
+         (Il2CppObject *)
+         GCHandle_get_Target_m481F9508DA5E384D33CD1F4450060DC56BBD4CD5(in_stack_00000120,0);
+    pOVar14 = *(OVROverlay_t236C8597A48845938E1DE1D591224817058AC43D **)(unaff_x29 + -0x18);
+    piVar12 = (int *)UnBox(in_stack_00000118,(Il2CppClass *)*in_stack_00000068);
+    OVROverlay_set_layerId_m28284412D866364354AF5355DD29ED5643F4BA46_inline
+              (pOVar14,*piVar12,(MethodInfo *)0x0);
+    iStack0000000000000114 =
+         OVROverlay_get_layerId_mA7DC748DC6428FC5D81249F457EE93C790B254D2_inline
+                   (*(OVROverlay_t236C8597A48845938E1DE1D591224817058AC43D **)(unaff_x29 + -0x18),
+                    (MethodInfo *)0x0);
+    if (0 < iStack0000000000000114) {
+      memcpy(&stack0x00000098,(void *)(unaff_x29 + -0xb4),0x7c);
+      memcpy((void *)(*(long *)(unaff_x29 + -0x18) + 0x130),&stack0x00000098,0x7c);
+      uStack0000000000000094 = *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0xdc);
+      *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0xe0) = uStack0000000000000094;
+      bStack0000000000000093 = *(byte *)(*(long *)(unaff_x29 + -0x18) + 0xd3) & 1;
+      if (bStack0000000000000093 == 0) {
+        uStack000000000000008c =
+             OVROverlay_get_layerId_mA7DC748DC6428FC5D81249F457EE93C790B254D2_inline
+                       (*(OVROverlay_t236C8597A48845938E1DE1D591224817058AC43D **)
+                         (unaff_x29 + -0x18),(MethodInfo *)0x0);
+        il2cpp_codegen_runtime_class_init_inline((Il2CppClass *)*in_stack_00000078);
+        uVar9 = OVRPlugin_GetLayerTextureStageCount_m7ACFF1E9AA4708B227460BB30021AA34347ED874
+                          (uStack000000000000008c,0);
+        *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0x1ac) = uVar9;
+      }
+      else {
+        *(undefined4 *)(*(long *)(unaff_x29 + -0x18) + 0x1ac) = 1;
+      }
+    }
+    *(undefined1 *)(*(long *)(unaff_x29 + -0x18) + 0x120) = 0;
+    *(undefined1 *)(unaff_x29 + -1) = 1;
+  }
+  return *(byte *)(unaff_x29 + -1) & 1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 81
+FUNCTION_NAME: Meta.XR.BuildingBlocks.Telemetry$$AddBlockInfo
+ENTRY_POINT: 02454380
+MANUAL_PRIORITY_SCORE: 339
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 208
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_3', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_5', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_5', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_208', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\02454380_Meta.XR.BuildingBlocks.Telemetry$$AddBlockInfo.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\finalkickVR\manual-review-pack\A_must_review\081_p339_Meta.XR.BuildingBlocks.Telemetry$$AddBlockInfo.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.BuildingBlocks.Telemetry$$AddBlockInfo
+ENTRY_POINT: 02454380
+PROGRAM: finalkickVR-libil2cpp.so
+SCORE: 208
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_5;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_5;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined4 Meta_XR_BuildingBlocks_Telemetry__AddBlockInfo(void)
+
+{
+  undefined4 uVar1;
+  long lVar2;
+  Il2CppRGCTXData *pIVar3;
+  Il2CppClass *pIVar4;
+  void *pvVar5;
+  MethodInfo *pMVar6;
+  undefined8 uVar7;
+  FieldInfo *pFVar8;
+  ulong uVar9;
+  long unaff_x29;
+  
+  lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+  pIVar3 = *(Il2CppRGCTXData **)(lVar2 + 0xc0);
+  *(undefined4 *)(unaff_x29 + -0xb4) = 0;
+  pIVar4 = (Il2CppClass *)il2cpp_rgctx_data_no_init(pIVar3,0);
+  uVar1 = il2cpp_codegen_sizeof(pIVar4);
+  *(undefined4 *)(unaff_x29 + -0x30) = uVar1;
+  lVar2 = (long)&stack0x00000000 - ((ulong)*(uint *)(unaff_x29 + -0x30) + 0xf & 0x1fffffff0);
+  *(long *)(unaff_x29 + -0x38) = lVar2;
+  lVar2 = lVar2 - ((ulong)*(uint *)(unaff_x29 + -0x30) + 0xf & 0x1fffffff0);
+  *(long *)(unaff_x29 + -0x40) = lVar2;
+  lVar2 = lVar2 - ((ulong)*(uint *)(unaff_x29 + -0x2c) + 0xf & 0x1fffffff0);
+  *(long *)(unaff_x29 + -0x48) = lVar2;
+  *(undefined8 *)(unaff_x29 + -0x50) = *(undefined8 *)(unaff_x29 + -0x48);
+  *(ulong *)(unaff_x29 + -0x58) = lVar2 - ((ulong)*(uint *)(unaff_x29 + -0x2c) + 0xf & 0x1fffffff0);
+  memset(*(void **)(unaff_x29 + -0x58),*(int *)(unaff_x29 + -0xb4),
+         (ulong)*(uint *)(unaff_x29 + -0x2c));
+  *(undefined8 *)(unaff_x29 + -0x60) = **(undefined8 **)(unaff_x29 + -0xb0);
+  if (*(long *)(unaff_x29 + -0x60) == 0) {
+    *(undefined4 *)(unaff_x29 + -0xc) = 1;
+  }
+  else {
+    *(undefined8 *)(unaff_x29 + -0x68) = **(undefined8 **)(unaff_x29 + -0xb0);
+    *(undefined8 *)(unaff_x29 + -0xc0) = *(undefined8 *)(unaff_x29 + -0x68);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar4 = (Il2CppClass *)il2cpp_rgctx_data(*(Il2CppRGCTXData **)(lVar2 + 0xc0),1);
+    lVar2 = IsInstSealed(*(Il2CppObject **)(unaff_x29 + -0xc0),pIVar4);
+    if (lVar2 == 0) {
+      il2cpp_codegen_memcpy
+                (*(void **)(unaff_x29 + -0x48),*(void **)(*(long *)(unaff_x29 + -0xb0) + 8),
+                 (ulong)*(uint *)(unaff_x29 + -0x2c));
+      lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+      pIVar4 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar2 + 0xc0),1);
+      uVar7 = Box(pIVar4,*(void **)(unaff_x29 + -0x48));
+      *(undefined8 *)(unaff_x29 + -0x70) = uVar7;
+      *(undefined8 *)(unaff_x29 + -0xd0) = 0;
+      uVar7 = Object_GetType_mE10A8FC1E57F3DF29972CCBC026C2DC3942263B3
+                        (*(undefined8 *)(unaff_x29 + -0x70));
+      *(undefined8 *)(unaff_x29 + -0x78) = uVar7;
+      NullCheck(*(void **)(unaff_x29 + -0x78));
+      uVar7 = VirtualFuncInvoker0<String_t*>::Invoke(3,*(Il2CppObject **)(unaff_x29 + -0x78));
+      *(undefined8 *)(unaff_x29 + -0x80) = uVar7;
+      uVar7 = il2cpp_codegen_initialize_runtime_metadata_inline
+                        ((ulong *)Method_System_Collections_Generic_Stack<string>__ctor__);
+      uVar7 = SR_Format_m9E8DC9AEFDC34AC67473EFAEAB78C5066C1A0D09
+                        (uVar7,*(undefined8 *)(unaff_x29 + -0x80),*(undefined8 *)(unaff_x29 + -0xd0)
+                        );
+      *(undefined8 *)(unaff_x29 + -0x88) = uVar7;
+      pIVar4 = (Il2CppClass *)
+               il2cpp_codegen_initialize_runtime_metadata_inline
+                         ((ulong *)
+                          Method_System_Collections_Generic_Dictionary<AxisAlignedBox_BoxSurface,_float>_Add__
+                         );
+      uVar7 = il2cpp_codegen_object_new(pIVar4);
+      *(undefined8 *)(unaff_x29 + -0x90) = uVar7;
+      *(undefined8 *)(unaff_x29 + -200) = *(undefined8 *)(unaff_x29 + -0x90);
+      *(undefined8 *)(unaff_x29 + -0xd8) = *(undefined8 *)(unaff_x29 + -0x88);
+      uVar7 = il2cpp_codegen_initialize_runtime_metadata_inline
+                        ((ulong *)Method_Unity_Collections_NativeArray<int2>_get_IsCreated__);
+      ArgumentException__ctor_m8F9D40CE19D19B698A70F9A258640EB52DB39B62
+                (*(undefined8 *)(unaff_x29 + -200),*(undefined8 *)(unaff_x29 + -0xd8),uVar7,
+                 *(undefined8 *)(unaff_x29 + -0xd0));
+                    /* WARNING: Subroutine does not return */
+      il2cpp_codegen_raise_exception
+                (*(Exception_t **)(unaff_x29 + -0x90),*(MethodInfo **)(unaff_x29 + -0x28));
+    }
+    *(undefined8 *)(unaff_x29 + -0x98) = **(undefined8 **)(unaff_x29 + -0xb0);
+    *(undefined8 *)(unaff_x29 + -0x118) = *(undefined8 *)(unaff_x29 + -0x58);
+    *(undefined8 *)(unaff_x29 + -0x120) = *(undefined8 *)(unaff_x29 + -0x98);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar3 = *(Il2CppRGCTXData **)(lVar2 + 0xc0);
+    *(undefined4 *)(unaff_x29 + -0xfc) = 1;
+    pIVar4 = (Il2CppClass *)il2cpp_rgctx_data(pIVar3,1);
+    pvVar5 = (void *)UnBox(*(Il2CppObject **)(unaff_x29 + -0x120),pIVar4);
+    il2cpp_codegen_memcpy(*(void **)(unaff_x29 + -0x118),pvVar5,(ulong)*(uint *)(unaff_x29 + -0x2c))
+    ;
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pMVar6 = (MethodInfo *)il2cpp_rgctx_method(*(Il2CppRGCTXData **)(lVar2 + 0xc0),8);
+    uVar7 = Comparer_1_get_Default_m923F24BE1E2E8B01D8F2F9D26B8C0ED4B7CBA290(pMVar6);
+    *(undefined8 *)(unaff_x29 + -0xa0) = uVar7;
+    *(undefined8 *)(unaff_x29 + -0x108) = *(undefined8 *)(unaff_x29 + -0x38);
+    *(undefined8 *)(unaff_x29 + -0x110) = *(undefined8 *)(*(long *)(unaff_x29 + -0xb0) + 8);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar4 = (Il2CppClass *)
+             il2cpp_rgctx_data_no_init
+                       (*(Il2CppRGCTXData **)(lVar2 + 0xc0),*(int *)(unaff_x29 + -0xfc));
+    *(undefined4 *)(unaff_x29 + -0xdc) = 0;
+    pFVar8 = (FieldInfo *)il2cpp_rgctx_field(pIVar4,0);
+    pvVar5 = (void *)il2cpp_codegen_get_instance_field_data_pointer
+                               (*(void **)(unaff_x29 + -0x110),pFVar8);
+    il2cpp_codegen_memcpy(*(void **)(unaff_x29 + -0x108),pvVar5,(ulong)*(uint *)(unaff_x29 + -0x30))
+    ;
+    il2cpp_codegen_memcpy
+              (*(void **)(unaff_x29 + -0x50),*(void **)(unaff_x29 + -0x58),
+               (ulong)*(uint *)(unaff_x29 + -0x2c));
+    *(undefined8 *)(unaff_x29 + -0xf0) = *(undefined8 *)(unaff_x29 + -0x40);
+    *(undefined8 *)(unaff_x29 + -0xf8) = *(undefined8 *)(unaff_x29 + -0x50);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar4 = (Il2CppClass *)
+             il2cpp_rgctx_data_no_init
+                       (*(Il2CppRGCTXData **)(lVar2 + 0xc0),*(int *)(unaff_x29 + -0xfc));
+    pFVar8 = (FieldInfo *)il2cpp_rgctx_field(pIVar4,*(int *)(unaff_x29 + -0xdc));
+    pvVar5 = (void *)il2cpp_codegen_get_instance_field_data_pointer
+                               (*(void **)(unaff_x29 + -0xf8),pFVar8);
+    il2cpp_codegen_memcpy(*(void **)(unaff_x29 + -0xf0),pvVar5,(ulong)*(uint *)(unaff_x29 + -0x30));
+    NullCheck(*(void **)(unaff_x29 + -0xa0));
+    *(undefined8 *)(unaff_x29 + -0xe8) = *(undefined8 *)(unaff_x29 + -0xa0);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar4 = (Il2CppClass *)
+             il2cpp_rgctx_data_no_init
+                       (*(Il2CppRGCTXData **)(lVar2 + 0xc0),*(int *)(unaff_x29 + -0xdc));
+    uVar9 = il2cpp_codegen_class_is_value_type(pIVar4);
+    if ((uVar9 & 1) == 0) {
+      *(undefined8 *)(unaff_x29 + -0x128) = **(undefined8 **)(unaff_x29 + -0x38);
+    }
+    else {
+      *(undefined8 *)(unaff_x29 + -0x128) = *(undefined8 *)(unaff_x29 + -0x38);
+    }
+    *(undefined8 *)(unaff_x29 + -0x130) = *(undefined8 *)(unaff_x29 + -0x128);
+    lVar2 = InitializedTypeInfo(*(Il2CppClass **)(*(long *)(unaff_x29 + -0x28) + 0x20));
+    pIVar4 = (Il2CppClass *)il2cpp_rgctx_data_no_init(*(Il2CppRGCTXData **)(lVar2 + 0xc0),0);
+    uVar9 = il2cpp_codegen_class_is_value_type(pIVar4);
+    if ((uVar9 & 1) == 0) {
+      *(undefined8 *)(unaff_x29 + -0x138) = **(undefined8 **)(unaff_x29 + -0x40);
+    }
+    else {
+      *(undefined8 *)(unaff_x29 + -0x138) = *(undefined8 *)(unaff_x29 + -0x40);
+    }
+    uVar1 = VirtualFuncInvoker2Invoker<int,void*,void*>::Invoke
+                      (6,*(Il2CppObject **)(unaff_x29 + -0xe8),*(void **)(unaff_x29 + -0x130),
+                       *(void **)(unaff_x29 + -0x138));
+    *(undefined4 *)(unaff_x29 + -0xa4) = uVar1;
+    *(undefined4 *)(unaff_x29 + -0xc) = *(undefined4 *)(unaff_x29 + -0xa4);
+  }
+  *(undefined4 *)(unaff_x29 + -0x13c) = *(undefined4 *)(unaff_x29 + -0xc);
+  lVar2 = tpidr_el0;
+  lVar2 = *(long *)(lVar2 + 0x28) - *(long *)(unaff_x29 + -8);
+  if (lVar2 == 0) {
+    return *(undefined4 *)(unaff_x29 + -0x13c);
+  }
+                    /* WARNING: Subroutine does not return */
+  __stack_chk_fail(lVar2);
+}
+
+
+
+END_DECOMPILED_FUNCTION

@@ -1,0 +1,1998 @@
+/*
+FUNCTION_NAME: UnityEngine.XR.ARSubsystems.XRAnchorSubsystem.Provider$$.ctor
+ENTRY_POINT: 05d25810
+PROGRAM: BoxingMachineVRDemo-libil2cpp.so
+SCORE: 79
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo
+EVIDENCE: weak_xr_or_state_hits_15;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_21;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_4;source_validity_pose_sink_structure;negative_framework_namespace_without_eye_use_flow
+*/
+
+
+void UnityEngine_XR_ARSubsystems_XRAnchorSubsystem_Provider___ctor(long param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 *puVar2;
+  long lVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  long *unaff_x22;
+  
+  if (*(int *)(param_1 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    param_1 = *unaff_x22;
+  }
+  uVar4 = **(undefined8 **)(param_1 + 0xb8);
+  uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Clear__)
+  ;
+  FUN_04d6838c(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<PidList>_get_Data__,0);
+  puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 8);
+  *puVar2 = uVar1;
+  thunk_FUN_02dd37b4(puVar2,uVar1);
+  if (unaff_x19 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02d60ae8();
+  }
+  FUN_033305a8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x10) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_Remove__);
+    FUN_04d687c4(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<string>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x10);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_033318e0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x18) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>_get_Count__);
+    FUN_04d685a8(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserProof>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x18);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03330f44();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x20) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_Remove__);
+    FUN_04d6892c(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Minimum<Vector2>__ctor__,0)
+    ;
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x20);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03331f48();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x28) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UserCapability>__ctor__);
+    FUN_04d6865c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextClickEvent>_GetPooled__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x28);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03331278();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x30) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>__ctor__);
+    FUN_04d689e0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_mousePosition__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x30);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333227c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x38) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<User>_Add__);
+    FUN_04d68710(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseEnterWindowEvent>_get_mousePosition__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x38);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_033315ac();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x40) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector2>_Clear__);
+    FUN_04d68a94(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseMoveEvent>_Init__,
+                 0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x40);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_033325b0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x48) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>__ctor__);
+    FUN_04d68878(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_GetPooled__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x48);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03331c14();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x50) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>_Clear__);
+    FUN_04d68440(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_VisualScripting_MultiInputUnit<IDictionary>_Definition__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x50);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_033308dc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x58) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_RemoveAt__);
+    FUN_04d684f4(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<PushNotificationResult>_get_Data__,0)
+    ;
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x58);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03330c10();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x60) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Count__);
+    Mono_Math_BigInteger_ModulusRing__Pow
+              (uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<RejoinDialogResult>__ctor__
+               ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x60);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333d548();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x68) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_set_Item__);
+    FUN_04d6d16c(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<RejoinDialogResult>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x68);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333e880();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x70) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>__ctor__);
+    FUN_04d6cf50(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<SdkAccountList>__ctor__,0
+                );
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x70);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333dee4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x78) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Capacity__);
+    FUN_04d6d2d4(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<SdkAccountList>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x78);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333eee8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x80) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_Add__);
+    FUN_04d6d004(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<SendInvitesResult>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x80);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333e218();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x88) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>_Add__);
+    FUN_04d6d388(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<SendInvitesResult>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x88);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333f21c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x90) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UserInputActionSet>__ctor__);
+    FUN_04d6d0b8(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<ShareMediaResult>__ctor__
+                 ,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x90);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333e54c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x98) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_get_Item__);
+    FUN_04d6d220(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<ShareMediaResult>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x98);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333ebb4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xa0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_AddRange__);
+    FUN_04d6cde8(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<string>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333d87c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xa8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_get_Capacity__
+                              );
+    FUN_04d6ce9c(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<SystemVoipState>__ctor__,
+                 0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xa8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_0333dbb0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xb0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_ToArray__
+                              );
+    FUN_04d69bc4(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<SystemVoipState>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xb0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337530();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xb8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<URPProfileId>_GetEnumerator__
+                              );
+    FUN_04d69ffc(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<User>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xb8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338868();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xc0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>__ctor__);
+    FUN_04d69de0(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<User>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xc0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337ecc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 200) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_set_Capacity__);
+    FUN_04d6a164(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<UserAccountAgeCategory>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 200);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338ed0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xd0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>__ctor__);
+    FUN_04d69e94(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<UserAccountAgeCategory>_get_Data__,0)
+    ;
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xd0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338200();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xd8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueInput>_AsReadOnly__);
+    FUN_04d6a218(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<UserCapabilityList>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xd8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03339204();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xe0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualEffectPlayableSerializedEvent>_Add__
+                              );
+    FUN_04d69f48(uVar1,uVar4,
+                 *(undefined8 *)Method_Oculus_Platform_Message<UserCapabilityList>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xe0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338534();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xe8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_get_Item__);
+    FUN_04d6a0b0(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserList>__ctor__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xe8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03338b9c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xf0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<URPProfileId>__ctor__);
+    FUN_04d69c78(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserList>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xf0);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337864();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0xf8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ViewerTrigger>_GetEnumerator__
+                              );
+    FUN_04d69d2c(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserProof>_get_Data__,0);
+    puVar2 = (undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0xf8);
+    *puVar2 = uVar1;
+    thunk_FUN_02dd37b4(puVar2,uVar1);
+  }
+  FUN_03337b98();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x100) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<uint>_get_Count__);
+    FUN_04d6e230(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserReportID>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x100) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x100,uVar1);
+  }
+  FUN_03341558();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x108) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Variant>__ctor__);
+    FUN_04d6e668(uVar1,uVar4,*(undefined8 *)Method_Oculus_Platform_Message<UserReportID>_get_Data__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x108) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x108,uVar1);
+  }
+  FUN_03342890();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x110) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>_get_Item__);
+    FUN_04d6e44c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>__ctor__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x110) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x110,uVar1);
+  }
+  FUN_03341ef4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x118) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Variant>__ctor__);
+    FUN_04d6e7d0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>_ExtractMin__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x118) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x118,uVar1);
+  }
+  FUN_03342ef8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x120) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>__ctor__);
+    FUN_04d6e500(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>_Insert__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x120) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x120,uVar1);
+  }
+  FUN_03342228();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x128) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector2>_Add__)
+    ;
+    FUN_04d6e884(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>_Remove__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x128) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x128,uVar1);
+  }
+  FUN_0334322c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x130) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Value>_Add__);
+    FUN_04d6e5b4(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>_get_Count__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x130) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x130,uVar1);
+  }
+  FUN_0334255c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x138) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_RemoveAt__);
+    FUN_04d6e938(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_Unity_Services_Core_Scheduler_Internal_MinimumBinaryHeap<ScheduledInvocation>_get_Min__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x138) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x138,uVar1);
+  }
+  FUN_03343560();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x140) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VectorImageManager>__ctor__);
+    FUN_04d6e71c(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Minimum<float>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x140) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x140,uVar1);
+  }
+  FUN_03342bc4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x148) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>__ctor__);
+    FUN_04d6e2e4(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Minimum<Vector3>__ctor__,0)
+    ;
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x148) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x148,uVar1);
+  }
+  FUN_0334188c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x150) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<uint>_get_Item__);
+    FUN_04d6e398(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Minimum<Vector4>__ctor__,0)
+    ;
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x150) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x150,uVar1);
+  }
+  FUN_03341bc0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x158) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_set_Item__);
+    FUN_04d6a2cc(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Modulo<object>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x158) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x158,uVar1);
+  }
+  FUN_03339538();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x160) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueInput>_Add__);
+    FUN_04d6a9d4(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Modulo<float>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x160) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x160,uVar1);
+  }
+  FUN_0333a870();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x168) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_AddRange__);
+    FUN_04d6a4e8(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Modulo<Vector2>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x168) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x168,uVar1);
+  }
+  FUN_03339ed4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x170) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>_Add__);
+    FUN_04d6ab3c(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Modulo<Vector3>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x170) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x170,uVar1);
+  }
+  FUN_0333aed8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x178) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector4>_Add__)
+    ;
+    FUN_04d6a650(uVar1,uVar4,*(undefined8 *)Method_Unity_VisualScripting_Modulo<Vector4>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x178) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x178,uVar1);
+  }
+  FUN_0333a208();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x180) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<uint>_set_Item__);
+    FUN_04d6abf0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseCaptureEventBase<MouseCaptureEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x180) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x180,uVar1);
+  }
+  FUN_0333b20c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x188) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<uint>_get_Capacity__);
+    FUN_04d6a704(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseCaptureEventBase<MouseCaptureOutEvent>__ctor__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x188) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x188,uVar1);
+  }
+  FUN_0333a53c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 400) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>_RemoveAt__);
+    FUN_04d6aa88(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextClickEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 400) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 400,uVar1);
+  }
+  FUN_0333aba4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x198) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_Contains__);
+    FUN_04d6a380(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>__ctor__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x198) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x198,uVar1);
+  }
+  FUN_0333986c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1a0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_AddRange__);
+    FUN_04d6a434(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_Init__,0
+                );
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1a0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1a0,uVar1);
+  }
+  FUN_03339ba0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1a8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_set_Item__);
+    FUN_04d6e9ec(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_PostDispatch__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1a8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1a8,uVar1);
+  }
+  FUN_03343894();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1b0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Vector3>_Add__)
+    ;
+    FUN_04d6ee24(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_get_button__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1b0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1b0,uVar1);
+  }
+  FUN_03344bcc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1b8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Item__);
+    Interop_Sys__GetNonCryptographicallySecureRandomBytes
+              (uVar1,uVar4,
+               *(undefined8 *)
+                Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_get_localMousePosition__
+               ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1b8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1b8,uVar1);
+  }
+  FUN_03344230();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1c0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_GetEnumerator__
+                              );
+    FUN_04d6ef8c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_button__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1c0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1c0,uVar1);
+  }
+  FUN_03345234();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1c8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Clear__);
+    FUN_04d6ecbc(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_clickCount__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1c8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1c8,uVar1);
+  }
+  FUN_03344564();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1d0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_Clear__);
+    FUN_04d6f040(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_localMousePosition__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1d0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1d0,uVar1);
+  }
+  FUN_03345568();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1d8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UsageHint>_GetEnumerator__);
+    FUN_04d6ed70(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_modifiers__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1d8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1d8,uVar1);
+  }
+  FUN_03344898();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1e0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>__ctor__);
+    FUN_04d6f0f4(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<ContextualMenuPopulateEvent>_set_mouseDelta__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1e0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1e0,uVar1);
+  }
+  FUN_0334589c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1e8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Sort__);
+    FUN_04d6eed8(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseDownEvent>__ctor__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1e8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1e8,uVar1);
+  }
+  FUN_03344f00();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1f0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VectorImageManager>_Add__);
+    FUN_04d6eaa0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseDownEvent>_GetPooled__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1f0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1f0,uVar1);
+  }
+  FUN_03343bc8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x1f8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>_GetEnumerator__);
+    FUN_04d6eb54(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseDownEvent>_Init__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x1f8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x1f8,uVar1);
+  }
+  FUN_03343efc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x200) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UnityEvent>_set_Item__);
+    FUN_04d6ad58(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseDownEvent>_get_button__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x200) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x200,uVar1);
+  }
+  FUN_0333b540();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x208) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_get_Count__)
+    ;
+    FUN_04d6b190(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseEnterEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x208) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x208,uVar1);
+  }
+  FUN_0333c878();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x210) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualEffectControlPlayableBehaviour>_Sort__
+                              );
+    FUN_04d6af74(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseEnterEvent>_Init__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x210) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x210,uVar1);
+  }
+  FUN_0333bedc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x218) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_get_Item__);
+    FUN_04d6b2f8(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseEnterWindowEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x218) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x218,uVar1);
+  }
+  FUN_0333cee0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x220) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector2>_ToArray__);
+    FUN_04d6b028(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseEnterWindowEvent>_GetPooled__,0)
+    ;
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x220) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x220,uVar1);
+  }
+  FUN_0333c210();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x228) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    FUN_0638a0fc(*(undefined8 *)(lVar3 + 0xb8));
+    return;
+  }
+  FUN_0333d214();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x230) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueOutput>_get_Item__);
+    FUN_04d6b0dc(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseEnterWindowEvent>_PostDispatch__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x230) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x230,uVar1);
+  }
+  FUN_0333c544();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x238) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_set_Capacity__
+                              );
+    FUN_04d6b244(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x238) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x238,uVar1);
+  }
+  FUN_0333cbac();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x240) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<Value>__ctor__)
+    ;
+    FUN_04d6ae0c(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveEvent>_Init__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x240) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x240,uVar1);
+  }
+  FUN_0333b874();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x248) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<User>__ctor__);
+    FUN_04d6aec0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x248) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x248,uVar1);
+  }
+  FUN_0333bba8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x250) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualEffectControlPlayableBehaviour>__ctor__
+                              );
+    FUN_04d6f1a8(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_GetPooled__,0)
+    ;
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x250) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x250,uVar1);
+  }
+  FUN_03345bd0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 600) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UserCapability>_Add__);
+    FUN_04d6f694(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_Init__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 600) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 600,uVar1);
+  }
+  FUN_0334723c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x260) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_IndexOf__);
+    FUN_04d6f748(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_PostDispatch__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x260) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x260,uVar1);
+  }
+  FUN_03347570();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x268) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector3>__ctor__);
+    FUN_04d6f7fc(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_get_mousePosition__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x268) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x268,uVar1);
+  }
+  FUN_033478a4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x270) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_Add__);
+    FUN_04d6f5e0(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_get_pressedButtons__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x270) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x270,uVar1);
+  }
+  FUN_03346f08();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x278) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VectorImageManager>_Remove__)
+    ;
+    FUN_04d6f25c(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseMoveEvent>__ctor__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x278) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x278,uVar1);
+  }
+  FUN_03345f04();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x280) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_get_Count__);
+    FUN_04d6f310(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseMoveEvent>_GetPooled__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x280) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x280,uVar1);
+  }
+  FUN_03346238();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x288) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>_AddRange__);
+    FUN_04d6d4f0(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseOutEvent>__ctor__,
+                 0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x288) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x288,uVar1);
+  }
+  FUN_0333f550();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x290) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualEffectControlPlayableBehaviour>_GetEnumerator__
+                              );
+    FUN_04d6d874(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseOutEvent>_GetPooled__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x290) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x290,uVar1);
+  }
+  FUN_03340554();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x298) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_Insert__);
+    FUN_04d6d658(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseOutEvent>_PreDispatch__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x298) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x298,uVar1);
+  }
+  FUN_0333fbb8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2a0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_get_Count__);
+    FUN_04d6db44(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseOverEvent>__ctor__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2a0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2a0,uVar1);
+  }
+  FUN_03340bbc();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2a8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector4>_get_Item__);
+    FUN_04d6d70c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseOverEvent>_GetPooled__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2a8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2a8,uVar1);
+  }
+  FUN_0333feec();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2b0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VFXBinderBase>_AddRange__);
+    FUN_04d6dbf8(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseOverEvent>_PreDispatch__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2b0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2b0,uVar1);
+  }
+  FUN_03340ef0();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2b8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)Method_System_Collections_Generic_List<uint>_Add__);
+    FUN_04d6d7c0(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseUpEvent>__ctor__,0
+                );
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2b8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2b8,uVar1);
+  }
+  Unity_Jobs_IJobExtensions__Schedule<NativeStreamDisposeJob>();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2c0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector2>__ctor__);
+    FUN_04d6dcac(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<MouseUpEvent>_GetPooled__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2c0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2c0,uVar1);
+  }
+  FUN_03341224();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2c8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<ValueInput>__ctor__);
+    FUN_04d6d9dc(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<MouseUpEvent>_Init__,0)
+    ;
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2c8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2c8,uVar1);
+  }
+  FUN_03340888();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2d0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_GetEnumerator__
+                              );
+    FUN_04d6d5a4(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>__ctor__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2d0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2d0,uVar1);
+  }
+  FUN_0333f884();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2d8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_Clear__);
+    FUN_04d68d00(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_GetPooled__
+                 ,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2d8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2d8,uVar1);
+  }
+  FUN_033328e4();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2e0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<VisualElement>_Add__);
+    FUN_04d69084(uVar1,uVar4,
+                 *(undefined8 *)Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_Init__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2e0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2e0,uVar1);
+  }
+  FUN_033338e8();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2e8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<Vector2>__ctor__);
+    FUN_04d68e68(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_get_mousePosition__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2e8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2e8,uVar1);
+  }
+  FUN_03332f4c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2f0) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<UxmlObjectAsset>__ctor__);
+    FUN_04d69138(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_set_modifiers__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2f0) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2f0,uVar1);
+  }
+  FUN_03333c1c();
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+    lVar3 = *unaff_x22;
+  }
+  if (*(long *)(*(long *)(lVar3 + 0xb8) + 0x2f8) == 0) {
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02dbd7b4();
+      lVar3 = *unaff_x22;
+    }
+    uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+    uVar1 = thunk_FUN_02d9d534(*(undefined8 *)
+                                Method_System_Collections_Generic_List<uint>_set_Capacity__);
+    FUN_04d68f1c(uVar1,uVar4,
+                 *(undefined8 *)
+                  Method_UnityEngine_UIElements_MouseEventBase<WheelEvent>_set_mousePosition__,0);
+    lVar3 = *(long *)(*unaff_x22 + 0xb8);
+    *(undefined8 *)(lVar3 + 0x2f8) = uVar1;
+    thunk_FUN_02dd37b4(lVar3 + 0x2f8,uVar1);
+  }
+  FUN_03333280();
+  if (*(int *)(*unaff_x22 + 0xe4) == 0) {
+    thunk_FUN_02dbd7b4();
+  }
+  FUN_0638a52c();
+  return;
+}
+
+

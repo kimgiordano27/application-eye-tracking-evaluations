@@ -1,0 +1,409 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 81
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPlugin.EyeGazeState>$$System.Collections.IEnumerator.get_Current
+ENTRY_POINT: 013e0b20
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\013e0b20_System.Array.EmptyInternalEnumerator_OVRPlugin.EyeGazeState_$$System.Collections.IEnumerator.get_Current.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\081_p190_System.Array.EmptyInternalEnumerator_OVRPlugin.EyeGazeState_$$System.Collections.IEnumerator.get_Current.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPlugin.EyeGazeState>$$System.Collections.IEnumerator.get_Current
+ENTRY_POINT: 013e0b20
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x013e0be4) */
+/* WARNING: Removing unreachable block (ram,0x013e0c18) */
+/* WARNING: Removing unreachable block (ram,0x013e0c24) */
+/* WARNING: Removing unreachable block (ram,0x013e0c44) */
+/* WARNING: Removing unreachable block (ram,0x013e0c28) */
+/* WARNING: Removing unreachable block (ram,0x013e0c38) */
+/* WARNING: Removing unreachable block (ram,0x013e0c48) */
+/* WARNING: Removing unreachable block (ram,0x013e0c64) */
+/* WARNING: Removing unreachable block (ram,0x013e0c70) */
+/* WARNING: Removing unreachable block (ram,0x013e0c94) */
+/* WARNING: Removing unreachable block (ram,0x013e0c74) */
+/* WARNING: Removing unreachable block (ram,0x013e0c88) */
+/* WARNING: Removing unreachable block (ram,0x013e0c98) */
+/* WARNING: Removing unreachable block (ram,0x013e0dc0) */
+/* WARNING: Removing unreachable block (ram,0x013e0ca4) */
+/* WARNING: Removing unreachable block (ram,0x013e0cd8) */
+/* WARNING: Removing unreachable block (ram,0x013e0cdc) */
+/* WARNING: Removing unreachable block (ram,0x013e0b6c) */
+/* WARNING: Removing unreachable block (ram,0x013e0b88) */
+/* WARNING: Removing unreachable block (ram,0x013e0bcc) */
+/* WARNING: Removing unreachable block (ram,0x013e0bd4) */
+/* WARNING: Removing unreachable block (ram,0x013e0cec) */
+/* WARNING: Removing unreachable block (ram,0x013e0d20) */
+/* WARNING: Removing unreachable block (ram,0x013e0d2c) */
+/* WARNING: Removing unreachable block (ram,0x013e0e28) */
+/* WARNING: Removing unreachable block (ram,0x013e0d30) */
+/* WARNING: Removing unreachable block (ram,0x013e0e38) */
+/* WARNING: Removing unreachable block (ram,0x013e0d40) */
+/* WARNING: Removing unreachable block (ram,0x013e0d50) */
+/* WARNING: Removing unreachable block (ram,0x013e0d58) */
+/* WARNING: Removing unreachable block (ram,0x013e0e20) */
+/* WARNING: Removing unreachable block (ram,0x013e0d64) */
+/* WARNING: Removing unreachable block (ram,0x013e0dbc) */
+/* WARNING: Removing unreachable block (ram,0x013e0dd0) */
+/* WARNING: Removing unreachable block (ram,0x013e0de0) */
+/* WARNING: Removing unreachable block (ram,0x013e0de4) */
+/* WARNING: Removing unreachable block (ram,0x013e0df0) */
+
+void System_Array_EmptyInternalEnumerator<OVRPlugin_EyeGazeState>__System_Collections_IEnumerator_get_Current
+               (void)
+
+{
+  long lVar1;
+  long unaff_x21;
+  long *unaff_x26;
+  
+  FUN_00fdc2e4();
+  *(undefined1 *)(unaff_x21 + 0x433) = 1;
+  if (*(int *)(*unaff_x26 + 0xe0) == 0) {
+    thunk_FUN_01022c14();
+  }
+  lVar1 = FUN_01d2c6a4(0);
+  if (lVar1 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00fdc534();
+  }
+  FUN_01367758();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 82
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPlugin.EyeGazeState>$$MoveNext
+ENTRY_POINT: 013e0ad0
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\013e0ad0_System.Array.EmptyInternalEnumerator_OVRPlugin.EyeGazeState_$$MoveNext.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\082_p190_System.Array.EmptyInternalEnumerator_OVRPlugin.EyeGazeState_$$MoveNext.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array.EmptyInternalEnumerator<OVRPlugin.EyeGazeState>$$MoveNext
+ENTRY_POINT: 013e0ad0
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x013e0be4) */
+/* WARNING: Removing unreachable block (ram,0x013e0c18) */
+/* WARNING: Removing unreachable block (ram,0x013e0c24) */
+/* WARNING: Removing unreachable block (ram,0x013e0c44) */
+/* WARNING: Removing unreachable block (ram,0x013e0c28) */
+/* WARNING: Removing unreachable block (ram,0x013e0c38) */
+/* WARNING: Removing unreachable block (ram,0x013e0c48) */
+/* WARNING: Removing unreachable block (ram,0x013e0c64) */
+/* WARNING: Removing unreachable block (ram,0x013e0c70) */
+/* WARNING: Removing unreachable block (ram,0x013e0c94) */
+/* WARNING: Removing unreachable block (ram,0x013e0c74) */
+/* WARNING: Removing unreachable block (ram,0x013e0c88) */
+/* WARNING: Removing unreachable block (ram,0x013e0c98) */
+/* WARNING: Removing unreachable block (ram,0x013e0dc0) */
+/* WARNING: Removing unreachable block (ram,0x013e0ca4) */
+/* WARNING: Removing unreachable block (ram,0x013e0cd8) */
+/* WARNING: Removing unreachable block (ram,0x013e0cdc) */
+/* WARNING: Removing unreachable block (ram,0x013e0b6c) */
+/* WARNING: Removing unreachable block (ram,0x013e0b88) */
+/* WARNING: Removing unreachable block (ram,0x013e0bcc) */
+/* WARNING: Removing unreachable block (ram,0x013e0bd4) */
+/* WARNING: Removing unreachable block (ram,0x013e0cec) */
+/* WARNING: Removing unreachable block (ram,0x013e0d20) */
+/* WARNING: Removing unreachable block (ram,0x013e0d2c) */
+/* WARNING: Removing unreachable block (ram,0x013e0e28) */
+/* WARNING: Removing unreachable block (ram,0x013e0d30) */
+/* WARNING: Removing unreachable block (ram,0x013e0e38) */
+/* WARNING: Removing unreachable block (ram,0x013e0d40) */
+/* WARNING: Removing unreachable block (ram,0x013e0d50) */
+/* WARNING: Removing unreachable block (ram,0x013e0d58) */
+/* WARNING: Removing unreachable block (ram,0x013e0e20) */
+/* WARNING: Removing unreachable block (ram,0x013e0d64) */
+/* WARNING: Removing unreachable block (ram,0x013e0dbc) */
+/* WARNING: Removing unreachable block (ram,0x013e0dd0) */
+/* WARNING: Removing unreachable block (ram,0x013e0de0) */
+/* WARNING: Removing unreachable block (ram,0x013e0de4) */
+/* WARNING: Removing unreachable block (ram,0x013e0df0) */
+
+void System_Array_EmptyInternalEnumerator<OVRPlugin_EyeGazeState>__MoveNext(void)
+
+{
+  long lVar1;
+  long unaff_x21;
+  long *unaff_x26;
+  
+  FUN_00fdc2e4(PTR_DAT_0234cda8);
+  FUN_00fdc2e4(PTR_DAT_0234cc50);
+  FUN_00fdc2e4(PTR_DAT_0234bc58);
+  FUN_00fdc2e4(PTR_DAT_0234cd80);
+  FUN_00fdc2e4(PTR_DAT_0234cd88);
+  FUN_00fdc2e4(PTR_DAT_0234cd90);
+  FUN_00fdc2e4(PTR_DAT_0234cd98);
+  *(undefined1 *)(unaff_x21 + 0x433) = 1;
+  if (*(int *)(*unaff_x26 + 0xe0) == 0) {
+    thunk_FUN_01022c14();
+  }
+  lVar1 = FUN_01d2c6a4(0);
+  if (lVar1 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00fdc534();
+  }
+  FUN_01367758();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 83
+FUNCTION_NAME: System.Array$$InternalArray__IndexOf<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 011d6974
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\011d6974_System.Array$$InternalArray__IndexOf_OVRPlugin.EyeGazeState_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\083_p190_System.Array$$InternalArray__IndexOf_OVRPlugin.EyeGazeState_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array$$InternalArray__IndexOf<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 011d6974
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+undefined8 System_Array__InternalArray__IndexOf<OVRPlugin_EyeGazeState>(undefined8 *param_1)
+
+{
+  byte bVar1;
+  undefined *puVar2;
+  long lVar3;
+  ulong uVar4;
+  long *plVar5;
+  long unaff_x19;
+  undefined8 uVar6;
+  
+  puVar2 = PTR_DAT_0234bc58;
+  uVar6 = *param_1;
+  if (*(int *)(*(long *)PTR_DAT_0234bc58 + 0xe0) == 0) {
+    thunk_FUN_01022c14();
+  }
+  lVar3 = FUN_01d5e86c(uVar6,0);
+  if (lVar3 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_00fdc534();
+  }
+  uVar4 = FUN_01d6237c(lVar3,0);
+  if ((uVar4 & 1) == 0) {
+    return 1;
+  }
+  uVar6 = **(undefined8 **)(unaff_x19 + 0x38);
+  if (*(int *)(*(long *)puVar2 + 0xe0) == 0) {
+    thunk_FUN_01022c14();
+  }
+  plVar5 = (long *)FUN_01d5e86c(uVar6,0);
+  if (plVar5 != (long *)0x0) {
+    bVar1 = *(byte *)(*(long *)PTR_DAT_0234bce0 + 0x130);
+    if (*(byte *)(*plVar5 + 0x130) < bVar1) {
+      plVar5 = (long *)0x0;
+    }
+    else if (*(long *)(*(long *)(*plVar5 + 200) + (ulong)bVar1 * 8 + -8) !=
+             *(long *)PTR_DAT_0234bce0) {
+      plVar5 = (long *)0x0;
+    }
+  }
+  uVar6 = thunk_FUN_00fcdf54(plVar5,0);
+  return uVar6;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 84
+FUNCTION_NAME: System.Array$$InternalArray__IEnumerable_GetEnumerator<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 011884ac
+MANUAL_PRIORITY_SCORE: 190
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 146
+ORIGINAL_SCANNER_LABEL: 90_plus_confirmed_gaze_retrieval_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'attempted_use', 'active_gaze_retrieval']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'functionality_gaze_retrieval_or_extraction']
+PRIORITY_REASONS: ['base_scanner_score_146', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_confirmed_gaze_retrieval_near_certain\011884ac_System.Array$$InternalArray__IEnumerable_GetEnumerator_OVRPlugin.EyeGazeState_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\084_p190_System.Array$$InternalArray__IEnumerable_GetEnumerator_OVRPlugin.EyeGazeState_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Array$$InternalArray__IEnumerable_GetEnumerator<OVRPlugin.EyeGazeState>
+ENTRY_POINT: 011884ac
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 146
+LABEL: confirmed_gaze_retrieval_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: active_eye_tracking_runtime_retrieval
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;attempted_use;active_gaze_retrieval
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;functionality_gaze_retrieval_or_extraction
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x01188504) */
+
+void System_Array__InternalArray__IEnumerable_GetEnumerator<OVRPlugin_EyeGazeState>
+               (undefined8 param_1,int param_2)
+
+{
+  long *plVar1;
+  long lVar2;
+  
+  if (param_2 != 1) {
+    FUN_01dad9b4();
+                    /* WARNING: Subroutine does not return */
+    FUN_010dc9f4(param_1);
+  }
+  plVar1 = (long *)__cxa_begin_catch(param_1);
+  lVar2 = *plVar1;
+  __cxa_end_catch();
+  FUN_01dad9b4();
+  if (lVar2 == 0) {
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_00fdc52c(lVar2);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 85
+FUNCTION_NAME: OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d83874
+MANUAL_PRIORITY_SCORE: 189
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 131
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_6', 'weak_xr_or_state_hits_4', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_131', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\01d83874_OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\SPEEDSHOOTINGVR\manual-review-pack\A_must_review\085_p189_OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$set_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 01d83874
+PROGRAM: SPEEDSHOOTINGVR-libil2cpp.so
+SCORE: 131
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void OVRPlugin__set_eyeTrackedFoveatedRenderingEnabled(long param_1)
+
+{
+  thunk_FUN_010303a8(*(undefined8 *)(param_1 + 0x1d8));
+                    /* WARNING: Subroutine does not return */
+  FUN_00fdc400();
+}
+
+
+
+END_DECOMPILED_FUNCTION

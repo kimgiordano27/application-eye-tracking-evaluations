@@ -1,0 +1,1540 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 46
+FUNCTION_NAME: FUN_02767420
+ENTRY_POINT: 02767420
+MANUAL_PRIORITY_SCORE: 259
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 139
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_4', 'telemetry_or_network_hits_2', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_139', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02767420_FUN_02767420.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\manual-review-pack\A_must_review\046_p259_FUN_02767420.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_02767420
+ENTRY_POINT: 02767420
+PROGRAM: gunraiders-libil2cpp.so
+SCORE: 139
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_4;telemetry_or_network_hits_2;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_02767420(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined4 uVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  undefined8 local_48;
+  undefined8 local_40;
+  undefined8 local_38;
+  undefined8 local_28;
+  
+  puVar1 = OVRMixedReality_TypeInfo;
+  if ((DAT_0453093a & 1) == 0) {
+    FUN_01c5d288(OVRMixedRealityCaptureConfiguration_TypeInfo);
+    FUN_01c5d288(OVRNativeBuffer_TypeInfo);
+    FUN_01c5d288(OVRNodeStateProperties_TypeInfo);
+    FUN_01c5d288(OVROverlay_TypeInfo);
+    FUN_01c5d288(OVROverlayCanvas_TypeInfo);
+    FUN_01c5d288(OVROverlayMeshGenerator_TypeInfo);
+    FUN_01c5d288(OVRPassthroughLayer_TypeInfo);
+    FUN_01c5d288(OVRPermissionsRequester_TypeInfo);
+    FUN_01c5d288(OVRMixedReality_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo);
+    FUN_01c5d288(OVRPlatformMenu_TypeInfo);
+    FUN_01c5d288(OVRPlugin_TypeInfo);
+    FUN_01c5d288(MQTTnet_Protocol_MqttRetainHandling_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPointerEventData_TypeInfo);
+    FUN_01c5d288(MQTTnet_Packets_MqttSubscribePacket_TypeInfo);
+    DAT_0453093a = 1;
+  }
+  uVar6 = *(undefined8 *)puVar1;
+  plVar5 = (long *)(param_1 + 0x20);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  **(undefined8 **)(lVar4 + 0xb8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Protocol_MqttRetainHandling_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Packets_MqttSubscribePacket_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x10) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x18) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayCanvas_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x20) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayMeshGenerator_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x28) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPermissionsRequester_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x30) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlatformMenu_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x38) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPointerEventData_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  uVar6 = *(undefined8 *)puVar1;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x40) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlugin_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  uVar3 = FUN_03d441c4(*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  puVar2 = OVRNativeBuffer_TypeInfo;
+  puVar1 = OVRMixedRealityCaptureConfiguration_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined4 *)(*(long *)(lVar4 + 0xb8) + 0x48) = uVar3;
+  local_28 = 0;
+  FUN_0283685c(&local_28,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x50) = local_28;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVROverlay_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_38 = 0;
+  FUN_0283685c(&local_38,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x58) = local_38;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRPassthroughLayer_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_40 = 0;
+  FUN_0283685c(&local_40,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x60) = local_40;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRNodeStateProperties_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_48 = 0;
+  FUN_0283685c(&local_48,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x68) = local_48;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 47
+FUNCTION_NAME: FUN_02764e84
+ENTRY_POINT: 02764e84
+MANUAL_PRIORITY_SCORE: 259
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 139
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_4', 'telemetry_or_network_hits_2', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_139', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02764e84_FUN_02764e84.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\manual-review-pack\A_must_review\047_p259_FUN_02764e84.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_02764e84
+ENTRY_POINT: 02764e84
+PROGRAM: gunraiders-libil2cpp.so
+SCORE: 139
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_4;telemetry_or_network_hits_2;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_02764e84(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined4 uVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  undefined8 local_48;
+  undefined8 local_40;
+  undefined8 local_38;
+  undefined8 local_28;
+  
+  puVar1 = OVRMixedReality_TypeInfo;
+  if ((DAT_0453092d & 1) == 0) {
+    FUN_01c5d288(OVRMixedRealityCaptureConfiguration_TypeInfo);
+    FUN_01c5d288(OVRNativeBuffer_TypeInfo);
+    FUN_01c5d288(OVRNodeStateProperties_TypeInfo);
+    FUN_01c5d288(OVROverlay_TypeInfo);
+    FUN_01c5d288(OVROverlayCanvas_TypeInfo);
+    FUN_01c5d288(OVROverlayMeshGenerator_TypeInfo);
+    FUN_01c5d288(OVRPassthroughLayer_TypeInfo);
+    FUN_01c5d288(OVRPermissionsRequester_TypeInfo);
+    FUN_01c5d288(OVRMixedReality_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo);
+    FUN_01c5d288(OVRPlatformMenu_TypeInfo);
+    FUN_01c5d288(OVRPlugin_TypeInfo);
+    FUN_01c5d288(MQTTnet_Protocol_MqttRetainHandling_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPointerEventData_TypeInfo);
+    FUN_01c5d288(MQTTnet_Packets_MqttSubscribePacket_TypeInfo);
+    DAT_0453092d = 1;
+  }
+  uVar6 = *(undefined8 *)puVar1;
+  plVar5 = (long *)(param_1 + 0x20);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  **(undefined8 **)(lVar4 + 0xb8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Protocol_MqttRetainHandling_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Packets_MqttSubscribePacket_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x10) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x18) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayCanvas_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x20) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayMeshGenerator_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x28) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPermissionsRequester_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x30) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlatformMenu_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x38) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPointerEventData_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  uVar6 = *(undefined8 *)puVar1;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x40) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlugin_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  uVar3 = FUN_03d441c4(*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  puVar2 = OVRNativeBuffer_TypeInfo;
+  puVar1 = OVRMixedRealityCaptureConfiguration_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined4 *)(*(long *)(lVar4 + 0xb8) + 0x48) = uVar3;
+  local_28 = 0;
+  FUN_0283685c(&local_28,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x50) = local_28;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVROverlay_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_38 = 0;
+  FUN_0283685c(&local_38,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x58) = local_38;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRPassthroughLayer_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_40 = 0;
+  FUN_0283685c(&local_40,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x60) = local_40;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRNodeStateProperties_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_48 = 0;
+  FUN_0283685c(&local_48,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x68) = local_48;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 48
+FUNCTION_NAME: FUN_0276269c
+ENTRY_POINT: 0276269c
+MANUAL_PRIORITY_SCORE: 259
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 139
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_4', 'telemetry_or_network_hits_2', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_139', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0276269c_FUN_0276269c.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\manual-review-pack\A_must_review\048_p259_FUN_0276269c.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0276269c
+ENTRY_POINT: 0276269c
+PROGRAM: gunraiders-libil2cpp.so
+SCORE: 139
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_4;telemetry_or_network_hits_2;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_0276269c(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined4 uVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  undefined8 local_48;
+  undefined8 local_40;
+  undefined8 local_38;
+  undefined8 local_28;
+  
+  puVar1 = OVRMixedReality_TypeInfo;
+  if ((DAT_04530920 & 1) == 0) {
+    FUN_01c5d288(OVRMixedRealityCaptureConfiguration_TypeInfo);
+    FUN_01c5d288(OVRNativeBuffer_TypeInfo);
+    FUN_01c5d288(OVRNodeStateProperties_TypeInfo);
+    FUN_01c5d288(OVROverlay_TypeInfo);
+    FUN_01c5d288(OVROverlayCanvas_TypeInfo);
+    FUN_01c5d288(OVROverlayMeshGenerator_TypeInfo);
+    FUN_01c5d288(OVRPassthroughLayer_TypeInfo);
+    FUN_01c5d288(OVRPermissionsRequester_TypeInfo);
+    FUN_01c5d288(OVRMixedReality_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo);
+    FUN_01c5d288(OVRPlatformMenu_TypeInfo);
+    FUN_01c5d288(OVRPlugin_TypeInfo);
+    FUN_01c5d288(MQTTnet_Protocol_MqttRetainHandling_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPointerEventData_TypeInfo);
+    FUN_01c5d288(MQTTnet_Packets_MqttSubscribePacket_TypeInfo);
+    DAT_04530920 = 1;
+  }
+  uVar6 = *(undefined8 *)puVar1;
+  plVar5 = (long *)(param_1 + 0x20);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  **(undefined8 **)(lVar4 + 0xb8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Protocol_MqttRetainHandling_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Packets_MqttSubscribePacket_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x10) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x18) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayCanvas_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x20) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayMeshGenerator_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x28) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPermissionsRequester_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x30) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlatformMenu_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x38) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPointerEventData_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  uVar6 = *(undefined8 *)puVar1;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x40) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlugin_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  uVar3 = FUN_03d441c4(*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  puVar2 = OVRNativeBuffer_TypeInfo;
+  puVar1 = OVRMixedRealityCaptureConfiguration_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined4 *)(*(long *)(lVar4 + 0xb8) + 0x48) = uVar3;
+  local_28 = 0;
+  FUN_0283685c(&local_28,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x50) = local_28;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVROverlay_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_38 = 0;
+  FUN_0283685c(&local_38,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x58) = local_38;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRPassthroughLayer_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_40 = 0;
+  FUN_0283685c(&local_40,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x60) = local_40;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRNodeStateProperties_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_48 = 0;
+  FUN_0283685c(&local_48,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x68) = local_48;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 49
+FUNCTION_NAME: FUN_0275feb4
+ENTRY_POINT: 0275feb4
+MANUAL_PRIORITY_SCORE: 259
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 139
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'paired_state_refs', 'ray_interaction', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'paired_field_refs_with_eye_source', 'ray_or_cast_sink_hits_4', 'telemetry_or_network_hits_2', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_139', 'module_bonus_validity_gate_8', 'module_bonus_paired_state_refs_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0275feb4_FUN_0275feb4.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\gunraiders\manual-review-pack\A_must_review\049_p259_FUN_0275feb4.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_0275feb4
+ENTRY_POINT: 0275feb4
+PROGRAM: gunraiders-libil2cpp.so
+SCORE: 139
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ray_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;paired_field_refs_with_eye_source;ray_or_cast_sink_hits_4;telemetry_or_network_hits_2;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_0275feb4(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined4 uVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  undefined8 local_48;
+  undefined8 local_40;
+  undefined8 local_38;
+  undefined8 local_28;
+  
+  puVar1 = OVRMixedReality_TypeInfo;
+  if ((DAT_04530913 & 1) == 0) {
+    FUN_01c5d288(OVRMixedRealityCaptureConfiguration_TypeInfo);
+    FUN_01c5d288(OVRNativeBuffer_TypeInfo);
+    FUN_01c5d288(OVRNodeStateProperties_TypeInfo);
+    FUN_01c5d288(OVROverlay_TypeInfo);
+    FUN_01c5d288(OVROverlayCanvas_TypeInfo);
+    FUN_01c5d288(OVROverlayMeshGenerator_TypeInfo);
+    FUN_01c5d288(OVRPassthroughLayer_TypeInfo);
+    FUN_01c5d288(OVRPermissionsRequester_TypeInfo);
+    FUN_01c5d288(OVRMixedReality_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo);
+    FUN_01c5d288(OVRPlatformMenu_TypeInfo);
+    FUN_01c5d288(OVRPlugin_TypeInfo);
+    FUN_01c5d288(MQTTnet_Protocol_MqttRetainHandling_TypeInfo);
+    FUN_01c5d288(UnityEngine_EventSystems_OVRPointerEventData_TypeInfo);
+    FUN_01c5d288(MQTTnet_Packets_MqttSubscribePacket_TypeInfo);
+    DAT_04530913 = 1;
+  }
+  uVar6 = *(undefined8 *)puVar1;
+  plVar5 = (long *)(param_1 + 0x20);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  **(undefined8 **)(lVar4 + 0xb8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Protocol_MqttRetainHandling_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = MQTTnet_Packets_MqttSubscribePacket_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x10) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPhysicsRaycaster_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x18) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayCanvas_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x20) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVROverlayMeshGenerator_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(*(undefined8 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x28) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPermissionsRequester_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x30) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlatformMenu_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  uVar6 = FUN_03146988(**(undefined8 **)(lVar4 + 0xb8),*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x38) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = UnityEngine_EventSystems_OVRPointerEventData_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  lVar4 = *plVar5;
+  uVar6 = *(undefined8 *)puVar1;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x40) = uVar6;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar1 = OVRPlugin_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  uVar3 = FUN_03d441c4(*(undefined8 *)puVar1,0);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394(lVar4);
+  }
+  puVar2 = OVRNativeBuffer_TypeInfo;
+  puVar1 = OVRMixedRealityCaptureConfiguration_TypeInfo;
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined4 *)(*(long *)(lVar4 + 0xb8) + 0x48) = uVar3;
+  local_28 = 0;
+  FUN_0283685c(&local_28,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x50) = local_28;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVROverlay_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_38 = 0;
+  FUN_0283685c(&local_38,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x58) = local_38;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRPassthroughLayer_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_40 = 0;
+  FUN_0283685c(&local_40,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x60) = local_40;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  puVar2 = OVRNodeStateProperties_TypeInfo;
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  local_48 = 0;
+  FUN_0283685c(&local_48,*(undefined8 *)puVar2,*(undefined8 *)puVar1);
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  lVar4 = *(long *)(*(long *)(lVar4 + 0xc0) + 8);
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  *(undefined8 *)(*(long *)(lVar4 + 0xb8) + 0x68) = local_48;
+  lVar4 = *plVar5;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_01c72394();
+  }
+  if ((*(byte *)(*(long *)(*(long *)(lVar4 + 0xc0) + 8) + 0x135) & 1) == 0) {
+    FUN_01c72394();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

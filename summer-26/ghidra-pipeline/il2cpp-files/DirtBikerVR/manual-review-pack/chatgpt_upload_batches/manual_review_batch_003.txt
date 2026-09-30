@@ -1,0 +1,595 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 9
+FUNCTION_NAME: UnityEngine.Rendering.RenderPipeline$$Dispose
+ENTRY_POINT: 07bd7534
+MANUAL_PRIORITY_SCORE: 297
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 229
+ORIGINAL_SCANNER_LABEL: 90_plus_possible_eye_biometrics_near_certain
+MODULES: ['eye_source', 'validity_gate', 'pose_vector', 'ui_interaction', 'structure_combo', 'attempted_use', 'active_gaze_retrieval', 'active_gaze_interaction', 'possible_biometrics']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_5', 'strong_pose_or_ray_construction_hits_2', 'ui_or_gameplay_sink_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'attempted_eye_tracking_permission_or_feature_enable', 'active_gaze_state_retrieval_with_validity_and_pose', 'active_gaze_values_flow_to_interaction_sink', 'possible_biometric_feature_from_active_eye_context', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_2', 'functionality_possible_biometrics_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_229', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_structure_combo_18', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\general-structure-results\90_plus_possible_eye_biometrics_near_certain\07bd7534_UnityEngine.Rendering.RenderPipeline$$Dispose.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\manual-review-pack\A_must_review\009_p297_UnityEngine.Rendering.RenderPipeline$$Dispose.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.RenderPipeline$$Dispose
+ENTRY_POINT: 07bd7534
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 229
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction;possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;ui_interaction;structure_combo;attempted_use;active_gaze_retrieval;active_gaze_interaction;possible_biometrics
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_5;strong_pose_or_ray_construction_hits_2;ui_or_gameplay_sink_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;attempted_eye_tracking_permission_or_feature_enable;active_gaze_state_retrieval_with_validity_and_pose;active_gaze_values_flow_to_interaction_sink;possible_biometric_feature_from_active_eye_context;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_2;functionality_possible_biometrics_hits_1
+*/
+
+
+undefined8 UnityEngine_Rendering_RenderPipeline__Dispose(long param_1)
+
+{
+  ulong uVar1;
+  undefined8 uVar2;
+  undefined8 uVar3;
+  undefined8 uVar4;
+  ulong uVar5;
+  undefined8 *puVar6;
+  undefined8 *puVar7;
+  int unaff_w19;
+  long *plVar8;
+  long *unaff_x21;
+  long lVar9;
+  
+  if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+    thunk_FUN_03ae8be4(*unaff_x21);
+  }
+  uVar1 = FUN_07c9e200(param_1,0,0);
+  if ((uVar1 & 1) == 0) {
+    if ((param_1 == 0) || (lVar9 = *(long *)(param_1 + 0x18), lVar9 == 0)) {
+LAB_07bd7660:
+                    /* WARNING: Subroutine does not return */
+      FUN_03a8a9c0();
+    }
+    if (0 < (int)*(ulong *)(lVar9 + 0x18)) {
+      uVar1 = 0;
+      uVar5 = *(ulong *)(lVar9 + 0x18) & 0xffffffff;
+      do {
+        if (uVar5 <= uVar1) {
+                    /* WARNING: Subroutine does not return */
+          FUN_03a8a9c8();
+        }
+        plVar8 = *(long **)(lVar9 + 0x20 + uVar1 * 8);
+        if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+          thunk_FUN_03ae8be4();
+        }
+        uVar5 = FUN_07c9e200(plVar8,0,0);
+        if ((uVar5 & 1) == 0) {
+          if (plVar8 == (long *)0x0) goto LAB_07bd7660;
+          uVar5 = FUN_07bd1ac4(plVar8);
+          if ((uVar5 & 1) != 0) {
+            if (unaff_w19 < 2) {
+              if (unaff_w19 == 0) {
+                puVar6 = (undefined8 *)(*plVar8 + 0x188);
+                puVar7 = (undefined8 *)(*plVar8 + 400);
+              }
+              else {
+                if (unaff_w19 != 1) {
+UnityEngine_Rendering_RenderPipelineAsset__get_defaultLineMaterial:
+                  uVar2 = thunk_FUN_03af1434(OVREyeGaze_TypeInfo);
+                  uVar2 = thunk_FUN_03ac70f4(uVar2,&stack0x0000000c);
+                  thunk_FUN_03af1434(PTR_DAT_08491280);
+                  uVar3 = thunk_FUN_03ac74bc();
+                  uVar4 = thunk_FUN_03af1434(PTR_DAT_084936d8);
+                  FUN_066b4278(uVar3,uVar4,uVar2,0,0);
+                  uVar2 = thunk_FUN_03af1434(OVRFaceExpressions_TypeInfo);
+                    /* WARNING: Subroutine does not return */
+                  FUN_03a8a884(uVar3,uVar2);
+                }
+                puVar6 = (undefined8 *)(*plVar8 + 0x1b8);
+                puVar7 = (undefined8 *)(*plVar8 + 0x1c0);
+              }
+            }
+            else if (unaff_w19 == 2) {
+              puVar6 = (undefined8 *)(*plVar8 + 0x198);
+              puVar7 = (undefined8 *)(*plVar8 + 0x1a0);
+            }
+            else {
+              if (unaff_w19 != 3)
+              goto UnityEngine_Rendering_RenderPipelineAsset__get_defaultLineMaterial;
+              puVar6 = (undefined8 *)(*plVar8 + 0x1a8);
+              puVar7 = (undefined8 *)(*plVar8 + 0x1b0);
+            }
+            (*(code *)*puVar6)(plVar8,*puVar7);
+          }
+        }
+        uVar5 = (ulong)*(uint *)(lVar9 + 0x18);
+        uVar1 = uVar1 + 1;
+      } while ((long)uVar1 < (long)(int)*(uint *)(lVar9 + 0x18));
+    }
+  }
+  return 1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 10
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler.<>c__DisplayClass128_0$$.ctor
+ENTRY_POINT: 077c856c
+MANUAL_PRIORITY_SCORE: 297
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 167
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_167', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077c856c_Unity.Services.Multiplayer.SessionHandler._c__DisplayClass128_0$$.ctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\manual-review-pack\A_must_review\010_p297_Unity.Services.Multiplayer.SessionHandler._c__DisplayClass128_0$$.ctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler.<>c__DisplayClass128_0$$.ctor
+ENTRY_POINT: 077c856c
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 167
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Unity_Services_Multiplayer_SessionHandler_<>c__DisplayClass128_0___ctor(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined8 *puVar3;
+  long lVar4;
+  ulong uVar5;
+  int *piVar6;
+  long *unaff_x19;
+  
+  puVar1 = System_Action<OVRManager_TrackingOrigin,_Nullable<OVRPose>>_TypeInfo;
+  if (unaff_x19 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_03a8a9c0();
+  }
+  lVar4 = *unaff_x19;
+  uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+  if (uVar5 != 0) {
+    piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) ==
+          *(long *)
+           System_Runtime_CompilerServices_AsyncTaskMethodBuilder<Response<LegacyBackfillTicket>>_TypeInfo
+         ) {
+        puVar3 = (undefined8 *)(lVar4 + (long)(*piVar6 + 4) * 0x10 + 0x138);
+        goto LAB_077c85d0;
+      }
+      uVar5 = uVar5 - 1;
+      piVar6 = piVar6 + 4;
+    } while (uVar5 != 0);
+  }
+  puVar3 = (undefined8 *)FUN_03ac43c4();
+LAB_077c85d0:
+  puVar2 = 
+  UnityEngine_Rendering_RenderGraphModule_BaseRenderFunc<HDRenderPipeline_GenerateMaxZMaskPassData,_RenderGraphContext>_TypeInfo
+  ;
+  (*(code *)*puVar3)();
+  lVar4 = *(long *)puVar1;
+  if (*(int *)(lVar4 + 0xe4) == 0) {
+    thunk_FUN_03ae8be4();
+    lVar4 = *(long *)puVar1;
+  }
+  FUN_077c8168(*(undefined4 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar2,0,0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 11
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler.<>c$$.cctor
+ENTRY_POINT: 077c8574
+MANUAL_PRIORITY_SCORE: 297
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 167
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'paired_state_refs', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_2', 'paired_field_refs_with_eye_source', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_167', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_paired_state_refs_8', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_1_bonus_3', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077c8574_Unity.Services.Multiplayer.SessionHandler._c$$.cctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\manual-review-pack\A_must_review\011_p297_Unity.Services.Multiplayer.SessionHandler._c$$.cctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler.<>c$$.cctor
+ENTRY_POINT: 077c8574
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 167
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;paired_state_refs;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_2;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;paired_field_refs_with_eye_source;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Unity_Services_Multiplayer_SessionHandler_<>c___cctor(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined8 *puVar3;
+  long lVar4;
+  ulong uVar5;
+  long in_x10;
+  int *piVar6;
+  long *unaff_x19;
+  
+  puVar1 = System_Action<OVRManager_TrackingOrigin,_Nullable<OVRPose>>_TypeInfo;
+  lVar4 = *unaff_x19;
+  uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+  if (uVar5 != 0) {
+    piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) == **(long **)(in_x10 + 0x398)) {
+        puVar3 = (undefined8 *)(lVar4 + (long)(*piVar6 + 4) * 0x10 + 0x138);
+        goto LAB_077c85d0;
+      }
+      uVar5 = uVar5 - 1;
+      piVar6 = piVar6 + 4;
+    } while (uVar5 != 0);
+  }
+  puVar3 = (undefined8 *)FUN_03ac43c4();
+LAB_077c85d0:
+  puVar2 = 
+  UnityEngine_Rendering_RenderGraphModule_BaseRenderFunc<HDRenderPipeline_GenerateMaxZMaskPassData,_RenderGraphContext>_TypeInfo
+  ;
+  (*(code *)*puVar3)();
+  lVar4 = *(long *)puVar1;
+  if (*(int *)(lVar4 + 0xe4) == 0) {
+    thunk_FUN_03ae8be4();
+    lVar4 = *(long *)puVar1;
+  }
+  FUN_077c8168(*(undefined4 *)(*(long *)(lVar4 + 0xb8) + 8),*(undefined8 *)puVar2,0,0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 12
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler$$OnQuitting
+ENTRY_POINT: 077c8170
+MANUAL_PRIORITY_SCORE: 296
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 171
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'telemetry', 'structure_combo']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_1', 'strong_pose_or_ray_construction_hits_4', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_171', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077c8170_Unity.Services.Multiplayer.SessionHandler$$OnQuitting.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\manual-review-pack\A_must_review\012_p296_Unity.Services.Multiplayer.SessionHandler$$OnQuitting.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.Services.Multiplayer.SessionHandler$$OnQuitting
+ENTRY_POINT: 077c8170
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 171
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;telemetry;structure_combo
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_4;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+long Unity_Services_Multiplayer_SessionHandler__OnQuitting
+               (int param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  
+  puVar1 = System_Action<OVRManager_TrackingOrigin,_Nullable<OVRPose>>_TypeInfo;
+  if ((DAT_089870d7 & 1) == 0) {
+    FUN_03a8a718(System_Action<OVRManager_TrackingOrigin,_Nullable<OVRPose>>_TypeInfo);
+    FUN_03a8a718(PTR_DAT_0848ad30);
+    FUN_03a8a718(System_Action<Task,_object>_TypeInfo);
+    DAT_089870d7 = 1;
+  }
+  lVar2 = *(long *)puVar1;
+  if (*(int *)(lVar2 + 0xe4) == 0) {
+    thunk_FUN_03ae8be4();
+    lVar2 = *(long *)puVar1;
+  }
+  if (param_1 < **(int **)(lVar2 + 0xb8)) {
+    lVar2 = thunk_FUN_03ac74bc(*(undefined8 *)System_Action<Task,_object>_TypeInfo);
+    FUN_0784fa10(lVar2,param_1,param_2,param_4,0);
+  }
+  else {
+    lVar2 = thunk_FUN_03ac74bc(*(undefined8 *)PTR_DAT_0848ad30);
+    FUN_0784fa10(lVar2,param_1,param_2,param_4,0);
+    *(undefined8 *)(lVar2 + 0x90) = param_3;
+    thunk_FUN_03afed3c((undefined8 *)(lVar2 + 0x90),param_3);
+  }
+  return lVar2;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 13
+FUNCTION_NAME: Unity.Services.Multiplayer.LobbyHandler.<InitLobbyEventsAsync>d__71$$MoveNext
+ENTRY_POINT: 077a7df4
+MANUAL_PRIORITY_SCORE: 296
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 161
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_3', 'weak_xr_or_state_hits_21', 'validity_or_gating_hits_2', 'ray_or_cast_sink_hits_14', 'ui_or_gameplay_sink_hits_14', 'telemetry_or_network_hits_17', 'frame_or_lifecycle_behavior', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_13', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_161', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\077a7df4_Unity.Services.Multiplayer.LobbyHandler._InitLobbyEventsAsync_d__71$$MoveNext.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\DirtBikerVR\manual-review-pack\A_must_review\013_p296_Unity.Services.Multiplayer.LobbyHandler._InitLobbyEventsAsync_d__71$$MoveNext.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.Services.Multiplayer.LobbyHandler.<InitLobbyEventsAsync>d__71$$MoveNext
+ENTRY_POINT: 077a7df4
+PROGRAM: DirtBikerVR-libil2cpp.so
+SCORE: 161
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_retrieval;data_collection_or_telemetry;possible_biometrics
+MODULES: eye_source;weak_source_state;validity_gate;ray_interaction;ui_interaction;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_21;validity_or_gating_hits_2;ray_or_cast_sink_hits_14;ui_or_gameplay_sink_hits_14;telemetry_or_network_hits_17;frame_or_lifecycle_behavior;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_13;functionality_possible_biometrics_hits_4
+*/
+
+
+void Unity_Services_Multiplayer_LobbyHandler_<InitLobbyEventsAsync>d__71__MoveNext(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  long *unaff_x20;
+  long unaff_x21;
+  undefined8 uVar12;
+  long in_stack_00000008;
+  
+  FUN_03a8a718();
+  FUN_03a8a718(UnityEngine_UIElements_UIR_RenderTreeManager_ElementInsertionData_var);
+  FUN_03a8a718(UnityEngine_TextCore_RichTextTagParser_ParseError_var);
+  FUN_03a8a718(UnityEngine_TextCore_RichTextTagParser_Segment_var);
+  FUN_03a8a718(UnityEngine_TextCore_RichTextTagParser_Tag_var);
+  FUN_03a8a718(UnityEngine_TextCore_RichTextTagParser_TagTypeInfo_var);
+  FUN_03a8a718(UnityEngine_TextCore_RichTextTagParser_TagValue_var);
+  FUN_03a8a718(UnityEngine_Animations_Rigging_RigEffectorData_Style_var);
+  FUN_03a8a718(UnityEngine_Animations_Rigging_RigUtils_RigSyncSceneToStreamData_var);
+  FUN_03a8a718(Normal_Realtime_Room_ClientMetadata_var);
+  FUN_03a8a718(Normal_Realtime_Room_ConnectDirectlyToQuickmatchRoomRequest_var);
+  FUN_03a8a718(Normal_Realtime_Room_ConnectOptions_var);
+  FUN_03a8a718(Normal_Realtime_Room_ConnectToNextAvailableQuickmatchRoomRequest_var);
+  FUN_03a8a718(Normal_Realtime_Room_ConnectToRoomRequest_var);
+  FUN_03a8a718(Normal_Realtime_Room_FoundRoomResponse_var);
+  FUN_03a8a718(Normal_Realtime_Room_GetRegionsListResponse_var);
+  FUN_03a8a718(Normal_Realtime_Room_RegionMetadata_var);
+  FUN_03a8a718(Meta_XR_ImmersiveDebugger_RuntimeSettings_DistanceOption_var);
+  FUN_03a8a718(UnityEngine_Rendering_STP_Config_var);
+  FUN_03a8a718(UnityEngine_Rendering_HighDefinition_ScalableSettingLevelParameter_Level_var);
+  FUN_03a8a718(NWH_Common_Input_SceneInputActions_CameraControlsActions_var);
+  FUN_03a8a718(NWH_Common_Input_SceneInputActions_SceneControlsActions_var);
+  FUN_03a8a718(UnityEngine_Rendering_HighDefinition_SceneObjectIDMapSceneAsset_Entry_var);
+  FUN_03a8a718(System_Xml_SecureStringHasher_HashCodeOfStringDelegate_var);
+  FUN_03a8a718(UnityEngine_SendMouseEvents_HitInfo_var);
+  FUN_03a8a718(System_Xml_Schema_SequenceNode_SequenceConstructPosContext_var);
+  FUN_03a8a718(Unity_Netcode_Transports_SinglePlayer_SinglePlayerTransport_MessageData_var);
+  FUN_03a8a718(UnityEngine_UIElements_StylePropertyAnimationSystem_ElementPropertyPair_var);
+  FUN_03a8a718(UnityEngine_UIElements_StylePropertyNameCollection_Enumerator_var);
+  FUN_03a8a718(UnityEngine_UIElements_StyleSheet_ImportStruct_var);
+  FUN_03a8a718(UnityEngine_UIElements_StyleVariableResolver_ResolveContext_var);
+  FUN_03a8a718(TMPro_TMP_DefaultControls_Resources_var);
+  FUN_03a8a718(TMPro_TMP_ResourceManager_FontAssetRef_var);
+  FUN_03a8a718(TMPro_TMP_Text_SpecialCharacter_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_TempMeshAllocatorImpl_ThreadData_var);
+  FUN_03a8a718(UnityEngine_UIElements_TemplateAsset_AttributeOverride_var);
+  FUN_03a8a718(UnityEngine_UIElements_TemplateAsset_UxmlSerializedDataOverride_var);
+  FUN_03a8a718(UnityEngine_UIElements_TextElement_GlyphsEnumerable_var);
+  FUN_03a8a718(UnityEngine_TextCore_Text_TextGenerator_SpecialCharacter_var);
+  FUN_03a8a718(UnityEngine_TextCore_Text_TextResourceManager_FontAssetRef_var);
+  FUN_03a8a718(UnityEngine_TextCore_Text_TextSettings_FontReferenceMap_var);
+  FUN_03a8a718(UnityEngine_Rendering_HighDefinition_Texture3DAtlas_MipGenerationSwapData_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_TextureBlitter_BlitInfo_var);
+  FUN_03a8a718(UnityEngine_UIElements_TextureRegistry_TextureInfo_var);
+  FUN_03a8a718(UnityEngine_Tilemaps_Tilemap_SyncTile_var);
+  FUN_03a8a718(UnityEngine_Timeline_TimeNotificationBehaviour_NotificationEntry_var);
+  FUN_03a8a718(System_Globalization_TimeSpanFormat_FormatLiterals_var);
+  FUN_03a8a718(System_Globalization_TimeSpanParse_TimeSpanRawInfo_var);
+  FUN_03a8a718(System_TimeZoneInfo_TransitionTime_var);
+  FUN_03a8a718(UnityEngine_Timeline_TimelinePlayable_TrackCacheManager_var);
+  FUN_03a8a718(Unity_Multiplayer_Tools_NetStats_Timer_TimerScope_var);
+  FUN_03a8a718(UnityEngine_InputSystem_EnhancedTouch_Touch_FingerAndTouchState_var);
+  FUN_03a8a718(UnityEngine_InputSystem_EnhancedTouch_Touch_GlobalState_var);
+  FUN_03a8a718(UnityEngine_Timeline_TrackAsset_TransientBuildData_var);
+  FUN_03a8a718(UnityEngine_InputSystem_UI_TrackedDeviceRaycaster_RaycastHitData_var);
+  FUN_03a8a718(UnityEngine_SpatialTracking_TrackedPoseDriverDataDescription_PoseData_var);
+  FUN_03a8a718(UnityEngine_XR_LegacyInputHelpers_TransitionArmModel_ArmModelBlendData_var);
+  FUN_03a8a718(UnityEngine_UIElements_TypeConverterRegistry_ConverterKey_var);
+  FUN_03a8a718(System_ComponentModel_TypeDescriptor_TypeDescriptorComObject_var);
+  FUN_03a8a718(System_ComponentModel_TypeDescriptor_TypeDescriptorInterface_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_UIRenderDevice_AllocToFree_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_UIRenderDevice_AllocToUpdate_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_UIRenderDevice_DeviceToFree_var);
+  FUN_03a8a718(UnityEngine_UIElements_UIR_UIRenderDevice_DisableFo
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_RenderGraphModule_NativeRenderPassCompiler_NativePassCompiler_RenderGraphInputInfo_var
+                 ,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Netcode_NetworkUpdateLoop_NetworkUpdate_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_UI_ReflectionMethodsCache_GetRayIntersectionAllNonAllocCallback_var
+                 ,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)OVRAnchor_FetchTaskData_var,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_HighDefinition_SceneObjectIDMapSceneAsset_Entry_var,2
+                 ,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_UIElements_UIR_UIRenderDevice_EvaluationState_var
+                 ,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Netcode_NetworkSceneManager_DeferredObjectCreation_var,
+                 2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_Tilemaps_Tilemap_SyncTile_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_UnitySynchronizationContext_WorkRequest_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_UIElements_ReadOnlyHierarchyViewModelList_Enumerator_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         System_Xml_Schema_SequenceNode_SequenceConstructPosContext_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Normal_Realtime_Room_FoundRoomResponse_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Netcode_NetworkUpdateLoop_NetworkPostLateUpdate_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_ProbeVolumePerSceneData_ObsoleteSerializablePerScenarioDataItem_var
+                 ,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_TextCore_RichTextTagParser_TagValue_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Meta_XR_ImmersiveDebugger_RuntimeSettings_DistanceOption_var,
+                 2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_TextCore_RichTextTagParser_ParseError_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_RenderGraphModule_RenderGraph_CompiledPassInfo_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Multiplayer_Tools_NetStats_Timer_TimerScope_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)OVRVirtualKeyboard_VirtualKeyboardTextureInfo_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_HighDefinition_ScalableSettingLevelParameter_Level_var
+                 ,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_VFX_Utility_VFXHierarchyAttributeMapBinder_Bone_var,3,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)System_Globalization_TimeSpanParse_TimeSpanRawInfo_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_Rendering_STP_Config_var,2,*(undefined8 *)puVar1)
+    ;
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_Timeline_TimelinePlayable_TrackCacheManager_var,0
+                 ,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Netcode_NetworkObject_SceneObject_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Normal_Realtime_Realtime_InstantiateOptions_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_UIElements_StyleSheet_ImportStruct_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Normal_Realtime_Room_ClientMetadata_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_XR_OpenXR_Features_Interactions_PalmPoseInteraction_PalmPose_var
+                 ,0,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Rendering_Universal_ReflectionProbeManager_CachedProbe_var,4,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_UIElements_UIR_TextureBlitter_BlitInfo_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)OVRRaycaster_RaycastHit_var,0,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_PhysicsShapeGroup2D_GroupState_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Properties_PathVisitor_PropertyScope_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)
+                         UnityEngine_Animations_Rigging_RigUtils_RigSyncSceneToStreamData_var,0,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)UnityEngine_UIElements_UIR_UIRenderDevice_DeviceToFree_var,2,
+                 *(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)OVRPlugin_SpaceQueryResult_var,2,*(undefined8 *)puVar1);
+    FUN_05f95edc(lVar11,*(undefined8 *)Unity_Networking_QoS_QosJob_InternalQosServer_var,2,
+                 *(undefined8 *)puVar1);
+    *(long *)(in_stack_00000008 + 0x10) = lVar11;
+    thunk_FUN_03afed3c((long *)(in_stack_00000008 + 0x10),lVar11);
+    FUN_0679343c(in_stack_00000008,0);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03a8a9c0();
+}
+
+
+
+END_DECOMPILED_FUNCTION

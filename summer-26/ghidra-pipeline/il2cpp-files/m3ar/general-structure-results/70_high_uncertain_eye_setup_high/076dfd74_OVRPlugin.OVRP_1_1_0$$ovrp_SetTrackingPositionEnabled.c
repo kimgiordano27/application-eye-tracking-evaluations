@@ -1,0 +1,34 @@
+/*
+FUNCTION_NAME: OVRPlugin.OVRP_1_1_0$$ovrp_SetTrackingPositionEnabled
+ENTRY_POINT: 076dfd74
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 77
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;frame_or_lifecycle_behavior;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+void OVRPlugin_OVRP_1_1_0__ovrp_SetTrackingPositionEnabled(void)
+
+{
+  long lVar1;
+  long unaff_x19;
+  
+  lVar1 = thunk_FUN_0406ddbc();
+  if (lVar1 != 0) {
+    *(long *)(unaff_x19 + 0xa8) = lVar1;
+    lVar1 = thunk_FUN_0406ddbc();
+    if (lVar1 != 0) {
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04031c0c();
+}
+
+

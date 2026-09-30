@@ -1,0 +1,75 @@
+/*
+FUNCTION_NAME: Oculus.Interaction.HandGrab.HandGrabUtils$$LoadHandGrabPoseData
+ENTRY_POINT: 0190c4ec
+PROGRAM: Lovesick-libil2cpp.so
+SCORE: 93
+LABEL: uncertain_eye_setup_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;paired_state_refs;ui_interaction
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_12;paired_field_refs_with_eye_source;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Oculus_Interaction_HandGrab_HandGrabUtils__LoadHandGrabPoseData(undefined8 param_1)
+
+{
+  long lVar1;
+  long unaff_x19;
+  
+  FUN_0190c6dc();
+  *(undefined8 *)(unaff_x19 + 0x40) = param_1;
+  if (*(long *)(unaff_x19 + 0x48) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)PTR_DAT_033f0980);
+    if (lVar1 == 0) goto LAB_0190c600;
+    FUN_01320e50(lVar1,*(undefined8 *)Method_System_Collections_Generic_List<Contraction>_Add__);
+    *(long *)(unaff_x19 + 0x48) = lVar1;
+  }
+  if (*(long *)(unaff_x19 + 0x50) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)
+                                Method_System_Collections_Generic_Dictionary<int,_short>_TryGetValue__
+                              );
+    if (lVar1 == 0) goto LAB_0190c600;
+    FUN_0190c724();
+    *(long *)(unaff_x19 + 0x50) = lVar1;
+  }
+  if (*(long *)(unaff_x19 + 0x58) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)
+                                System_Collections_Generic_Dictionary<Transform,_int>_TypeInfo);
+    if (lVar1 == 0) goto LAB_0190c600;
+    FUN_0190c76c();
+    *(long *)(unaff_x19 + 0x58) = lVar1;
+  }
+  if (*(long *)(unaff_x19 + 0x60) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)
+                                Method_System_Collections_Generic_Dictionary<TextureBlenderMaterialPropertyCacheHelper_MaterialPropertyPair,_object>_get_Keys__
+                              );
+    if (lVar1 == 0) goto LAB_0190c600;
+    FUN_0190c89c();
+    *(long *)(unaff_x19 + 0x60) = lVar1;
+  }
+  if (*(long *)(unaff_x19 + 0x68) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)
+                                Method_System_Collections_Generic_List<StyleVariable>_Clear__);
+    if (lVar1 == 0) goto LAB_0190c600;
+    FUN_0190c9cc();
+    *(long *)(unaff_x19 + 0x68) = lVar1;
+  }
+  if (*(long *)(unaff_x19 + 0x70) == 0) {
+    lVar1 = thunk_FUN_00d62348(*(undefined8 *)
+                                Method_Oculus_Interaction_Body_Input_BodySkeletonMapping<OVRPlugin_BoneId>_get_Joints__
+                              );
+    if (lVar1 == 0) {
+LAB_0190c600:
+                    /* WARNING: Subroutine does not return */
+      FUN_00da518c();
+    }
+    FUN_0190caa4();
+    *(long *)(unaff_x19 + 0x70) = lVar1;
+  }
+  return;
+}
+
+

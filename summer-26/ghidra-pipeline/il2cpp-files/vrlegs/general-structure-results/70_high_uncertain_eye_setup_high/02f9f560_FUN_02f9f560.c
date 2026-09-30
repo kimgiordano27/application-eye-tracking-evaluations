@@ -1,0 +1,555 @@
+/*
+FUNCTION_NAME: FUN_02f9f560
+ENTRY_POINT: 02f9f560
+PROGRAM: vrlegs-libil2cpp.so
+SCORE: 89
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate
+EVIDENCE: strong_eye_source_hits_6;weak_xr_or_state_hits_6;validity_or_gating_hits_21;functionality_eye_api_context_without_clear_sink_hits_6
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x02fa0148) */
+/* WARNING: Removing unreachable block (ram,0x02f9fac8) */
+/* WARNING: Removing unreachable block (ram,0x02fa00f0) */
+/* WARNING: Removing unreachable block (ram,0x02f9f8e8) */
+
+void FUN_02f9f560(uint *param_1)
+
+{
+  byte bVar1;
+  byte bVar2;
+  bool bVar3;
+  int iVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  ulong uVar7;
+  long lVar8;
+  undefined8 uVar9;
+  uint *puVar10;
+  int iVar11;
+  long lVar12;
+  undefined8 uVar13;
+  uint uVar14;
+  undefined1 auVar15 [16];
+  undefined8 local_d0;
+  byte local_c8;
+  byte local_c7;
+  undefined8 local_c0;
+  undefined8 uStack_b8;
+  undefined1 local_b0 [16];
+  undefined8 local_98;
+  undefined1 local_90 [16];
+  undefined1 local_80 [16];
+  char local_6c [4];
+  long local_68;
+  undefined8 local_58;
+  
+  if ((DAT_0412ade8 & 1) == 0) {
+    FUN_01ab69ac(PTR_DAT_03d25d28);
+    FUN_01ab69ac(PTR_DAT_03d25d30);
+    FUN_01ab69ac(PTR_DAT_03d25d38);
+    FUN_01ab69ac(PTR_DAT_03d25d40);
+    FUN_01ab69ac(PTR_DAT_03d25d48);
+    FUN_01ab69ac(PTR_DAT_03d25bc0);
+    FUN_01ab69ac(PTR_DAT_03cc9e10);
+    FUN_01ab69ac(PTR_DAT_03d1f9e0);
+    FUN_01ab69ac(PTR_DAT_03d25d50);
+    FUN_01ab69ac(PTR_DAT_03d25d58);
+    FUN_01ab69ac(PTR_DAT_03d1f9e8);
+    FUN_01ab69ac(PTR_DAT_03d25d60);
+    FUN_01ab69ac(PTR_DAT_03d1f9f0);
+    FUN_01ab69ac(PTR_DAT_03d25d68);
+    FUN_01ab69ac(PTR_DAT_03d25d70);
+    FUN_01ab69ac(PTR_DAT_03d25d78);
+    FUN_01ab69ac(PTR_DAT_03d1f9f8);
+    FUN_01ab69ac(PTR_DAT_03d25d80);
+    FUN_01ab69ac(PTR_DAT_03d25d88);
+    FUN_01ab69ac(PTR_DAT_03d1fb50);
+    FUN_01ab69ac(PTR_DAT_03d25d90);
+    FUN_01ab69ac(PTR_DAT_03d1fab8);
+    DAT_0412ade8 = 1;
+  }
+  local_6c[0] = '\0';
+  local_80._0_8_ = 0;
+  local_80._8_8_ = 0;
+  local_90._0_8_ = 0;
+  local_90._8_8_ = 0;
+  local_98 = 0;
+  local_b0._0_8_ = 0;
+  local_b0._8_8_ = 0;
+  auVar15 = ZEXT816(0);
+  uVar14 = *param_1;
+  lVar8 = *(long *)(param_1 + 8);
+  if (uVar14 < 4) {
+    uVar9 = 0;
+    local_90 = ZEXT816(0);
+    local_80 = ZEXT816(0);
+    goto LAB_02f9fb70;
+  }
+  if (uVar14 == 4) {
+    uVar9 = 0;
+    local_b0 = ZEXT816(0);
+    local_90 = ZEXT816(0);
+    local_80 = ZEXT816(0);
+    do {
+      if (uVar14 == 4) {
+        local_90 = *(undefined1 (*) [16])(param_1 + 0x20);
+        uVar14 = 0xffffffff;
+        param_1[0x20] = 0;
+        param_1[0x21] = 0;
+        param_1[0x22] = 0;
+        param_1[0x23] = 0;
+        *param_1 = 0xffffffff;
+LAB_02f9fa00:
+        FUN_02679308(local_90,0);
+      }
+      else if (*(char *)((long)param_1 + 0x59) != '\0') {
+        if ((char)param_1[0x16] == '\0') {
+          bVar3 = *(long *)(param_1 + 0x18) != 0;
+        }
+        else {
+          bVar3 = true;
+        }
+        if (*(long *)(param_1 + 0x14) == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6c3c(0,bVar3);
+        }
+        lVar12 = FUN_02eb74c0(*(long *)(param_1 + 0x14),bVar3,*(undefined8 *)(param_1 + 10),0);
+        if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6c3c();
+        }
+        auVar15 = FUN_027e9a10(lVar12,0,0);
+        local_90 = auVar15;
+        uVar7 = FUN_026792ec(local_90,0);
+        if ((uVar7 & 1) == 0) {
+          *param_1 = 4;
+          *(undefined1 (*) [16])(param_1 + 0x20) = local_90;
+          GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x20,0);
+          if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+            thunk_FUN_01a58e78();
+          }
+          FUN_01f07574(param_1 + 2,local_90,param_1,*(undefined8 *)PTR_DAT_03d25d30);
+          return;
+        }
+        goto LAB_02f9fa00;
+      }
+      if (*(long *)(param_1 + 0xe) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      FUN_02eb0484(*(long *)(param_1 + 0xe),1,0,0);
+      plVar5 = *(long **)(param_1 + 0x12);
+      if (plVar5 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      (**(code **)(*plVar5 + 0x1c8))(plVar5,*(undefined8 *)(*plVar5 + 0x1d0));
+      if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      uVar13 = *(undefined8 *)(lVar8 + 0x128);
+      local_6c[0] = '\0';
+      FUN_027e0bd8(uVar13,local_6c,0);
+      puVar10 = param_1 + 0x10;
+      lVar12 = *(long *)puVar10;
+      if (lVar12 != 0) {
+        *(undefined1 *)(lVar8 + 0x88) = 1;
+        plVar5 = *(long **)(param_1 + 0x14);
+        if (plVar5 != (long *)0x0) {
+          if (plVar5 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01ab6c3c();
+          }
+          (**(code **)(*plVar5 + 0x278))(plVar5,*(undefined8 *)(*plVar5 + 0x280));
+          lVar12 = *(long *)puVar10;
+        }
+        lVar8 = *(long *)(param_1 + 0xc);
+        if (lVar8 != 0) {
+          uVar9 = thunk_FUN_01a6ca08(PTR_DAT_03d1fb60);
+          FUN_02132e78(lVar8,lVar12,uVar9);
+          uVar13 = *(undefined8 *)puVar10;
+          uVar9 = thunk_FUN_01a6ca08(PTR_DAT_03d25da0);
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6b14(uVar13,uVar9);
+        }
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      if (*(long *)(param_1 + 0x18) == 0) {
+        uVar6 = UniGLTF_GlbLowLevelParser__FixNameUnique
+                          (lVar8,1,*(undefined8 *)(param_1 + 0x1a),*(undefined8 *)(param_1 + 10));
+        *(undefined8 *)(param_1 + 0xe) = uVar6;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      }
+      else {
+        *(long *)(param_1 + 0xe) = *(long *)(param_1 + 0x18);
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      }
+      if (((int)uVar14 < 0) && (local_6c[0] != '\0')) {
+        OVRManager_<>c__<InitOVRManager>b__424_0(uVar13,0);
+      }
+      puVar10 = param_1 + 0x10;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x12;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x14;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x18;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x1a;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+LAB_02f9fb1c:
+      puVar10 = param_1 + 0x10;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x12;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x14;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x18;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      *(undefined2 *)(param_1 + 0x16) = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      puVar10 = param_1 + 0x1a;
+      puVar10[0] = 0;
+      puVar10[1] = 0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+      auVar15 = local_b0;
+LAB_02f9fb70:
+      switch(uVar14) {
+      case 0:
+        local_80 = *(undefined1 (*) [16])(param_1 + 0x1c);
+        uVar14 = 0xffffffff;
+        param_1[0x1c] = 0;
+        param_1[0x1d] = 0;
+        param_1[0x1e] = 0;
+        param_1[0x1f] = 0;
+        *param_1 = 0xffffffff;
+        break;
+      case 1:
+        local_90 = *(undefined1 (*) [16])(param_1 + 0x20);
+        uVar14 = 0xffffffff;
+        param_1[0x20] = 0;
+        param_1[0x21] = 0;
+        param_1[0x22] = 0;
+        param_1[0x23] = 0;
+        *param_1 = 0xffffffff;
+        goto LAB_02f9fcc8;
+      case 2:
+        local_98 = *(undefined8 *)(param_1 + 0x24);
+        uVar14 = 0xffffffff;
+        param_1[0x24] = 0;
+        param_1[0x25] = 0;
+        *param_1 = 0xffffffff;
+        goto LAB_02f9fd14;
+      case 3:
+        local_b0 = *(undefined1 (*) [16])(param_1 + 0x26);
+        uVar14 = 0xffffffff;
+        param_1[0x26] = 0;
+        param_1[0x27] = 0;
+        param_1[0x28] = 0;
+        param_1[0x29] = 0;
+        *param_1 = 0xffffffff;
+        goto LAB_02f9fd88;
+      default:
+        local_b0 = auVar15;
+        if (*(int *)(*(long *)PTR_DAT_03cc9e10 + 0xe0) == 0) {
+          thunk_FUN_01a58e78();
+        }
+        FUN_027d7fa0(param_1 + 10,0);
+        if (*(long *)(param_1 + 0xe) == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6c3c();
+        }
+        lVar12 = FUN_02eb0dc8(*(long *)(param_1 + 0xe),0);
+        if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6c3c();
+        }
+        auVar15 = FUN_020a2c64(lVar12,0,*(undefined8 *)PTR_DAT_03d1f9f8);
+        local_80 = auVar15;
+        uVar7 = FUN_02189a30(local_80,*(undefined8 *)PTR_DAT_03d1f9f0);
+        auVar15 = local_b0;
+        if ((uVar7 & 1) == 0) {
+          *param_1 = 0;
+          *(undefined1 (*) [16])(param_1 + 0x1c) = local_80;
+          GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x1c,0);
+          if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+            thunk_FUN_01a58e78();
+          }
+          FUN_01f07574(param_1 + 2,local_80,param_1,*(undefined8 *)PTR_DAT_03d25d28);
+          return;
+        }
+      }
+      local_b0 = auVar15;
+      FUN_02189a7c(local_80,&local_68,*(undefined8 *)PTR_DAT_03d1f9e8);
+      if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      plVar5 = (long *)(lVar8 + 0xf8);
+      *plVar5 = local_68;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(plVar5);
+      if (*plVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      lVar12 = FUN_02eb3698(*plVar5,*(undefined8 *)(param_1 + 10),0);
+      if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      auVar15 = FUN_027e9a10(lVar12,0,0);
+      local_90 = auVar15;
+      uVar7 = FUN_026792ec(local_90,0);
+      auVar15 = local_b0;
+      if ((uVar7 & 1) == 0) {
+        *param_1 = 1;
+        *(undefined1 (*) [16])(param_1 + 0x20) = local_90;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x20,0);
+        if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+          thunk_FUN_01a58e78();
+        }
+        FUN_01f07574(param_1 + 2,local_90,param_1,*(undefined8 *)PTR_DAT_03d25d30);
+        return;
+      }
+LAB_02f9fcc8:
+      local_b0 = auVar15;
+      FUN_02679308(local_90,0);
+      if (*(long *)(param_1 + 0xe) == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      lVar12 = FUN_02eb0e30(*(long *)(param_1 + 0xe),0);
+      if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      local_98 = FUN_020a2c44(lVar12,*(undefined8 *)PTR_DAT_03d25d80);
+      uVar7 = FUN_0209f888(&local_98,*(undefined8 *)PTR_DAT_03d25d70);
+      auVar15 = local_b0;
+      if ((uVar7 & 1) == 0) {
+        *param_1 = 2;
+        *(undefined8 *)(param_1 + 0x24) = local_98;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x24,0);
+        if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+          thunk_FUN_01a58e78();
+        }
+        FUN_01f07574(param_1 + 2,&local_98,param_1,*(undefined8 *)PTR_DAT_03d25d40);
+        return;
+      }
+LAB_02f9fd14:
+      local_b0 = auVar15;
+      FUN_0209f8cc(&local_98,&local_58,*(undefined8 *)PTR_DAT_03d25d68);
+      *(undefined8 *)(param_1 + 0x14) = local_58;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      lVar12 = FUN_02f9cb10(lVar8,*(undefined8 *)(param_1 + 0x14),*(undefined8 *)(param_1 + 10));
+      if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      auVar15 = FUN_020a2c64(lVar12,0,*(undefined8 *)PTR_DAT_03d25d78);
+      local_b0 = auVar15;
+      uVar7 = FUN_02189a30(local_b0,*(undefined8 *)PTR_DAT_03d25d60);
+      if ((uVar7 & 1) == 0) {
+        *param_1 = 3;
+        *(undefined1 (*) [16])(param_1 + 0x26) = local_b0;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x26,0);
+        if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+          thunk_FUN_01a58e78();
+        }
+        FUN_01f07574(param_1 + 2,local_b0,param_1,*(undefined8 *)PTR_DAT_03d25d38);
+        return;
+      }
+LAB_02f9fd88:
+      FUN_02189a7c(local_b0,&local_d0,*(undefined8 *)PTR_DAT_03d25d58);
+      uVar6 = uStack_b8;
+      uVar13 = local_c0;
+      bVar2 = local_c7;
+      bVar1 = local_c8;
+      *(undefined8 *)(param_1 + 0x12) = local_d0;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      *(undefined8 *)(param_1 + 0x1a) = uVar13;
+      *(byte *)(param_1 + 0x16) = bVar1 & 1;
+      *(byte *)((long)param_1 + 0x59) = bVar2 & 1;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x1a,uVar13);
+      *(undefined8 *)(param_1 + 0x18) = uVar6;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(param_1 + 0x18,uVar6);
+      if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      uVar13 = *(undefined8 *)(lVar8 + 0x128);
+      local_6c[0] = '\0';
+      FUN_027e0bd8(uVar13,local_6c,0);
+      lVar12 = *(long *)(param_1 + 0x10);
+      if (lVar12 != 0) {
+        *(undefined1 *)(lVar8 + 0x88) = 1;
+        lVar8 = *(long *)(param_1 + 0xc);
+        if (lVar8 != 0) {
+          uVar9 = thunk_FUN_01a6ca08(PTR_DAT_03d1fb60);
+          FUN_02132e78(lVar8,lVar12,uVar9);
+          uVar13 = *(undefined8 *)(param_1 + 0x10);
+          uVar9 = thunk_FUN_01a6ca08(PTR_DAT_03d25da0);
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6b14(uVar13,uVar9);
+        }
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      if ((char)param_1[0x16] == '\0') {
+        *(undefined1 *)(lVar8 + 0x88) = 1;
+        *(undefined8 *)(lVar8 + 0x100) = *(undefined8 *)(param_1 + 0x12);
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(lVar8 + 0x100);
+        if (*(long *)(param_1 + 0xc) == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01ab6c3c();
+        }
+        FUN_02132ca8(*(long *)(param_1 + 0xc),*(undefined8 *)PTR_DAT_03d1fb50);
+        uVar9 = *(undefined8 *)(param_1 + 0x12);
+        iVar11 = 9;
+        iVar4 = 9;
+      }
+      else {
+        *(undefined1 *)(lVar8 + 0x130) = 0;
+        *(undefined1 *)(lVar8 + 0x88) = 0;
+        *(undefined8 *)(lVar8 + 0x100) = 0;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(lVar8 + 0x100,0);
+        *(undefined8 *)(lVar8 + 0x110) = *(undefined8 *)(param_1 + 0x18);
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists(lVar8 + 0x110);
+        iVar11 = 3;
+        iVar4 = 3;
+      }
+      if (((int)uVar14 < 0) && (iVar4 = iVar11, local_6c[0] != '\0')) {
+        OVRManager_<>c__<InitOVRManager>b__424_0(uVar13,0);
+      }
+    } while ((iVar4 == 0) || (iVar4 == 3));
+    auVar15 = local_90;
+    if (iVar4 != 9) {
+      return;
+    }
+  }
+  else {
+    if (lVar8 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_01ab6c3c();
+    }
+    iVar4 = thunk_FUN_01aa519c(lVar8 + 0x118,0,0,0);
+    if (iVar4 == 1) {
+      lVar8 = thunk_FUN_01a6ca08(PTR_DAT_03cd81b0);
+      if (*(int *)(lVar8 + 0xe0) == 0) {
+        thunk_FUN_01a58e78();
+      }
+      uVar9 = FUN_02f9c61c();
+      uVar13 = thunk_FUN_01a6ca08(PTR_DAT_03d25da0);
+                    /* WARNING: Subroutine does not return */
+      FUN_01ab6b14(uVar9,uVar13);
+    }
+    uVar9 = thunk_FUN_01a89e68(*(undefined8 *)PTR_DAT_03d1fab8);
+    FUN_02fa0644();
+    puVar10 = param_1 + 0xc;
+    *(undefined8 *)puVar10 = uVar9;
+    GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,uVar9);
+    uVar13 = *(undefined8 *)(lVar8 + 0x128);
+    local_6c[0] = '\0';
+    FUN_027e0bd8(uVar13,local_6c,0);
+    *(undefined1 *)(lVar8 + 0x125) = 1;
+    lVar12 = FUN_01aa50f0(lVar8 + 0x108,*(undefined8 *)puVar10,0);
+    if (lVar12 == 0) {
+      puVar10 = param_1 + 0xe;
+      *(undefined8 *)puVar10 = *(undefined8 *)(lVar8 + 0x110);
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10);
+      if (*(long *)(lVar8 + 0x110) != 0) {
+        uVar9 = FUN_02eb0e18(*(long *)(lVar8 + 0x110),0);
+        *(undefined8 *)(lVar8 + 0xf8) = uVar9;
+        GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      }
+      *(undefined8 *)(lVar8 + 0xb0) = *(undefined8 *)(lVar8 + 0xa8);
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists();
+      uVar9 = UniGLTF_GlbLowLevelParser__FixNameUnique(lVar8,0,0,*(undefined8 *)(param_1 + 10));
+      *(undefined8 *)puVar10 = uVar9;
+      GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10);
+      uVar9 = 0;
+      iVar11 = 0xd;
+      iVar4 = 0xd;
+    }
+    else {
+      FUN_02132f34(lVar12,*(undefined8 *)PTR_DAT_03d25d88);
+      if (*(char *)(lVar8 + 0x88) == '\0') {
+LAB_02f9f864:
+        thunk_FUN_01a6ca08(PTR_DAT_03cbdd28);
+        uVar9 = thunk_FUN_01a89e68();
+        uVar13 = thunk_FUN_01a6ca08(PTR_DAT_03d25d98);
+        FUN_0276a4a8(uVar9,uVar13,0);
+        uVar13 = thunk_FUN_01a6ca08(PTR_DAT_03d25da0);
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6b14(uVar9,uVar13);
+      }
+      lVar12 = FUN_02132b44(lVar12,*(undefined8 *)PTR_DAT_03d25d90);
+      if (lVar12 == 0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01ab6c3c();
+      }
+      uVar7 = FUN_027e971c(lVar12,0);
+      if ((uVar7 & 1) == 0) goto LAB_02f9f864;
+      uVar9 = *(undefined8 *)(lVar8 + 0x100);
+      iVar11 = 9;
+      iVar4 = 9;
+    }
+    if (((int)uVar14 < 0) && (iVar4 = iVar11, local_6c[0] != '\0')) {
+      OVRManager_<>c__<InitOVRManager>b__424_0(uVar13,0);
+    }
+    auVar15._8_8_ = local_90._8_8_;
+    auVar15._0_8_ = local_90._0_8_;
+    if (iVar4 == 0xd) goto LAB_02f9fb1c;
+    if (iVar4 != 9) {
+      local_90 = auVar15;
+      if (iVar4 == 0) goto LAB_02f9fb1c;
+      return;
+    }
+  }
+  *param_1 = 0xfffffffe;
+  puVar10 = param_1 + 0xc;
+  puVar10[0] = 0;
+  puVar10[1] = 0;
+  local_90 = auVar15;
+  GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+  puVar10 = param_1 + 0xe;
+  puVar10[0] = 0;
+  puVar10[1] = 0;
+  GAP_ParticleSystemController_ParticleSystemController__EmptyLists(puVar10,0);
+  if (*(int *)(*(long *)PTR_DAT_03d25bc0 + 0xe0) == 0) {
+    thunk_FUN_01a58e78();
+  }
+  FUN_02145584(param_1 + 2,uVar9,*(undefined8 *)PTR_DAT_03d25d48);
+  return;
+}
+
+

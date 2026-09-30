@@ -1,0 +1,686 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 80
+FUNCTION_NAME: Meta.XR.MetaXRFeature$$OnSessionDestroy
+ENTRY_POINT: 05188044
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 110
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'weak_xr_or_state_hits_1', 'validity_or_gating_hits_13', 'telemetry_or_network_hits_4', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_110', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\05188044_Meta.XR.MetaXRFeature$$OnSessionDestroy.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\080_p206_Meta.XR.MetaXRFeature$$OnSessionDestroy.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MetaXRFeature$$OnSessionDestroy
+ENTRY_POINT: 05188044
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 110
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;validity_or_gating_hits_13;telemetry_or_network_hits_4;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x05188480) */
+/* WARNING: Removing unreachable block (ram,0x051882c8) */
+
+void Meta_XR_MetaXRFeature__OnSessionDestroy(long param_1)
+
+{
+  long *plVar1;
+  undefined8 *puVar2;
+  undefined8 uVar3;
+  long lVar4;
+  long lVar5;
+  undefined4 *puVar6;
+  ulong uVar7;
+  int *in_x10;
+  int *piVar8;
+  undefined1 unaff_w19;
+  long unaff_x20;
+  long *unaff_x21;
+  long *unaff_x22;
+  long *unaff_x23;
+  long unaff_x24;
+  undefined8 uVar9;
+  long unaff_x27;
+  long unaff_x28;
+  long unaff_x29;
+  long *in_stack_00000008;
+  
+code_r0x05188044:
+  puVar2 = (undefined8 *)(param_1 + (long)*in_x10 * 0x10 + 0x138);
+LAB_05188050:
+  plVar1 = (long *)(*(code *)*puVar2)(unaff_x23,puVar2[1]);
+  if (plVar1 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+  do {
+    lVar5 = *plVar1;
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 != 0) {
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_065c8d08) {
+          puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_051880b8;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_02ce0a7c(plVar1,*(long *)PTR_DAT_065c8d08,0);
+LAB_051880b8:
+    uVar7 = (*(code *)*puVar2)(plVar1,puVar2[1]);
+    if ((uVar7 & 1) == 0) break;
+    lVar5 = *plVar1;
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 != 0) {
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_06607dd8) {
+          puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_0518811c;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_02ce0a7c(plVar1,*(long *)PTR_DAT_06607dd8,0);
+LAB_0518811c:
+    uVar3 = (*(code *)*puVar2)(plVar1,puVar2[1]);
+    uVar9 = *(undefined8 *)(unaff_x20 + 0x28);
+    if (*(int *)(*(long *)PTR_DAT_065c8c40 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+    }
+    lVar5 = FUN_034b09b0(uVar9,*(undefined8 *)PTR_DAT_065efb00);
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    lVar4 = FUN_034249d8(lVar5,*(undefined8 *)PTR_DAT_066080e0);
+    if (*(long *)(unaff_x20 + 0x20) == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    if (lVar4 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c();
+    }
+    FUN_05185be4(lVar4,*(undefined8 *)(*(long *)(unaff_x20 + 0x20) + 0x28),
+                 *(undefined4 *)(unaff_x24 + 0x10),uVar3,0);
+    lVar5 = UnityEngine_UIElements_VisualTreeStyleUpdater__set_disposed(lVar5,0);
+    uVar3 = FUN_05ef2cb4();
+    if (lVar5 == 0) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c7c(uVar3,uVar3);
+    }
+    FUN_05f024ac(lVar5,uVar3,0);
+    if (*(char *)(unaff_x27 + 0x30f) == '\0') {
+      AkMIDIEventCallbackInfo__get_byProgramNum();
+      *(undefined1 *)(unaff_x27 + 0x30f) = unaff_w19;
+    }
+    lVar4 = *(long *)(*unaff_x21 + 0xb8);
+    FUN_05f023d8(*(undefined4 *)(lVar4 + 0xc),*(undefined4 *)(lVar4 + 0x10),
+                 *(undefined4 *)(lVar4 + 0x14),lVar5,0);
+    if (*(char *)(unaff_x29 + 0x311) == '\0') {
+      AkMIDIEventCallbackInfo__get_byProgramNum();
+      *(undefined1 *)(unaff_x29 + 0x311) = unaff_w19;
+    }
+    puVar6 = *(undefined4 **)(*unaff_x22 + 0xb8);
+    FUN_05f01e3c(*puVar6,puVar6[1],puVar6[2],puVar6[3],lVar5,0);
+    if (*(char *)(unaff_x28 + 0x148) == '\0') {
+      AkMIDIEventCallbackInfo__get_byProgramNum();
+      *(undefined1 *)(unaff_x28 + 0x148) = unaff_w19;
+    }
+    puVar6 = *(undefined4 **)(*unaff_x21 + 0xb8);
+    FUN_05f00f94(*puVar6,puVar6[1],puVar6[2],lVar5,0);
+  } while( true );
+  if (plVar1 != (long *)0x0) {
+    lVar5 = *plVar1;
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 != 0) {
+      piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_065c8a48) {
+          puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+          goto LAB_051882b8;
+        }
+        uVar7 = uVar7 - 1;
+        piVar8 = piVar8 + 4;
+      } while (uVar7 != 0);
+    }
+    puVar2 = (undefined8 *)FUN_02ce0a7c(plVar1,*(long *)PTR_DAT_065c8a48,0);
+LAB_051882b8:
+    (*(code *)*puVar2)(plVar1,puVar2[1]);
+  }
+  if (in_stack_00000008 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+  lVar5 = *in_stack_00000008;
+  uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+  if (uVar7 != 0) {
+    piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_065c8d08) {
+        puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+        goto Meta_XR_MetaXRFeature__OnSessionExiting;
+      }
+      uVar7 = uVar7 - 1;
+      piVar8 = piVar8 + 4;
+    } while (uVar7 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_02ce0a7c(in_stack_00000008,*(long *)PTR_DAT_065c8d08,0);
+Meta_XR_MetaXRFeature__OnSessionExiting:
+  uVar7 = (*(code *)*puVar2)(in_stack_00000008,puVar2[1]);
+  if ((uVar7 & 1) == 0) {
+    if (in_stack_00000008 == (long *)0x0) {
+      return;
+    }
+    lVar5 = *in_stack_00000008;
+    uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+    if (uVar7 == 0) goto LAB_051883a4;
+    piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+    goto LAB_0518838c;
+  }
+  lVar5 = *in_stack_00000008;
+  uVar7 = (ulong)*(ushort *)(lVar5 + 0x12e);
+  if (uVar7 != 0) {
+    piVar8 = (int *)(*(long *)(lVar5 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_06608050) {
+        puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+        goto LAB_05187fe0;
+      }
+      uVar7 = uVar7 - 1;
+      piVar8 = piVar8 + 4;
+    } while (uVar7 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_02ce0a7c(in_stack_00000008,*(long *)PTR_DAT_06608050,0);
+LAB_05187fe0:
+  unaff_x24 = (*(code *)*puVar2)(in_stack_00000008,puVar2[1]);
+  if (unaff_x24 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+  unaff_x23 = *(long **)(unaff_x24 + 0x18);
+  if (unaff_x23 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02ce7c7c();
+  }
+  param_1 = *unaff_x23;
+  uVar7 = (ulong)*(ushort *)(param_1 + 0x12e);
+  if (uVar7 != 0) {
+    in_x10 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+      if (*(long *)(in_x10 + -2) == *(long *)PTR_DAT_06607dd0) goto code_r0x05188044;
+      uVar7 = uVar7 - 1;
+      in_x10 = in_x10 + 4;
+    } while (uVar7 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_02ce0a7c(unaff_x23,*(long *)PTR_DAT_06607dd0,0);
+  goto LAB_05188050;
+  while( true ) {
+    uVar7 = uVar7 - 1;
+    piVar8 = piVar8 + 4;
+    if (uVar7 == 0) break;
+LAB_0518838c:
+    if (*(long *)(piVar8 + -2) == *(long *)PTR_DAT_065c8a48) {
+      puVar2 = (undefined8 *)(lVar5 + (long)*piVar8 * 0x10 + 0x138);
+      goto LAB_051883c0;
+    }
+  }
+LAB_051883a4:
+  puVar2 = (undefined8 *)FUN_02ce0a7c(in_stack_00000008,*(long *)PTR_DAT_065c8a48,0);
+LAB_051883c0:
+  (*(code *)*puVar2)(in_stack_00000008,puVar2[1]);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 81
+FUNCTION_NAME: FUN_05d30124
+ENTRY_POINT: 05d30124
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 109
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_10', 'validity_or_gating_hits_6', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_109', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\05d30124_FUN_05d30124.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\081_p206_FUN_05d30124.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_05d30124
+ENTRY_POINT: 05d30124
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 109
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_10;validity_or_gating_hits_6;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void FUN_05d30124(long param_1)
+
+{
+  undefined8 *puVar1;
+  undefined8 *puVar2;
+  char cVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined8 uVar9;
+  long lVar10;
+  ulong uVar11;
+  long lVar12;
+  long lVar13;
+  ulong uVar14;
+  
+  if ((DAT_06a7a7a7 & 1) == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<GestureEvent_GestureTypeOneofCase,_long>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<JointVelocityActiveState_JointVelocityFeatureConfig,_JointVelocityActiveState_JointVelocityFeatureState>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<MRUKAnchor_SceneLabels,_List<MRUKAnchor>>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<OVRAnchor_DeferredKey,_List<OVRAnchor_DeferredValue>>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<OVRPassthroughLayer_ColorMapEditorType,_OVRPlugin_InsightPassthroughColorMapType>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (
+              System_Collections_Generic_Dictionary<OVRSkeleton_BoneId,_Tuple<OVRSkeleton_BoneId,_OVRSkeleton_BoneId>>_TypeInfo
+              );
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Collections_Generic_Dictionary<VectorImage,_VectorImageRenderInfo>_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum
+              (System_Collections_Generic_Dictionary<OVRSkeleton_BoneId,_HumanBodyBones>_TypeInfo);
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c89e8);
+    DAT_06a7a7a7 = 1;
+  }
+  puVar8 = 
+  System_Collections_Generic_Dictionary<OVRPassthroughLayer_ColorMapEditorType,_OVRPlugin_InsightPassthroughColorMapType>_TypeInfo
+  ;
+  puVar7 = 
+  System_Collections_Generic_Dictionary<OVRAnchor_DeferredKey,_List<OVRAnchor_DeferredValue>>_TypeInfo
+  ;
+  puVar6 = System_Collections_Generic_Dictionary<MRUKAnchor_SceneLabels,_List<MRUKAnchor>>_TypeInfo;
+  puVar1 = (undefined8 *)
+           System_Collections_Generic_Dictionary<JointVelocityActiveState_JointVelocityFeatureConfig,_JointVelocityActiveState_JointVelocityFeatureState>_TypeInfo
+  ;
+  puVar5 = 
+  System_Collections_Generic_Dictionary<JointRotationActiveState_JointRotationFeatureConfig,_JointRotationActiveState_JointRotationFeatureState>_TypeInfo
+  ;
+  puVar2 = (undefined8 *)
+           System_Collections_Generic_Dictionary<GestureEvent_GestureTypeOneofCase,_long>_TypeInfo;
+  puVar4 = PTR_DAT_065c89e8;
+  if ((*(long *)(param_1 + 0x20) != 0) &&
+     (lVar12 = *(long *)(*(long *)(param_1 + 0x20) + 0x20), lVar12 != 0)) {
+    cVar3 = *(char *)(lVar12 + 0x28);
+    uVar9 = thunk_FUN_02cea894(*(undefined8 *)
+                                System_Collections_Generic_Dictionary<Message_MessageType,_Callback_RequestCallback>_TypeInfo
+                              );
+    if (cVar3 != '\0') {
+      puVar1 = (undefined8 *)puVar6;
+    }
+    FUN_04a68410(uVar9,param_1,*puVar1,0);
+    *(undefined8 *)(param_1 + 0x50) = uVar9;
+    cVar3 = *(char *)(lVar12 + 0x29);
+    uVar9 = thunk_FUN_02cea894(*(undefined8 *)puVar7);
+    if (cVar3 != '\0') {
+      puVar2 = (undefined8 *)puVar5;
+    }
+    FUN_04a68208(uVar9,param_1,*puVar2,0);
+    *(undefined8 *)(param_1 + 0x58) = uVar9;
+    uVar9 = *(undefined8 *)puVar8;
+    if (*(int *)(*(long *)puVar4 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+    }
+    uVar9 = FUN_04f3fb68(uVar9,0);
+    lVar12 = FUN_05ef33f8(param_1,uVar9,0);
+    puVar4 = 
+    System_Collections_Generic_Dictionary<OVRSkeleton_BoneId,_Tuple<OVRSkeleton_BoneId,_OVRSkeleton_BoneId>>_TypeInfo
+    ;
+    if (lVar12 != 0) {
+      if (0 < (int)*(ulong *)(lVar12 + 0x18)) {
+        uVar14 = 0;
+        uVar11 = *(ulong *)(lVar12 + 0x18) & 0xffffffff;
+        do {
+          if (uVar11 <= uVar14) {
+                    /* WARNING: Subroutine does not return */
+            FUN_02ce7c84();
+          }
+          lVar13 = *(long *)(lVar12 + 0x20 + uVar14 * 8);
+          if (lVar13 == 0) {
+            lVar10 = 0;
+          }
+          else {
+            uVar9 = *(undefined8 *)puVar4;
+            lVar10 = thunk_FUN_02cea798(lVar13,uVar9);
+            if (lVar10 == 0) {
+                    /* WARNING: Subroutine does not return */
+              FUN_02ce8018(lVar13,uVar9);
+            }
+          }
+          FUN_05d2953c(param_1,lVar10);
+          uVar11 = (ulong)*(uint *)(lVar12 + 0x18);
+          uVar14 = uVar14 + 1;
+        } while ((long)uVar14 < (long)(int)*(uint *)(lVar12 + 0x18));
+      }
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 82
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionAdvertisement
+ENTRY_POINT: 051cab10
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 104
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_1', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_104', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051cab10_OVRPlugin$$StartColocationSessionAdvertisement.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\082_p206_OVRPlugin$$StartColocationSessionAdvertisement.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionAdvertisement
+ENTRY_POINT: 051cab10
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 104
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_1;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+float OVRPlugin__StartColocationSessionAdvertisement
+                (float param_1,float param_2,float param_3,float param_4,float param_5,float param_6
+                )
+
+{
+  int in_w8;
+  long unaff_x19;
+  float unaff_s8;
+  float fVar1;
+  float unaff_s9;
+  float fVar2;
+  float unaff_s10;
+  float fVar3;
+  
+                    /* try { // try from 051cab18 to 052cab37 has its CatchHandler @ 051cab94 */
+  if (in_w8 == 0) {
+    AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_065c8d28);
+    *(undefined1 *)(unaff_x19 + 0x230) = 1;
+  }
+                    /* try { // try from 051cab38 to 052cab6b has its CatchHandler @ 051ca9bc */
+  fVar3 = (param_4 + param_2) - unaff_s10;
+  fVar2 = (param_5 + param_1) - unaff_s9;
+  fVar1 = (param_6 + param_3) - unaff_s8;
+  if (*(int *)(*(long *)PTR_DAT_065c8d28 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+  }
+                    /* try { // try from 051cab6c to 052cab6f has its CatchHandler @ 051cabb0 */
+                    /* try { // try from 051cab70 to 052cab7f has its CatchHandler @ 051ca9bc */
+                    /* try { // try from 051cab80 to 052cab8f has its CatchHandler @ 051cab9c */
+  return SQRT(fVar1 * fVar1 + fVar3 * fVar3 + fVar2 * fVar2);
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 83
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionStateChange
+ENTRY_POINT: 051e0140
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 103
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_103', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051e0140_OVRPlugin.UnityOpenXR$$OnSessionStateChange.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\083_p206_OVRPlugin.UnityOpenXR$$OnSessionStateChange.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionStateChange
+ENTRY_POINT: 051e0140
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 103
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin_UnityOpenXR__OnSessionStateChange(long param_1)
+
+{
+  long in_x9;
+  long lVar1;
+  
+  if (in_x9 != 0) {
+    *(undefined1 *)(in_x9 + 0x10) = 1;
+    *(undefined4 *)(in_x9 + 0x14) = 0;
+    *(undefined4 *)(in_x9 + 0x18) = 0;
+    lVar1 = *(long *)(param_1 + 0x30);
+                    /* try { // try from 051e0154 to 052e0183 has its CatchHandler @ 051e0188 */
+    if (lVar1 != 0) {
+      *(undefined1 *)(lVar1 + 0x10) = 1;
+      *(undefined4 *)(lVar1 + 0x14) = 0;
+      *(undefined4 *)(lVar1 + 0x18) = 0;
+      *(undefined1 *)(param_1 + 0x20) = 1;
+      return;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 84
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionEnd
+ENTRY_POINT: 051e03d4
+MANUAL_PRIORITY_SCORE: 206
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 103
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_103', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\051e03d4_OVRPlugin.UnityOpenXR$$OnSessionEnd.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\hellodot\manual-review-pack\A_must_review\084_p206_OVRPlugin.UnityOpenXR$$OnSessionEnd.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin.UnityOpenXR$$OnSessionEnd
+ENTRY_POINT: 051e03d4
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 103
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_4;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 OVRPlugin_UnityOpenXR__OnSessionEnd(void)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long unaff_x19;
+  long lVar4;
+  undefined8 uVar5;
+  long lVar6;
+  long *unaff_x22;
+  
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_06609258);
+  AkMIDIEventCallbackInfo__get_byProgramNum(PTR_DAT_066091f8);
+                    /* try { // try from 051e03f0 to 052e03ff has its CatchHandler @ 051e0404 */
+  *(undefined1 *)(unaff_x19 + 0x5da) = 1;
+  lVar3 = *unaff_x22;
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+                    /* catch() { ... } // from try @ 051e0398 with catch @ 051e0404
+                       catch() { ... } // from try @ 051e03f0 with catch @ 051e0404 */
+    lVar3 = *unaff_x22;
+  }
+                    /* try { // try from 051e0408 to 052e040b has its CatchHandler @ 051e0480 */
+                    /* try { // try from 051e040c to 052e0427 has its CatchHandler @ 051e025c */
+  lVar4 = *(long *)(*(long *)(lVar3 + 0xb8) + 0x18);
+                    /* catch(type#1 @ 0620d888) { ... } // from try @ 051e0340 with catch @ 051e0410
+                        */
+  if (lVar4 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+                    /* try { // try from 051e0428 to 052e043f has its CatchHandler @ 051e0470 */
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar4 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609230);
+                    /* try { // try from 051e0440 to 052e045f has its CatchHandler @ 051e025c */
+    FUN_04a57bf8(lVar4,uVar5,*(undefined8 *)PTR_DAT_06609250,0);
+    lVar3 = *unaff_x22;
+                    /* try { // try from 051e0460 to 052e046f has its CatchHandler @ 051e0470 */
+    *(long *)(*(long *)(lVar3 + 0xb8) + 0x18) = lVar4;
+  }
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_02cd038c();
+                    /* catch() { ... } // from try @ 051e0428 with catch @ 051e0470
+                       catch() { ... } // from try @ 051e0460 with catch @ 051e0470 */
+    lVar3 = *unaff_x22;
+  }
+  puVar2 = PTR_DAT_06609248;
+  puVar1 = PTR_DAT_06609240;
+                    /* try { // try from 051e0474 to 052e0477 has its CatchHandler @ 051e0480 */
+                    /* try { // try from 051e0478 to 052e0483 has its CatchHandler @ 051e025c */
+                    /* catch(type#2 @ 00000000) { ... } // from try @ 051e0408 with catch @ 051e0480
+                       catch(type#2 @ 00000000) { ... } // from try @ 051e0474 with catch @ 051e0480
+                        */
+  lVar6 = *(long *)(*(long *)(lVar3 + 0xb8) + 0x20);
+  if (lVar6 == 0) {
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_02cd038c();
+      lVar3 = *unaff_x22;
+    }
+    uVar5 = **(undefined8 **)(lVar3 + 0xb8);
+    lVar6 = thunk_FUN_02cea894(*(undefined8 *)PTR_DAT_06609238);
+    FUN_04a66d30(lVar6,uVar5,*(undefined8 *)PTR_DAT_06609258,0);
+    *(long *)(*(long *)(*unaff_x22 + 0xb8) + 0x20) = lVar6;
+  }
+  uVar5 = thunk_FUN_02cea894(*(undefined8 *)puVar2);
+  FUN_03d87120(uVar5,3,lVar4,lVar6,*(undefined8 *)puVar1);
+  return uVar5;
+}
+
+
+
+END_DECOMPILED_FUNCTION

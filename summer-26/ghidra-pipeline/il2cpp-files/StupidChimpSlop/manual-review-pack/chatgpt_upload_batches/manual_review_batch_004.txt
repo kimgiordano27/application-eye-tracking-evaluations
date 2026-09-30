@@ -1,0 +1,1068 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 13
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetParent
+ENTRY_POINT: 0550c20c
+MANUAL_PRIORITY_SCORE: 261
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 70
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'keyword_support']
+EVIDENCE: ['weak_xr_or_state_hits_5', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_14', 'ui_or_gameplay_sink_hits_14', 'strong_file_logging_hits_4', 'telemetry_or_network_hits_21', 'eye_or_gaze_keyword_boost_only', 'negative_generic_rendering_without_foveation_or_eye_source', 'negative_generic_render_terms_without_foveation', 'functionality_possible_biometrics_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_70', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550c20c_MS.Internal.Xml.Cache.XPathNodeHelper$$GetParent.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\013_p261_MS.Internal.Xml.Cache.XPathNodeHelper$$GetParent.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetParent
+ENTRY_POINT: 0550c20c
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 70
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;keyword_support
+EVIDENCE: weak_xr_or_state_hits_5;validity_or_gating_hits_21;ray_or_cast_sink_hits_14;ui_or_gameplay_sink_hits_14;strong_file_logging_hits_4;telemetry_or_network_hits_21;eye_or_gaze_keyword_boost_only;negative_generic_rendering_without_foveation_or_eye_source;negative_generic_render_terms_without_foveation;functionality_possible_biometrics_hits_2
+*/
+
+
+void MS_Internal_Xml_Cache_XPathNodeHelper__GetParent(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  FUN_02d4dc40(Core_<>c_TypeInfo);
+  FUN_02d4dc40(Core_<>c__DisplayClass47_0_TypeInfo);
+  FUN_02d4dc40(Core_GamemodeType_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Rendering_CoreUtils_<>c_TypeInfo);
+  FUN_02d4dc40(CosmeticKiosk_<>c_TypeInfo);
+  FUN_02d4dc40(CosmeticRotationThingie_<>c_TypeInfo);
+  FUN_02d4dc40(CosmeticRotationThingie_<RefreshAllKiosks>d__5_TypeInfo);
+  FUN_02d4dc40(Photon_Pun_UtilityScripts_CountdownTimer_CountdownTimerHasExpired_TypeInfo);
+  FUN_02d4dc40(System_Net_CredentialCache_CredentialEnumerator_TypeInfo);
+  FUN_02d4dc40(System_Runtime_Remoting_Channels_CrossAppDomainSink_ProcessMessageRes_TypeInfo);
+  FUN_02d4dc40(System_Runtime_Remoting_Contexts_CrossContextChannel_ContextRestoreSink_TypeInfo);
+  FUN_02d4dc40(System_Security_Cryptography_CryptoStream_<>c_TypeInfo);
+  FUN_02d4dc40(UnityEngine_CullingGroup_StateChanged_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_EventCallback<DetachFromPanelEvent>_TypeInfo);
+  FUN_02d4dc40(System_Globalization_CultureInfo_OnCultureInfoChangedDelegate_TypeInfo);
+  FUN_02d4dc40(System_ComponentModel_CultureInfoConverter_CultureComparer_TypeInfo);
+  FUN_02d4dc40(System_ComponentModel_CultureInfoConverter_CultureInfoMapper_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_Cursor_PropertyBag_TypeInfo);
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Interactors_Casters_CurveInteractionCaster_RaycastHitComparer_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_ApproximateCubicBezierLength_00000446_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_ApproximateCubicBezierLength_00000446_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_CalculateProjectileFlightTime_00000448_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_CalculateProjectileFlightTime_00000448_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_ElevateQuadraticToCubicBezier_00000441_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_ElevateQuadraticToCubicBezier_00000441_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_GenerateCubicBezierCurve_00000442_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_GenerateCubicBezierCurve_00000442_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleCubicBezierPoint_00000440_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleCubicBezierPoint_00000440_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleProjectilePoint_00000447_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleProjectilePoint_00000447_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleQuadraticBezierPoint_0000043F_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(PTR_DAT_0665c058);
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_SampleQuadraticBezierPoint_0000043F_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000443_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000443_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000444_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Curves_CurveUtility_TryGenerateCubicBezierCurve_00000444_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_AdjustCastHitEndPoint_00000D26_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Interactors_Visuals_CurveVisualController_AdjustCastHitEndPoint_00000D26_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Interac
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 14
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetLocalNamespaces
+ENTRY_POINT: 0550be14
+MANUAL_PRIORITY_SCORE: 261
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 70
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'keyword_support']
+EVIDENCE: ['weak_xr_or_state_hits_6', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_21', 'ui_or_gameplay_sink_hits_21', 'strong_file_logging_hits_4', 'telemetry_or_network_hits_21', 'eye_or_gaze_keyword_boost_only', 'negative_generic_rendering_without_foveation_or_eye_source', 'negative_generic_render_terms_without_foveation', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_70', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550be14_MS.Internal.Xml.Cache.XPathNodeHelper$$GetLocalNamespaces.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\014_p261_MS.Internal.Xml.Cache.XPathNodeHelper$$GetLocalNamespaces.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetLocalNamespaces
+ENTRY_POINT: 0550be14
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 70
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;keyword_support
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_21;ray_or_cast_sink_hits_21;ui_or_gameplay_sink_hits_21;strong_file_logging_hits_4;telemetry_or_network_hits_21;eye_or_gaze_keyword_boost_only;negative_generic_rendering_without_foveation_or_eye_source;negative_generic_render_terms_without_foveation;functionality_possible_biometrics_hits_4
+*/
+
+
+void MS_Internal_Xml_Cache_XPathNodeHelper__GetLocalNamespaces(long param_1)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  FUN_02d4dc40(*(undefined8 *)(param_1 + 0x878));
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Orthogonal_0000035E_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Orthogonal_0000035E_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_ProjectOnPlane_00000351_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_ProjectOnPlane_00000351_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_ProjectOnPlane_00000352_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_ProjectOnPlane_00000352_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035B_BurstDirectCall_TypeInfo
+              );
+                    /* catch() { ... } // from try @ 0550befc with catch @ 0550be74
+                       catch() { ... } // from try @ 0550bf68 with catch @ 0550be74
+                       catch() { ... } // from try @ 0550bfb8 with catch @ 0550be74 */
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035B_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035C_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Scale_0000035C_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastOffset_00000362_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastOffset_00000362_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastParameters_00000360_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastParameters_00000360_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetMultiSegmentConecastParameters_00000361_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetMultiSegmentConecastParameters_00000361_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetSphereOverlapParameters_0000035F_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetSphereOverlapParameters_0000035F_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(Unity_Burst_BurstString_NumberFormatKind_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UI_Button_<OnFinishSubmit>d__9_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UI_Button_ButtonClickedEvent_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_Button_UxmlFactory_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_ButtonStripField_UxmlFactory_TypeInfo);
+  FUN_02d4dc40(Oculus_Platform_Callback_RequestCallback_TypeInfo);
+  FUN_02d4dc40(Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass0_0_TypeInfo);
+  FUN_02d4dc40(Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass6_0_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Rendering_CameraCaptureBridge_CameraEntry_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_CameraScreenRaycaster_<>c_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationCallbackInfo_WithSyncContext_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationToken_<>c_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_Linked1CancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_Linked2CancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_LinkedNCancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Canvas_WillRenderCanvases_TypeInfo);
+  FUN_02d4dc40(UnityEngine_XR_Interaction_Toolkit_UI_CanvasOptimizer_CanvasState_TypeInfo);
+  FUN_02d4dc40(System_Text_RegularExpressions_CaptureCollection_Enumerator_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Rendering_Universal_CapturePass_<>c_TypeInfo);
+  FUN_02d4dc40(Internal_Cryptography_Pal_CertificateData_<ReadReverseRdns>d__21_TypeInfo);
+  FUN_02d4dc40(Mono_Net_Security_ChainValidationHelper_<>c__DisplayClass11_0_TypeInfo);
+  FUN_02d4dc40(ChimpRig_<EyeBlink>d__18_TypeInfo);
+  FUN_02d4dc40(System_Net_ChunkedInputStream_ReadBu
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 15
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetInScopeNamespaces
+ENTRY_POINT: 0550be90
+MANUAL_PRIORITY_SCORE: 261
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 70
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'keyword_support']
+EVIDENCE: ['weak_xr_or_state_hits_6', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_21', 'ui_or_gameplay_sink_hits_21', 'strong_file_logging_hits_4', 'telemetry_or_network_hits_21', 'eye_or_gaze_keyword_boost_only', 'negative_generic_rendering_without_foveation_or_eye_source', 'negative_generic_render_terms_without_foveation', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_70', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550be90_MS.Internal.Xml.Cache.XPathNodeHelper$$GetInScopeNamespaces.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\015_p261_MS.Internal.Xml.Cache.XPathNodeHelper$$GetInScopeNamespaces.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNodeHelper$$GetInScopeNamespaces
+ENTRY_POINT: 0550be90
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 70
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;keyword_support
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_21;ray_or_cast_sink_hits_21;ui_or_gameplay_sink_hits_21;strong_file_logging_hits_4;telemetry_or_network_hits_21;eye_or_gaze_keyword_boost_only;negative_generic_rendering_without_foveation_or_eye_source;negative_generic_render_terms_without_foveation;functionality_possible_biometrics_hits_4
+*/
+
+
+void MS_Internal_Xml_Cache_XPathNodeHelper__GetInScopeNamespaces(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  FUN_02d4dc40();
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastOffset_00000362_BurstDirectCall_TypeInfo
+              );
+                    /* try { // try from 0550bea8 to 0560beb3 has its CatchHandler @ 0550bf80 */
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastOffset_00000362_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastParameters_00000360_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetConecastParameters_00000360_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetMultiSegmentConecastParameters_00000361_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetMultiSegmentConecastParameters_00000361_PostfixBurstDelegate_TypeInfo
+              );
+                    /* try { // try from 0550bee4 to 0560bee7 has its CatchHandler @ 0550bf74 */
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetSphereOverlapParameters_0000035F_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstPhysicsUtils_GetSphereOverlapParameters_0000035F_PostfixBurstDelegate_TypeInfo
+              );
+                    /* try { // try from 0550bef4 to 0560befb has its CatchHandler @ 0550bf6c */
+                    /* try { // try from 0550befc to 0560bf43 has its CatchHandler @ 0550be74 */
+  FUN_02d4dc40(Unity_Burst_BurstString_NumberFormatKind_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UI_Button_<OnFinishSubmit>d__9_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UI_Button_ButtonClickedEvent_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_Button_UxmlFactory_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_ButtonStripField_UxmlFactory_TypeInfo);
+  FUN_02d4dc40(Oculus_Platform_Callback_RequestCallback_TypeInfo);
+                    /* try { // try from 0550bf44 to 0560bf5b has its CatchHandler @ 0550bf70 */
+  FUN_02d4dc40(Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass0_0_TypeInfo);
+  FUN_02d4dc40(Mono_Net_Security_Private_CallbackHelpers_<>c__DisplayClass6_0_TypeInfo);
+                    /* try { // try from 0550bf5c to 0560bf5f has its CatchHandler @ 0550bf68 */
+  FUN_02d4dc40(UnityEngine_Rendering_CameraCaptureBridge_CameraEntry_TypeInfo);
+                    /* try { // try from 0550bf60 to 0560bf63 has its CatchHandler @ 0550bf7c */
+                    /* try { // try from 0550bf64 to 0560bf67 has its CatchHandler @ 0550bf78 */
+                    /* catch(type#1 @ 06204328) { ... } // from try @ 0550bf5c with catch @ 0550bf68
+                       try { // try from 0550bf68 to 0560bf9b has its CatchHandler @ 0550be74 */
+  FUN_02d4dc40(UnityEngine_UIElements_CameraScreenRaycaster_<>c_TypeInfo);
+                    /* catch(type#1 @ 06204328) { ... } // from try @ 0550bef4 with catch @ 0550bf6c
+                        */
+                    /* catch(type#1 @ 06204328) { ... } // from try @ 0550bf44 with catch @ 0550bf70
+                        */
+  FUN_02d4dc40(System_Threading_CancellationCallbackInfo_WithSyncContext_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationToken_<>c_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_Linked1CancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_Linked2CancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(System_Threading_CancellationTokenSource_LinkedNCancellationTokenSource_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Canvas_WillRenderCanvases_TypeInfo);
+  FUN_02d4dc40(UnityEngine_XR_Interaction_Toolkit_UI_CanvasOptimizer_CanvasState_TypeInfo);
+  FUN_02d4dc40(System_Text_RegularExpressions_CaptureCollection_Enumerator_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Rendering_Universal_CapturePass_<>c_TypeInfo);
+  FUN_02d4dc40(Internal_Cryptography_Pal_CertificateData_<ReadReverseRdns>d__21_TypeInfo);
+  FUN_02d4dc40(Mono_Net_Security_ChainValidationHelper_<>c__DisplayClass11_0_TypeInfo);
+  FUN_02d4dc40(ChimpRig_<EyeBlink>d__18_TypeInfo);
+  FUN_02d4dc40(System_Net_ChunkedInputStream_ReadBufferState_TypeInfo);
+  FUN_02d4dc40(System_IO_ChunkedMemoryStream_MemoryChunk_TypeInfo);
+  FUN_02d4dc40(System_Security_Claims_ClaimsIdentity_<get_Claims>d__51_TypeInfo);
+  FUN_02d4dc40(UnityEngine_Rendering_Universal_ClearTargetsPass_<>c_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_ClickDetector_ButtonClickStatus_TypeInfo);
+  FUN_02d4dc40(UnityEngine_UIElements_ClickEvent_<>c_TypeInfo);
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Locomotion_Climbing_ClimbTeleportInteractor_<>c_TypeInfo
+              );
+  FUN_02d4dc40(UnityEngine_Rendering_Universal_Internal_ColorGradingLutPass_<>c_TypeInfo
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 16
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNode$$get_Prefix
+ENTRY_POINT: 0550bc9c
+MANUAL_PRIORITY_SCORE: 261
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 70
+ORIGINAL_SCANNER_LABEL: 70_high_likely_false_positive_high
+MODULES: ['weak_source_state', 'validity_gate', 'ray_interaction', 'ui_interaction', 'data_collection', 'telemetry', 'keyword_support']
+EVIDENCE: ['weak_xr_or_state_hits_6', 'validity_or_gating_hits_21', 'ray_or_cast_sink_hits_21', 'ui_or_gameplay_sink_hits_21', 'strong_file_logging_hits_4', 'telemetry_or_network_hits_21', 'eye_or_gaze_keyword_boost_only', 'negative_generic_rendering_without_foveation_or_eye_source', 'negative_generic_render_terms_without_foveation', 'functionality_possible_biometrics_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_70', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\general-structure-results\70_high_likely_false_positive_high\0550bc9c_MS.Internal.Xml.Cache.XPathNode$$get_Prefix.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\StupidChimpSlop\manual-review-pack\A_must_review\016_p261_MS.Internal.Xml.Cache.XPathNode$$get_Prefix.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: MS.Internal.Xml.Cache.XPathNode$$get_Prefix
+ENTRY_POINT: 0550bc9c
+PROGRAM: StupidChimpSlop-libil2cpp.so
+SCORE: 70
+LABEL: likely_false_positive_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: likely_false_positive
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: weak_source_state;validity_gate;ray_interaction;ui_interaction;data_collection;telemetry;keyword_support
+EVIDENCE: weak_xr_or_state_hits_6;validity_or_gating_hits_21;ray_or_cast_sink_hits_21;ui_or_gameplay_sink_hits_21;strong_file_logging_hits_4;telemetry_or_network_hits_21;eye_or_gaze_keyword_boost_only;negative_generic_rendering_without_foveation_or_eye_source;negative_generic_render_terms_without_foveation;functionality_possible_biometrics_hits_4
+*/
+
+
+void MS_Internal_Xml_Cache_XPathNode__get_Prefix(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  long *plVar3;
+  long unaff_x19;
+  undefined8 *unaff_x20;
+  
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000346_BurstDirectCall_TypeInfo
+              );
+                    /* catch() { ... } // from try @ 0550bd30 with catch @ 0550bca8
+                       catch() { ... } // from try @ 0550bd9c with catch @ 0550bca8
+                       catch() { ... } // from try @ 0550bdec with catch @ 0550bca8 */
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000346_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000347_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_BounceOutLerp_00000347_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_SingleBounceOutLerp_0000034A_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_SingleBounceOutLerp_0000034A_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_SingleBounceOutLerp_0000034B_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstLerpUtility_SingleBounceOutLerp_0000034B_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Angle_00000355_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Angle_00000355_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Angle_00000356_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_Angle_00000356_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastSafeDivide_00000359_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastSafeDivide_00000359_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastSafeDivide_0000035A_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastSafeDivide_0000035A_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000357_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000357_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_FastVectorEquals_00000358_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000353_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000353_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000354_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_LookRotationWithForwardProjectedOnPlane_00000354_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_OrthogonalLookRotation_0000034F_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_OrthogonalLookRotation_0000034F_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_OrthogonalLookRotation_00000350_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_OrthogonalLookRotation_00000350_PostfixBurstDelegate_TypeInfo
+              );
+  FUN_02d4dc40(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_BurstMathUtility_OrthogonalUpVector_0000034D_BurstDirectCall_TypeInfo
+              );
+  FUN_02d4dc40(
+              Unit
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+              }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02d4def0();
+}
+
+
+
+END_DECOMPILED_FUNCTION

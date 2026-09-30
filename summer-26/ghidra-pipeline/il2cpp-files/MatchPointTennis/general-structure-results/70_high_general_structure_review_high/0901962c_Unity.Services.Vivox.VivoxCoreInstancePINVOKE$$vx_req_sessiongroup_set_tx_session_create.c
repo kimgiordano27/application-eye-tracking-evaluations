@@ -1,0 +1,78 @@
+/*
+FUNCTION_NAME: Unity.Services.Vivox.VivoxCoreInstancePINVOKE$$vx_req_sessiongroup_set_tx_session_create
+ENTRY_POINT: 0901962c
+PROGRAM: MatchPointTennis-libil2cpp.so
+SCORE: 70
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;ui_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_3;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_4
+*/
+
+
+undefined8
+Unity_Services_Vivox_VivoxCoreInstancePINVOKE__vx_req_sessiongroup_set_tx_session_create
+          (ulong param_1)
+
+{
+  undefined *puVar1;
+  ulong uVar2;
+  undefined8 uVar3;
+  long lVar4;
+  long *plVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  long unaff_x19;
+  long unaff_x20;
+  
+  if ((param_1 & 1) == 0) {
+    FUN_04447ba8(PTR_DAT_09fc0098);
+    FUN_04447ba8(PTR_DAT_09f265f0);
+    *(undefined1 *)(unaff_x20 + 0x616) = 1;
+  }
+  puVar1 = PTR_DAT_09f265f0;
+  if (unaff_x19 == 0) {
+    return 0;
+  }
+  uVar2 = FUN_078b4450(*(undefined8 *)PTR_DAT_09f265f0,0);
+  if ((uVar2 & 1) != 0) {
+    if (*(int *)(*(long *)PTR_DAT_09fc0098 + 0xe4) == 0) {
+      thunk_FUN_044a54b4();
+    }
+    uVar3 = FUN_09019784();
+    return uVar3;
+  }
+  lVar4 = FUN_07b6d64c();
+  if (lVar4 != 0) {
+    uVar2 = FUN_07b6de5c(lVar4,*(undefined8 *)puVar1,0);
+    if ((uVar2 & 1) == 0) {
+      lVar4 = 0;
+    }
+    if ((uVar2 & 1) == 0) {
+      thunk_FUN_044adef4(PTR_DAT_09f273a8);
+      uVar3 = thunk_FUN_0448520c();
+      uVar6 = thunk_FUN_044adef4(PTR_DAT_09fc00a8);
+      uVar7 = thunk_FUN_044adef4(PTR_DAT_09f265f0);
+      FUN_07a603a8(uVar3,uVar6,uVar7,0);
+      uVar6 = thunk_FUN_044adef4(PTR_DAT_09fc00b0);
+                    /* WARNING: Subroutine does not return */
+      FUN_04447d10(uVar3,uVar6);
+    }
+    if ((lVar4 != 0) &&
+       (plVar5 = (long *)FUN_07b6d26c(lVar4,*(undefined8 *)puVar1,0), plVar5 != (long *)0x0)) {
+      uVar3 = (**(code **)(*plVar5 + 0x168))(plVar5,*(undefined8 *)(*plVar5 + 0x170));
+      if (*(int *)(*(long *)PTR_DAT_09fc0098 + 0xe4) == 0) {
+        thunk_FUN_044a54b4(*(long *)PTR_DAT_09fc0098);
+      }
+      uVar3 = FUN_09019d18(uVar3);
+      return uVar3;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_04447e44();
+}
+
+

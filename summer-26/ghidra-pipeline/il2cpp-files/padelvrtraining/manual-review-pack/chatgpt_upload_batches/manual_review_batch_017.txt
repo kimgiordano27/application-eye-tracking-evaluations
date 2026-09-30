@@ -1,0 +1,712 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 81
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$Deserialize<Int32Enum>
+ENTRY_POINT: 04f06d60
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_7', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\70_high_general_structure_review_high\04f06d60_Newtonsoft.Json.JsonSerializer$$Deserialize_Int32Enum_.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\081_p199_Newtonsoft.Json.JsonSerializer$$Deserialize_Int32Enum_.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonSerializer$$Deserialize<Int32Enum>
+ENTRY_POINT: 04f06d60
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_7;strong_file_logging_hits_2;telemetry_or_network_hits_4
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x04f07138) */
+
+void Newtonsoft_Json_JsonSerializer__Deserialize<Int32Enum>
+               (long *param_1,long param_2,undefined8 param_3,long param_4)
+
+{
+  undefined8 *puVar1;
+  undefined8 uVar2;
+  undefined *puVar3;
+  long lVar4;
+  undefined8 *puVar5;
+  long lVar6;
+  int *piVar7;
+  int iVar8;
+  int iVar9;
+  long *plVar10;
+  ulong __n;
+  void *__src;
+  void *__s;
+  ulong uVar11;
+  void *__s_00;
+  undefined8 *puVar12;
+  void *__s_01;
+  long unaff_x29;
+  undefined8 auStack_30 [6];
+  
+  lVar4 = tpidr_el0;
+  *(undefined8 *)(unaff_x29 + -0x28) = param_3;
+  *(long *)(unaff_x29 + -0x20) = lVar4;
+  *(undefined8 *)(unaff_x29 + -8) = *(undefined8 *)(lVar4 + 0x28);
+  plVar10 = *(long **)(param_4 + 0x38);
+  if (plVar10 == (long *)0x0) {
+    FUN_03d2d2b0(PTR_DAT_091a14e0);
+    FUN_03d2d2b0(PTR_DAT_091a1508);
+    plVar10 = *(long **)(param_4 + 0x38);
+    if (plVar10 == (long *)0x0) {
+      FUN_03d8f2c8(param_4);
+      plVar10 = *(long **)(param_4 + 0x38);
+    }
+  }
+  __n = (ulong)*(uint *)(plVar10[5] + 0xfc);
+  uVar11 = __n + 0xf & 0x1fffffff0;
+  __src = (void *)((long)auStack_30 - uVar11);
+  puVar12 = (undefined8 *)((long)__src - uVar11);
+  __s_01 = (void *)((long)puVar12 - uVar11);
+  memset(__s_01,0,__n);
+  __s = (void *)((long)__s_01 - uVar11);
+  memset(__s,0,__n);
+  __s_00 = (void *)((long)__s - uVar11);
+  memset(__s_00,0,__n);
+  puVar3 = PTR_DAT_091ae728;
+  if ((param_1 == (long *)0x0) || (puVar3 = PTR_DAT_091f9708, param_2 == 0)) {
+    uVar2 = thunk_FUN_03d1e194(puVar3);
+    uVar2 = FUN_07796684(uVar2,0);
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d414(uVar2,param_4);
+  }
+  lVar4 = *plVar10;
+  if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+    lVar4 = FUN_03d8f26c(lVar4);
+  }
+  lVar6 = *param_1;
+  uVar11 = (ulong)*(ushort *)(lVar6 + 0x12e);
+  if (uVar11 != 0) {
+    piVar7 = (int *)(*(long *)(lVar6 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar7 + -2) == lVar4) {
+        puVar1 = (undefined8 *)(lVar6 + (long)*piVar7 * 0x10 + 0x138);
+        goto LAB_04f06e98;
+      }
+      uVar11 = uVar11 - 1;
+      piVar7 = piVar7 + 4;
+    } while (uVar11 != 0);
+  }
+  puVar1 = (undefined8 *)FUN_03d8f370(param_1,lVar4,0);
+LAB_04f06e98:
+  plVar10 = (long *)(*(code *)*puVar1)(param_1,puVar1[1]);
+  puVar3 = PTR_DAT_091a1508;
+  if (plVar10 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d548();
+  }
+  do {
+    lVar4 = *plVar10;
+    uVar11 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar11 != 0) {
+      piVar7 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar7 + -2) == *(long *)puVar3) {
+          puVar1 = (undefined8 *)(lVar4 + (long)*piVar7 * 0x10 + 0x138);
+          goto LAB_04f06f00;
+        }
+        uVar11 = uVar11 - 1;
+        piVar7 = piVar7 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar1 = (undefined8 *)FUN_03d8f370(plVar10,*(long *)puVar3,0);
+LAB_04f06f00:
+    uVar11 = (*(code *)*puVar1)(plVar10,puVar1[1]);
+    if ((uVar11 & 1) == 0) {
+      iVar9 = 0xb;
+      iVar8 = 0xb;
+      goto joined_r0x04f07028;
+    }
+    lVar4 = *(long *)(*(long *)(param_4 + 0x38) + 0x18);
+    if ((*(byte *)(lVar4 + 0x135) & 1) == 0) {
+      lVar4 = FUN_03d8f26c(lVar4);
+    }
+    lVar6 = *plVar10;
+    uVar11 = (ulong)*(ushort *)(lVar6 + 0x12e);
+    if (uVar11 != 0) {
+      piVar7 = (int *)(*(long *)(lVar6 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar7 + -2) == lVar4) {
+          lVar4 = lVar6 + (long)*piVar7 * 0x10 + 0x138;
+          goto LAB_04f06f74;
+        }
+        uVar11 = uVar11 - 1;
+        piVar7 = piVar7 + 4;
+      } while (uVar11 != 0);
+    }
+    lVar4 = FUN_03d8f370(plVar10,lVar4,0);
+LAB_04f06f74:
+    *(void **)(unaff_x29 + -0x18) = __src;
+    lVar4 = *(long *)(lVar4 + 8);
+    (**(code **)(lVar4 + 0x10))(*(undefined8 *)(lVar4 + 8),lVar4,plVar10,unaff_x29 + -0x18,__src);
+    memcpy(__s_01,__src,__n);
+    memcpy(puVar12,__s_01,__n);
+    puVar1 = puVar12;
+    if (-1 < *(int *)(*(long *)(*(long *)(param_4 + 0x38) + 0x28) + 0x28)) {
+      puVar1 = (undefined8 *)*puVar12;
+    }
+    puVar5 = *(undefined8 **)(*(long *)(param_4 + 0x38) + 0x30);
+    uVar2 = *puVar5;
+    *(undefined8 **)(unaff_x29 + -0x18) = puVar1;
+    (*(code *)puVar5[2])(uVar2,puVar5,param_2,unaff_x29 + -0x18,unaff_x29 + -0xc);
+  } while (*(char *)(unaff_x29 + -0xc) == '\0');
+  memcpy(__src,__s_01,__n);
+  memcpy(__s,__src,__n);
+  iVar9 = 10;
+  iVar8 = 10;
+joined_r0x04f07028:
+  if (plVar10 != (long *)0x0) {
+    lVar4 = *plVar10;
+    uVar11 = (ulong)*(ushort *)(lVar4 + 0x12e);
+    if (uVar11 != 0) {
+      piVar7 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar7 + -2) == *(long *)PTR_DAT_091a14e0) {
+          puVar12 = (undefined8 *)(lVar4 + (long)*piVar7 * 0x10 + 0x138);
+          goto LAB_04f07080;
+        }
+        uVar11 = uVar11 - 1;
+        piVar7 = piVar7 + 4;
+      } while (uVar11 != 0);
+    }
+    puVar12 = (undefined8 *)FUN_03d8f370(plVar10,*(long *)PTR_DAT_091a14e0,0);
+LAB_04f07080:
+    (*(code *)*puVar12)(plVar10,puVar12[1]);
+    iVar8 = iVar9;
+  }
+  if (iVar8 == 0xb) {
+LAB_04f070a4:
+    memset(__s_00,0,__n);
+    __s = __s_00;
+  }
+  else if (iVar8 != 10) {
+    if (iVar8 != 0) goto LAB_04f070d8;
+    goto LAB_04f070a4;
+  }
+  memcpy(__src,__s,__n);
+  memcpy(*(void **)(unaff_x29 + -0x28),__src,__n);
+LAB_04f070d8:
+  if (*(long *)(*(long *)(unaff_x29 + -0x20) + 0x28) != *(long *)(unaff_x29 + -8)) {
+                    /* WARNING: Subroutine does not return */
+    __stack_chk_fail();
+  }
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 82
+FUNCTION_NAME: Newtonsoft.Json.JsonConvert$$SerializeXNode
+ENTRY_POINT: 071088c0
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 87
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_5', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_87', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\70_high_general_structure_review_high\071088c0_Newtonsoft.Json.JsonConvert$$SerializeXNode.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\082_p199_Newtonsoft.Json.JsonConvert$$SerializeXNode.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.JsonConvert$$SerializeXNode
+ENTRY_POINT: 071088c0
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 87
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry
+EVIDENCE: validity_or_gating_hits_5;strong_file_logging_hits_2;telemetry_or_network_hits_4
+*/
+
+
+undefined8 Newtonsoft_Json_JsonConvert__SerializeXNode(void)
+
+{
+  uint uVar1;
+  short sVar2;
+  uint uVar3;
+  undefined2 *puVar4;
+  undefined8 uVar5;
+  uint in_w8;
+  long lVar6;
+  long lVar7;
+  int iVar8;
+  undefined2 uVar9;
+  int unaff_w20;
+  long unaff_x24;
+  int unaff_w25;
+  int unaff_w26;
+  long unaff_x27;
+  long unaff_x29;
+  
+code_r0x071088c0:
+  if (in_w8 != 0x2a) goto Newtonsoft_Json_JsonConvert__SerializeXNode;
+LAB_071088c8:
+  if (*(char *)(unaff_x27 + 0x200) == '\0') {
+    FUN_03d2d2b0();
+    *(undefined1 *)(unaff_x27 + 0x200) = 1;
+  }
+  uVar3 = *(uint *)(unaff_x29 + -0x18);
+  lVar6 = (long)(int)uVar3;
+  if ((int)*(uint *)(unaff_x29 + -0x20) <= (int)uVar3) {
+    uVar5 = 0x22;
+    goto LAB_07108984;
+  }
+  if (*(uint *)(unaff_x29 + -0x20) <= uVar3) {
+LAB_071089b4:
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d550();
+  }
+  lVar7 = *(long *)(unaff_x29 + -0x28);
+  iVar8 = uVar3 + 1;
+  uVar9 = 0x22;
+LAB_07108964:
+  *(undefined2 *)(lVar7 + lVar6 * 2) = uVar9;
+  *(int *)(unaff_x29 + -0x18) = iVar8;
+LAB_07108990:
+  do {
+    unaff_w20 = unaff_w20 + 1;
+    if (unaff_w26 + unaff_w20 == 0) {
+      uVar5 = FUN_06ff13c4(unaff_x29 + -0x30,0);
+      if (*(long *)(unaff_x24 + 0x28) == *(long *)(unaff_x29 + -8)) {
+        return uVar5;
+      }
+                    /* WARNING: Subroutine does not return */
+      __stack_chk_fail();
+    }
+    uVar3 = FUN_06fcd2c8();
+    if ((uVar3 & 0xffff) == 0x3f) {
+      if (*(char *)(unaff_x27 + 0x200) == '\0') {
+        FUN_03d2d2b0();
+        *(undefined1 *)(unaff_x27 + 0x200) = 1;
+      }
+      uVar3 = *(uint *)(unaff_x29 + -0x18);
+      lVar6 = (long)(int)uVar3;
+      if ((int)uVar3 < (int)*(uint *)(unaff_x29 + -0x20)) {
+        if (*(uint *)(unaff_x29 + -0x20) <= uVar3) goto LAB_071089b4;
+        lVar7 = *(long *)(unaff_x29 + -0x28);
+        iVar8 = uVar3 + 1;
+        uVar9 = 0x3e;
+        goto LAB_07108964;
+      }
+      uVar5 = 0x3e;
+    }
+    else {
+      if ((uVar3 & 0xffff) != 0x2e) {
+        if (*(char *)(unaff_x27 + 0x200) == '\0') {
+          FUN_03d2d2b0();
+          *(undefined1 *)(unaff_x27 + 0x200) = 1;
+        }
+        uVar1 = *(uint *)(unaff_x29 + -0x18);
+        if ((int)uVar1 < (int)*(uint *)(unaff_x29 + -0x20)) {
+          if (*(uint *)(unaff_x29 + -0x20) <= uVar1) goto LAB_071089b4;
+          *(short *)(*(long *)(unaff_x29 + -0x28) + (long)(int)uVar1 * 2) = (short)uVar3;
+          *(uint *)(unaff_x29 + -0x18) = uVar1 + 1;
+        }
+        else {
+          FUN_06ff15f4(unaff_x29 + -0x30,uVar3,0);
+        }
+        goto LAB_07108990;
+      }
+      if (((unaff_w20 != 0) && (unaff_w26 + unaff_w20 == -1)) &&
+         (sVar2 = FUN_06fcd2c8(), sVar2 == 0x2a)) {
+        puVar4 = (undefined2 *)FUN_06ff13a0(unaff_x29 + -0x30,*(int *)(unaff_x29 + -0x18) + -1,0);
+        *puVar4 = 0x3c;
+        goto LAB_07108990;
+      }
+      if (unaff_w20 < unaff_w25) {
+        sVar2 = FUN_06fcd2c8();
+        if (sVar2 == 0x3f) goto LAB_071088c8;
+        uVar3 = FUN_06fcd2c8();
+        in_w8 = uVar3 & 0xffff;
+        goto code_r0x071088c0;
+      }
+Newtonsoft_Json_JsonConvert__SerializeXNode:
+      if (*(char *)(unaff_x27 + 0x200) == '\0') {
+        FUN_03d2d2b0();
+        *(undefined1 *)(unaff_x27 + 0x200) = 1;
+      }
+      uVar3 = *(uint *)(unaff_x29 + -0x18);
+      lVar6 = (long)(int)uVar3;
+      if ((int)uVar3 < (int)*(uint *)(unaff_x29 + -0x20)) break;
+      uVar5 = 0x2e;
+    }
+LAB_07108984:
+    FUN_06ff15f4(unaff_x29 + -0x30,uVar5,0);
+  } while( true );
+  if (*(uint *)(unaff_x29 + -0x20) <= uVar3) goto LAB_071089b4;
+  lVar7 = *(long *)(unaff_x29 + -0x28);
+  iVar8 = uVar3 + 1;
+  uVar9 = 0x2e;
+  goto LAB_07108964;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 83
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$WriteObjectStart
+ENTRY_POINT: 0718b094
+MANUAL_PRIORITY_SCORE: 199
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 82
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'data_collection', 'telemetry', 'frame_behavior']
+EVIDENCE: ['validity_or_gating_hits_2', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior']
+PRIORITY_REASONS: ['base_scanner_score_82', 'module_bonus_validity_gate_8', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\70_high_general_structure_review_high\0718b094_Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$WriteObjectStart.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\083_p199_Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$WriteObjectStart.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Newtonsoft.Json.Serialization.JsonSerializerInternalWriter$$WriteObjectStart
+ENTRY_POINT: 0718b094
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: validity_gate;data_collection;telemetry;frame_behavior
+EVIDENCE: validity_or_gating_hits_2;strong_file_logging_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior
+*/
+
+
+undefined8 Newtonsoft_Json_Serialization_JsonSerializerInternalWriter__WriteObjectStart(void)
+
+{
+  ulong uVar1;
+  undefined4 uVar2;
+  undefined4 *unaff_x19;
+  int unaff_w21;
+  long unaff_x22;
+  int iVar3;
+  long lVar4;
+  long unaff_x25;
+  long unaff_x26;
+  
+  uVar1 = FUN_048d37c4();
+  if ((uVar1 & 1) == 0) {
+    lVar4 = *(long *)(unaff_x22 + 0x78);
+    if (*(char *)(unaff_x26 + 0xd82) == '\0') {
+      FUN_03d2d2b0(PTR_DAT_091a8170);
+      *(undefined1 *)(unaff_x26 + 0xd82) = 1;
+    }
+    iVar3 = 0;
+    if (lVar4 != 0) {
+      FUN_06fd0380(lVar4,0);
+      iVar3 = *(int *)(lVar4 + 0x10);
+    }
+    if (*(char *)(unaff_x25 + 0xc83) == '\0') {
+      FUN_03d2d2b0(PTR_DAT_091dad58);
+      FUN_03d2d2b0(PTR_DAT_091dad78);
+      *(undefined1 *)(unaff_x25 + 0xc83) = 1;
+    }
+    if ((unaff_w21 == iVar3) && ((unaff_w21 == 0 || (uVar1 = FUN_048d37c4(), (uVar1 & 1) != 0)))) {
+      uVar2 = 0xff800000;
+    }
+    else {
+      lVar4 = *(long *)(unaff_x22 + 0x68);
+      if (*(char *)(unaff_x26 + 0xd82) == '\0') {
+        FUN_03d2d2b0(PTR_DAT_091a8170);
+        *(undefined1 *)(unaff_x26 + 0xd82) = 1;
+      }
+      iVar3 = 0;
+      if (lVar4 != 0) {
+        FUN_06fd0380(lVar4,0);
+        iVar3 = *(int *)(lVar4 + 0x10);
+      }
+      if (*(char *)(unaff_x25 + 0xc83) == '\0') {
+        FUN_03d2d2b0(PTR_DAT_091dad58);
+        FUN_03d2d2b0(PTR_DAT_091dad78);
+        *(undefined1 *)(unaff_x25 + 0xc83) = 1;
+      }
+      if ((unaff_w21 != iVar3) || ((unaff_w21 != 0 && (uVar1 = FUN_048d37c4(), (uVar1 & 1) == 0))))
+      {
+        return 0;
+      }
+      uVar2 = 0x7fc00000;
+    }
+  }
+  else {
+    uVar2 = 0x7f800000;
+  }
+  *unaff_x19 = uVar2;
+  return 1;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 84
+FUNCTION_NAME: Meta.XR.MetaXREyeTrackedFoveationFeature$$MetaSetFoveationEyeTracked
+ENTRY_POINT: 07442fac
+MANUAL_PRIORITY_SCORE: 198
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 138
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'validity_gate', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_7', 'validity_or_gating_hits_1', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_138', 'module_bonus_validity_gate_8', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\07442fac_Meta.XR.MetaXREyeTrackedFoveationFeature$$MetaSetFoveationEyeTracked.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\084_p198_Meta.XR.MetaXREyeTrackedFoveationFeature$$MetaSetFoveationEyeTracked.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MetaXREyeTrackedFoveationFeature$$MetaSetFoveationEyeTracked
+ENTRY_POINT: 07442fac
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 138
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;validity_gate;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_7;validity_or_gating_hits_1;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+float Meta_XR_MetaXREyeTrackedFoveationFeature__MetaSetFoveationEyeTracked(void)
+
+{
+  long lVar1;
+  long *unaff_x20;
+  long unaff_x21;
+  long *unaff_x22;
+  long unaff_x23;
+  float fVar2;
+  float fVar3;
+  float fVar4;
+  float fVar5;
+  float unaff_s9;
+  float fVar6;
+  float unaff_s11;
+  float fVar7;
+  float unaff_s13;
+  float unaff_s14;
+  float unaff_s15;
+  undefined8 in_stack_00000000;
+  float fStack0000000000000008;
+  float fStack000000000000000c;
+  undefined8 in_stack_00000058;
+  
+  if (*(char *)(unaff_x23 + 0x325) == '\0') {
+    FUN_03d2d2b0(PTR_DAT_091a0f88);
+    *(undefined1 *)(unaff_x23 + 0x325) = 1;
+  }
+  lVar1 = *(long *)(*unaff_x22 + 0xb8);
+  fVar7 = *(float *)(lVar1 + 0x18);
+  fVar5 = *(float *)(lVar1 + 0x1c);
+  fVar6 = *(float *)(lVar1 + 0x20);
+  if (*(char *)(unaff_x21 + 0x382) == '\0') {
+    FUN_03d2d2b0(PTR_DAT_091a2ee8);
+    *(undefined1 *)(unaff_x21 + 0x382) = 1;
+  }
+  fVar2 = fVar6 * fVar6 + fVar7 * fVar7 + fVar5 * fVar5;
+  fVar3 = unaff_s9;
+  if (**(float **)(*unaff_x20 + 0xb8) <= fVar2) {
+    fVar3 = unaff_s13 * fVar6 + in_stack_00000058._4_4_ * fVar7 + unaff_s9 * fVar5;
+    in_stack_00000058._4_4_ = in_stack_00000058._4_4_ - (fVar7 * fVar3) / fVar2;
+    unaff_s13 = unaff_s13 - (fVar6 * fVar3) / fVar2;
+    fVar3 = unaff_s9 - (fVar5 * fVar3) / fVar2;
+  }
+  fVar6 = unaff_s14 * unaff_s14;
+  fVar5 = fVar6 + unaff_s15 * unaff_s15 + unaff_s11 * unaff_s11;
+  if (**(float **)(*unaff_x20 + 0xb8) <= fVar5) {
+    fVar7 = unaff_s14 * unaff_s13 + unaff_s11 * in_stack_00000058._4_4_ + unaff_s15 * fVar3;
+    fVar6 = (unaff_s11 * fVar7) / fVar5;
+    in_stack_00000058._4_4_ = in_stack_00000058._4_4_ - fVar6;
+    fVar3 = fVar3 - (unaff_s15 * fVar7) / fVar5;
+    unaff_s13 = unaff_s13 - (unaff_s14 * fVar7) / fVar5;
+  }
+  fStack000000000000000c = fStack000000000000000c * unaff_s13;
+  if (fStack000000000000000c +
+      in_stack_00000000._4_4_ * in_stack_00000058._4_4_ + fStack0000000000000008 * fVar3 <= 0.0) {
+    if (DAT_098362c7 == '\0') {
+      FUN_03d2d2b0(PTR_DAT_091a0f88);
+      DAT_098362c7 = '\x01';
+    }
+    in_stack_00000058._4_4_ = **(float **)(*unaff_x22 + 0xb8);
+  }
+  if (*(char *)(unaff_x23 + 0x325) == '\0') {
+    FUN_03d2d2b0(PTR_DAT_091a0f88);
+    *(undefined1 *)(unaff_x23 + 0x325) = 1;
+  }
+  lVar1 = *(long *)(*unaff_x22 + 0xb8);
+  fVar7 = *(float *)(lVar1 + 0x18);
+  fVar3 = *(float *)(lVar1 + 0x1c);
+  fVar2 = *(float *)(lVar1 + 0x20);
+  fVar5 = (float)FUN_08abdd04();
+  if (*(char *)(unaff_x21 + 0x382) == '\0') {
+    FUN_03d2d2b0(PTR_DAT_091a2ee8);
+    *(undefined1 *)(unaff_x21 + 0x382) = 1;
+  }
+  fVar4 = fVar6 * fVar6 + fVar5 * fVar5 + fStack000000000000000c * fStack000000000000000c;
+  fVar7 = unaff_s9 * fVar7;
+  if (**(float **)(*unaff_x20 + 0xb8) <= fVar4) {
+    fVar7 = fVar7 - (fVar5 * (unaff_s9 * fVar2 * fVar6 +
+                             fVar7 * fVar5 + unaff_s9 * fVar3 * fStack000000000000000c)) / fVar4;
+  }
+  return in_stack_00000058._4_4_ + fVar7;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 85
+FUNCTION_NAME: OVRManager$$get_xrSession
+ENTRY_POINT: 0745c09c
+MANUAL_PRIORITY_SCORE: 198
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 101
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_101', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\0745c09c_OVRManager$$get_xrSession.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\padelvrtraining\manual-review-pack\A_must_review\085_p198_OVRManager$$get_xrSession.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRManager$$get_xrSession
+ENTRY_POINT: 0745c09c
+PROGRAM: padelvrtraining-libil2cpp.so
+SCORE: 101
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_2;telemetry_or_network_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRManager__get_xrSession(long param_1)
+
+{
+  undefined *puVar1;
+  undefined8 *puVar2;
+  undefined8 uVar3;
+  long lVar4;
+  ulong uVar5;
+  int *piVar6;
+  long unaff_x19;
+  long *plVar7;
+  long *unaff_x22;
+  
+  puVar1 = PTR_DAT_091a0cb0;
+  uVar5 = (ulong)*(ushort *)(param_1 + 0x12e);
+  if (uVar5 != 0) {
+    piVar6 = (int *)(*(long *)(param_1 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) == *unaff_x22) {
+        puVar2 = (undefined8 *)(param_1 + (long)(*piVar6 + 7) * 0x10 + 0x138);
+        goto LAB_0745c0f8;
+      }
+      uVar5 = uVar5 - 1;
+      piVar6 = piVar6 + 4;
+    } while (uVar5 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_03d8f370();
+LAB_0745c0f8:
+  (*(code *)*puVar2)();
+  plVar7 = *(long **)(unaff_x19 + 0x28);
+  uVar3 = thunk_FUN_03d2ef40(*(undefined8 *)puVar1);
+  FUN_070caf4c();
+  if (plVar7 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_03d2d548();
+  }
+  lVar4 = *plVar7;
+  uVar5 = (ulong)*(ushort *)(lVar4 + 0x12e);
+  if (uVar5 != 0) {
+    piVar6 = (int *)(*(long *)(lVar4 + 0xb0) + 8);
+    do {
+      if (*(long *)(piVar6 + -2) == *unaff_x22) {
+        puVar2 = (undefined8 *)(lVar4 + (long)(*piVar6 + 0xd) * 0x10 + 0x138);
+        goto LAB_0745c17c;
+      }
+      uVar5 = uVar5 - 1;
+      piVar6 = piVar6 + 4;
+    } while (uVar5 != 0);
+  }
+  puVar2 = (undefined8 *)FUN_03d8f370(plVar7,*unaff_x22,0xd);
+LAB_0745c17c:
+  (*(code *)*puVar2)(plVar7,uVar3,puVar2[1]);
+  *(undefined1 *)(unaff_x19 + 0x60) = 0;
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

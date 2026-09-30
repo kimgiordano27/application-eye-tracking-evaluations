@@ -11,9 +11,13 @@ SCRIPT_DIR="$PIPELINE_ROOT/ghidra-export-scripts"
 JAVA_SCRIPT="GeneralStructureEyePatternScan.java"
 
 # Leave empty to scan all applications.
-# Example for one application:
+# Example:
 # ONLY_APP="waitwhat"
-ONLY_APP=""
+ONLY_APP="DiscGolf"
+
+# Resume from this application and continue with every app after it.
+# Leave empty to start from the first application.
+START_APP=""
 
 # 35 = exports borderline + likely + high
 # 50 = likely + high only
@@ -36,6 +40,7 @@ echo "Ghidra headless:      $GHIDRA_HEADLESS"
 echo "Script dir:           $SCRIPT_DIR"
 echo "Java script:          $JAVA_SCRIPT"
 echo "Only app:             ${ONLY_APP:-ALL APPS}"
+echo "Start app:            ${START_APP:-FIRST APP}"
 echo "Min review score:     $MIN_REVIEW_SCORE"
 echo "Export all functions: $EXPORT_ALL"
 echo ""
@@ -55,6 +60,13 @@ fi
 success_count=0
 skip_count=0
 fail_count=0
+processed_count=0
+
+start_reached=false
+
+if [[ -z "$START_APP" ]]; then
+    start_reached=true
+fi
 
 for app_folder in "$IL2CPP_FILES_ROOT"/*; do
     if [[ ! -d "$app_folder" ]]; then
@@ -63,22 +75,23 @@ for app_folder in "$IL2CPP_FILES_ROOT"/*; do
 
     app_name="$(basename "$app_folder")"
 
+    # Skip applications until START_APP is reached.
+    if [[ "$start_reached" == false ]]; then
+        if [[ "$app_name" == "$START_APP" ]]; then
+            start_reached=true
+        else
+            continue
+        fi
+    fi
+
     if [[ -n "$ONLY_APP" && "$app_name" != "$ONLY_APP" ]]; then
         continue
     fi
 
-    # Example:
-    # App folder:
-    #   il2cpp-files/waitwhat
-    #
-    # Ghidra project folder:
-    #   il2cpp-files/waitwhat/ghidra-project-waitwhat
-    #
-    # Ghidra project file:
-    #   il2cpp-files/waitwhat/ghidra-project-waitwhat/waitwhat.gpr
+    ((processed_count++))
+
     ghidra_project_dir="$app_folder/ghidra-project-$app_name"
     ghidra_project_file="$ghidra_project_dir/$app_name.gpr"
-
     program_name="$app_name-libil2cpp.so"
 
     output_dir="$app_folder/general-structure-results"
@@ -91,6 +104,7 @@ for app_folder in "$IL2CPP_FILES_ROOT"/*; do
         echo "SKIP: Missing Ghidra project folder:"
         echo "$ghidra_project_dir"
         ((skip_count++))
+        echo ""
         continue
     fi
 
@@ -98,9 +112,11 @@ for app_folder in "$IL2CPP_FILES_ROOT"/*; do
         echo "SKIP: Missing Ghidra project file:"
         echo "$ghidra_project_file"
         ((skip_count++))
+        echo ""
         continue
     fi
 
+    # Remove any partial results before rerunning the application.
     rm -rf "$output_dir"
     mkdir -p "$output_dir"
 
@@ -164,9 +180,16 @@ for app_folder in "$IL2CPP_FILES_ROOT"/*; do
     echo ""
 done
 
+if [[ -n "$START_APP" && "$start_reached" == false ]]; then
+    echo "ERROR: START_APP was not found:"
+    echo "$START_APP"
+    exit 1
+fi
+
 echo "=========================================="
 echo "General structure scan complete"
 echo "=========================================="
+echo "Processed apps:   $processed_count"
 echo "Successful scans: $success_count"
-echo "Skipped apps:      $skip_count"
-echo "Failed scans:      $fail_count"
+echo "Skipped apps:     $skip_count"
+echo "Failed scans:     $fail_count"

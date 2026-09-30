@@ -1,0 +1,124 @@
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.XRInteractionManager$$FocusEnter
+ENTRY_POINT: 0675b7cc
+PROGRAM: waitwhat-libil2cpp.so
+SCORE: 93
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;pose_vector;ui_interaction;telemetry
+EVIDENCE: strong_eye_source_hits_1;weak_xr_or_state_hits_1;strong_pose_or_ray_construction_hits_3;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_1;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_interaction_hits_3;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_XRInteractionManager__FocusEnter(undefined8 param_1)
+
+{
+  undefined *puVar1;
+  undefined4 uVar2;
+  long *unaff_x19;
+  
+  uVar2 = FUN_0699fa58(param_1);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP192K1Point_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x70) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP192R1FieldElement_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x74) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Sentry_Internal_SdkComposer_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x78) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Rendering_Universal_ScriptableRenderer_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x7c) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP192K1Field_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x80) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_UIElements_ScrollView_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x84) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP160K1Curve_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x88) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Oculus_Platform_Models_SdkAccount_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x8c) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP128R1Curve_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x90) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Experimental_Rendering_ScriptableRuntimeReflectionSystemSettings_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x94) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_ScriptableObject_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x98) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_UIElements_Scroller_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0x9c) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP128R1FieldElement_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa0) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Rendering_Universal_ScreenSpaceShadowsSettings_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa4) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Oculus_Platform_Models_SdkAccountList_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xa8) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Meta_XR_ImmersiveDebugger_UserInterface_Generic_ScrollView_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xac) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  Best_HTTP_SecureProtocol_Org_BouncyCastle_Asn1_Cryptlib_CryptlibObjectIdentifiers_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb0) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = System_Security_Cryptography_CryptoConfig_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb4) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Rendering_DynamicArray<RenderGraph_CompiledResourceInfo>___TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xb8) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  UnityEngine_UIElements_BaseCompositeField_FieldDescription<RectInt,_IntegerField,_int>___TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xbc) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  UnityEngine_UIElements_BaseCompositeField_FieldDescription<Vector2,_FloatField,_float>___TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xc0) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Rendering_ScriptableRenderContext_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xc4) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = UnityEngine_Rendering_Universal_ScreenSpaceLensFlareResolutionParameter_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 200) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Unity_Services_Analytics_SdkVersion_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xcc) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Asn1_Sec_SecNamedCurves_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xd0) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = 
+  Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP160R2FieldElement_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xd4) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP128R1Point_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xd8) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = OVRManager_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xdc) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP160K1Point_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xe0) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  puVar1 = Best_HTTP_SecureProtocol_Org_BouncyCastle_Math_EC_Custom_Sec_SecP192R1Field_TypeInfo;
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xe4) = uVar2;
+  uVar2 = FUN_0699fa58(*(undefined8 *)puVar1,0);
+  *(undefined4 *)(*(long *)(*unaff_x19 + 0xb8) + 0xe8) = uVar2;
+  return;
+}
+
+

@@ -1,0 +1,59 @@
+/*
+FUNCTION_NAME: Unity.Collections.NativeArray<OVRPlugin.Vector4s>$$CopySafe
+ENTRY_POINT: 03b63260
+PROGRAM: hellodot-libil2cpp.so
+SCORE: 80
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;validity_or_gating_hits_3;strong_pose_or_ray_construction_hits_4;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_eye_api_context_without_clear_sink_hits_2
+*/
+
+
+uint Unity_Collections_NativeArray<OVRPlugin_Vector4s>__CopySafe
+               (undefined1 *param_1,undefined1 *param_2)
+
+{
+  ulong uVar1;
+  long lVar2;
+  uint unaff_w19;
+  long unaff_x20;
+  long unaff_x21;
+  undefined8 unaff_x22;
+  long unaff_x23;
+  long unaff_x24;
+  code *unaff_x25;
+  
+  while( true ) {
+    memcpy(param_1,param_2,0xb0);
+    uVar1 = (*unaff_x25)(unaff_x22,&stack0x000000b0,*(undefined8 *)(unaff_x20 + 0x28));
+    if ((uVar1 & 1) != 0) {
+      return unaff_w19;
+    }
+    unaff_w19 = unaff_w19 + 1;
+    unaff_x24 = unaff_x24 + -1;
+    unaff_x23 = unaff_x23 + 0xb0;
+    if (unaff_x24 == 0) {
+      return 0xffffffff;
+    }
+    lVar2 = *(long *)(unaff_x21 + 0x10);
+    if (lVar2 == 0) break;
+    if (*(uint *)(lVar2 + 0x18) <= unaff_w19) {
+                    /* WARNING: Subroutine does not return */
+      FUN_02ce7c84();
+    }
+    memcpy(&stack0x00000000,(void *)(lVar2 + unaff_x23),0xb0);
+    if (unaff_x20 == 0) break;
+    unaff_x25 = *(code **)(unaff_x20 + 0x18);
+    unaff_x22 = *(undefined8 *)(unaff_x20 + 0x40);
+    param_1 = &stack0x000000b0;
+    param_2 = (undefined1 *)register0x00000008;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_02ce7c7c();
+}
+
+

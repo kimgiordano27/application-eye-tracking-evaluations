@@ -1,0 +1,52 @@
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Input.OculusHMD$$get_leftEyePosition
+ENTRY_POINT: 0678a0e0
+PROGRAM: ZombiesMRFree-libil2cpp.so
+SCORE: 134
+LABEL: possible_eye_biometrics_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: possible_eye_biometrics
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: possible_biometrics
+MODULES: eye_source;validity_gate;pose_vector;active_gaze_retrieval;possible_biometrics
+EVIDENCE: strong_eye_source_hits_2;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_2;active_gaze_state_retrieval_with_validity_and_pose;possible_biometric_feature_from_active_eye_context;functionality_possible_biometrics_hits_2
+*/
+
+
+void Unity_XR_Oculus_Input_OculusHMD__get_leftEyePosition(ulong param_1)
+
+{
+  ulong uVar1;
+  long lVar2;
+  long unaff_x19;
+  undefined8 uVar3;
+  long unaff_x21;
+  
+  if ((param_1 & 1) == 0) {
+    FUN_02fe925c(PTR_DAT_06f6d618);
+    *(undefined1 *)(unaff_x21 + 0x5e5) = 1;
+  }
+  if (*(long *)(unaff_x19 + 0xe8) != 0) {
+    uVar3 = *(undefined8 *)(*(long *)(unaff_x19 + 0xe8) + 0x18);
+    if (*(int *)(*(long *)PTR_DAT_06f6d618 + 0xe0) == 0) {
+      thunk_FUN_02fdcff0();
+    }
+    uVar1 = FUN_068fc830(uVar3,0);
+    if ((uVar1 & 1) != 0) {
+      if ((*(long *)(unaff_x19 + 0xe8) == 0) ||
+         (lVar2 = *(long *)(*(long *)(unaff_x19 + 0xe8) + 0x18), lVar2 == 0)) goto LAB_0678a1c8;
+      FUN_068e1b34(lVar2,0);
+    }
+    FUN_068e40b4();
+    FUN_0671eb38();
+    if (*(char *)(unaff_x19 + 0x101) != '\0') {
+      FUN_0671ed40(0,0,0,0x3f800000);
+    }
+    return;
+  }
+LAB_0678a1c8:
+                    /* WARNING: Subroutine does not return */
+  FUN_02fe94e8();
+}
+
+

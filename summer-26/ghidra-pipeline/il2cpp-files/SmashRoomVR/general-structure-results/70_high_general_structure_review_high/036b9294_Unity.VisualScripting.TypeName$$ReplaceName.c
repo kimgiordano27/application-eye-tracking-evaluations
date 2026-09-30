@@ -1,0 +1,171 @@
+/*
+FUNCTION_NAME: Unity.VisualScripting.TypeName$$ReplaceName
+ENTRY_POINT: 036b9294
+PROGRAM: SmashRoomVR-libil2cpp.so
+SCORE: 82
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: 
+MODULES: weak_source_state;validity_gate;ui_interaction;telemetry
+EVIDENCE: weak_xr_or_state_hits_4;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_2
+*/
+
+
+void Unity_VisualScripting_TypeName__ReplaceName(long param_1)
+
+{
+  undefined *puVar1;
+  ulong uVar2;
+  long lVar3;
+  undefined8 uVar4;
+  long lVar5;
+  float fVar6;
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float fVar12;
+  float fVar13;
+  float fVar14;
+  float in_s3;
+  float fVar15;
+  float fVar16;
+  float fVar17;
+  float fVar18;
+  float fVar19;
+  float fVar20;
+  float fVar21;
+  float fVar22;
+  
+  puVar1 = Method_OVRPermissionsRequester_<>c_<BuildPermissionCallbacks>b__14_1__;
+  if ((DAT_03ff74f0 & 1) == 0) {
+    thunk_FUN_01ad9084(Method_OVRPermissionsRequester_<>c_<BuildPermissionCallbacks>b__14_1__);
+    thunk_FUN_01ad9084(StringLiteral_455);
+    DAT_03ff74f0 = 1;
+  }
+  uVar4 = *(undefined8 *)(param_1 + 0x380);
+  if (*(int *)(*(long *)puVar1 + 0xe0) == 0) {
+    thunk_FUN_01ac7298();
+  }
+  uVar2 = FUN_0391f968(uVar4,0,0);
+  puVar1 = StringLiteral_455;
+  if ((uVar2 & 1) != 0) {
+    lVar3 = *(long *)StringLiteral_455;
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_01ac7298();
+      lVar3 = *(long *)puVar1;
+    }
+    if (*(char *)(*(long *)(lVar3 + 0xb8) + 300) == '\0') {
+      if (*(int *)(lVar3 + 0xe0) == 0) {
+        thunk_FUN_01ac7298();
+      }
+      FUN_036f576c(0);
+      lVar3 = *(long *)puVar1;
+    }
+    *(undefined1 *)(param_1 + 0x748) = 1;
+    lVar5 = *(long *)(param_1 + 0x110);
+    fVar16 = *(float *)(param_1 + 0x340);
+    if (*(float *)(param_1 + 0x348) <= *(float *)(param_1 + 0x340)) {
+      fVar16 = *(float *)(param_1 + 0x348);
+    }
+    if (*(int *)(lVar3 + 0xe0) == 0) {
+      thunk_FUN_01ac7298();
+    }
+    if (lVar5 != 0) {
+      fVar6 = (float)FUN_03900954(lVar5,*(undefined4 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xa0),0)
+      ;
+      fVar14 = *(float *)(param_1 + 0x34c);
+      if (fVar6 <= fVar16) {
+        fVar16 = fVar6;
+      }
+      fVar6 = *(float *)(param_1 + 0x344);
+      if (fVar14 <= *(float *)(param_1 + 0x344)) {
+        fVar6 = fVar14;
+      }
+      if (*(long *)(param_1 + 0x110) != 0) {
+        fVar7 = (float)FUN_03900954(*(long *)(param_1 + 0x110),
+                                    *(undefined4 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xa4),0);
+        if (fVar7 <= fVar6) {
+          fVar6 = fVar7;
+        }
+        if (*(long *)(param_1 + 0x380) != 0) {
+          UnityEngine_UIElements_StyleSheets_StylePropertyReader_GetCursorIdFunction___ctor
+                    (*(long *)(param_1 + 0x380),0);
+          if (*(long *)(param_1 + 0x380) != 0) {
+            fVar22 = *(float *)(param_1 + 0x340);
+            fVar19 = *(float *)(param_1 + 0x348);
+            fVar7 = fVar14;
+            UnityEngine_UIElements_StyleSheets_StylePropertyReader_GetCursorIdFunction___ctor
+                      (*(long *)(param_1 + 0x380),0);
+            if (*(long *)(param_1 + 0x380) != 0) {
+              fVar11 = *(float *)(param_1 + 0x344);
+              fVar8 = *(float *)(param_1 + 0x34c);
+              fVar12 = fVar11;
+              fVar15 = in_s3;
+              fVar9 = (float)FUN_03928280(*(long *)(param_1 + 0x380),0);
+              if (*(long *)(param_1 + 0x380) != 0) {
+                fVar13 = fVar12;
+                fVar10 = (float)FUN_03928134(*(long *)(param_1 + 0x380),0);
+                if (*(long *)(param_1 + 0x380) != 0) {
+                  UnityEngine_UIElements_StyleSheets_StylePropertyReader_GetCursorIdFunction___ctor
+                            (*(long *)(param_1 + 0x380),0);
+                  if (*(long *)(param_1 + 0x380) != 0) {
+                    fVar20 = *(float *)(param_1 + 0x340);
+                    fVar21 = *(float *)(param_1 + 0x348);
+                    FUN_03928134(*(long *)(param_1 + 0x380),0);
+                    if (*(long *)(param_1 + 0x380) != 0) {
+                      UnityEngine_UIElements_StyleSheets_StylePropertyReader_GetCursorIdFunction___ctor
+                                (*(long *)(param_1 + 0x380),0);
+                      fVar17 = *(float *)(param_1 + 0x344);
+                      fVar18 = *(float *)(param_1 + 0x34c);
+                      lVar3 = *(long *)(param_1 + 0x110);
+                      if (*(int *)(*(long *)puVar1 + 0xe0) == 0) {
+                        thunk_FUN_01ac7298();
+                      }
+                      if (lVar3 != 0) {
+                        if (fVar22 <= 0.0) {
+                          fVar22 = 0.0;
+                        }
+                        if (fVar6 <= 0.0) {
+                          fVar6 = 0.0;
+                        }
+                        if (fVar19 <= 0.0) {
+                          fVar19 = 0.0;
+                        }
+                        if (fVar20 <= 0.0) {
+                          fVar20 = 0.0;
+                        }
+                        if (fVar11 <= 0.0) {
+                          fVar11 = 0.0;
+                        }
+                        if (fVar17 <= 0.0) {
+                          fVar17 = 0.0;
+                        }
+                        thunk_FUN_038fff54(fVar9 + (0.5 - fVar10) * fVar7 + (fVar20 - fVar21) * 0.5,
+                                           fVar12 + (0.5 - fVar13) * fVar15 +
+                                                    (fVar18 - fVar17) * 0.5,
+                                           fVar16 + ((fVar14 - fVar22) - fVar19) * 0.5,
+                                           fVar6 + ((in_s3 - fVar11) - fVar8) * 0.5,lVar3,
+                                           *(undefined4 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x9c)
+                                           ,0);
+                        return;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+                    /* WARNING: Subroutine does not return */
+    FUN_01b48178();
+  }
+  return;
+}
+
+

@@ -1,0 +1,1273 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 5
+FUNCTION_NAME: FUN_03fefa50
+ENTRY_POINT: 03fefa50
+MANUAL_PRIORITY_SCORE: 409
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 274
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_17', 'strong_pose_or_ray_construction_hits_8', 'ui_or_gameplay_sink_hits_4', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_274', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\03fefa50_FUN_03fefa50.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\manual-review-pack\A_must_review\005_p409_FUN_03fefa50.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_03fefa50
+ENTRY_POINT: 03fefa50
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 274
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_17;strong_pose_or_ray_construction_hits_8;ui_or_gameplay_sink_hits_4;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_4
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x03ff0424) */
+/* WARNING: Removing unreachable block (ram,0x03feff50) */
+/* WARNING: Removing unreachable block (ram,0x03ff0384) */
+
+long FUN_03fefa50(long param_1,undefined8 param_2)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  ulong uVar8;
+  long lVar9;
+  long lVar10;
+  long *plVar11;
+  undefined8 *puVar12;
+  undefined8 uVar13;
+  long lVar14;
+  long lVar15;
+  long *plVar16;
+  int *piVar17;
+  int iVar18;
+  int iVar19;
+  int iVar20;
+  undefined8 uVar21;
+  long *plVar22;
+  undefined8 local_d8;
+  undefined8 uStack_d0;
+  undefined8 local_c8;
+  undefined8 local_c0;
+  undefined8 uStack_b8;
+  undefined8 local_b0;
+  undefined8 local_a0;
+  undefined8 uStack_98;
+  undefined8 local_90;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  
+  if ((DAT_0483bbb6 & 1) == 0) {
+    thunk_FUN_01efb3a4(PTR_DAT_04584ff8);
+    thunk_FUN_01efb3a4(PTR_DAT_04585000);
+    thunk_FUN_01efb3a4(PTR_DAT_04585008);
+    thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_ExitParentElement__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585010);
+    thunk_FUN_01efb3a4(Method_System_Reflection_Emit_GenericTypeParameterBuilder_GetPropertyImpl__);
+    thunk_FUN_01efb3a4(PTR_DAT_045814f8);
+    thunk_FUN_01efb3a4(Method_UnityEngine_GameObject_GetComponent<Renderer>__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585018);
+    thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_Initialize__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585020);
+    thunk_FUN_01efb3a4(PTR_DAT_04585028);
+    thunk_FUN_01efb3a4(PTR_DAT_04585030);
+    thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_Initialize__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585038);
+    thunk_FUN_01efb3a4(PTR_DAT_04585040);
+    thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_Initialize__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585048);
+    thunk_FUN_01efb3a4(PTR_DAT_04585050);
+    thunk_FUN_01efb3a4(PTR_DAT_04583e20);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+    thunk_FUN_01efb3a4(
+                      Method_System_Collections_Generic_CollectionExtensions_GetValueOrDefault<string,_LocalDataStoreSlot>__
+                      );
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__);
+    thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_get_serializedObject__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585058);
+    thunk_FUN_01efb3a4(Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnDecalAdd__)
+    ;
+    thunk_FUN_01efb3a4(
+                      Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnAllDecalPropertyChange__
+                      );
+    thunk_FUN_01efb3a4(Method_Shapes_ShapesMaterialUtils_GetLineMat__);
+    thunk_FUN_01efb3a4(PTR_DAT_04585060);
+    DAT_0483bbb6 = 1;
+  }
+  local_80 = 0;
+  uStack_78 = 0;
+  local_70 = 0;
+  local_a0 = 0;
+  uStack_98 = 0;
+  local_90 = 0;
+  local_c0 = 0;
+  uStack_b8 = 0;
+  local_b0 = 0;
+  uVar8 = FUN_03ff0c70(param_1);
+  puVar3 = PTR_DAT_04585050;
+  if ((uVar8 & 1) != 0) {
+    uVar13 = *(undefined8 *)(param_1 + 0x40);
+    thunk_FUN_01efb3a4(PTR_DAT_04585068);
+    uVar21 = thunk_FUN_01f117cc();
+    FUN_03fecc1c(uVar21,uVar13);
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585078);
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08910(uVar21,uVar13);
+  }
+  plVar16 = (long *)(param_1 + 0x48);
+  if (*plVar16 == 0) {
+    uVar21 = *(undefined8 *)(param_1 + 0x20);
+    uVar1 = *(uint *)(param_1 + 0x38);
+    if (*(int *)(*(long *)PTR_DAT_04583e20 + 0xe0) == 0) {
+      thunk_FUN_01ee6d7c();
+    }
+    lVar9 = FUN_03ff0db8(uVar21,uVar1 >> 2 & 1);
+    *plVar16 = lVar9;
+    thunk_FUN_01f51358();
+  }
+  uVar2 = *(undefined4 *)(param_1 + 0x38);
+  lVar9 = thunk_FUN_01f117cc(*(undefined8 *)puVar3);
+  FUN_035ac8e8(lVar9,0);
+  *(undefined8 *)(lVar9 + 0x20) = param_2;
+  thunk_FUN_01f51358((undefined8 *)(lVar9 + 0x20),param_2);
+  *(undefined4 *)(lVar9 + 0x28) = uVar2;
+  FUN_03fecc70(lVar9,*(undefined8 *)(param_1 + 0x10));
+  FUN_03fecda8(lVar9,*(undefined8 *)(param_1 + 0x18));
+  uVar21 = FUN_03fef9cc(param_1);
+  *(undefined8 *)(lVar9 + 0x38) = uVar21;
+  thunk_FUN_01f51358();
+  if ((*(byte *)(param_1 + 0x38) >> 3 & 1) == 0) {
+    plVar16 = (long *)*plVar16;
+    if (plVar16 != (long *)0x0) {
+      (**(code **)(*plVar16 + 0x178))(plVar16,lVar9,*(undefined8 *)(*plVar16 + 0x180));
+      return *(long *)(lVar9 + 0x30);
+    }
+  }
+  else {
+    lVar10 = thunk_FUN_01f117cc(*(undefined8 *)PTR_DAT_04585018);
+    FUN_02b6aa68(lVar10,*(undefined8 *)PTR_DAT_04585000);
+    plVar22 = (long *)(param_1 + 0x28);
+    *plVar22 = lVar10;
+    thunk_FUN_01f51358(plVar22,lVar10);
+    lVar10 = FUN_03fef9cc(param_1);
+    if ((lVar10 != 0) &&
+       (lVar10 = FUN_02b6b184(lVar10,*(undefined8 *)PTR_DAT_045814f8), lVar10 != 0)) {
+      FUN_028699a4(&local_d8,lVar10,*(undefined8 *)PTR_DAT_04585060);
+      puVar6 = PTR_DAT_04585030;
+      puVar5 = 
+      Method_System_Collections_Generic_CollectionExtensions_GetValueOrDefault<string,_LocalDataStoreSl
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+0x12e);
+          if (uVar8 != 0) {
+            piVar17 = (int *)(*(long *)(lVar10 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar5) {
+                puVar12 = (undefined8 *)(lVar10 + (long)*piVar17 * 0x10 + 0x138);
+                goto LAB_03ff009c;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar5,0);
+LAB_03ff009c:
+          uVar13 = (*(code *)*puVar12)(plVar11,puVar12[1]);
+          if (lVar14 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          FUN_02b6b2e4(lVar14,uVar21,uVar13,*(undefined8 *)puVar7);
+        }
+      }
+      FUN_02ce9cd8(&local_a0,*(undefined8 *)Method_Unity_VisualScripting_GraphPointer_Initialize__);
+      lVar10 = thunk_FUN_01f117cc(*(undefined8 *)Method_Shapes_ShapesMaterialUtils_GetLineMat__);
+      FUN_030f2380(lVar10,*(undefined8 *)
+                           Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnAllDecalPropertyChange__
+                  );
+      puVar6 = PTR_DAT_04585038;
+      puVar5 = PTR_DAT_04585008;
+      puVar3 = Method_UnityEngine_GameObject_GetComponent<Renderer>__;
+      if (iVar18 < 1) {
+        return lVar10;
+      }
+      iVar20 = 0;
+      while ((*plVar22 != 0 &&
+             (lVar14 = FUN_02b6b114(*plVar22,*(undefined8 *)PTR_DAT_04585010), lVar14 != 0))) {
+        FUN_0300123c(&local_d8,lVar14,*(undefined8 *)PTR_DAT_04585058);
+        uStack_b8 = uStack_d0;
+        local_c0 = local_d8;
+        local_b0 = local_c8;
+        while (uVar8 = FUN_02ce9cdc(&local_c0,*(undefined8 *)puVar6), uVar21 = local_b0,
+              (uVar8 & 1) != 0) {
+          if (*plVar22 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          plVar11 = (long *)FUN_02b6b264(*plVar22,local_b0,*(undefined8 *)puVar5);
+          if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          lVar14 = *plVar11;
+          uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+          if (uVar8 != 0) {
+            piVar17 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar4) {
+                puVar12 = (undefined8 *)(lVar14 + (long)*piVar17 * 0x10 + 0x138);
+                goto LAB_03ff01e0;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar4,0);
+LAB_03ff01e0:
+          (*(code *)*puVar12)(plVar11,puVar12[1]);
+          lVar14 = FUN_03fef9cc(param_1);
+          lVar15 = *plVar11;
+          uVar8 = (ulong)*(ushort *)(lVar15 + 0x12e);
+          if (uVar8 != 0) {
+            piVar17 = (int *)(*(long *)(lVar15 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar4) {
+                puVar12 = (undefined8 *)(lVar15 + (long)(*piVar17 + 1) * 0x10 + 0x138);
+                goto LAB_03ff0248;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar4,1);
+LAB_03ff0248:
+          uVar13 = (*(code *)*puVar12)(plVar11,puVar12[1]);
+          if (lVar14 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          FUN_02b6b2d0(lVar14,uVar21,uVar13,*(undefined8 *)puVar3);
+        }
+        FUN_02ce9cd8(&local_c0,*(undefined8 *)PTR_DAT_04585020);
+        plVar11 = (long *)*plVar16;
+        if ((plVar11 == (long *)0x0) ||
+           ((**(code **)(*plVar11 + 0x178))(plVar11,lVar9,*(undefined8 *)(*plVar11 + 0x180)),
+           lVar10 == 0)) break;
+        uVar21 = *(undefined8 *)(lVar9 + 0x30);
+        lVar14 = *(long *)(lVar10 + 0x10);
+        lVar15 = *(long *)
+                  Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnDecalAdd__;
+        *(int *)(lVar10 + 0x1c) = *(int *)(lVar10 + 0x1c) + 1;
+        if (lVar14 == 0) break;
+        uVar1 = *(uint *)(lVar10 + 0x18);
+        if (uVar1 < *(uint *)(lVar14 + 0x18)) {
+          *(uint *)(lVar10 + 0x18) = uVar1 + 1;
+          *(undefined8 *)(lVar14 + (long)(int)uVar1 * 8 + 0x20) = uVar21;
+          thunk_FUN_01f51358();
+        }
+        else {
+          FUN_030f2bb4(lVar10,uVar21,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar15 + 0x20) + 0xc0) + 0x70));
+        }
+        iVar20 = iVar20 + 1;
+        if (iVar20 == iVar18) {
+          return lVar10;
+        }
+      }
+    }
+  }
+LAB_03ff03bc:
+                    /* WARNING: Subroutine does not return */
+  FUN_01f08a3c();
+LAB_03fefed0:
+  plVar11 = (long *)thunk_FUN_01f116d0(plVar11,*(undefined8 *)puVar3);
+  if (plVar11 != (long *)0x0) {
+    lVar14 = *plVar11;
+    lVar10 = *(long *)puVar3;
+    uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+    if (uVar8 != 0) {
+      piVar17 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar17 + -2) == lVar10) {
+          puVar12 = (undefined8 *)(lVar14 + (long)*piVar17 * 0x10 + 0x138);
+          goto LAB_03feff38;
+        }
+        uVar8 = uVar8 - 1;
+        piVar17 = piVar17 + 4;
+      } while (uVar8 != 0);
+    }
+    puVar12 = (undefined8 *)FUN_01ecb238(plVar11,lVar10,0);
+LAB_03feff38:
+    (*(code *)*puVar12)(plVar11,puVar12[1]);
+  }
+  iVar20 = iVar19;
+  if ((iVar18 != -1) && (iVar20 = iVar18, iVar19 != iVar18)) {
+    thunk_FUN_01efb3a4(PTR_DAT_04585068);
+    uVar21 = thunk_FUN_01f117cc();
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585070);
+    FUN_034f78b0(uVar21,uVar13,0);
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585078);
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08910(uVar21,uVar13);
+  }
+  goto LAB_03fefd88;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 6
+FUNCTION_NAME: FUN_033f0654
+ENTRY_POINT: 033f0654
+MANUAL_PRIORITY_SCORE: 405
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 265
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_3', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_12', 'strong_pose_or_ray_construction_hits_9', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_2', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_265', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_3_bonus_9', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\033f0654_FUN_033f0654.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\manual-review-pack\A_must_review\006_p405_FUN_033f0654.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_033f0654
+ENTRY_POINT: 033f0654
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 265
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_3;weak_xr_or_state_hits_3;validity_or_gating_hits_12;strong_pose_or_ray_construction_hits_9;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_2;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+undefined8 FUN_033f0654(undefined8 param_1,undefined8 param_2,ulong param_3)
+
+{
+  undefined4 uVar1;
+  ulong uVar2;
+  undefined8 uVar3;
+  undefined8 uVar4;
+  undefined8 uVar5;
+  undefined8 *puVar6;
+  int iVar7;
+  undefined8 local_28;
+  
+  local_28 = param_1;
+  if ((DAT_048325ed & 1) == 0) {
+    thunk_FUN_01efb3a4(Method_Oculus_Platform_Message<LaunchFriendRequestFlowResult>__ctor__);
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<Vector3>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<OVRPlugin_SpaceQueryResult>__
+                      );
+    thunk_FUN_01efb3a4(Method_Sirenix_Serialization_IDataReader_ReadPrimitiveArray<int>__);
+    thunk_FUN_01efb3a4(
+                      Method_System_Security_Cryptography_DSASignatureDeformatter_SetHashAlgorithm__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<DrawingData_ProcessedBuilderData_MeshBuffers>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<AttachmentDescriptor>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<byte>__
+                      );
+    thunk_FUN_01efb3a4(Method_UnityEngine_Component_GetComponentsInChildren<DebugUIHandlerWidget>__)
+    ;
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<int>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<JobHandle>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<RenderStateBlock>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<SDFCharacter>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<ShaderTagId>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<ulong>__
+                      );
+    thunk_FUN_01efb3a4(
+                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<UnsafeAppendBuffer>__
+                      );
+    thunk_FUN_01efb3a4(Method_UnityEngine_Bindings_NativeHeaderAttribute__ctor__);
+    thunk_FUN_01efb3a4(Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_DeviceCommand__);
+    thunk_FUN_01efb3a4(Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_OnFocusChanged__);
+    thunk_FUN_01efb3a4(Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_OnShutdown__);
+    DAT_048325ed = 1;
+  }
+  iVar7 = (int)param_1;
+  if (iVar7 < 0x1000c) {
+    if (0x10006 < iVar7) {
+      if (iVar7 != 0x10008) {
+        if (iVar7 == 0x1000b) {
+          uVar5 = thunk_FUN_01f117cc(*(undefined8 *)
+                                      Method_System_Security_Cryptography_DSASignatureDeformatter_SetHashAlgorithm__
+                                    );
+          FUN_03579a78(uVar5,0);
+          return uVar5;
+        }
+        goto LAB_033f0998;
+      }
+LAB_033f0904:
+      uVar5 = FUN_033f0cb0(param_1);
+      uVar2 = FUN_0340eec4(param_2,0);
+      if ((uVar2 & 1) == 0) {
+        uVar3 = FUN_033f0c40(*(undefined8 *)
+                              Method_UnityEngine_Bindings_NativeHeaderAttribute__ctor__,param_2);
+        uVar4 = thunk_FUN_01f117cc(*(undefined8 *)
+                                    Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<AttachmentDescriptor>__
+                                  );
+      }
+      else {
+        uVar4 = thunk_FUN_01f117cc(*(undefined8 *)
+                                    Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<AttachmentDescriptor>__
+                                  );
+        uVar3 = *(undefined8 *)
+                 Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<SDFCharacter>__
+        ;
+      }
+      FUN_03588d4c(uVar4,uVar3,uVar5,0);
+      return uVar4;
+    }
+    if (iVar7 == 0x10002) goto LAB_033f0904;
+    if (iVar7 != 0x10006) goto LAB_033f0998;
+    uVar2 = FUN_0340eec4(param_2,0);
+    puVar6 = (undefined8 *)
+             Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<int>__
+    ;
+    if ((uVar2 & 1) != 0) {
+      uVar1 = FUN_033f0d34(&local_28);
+      uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                  Method_Sirenix_Serialization_IDataReader_ReadPrimitiveArray<int>__
+                                );
+      uVar5 = *(undefined8 *)
+               Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<JobHandle>__
+      ;
+      goto LAB_033f0a30;
+    }
+  }
+  else {
+    if (0x10016 < iVar7) {
+      if (iVar7 == 0x10025) {
+        uVar2 = FUN_0340eec4(param_2,0);
+        if ((uVar2 & 1) == 0) {
+          uVar5 = FUN_033f0c40(*(undefined8 *)
+                                Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_DeviceCommand__
+                               ,param_2);
+          uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<DrawingData_ProcessedBuilderData_MeshBuffers>__
+                                    );
+        }
+        else {
+          uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<DrawingData_ProcessedBuilderData_MeshBuffers>__
+                                    );
+          uVar5 = *(undefined8 *)
+                   Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<ulong>__
+          ;
+        }
+        FUN_034ca3f8(uVar3,uVar5,0);
+        return uVar3;
+      }
+      if (iVar7 == 0x10042) goto LAB_033f0904;
+      if (iVar7 == 0x1002d) {
+        uVar2 = FUN_0340eec4(param_2,0);
+        if ((param_3 & 1) != 0) {
+          if ((uVar2 & 1) == 0) {
+            uVar5 = FUN_033f0c40(*(undefined8 *)
+                                  Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_OnFocusChanged__
+                                 ,param_2);
+            uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                        Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<Vector3>__
+                                      );
+          }
+          else {
+            uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                        Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<Vector3>__
+                                      );
+            uVar5 = *(undefined8 *)
+                     Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<RenderStateBlock>__
+            ;
+          }
+          FUN_034c6a34(uVar3,uVar5,0);
+          return uVar3;
+        }
+        if ((uVar2 & 1) != 0) {
+          uVar5 = thunk_FUN_01f117cc(*(undefined8 *)
+                                      Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<OVRPlugin_SpaceQueryResult>__
+                                    );
+          FUN_034c71ec(uVar5,*(undefined8 *)
+                              Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<ShaderTagId>__
+                       ,0);
+          return uVar5;
+        }
+        uVar5 = FUN_033f0c40(*(undefined8 *)
+                              Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<byte>__
+                             ,param_2);
+        uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                                    Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafePtr<OVRPlugin_SpaceQueryResult>__
+                                  );
+        FUN_034c7210(uVar3,uVar5,param_2,0);
+        return uVar3;
+      }
+LAB_033f0998:
+      uVar5 = FUN_033f0cb0(param_1);
+      return uVar5;
+    }
+    if (iVar7 != 0x10014) {
+      if (iVar7 == 0x10016) {
+        uVar5 = thunk_FUN_01f117cc(*(undefined8 *)
+                                    Method_Oculus_Platform_Message<LaunchFriendRequestFlowResult>__ctor__
+                                  );
+        FUN_034f3578(uVar5,*(undefined8 *)
+                            Method_UnityEngine_Component_GetComponentsInChildren<DebugUIHandlerWidget>__
+                     ,*(undefined8 *)
+                       Method_Unity_Collections_LowLevel_Unsafe_NativeArrayUnsafeUtility_GetUnsafeReadOnlyPtr<UnsafeAppendBuffer>__
+                     ,0);
+        return uVar5;
+      }
+      goto LAB_033f0998;
+    }
+    uVar2 = FUN_0340eec4(param_2,0);
+    puVar6 = (undefined8 *)Method_UnityEngine_InputSystem_LowLevel_NativeInputRuntime_OnShutdown__;
+    if ((uVar2 & 1) != 0) goto LAB_033f0998;
+  }
+  uVar5 = FUN_033f0c40(*puVar6,param_2);
+  uVar1 = FUN_033f0d34(&local_28);
+  uVar3 = thunk_FUN_01f117cc(*(undefined8 *)
+                              Method_Sirenix_Serialization_IDataReader_ReadPrimitiveArray<int>__);
+LAB_033f0a30:
+  FUN_034c7720(uVar3,uVar5,uVar1,0);
+  return uVar3;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 7
+FUNCTION_NAME: UnityEngine.TextCore.Text.TextGenerator$$ValidateHtmlTag
+ENTRY_POINT: 03fefb00
+MANUAL_PRIORITY_SCORE: 389
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 254
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'validity_or_gating_hits_19', 'strong_pose_or_ray_construction_hits_8', 'ui_or_gameplay_sink_hits_3', 'telemetry_or_network_hits_2', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_collection_sink', 'ordered_eye_source_validity_pose_interaction_sink', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_gaze_retrieval_or_extraction', 'functionality_gaze_interaction_hits_3']
+PRIORITY_REASONS: ['base_scanner_score_254', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_2_bonus_8']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\general-structure-results\90_plus_framework_support_only_near_certain\03fefb00_UnityEngine.TextCore.Text.TextGenerator$$ValidateHtmlTag.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\manual-review-pack\A_must_review\007_p389_UnityEngine.TextCore.Text.TextGenerator$$ValidateHtmlTag.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.TextCore.Text.TextGenerator$$ValidateHtmlTag
+ENTRY_POINT: 03fefb00
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 254
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: gaze_retrieval;gaze_interaction
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;validity_or_gating_hits_19;strong_pose_or_ray_construction_hits_8;ui_or_gameplay_sink_hits_3;telemetry_or_network_hits_2;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_collection_sink;ordered_eye_source_validity_pose_interaction_sink;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_gaze_retrieval_or_extraction;functionality_gaze_interaction_hits_3
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x03ff0424) */
+/* WARNING: Removing unreachable block (ram,0x03feff50) */
+/* WARNING: Removing unreachable block (ram,0x03ff0384) */
+
+long UnityEngine_TextCore_Text_TextGenerator__ValidateHtmlTag(void)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  undefined *puVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  ulong uVar8;
+  long lVar9;
+  long lVar10;
+  long *plVar11;
+  undefined8 *puVar12;
+  undefined8 uVar13;
+  long lVar14;
+  long lVar15;
+  long *plVar16;
+  int *piVar17;
+  long unaff_x19;
+  int iVar18;
+  int iVar19;
+  int iVar20;
+  long unaff_x20;
+  undefined8 uVar21;
+  undefined8 unaff_x22;
+  long *plVar22;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined8 in_stack_00000028;
+  undefined8 in_stack_00000030;
+  undefined8 in_stack_00000038;
+  undefined8 in_stack_00000040;
+  undefined8 in_stack_00000050;
+  undefined8 in_stack_00000058;
+  undefined8 in_stack_00000060;
+  undefined8 in_stack_00000070;
+  undefined8 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  
+  thunk_FUN_01efb3a4();
+  thunk_FUN_01efb3a4(PTR_DAT_04585028);
+  thunk_FUN_01efb3a4(PTR_DAT_04585030);
+  thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_Initialize__);
+  thunk_FUN_01efb3a4(PTR_DAT_04585038);
+  thunk_FUN_01efb3a4(PTR_DAT_04585040);
+  thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_Initialize__);
+  thunk_FUN_01efb3a4(PTR_DAT_04585048);
+  thunk_FUN_01efb3a4(PTR_DAT_04585050);
+  thunk_FUN_01efb3a4(PTR_DAT_04583e20);
+  thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+  thunk_FUN_01efb3a4(
+                    Method_System_Collections_Generic_CollectionExtensions_GetValueOrDefault<string,_LocalDataStoreSlot>__
+                    );
+  thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__);
+  thunk_FUN_01efb3a4(Method_Unity_VisualScripting_GraphPointer_get_serializedObject__);
+  thunk_FUN_01efb3a4(PTR_DAT_04585058);
+  thunk_FUN_01efb3a4(Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnDecalAdd__);
+  thunk_FUN_01efb3a4(
+                    Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnAllDecalPropertyChange__
+                    );
+  thunk_FUN_01efb3a4(Method_Shapes_ShapesMaterialUtils_GetLineMat__);
+  thunk_FUN_01efb3a4(PTR_DAT_04585060);
+  *(undefined1 *)(unaff_x20 + 0xbb6) = 1;
+  in_stack_00000070 = 0;
+  in_stack_00000078 = 0;
+  in_stack_00000080 = 0;
+  in_stack_00000050 = 0;
+  in_stack_00000058 = 0;
+  in_stack_00000060 = 0;
+  in_stack_00000030 = 0;
+  in_stack_00000038 = 0;
+  in_stack_00000040 = 0;
+  uVar8 = FUN_03ff0c70();
+  puVar3 = PTR_DAT_04585050;
+  if ((uVar8 & 1) != 0) {
+    uVar13 = *(undefined8 *)(unaff_x19 + 0x40);
+    thunk_FUN_01efb3a4(PTR_DAT_04585068);
+    uVar21 = thunk_FUN_01f117cc();
+    FUN_03fecc1c(uVar21,uVar13);
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585078);
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08910(uVar21,uVar13);
+  }
+  plVar16 = (long *)(unaff_x19 + 0x48);
+  if (*plVar16 == 0) {
+    uVar21 = *(undefined8 *)(unaff_x19 + 0x20);
+    uVar1 = *(uint *)(unaff_x19 + 0x38);
+    if (*(int *)(*(long *)PTR_DAT_04583e20 + 0xe0) == 0) {
+      thunk_FUN_01ee6d7c();
+    }
+    lVar9 = FUN_03ff0db8(uVar21,uVar1 >> 2 & 1);
+    *plVar16 = lVar9;
+    thunk_FUN_01f51358();
+  }
+  uVar2 = *(undefined4 *)(unaff_x19 + 0x38);
+  lVar9 = thunk_FUN_01f117cc(*(undefined8 *)puVar3);
+  FUN_035ac8e8(lVar9,0);
+  *(undefined8 *)(lVar9 + 0x20) = unaff_x22;
+  thunk_FUN_01f51358();
+  *(undefined4 *)(lVar9 + 0x28) = uVar2;
+  FUN_03fecc70(lVar9,*(undefined8 *)(unaff_x19 + 0x10));
+  FUN_03fecda8(lVar9,*(undefined8 *)(unaff_x19 + 0x18));
+  uVar21 = FUN_03fef9cc();
+  *(undefined8 *)(lVar9 + 0x38) = uVar21;
+  thunk_FUN_01f51358();
+  if ((*(byte *)(unaff_x19 + 0x38) >> 3 & 1) == 0) {
+    plVar16 = (long *)*plVar16;
+    if (plVar16 != (long *)0x0) {
+      (**(code **)(*plVar16 + 0x178))(plVar16,lVar9,*(undefined8 *)(*plVar16 + 0x180));
+      return *(long *)(lVar9 + 0x30);
+    }
+  }
+  else {
+    lVar10 = thunk_FUN_01f117cc(*(undefined8 *)PTR_DAT_04585018);
+    FUN_02b6aa68(lVar10,*(undefined8 *)PTR_DAT_04585000);
+    plVar22 = (long *)(unaff_x19 + 0x28);
+    *plVar22 = lVar10;
+    thunk_FUN_01f51358(plVar22,lVar10);
+    lVar10 = FUN_03fef9cc();
+    if ((lVar10 != 0) &&
+       (lVar10 = FUN_02b6b184(lVar10,*(undefined8 *)PTR_DAT_045814f8), lVar10 != 0)) {
+      FUN_028699a4(&stack0x00000018,lVar10,*(undefined8 *)PTR_DAT_04585060);
+      puVar6 = PTR_DAT_04585030;
+      puVar5 = 
+      Method_System_Collections_Generic_CollectionExtensions_GetValueOrDefault<string,_LocalDataStoreSlot>__
+      ;
+      puVar4 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__;
+      puVar3 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__;
+      in_stack_00000078 = in_stack_00000020;
+      in_stack_00000070 = in_stack_00000018;
+   
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+ {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar5) {
+                puVar12 = (undefined8 *)(lVar10 + (long)*piVar17 * 0x10 + 0x138);
+                goto LAB_03ff009c;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar5,0);
+LAB_03ff009c:
+          uVar13 = (*(code *)*puVar12)(plVar11,puVar12[1]);
+          if (lVar14 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          FUN_02b6b2e4(lVar14,uVar21,uVar13,*(undefined8 *)puVar7);
+        }
+      }
+      FUN_02ce9cd8(&stack0x00000050,
+                   *(undefined8 *)Method_Unity_VisualScripting_GraphPointer_Initialize__);
+      lVar10 = thunk_FUN_01f117cc(*(undefined8 *)Method_Shapes_ShapesMaterialUtils_GetLineMat__);
+      FUN_030f2380(lVar10,*(undefined8 *)
+                           Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnAllDecalPropertyChange__
+                  );
+      puVar6 = PTR_DAT_04585038;
+      puVar5 = PTR_DAT_04585008;
+      puVar3 = Method_UnityEngine_GameObject_GetComponent<Renderer>__;
+      if (iVar18 < 1) {
+        return lVar10;
+      }
+      iVar20 = 0;
+      while ((*plVar22 != 0 &&
+             (lVar14 = FUN_02b6b114(*plVar22,*(undefined8 *)PTR_DAT_04585010), lVar14 != 0))) {
+        FUN_0300123c(&stack0x00000018,lVar14,*(undefined8 *)PTR_DAT_04585058);
+        in_stack_00000038 = in_stack_00000020;
+        in_stack_00000030 = in_stack_00000018;
+        in_stack_00000040 = in_stack_00000028;
+        while (uVar8 = FUN_02ce9cdc(&stack0x00000030,*(undefined8 *)puVar6),
+              uVar21 = in_stack_00000040, (uVar8 & 1) != 0) {
+          if (*plVar22 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          plVar11 = (long *)FUN_02b6b264(*plVar22,in_stack_00000040,*(undefined8 *)puVar5);
+          if (plVar11 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          lVar14 = *plVar11;
+          uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+          if (uVar8 != 0) {
+            piVar17 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar4) {
+                puVar12 = (undefined8 *)(lVar14 + (long)*piVar17 * 0x10 + 0x138);
+                goto LAB_03ff01e0;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar4,0);
+LAB_03ff01e0:
+          (*(code *)*puVar12)(plVar11,puVar12[1]);
+          lVar14 = FUN_03fef9cc();
+          lVar15 = *plVar11;
+          uVar8 = (ulong)*(ushort *)(lVar15 + 0x12e);
+          if (uVar8 != 0) {
+            piVar17 = (int *)(*(long *)(lVar15 + 0xb0) + 8);
+            do {
+              if (*(long *)(piVar17 + -2) == *(long *)puVar4) {
+                puVar12 = (undefined8 *)(lVar15 + (long)(*piVar17 + 1) * 0x10 + 0x138);
+                goto LAB_03ff0248;
+              }
+              uVar8 = uVar8 - 1;
+              piVar17 = piVar17 + 4;
+            } while (uVar8 != 0);
+          }
+          puVar12 = (undefined8 *)FUN_01ecb238(plVar11,*(long *)puVar4,1);
+LAB_03ff0248:
+          uVar13 = (*(code *)*puVar12)(plVar11,puVar12[1]);
+          if (lVar14 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_01f08a3c();
+          }
+          FUN_02b6b2d0(lVar14,uVar21,uVar13,*(undefined8 *)puVar3);
+        }
+        FUN_02ce9cd8(&stack0x00000030,*(undefined8 *)PTR_DAT_04585020);
+        plVar11 = (long *)*plVar16;
+        if ((plVar11 == (long *)0x0) ||
+           ((**(code **)(*plVar11 + 0x178))(plVar11,lVar9,*(undefined8 *)(*plVar11 + 0x180)),
+           lVar10 == 0)) break;
+        uVar21 = *(undefined8 *)(lVar9 + 0x30);
+        lVar14 = *(long *)(lVar10 + 0x10);
+        lVar15 = *(long *)
+                  Method_UnityEngine_Rendering_Universal_SharedDecalEntityManager_OnDecalAdd__;
+        *(int *)(lVar10 + 0x1c) = *(int *)(lVar10 + 0x1c) + 1;
+        if (lVar14 == 0) break;
+        uVar1 = *(uint *)(lVar10 + 0x18);
+        if (uVar1 < *(uint *)(lVar14 + 0x18)) {
+          *(uint *)(lVar10 + 0x18) = uVar1 + 1;
+          *(undefined8 *)(lVar14 + (long)(int)uVar1 * 8 + 0x20) = uVar21;
+          thunk_FUN_01f51358();
+        }
+        else {
+          FUN_030f2bb4(lVar10,uVar21,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar15 + 0x20) + 0xc0) + 0x70));
+        }
+        iVar20 = iVar20 + 1;
+        if (iVar20 == iVar18) {
+          return lVar10;
+        }
+      }
+    }
+  }
+LAB_03ff03bc:
+                    /* WARNING: Subroutine does not return */
+  FUN_01f08a3c();
+LAB_03fefed0:
+  plVar11 = (long *)thunk_FUN_01f116d0(plVar11,*(undefined8 *)puVar3);
+  if (plVar11 != (long *)0x0) {
+    lVar14 = *plVar11;
+    lVar10 = *(long *)puVar3;
+    uVar8 = (ulong)*(ushort *)(lVar14 + 0x12e);
+    if (uVar8 != 0) {
+      piVar17 = (int *)(*(long *)(lVar14 + 0xb0) + 8);
+      do {
+        if (*(long *)(piVar17 + -2) == lVar10) {
+          puVar12 = (undefined8 *)(lVar14 + (long)*piVar17 * 0x10 + 0x138);
+          goto LAB_03feff38;
+        }
+        uVar8 = uVar8 - 1;
+        piVar17 = piVar17 + 4;
+      } while (uVar8 != 0);
+    }
+    puVar12 = (undefined8 *)FUN_01ecb238(plVar11,lVar10,0);
+LAB_03feff38:
+    (*(code *)*puVar12)(plVar11,puVar12[1]);
+  }
+  iVar20 = iVar19;
+  if ((iVar18 != -1) && (iVar20 = iVar18, iVar19 != iVar18)) {
+    thunk_FUN_01efb3a4(PTR_DAT_04585068);
+    uVar21 = thunk_FUN_01f117cc();
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585070);
+    FUN_034f78b0(uVar21,uVar13,0);
+    uVar13 = thunk_FUN_01efb3a4(PTR_DAT_04585078);
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08910(uVar21,uVar13);
+  }
+  goto LAB_03fefd88;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 8
+FUNCTION_NAME: FUN_03a6136c
+ENTRY_POINT: 03a6136c
+MANUAL_PRIORITY_SCORE: 385
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 237
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_interaction_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'pose_vector', 'ui_interaction', 'telemetry', 'frame_behavior', 'structure_combo', 'ordered_structure']
+EVIDENCE: ['strong_eye_source_hits_5', 'weak_xr_or_state_hits_7', 'validity_or_gating_hits_13', 'strong_pose_or_ray_construction_hits_21', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'frame_or_lifecycle_behavior', 'source_validity_pose_sink_structure', 'strong_eye_source_validity_pose_sink_structure', 'ordered_eye_source_validity_pose_interaction_sink', 'functionality_gaze_interaction_hits_2', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_237', 'module_bonus_validity_gate_8', 'module_bonus_pose_vector_10', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'module_bonus_structure_combo_18', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\general-structure-results\90_plus_uncertain_gaze_interaction_near_certain\03a6136c_FUN_03a6136c.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\IRONGUARDHomecoming\manual-review-pack\A_must_review\008_p385_FUN_03a6136c.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: FUN_03a6136c
+ENTRY_POINT: 03a6136c
+PROGRAM: IRONGUARDHomecoming-libil2cpp.so
+SCORE: 237
+LABEL: uncertain_gaze_interaction_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: gaze_interaction;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;pose_vector;ui_interaction;telemetry;frame_behavior;structure_combo;ordered_structure
+EVIDENCE: strong_eye_source_hits_5;weak_xr_or_state_hits_7;validity_or_gating_hits_13;strong_pose_or_ray_construction_hits_21;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;strong_eye_source_validity_pose_sink_structure;ordered_eye_source_validity_pose_interaction_sink;functionality_gaze_interaction_hits_2;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x03a61b0c) */
+/* WARNING: Removing unreachable block (ram,0x03a619f8) */
+/* WARNING: Removing unreachable block (ram,0x03a61a88) */
+/* WARNING: Removing unreachable block (ram,0x03a61b28) */
+
+long * FUN_03a6136c(int param_1)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  byte bVar3;
+  undefined *puVar4;
+  undefined *puVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  long lVar11;
+  undefined8 uVar12;
+  undefined8 uVar13;
+  undefined8 uVar14;
+  long lVar15;
+  undefined8 *puVar16;
+  long *plVar17;
+  undefined4 *puVar18;
+  long lVar19;
+  ulong uVar20;
+  int *piVar21;
+  long *plVar22;
+  int iVar23;
+  long *plVar24;
+  long *plVar25;
+  int local_68;
+  char local_64 [4];
+  
+  if ((DAT_04838d51 & 1) == 0) {
+    thunk_FUN_01efb3a4(Method_System_Linq_Enumerable_ToList<BezierKnot>__);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>_Dispose__);
+    thunk_FUN_01efb3a4(StringLiteral_7676);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<GfxUpdateBufferRange>_Dispose__);
+    thunk_FUN_01efb3a4(StringLiteral_7677);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<BezierKnot>_Dispose__);
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<BezierKnot>_GetEnumerator__);
+    thunk_FUN_01efb3a4(Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>__ctor__);
+    thunk_FUN_01efb3a4(
+                      Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_GetPooled__
+                      );
+    thunk_FUN_01efb3a4(Method_Unity_Collections_NativeArray<BoneWeight>__ctor__);
+    thunk_FUN_01efb3a4(StringLiteral_7678);
+    thunk_FUN_01efb3a4(StringLiteral_7547);
+    thunk_FUN_01efb3a4(Method_System_Reflection_RuntimePropertyInfo_GetObjectData__);
+    DAT_04838d51 = 1;
+  }
+  puVar10 = StringLiteral_7547;
+  puVar6 = Method_Unity_Collections_NativeArray<GfxUpdateBufferRange>_Dispose__;
+  local_64[0] = '\0';
+  if (param_1 == -1) {
+    plVar22 = (long *)thunk_FUN_01f117cc(*(undefined8 *)StringLiteral_7676);
+    FUN_035ac8e8(plVar22,0);
+    *(undefined4 *)(plVar22 + 2) = 0xffffffff;
+    return plVar22;
+  }
+  if (param_1 < 0) {
+    thunk_FUN_01efb3a4(Method_Oculus_Platform_Message<LaunchFriendRequestFlowResult>__ctor__);
+    uVar12 = thunk_FUN_01f117cc();
+    uVar13 = thunk_FUN_01efb3a4(StringLiteral_7679);
+    FUN_034f7db4(uVar12,uVar13,0);
+    uVar13 = thunk_FUN_01efb3a4(StringLiteral_7732);
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08910(uVar12,uVar13);
+  }
+  lVar11 = *(long *)StringLiteral_7547;
+  if (*(int *)(lVar11 + 0xe0) == 0) {
+    thunk_FUN_01ee6d7c();
+    lVar11 = *(long *)puVar10;
+  }
+  plVar22 = *(long **)(*(long *)(lVar11 + 0xb8) + 0x38);
+  local_68 = param_1;
+  uVar12 = thunk_FUN_01f113fc(*(undefined8 *)puVar6,&local_68);
+  puVar4 = Method_System_Reflection_RuntimePropertyInfo_GetObjectData__;
+  if (plVar22 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08a3c();
+  }
+  plVar22 = (long *)(**(code **)(*plVar22 + 0x308))
+                              (plVar22,uVar12,*(undefined8 *)(*plVar22 + 0x310));
+  if (plVar22 != (long *)0x0) {
+    lVar11 = *plVar22;
+    bVar3 = *(byte *)(*(long *)puVar4 + 0x130);
+    if ((*(byte *)(lVar11 + 0x130) < bVar3) ||
+       (*(long *)(*(long *)(lVar11 + 200) + (ulong)bVar3 * 8 + -8) != *(long *)puVar4)) {
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08cfc();
+    }
+    plVar22 = (long *)(**(code **)(lVar11 + 0x198))(plVar22,*(undefined8 *)(lVar11 + 0x1a0));
+    if (plVar22 != (long *)0x0) {
+      bVar3 = *(byte *)(*(long *)StringLiteral_7678 + 0x130);
+      if ((bVar3 <= *(byte *)(*plVar22 + 0x130)) &&
+         (*(long *)(*(long *)(*plVar22 + 200) + (ulong)bVar3 * 8 + -8) ==
+          *(long *)StringLiteral_7678)) {
+        return plVar22;
+      }
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08cfc(plVar22);
+    }
+  }
+  lVar11 = *(long *)puVar10;
+  if (*(int *)(lVar11 + 0xe0) == 0) {
+    thunk_FUN_01ee6d7c();
+    lVar11 = *(long *)puVar10;
+  }
+  uVar12 = *(undefined8 *)(*(long *)(lVar11 + 0xb8) + 8);
+  local_64[0] = '\0';
+  FUN_035ce230(uVar12,local_64,0);
+  lVar11 = *(long *)puVar10;
+  if (*(int *)(lVar11 + 0xe0) == 0) {
+    thunk_FUN_01ee6d7c();
+    lVar11 = *(long *)puVar10;
+  }
+  plVar22 = *(long **)(*(long *)(lVar11 + 0xb8) + 0x38);
+  local_68 = param_1;
+  uVar13 = thunk_FUN_01f113fc(*(undefined8 *)puVar6,&local_68);
+  if (plVar22 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08a3c(uVar13,uVar13);
+  }
+  plVar22 = (long *)(**(code **)(*plVar22 + 0x308))
+                              (plVar22,uVar13,*(undefined8 *)(*plVar22 + 0x310));
+  if (plVar22 == (long *)0x0) {
+    lVar11 = *(long *)StringLiteral_7678;
+  }
+  else {
+    lVar11 = *plVar22;
+    bVar3 = *(byte *)(*(long *)puVar4 + 0x130);
+    if ((*(byte *)(l
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+
+                    /* WARNING: Subroutine does not return */
+      FUN_01f08a3c();
+    }
+    do {
+      lVar19 = *plVar24;
+      lVar15 = *(long *)puVar8;
+      uVar20 = (ulong)*(ushort *)(lVar19 + 0x12e);
+      if (uVar20 != 0) {
+        piVar21 = (int *)(*(long *)(lVar19 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar21 + -2) == lVar15) {
+            puVar16 = (undefined8 *)(lVar19 + (long)*piVar21 * 0x10 + 0x138);
+            goto 
+            UnityEngine_InputSystem_InputControlExtensions_<GetAllButtonPresses>d__43__System_IDisposable_Dispose
+            ;
+          }
+          uVar20 = uVar20 - 1;
+          piVar21 = piVar21 + 4;
+        } while (uVar20 != 0);
+      }
+      puVar16 = (undefined8 *)FUN_01ecb238(plVar24,lVar15,0);
+
+      UnityEngine_InputSystem_InputControlExtensions_<GetAllButtonPresses>d__43__System_IDisposable_Dispose
+      :
+      uVar20 = (*(code *)*puVar16)(plVar24,puVar16[1]);
+      puVar7 = Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__;
+      if ((uVar20 & 1) == 0) {
+        plVar24 = (long *)thunk_FUN_01f116d0(plVar24,*(undefined8 *)
+                                                                                                            
+                                                  Method_Unity_Collections_NativeArray<OVRPlugin_SpaceQueryResult>__ctor__
+                                            );
+        if (plVar24 == (long *)0x0) goto LAB_03a619ec;
+        lVar15 = *plVar24;
+        uVar20 = (ulong)*(ushort *)(lVar15 + 0x12e);
+        if (uVar20 == 0) goto LAB_03a619c4;
+        piVar21 = (int *)(*(long *)(lVar15 + 0xb0) + 8);
+        goto LAB_03a619ac;
+      }
+      lVar19 = *plVar24;
+      lVar15 = *(long *)puVar8;
+      uVar20 = (ulong)*(ushort *)(lVar19 + 0x12e);
+      if (uVar20 != 0) {
+        piVar21 = (int *)(*(long *)(lVar19 + 0xb0) + 8);
+        do {
+          if (*(long *)(piVar21 + -2) == lVar15) {
+            puVar16 = (undefined8 *)(lVar19 + (long)(*piVar21 + 1) * 0x10 + 0x138);
+            goto LAB_03a6187c;
+          }
+          uVar20 = uVar20 - 1;
+          piVar21 = piVar21 + 4;
+        } while (uVar20 != 0);
+      }
+      puVar16 = (undefined8 *)FUN_01ecb238(plVar24,lVar15,1);
+LAB_03a6187c:
+      plVar17 = (long *)(*(code *)*puVar16)(plVar24,puVar16[1]);
+      if (plVar17 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08a3c();
+      }
+      if (*(long *)(*plVar17 + 0x40) != *(long *)(*(long *)puVar9 + 0x40)) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08cfc();
+      }
+      puVar16 = (undefined8 *)thunk_FUN_01f11920();
+      plVar17 = (long *)puVar16[1];
+      if (plVar17 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08a3c();
+      }
+      lVar15 = *plVar17;
+      bVar3 = *(byte *)(*(long *)puVar4 + 0x130);
+      if ((*(byte *)(lVar15 + 0x130) < bVar3) ||
+         (*(long *)(*(long *)(lVar15 + 200) + (ulong)bVar3 * 8 + -8) != *(long *)puVar4)) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08cfc();
+      }
+      plVar25 = (long *)*puVar16;
+      lVar15 = (**(code **)(lVar15 + 0x198))(plVar17,*(undefined8 *)(lVar15 + 0x1a0));
+      if (lVar15 == 0) {
+        if (lVar11 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01f08a3c();
+        }
+        if (plVar25 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01f08a3c();
+        }
+        if (*(long *)(*plVar25 + 0x40) != *(long *)(*(long *)puVar6 + 0x40)) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01f08cfc(plVar25);
+        }
+        puVar18 = (undefined4 *)thunk_FUN_01f11920(plVar25);
+        uVar2 = *puVar18;
+        lVar15 = *(long *)(lVar11 + 0x10);
+        lVar19 = *(long *)puVar5;
+        *(int *)(lVar11 + 0x1c) = *(int *)(lVar11 + 0x1c) + 1;
+        if (lVar15 == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_01f08a3c();
+        }
+        uVar1 = *(uint *)(lVar11 + 0x18);
+        if (uVar1 < *(uint *)(lVar15 + 0x18)) {
+          *(uint *)(lVar11 + 0x18) = uVar1 + 1;
+          *(undefined4 *)(lVar15 + (long)(int)uVar1 * 4 + 0x20) = uVar2;
+        }
+        else {
+          FUN_030ba904(lVar11,uVar2,
+                       *(undefined8 *)(*(long *)(*(long *)(lVar19 + 0x20) + 0xc0) + 0x70));
+        }
+      }
+    } while( true );
+  }
+  goto LAB_03a61714;
+  while( true ) {
+    uVar20 = uVar20 - 1;
+    piVar21 = piVar21 + 4;
+    if (uVar20 == 0) break;
+LAB_03a619ac:
+    if (*(long *)(piVar21 + -2) == *(long *)puVar7) {
+      puVar16 = (undefined8 *)(lVar15 + (long)*piVar21 * 0x10 + 0x138);
+      goto LAB_03a619e0;
+    }
+  }
+LAB_03a619c4:
+  puVar16 = (undefined8 *)FUN_01ecb238(plVar24,*(long *)puVar7,0);
+LAB_03a619e0:
+  (*(code *)*puVar16)(plVar24,puVar16[1]);
+LAB_03a619ec:
+  puVar4 = Method_UnityEngine_UIElements_MouseEventBase<MouseLeaveWindowEvent>_GetPooled__;
+  if (lVar11 == 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_01f08a3c();
+  }
+  if (0 < *(int *)(lVar11 + 0x18)) {
+    iVar23 = 0;
+    do {
+      lVar15 = *(long *)puVar10;
+      if (*(int *)(lVar15 + 0xe0) == 0) {
+        thunk_FUN_01ee6d7c();
+        lVar15 = *(long *)puVar10;
+      }
+      plVar24 = *(long **)(*(long *)(lVar15 + 0xb8) + 0x38);
+      local_68 = FUN_030ba614(lVar11,iVar23,*(undefined8 *)puVar4);
+      uVar13 = thunk_FUN_01f113fc(*(undefined8 *)puVar6,&local_68);
+      if (plVar24 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+        FUN_01f08a3c(uVar13,uVar13);
+      }
+      (**(code **)(*plVar24 + 0x3a8))(plVar24,uVar13,*(undefined8 *)(*plVar24 + 0x3b0));
+      iVar23 = iVar23 + 1;
+    } while (iVar23 < *(int *)(lVar11 + 0x18));
+  }
+LAB_03a61714:
+  if (local_64[0] != '\0') {
+    Unity_VisualScripting_Generated_Aot_AotStubs__UnityEngine_HingeJoint_op_Implicit(uVar12,0);
+  }
+  return plVar22;
+}
+
+
+
+END_DECOMPILED_FUNCTION

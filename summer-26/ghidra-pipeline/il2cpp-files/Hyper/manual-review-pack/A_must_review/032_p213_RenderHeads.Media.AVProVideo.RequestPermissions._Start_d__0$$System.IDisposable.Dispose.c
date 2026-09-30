@@ -1,0 +1,22 @@
+/*
+FUNCTION_NAME: RenderHeads.Media.AVProVideo.RequestPermissions.<Start>d__0$$System.IDisposable.Dispose
+ENTRY_POINT: 049f2774
+PROGRAM: Hyper-libil2cpp.so
+SCORE: 89
+LABEL: attempted_eye_tracking_permission_or_feature_high
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: eye_tracking_attempted_permission_or_feature
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: attempted_eye_tracking_use
+MODULES: weak_source_state;validity_gate;pose_vector;telemetry;frame_behavior;structure_combo;attempted_use
+EVIDENCE: weak_xr_or_state_hits_2;validity_or_gating_hits_2;strong_pose_or_ray_construction_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;source_validity_pose_sink_structure;attempted_eye_tracking_permission_or_feature_enable;cap_below_near_certain_without_eye_anchor_or_ordered_structure
+*/
+
+
+void RenderHeads_Media_AVProVideo_RequestPermissions_<Start>d__0__System_IDisposable_Dispose(void)
+
+{
+  return;
+}
+
+

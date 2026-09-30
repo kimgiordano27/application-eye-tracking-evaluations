@@ -1,0 +1,72 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.RuntimeSettings$$get_ToggleFollowTranslationButton
+ENTRY_POINT: 06d7b640
+PROGRAM: MRTraveler-libil2cpp.so
+SCORE: 71
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;ui_interaction
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_3;ui_or_gameplay_sink_hits_2;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Meta_XR_ImmersiveDebugger_RuntimeSettings__get_ToggleFollowTranslationButton
+               (undefined8 param_1,long param_2,uint param_3,uint param_4,undefined8 param_5,
+               undefined8 *param_6,undefined8 *param_7)
+
+{
+  undefined8 uVar1;
+  long lVar2;
+  float fVar3;
+  undefined4 uVar4;
+  
+  if (param_2 != 0) {
+    if (*(char *)(param_2 + 0x150) == '\0') {
+      if (DAT_0940fff5 == '\0') {
+        FUN_03c8f898(PTR_DAT_08e68e18);
+        DAT_0940fff5 = '\x01';
+      }
+      uVar1 = **(undefined8 **)(*(long *)PTR_DAT_08e68e18 + 0xb8);
+      fVar3 = *(float *)(*(undefined8 **)(*(long *)PTR_DAT_08e68e18 + 0xb8) + 1);
+LAB_06d7b6d8:
+      *param_6 = uVar1;
+      *(float *)(param_6 + 1) = fVar3;
+      if ((param_4 & 1) != 0) {
+        if (DAT_0940fff5 == '\0') {
+          FUN_03c8f898(PTR_DAT_08e68e18);
+          DAT_0940fff5 = '\x01';
+        }
+        uVar4 = *(undefined4 *)(*(undefined8 **)(*(long *)PTR_DAT_08e68e18 + 0xb8) + 1);
+        *param_6 = **(undefined8 **)(*(long *)PTR_DAT_08e68e18 + 0xb8);
+        *(undefined4 *)(param_6 + 1) = uVar4;
+      }
+      uVar1 = FUN_07454b34(param_2,param_3,0);
+      *param_7 = uVar1;
+      thunk_FUN_03d233cc(param_7,uVar1);
+      return;
+    }
+    lVar2 = *(long *)(param_2 + 0x148);
+    if (lVar2 != 0) {
+      if (*(uint *)(lVar2 + 0x18) <= param_3) {
+                    /* WARNING: Subroutine does not return */
+        FUN_03c8fb38();
+      }
+      lVar2 = *(long *)(lVar2 + (long)(int)param_3 * 8 + 0x20);
+      if (lVar2 != 0) {
+        uVar1 = CONCAT44((float)((ulong)*(undefined8 *)(lVar2 + 0x20) >> 0x20) -
+                         (float)((ulong)*(undefined8 *)(lVar2 + 0x14) >> 0x20),
+                         (float)*(undefined8 *)(lVar2 + 0x20) - (float)*(undefined8 *)(lVar2 + 0x14)
+                        );
+        fVar3 = *(float *)(lVar2 + 0x28) - *(float *)(lVar2 + 0x1c);
+        goto LAB_06d7b6d8;
+      }
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03c8fb30();
+}
+
+

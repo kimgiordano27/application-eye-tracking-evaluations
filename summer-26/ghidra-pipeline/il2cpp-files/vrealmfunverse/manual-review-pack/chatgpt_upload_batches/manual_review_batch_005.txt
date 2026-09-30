@@ -1,0 +1,1267 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 17
+FUNCTION_NAME: System.Linq.Expressions.Expression$$Validate
+ENTRY_POINT: 0511faa8
+MANUAL_PRIORITY_SCORE: 355
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 172
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ui_interaction', 'data_collection', 'telemetry', 'foveation_rendering', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_21', 'ui_or_gameplay_sink_hits_18', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'strong_foveation_hits_2', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_172', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\general-structure-results\90_plus_framework_support_only_near_certain\0511faa8_System.Linq.Expressions.Expression$$Validate.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\manual-review-pack\A_must_review\017_p355_System.Linq.Expressions.Expression$$Validate.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Linq.Expressions.Expression$$Validate
+ENTRY_POINT: 0511faa8
+PROGRAM: vrealmfunverse-libil2cpp.so
+SCORE: 172
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;data_collection;telemetry;foveation_rendering;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_3;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_18;strong_file_logging_hits_2;telemetry_or_network_hits_2;strong_foveation_hits_2;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+undefined8 System_Linq_Expressions_Expression__Validate(void)
+
+{
+  undefined *puVar1;
+  uint uVar2;
+  long lVar3;
+  undefined8 uVar4;
+  uint uVar5;
+  ulong uVar6;
+  undefined8 *puVar7;
+  long unaff_x20;
+  undefined8 uVar8;
+  
+  FUN_02b3c81c(UnityEngine_UIElements_FocusInEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusOutEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Focusable_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Foldout_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_FollowTarget_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Font_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAsset_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetFactory_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetUtilities_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UI_FontData_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FontDefinition_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_LowLevel_FontEngine_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_LowLevel_FontEngineError_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontFeatureTable_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontStyles_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UI_FontUpdateTracker_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_Utilities_ForDeviceEventObservable_TypeInfo);
+  FUN_02b3c81c(System_Data_ForeignKeyConstraint_TypeInfo);
+  FUN_02b3c81c(System_FormatException_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FormatterConverter_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Remoting_FormatterData_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FormatterServices_TypeInfo);
+  FUN_02b3c81c(System_Xml_Schema_ForwardAxis_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_Universal_Internal_ForwardLights_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_Utilities_FourCC_TypeInfo);
+  FUN_02b3c81c(FoveationFeature_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Playables_FrameRate_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_FrameTimeSampleHistory_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRControllerDataSource_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRHandDataSource_TypeInfo);
+  FUN_02b3c81c(FruitSlicingStatsManager_TypeInfo);
+  FUN_02b3c81c(FruitSpawner_TypeInfo);
+  FUN_02b3c81c(LitJson_FsmContext_TypeInfo);
+  *(undefined1 *)(unaff_x20 + 0x476) = 1;
+  uVar2 = FUN_05114f68();
+  puVar1 = LitJson_FsmContext_TypeInfo;
+  if (0x2b0a < (int)uVar2) {
+    if (uVar2 < 0x332f) {
+      if (uVar2 < 0x30d7) {
+        if ((int)uVar2 < 0x2ee5) {
+          if ((int)uVar2 < 0x2ee3) {
+            if (uVar2 == 0x2ee1) {
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x32] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                            OVR_OpenVR_EVRScreenshotPropertyFilenames_TypeInfo);
+                FUN_04a143c4(uVar4,uVar8,*(undefined8 *)UnityEngine_UIElements_FocusEvent_TypeInfo,0
+                            );
+                lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+                *(undefined8 *)(lVar3 + 400) = uVar4;
+                thunk_FUN_02bb0e9c(lVar3 + 400,uVar4);
+              }
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          Oculus_Interaction_PoseDetection_FingerFeatureStateDictionary_TypeInfo
+                                        );
+            }
+            else {
+              if (uVar2 != 0x2ee2) {
+                return 0;
+              }
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x2f] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                            Firebase_Firestore_Converters_EnumConverter_TypeInfo);
+                FUN_04a143c4(uVar4,uVar8,
+                             *(undefined8 *)UnityEngine_UIElements_FocusController_TypeInfo,0);
+                lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+                *(undefined8 *)(lVar3 + 0x178) = uVar4;
+                thunk_FUN_02bb0e9c(lVar3 + 0x178,uVar4);
+              }
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          System_Runtime_Serialization
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+uth_FirebaseUser_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xd8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)Firebase_Firestore_FieldPath_TypeInfo);
+    break;
+  case 0x27ec:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x20] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryPool_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestorePropertyAttribute_TypeInfo
+                   ,0);
+      lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+      *(undefined8 *)(lVar3 + 0x100) = uVar4;
+      thunk_FUN_02bb0e9c(lVar3 + 0x100,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_XR_OpenXR_Features_Interactions_EyeTrackingUsages_TypeInfo
+                              );
+    break;
+  case 0x27ed:
+  case 0x27ee:
+  case 0x27f0:
+  case 0x27f1:
+  case 0x27f3:
+    goto switchD_0511fd9c_caseD_2a39;
+  case 0x27ef:
+  case 0x27f2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1d] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)Meta_XR_MRUtilityKit_EffectMesh_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCpp_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                System_Linq_Expressions_ExpressionStringBuilder_TypeInfo);
+    break;
+  case 0x27f4:
+  case 0x27f6:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1c] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)OVR_OpenVR_EVRTrackedCameraError_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseUserInternal_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Resources_FileBasedResourceGroveler_TypeInfo);
+    break;
+  case 0x27f5:
+  case 0x27f8:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1f] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                  UnityEngine_UIElements_EditorPanelRootElement_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreException_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_InputSystem_UI_ExtendedAxisEventData_TypeInfo);
+    break;
+  case 0x27f7:
+  case 0x27f9:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1e] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryRecorder_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCppPINVOKE_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_Rendering_FilteringSettings_TypeInfo);
+    break;
+  default:
+    uVar5 = 0x283c;
+LAB_05122424:
+    if (uVar2 != uVar5) {
+      return 0;
+    }
+  case 0x27e2:
+  case 0x27e6:
+  case 0x27eb:
+switchD_0511ff64_caseD_27e2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x12] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Empty_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseAccountLinkException_TypeInfo,0)
+      ;
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x90);
+      *puVar7 = uVar4;
+LAB_051224a4:
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+LAB_051224ac:
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_TextCore_Text_FastAction_TypeInfo);
+  }
+LAB_051224c4:
+  FUN_039dcae8();
+switchD_0511fd9c_caseD_2a39:
+  return uVar4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 18
+FUNCTION_NAME: System.Linq.Expressions.Expression$$TryFinally
+ENTRY_POINT: 0511fbac
+MANUAL_PRIORITY_SCORE: 355
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 172
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ui_interaction', 'data_collection', 'telemetry', 'foveation_rendering', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_21', 'ui_or_gameplay_sink_hits_15', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'strong_foveation_hits_2', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_172', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\general-structure-results\90_plus_framework_support_only_near_certain\0511fbac_System.Linq.Expressions.Expression$$TryFinally.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\manual-review-pack\A_must_review\018_p355_System.Linq.Expressions.Expression$$TryFinally.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Linq.Expressions.Expression$$TryFinally
+ENTRY_POINT: 0511fbac
+PROGRAM: vrealmfunverse-libil2cpp.so
+SCORE: 172
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;data_collection;telemetry;foveation_rendering;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_3;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_15;strong_file_logging_hits_2;telemetry_or_network_hits_2;strong_foveation_hits_2;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+undefined8 System_Linq_Expressions_Expression__TryFinally(void)
+
+{
+  undefined *puVar1;
+  uint uVar2;
+  long lVar3;
+  undefined8 uVar4;
+  uint uVar5;
+  ulong uVar6;
+  undefined8 *puVar7;
+  long unaff_x20;
+  undefined8 uVar8;
+  
+  FUN_02b3c81c();
+  FUN_02b3c81c(System_Xml_Schema_ForwardAxis_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_Universal_Internal_ForwardLights_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_Utilities_FourCC_TypeInfo);
+  FUN_02b3c81c(FoveationFeature_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Playables_FrameRate_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_FrameTimeSampleHistory_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRControllerDataSource_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRHandDataSource_TypeInfo);
+  FUN_02b3c81c(FruitSlicingStatsManager_TypeInfo);
+  FUN_02b3c81c(FruitSpawner_TypeInfo);
+  FUN_02b3c81c(LitJson_FsmContext_TypeInfo);
+  *(undefined1 *)(unaff_x20 + 0x476) = 1;
+  uVar2 = FUN_05114f68();
+  puVar1 = LitJson_FsmContext_TypeInfo;
+  if (0x2b0a < (int)uVar2) {
+    if (uVar2 < 0x332f) {
+      if (uVar2 < 0x30d7) {
+        if ((int)uVar2 < 0x2ee5) {
+          if ((int)uVar2 < 0x2ee3) {
+            if (uVar2 == 0x2ee1) {
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x32] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                            OVR_OpenVR_EVRScreenshotPropertyFilenames_TypeInfo);
+                FUN_04a143c4(uVar4,uVar8,*(undefined8 *)UnityEngine_UIElements_FocusEvent_TypeInfo,0
+                            );
+                lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+                *(undefined8 *)(lVar3 + 400) = uVar4;
+                thunk_FUN_02bb0e9c(lVar3 + 400,uVar4);
+              }
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          Oculus_Interaction_PoseDetection_FingerFeatureStateDictionary_TypeInfo
+                                        );
+            }
+            else {
+              if (uVar2 != 0x2ee2) {
+                return 0;
+              }
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x2f] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                            Firebase_Firestore_Converters_EnumConverter_TypeInfo);
+                FUN_04a143c4(uVar4,uVar8,
+                             *(undefined8 *)UnityEngine_UIElements_FocusController_TypeInfo,0);
+                lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+                *(undefined8 *)(lVar3 + 0x178) = uVar4;
+                thunk_FUN_02bb0e9c(lVar3 + 0x178,uVar4);
+              }
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          System_Runtime_Serialization_ExtensionDataReader_TypeInfo)
+              ;
+            }
+          }
+          else {
+            if (uVar2 != 0x2ee3) {
+              uVar5 = 0x2ee4;
+              goto LAB_05121220;
+            }
+            lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+            if (*(int *)(lVar3 + 0xe4) == 0) {
+              thunk_FUN_02b9ad44();
+              lVar3 = *(long *)puVar1;
+            }
+            puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+            if (puVar7[0x31] == 0) {
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+              }
+              uVar8 = *puVar7;
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          System_Runtime_Serialization_ElementData_TypeInfo);
+              FUN_04a143c4(uVar4,uVar8,
+                           *(undefined8 *)
+                            UnityEngine_XR_Interaction_Toolkit_FocusEnterEventArgs_TypeInfo,0);
+              lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+              *(undefined8 *)(lVar3 + 0x188) = uVar4;
+              thunk_FUN_02bb0e9c(lVar3 + 0x188,uVar4);
+            }
+            uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                        Oculus_Interaction_PoseDetection_FingerFeatureProperties_TypeInfo
+            
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+uth_FirebaseUser_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xd8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)Firebase_Firestore_FieldPath_TypeInfo);
+    break;
+  case 0x27ec:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x20] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryPool_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestorePropertyAttribute_TypeInfo
+                   ,0);
+      lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+      *(undefined8 *)(lVar3 + 0x100) = uVar4;
+      thunk_FUN_02bb0e9c(lVar3 + 0x100,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_XR_OpenXR_Features_Interactions_EyeTrackingUsages_TypeInfo
+                              );
+    break;
+  case 0x27ed:
+  case 0x27ee:
+  case 0x27f0:
+  case 0x27f1:
+  case 0x27f3:
+    goto switchD_0511fd9c_caseD_2a39;
+  case 0x27ef:
+  case 0x27f2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1d] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)Meta_XR_MRUtilityKit_EffectMesh_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCpp_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                System_Linq_Expressions_ExpressionStringBuilder_TypeInfo);
+    break;
+  case 0x27f4:
+  case 0x27f6:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1c] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)OVR_OpenVR_EVRTrackedCameraError_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseUserInternal_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Resources_FileBasedResourceGroveler_TypeInfo);
+    break;
+  case 0x27f5:
+  case 0x27f8:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1f] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                  UnityEngine_UIElements_EditorPanelRootElement_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreException_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_InputSystem_UI_ExtendedAxisEventData_TypeInfo);
+    break;
+  case 0x27f7:
+  case 0x27f9:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1e] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryRecorder_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCppPINVOKE_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_Rendering_FilteringSettings_TypeInfo);
+    break;
+  default:
+    uVar5 = 0x283c;
+LAB_05122424:
+    if (uVar2 != uVar5) {
+      return 0;
+    }
+  case 0x27e2:
+  case 0x27e6:
+  case 0x27eb:
+switchD_0511ff64_caseD_27e2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x12] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Empty_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseAccountLinkException_TypeInfo,0)
+      ;
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x90);
+      *puVar7 = uVar4;
+LAB_051224a4:
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+LAB_051224ac:
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_TextCore_Text_FastAction_TypeInfo);
+  }
+LAB_051224c4:
+  FUN_039dcae8();
+switchD_0511fd9c_caseD_2a39:
+  return uVar4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 19
+FUNCTION_NAME: System.Linq.Expressions.Expression$$Parameter
+ENTRY_POINT: 0511fa50
+MANUAL_PRIORITY_SCORE: 355
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 172
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ui_interaction', 'data_collection', 'telemetry', 'foveation_rendering', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_21', 'ui_or_gameplay_sink_hits_21', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'strong_foveation_hits_2', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_172', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\general-structure-results\90_plus_framework_support_only_near_certain\0511fa50_System.Linq.Expressions.Expression$$Parameter.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\manual-review-pack\A_must_review\019_p355_System.Linq.Expressions.Expression$$Parameter.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Linq.Expressions.Expression$$Parameter
+ENTRY_POINT: 0511fa50
+PROGRAM: vrealmfunverse-libil2cpp.so
+SCORE: 172
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;data_collection;telemetry;foveation_rendering;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_3;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_21;strong_file_logging_hits_2;telemetry_or_network_hits_2;strong_foveation_hits_2;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+undefined8 System_Linq_Expressions_Expression__Parameter(void)
+
+{
+  undefined *puVar1;
+  uint uVar2;
+  long lVar3;
+  undefined8 uVar4;
+  uint uVar5;
+  ulong uVar6;
+  undefined8 *puVar7;
+  long unaff_x20;
+  undefined8 uVar8;
+  
+  FUN_02b3c81c();
+  FUN_02b3c81c(UnityEngine_UIElements_FocusChangeDirection_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusController_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusEnterEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusEnterEventArgs_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusExitEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusExitEventArgs_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusInEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusOutEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Focusable_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Foldout_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_FollowTarget_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Font_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAsset_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetFactory_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetUtilities_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UI_FontData_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FontDefinition_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_LowLevel_FontEngine_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_LowLevel_FontEngineError_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontFeatureTable_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontStyles_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UI_FontUpdateTracker_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_Utilities_ForDeviceEventObservable_TypeInfo);
+  FUN_02b3c81c(System_Data_ForeignKeyConstraint_TypeInfo);
+  FUN_02b3c81c(System_FormatException_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FormatterConverter_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Remoting_FormatterData_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FormatterServices_TypeInfo);
+  FUN_02b3c81c(System_Xml_Schema_ForwardAxis_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_Universal_Internal_ForwardLights_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_Utilities_FourCC_TypeInfo);
+  FUN_02b3c81c(FoveationFeature_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Playables_FrameRate_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_FrameTimeSampleHistory_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRControllerDataSource_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FromOVRHandDataSource_TypeInfo);
+  FUN_02b3c81c(FruitSlicingStatsManager_TypeInfo);
+  FUN_02b3c81c(FruitSpawner_TypeInfo);
+  FUN_02b3c81c(LitJson_FsmContext_TypeInfo);
+  *(undefined1 *)(unaff_x20 + 0x476) = 1;
+  uVar2 = FUN_05114f68();
+  puVar1 = LitJson_FsmContext_TypeInfo;
+  if (0x2b0a < (int)uVar2) {
+    if (uVar2 < 0x332f) {
+      if (uVar2 < 0x30d7) {
+        if ((int)uVar2 < 0x2ee5) {
+          if ((int)uVar2 < 0x2ee3) {
+            if (uVar2 == 0x2ee1) {
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x32] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                            OVR_OpenVR_EVRScreenshotPropertyFilenames_TypeInfo);
+                FUN_04a143c4(uVar4,uVar8,*(undefined8 *)UnityEngine_UIElements_FocusEvent_TypeInfo,0
+                            );
+                lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+                *(undefined8 *)(lVar3 + 400) = uVar4;
+                thunk_FUN_02bb0e9c(lVar3 + 400,uVar4);
+              }
+              uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                          Oculus_Interaction_PoseDetection_FingerFeatureStateDictionary_TypeInfo
+                                        );
+            }
+            else {
+              if (uVar2 != 0x2ee2) {
+                return 0;
+              }
+              lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+              if (*(int *)(lVar3 + 0xe4) == 0) {
+                thunk_FUN_02b9ad44();
+                lVar3 = *(long *)puVar1;
+              }
+              puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+              if (puVar7[0x2f] == 0) {
+                if (*(int *)(lVar3 + 0xe4) == 0) {
+                  thunk_FUN_02b9ad44();
+                  puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+                }
+                uVar8 = *puVar7;
+                uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                       
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+uth_FirebaseUser_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xd8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)Firebase_Firestore_FieldPath_TypeInfo);
+    break;
+  case 0x27ec:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x20] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryPool_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestorePropertyAttribute_TypeInfo
+                   ,0);
+      lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+      *(undefined8 *)(lVar3 + 0x100) = uVar4;
+      thunk_FUN_02bb0e9c(lVar3 + 0x100,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_XR_OpenXR_Features_Interactions_EyeTrackingUsages_TypeInfo
+                              );
+    break;
+  case 0x27ed:
+  case 0x27ee:
+  case 0x27f0:
+  case 0x27f1:
+  case 0x27f3:
+    goto switchD_0511fd9c_caseD_2a39;
+  case 0x27ef:
+  case 0x27f2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1d] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)Meta_XR_MRUtilityKit_EffectMesh_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCpp_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                System_Linq_Expressions_ExpressionStringBuilder_TypeInfo);
+    break;
+  case 0x27f4:
+  case 0x27f6:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1c] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)OVR_OpenVR_EVRTrackedCameraError_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseUserInternal_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Resources_FileBasedResourceGroveler_TypeInfo);
+    break;
+  case 0x27f5:
+  case 0x27f8:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1f] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                  UnityEngine_UIElements_EditorPanelRootElement_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreException_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_InputSystem_UI_ExtendedAxisEventData_TypeInfo);
+    break;
+  case 0x27f7:
+  case 0x27f9:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1e] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryRecorder_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCppPINVOKE_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_Rendering_FilteringSettings_TypeInfo);
+    break;
+  default:
+    uVar5 = 0x283c;
+LAB_05122424:
+    if (uVar2 != uVar5) {
+      return 0;
+    }
+  case 0x27e2:
+  case 0x27e6:
+  case 0x27eb:
+switchD_0511ff64_caseD_27e2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x12] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Empty_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseAccountLinkException_TypeInfo,0)
+      ;
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x90);
+      *puVar7 = uVar4;
+LAB_051224a4:
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+LAB_051224ac:
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_TextCore_Text_FastAction_TypeInfo);
+  }
+LAB_051224c4:
+  FUN_039dcae8();
+switchD_0511fd9c_caseD_2a39:
+  return uVar4;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 20
+FUNCTION_NAME: System.Linq.Expressions.Expression$$NewArrayBounds
+ENTRY_POINT: 0511f7c4
+MANUAL_PRIORITY_SCORE: 355
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 172
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_support_only_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'ui_interaction', 'data_collection', 'telemetry', 'foveation_rendering', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_3', 'validity_or_gating_hits_21', 'ui_or_gameplay_sink_hits_21', 'strong_file_logging_hits_2', 'telemetry_or_network_hits_2', 'strong_foveation_hits_2', 'frame_or_lifecycle_behavior', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering', 'functionality_gaze_retrieval_or_extraction', 'functionality_data_collection_or_telemetry_hits_4']
+PRIORITY_REASONS: ['base_scanner_score_172', 'module_bonus_validity_gate_8', 'module_bonus_ui_interaction_12', 'module_bonus_data_collection_22', 'module_bonus_telemetry_20', 'module_bonus_foveation_rendering_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_data_collection_bonus_15', 'sensitive_sink_telemetry_bonus_15', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\general-structure-results\90_plus_framework_support_only_near_certain\0511f7c4_System.Linq.Expressions.Expression$$NewArrayBounds.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\vrealmfunverse\manual-review-pack\A_must_review\020_p355_System.Linq.Expressions.Expression$$NewArrayBounds.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: System.Linq.Expressions.Expression$$NewArrayBounds
+ENTRY_POINT: 0511f7c4
+PROGRAM: vrealmfunverse-libil2cpp.so
+SCORE: 172
+LABEL: framework_support_only_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;gaze_retrieval;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;ui_interaction;data_collection;telemetry;foveation_rendering;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_3;validity_or_gating_hits_21;ui_or_gameplay_sink_hits_21;strong_file_logging_hits_2;telemetry_or_network_hits_2;strong_foveation_hits_2;frame_or_lifecycle_behavior;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering;functionality_gaze_retrieval_or_extraction;functionality_data_collection_or_telemetry_hits_4
+*/
+
+
+undefined8 System_Linq_Expressions_Expression__NewArrayBounds(long param_1)
+
+{
+  undefined *puVar1;
+  uint uVar2;
+  long lVar3;
+  undefined8 uVar4;
+  uint uVar5;
+  ulong uVar6;
+  undefined8 *puVar7;
+  long unaff_x20;
+  undefined8 uVar8;
+  
+  FUN_02b3c81c(*(undefined8 *)(param_1 + 0x100));
+  FUN_02b3c81c(MS_Internal_Xml_XPath_Filter_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FilterFunction_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FilterFunctionDefinitionUtils_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FilterParameter_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_FilteringSettings_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_FinalAction_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_Universal_Internal_FinalBlitPass_TypeInfo);
+  FUN_02b3c81c(RootMotion_FinalIK_Finger_TypeInfo);
+  FUN_02b3c81c(UnityEngine_InputSystem_EnhancedTouch_Finger_TypeInfo);
+  FUN_02b3c81c(Autohand_FingerEnum_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerFeature_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerFeatureConfigBuilder_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerFeatureProperties_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerFeatureStateDictionary_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerFeatureStateProvider_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_GrabAPI_FingerPinchGrabAPI_TypeInfo);
+  FUN_02b3c81c(Autohand_FingerPoseEnum_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_GrabAPI_FingerRawPinchAPI_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_PoseDetection_FingerShapes_TypeInfo);
+  FUN_02b3c81c(Autohand_FingerTouchEventArgs_TypeInfo);
+  FUN_02b3c81c(Autohand_FingerTouchStartEvent_TypeInfo);
+  FUN_02b3c81c(Autohand_FingerTouchStopEvent_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_Input_FingersMetadata_TypeInfo);
+  FUN_02b3c81c(Firebase_Auth_FirebaseAccountLinkException_TypeInfo);
+  FUN_02b3c81c(Firebase_FirebaseApp_TypeInfo);
+  FUN_02b3c81c(Firebase_Platform_FirebaseAppUtils_TypeInfo);
+  FUN_02b3c81c(Firebase_Platform_FirebaseAppUtilsStub_TypeInfo);
+  FUN_02b3c81c(Firebase_Auth_FirebaseAuth_TypeInfo);
+  FUN_02b3c81c(Firebase_FirebaseException_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirebaseFirestore_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirebaseFirestoreSettings_TypeInfo);
+  FUN_02b3c81c(Firebase_Platform_FirebaseHandler_TypeInfo);
+  FUN_02b3c81c(Firebase_Platform_FirebaseLogger_TypeInfo);
+  FUN_02b3c81c(Firebase_Auth_FirebaseUser_TypeInfo);
+  FUN_02b3c81c(Firebase_Auth_FirebaseUserInternal_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestoreCpp_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestoreCppPINVOKE_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestoreDataAttribute_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestoreException_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestorePropertyAttribute_TypeInfo);
+  FUN_02b3c81c(Firebase_Firestore_FirestoreProxy_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_FirstHoverInteractorGroup_TypeInfo);
+  FUN_02b3c81c(FistFIghtManager_TypeInfo);
+  FUN_02b3c81c(System_Net_FixedSizeReadStream_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FixupHolder_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FixupHolderList_TypeInfo);
+  FUN_02b3c81c(Meta_XR_ImmersiveDebugger_UserInterface_Generic_Flex_TypeInfo);
+  FUN_02b3c81c(
+              UnityEngine_XR_Interaction_Toolkit_AffordanceSystem_Theme_Primitives_FloatAffordanceTheme_TypeInfo
+              );
+  FUN_02b3c81c(Oculus_Interaction_FloatConstraint_TypeInfo);
+  FUN_02b3c81c(System_Runtime_Serialization_FloatDataContract_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FloatField_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Rendering_FloatParameter_TypeInfo);
+  FUN_02b3c81c(DG_Tweening_Plugins_FloatPlugin_TypeInfo);
+  FUN_02b3c81c(
+              UnityEngine_XR_Interaction_Toolkit_Utilities_Tweenables_Primitives_FloatTweenableVariable_TypeInfo
+              );
+  FUN_02b3c81c(UnityEngine_UIElements_FocusChangeDirection_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusController_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusEnterEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusEnterEventArgs_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusExitEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_XR_Interaction_Toolkit_FocusExitEventArgs_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusInEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_FocusOutEvent_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Focusable_TypeInfo);
+  FUN_02b3c81c(UnityEngine_UIElements_Foldout_TypeInfo);
+  FUN_02b3c81c(Oculus_Interaction_FollowTarget_TypeInfo);
+  FUN_02b3c81c(UnityEngine_Font_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAsset_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetFactory_TypeInfo);
+  FUN_02b3c81c(UnityEngine_TextCore_Text_FontAssetUtilities_TypeInfo);
+  FUN_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+uth_FirebaseUser_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xd8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)Firebase_Firestore_FieldPath_TypeInfo);
+    break;
+  case 0x27ec:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x20] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryPool_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestorePropertyAttribute_TypeInfo
+                   ,0);
+      lVar3 = *(long *)(*(long *)puVar1 + 0xb8);
+      *(undefined8 *)(lVar3 + 0x100) = uVar4;
+      thunk_FUN_02bb0e9c(lVar3 + 0x100,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_XR_OpenXR_Features_Interactions_EyeTrackingUsages_TypeInfo
+                              );
+    break;
+  case 0x27ed:
+  case 0x27ee:
+  case 0x27f0:
+  case 0x27f1:
+  case 0x27f3:
+    goto switchD_0511fd9c_caseD_2a39;
+  case 0x27ef:
+  case 0x27f2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1d] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)Meta_XR_MRUtilityKit_EffectMesh_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCpp_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                System_Linq_Expressions_ExpressionStringBuilder_TypeInfo);
+    break;
+  case 0x27f4:
+  case 0x27f6:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1c] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)OVR_OpenVR_EVRTrackedCameraError_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseUserInternal_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xe0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Resources_FileBasedResourceGroveler_TypeInfo);
+    break;
+  case 0x27f5:
+  case 0x27f8:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1f] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                  UnityEngine_UIElements_EditorPanelRootElement_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreException_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf8);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)
+                                UnityEngine_InputSystem_UI_ExtendedAxisEventData_TypeInfo);
+    break;
+  case 0x27f7:
+  case 0x27f9:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x1e] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_UIElements_UIR_EntryRecorder_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Firestore_FirestoreCppPINVOKE_TypeInfo,0);
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0xf0);
+      *puVar7 = uVar4;
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_Rendering_FilteringSettings_TypeInfo);
+    break;
+  default:
+    uVar5 = 0x283c;
+LAB_05122424:
+    if (uVar2 != uVar5) {
+      return 0;
+    }
+  case 0x27e2:
+  case 0x27e6:
+  case 0x27eb:
+switchD_0511ff64_caseD_27e2:
+    lVar3 = *(long *)LitJson_FsmContext_TypeInfo;
+    if (*(int *)(lVar3 + 0xe4) == 0) {
+      thunk_FUN_02b9ad44();
+      lVar3 = *(long *)puVar1;
+    }
+    puVar7 = *(undefined8 **)(lVar3 + 0xb8);
+    if (puVar7[0x12] == 0) {
+      if (*(int *)(lVar3 + 0xe4) == 0) {
+        thunk_FUN_02b9ad44();
+        puVar7 = *(undefined8 **)(*(long *)puVar1 + 0xb8);
+      }
+      uVar8 = *puVar7;
+      uVar4 = thunk_FUN_02b79644(*(undefined8 *)System_Empty_TypeInfo);
+      FUN_04a143c4(uVar4,uVar8,*(undefined8 *)Firebase_Auth_FirebaseAccountLinkException_TypeInfo,0)
+      ;
+      puVar7 = (undefined8 *)(*(long *)(*(long *)puVar1 + 0xb8) + 0x90);
+      *puVar7 = uVar4;
+LAB_051224a4:
+      thunk_FUN_02bb0e9c(puVar7,uVar4);
+    }
+LAB_051224ac:
+    uVar4 = thunk_FUN_02b79644(*(undefined8 *)UnityEngine_TextCore_Text_FastAction_TypeInfo);
+  }
+LAB_051224c4:
+  FUN_039dcae8();
+switchD_0511fd9c_caseD_2a39:
+  return uVar4;
+}
+
+
+
+END_DECOMPILED_FUNCTION

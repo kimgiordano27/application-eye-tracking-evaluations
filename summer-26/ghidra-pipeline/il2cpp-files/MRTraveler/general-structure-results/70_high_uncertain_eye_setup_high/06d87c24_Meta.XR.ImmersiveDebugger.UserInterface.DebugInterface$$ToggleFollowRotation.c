@@ -1,0 +1,264 @@
+/*
+FUNCTION_NAME: Meta.XR.ImmersiveDebugger.UserInterface.DebugInterface$$ToggleFollowRotation
+ENTRY_POINT: 06d87c24
+PROGRAM: MRTraveler-libil2cpp.so
+SCORE: 71
+LABEL: uncertain_eye_setup_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: setup_only
+MODULES: eye_source;validity_gate;pose_vector
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_1;strong_pose_or_ray_construction_hits_2;functionality_eye_api_context_without_clear_sink_hits_1
+*/
+
+
+void Meta_XR_ImmersiveDebugger_UserInterface_DebugInterface__ToggleFollowRotation(void)
+
+{
+  undefined *puVar1;
+  long lVar2;
+  undefined8 uVar3;
+  long *plVar4;
+  undefined8 unaff_x19;
+  undefined8 *unaff_x20;
+  long *unaff_x21;
+  undefined8 *unaff_x22;
+  undefined8 *unaff_x23;
+  undefined8 *unaff_x24;
+  
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  FUN_069a0cb0();
+  *(undefined8 *)(*(long *)(*unaff_x21 + 0xb8) + 0x18) = unaff_x19;
+  thunk_FUN_03d233cc();
+  lVar2 = thunk_FUN_03cf5234(*unaff_x24);
+  FUN_069a34ac(lVar2,*unaff_x20);
+  uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+  FUN_05cc059c(uVar3,6,7,*unaff_x22);
+  puVar1 = PTR_DAT_08e8df48;
+  if (lVar2 != 0) {
+    FUN_069a428c(lVar2,6,uVar3,*(undefined8 *)PTR_DAT_08e8df48);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,7,0xffffffff,*unaff_x22);
+    FUN_069a428c(lVar2,7,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0,1,*unaff_x22);
+    FUN_069a428c(lVar2,0,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,1,2,*unaff_x22);
+    FUN_069a428c(lVar2,1,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,2,3,*unaff_x22);
+    FUN_069a428c(lVar2,2,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,3,4,*unaff_x22);
+    FUN_069a428c(lVar2,3,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,4,5,*unaff_x22);
+    FUN_069a428c(lVar2,4,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,5,6,*unaff_x22);
+    FUN_069a428c(lVar2,5,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,8,10,*unaff_x22);
+    FUN_069a428c(lVar2,8,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,9,10,*unaff_x22);
+    FUN_069a428c(lVar2,9,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,10,0xb,*unaff_x22);
+    FUN_069a428c(lVar2,10,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0xb,0x13,*unaff_x22);
+    FUN_069a428c(lVar2,0xb,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x13,0x1d,*unaff_x22);
+    FUN_069a428c(lVar2,0x13,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x12,0x1d,*unaff_x22);
+    FUN_069a428c(lVar2,0x12,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0xc,0x1d,*unaff_x22);
+    FUN_069a428c(lVar2,0xc,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x14,0x15,*unaff_x22);
+    FUN_069a428c(lVar2,0x14,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x15,0x16,*unaff_x22);
+    FUN_069a428c(lVar2,0x15,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x16,0x17,*unaff_x22);
+    FUN_069a428c(lVar2,0x16,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x16,0x17,*unaff_x22);
+    FUN_069a428c(lVar2,0x17,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x18,0x19,*unaff_x22);
+    FUN_069a428c(lVar2,0x18,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x19,0x1a,*unaff_x22);
+    FUN_069a428c(lVar2,0x19,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1a,0x1b,*unaff_x22);
+    FUN_069a428c(lVar2,0x1a,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1b,0x1c,*unaff_x22);
+    FUN_069a428c(lVar2,0x1b,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1b,0x1c,*unaff_x22);
+    FUN_069a428c(lVar2,0x1c,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1d,0x1e,*unaff_x22);
+    FUN_069a428c(lVar2,0x1d,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1e,0x1f,*unaff_x22);
+    FUN_069a428c(lVar2,0x1e,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x1f,0x20,*unaff_x22);
+    FUN_069a428c(lVar2,0x1f,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x20,0x21,*unaff_x22);
+    FUN_069a428c(lVar2,0x20,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x20,0x21,*unaff_x22);
+    FUN_069a428c(lVar2,0x21,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x22,0x23,*unaff_x22);
+    FUN_069a428c(lVar2,0x22,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x23,0x24,*unaff_x22);
+    FUN_069a428c(lVar2,0x23,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x24,0x25,*unaff_x22);
+    FUN_069a428c(lVar2,0x24,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x25,0x26,*unaff_x22);
+    FUN_069a428c(lVar2,0x25,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x25,0x26,*unaff_x22);
+    FUN_069a428c(lVar2,0x26,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x27,0x28,*unaff_x22);
+    FUN_069a428c(lVar2,0x27,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x28,0x29,*unaff_x22);
+    FUN_069a428c(lVar2,0x28,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x29,0x2a,*unaff_x22);
+    FUN_069a428c(lVar2,0x29,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2a,0x2b,*unaff_x22);
+    FUN_069a428c(lVar2,0x2a,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2a,0x2b,*unaff_x22);
+    FUN_069a428c(lVar2,0x2b,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0xd,0xf,*unaff_x22);
+    FUN_069a428c(lVar2,0xd,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0xe,0xf,*unaff_x22);
+    FUN_069a428c(lVar2,0xe,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0xf,0x10,*unaff_x22);
+    FUN_069a428c(lVar2,0xf,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x10,0x2d,*unaff_x22);
+    FUN_069a428c(lVar2,0x10,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2d,0x37,*unaff_x22);
+    FUN_069a428c(lVar2,0x2d,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2c,0x37,*unaff_x22);
+    FUN_069a428c(lVar2,0x2c,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x11,0x37,*unaff_x22);
+    FUN_069a428c(lVar2,0x11,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2e,0x2f,*unaff_x22);
+    FUN_069a428c(lVar2,0x2e,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x2f,0x30,*unaff_x22);
+    FUN_069a428c(lVar2,0x2f,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x30,0x31,*unaff_x22);
+    FUN_069a428c(lVar2,0x30,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x30,0x31,*unaff_x22);
+    FUN_069a428c(lVar2,0x31,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x32,0x33,*unaff_x22);
+    FUN_069a428c(lVar2,0x32,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x33,0x34,*unaff_x22);
+    FUN_069a428c(lVar2,0x33,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x34,0x35,*unaff_x22);
+    FUN_069a428c(lVar2,0x34,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x35,0x36,*unaff_x22);
+    FUN_069a428c(lVar2,0x35,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x35,0x36,*unaff_x22);
+    FUN_069a428c(lVar2,0x36,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x37,0x38,*unaff_x22);
+    FUN_069a428c(lVar2,0x37,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x38,0x39,*unaff_x22);
+    FUN_069a428c(lVar2,0x38,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x39,0x3a,*unaff_x22);
+    FUN_069a428c(lVar2,0x39,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3a,0x3b,*unaff_x22);
+    FUN_069a428c(lVar2,0x3a,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3a,0x3b,*unaff_x22);
+    FUN_069a428c(lVar2,0x3b,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3c,0x3d,*unaff_x22);
+    FUN_069a428c(lVar2,0x3c,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3d,0x3e,*unaff_x22);
+    FUN_069a428c(lVar2,0x3d,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3e,0x3f,*unaff_x22);
+    FUN_069a428c(lVar2,0x3e,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3f,0x40,*unaff_x22);
+    FUN_069a428c(lVar2,0x3f,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x3f,0x40,*unaff_x22);
+    FUN_069a428c(lVar2,0x40,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x41,0x42,*unaff_x22);
+    FUN_069a428c(lVar2,0x41,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x42,0x43,*unaff_x22);
+    FUN_069a428c(lVar2,0x42,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x43,0x44,*unaff_x22);
+    FUN_069a428c(lVar2,0x43,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x44,0x45,*unaff_x22);
+    FUN_069a428c(lVar2,0x44,uVar3,*(undefined8 *)puVar1);
+    uVar3 = thunk_FUN_03cf5234(*unaff_x23);
+    FUN_05cc059c(uVar3,0x44,0x45,*unaff_x22);
+    FUN_069a428c(lVar2,0x45,uVar3,*(undefined8 *)puVar1);
+    plVar4 = (long *)(*(long *)(*unaff_x21 + 0xb8) + 0x20);
+    *plVar4 = lVar2;
+    thunk_FUN_03d233cc(plVar4,lVar2);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_03c8fb30();
+}
+
+

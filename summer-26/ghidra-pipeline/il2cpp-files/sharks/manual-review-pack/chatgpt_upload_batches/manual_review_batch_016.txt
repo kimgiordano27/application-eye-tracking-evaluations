@@ -1,0 +1,323 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 76
+FUNCTION_NAME: Meta.XR.MetaXREyeTrackedFoveationFeature$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 02bebc08
+MANUAL_PRIORITY_SCORE: 186
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 134
+ORIGINAL_SCANNER_LABEL: 90_plus_attempted_dynamic_eye_tracked_foveation_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_7', 'weak_xr_or_state_hits_2', 'strong_foveation_hits_4', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_134', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_attempted_dynamic_eye_tracked_foveation_near_certain\02bebc08_Meta.XR.MetaXREyeTrackedFoveationFeature$$get_eyeTrackedFoveatedRenderingSupported.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\076_p186_Meta.XR.MetaXREyeTrackedFoveationFeature$$get_eyeTrackedFoveatedRenderingSupported.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MetaXREyeTrackedFoveationFeature$$get_eyeTrackedFoveatedRenderingSupported
+ENTRY_POINT: 02bebc08
+PROGRAM: sharks-libil2cpp.so
+SCORE: 134
+LABEL: attempted_dynamic_eye_tracked_foveation_near_certain
+EYE_TRACKING_DECISION: yes
+USE_CLASSIFICATION: attempted_or_possible_dynamic_eye_tracked_foveation
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_7;weak_xr_or_state_hits_2;strong_foveation_hits_4;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;functionality_foveated_rendering
+*/
+
+
+void Meta_XR_MetaXREyeTrackedFoveationFeature__get_eyeTrackedFoveatedRenderingSupported
+               (undefined4 *param_1)
+
+{
+  undefined4 uVar1;
+  undefined *puVar2;
+  
+  puVar2 = PTR_DAT_037f3df8;
+  if ((DAT_03a25d0a & 1) == 0) {
+    FUN_017fc350(PTR_DAT_037f3df8);
+    DAT_03a25d0a = 1;
+  }
+  uVar1 = *param_1;
+  if (*(int *)(*(long *)puVar2 + 0xe0) == 0) {
+    thunk_FUN_01843fdc();
+  }
+  FUN_02b4ee0c(uVar1,0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 77
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions
+ENTRY_POINT: 032651cc
+MANUAL_PRIORITY_SCORE: 186
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 83
+ORIGINAL_SCANNER_LABEL: 70_high_framework_support_only_high
+MODULES: ['eye_source', 'weak_source_state', 'validity_gate', 'telemetry']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_6', 'validity_or_gating_hits_2', 'telemetry_or_network_hits_2', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_permission_setup', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_83', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_4_bonus_12', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\70_high_framework_support_only_high\032651cc_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\077_p186_UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.OpenXR.OpenXRSettings$$Internal_HasRequestedEyeTrackingPermissions
+ENTRY_POINT: 032651cc
+PROGRAM: sharks-libil2cpp.so
+SCORE: 83
+LABEL: framework_support_only_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_support_only
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: permission_setup;data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;validity_gate;telemetry
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_6;validity_or_gating_hits_2;telemetry_or_network_hits_2;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_permission_setup;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void UnityEngine_XR_OpenXR_OpenXRSettings__Internal_HasRequestedEyeTrackingPermissions(void)
+
+{
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 78
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionDiscovery
+ENTRY_POINT: 02c33d90
+MANUAL_PRIORITY_SCORE: 185
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 91
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_91', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02c33d90_OVRPlugin$$StartColocationSessionDiscovery.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\078_p185_OVRPlugin$$StartColocationSessionDiscovery.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionDiscovery
+ENTRY_POINT: 02c33d90
+PROGRAM: sharks-libil2cpp.so
+SCORE: 91
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin__StartColocationSessionDiscovery(long param_1)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  long lVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  undefined8 in_stack_00000000;
+  undefined8 in_stack_00000008;
+  undefined8 in_stack_00000010;
+  undefined8 in_stack_00000018;
+  undefined8 in_stack_00000020;
+  undefined8 in_stack_00000028;
+  
+  puVar2 = PTR_DAT_0380bfa0;
+  if (*(int *)(param_1 + 0xe0) == 0) {
+                    /* try { // try from 02c33da0 to 02d33e83 has its CatchHandler @ 02c33da0
+                       catch() { ... } // from try @ 02c33da0 with catch @ 02c33da0
+                       catch() { ... } // from try @ 02c3418c with catch @ 02c33da0
+                       catch() { ... } // from try @ 02c3428c with catch @ 02c33da0
+                       catch() { ... } // from try @ 02c34300 with catch @ 02c33da0
+                       catch() { ... } // from try @ 02c34368 with catch @ 02c33da0 */
+    thunk_FUN_01843fdc();
+  }
+  puVar1 = PTR_DAT_037f9758;
+  thunk_FUN_0181f594();
+  *(undefined4 *)(unaff_x19 + 0x24) = 0xffffffff;
+  FUN_02c108e4();
+  thunk_FUN_0181f594();
+  *(undefined4 *)(unaff_x19 + 0x20) = 1;
+  lVar3 = *(long *)puVar2;
+  if (*(int *)(lVar3 + 0xe0) == 0) {
+    thunk_FUN_01843fdc();
+    lVar3 = *(long *)puVar2;
+  }
+  uVar4 = **(undefined8 **)(lVar3 + 0xb8);
+  if (*(int *)(*(long *)puVar1 + 0xe0) == 0) {
+    thunk_FUN_01843fdc(*(long *)puVar1);
+  }
+  FUN_02c30798(&stack0x00000018,&stack0x00000038,uVar4);
+  *(undefined8 *)(unaff_x19 + 0x50) = in_stack_00000028;
+  *(undefined8 *)(unaff_x19 + 0x48) = in_stack_00000020;
+  *(undefined8 *)(unaff_x19 + 0x40) = in_stack_00000018;
+  thunk_FUN_0188fd20(unaff_x19 + 0x40,0);
+  FUN_02c30798(&stack0x00000030,**(undefined8 **)(*(long *)puVar2 + 0xb8));
+  *(undefined8 *)(unaff_x19 + 0x68) = in_stack_00000010;
+  *(undefined8 *)(unaff_x19 + 0x60) = in_stack_00000008;
+  *(undefined8 *)(unaff_x19 + 0x58) = in_stack_00000000;
+  thunk_FUN_0188fd20(unaff_x19 + 0x58,0);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 79
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionAdvertisement
+ENTRY_POINT: 02c33bf4
+MANUAL_PRIORITY_SCORE: 185
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 91
+ORIGINAL_SCANNER_LABEL: 90_plus_uncertain_gaze_or_xr_structure_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_2', 'weak_xr_or_state_hits_2', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_91', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_sdk_2_bonus_6', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\90_plus_uncertain_gaze_or_xr_structure_near_certain\02c33bf4_OVRPlugin$$StartColocationSessionAdvertisement.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\079_p185_OVRPlugin$$StartColocationSessionAdvertisement.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: OVRPlugin$$StartColocationSessionAdvertisement
+ENTRY_POINT: 02c33bf4
+PROGRAM: sharks-libil2cpp.so
+SCORE: 91
+LABEL: uncertain_gaze_or_xr_structure_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;weak_source_state;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_2;weak_xr_or_state_hits_2;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void OVRPlugin__StartColocationSessionAdvertisement(void)
+
+{
+                    /* catch() { ... } // from try @ 02c33b4c with catch @ 02c33bf4 */
+                    /* catch() { ... } // from try @ 02c337d4 with catch @ 02c33bf8 */
+  FUN_02c33e74();
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 80
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StartDiscoveringColocationSessions>d__21$$SetStateMachine
+ENTRY_POINT: 0290191c
+MANUAL_PRIORITY_SCORE: 185
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 89
+ORIGINAL_SCANNER_LABEL: 70_high_uncertain_gaze_or_xr_structure_high
+MODULES: ['eye_source', 'validity_gate', 'telemetry', 'frame_behavior']
+EVIDENCE: ['strong_eye_source_hits_1', 'validity_or_gating_hits_1', 'telemetry_or_network_hits_2', 'frame_or_lifecycle_behavior', 'functionality_data_collection_or_telemetry_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_89', 'module_bonus_validity_gate_8', 'module_bonus_telemetry_20', 'module_bonus_frame_behavior_5', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\general-structure-results\70_high_uncertain_gaze_or_xr_structure_high\0290191c_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StartDiscoveringColocationSessions_d__21$$SetStateMachine.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\sharks\manual-review-pack\A_must_review\080_p185_Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking._StartDiscoveringColocationSessions_d__21$$SetStateMachine.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Meta.XR.MultiplayerBlocks.Shared.LocalMatchmaking.<StartDiscoveringColocationSessions>d__21$$SetStateMachine
+ENTRY_POINT: 0290191c
+PROGRAM: sharks-libil2cpp.so
+SCORE: 89
+LABEL: uncertain_gaze_or_xr_structure_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: eye_tracking_capability_present
+FRAMEWORK_CONTEXT: app_or_custom_namespace
+FUNCTIONALITY: data_collection_or_telemetry
+MODULES: eye_source;validity_gate;telemetry;frame_behavior
+EVIDENCE: strong_eye_source_hits_1;validity_or_gating_hits_1;telemetry_or_network_hits_2;frame_or_lifecycle_behavior;functionality_data_collection_or_telemetry_hits_2
+*/
+
+
+void Meta_XR_MultiplayerBlocks_Shared_LocalMatchmaking_<StartDiscoveringColocationSessions>d__21__SetStateMachine
+               (long param_1)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  long unaff_x19;
+  undefined8 *unaff_x21;
+  long lVar3;
+  undefined8 uStack0000000000000020;
+  undefined8 uStack0000000000000028;
+  undefined8 uStack0000000000000030;
+  
+  uStack0000000000000030 = unaff_x21[2];
+  uStack0000000000000028 = unaff_x21[1];
+  uStack0000000000000020 = *unaff_x21;
+  lVar3 = **(long **)(param_1 + 0xb8);
+  uVar1 = thunk_FUN_018617ec(**(undefined8 **)(*(long *)(unaff_x19 + 0x20) + 0xc0),&stack0x00000020)
+  ;
+  uVar2 = thunk_FUN_018617ec(**(undefined8 **)(*(long *)(unaff_x19 + 0x20) + 0xc0));
+  if (lVar3 != 0) {
+    FUN_02b9f22c(lVar3,uVar1,uVar2,0);
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_017fc5a8();
+}
+
+
+
+END_DECOMPILED_FUNCTION

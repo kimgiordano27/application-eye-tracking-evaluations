@@ -1,0 +1,1517 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 56
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderScale
+ENTRY_POINT: 08378f24
+MANUAL_PRIORITY_SCORE: 227
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 85
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'telemetry', 'keyword_support', 'attempted_use']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_85', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\08378f24_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderScale.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\056_p227_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderScale.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderScale
+ENTRY_POINT: 08378f24
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 85
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: validity_gate;ray_interaction;ui_interaction;telemetry;keyword_support;attempted_use
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRGazeInteractor__set_gazeAssistanceColliderScale
+               (void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  long *unaff_x22;
+  long unaff_x24;
+  
+  FUN_0403162c(PTR_DAT_08ff9bf8);
+  FUN_0403162c(PTR_DAT_08ff9c00);
+  FUN_0403162c(PTR_DAT_08ff9c08);
+  FUN_0403162c(PTR_DAT_08ff9c10);
+  FUN_0403162c(PTR_DAT_08ff9c18);
+  FUN_0403162c(PTR_DAT_08ff9c20);
+  FUN_0403162c(PTR_DAT_08ff9c28);
+  FUN_0403162c(PTR_DAT_08ff9c30);
+  FUN_0403162c(PTR_DAT_08ff9c38);
+  FUN_0403162c(PTR_DAT_08ff9c40);
+  FUN_0403162c(PTR_DAT_08ff9c48);
+  FUN_0403162c(PTR_DAT_08ff9c50);
+  FUN_0403162c(PTR_DAT_08ff9c58);
+  FUN_0403162c(PTR_DAT_08ff9c60);
+  FUN_0403162c(PTR_DAT_08ff9c68);
+  FUN_0403162c(PTR_DAT_08ff9c70);
+  FUN_0403162c(PTR_DAT_08ff9c78);
+  FUN_0403162c(PTR_DAT_08ff9c80);
+  FUN_0403162c(PTR_DAT_08ff9c88);
+  FUN_0403162c(PTR_DAT_08ff9c90);
+  FUN_0403162c(PTR_DAT_08ff9c98);
+  FUN_0403162c(PTR_DAT_08ff9ca0);
+  FUN_0403162c(PTR_DAT_08ff9ca8);
+  FUN_0403162c(PTR_DAT_08ff9cb0);
+  FUN_0403162c(PTR_DAT_08ff9cb8);
+  FUN_0403162c(PTR_DAT_08ff9cc0);
+  FUN_0403162c(PTR_DAT_08ff9cc8);
+  FUN_0403162c(PTR_DAT_08ff9cd0);
+  FUN_0403162c(PTR_DAT_08ff9cd8);
+  FUN_0403162c(PTR_DAT_08ff9ce0);
+  FUN_0403162c(PTR_DAT_08ff9ce8);
+  FUN_0403162c(PTR_DAT_08ff9cf0);
+  FUN_0403162c(PTR_DAT_08ff9cf8);
+  FUN_0403162c(PTR_DAT_08ff9d00);
+  FUN_0403162c(PTR_DAT_08ff9d08);
+  FUN_0403162c(PTR_DAT_08ff9d10);
+  FUN_0403162c(PTR_DAT_08ff9d18);
+  FUN_0403162c(PTR_DAT_08ff9d20);
+  FUN_0403162c(PTR_DAT_08ff9d28);
+  FUN_0403162c(PTR_DAT_08ff9d30);
+  FUN_0403162c(PTR_DAT_08ff9d38);
+  FUN_0403162c(PTR_DAT_08ff9d40);
+  FUN_0403162c(PTR_DAT_08ff9d48);
+  FUN_0403162c(PTR_DAT_08ff9d50);
+  FUN_0403162c(PTR_DAT_08ff9d58);
+  FUN_0403162c(PTR_DAT_08ff9d60);
+  FUN_0403162c(PTR_DAT_08ff9d68);
+  FUN_0403162c(PTR_DAT_08ff9d70);
+  FUN_0403162c(PTR_DAT_08ff9d78);
+  FUN_0403162c(PTR_DAT_08ff9d80);
+  FUN_0403162c(PTR_DAT_08ff9d88);
+  FUN_0403162c(PTR_DAT_08ff9d90);
+  FUN_0403162c(PTR_DAT_08ff9d98);
+  FUN_0403162c(PTR_DAT_08ff9da0);
+  FUN_0403162c(PTR_DAT_08ff9da8);
+  FUN_0403162c(PTR_DAT_08ff9db0);
+  FUN_0403162c(PTR_DAT_08ff9db8);
+  FUN_0403162c(PTR_DAT_08ff9dc0);
+  FUN_0403162c(PTR_DAT_08ff9dc8);
+  FUN_0403162c(PTR_DAT_08ff9dd0);
+  FUN_0403162c(PTR_DAT_08ff9dd8);
+  FUN_0403162c(PTR_DAT_08ff9de0);
+  FUN_0403162c(PTR_DAT_08ff9de8);
+  FUN_0403162c(PTR_DAT_08ff9df0);
+  FUN_0403162c(PTR_DAT_08ff9df8);
+  FUN_0403162c(PTR_DAT_08ff9e00);
+  FUN_0403162c(PTR_DAT_08ff9e08);
+  FUN_0403162c(PTR_DAT_08ff9e10);
+  FUN_0403162c(PTR_DAT_08ff9e18);
+  FUN_0403162c(PTR_DAT_08ff9e20);
+  FUN_0403162c(PTR_DAT_08ff9e28);
+  FUN_0403162c(PTR_DAT_08ff9e30);
+  FUN_0403162c(PTR_DAT_08ff9e38);
+  FUN_0403162c(PTR_DAT_08ff9e40);
+  FUN_0403162c(PTR_DAT_08ff9e48);
+  FUN_0403162c(PTR_DAT_08ff9e50);
+  FUN_0403162c(PTR_DAT_08ff9e58);
+  FUN_0403162c(PTR_DAT_08ff9e60);
+  FUN_0403162c(PTR_DAT_08ff9e68);
+  FUN_0403162c(PTR_DAT_08ff9e70);
+  FUN_0403162c(PTR_DAT_08ff9e78);
+  FUN_0403162c(PTR_DAT_08ff9e80);
+  FUN_0403162c(PTR_DAT_08ff9e88);
+  FUN_0403162c(PTR_DAT_08ff9e90);
+  FUN_0403162c(PTR_DAT_08ff9e98);
+  FUN_0403162c(PTR_DAT_08ff9ea0);
+  FUN_0403162c(PTR_DAT_08ff9ea8);
+  FUN_0403162c(PTR_DAT_08ff9eb0);
+  FUN_0403162c(PTR_DAT_08ff9eb8);
+  FUN_0403162c(PTR_DAT_08ff9ec0);
+  FUN_0403162c(PTR_DAT_08ff9ec8);
+  FUN_0403162c(PTR_DAT_08ff9ed0);
+  FUN_0403162c(PTR_DAT_08ff9ed8);
+  FUN_0403162c(PTR_DAT_08ff9ee0);
+  FUN_0403162c(PTR_DAT_08ff9ee8);
+  FUN_0403162c(PTR_DAT_08ff9ef0);
+  FUN_0403162c(PTR_DAT_08ff9ef8);
+  FUN_0403162c(PTR_DAT_08ff9f00);
+  FUN_0403162c(PTR_DAT_08ff9f08);
+  FUN_0403162c(PTR_DAT_08ff9f10);
+  FUN_0403162c(PTR_DAT_08ff9f18);
+  FUN_0403162c(PTR_DAT_08ff9f20);
+  FUN_0403162c(PTR_DAT_08ff9f28);
+  FUN_0403162c(PTR_DAT_08ff9f30);
+  FUN_0403162c(PTR_DAT_08ff9f38);
+  FUN_0403162c(PTR_DAT_08ff9f40);
+  FUN_0403162c(PTR_DAT_08ff9f48);
+  FUN_0403162c(PTR_DAT_08ff9f50);
+  FUN_0403162c(PTR_DAT_08ff9f58);
+  FUN_0403162c(PTR_DAT_08ff9f60);
+  FUN_0403162c(PTR_DAT_08ff9f68);
+  FUN_0403162c(PTR_DAT_08ff9f70);
+  FUN_0403162c(PTR_DAT_08ff9f78);
+  FUN_0403162c(PTR_DAT_08ff9f80);
+  FUN_0403162c(PTR_DAT_08ff9f88);
+  FUN_0403162c(PTR_DAT_08ff9f90);
+  FUN_0403162c(PTR_DAT_08ff9f98);
+  FUN_0403162c(PTR_DAT_08ff9fa0);
+  FUN_0403162c(PTR_DAT_08ff9fa8);
+  FUN_0403162c(PTR_DAT_08ff9fb0);
+  FUN_0403162c(PTR_DAT_08ff9fb8);
+  FUN_0403162c(PTR_DAT_08ff9fc0);
+  FUN_0403162c(PTR_DAT_08ff9fc8);
+  FUN_0403162c(PTR_DAT_08ff9fd0);
+  FUN_0403162c(PTR_DAT_08ff9fd8);
+  FUN_0403162c(PTR_DAT_08ff9fe0);
+  FUN_0403162c(PTR_DAT_08ff9fe8);
+  FUN_0403162c(PTR_DAT_08ff9ff0);
+  FUN_0403162c(PTR_DAT_08ff9ff8);
+  FUN_0403162c(PTR_DAT_08ffa000);
+  FUN_0403162c(PTR_DAT_08ffa008);
+  FUN_0403162c(PTR_DAT_08ffa010);
+  FUN_0403162c(PTR_DAT_08ffa018);
+  FUN_0403162c(PTR_DAT_08ffa020);
+  FUN_0403162c(PTR_DAT_08ffb020);
+  FUN_0403162c(PTR_DAT_08ffb028);
+  FUN_0403162c(PTR_DAT_08ffb030);
+  FUN_0403162c(PTR_DAT_08ffb038);
+  FUN_0403162c(PTR_DAT_08ffb040);
+  FUN_0403162c(PTR_DAT_08ffb048);
+  FUN_0403162c(PTR_DAT_08ffb050);
+  FUN_0403162c(PTR_DAT_08ffb058);
+  FUN_0403162c(PTR_DAT_08ffb060
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+1fd18();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[100] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f70);
+      FUN_05351c58(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb378,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 800) = uVar2;
+    }
+    FUN_04a21678();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x65] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e20);
+      FUN_05352230(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb028,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x328) = uVar2;
+    }
+    FUN_04a22654();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x66] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ce0);
+      FUN_05351eb0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb030,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x330) = uVar2;
+    }
+    FUN_04a21cd0();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x67] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ee0);
+      System_Action<object,_double,_long,_int>___ctor(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb038,0)
+      ;
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x338) = uVar2;
+    }
+    FUN_04a22cac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x68] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f98);
+      FUN_05351fdc(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb040,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x340) = uVar2;
+    }
+    FUN_04a21ffc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x69] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fd0);
+      FUN_053525b4(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb048,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x348) = uVar2;
+    }
+    FUN_04a22fd8();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6a] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f10);
+      FUN_05352108(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb050,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x350) = uVar2;
+    }
+    FUN_04a22328();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6b] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fa0);
+      FUN_053526e0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb058,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x358) = uVar2;
+    }
+    FUN_04a23304();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6c] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f88);
+      System_Action<int,_object,_int,_int>__Invoke(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb060,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x360) = uVar2;
+    }
+    FUN_04a22980();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6d] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e78);
+      FUN_05351d84(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb068,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x368) = uVar2;
+    }
+    FUN_04a219a4();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 57
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderFixedSize
+ENTRY_POINT: 08378f14
+MANUAL_PRIORITY_SCORE: 227
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 85
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'telemetry', 'keyword_support', 'attempted_use']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_85', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\08378f14_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderFixedSize.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\057_p227_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderFixedSize.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$set_gazeAssistanceColliderFixedSize
+ENTRY_POINT: 08378f14
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 85
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: validity_gate;ray_interaction;ui_interaction;telemetry;keyword_support;attempted_use
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRGazeInteractor__set_gazeAssistanceColliderFixedSize
+               (void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  long *unaff_x22;
+  long unaff_x24;
+  
+  FUN_0403162c();
+  FUN_0403162c(PTR_DAT_08ff9bf0);
+  FUN_0403162c(PTR_DAT_08ff9bf8);
+  FUN_0403162c(PTR_DAT_08ff9c00);
+  FUN_0403162c(PTR_DAT_08ff9c08);
+  FUN_0403162c(PTR_DAT_08ff9c10);
+  FUN_0403162c(PTR_DAT_08ff9c18);
+  FUN_0403162c(PTR_DAT_08ff9c20);
+  FUN_0403162c(PTR_DAT_08ff9c28);
+  FUN_0403162c(PTR_DAT_08ff9c30);
+  FUN_0403162c(PTR_DAT_08ff9c38);
+  FUN_0403162c(PTR_DAT_08ff9c40);
+  FUN_0403162c(PTR_DAT_08ff9c48);
+  FUN_0403162c(PTR_DAT_08ff9c50);
+  FUN_0403162c(PTR_DAT_08ff9c58);
+  FUN_0403162c(PTR_DAT_08ff9c60);
+  FUN_0403162c(PTR_DAT_08ff9c68);
+  FUN_0403162c(PTR_DAT_08ff9c70);
+  FUN_0403162c(PTR_DAT_08ff9c78);
+  FUN_0403162c(PTR_DAT_08ff9c80);
+  FUN_0403162c(PTR_DAT_08ff9c88);
+  FUN_0403162c(PTR_DAT_08ff9c90);
+  FUN_0403162c(PTR_DAT_08ff9c98);
+  FUN_0403162c(PTR_DAT_08ff9ca0);
+  FUN_0403162c(PTR_DAT_08ff9ca8);
+  FUN_0403162c(PTR_DAT_08ff9cb0);
+  FUN_0403162c(PTR_DAT_08ff9cb8);
+  FUN_0403162c(PTR_DAT_08ff9cc0);
+  FUN_0403162c(PTR_DAT_08ff9cc8);
+  FUN_0403162c(PTR_DAT_08ff9cd0);
+  FUN_0403162c(PTR_DAT_08ff9cd8);
+  FUN_0403162c(PTR_DAT_08ff9ce0);
+  FUN_0403162c(PTR_DAT_08ff9ce8);
+  FUN_0403162c(PTR_DAT_08ff9cf0);
+  FUN_0403162c(PTR_DAT_08ff9cf8);
+  FUN_0403162c(PTR_DAT_08ff9d00);
+  FUN_0403162c(PTR_DAT_08ff9d08);
+  FUN_0403162c(PTR_DAT_08ff9d10);
+  FUN_0403162c(PTR_DAT_08ff9d18);
+  FUN_0403162c(PTR_DAT_08ff9d20);
+  FUN_0403162c(PTR_DAT_08ff9d28);
+  FUN_0403162c(PTR_DAT_08ff9d30);
+  FUN_0403162c(PTR_DAT_08ff9d38);
+  FUN_0403162c(PTR_DAT_08ff9d40);
+  FUN_0403162c(PTR_DAT_08ff9d48);
+  FUN_0403162c(PTR_DAT_08ff9d50);
+  FUN_0403162c(PTR_DAT_08ff9d58);
+  FUN_0403162c(PTR_DAT_08ff9d60);
+  FUN_0403162c(PTR_DAT_08ff9d68);
+  FUN_0403162c(PTR_DAT_08ff9d70);
+  FUN_0403162c(PTR_DAT_08ff9d78);
+  FUN_0403162c(PTR_DAT_08ff9d80);
+  FUN_0403162c(PTR_DAT_08ff9d88);
+  FUN_0403162c(PTR_DAT_08ff9d90);
+  FUN_0403162c(PTR_DAT_08ff9d98);
+  FUN_0403162c(PTR_DAT_08ff9da0);
+  FUN_0403162c(PTR_DAT_08ff9da8);
+  FUN_0403162c(PTR_DAT_08ff9db0);
+  FUN_0403162c(PTR_DAT_08ff9db8);
+  FUN_0403162c(PTR_DAT_08ff9dc0);
+  FUN_0403162c(PTR_DAT_08ff9dc8);
+  FUN_0403162c(PTR_DAT_08ff9dd0);
+  FUN_0403162c(PTR_DAT_08ff9dd8);
+  FUN_0403162c(PTR_DAT_08ff9de0);
+  FUN_0403162c(PTR_DAT_08ff9de8);
+  FUN_0403162c(PTR_DAT_08ff9df0);
+  FUN_0403162c(PTR_DAT_08ff9df8);
+  FUN_0403162c(PTR_DAT_08ff9e00);
+  FUN_0403162c(PTR_DAT_08ff9e08);
+  FUN_0403162c(PTR_DAT_08ff9e10);
+  FUN_0403162c(PTR_DAT_08ff9e18);
+  FUN_0403162c(PTR_DAT_08ff9e20);
+  FUN_0403162c(PTR_DAT_08ff9e28);
+  FUN_0403162c(PTR_DAT_08ff9e30);
+  FUN_0403162c(PTR_DAT_08ff9e38);
+  FUN_0403162c(PTR_DAT_08ff9e40);
+  FUN_0403162c(PTR_DAT_08ff9e48);
+  FUN_0403162c(PTR_DAT_08ff9e50);
+  FUN_0403162c(PTR_DAT_08ff9e58);
+  FUN_0403162c(PTR_DAT_08ff9e60);
+  FUN_0403162c(PTR_DAT_08ff9e68);
+  FUN_0403162c(PTR_DAT_08ff9e70);
+  FUN_0403162c(PTR_DAT_08ff9e78);
+  FUN_0403162c(PTR_DAT_08ff9e80);
+  FUN_0403162c(PTR_DAT_08ff9e88);
+  FUN_0403162c(PTR_DAT_08ff9e90);
+  FUN_0403162c(PTR_DAT_08ff9e98);
+  FUN_0403162c(PTR_DAT_08ff9ea0);
+  FUN_0403162c(PTR_DAT_08ff9ea8);
+  FUN_0403162c(PTR_DAT_08ff9eb0);
+  FUN_0403162c(PTR_DAT_08ff9eb8);
+  FUN_0403162c(PTR_DAT_08ff9ec0);
+  FUN_0403162c(PTR_DAT_08ff9ec8);
+  FUN_0403162c(PTR_DAT_08ff9ed0);
+  FUN_0403162c(PTR_DAT_08ff9ed8);
+  FUN_0403162c(PTR_DAT_08ff9ee0);
+  FUN_0403162c(PTR_DAT_08ff9ee8);
+  FUN_0403162c(PTR_DAT_08ff9ef0);
+  FUN_0403162c(PTR_DAT_08ff9ef8);
+  FUN_0403162c(PTR_DAT_08ff9f00);
+  FUN_0403162c(PTR_DAT_08ff9f08);
+  FUN_0403162c(PTR_DAT_08ff9f10);
+  FUN_0403162c(PTR_DAT_08ff9f18);
+  FUN_0403162c(PTR_DAT_08ff9f20);
+  FUN_0403162c(PTR_DAT_08ff9f28);
+  FUN_0403162c(PTR_DAT_08ff9f30);
+  FUN_0403162c(PTR_DAT_08ff9f38);
+  FUN_0403162c(PTR_DAT_08ff9f40);
+  FUN_0403162c(PTR_DAT_08ff9f48);
+  FUN_0403162c(PTR_DAT_08ff9f50);
+  FUN_0403162c(PTR_DAT_08ff9f58);
+  FUN_0403162c(PTR_DAT_08ff9f60);
+  FUN_0403162c(PTR_DAT_08ff9f68);
+  FUN_0403162c(PTR_DAT_08ff9f70);
+  FUN_0403162c(PTR_DAT_08ff9f78);
+  FUN_0403162c(PTR_DAT_08ff9f80);
+  FUN_0403162c(PTR_DAT_08ff9f88);
+  FUN_0403162c(PTR_DAT_08ff9f90);
+  FUN_0403162c(PTR_DAT_08ff9f98);
+  FUN_0403162c(PTR_DAT_08ff9fa0);
+  FUN_0403162c(PTR_DAT_08ff9fa8);
+  FUN_0403162c(PTR_DAT_08ff9fb0);
+  FUN_0403162c(PTR_DAT_08ff9fb8);
+  FUN_0403162c(PTR_DAT_08ff9fc0);
+  FUN_0403162c(PTR_DAT_08ff9fc8);
+  FUN_0403162c(PTR_DAT_08ff9fd0);
+  FUN_0403162c(PTR_DAT_08ff9fd8);
+  FUN_0403162c(PTR_DAT_08ff9fe0);
+  FUN_0403162c(PTR_DAT_08ff9fe8);
+  FUN_0403162c(PTR_DAT_08ff9ff0);
+  FUN_0403162c(PTR_DAT_08ff9ff8);
+  FUN_0403162c(PTR_DAT_08ffa000);
+  FUN_0403162c(PTR_DAT_08ffa008);
+  FUN_0403162c(PTR_DAT_08ffa010);
+  FUN_0403162c(PTR_DAT_08ffa018);
+  FUN_0403162c(PTR_DAT_08ffa020);
+  FUN_0403162c(PTR_DAT_08ffb020);
+  FUN_0403162c(PTR_DAT_08ffb028);
+  FUN_0403162c(PTR_DAT_08ffb030);
+  FUN_0403162c(PTR_DAT_08ffb038);
+  FUN_0403162c(PTR_DAT_08ffb040);
+  FUN_0403162c(PTR_DAT_08ffb048);
+  FUN_0403162c(PTR_DAT_08ffb050);
+  FUN
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+1fd18();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[100] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f70);
+      FUN_05351c58(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb378,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 800) = uVar2;
+    }
+    FUN_04a21678();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x65] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e20);
+      FUN_05352230(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb028,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x328) = uVar2;
+    }
+    FUN_04a22654();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x66] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ce0);
+      FUN_05351eb0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb030,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x330) = uVar2;
+    }
+    FUN_04a21cd0();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x67] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ee0);
+      System_Action<object,_double,_long,_int>___ctor(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb038,0)
+      ;
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x338) = uVar2;
+    }
+    FUN_04a22cac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x68] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f98);
+      FUN_05351fdc(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb040,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x340) = uVar2;
+    }
+    FUN_04a21ffc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x69] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fd0);
+      FUN_053525b4(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb048,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x348) = uVar2;
+    }
+    FUN_04a22fd8();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6a] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f10);
+      FUN_05352108(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb050,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x350) = uVar2;
+    }
+    FUN_04a22328();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6b] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fa0);
+      FUN_053526e0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb058,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x358) = uVar2;
+    }
+    FUN_04a23304();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6c] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f88);
+      System_Action<int,_object,_int,_int>__Invoke(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb060,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x360) = uVar2;
+    }
+    FUN_04a22980();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6d] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e78);
+      FUN_05351d84(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb068,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x368) = uVar2;
+    }
+    FUN_04a219a4();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 58
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderScale
+ENTRY_POINT: 08378f1c
+MANUAL_PRIORITY_SCORE: 227
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 85
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'telemetry', 'keyword_support', 'attempted_use']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_85', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\08378f1c_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderScale.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\058_p227_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderScale.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderScale
+ENTRY_POINT: 08378f1c
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 85
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: validity_gate;ray_interaction;ui_interaction;telemetry;keyword_support;attempted_use
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRGazeInteractor__get_gazeAssistanceColliderScale
+               (long param_1)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  long *unaff_x22;
+  long unaff_x24;
+  
+  FUN_0403162c(*(undefined8 *)(param_1 + 0xbf0));
+  FUN_0403162c(PTR_DAT_08ff9bf8);
+  FUN_0403162c(PTR_DAT_08ff9c00);
+  FUN_0403162c(PTR_DAT_08ff9c08);
+  FUN_0403162c(PTR_DAT_08ff9c10);
+  FUN_0403162c(PTR_DAT_08ff9c18);
+  FUN_0403162c(PTR_DAT_08ff9c20);
+  FUN_0403162c(PTR_DAT_08ff9c28);
+  FUN_0403162c(PTR_DAT_08ff9c30);
+  FUN_0403162c(PTR_DAT_08ff9c38);
+  FUN_0403162c(PTR_DAT_08ff9c40);
+  FUN_0403162c(PTR_DAT_08ff9c48);
+  FUN_0403162c(PTR_DAT_08ff9c50);
+  FUN_0403162c(PTR_DAT_08ff9c58);
+  FUN_0403162c(PTR_DAT_08ff9c60);
+  FUN_0403162c(PTR_DAT_08ff9c68);
+  FUN_0403162c(PTR_DAT_08ff9c70);
+  FUN_0403162c(PTR_DAT_08ff9c78);
+  FUN_0403162c(PTR_DAT_08ff9c80);
+  FUN_0403162c(PTR_DAT_08ff9c88);
+  FUN_0403162c(PTR_DAT_08ff9c90);
+  FUN_0403162c(PTR_DAT_08ff9c98);
+  FUN_0403162c(PTR_DAT_08ff9ca0);
+  FUN_0403162c(PTR_DAT_08ff9ca8);
+  FUN_0403162c(PTR_DAT_08ff9cb0);
+  FUN_0403162c(PTR_DAT_08ff9cb8);
+  FUN_0403162c(PTR_DAT_08ff9cc0);
+  FUN_0403162c(PTR_DAT_08ff9cc8);
+  FUN_0403162c(PTR_DAT_08ff9cd0);
+  FUN_0403162c(PTR_DAT_08ff9cd8);
+  FUN_0403162c(PTR_DAT_08ff9ce0);
+  FUN_0403162c(PTR_DAT_08ff9ce8);
+  FUN_0403162c(PTR_DAT_08ff9cf0);
+  FUN_0403162c(PTR_DAT_08ff9cf8);
+  FUN_0403162c(PTR_DAT_08ff9d00);
+  FUN_0403162c(PTR_DAT_08ff9d08);
+  FUN_0403162c(PTR_DAT_08ff9d10);
+  FUN_0403162c(PTR_DAT_08ff9d18);
+  FUN_0403162c(PTR_DAT_08ff9d20);
+  FUN_0403162c(PTR_DAT_08ff9d28);
+  FUN_0403162c(PTR_DAT_08ff9d30);
+  FUN_0403162c(PTR_DAT_08ff9d38);
+  FUN_0403162c(PTR_DAT_08ff9d40);
+  FUN_0403162c(PTR_DAT_08ff9d48);
+  FUN_0403162c(PTR_DAT_08ff9d50);
+  FUN_0403162c(PTR_DAT_08ff9d58);
+  FUN_0403162c(PTR_DAT_08ff9d60);
+  FUN_0403162c(PTR_DAT_08ff9d68);
+  FUN_0403162c(PTR_DAT_08ff9d70);
+  FUN_0403162c(PTR_DAT_08ff9d78);
+  FUN_0403162c(PTR_DAT_08ff9d80);
+  FUN_0403162c(PTR_DAT_08ff9d88);
+  FUN_0403162c(PTR_DAT_08ff9d90);
+  FUN_0403162c(PTR_DAT_08ff9d98);
+  FUN_0403162c(PTR_DAT_08ff9da0);
+  FUN_0403162c(PTR_DAT_08ff9da8);
+  FUN_0403162c(PTR_DAT_08ff9db0);
+  FUN_0403162c(PTR_DAT_08ff9db8);
+  FUN_0403162c(PTR_DAT_08ff9dc0);
+  FUN_0403162c(PTR_DAT_08ff9dc8);
+  FUN_0403162c(PTR_DAT_08ff9dd0);
+  FUN_0403162c(PTR_DAT_08ff9dd8);
+  FUN_0403162c(PTR_DAT_08ff9de0);
+  FUN_0403162c(PTR_DAT_08ff9de8);
+  FUN_0403162c(PTR_DAT_08ff9df0);
+  FUN_0403162c(PTR_DAT_08ff9df8);
+  FUN_0403162c(PTR_DAT_08ff9e00);
+  FUN_0403162c(PTR_DAT_08ff9e08);
+  FUN_0403162c(PTR_DAT_08ff9e10);
+  FUN_0403162c(PTR_DAT_08ff9e18);
+  FUN_0403162c(PTR_DAT_08ff9e20);
+  FUN_0403162c(PTR_DAT_08ff9e28);
+  FUN_0403162c(PTR_DAT_08ff9e30);
+  FUN_0403162c(PTR_DAT_08ff9e38);
+  FUN_0403162c(PTR_DAT_08ff9e40);
+  FUN_0403162c(PTR_DAT_08ff9e48);
+  FUN_0403162c(PTR_DAT_08ff9e50);
+  FUN_0403162c(PTR_DAT_08ff9e58);
+  FUN_0403162c(PTR_DAT_08ff9e60);
+  FUN_0403162c(PTR_DAT_08ff9e68);
+  FUN_0403162c(PTR_DAT_08ff9e70);
+  FUN_0403162c(PTR_DAT_08ff9e78);
+  FUN_0403162c(PTR_DAT_08ff9e80);
+  FUN_0403162c(PTR_DAT_08ff9e88);
+  FUN_0403162c(PTR_DAT_08ff9e90);
+  FUN_0403162c(PTR_DAT_08ff9e98);
+  FUN_0403162c(PTR_DAT_08ff9ea0);
+  FUN_0403162c(PTR_DAT_08ff9ea8);
+  FUN_0403162c(PTR_DAT_08ff9eb0);
+  FUN_0403162c(PTR_DAT_08ff9eb8);
+  FUN_0403162c(PTR_DAT_08ff9ec0);
+  FUN_0403162c(PTR_DAT_08ff9ec8);
+  FUN_0403162c(PTR_DAT_08ff9ed0);
+  FUN_0403162c(PTR_DAT_08ff9ed8);
+  FUN_0403162c(PTR_DAT_08ff9ee0);
+  FUN_0403162c(PTR_DAT_08ff9ee8);
+  FUN_0403162c(PTR_DAT_08ff9ef0);
+  FUN_0403162c(PTR_DAT_08ff9ef8);
+  FUN_0403162c(PTR_DAT_08ff9f00);
+  FUN_0403162c(PTR_DAT_08ff9f08);
+  FUN_0403162c(PTR_DAT_08ff9f10);
+  FUN_0403162c(PTR_DAT_08ff9f18);
+  FUN_0403162c(PTR_DAT_08ff9f20);
+  FUN_0403162c(PTR_DAT_08ff9f28);
+  FUN_0403162c(PTR_DAT_08ff9f30);
+  FUN_0403162c(PTR_DAT_08ff9f38);
+  FUN_0403162c(PTR_DAT_08ff9f40);
+  FUN_0403162c(PTR_DAT_08ff9f48);
+  FUN_0403162c(PTR_DAT_08ff9f50);
+  FUN_0403162c(PTR_DAT_08ff9f58);
+  FUN_0403162c(PTR_DAT_08ff9f60);
+  FUN_0403162c(PTR_DAT_08ff9f68);
+  FUN_0403162c(PTR_DAT_08ff9f70);
+  FUN_0403162c(PTR_DAT_08ff9f78);
+  FUN_0403162c(PTR_DAT_08ff9f80);
+  FUN_0403162c(PTR_DAT_08ff9f88);
+  FUN_0403162c(PTR_DAT_08ff9f90);
+  FUN_0403162c(PTR_DAT_08ff9f98);
+  FUN_0403162c(PTR_DAT_08ff9fa0);
+  FUN_0403162c(PTR_DAT_08ff9fa8);
+  FUN_0403162c(PTR_DAT_08ff9fb0);
+  FUN_0403162c(PTR_DAT_08ff9fb8);
+  FUN_0403162c(PTR_DAT_08ff9fc0);
+  FUN_0403162c(PTR_DAT_08ff9fc8);
+  FUN_0403162c(PTR_DAT_08ff9fd0);
+  FUN_0403162c(PTR_DAT_08ff9fd8);
+  FUN_0403162c(PTR_DAT_08ff9fe0);
+  FUN_0403162c(PTR_DAT_08ff9fe8);
+  FUN_0403162c(PTR_DAT_08ff9ff0);
+  FUN_0403162c(PTR_DAT_08ff9ff8);
+  FUN_0403162c(PTR_DAT_08ffa000);
+  FUN_0403162c(PTR_DAT_08ffa008);
+  FUN_0403162c(PTR_DAT_08ffa010);
+  FUN_0403162c(PTR_DAT_08ffa018);
+  FUN_0403162c(PTR_DAT_08ffa020);
+  FUN_0403162c(PTR_DAT_08ffb020);
+  FUN_0403162c(PTR_DAT_08ffb028);
+  FUN_0403162c(PTR_DAT_08ffb030);
+  FUN_0403162c(PTR_DAT_08ffb038);
+  FUN_0403162c(PTR_DAT_08ffb040);
+  FUN_0403162c(PTR_DAT_08ffb048);
+  FUN_0403162c(PTR_DAT_08ffb050);
+  FUN_0
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+1fd18();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[100] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f70);
+      FUN_05351c58(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb378,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 800) = uVar2;
+    }
+    FUN_04a21678();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x65] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e20);
+      FUN_05352230(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb028,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x328) = uVar2;
+    }
+    FUN_04a22654();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x66] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ce0);
+      FUN_05351eb0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb030,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x330) = uVar2;
+    }
+    FUN_04a21cd0();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x67] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ee0);
+      System_Action<object,_double,_long,_int>___ctor(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb038,0)
+      ;
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x338) = uVar2;
+    }
+    FUN_04a22cac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x68] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f98);
+      FUN_05351fdc(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb040,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x340) = uVar2;
+    }
+    FUN_04a21ffc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x69] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fd0);
+      FUN_053525b4(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb048,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x348) = uVar2;
+    }
+    FUN_04a22fd8();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6a] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f10);
+      FUN_05352108(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb050,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x350) = uVar2;
+    }
+    FUN_04a22328();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6b] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fa0);
+      FUN_053526e0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb058,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x358) = uVar2;
+    }
+    FUN_04a23304();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6c] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f88);
+      System_Action<int,_object,_int,_int>__Invoke(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb060,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x360) = uVar2;
+    }
+    FUN_04a22980();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6d] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e78);
+      FUN_05351d84(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb068,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x368) = uVar2;
+    }
+    FUN_04a219a4();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 59
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderFixedSize
+ENTRY_POINT: 08378f0c
+MANUAL_PRIORITY_SCORE: 227
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 85
+ORIGINAL_SCANNER_LABEL: 70_high_framework_eye_tracking_support_or_permission_path_high
+MODULES: ['validity_gate', 'ray_interaction', 'ui_interaction', 'telemetry', 'keyword_support', 'attempted_use']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'ui_or_gameplay_sink_hits_2', 'telemetry_or_network_hits_1', 'eye_or_gaze_keyword_boost_only', 'attempted_eye_tracking_permission_or_feature_enable', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'functionality_data_collection_or_telemetry_hits_1']
+PRIORITY_REASONS: ['base_scanner_score_85', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_ui_interaction_12', 'module_bonus_telemetry_20', 'module_bonus_keyword_support_12', 'evidence_bonus_telemetry_or_network_hits_12', 'evidence_bonus_eye_or_gaze_keyword_boost_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_5_bonus_20', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\general-structure-results\70_high_framework_eye_tracking_support_or_permission_path_high\08378f0c_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderFixedSize.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\m3ar\manual-review-pack\A_must_review\059_p227_UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderFixedSize.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor$$get_gazeAssistanceColliderFixedSize
+ENTRY_POINT: 08378f0c
+PROGRAM: m3ar-libil2cpp.so
+SCORE: 85
+LABEL: framework_eye_tracking_support_or_permission_path_high
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_eye_tracking_support_or_permission_path
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: data_collection_or_telemetry;attempted_eye_tracking_use
+MODULES: validity_gate;ray_interaction;ui_interaction;telemetry;keyword_support;attempted_use
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;ui_or_gameplay_sink_hits_2;telemetry_or_network_hits_1;eye_or_gaze_keyword_boost_only;attempted_eye_tracking_permission_or_feature_enable;negative_framework_support_context_without_confirmed_app_level_gaze_flow;functionality_data_collection_or_telemetry_hits_1
+*/
+
+
+void UnityEngine_XR_Interaction_Toolkit_Interactors_XRGazeInteractor__get_gazeAssistanceColliderFixedSize
+               (void)
+
+{
+  long lVar1;
+  undefined8 uVar2;
+  undefined8 *puVar3;
+  long unaff_x19;
+  undefined8 uVar4;
+  long *unaff_x22;
+  long unaff_x24;
+  
+  FUN_0403162c(PTR_DAT_08ff9be8);
+  FUN_0403162c(PTR_DAT_08ff9bf0);
+  FUN_0403162c(PTR_DAT_08ff9bf8);
+  FUN_0403162c(PTR_DAT_08ff9c00);
+  FUN_0403162c(PTR_DAT_08ff9c08);
+  FUN_0403162c(PTR_DAT_08ff9c10);
+  FUN_0403162c(PTR_DAT_08ff9c18);
+  FUN_0403162c(PTR_DAT_08ff9c20);
+  FUN_0403162c(PTR_DAT_08ff9c28);
+  FUN_0403162c(PTR_DAT_08ff9c30);
+  FUN_0403162c(PTR_DAT_08ff9c38);
+  FUN_0403162c(PTR_DAT_08ff9c40);
+  FUN_0403162c(PTR_DAT_08ff9c48);
+  FUN_0403162c(PTR_DAT_08ff9c50);
+  FUN_0403162c(PTR_DAT_08ff9c58);
+  FUN_0403162c(PTR_DAT_08ff9c60);
+  FUN_0403162c(PTR_DAT_08ff9c68);
+  FUN_0403162c(PTR_DAT_08ff9c70);
+  FUN_0403162c(PTR_DAT_08ff9c78);
+  FUN_0403162c(PTR_DAT_08ff9c80);
+  FUN_0403162c(PTR_DAT_08ff9c88);
+  FUN_0403162c(PTR_DAT_08ff9c90);
+  FUN_0403162c(PTR_DAT_08ff9c98);
+  FUN_0403162c(PTR_DAT_08ff9ca0);
+  FUN_0403162c(PTR_DAT_08ff9ca8);
+  FUN_0403162c(PTR_DAT_08ff9cb0);
+  FUN_0403162c(PTR_DAT_08ff9cb8);
+  FUN_0403162c(PTR_DAT_08ff9cc0);
+  FUN_0403162c(PTR_DAT_08ff9cc8);
+  FUN_0403162c(PTR_DAT_08ff9cd0);
+  FUN_0403162c(PTR_DAT_08ff9cd8);
+  FUN_0403162c(PTR_DAT_08ff9ce0);
+  FUN_0403162c(PTR_DAT_08ff9ce8);
+  FUN_0403162c(PTR_DAT_08ff9cf0);
+  FUN_0403162c(PTR_DAT_08ff9cf8);
+  FUN_0403162c(PTR_DAT_08ff9d00);
+  FUN_0403162c(PTR_DAT_08ff9d08);
+  FUN_0403162c(PTR_DAT_08ff9d10);
+  FUN_0403162c(PTR_DAT_08ff9d18);
+  FUN_0403162c(PTR_DAT_08ff9d20);
+  FUN_0403162c(PTR_DAT_08ff9d28);
+  FUN_0403162c(PTR_DAT_08ff9d30);
+  FUN_0403162c(PTR_DAT_08ff9d38);
+  FUN_0403162c(PTR_DAT_08ff9d40);
+  FUN_0403162c(PTR_DAT_08ff9d48);
+  FUN_0403162c(PTR_DAT_08ff9d50);
+  FUN_0403162c(PTR_DAT_08ff9d58);
+  FUN_0403162c(PTR_DAT_08ff9d60);
+  FUN_0403162c(PTR_DAT_08ff9d68);
+  FUN_0403162c(PTR_DAT_08ff9d70);
+  FUN_0403162c(PTR_DAT_08ff9d78);
+  FUN_0403162c(PTR_DAT_08ff9d80);
+  FUN_0403162c(PTR_DAT_08ff9d88);
+  FUN_0403162c(PTR_DAT_08ff9d90);
+  FUN_0403162c(PTR_DAT_08ff9d98);
+  FUN_0403162c(PTR_DAT_08ff9da0);
+  FUN_0403162c(PTR_DAT_08ff9da8);
+  FUN_0403162c(PTR_DAT_08ff9db0);
+  FUN_0403162c(PTR_DAT_08ff9db8);
+  FUN_0403162c(PTR_DAT_08ff9dc0);
+  FUN_0403162c(PTR_DAT_08ff9dc8);
+  FUN_0403162c(PTR_DAT_08ff9dd0);
+  FUN_0403162c(PTR_DAT_08ff9dd8);
+  FUN_0403162c(PTR_DAT_08ff9de0);
+  FUN_0403162c(PTR_DAT_08ff9de8);
+  FUN_0403162c(PTR_DAT_08ff9df0);
+  FUN_0403162c(PTR_DAT_08ff9df8);
+  FUN_0403162c(PTR_DAT_08ff9e00);
+  FUN_0403162c(PTR_DAT_08ff9e08);
+  FUN_0403162c(PTR_DAT_08ff9e10);
+  FUN_0403162c(PTR_DAT_08ff9e18);
+  FUN_0403162c(PTR_DAT_08ff9e20);
+  FUN_0403162c(PTR_DAT_08ff9e28);
+  FUN_0403162c(PTR_DAT_08ff9e30);
+  FUN_0403162c(PTR_DAT_08ff9e38);
+  FUN_0403162c(PTR_DAT_08ff9e40);
+  FUN_0403162c(PTR_DAT_08ff9e48);
+  FUN_0403162c(PTR_DAT_08ff9e50);
+  FUN_0403162c(PTR_DAT_08ff9e58);
+  FUN_0403162c(PTR_DAT_08ff9e60);
+  FUN_0403162c(PTR_DAT_08ff9e68);
+  FUN_0403162c(PTR_DAT_08ff9e70);
+  FUN_0403162c(PTR_DAT_08ff9e78);
+  FUN_0403162c(PTR_DAT_08ff9e80);
+  FUN_0403162c(PTR_DAT_08ff9e88);
+  FUN_0403162c(PTR_DAT_08ff9e90);
+  FUN_0403162c(PTR_DAT_08ff9e98);
+  FUN_0403162c(PTR_DAT_08ff9ea0);
+  FUN_0403162c(PTR_DAT_08ff9ea8);
+  FUN_0403162c(PTR_DAT_08ff9eb0);
+  FUN_0403162c(PTR_DAT_08ff9eb8);
+  FUN_0403162c(PTR_DAT_08ff9ec0);
+  FUN_0403162c(PTR_DAT_08ff9ec8);
+  FUN_0403162c(PTR_DAT_08ff9ed0);
+  FUN_0403162c(PTR_DAT_08ff9ed8);
+  FUN_0403162c(PTR_DAT_08ff9ee0);
+  FUN_0403162c(PTR_DAT_08ff9ee8);
+  FUN_0403162c(PTR_DAT_08ff9ef0);
+  FUN_0403162c(PTR_DAT_08ff9ef8);
+  FUN_0403162c(PTR_DAT_08ff9f00);
+  FUN_0403162c(PTR_DAT_08ff9f08);
+  FUN_0403162c(PTR_DAT_08ff9f10);
+  FUN_0403162c(PTR_DAT_08ff9f18);
+  FUN_0403162c(PTR_DAT_08ff9f20);
+  FUN_0403162c(PTR_DAT_08ff9f28);
+  FUN_0403162c(PTR_DAT_08ff9f30);
+  FUN_0403162c(PTR_DAT_08ff9f38);
+  FUN_0403162c(PTR_DAT_08ff9f40);
+  FUN_0403162c(PTR_DAT_08ff9f48);
+  FUN_0403162c(PTR_DAT_08ff9f50);
+  FUN_0403162c(PTR_DAT_08ff9f58);
+  FUN_0403162c(PTR_DAT_08ff9f60);
+  FUN_0403162c(PTR_DAT_08ff9f68);
+  FUN_0403162c(PTR_DAT_08ff9f70);
+  FUN_0403162c(PTR_DAT_08ff9f78);
+  FUN_0403162c(PTR_DAT_08ff9f80);
+  FUN_0403162c(PTR_DAT_08ff9f88);
+  FUN_0403162c(PTR_DAT_08ff9f90);
+  FUN_0403162c(PTR_DAT_08ff9f98);
+  FUN_0403162c(PTR_DAT_08ff9fa0);
+  FUN_0403162c(PTR_DAT_08ff9fa8);
+  FUN_0403162c(PTR_DAT_08ff9fb0);
+  FUN_0403162c(PTR_DAT_08ff9fb8);
+  FUN_0403162c(PTR_DAT_08ff9fc0);
+  FUN_0403162c(PTR_DAT_08ff9fc8);
+  FUN_0403162c(PTR_DAT_08ff9fd0);
+  FUN_0403162c(PTR_DAT_08ff9fd8);
+  FUN_0403162c(PTR_DAT_08ff9fe0);
+  FUN_0403162c(PTR_DAT_08ff9fe8);
+  FUN_0403162c(PTR_DAT_08ff9ff0);
+  FUN_0403162c(PTR_DAT_08ff9ff8);
+  FUN_0403162c(PTR_DAT_08ffa000);
+  FUN_0403162c(PTR_DAT_08ffa008);
+  FUN_0403162c(PTR_DAT_08ffa010);
+  FUN_0403162c(PTR_DAT_08ffa018);
+  FUN_0403162c(PTR_DAT_08ffa020);
+  FUN_0403162c(PTR_DAT_08ffb020);
+  FUN_0403162c(PTR_DAT_08ffb028);
+  FUN_0403162c(PTR_DAT_08ffb030);
+  FUN_0403162c(PTR_DAT_08ffb038);
+  FUN_0403162c(PTR_DAT_08ffb040);
+  FUN_0403162c(PTR_DAT_08ffb048);
+  FUN_0403162c(PTR_DAT_
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+1fd18();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[100] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f70);
+      FUN_05351c58(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb378,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 800) = uVar2;
+    }
+    FUN_04a21678();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x65] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e20);
+      FUN_05352230(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb028,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x328) = uVar2;
+    }
+    FUN_04a22654();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x66] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ce0);
+      FUN_05351eb0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb030,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x330) = uVar2;
+    }
+    FUN_04a21cd0();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x67] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9ee0);
+      System_Action<object,_double,_long,_int>___ctor(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb038,0)
+      ;
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x338) = uVar2;
+    }
+    FUN_04a22cac();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x68] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f98);
+      FUN_05351fdc(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb040,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x340) = uVar2;
+    }
+    FUN_04a21ffc();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x69] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fd0);
+      FUN_053525b4(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb048,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x348) = uVar2;
+    }
+    FUN_04a22fd8();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6a] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f10);
+      FUN_05352108(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb050,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x350) = uVar2;
+    }
+    FUN_04a22328();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6b] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9fa0);
+      FUN_053526e0(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb058,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x358) = uVar2;
+    }
+    FUN_04a23304();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6c] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9f88);
+      System_Action<int,_object,_int,_int>__Invoke(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb060,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x360) = uVar2;
+    }
+    FUN_04a22980();
+    lVar1 = *unaff_x22;
+    if (*(int *)(lVar1 + 0xe4) == 0) {
+      thunk_FUN_0408f364();
+      lVar1 = *unaff_x22;
+    }
+    puVar3 = *(undefined8 **)(lVar1 + 0xb8);
+    if (puVar3[0x6d] == 0) {
+      if (*(int *)(lVar1 + 0xe4) == 0) {
+        thunk_FUN_0408f364();
+        puVar3 = *(undefined8 **)(*unaff_x22 + 0xb8);
+      }
+      uVar4 = *puVar3;
+      uVar2 = thunk_FUN_0406deb8(*(undefined8 *)PTR_DAT_08ff9e78);
+      FUN_05351d84(uVar2,uVar4,*(undefined8 *)PTR_DAT_08ffb068,0);
+      *(undefined8 *)(*(long *)(*unaff_x22 + 0xb8) + 0x368) = uVar2;
+    }
+    FUN_04a219a4();
+    return;
+  }
+                    /* WARNING: Subroutine does not return */
+  FUN_0403188c();
+}
+
+
+
+END_DECOMPILED_FUNCTION

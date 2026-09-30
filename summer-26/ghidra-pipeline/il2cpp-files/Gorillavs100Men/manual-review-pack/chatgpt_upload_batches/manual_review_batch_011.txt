@@ -1,0 +1,1125 @@
+You are reviewing decompiled IL2CPP/Ghidra pseudocode for possible eye-tracking functionality.
+
+Use the scanner score only as a prioritization hint. Make your decision from the code.
+
+Important:
+- Do not rely only on eye/gaze/OVR/OpenXR names.
+- Focus on general behavior and structure first.
+- Eye-specific names are supporting evidence, not required.
+- A generic camera raycast, controller raycast, head raycast, or normal UI function should NOT be labeled eye tracking unless there is supporting evidence.
+- Be conservative.
+
+Look for this general structure:
+1. sensor/state/feature data is retrieved or checked,
+2. validity/confidence/enabled/permission checks gate behavior,
+3. pose/vector/direction/rotation/position data is extracted,
+4. the data is used for ray interaction, UI selection, rendering/foveation, logging, file writing, telemetry, analytics, or networking.
+
+Return one JSON object per function using this schema:
+{
+  "rank": 1,
+  "function_name": "string",
+  "uses_eye_tracking": "yes | no | uncertain",
+  "category": "gaze_retrieval | permission_setup | gaze_interaction | data_collection | foveated_rendering | telemetry | setup_only | unrelated | uncertain",
+  "confidence": 0.0,
+  "depends_on_eye_specific_names": true,
+  "general_structure_match": true,
+  "evidence": ["specific evidence from the code"],
+  "reasoning_summary": "brief explanation"
+}
+
+Return JSONL only, one JSON object per line.
+Do not use markdown fences.
+
+============================================================
+RANK: 51
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$ExecutePass
+ENTRY_POINT: 03d02f34
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_general_structure_review_high\03d02f34_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$ExecutePass.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\051_p164_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$ExecutePass.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$ExecutePass
+ENTRY_POINT: 03d02f34
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 74
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void UnityEngine_Rendering_Universal_ScreenSpaceShadows_ScreenSpaceShadowsPostPass__ExecutePass
+               (void)
+
+{
+  uint uVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  ushort uVar6;
+  uint uVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  bool in_ZR;
+  undefined4 uVar11;
+  undefined8 *puVar12;
+  long lVar13;
+  ulong uVar14;
+  long *plVar15;
+  undefined8 uVar16;
+  int *piVar17;
+  char *pcVar18;
+  undefined8 uVar19;
+  int *piVar20;
+  long lVar21;
+  long lVar22;
+  long lVar23;
+  long lVar24;
+  long lVar25;
+  long *unaff_x19;
+  long *unaff_x21;
+  int iVar26;
+  undefined8 *unaff_x22;
+  undefined4 *puVar27;
+  int iVar28;
+  undefined8 *unaff_x23;
+  undefined8 unaff_x24;
+  undefined4 *unaff_x25;
+  long unaff_x26;
+  long lVar29;
+  ushort *puVar30;
+  ulong uVar31;
+  ulong in_stack_00000020;
+  long *in_stack_00000028;
+  int in_stack_00000030;
+  long in_stack_00000048;
+  undefined4 in_stack_00000060;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined4 in_stack_000000e0;
+  undefined8 in_stack_000000f0;
+  long in_stack_00000150;
+  undefined8 in_stack_00000158;
+  ulong in_stack_00000160;
+  ulong in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined8 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  long in_stack_00000190;
+  undefined8 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined8 in_stack_000001a8;
+  ushort uStack00000000000001b0;
+  ulong in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined8 in_stack_000001d0;
+  undefined8 in_stack_000001d8;
+  long *in_stack_000001e0;
+  long *in_stack_000001e8;
+  long in_stack_00000208;
+  undefined8 in_stack_00000328;
+  ulong in_stack_00000330;
+  ulong in_stack_00000338;
+  undefined8 in_stack_00000340;
+  undefined8 in_stack_00000348;
+  undefined8 in_stack_00000350;
+  long in_stack_00000358;
+  
+  if (!in_ZR) {
+    FUN_0201f0a0(&stack0x00000320);
+                    /* WARNING: Subroutine does not return */
+    FUN_02140b1c();
+  }
+  plVar15 = (long *)__cxa_begin_catch();
+  lVar29 = *plVar15;
+  __cxa_end_catch();
+  FUN_02fd8d2c(in_stack_00000328,*(undefined8 *)PTR_DAT_046b2f68);
+  if (lVar29 != 0) {
+                    /* WARNING: Subroutine does not return */
+    FUN_02061544(lVar29);
+  }
+  do {
+    uVar31 = 0;
+    do {
+      plVar15 = in_stack_000001e0;
+      lVar29 = thunk_FUN_02094760(*(undefined8 *)StringLiteral_9044);
+      System_Collections_Generic_List<CinemachineClearShot_Pair>__CopyTo
+                (lVar29,*(undefined8 *)StringLiteral_9045);
+      if (plVar15 == (long *)0x0) goto LAB_03d03818;
+      if ((lVar29 != 0) &&
+         (lVar13 = thunk_FUN_02094664(lVar29,*(undefined8 *)(*plVar15 + 0x40)), lVar13 == 0)) {
+LAB_03d03840:
+        uVar19 = thunk_FUN_020a1c44();
+                    /* WARNING: Subroutine does not return */
+        FUN_02061410(uVar19,0);
+      }
+      if (*(uint *)(plVar15 + 3) <= uVar31) {
+LAB_03d0383c:
+                    /* WARNING: Subroutine does not return */
+        FUN_02061554();
+      }
+      plVar15[uVar31 + 4] = lVar29;
+      thunk_FUN_020ccb58(plVar15 + uVar31 + 4,lVar29);
+      plVar15 = in_stack_000001e8;
+      lVar29 = thunk_FUN_02094760(*(undefined8 *)StringLiteral_9044);
+      System_Collections_Generic_List<CinemachineClearShot_Pair>__CopyTo
+                (lVar29,*(undefined8 *)StringLiteral_9045);
+      if (plVar15 == (long *)0x0) goto LAB_03d03818;
+      if ((lVar29 != 0) &&
+         (lVar13 = thunk_FUN_02094664(lVar29,*(undefined8 *)(*plVar15 + 0x40)), lVar13 == 0))
+      goto LAB_03d03840;
+      if (*(uint *)(plVar15 + 3) <= uVar31) goto LAB_03d0383c;
+      plVar15[uVar31 + 4] = lVar29;
+      thunk_FUN_020ccb58(plVar15 + uVar31 + 4,lVar29);
+      lVar29 = *(long *)(unaff_x26 + 0x78);
+      if (lVar29 == 0) goto LAB_03d03818;
+      if (*(uint *)(lVar29 + 0x18) <= uVar31) goto LAB_03d0383c;
+      lVar29 = *(long *)(lVar29 + uVar31 * 8 + 0x20);
+      if (lVar29 == 0) goto LAB_03d03818;
+      FUN_034ff2c0(&stack0x00000320,lVar29,*(undefined8 *)PTR_DAT_046b2e80);
+LAB_03d02a98:
+      uVar14 = FUN_02ffd7f8(&stack0x00000290,*unaff_x22);
+      if ((uVar14 & 1) != 0) {
+        if (*(long *)(unaff_x26 + 0xa8) == 0) {
+                    /* WARNING: Subroutine does not return */
+          FUN_0206154c();
+        }
+        uVar14 = FUN_034fec14(*(long *)(unaff_x26 + 0xa8),in_stack_00000330,
+                              in_stack_00000338 & 0xffffffff,*unaff_x23);
+        if ((uVar14 & 1) == 0) {
+          if (in_stack_000001e0 == (long *)0x0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_0206154c();
+          }
+          if (*(uint *)(in_stack_000001e0 + 3) <= uVar31) {
+                    /* WARNING: Subroutine does not return */
+            FUN_02061554();
+          }
+          lVar29 = in_stack_000001e0[uVar31 + 4];
+          if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+            thunk_FUN_020b5864();
+          }
+          if (lVar29 != 0) {
+            lVar13 = *(long *)(lVar29 + 0x10);
+            lVar23 = *unaff_x19;
+            *(int *)(lVar29 + 0x1c) = *(int *)(lVar29 + 0x1c) + 1;
+            if (lVar13 != 0) {
+              uVar7 = *(uint *)(lVar29 + 0x18);
+              uVar1 = (uint)in_stack_00000330 & 0xffff;
+              if (uVar7 < *(uint *)(lVar13 + 0x18)) {
+                *(uint *)(lVar29 + 0x18) = uVar7 + 1;
+                *(uint *)(lVar13 + (long)(int)uVar7 * 4 + 0x20) = uVar1;
+              }
+              else {
+                FUN_03462398(lVar29,uVar1,
+             
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+= in_stack_000000e0;
+              in_stack_000000d8 = 0;
+              lVar13 = *(long *)(lVar29 + 0x20);
+              thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+              in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar19 == 9);
+              if (lVar13 == 0) goto LAB_03d03818;
+              FUN_02e98db0(lVar13,uVar11,in_stack_000000d0,in_stack_000000d8,
+                           *(undefined8 *)PTR_DAT_046b3c48);
+            }
+            uVar31 = uVar31 - 1;
+            puVar27 = puVar27 + 3;
+          } while (uVar31 != 0);
+        }
+        if (-1 < piVar17[5]) {
+          lVar13 = *(long *)(in_stack_00000048 + 0x30);
+          if (DAT_04921b11 == '\0') {
+            FUN_020612a4(PTR_DAT_046b39f8);
+            DAT_04921b11 = '\x01';
+          }
+          if (lVar13 == 0) break;
+          iVar4 = piVar17[9];
+          uVar1 = piVar17[10];
+          lVar21 = *(long *)PTR_DAT_046b39f8;
+          lVar23 = *(long *)(lVar21 + 0x38);
+          if (lVar23 == 0) {
+            FUN_02091390(lVar21);
+            lVar23 = *(long *)(lVar21 + 0x38);
+          }
+          lVar13 = FUN_024ee2ac(*(undefined8 *)(lVar13 + 0x38),*(undefined8 *)(lVar23 + 0x10));
+          if ((int)uVar1 < 0) {
+            FUN_0384bcc8(0);
+          }
+          else if (uVar1 != 0) {
+            uVar31 = 0;
+            do {
+              if (*(long *)(in_stack_00000048 + 0x30) == 0) goto LAB_03d03818;
+              puVar12 = (undefined8 *)(lVar13 + (long)iVar4 * 0xc + uVar31 * 0xc);
+              in_stack_00000020 =
+                   in_stack_00000020 & 0xffffffff00000000 | (ulong)*(uint *)(puVar12 + 1);
+              lVar23 = FUN_03d04e08(*(long *)(in_stack_00000048 + 0x30),*puVar12,in_stack_00000020,0
+                                   );
+              if (*(int *)(lVar23 + 8) != *piVar17) {
+                if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                   (lVar23 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar23 == 0))
+                goto LAB_03d03818;
+                lVar23 = FUN_03d08478(lVar23,*puVar12,*(undefined4 *)(puVar12 + 1),0);
+                iVar5 = *(int *)(lVar23 + 8);
+                if (0 < iVar5) {
+                  iVar26 = 0;
+                  do {
+                    if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                       (lVar23 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar23 == 0)
+                       ) goto LAB_03d03818;
+                    uVar19 = *puVar12;
+                    if (DAT_04921b09 == '\0') {
+                      FUN_020612a4();
+                      DAT_04921b09 = '\x01';
+                    }
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                       (lVar21 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar21 == 0)
+                       ) goto LAB_03d03818;
+                    lVar21 = *(long *)(lVar21 + 0x20);
+                    uVar7 = *(uint *)(puVar12 + 1);
+                    iVar2 = *(int *)(lVar23 + 0x28);
+                    iVar3 = *(int *)(lVar23 + 0x2c);
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (DAT_04921567 == '\0') {
+                      FUN_020612a4();
+                      DAT_04921567 = '\x01';
+                    }
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (lVar21 == 0) goto LAB_03d03818;
+                    if (*(uint *)(lVar21 + 0x18) <= uVar7) goto LAB_03d0383c;
+                    piVar20 = (int *)FUN_0371c840(lVar21 + (long)(int)uVar7 * 8 + 0x20,
+                                                  iVar26 + ((int)((ulong)uVar19 >> 0x20) +
+                                                           iVar2 * ((uint)uVar19 & 0xffff)) * iVar3,
+                                                  *(undefined8 *)PTR_DAT_046b38a8);
+                    lVar23 = *(long *)(in_stack_00000048 + 0x30);
+                    if (lVar23 == 0) goto LAB_03d03818;
+                    iVar2 = *piVar20;
+                    plVar15 = *(long **)(lVar23 + 0x18);
+                    if ((*(ushort *)(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20) + 0x135) & 1) == 0)
+                    {
+                      FUN_02091334(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20));
+                      lVar23 = *(long *)(in_stack_00000048 + 0x30);
+                    }
+                    memcpy(&stack0x00000060,(void *)(*plVar15 + (long)iVar2 * 0x70),0x70);
+                    uVar11 = in_stack_00000060;
+                    uVar19 = FUN_03d07d04(lVar23,piVar17[5],in_stack_00000060,0);
+                    uVar16 = FUN_03d00f6c(*(undefined8 *)(in_stack_00000048 + 0x30),&stack0x00000060
+                                          ,piVar17,uVar19);
+                    in_stack_000000d0 = FUN_0372b580(*(undefined8 *)PTR_DAT_046b3cc8,uVar16,0);
+                    in_stack_000000d8 = 0;
+                    lVar23 = *(long *)(lVar29 + 0x20);
+                    thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+                    in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar19 == 9);
+                    if (lVar23 == 0) goto LAB_03d03818;
+                    FUN_02e98db0(lVar23,uVar11,in_stack_000000d0,in_stack_000000d8,
+                                 *(undefined8 *)PTR_DAT_046b3c48);
+                    iVar26 = iVar26 + 1;
+                  } while (iVar5 != iVar26);
+                }
+              }
+              uVar31 = uVar31 + 1;
+            } while (uVar31 != uVar1);
+          }
+        }
+      }
+      lVar29 = *(long *)(in_stack_00000048 + 0x30);
+      iVar28 = iVar28 + 1;
+    } while (lVar29 != 0);
+  }
+LAB_03d03818:
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 52
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$Configure
+ENTRY_POINT: 03d02ed0
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_general_structure_review_high\03d02ed0_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$Configure.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\052_p164_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$Configure.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$Configure
+ENTRY_POINT: 03d02ed0
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 74
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2
+*/
+
+
+void UnityEngine_Rendering_Universal_ScreenSpaceShadows_ScreenSpaceShadowsPostPass__Configure
+               (long param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  ushort uVar5;
+  uint uVar6;
+  uint uVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined4 uVar11;
+  undefined4 *puVar12;
+  undefined8 *puVar13;
+  ulong uVar14;
+  ulong uVar15;
+  undefined8 uVar16;
+  int *piVar17;
+  char *pcVar18;
+  int *piVar19;
+  long lVar20;
+  long lVar21;
+  long lVar22;
+  long lVar23;
+  long *unaff_x19;
+  long lVar24;
+  long lVar25;
+  long *unaff_x21;
+  int iVar26;
+  undefined8 *unaff_x22;
+  int iVar27;
+  undefined8 *unaff_x23;
+  undefined8 unaff_x24;
+  long unaff_x25;
+  long *plVar28;
+  undefined8 uVar29;
+  long lVar30;
+  ushort *puVar31;
+  long unaff_x29;
+  ulong in_stack_00000020;
+  long *in_stack_00000028;
+  int in_stack_00000030;
+  long in_stack_00000048;
+  undefined4 in_stack_00000060;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  undefined4 in_stack_000000e0;
+  undefined8 in_stack_000000f0;
+  long in_stack_00000150;
+  undefined8 in_stack_00000158;
+  ulong in_stack_00000160;
+  ulong in_stack_00000168;
+  undefined8 in_stack_00000170;
+  undefined8 in_stack_00000178;
+  undefined8 in_stack_00000180;
+  long in_stack_00000190;
+  undefined8 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined8 in_stack_000001a8;
+  ushort uStack00000000000001b0;
+  ulong in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined8 in_stack_000001d0;
+  undefined8 in_stack_000001d8;
+  long *in_stack_000001e0;
+  long *in_stack_000001e8;
+  undefined8 in_stack_00000320;
+  undefined8 in_stack_00000328;
+  ulong in_stack_00000330;
+  ulong in_stack_00000338;
+  undefined8 in_stack_00000340;
+  undefined8 in_stack_00000348;
+  undefined8 in_stack_00000350;
+  long in_stack_00000358;
+  
+code_r0x03d02ed0:
+  uVar29 = *(undefined8 *)(*(long *)(param_1 + 0xc0) + 0x70);
+  memcpy(&stack0x00000320,&stack0x000002d0,0x48);
+  FUN_03642a1c(unaff_x25,&stack0x00000320,uVar29);
+  do {
+    in_stack_00000030 = in_stack_00000030 + 1;
+    if (*(long *)(unaff_x29 + 0x30) == 0) goto LAB_03d03818;
+    lVar24 = *(long *)(*(long *)(unaff_x29 + 0x30) + 0x18);
+    if ((*(ushort *)(*(long *)(*(long *)PTR_DAT_046b2c58 + 0x20) + 0x135) & 1) == 0) {
+      FUN_02091334();
+    }
+    if (*(int *)(lVar24 + 8) <= in_stack_00000030) {
+      lVar24 = *(long *)(unaff_x29 + 0x30);
+      if (lVar24 == 0) goto LAB_03d03818;
+      thunk_FUN_020ccb58(&stack0x00000320);
+      uVar29 = 0xffffffff;
+      in_stack_00000190 = lVar24;
+      in_stack_00000198 = uVar29;
+      uVar14 = FUN_03cfb5d4(&stack0x00000190);
+      puVar9 = PTR_DAT_046b3c80;
+      puVar8 = PTR_DAT_046b3a60;
+      if ((uVar14 & 1) != 0) goto LAB_03d02fb0;
+      goto LAB_03d032c8;
+    }
+    if (*(long *)(unaff_x29 + 0x18) == 0) goto LAB_03d03818;
+    lVar24 = FUN_034a2698(*(long *)(unaff_x29 + 0x18),in_stack_00000030,
+                          *(undefined8 *)PTR_DAT_046b2c48);
+    if (*(long *)(unaff_x29 + 0x30) == 0) goto LAB_03d03818;
+    puVar12 = (undefined4 *)
+              FUN_03714464(*(long *)(unaff_x29 + 0x30) + 0x18,in_stack_00000030,
+                           *(undefined8 *)PTR_DAT_046b2c50);
+    lVar25 = *(long *)(unaff_x29 + 0x30);
+    if (lVar25 == 0) goto LAB_03d03818;
+    uVar11 = *puVar12;
+    if (DAT_04921b19 == '\0') {
+      FUN_020612a4(PTR_DAT_046b38c0);
+      DAT_04921b19 = '\x01';
+    }
+    lVar25 = *(long *)(lVar25 + 0x28);
+    if (lVar25 == 0) goto LAB_03d03818;
+    puVar13 = (undefined8 *)FUN_02f715c8(lVar25,uVar11,*(undefined8 *)PTR_DAT_046b38c0);
+    in_stack_000001d0 = FUN_03d016a0(*puVar13);
+    in_stack_000001d8 = 0;
+    in_stack_000001e8 = (long *)0x0;
+    in_stack_000001e0 = (long *)0x0;
+    thunk_FUN_020ccb58(&stack0x000001d0,in_stack_000001d0);
+    puVar8 = PTR_DAT_046b2cf0;
+    in_stack_000001d8 = CONCAT44(in_stack_000001d8._4_4_,puVar12[1]);
+    if (lVar24 == 0) goto LAB_03d03818;
+    in_stack_000001e0 =
+         (long *)RootMotion_Dynamics_Muscle__get_colliders(*(undefined8 *)PTR_DAT_046b2cf0,3);
+    thunk_FUN_020ccb58(&stack0x000001e0,in_stack_000001e0);
+    in_stack_000001e8 = (long *)RootMotion_Dynamics_Muscle__get_colliders(*(undefined8 *)puVar8,3);
+    thunk_FUN_020ccb58(&stack0x000001e8,in_stack_000001e8);
+    lVar25 = *(long *)PTR_DAT_046b2fa0;
+    if (*(int *)(lVar25 + 0xe4) == 0) {
+      thunk_FUN_020b5864();
+      lVar25 = *(long *)PTR_DAT_046b2fa0;
+    }
+    if (**(long **)(lVar25 + 0xb8) == 0) goto LAB_03d03818;
+    FUN_02ecc4e4(**(long **)(lVar25 + 0xb8),lVar24,&stack0x00000210,*(undefined8 *)PTR_DAT_046b2fe8)
+    ;
+    lVar25 = thunk_FUN_02094760(*(undefined8 *)PTR_DAT_046b3ca8);
+    FUN_03ce8580();
+    thunk_FUN_020ccb58(&stack0x00000208,lVar25);
+    if ((((lVar25 == 0) || (*(undefined4 *)(lVar25 + 0x28) = puVar12[0x15], lVar25 == 0)) ||
+        (*(undefined4 *)(lVar25 + 0x2c) = puVar12[0x16], lVar25 == 0)) ||
+       ((*(undefined4 *)(lVar25 + 0x30) = puVar12[0x17], lVar25 == 0 ||
+        (*(undefined4 *)(lVar25 + 0x34) = puVar12[0x18], lVar25 == 0)))) goto LAB_03d03818;
+    *(undefined1 *)(lVar25 + 0x38) = *(undefined1 *)((long)puVar12 + 0x6d);
+    if (*(long *)(lVar24 + 0x98) == 0) goto LAB_03d03818;
+    FUN_0341dd38(&stack0x00000320,*(long *)(lVar24 + 0x98),*(undefined8 *)PTR_DAT_046b2f80);
+    in_stack_000001a0 = in_stack_00000320;
+    in_stack_000001a8 = in_stack_00000328;
+    _uStack00000000000001b0 = in_stack_00000330;
+    in_stack_000001b8 = in_stack_00000338;
+    in_stack_000001c0 =
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+= in_stack_000000e0;
+              in_stack_000000d8 = 0;
+              lVar25 = *(long *)(lVar24 + 0x20);
+              thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+              in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar29 == 9);
+              if (lVar25 == 0) goto LAB_03d03818;
+              FUN_02e98db0(lVar25,uVar11,in_stack_000000d0,in_stack_000000d8,
+                           *(undefined8 *)PTR_DAT_046b3c48);
+            }
+            uVar14 = uVar14 - 1;
+            puVar12 = puVar12 + 3;
+          } while (uVar14 != 0);
+        }
+        if (-1 < piVar17[5]) {
+          lVar25 = *(long *)(in_stack_00000048 + 0x30);
+          if (DAT_04921b11 == '\0') {
+            FUN_020612a4(PTR_DAT_046b39f8);
+            DAT_04921b11 = '\x01';
+          }
+          if (lVar25 == 0) break;
+          iVar3 = piVar17[9];
+          uVar6 = piVar17[10];
+          lVar20 = *(long *)PTR_DAT_046b39f8;
+          lVar30 = *(long *)(lVar20 + 0x38);
+          if (lVar30 == 0) {
+            FUN_02091390(lVar20);
+            lVar30 = *(long *)(lVar20 + 0x38);
+          }
+          lVar25 = FUN_024ee2ac(*(undefined8 *)(lVar25 + 0x38),*(undefined8 *)(lVar30 + 0x10));
+          if ((int)uVar6 < 0) {
+            FUN_0384bcc8(0);
+          }
+          else if (uVar6 != 0) {
+            uVar14 = 0;
+            do {
+              if (*(long *)(in_stack_00000048 + 0x30) == 0) goto LAB_03d03818;
+              puVar13 = (undefined8 *)(lVar25 + (long)iVar3 * 0xc + uVar14 * 0xc);
+              in_stack_00000020 =
+                   in_stack_00000020 & 0xffffffff00000000 | (ulong)*(uint *)(puVar13 + 1);
+              lVar30 = FUN_03d04e08(*(long *)(in_stack_00000048 + 0x30),*puVar13,in_stack_00000020,0
+                                   );
+              if (*(int *)(lVar30 + 8) != *piVar17) {
+                if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                   (lVar30 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar30 == 0))
+                goto LAB_03d03818;
+                lVar30 = FUN_03d08478(lVar30,*puVar13,*(undefined4 *)(puVar13 + 1),0);
+                iVar4 = *(int *)(lVar30 + 8);
+                if (0 < iVar4) {
+                  iVar26 = 0;
+                  do {
+                    if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                       (lVar30 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar30 == 0)
+                       ) goto LAB_03d03818;
+                    uVar29 = *puVar13;
+                    if (DAT_04921b09 == '\0') {
+                      FUN_020612a4();
+                      DAT_04921b09 = '\x01';
+                    }
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if ((*(long *)(in_stack_00000048 + 0x30) == 0) ||
+                       (lVar20 = *(long *)(*(long *)(in_stack_00000048 + 0x30) + 0x10), lVar20 == 0)
+                       ) goto LAB_03d03818;
+                    lVar20 = *(long *)(lVar20 + 0x20);
+                    uVar7 = *(uint *)(puVar13 + 1);
+                    iVar1 = *(int *)(lVar30 + 0x28);
+                    iVar2 = *(int *)(lVar30 + 0x2c);
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (DAT_04921567 == '\0') {
+                      FUN_020612a4();
+                      DAT_04921567 = '\x01';
+                    }
+                    if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (lVar20 == 0) goto LAB_03d03818;
+                    if (*(uint *)(lVar20 + 0x18) <= uVar7) goto LAB_03d0383c;
+                    piVar19 = (int *)FUN_0371c840(lVar20 + (long)(int)uVar7 * 8 + 0x20,
+                                                  iVar26 + ((int)((ulong)uVar29 >> 0x20) +
+                                                           iVar1 * ((uint)uVar29 & 0xffff)) * iVar2,
+                                                  *(undefined8 *)PTR_DAT_046b38a8);
+                    lVar30 = *(long *)(in_stack_00000048 + 0x30);
+                    if (lVar30 == 0) goto LAB_03d03818;
+                    iVar1 = *piVar19;
+                    plVar28 = *(long **)(lVar30 + 0x18);
+                    if ((*(ushort *)(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20) + 0x135) & 1) == 0)
+                    {
+                      FUN_02091334(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20));
+                      lVar30 = *(long *)(in_stack_00000048 + 0x30);
+                    }
+                    memcpy(&stack0x00000060,(void *)(*plVar28 + (long)iVar1 * 0x70),0x70);
+                    uVar11 = in_stack_00000060;
+                    uVar29 = FUN_03d07d04(lVar30,piVar17[5],in_stack_00000060,0);
+                    uVar16 = FUN_03d00f6c(*(undefined8 *)(in_stack_00000048 + 0x30),&stack0x00000060
+                                          ,piVar17,uVar29);
+                    in_stack_000000d0 = FUN_0372b580(*(undefined8 *)PTR_DAT_046b3cc8,uVar16,0);
+                    in_stack_000000d8 = 0;
+                    lVar30 = *(long *)(lVar24 + 0x20);
+                    thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+                    in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar29 == 9);
+                    if (lVar30 == 0) goto LAB_03d03818;
+                    FUN_02e98db0(lVar30,uVar11,in_stack_000000d0,in_stack_000000d8,
+                                 *(undefined8 *)PTR_DAT_046b3c48);
+                    iVar26 = iVar26 + 1;
+                  } while (iVar4 != iVar26);
+                }
+              }
+              uVar14 = uVar14 + 1;
+            } while (uVar14 != uVar6);
+          }
+        }
+      }
+      lVar24 = *(long *)(in_stack_00000048 + 0x30);
+      iVar27 = iVar27 + 1;
+    } while (lVar24 != 0);
+  }
+LAB_03d03818:
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 53
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$.ctor
+ENTRY_POINT: 03d01af4
+MANUAL_PRIORITY_SCORE: 164
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 74
+ORIGINAL_SCANNER_LABEL: 70_high_general_structure_review_high
+MODULES: ['validity_gate', 'ray_interaction', 'telemetry']
+EVIDENCE: ['validity_or_gating_hits_21', 'ray_or_cast_sink_hits_2', 'telemetry_or_network_hits_2']
+PRIORITY_REASONS: ['base_scanner_score_74', 'module_bonus_validity_gate_8', 'module_bonus_ray_interaction_15', 'module_bonus_telemetry_20', 'evidence_bonus_telemetry_or_network_hits_12', 'sensitive_sink_telemetry_bonus_15', 'keyword_support_eye_or_gaze_1_bonus_4', 'keyword_support_collection_or_telemetry_4_bonus_16']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\70_high_general_structure_review_high\03d01af4_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$.ctor.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\053_p164_UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$.ctor.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: UnityEngine.Rendering.Universal.ScreenSpaceShadows.ScreenSpaceShadowsPostPass$$.ctor
+ENTRY_POINT: 03d01af4
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 74
+LABEL: general_structure_review_high
+EYE_TRACKING_DECISION: no
+USE_CLASSIFICATION: unrelated_or_generic_structure
+FRAMEWORK_CONTEXT: framework_namespace_with_project_hint
+FUNCTIONALITY: 
+MODULES: validity_gate;ray_interaction;telemetry
+EVIDENCE: validity_or_gating_hits_21;ray_or_cast_sink_hits_2;telemetry_or_network_hits_2
+*/
+
+
+/* WARNING: Removing unreachable block (ram,0x03d01e80) */
+/* WARNING: Removing unreachable block (ram,0x03d03850) */
+/* WARNING: Removing unreachable block (ram,0x03d03888) */
+/* WARNING: Removing unreachable block (ram,0x03d02034) */
+/* WARNING: Removing unreachable block (ram,0x03d0386c) */
+
+void UnityEngine_Rendering_Universal_ScreenSpaceShadows_ScreenSpaceShadowsPostPass___ctor(void)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  ushort uVar4;
+  uint uVar5;
+  undefined *puVar6;
+  undefined *puVar7;
+  undefined *puVar8;
+  undefined *puVar9;
+  undefined *puVar10;
+  undefined *puVar11;
+  undefined4 uVar12;
+  long lVar13;
+  long lVar14;
+  ulong uVar15;
+  ulong uVar16;
+  undefined8 uVar17;
+  byte *pbVar18;
+  undefined8 *puVar19;
+  ulong uVar20;
+  undefined4 *puVar21;
+  int *piVar22;
+  char *pcVar23;
+  int *piVar24;
+  long lVar25;
+  long lVar26;
+  long lVar27;
+  long lVar28;
+  long lVar29;
+  long unaff_x19;
+  long unaff_x21;
+  int iVar30;
+  int iVar31;
+  long *plVar32;
+  uint uVar33;
+  undefined8 uVar34;
+  int iVar35;
+  ushort *puVar36;
+  ulong in_stack_00000020;
+  long *in_stack_00000028;
+  ulong in_stack_00000060;
+  undefined8 in_stack_00000068;
+  undefined8 in_stack_00000070;
+  undefined8 in_stack_00000078;
+  undefined8 in_stack_00000080;
+  undefined8 in_stack_00000088;
+  undefined8 in_stack_00000090;
+  undefined8 in_stack_00000098;
+  undefined8 in_stack_000000a0;
+  undefined8 in_stack_000000a8;
+  undefined8 in_stack_000000b0;
+  undefined8 in_stack_000000b8;
+  undefined8 in_stack_000000c0;
+  undefined8 in_stack_000000c8;
+  undefined8 in_stack_000000d0;
+  undefined8 in_stack_000000d8;
+  ulong in_stack_000000e0;
+  undefined8 in_stack_000000e8;
+  long in_stack_000000f0;
+  undefined8 in_stack_000000f8;
+  undefined8 in_stack_00000100;
+  undefined8 in_stack_00000108;
+  undefined8 in_stack_00000110;
+  undefined8 in_stack_00000118;
+  undefined8 in_stack_00000120;
+  undefined8 in_stack_00000128;
+  undefined8 in_stack_00000130;
+  undefined8 in_stack_00000138;
+  undefined8 in_stack_00000140;
+  undefined8 in_stack_00000148;
+  long in_stack_00000150;
+  undefined8 in_stack_00000158;
+  ulong in_stack_00000160;
+  ulong in_stack_00000168;
+  undefined8 in_stack_00000170;
+  ulong in_stack_00000178;
+  long in_stack_00000180;
+  long in_stack_00000190;
+  undefined8 in_stack_00000198;
+  undefined8 in_stack_000001a0;
+  undefined1 *in_stack_000001a8;
+  ushort uStack00000000000001b0;
+  ulong in_stack_000001b8;
+  undefined8 in_stack_000001c0;
+  undefined8 in_stack_000001d0;
+  undefined8 in_stack_000001d8;
+  long *in_stack_000001e0;
+  long *in_stack_000001e8;
+  uint uVar37;
+  undefined8 in_stack_00000320;
+  undefined1 *in_stack_00000328;
+  undefined1 *puVar38;
+  ulong in_stack_00000330;
+  ulong in_stack_00000338;
+  ulong uVar39;
+  undefined8 in_stack_00000340;
+  ulong in_stack_00000348;
+  ulong uVar40;
+  long in_stack_00000350;
+  long in_stack_00000358;
+  
+  FUN_020612a4(PTR_DAT_046a9a98);
+  *(undefined1 *)(unaff_x19 + 0xaf8) = 1;
+  puVar9 = PTR_DAT_046b3c78;
+  puVar8 = PTR_DAT_046b3c50;
+  in_stack_00000078 = 0;
+  in_stack_00000070 = 0;
+  in_stack_00000088 = 0;
+  in_stack_00000080 = 0;
+  in_stack_00000098 = 0;
+  in_stack_00000090 = 0;
+  in_stack_000000a8 = 0;
+  in_stack_000000a0 = 0;
+  in_stack_000000b8 = 0;
+  in_stack_000000b0 = 0;
+  in_stack_000000c8 = 0;
+  in_stack_000000c0 = 0;
+  in_stack_000000e8 = 0;
+  in_stack_000000e0 = 0;
+  in_stack_000000f8 = 0;
+  in_stack_000000f0 = 0;
+  in_stack_00000108 = 0;
+  in_stack_00000100 = 0;
+  in_stack_00000118 = 0;
+  in_stack_00000110 = 0;
+  in_stack_00000128 = 0;
+  in_stack_00000120 = 0;
+  in_stack_00000138 = 0;
+  in_stack_00000130 = 0;
+  in_stack_00000148 = 0;
+  in_stack_00000140 = 0;
+  in_stack_00000158 = 0;
+  in_stack_00000150 = 0;
+  in_stack_00000168 = 0;
+  in_stack_00000160 = 0;
+  in_stack_00000178 = 0;
+  in_stack_00000170 = 0;
+  in_stack_000001a8 = (undefined1 *)0x0;
+  in_stack_000001a0 = 0;
+  in_stack_000001b8 = 0;
+  _uStack00000000000001b0 = 0;
+  in_stack_000001d8 = 0;
+  in_stack_000001d0 = 0;
+  in_stack_000001e8 = (long *)0x0;
+  in_stack_000001e0 = (long *)0x0;
+  in_stack_000001c0 = 0;
+  in_stack_00000190 = 0;
+  in_stack_00000198 = 0;
+  in_stack_00000180 = 0;
+  in_stack_000000d0 = 0;
+  in_stack_000000d8 = 0;
+  in_stack_00000068 = 0;
+  in_stack_00000060 = 0;
+  if (*in_stack_00000028 != 0) {
+    *(undefined1 *)(*in_stack_00000028 + 0x20) = 1;
+    lVar13 = thunk_FUN_02094760(*(undefined8 *)puVar9);
+    FUN_02e2f1b4(lVar13,*(undefined8 *)puVar8);
+    lVar14 = thunk_FUN_02094760(*(undefined8 *)puVar9);
+    FUN_02e2f1b4(lVar14,*(undefined8 *)puVar8);
+    puVar11 = PTR_DAT_046b2e70;
+    puVar10 = PTR_DAT_046af3d0;
+    puVar9 = StringLiteral_12117;
+    puVar8 = StringLiteral_9046;
+    if (*(long *)(unaff_x21 + 0x18) != 0) {
+      FUN_034a3364(&stack0x00000320,*(long *)(unaff_x21 + 0x18),*(undefined8 *)PTR_DAT_046b2e48);
+      while (uVar15 = System_Collections_Generic_EqualityComparer<PropertyPathPart>__System_Collections_IEqualityComparer_Equals
+                                (&stack0x000002b0,*(undefined8 *)PTR_DAT_046b2e30),
+            (uVar15 & 1) != 0) {
+        uVar15 = 0;
+        do {
+          if (*(long *)(unaff_x21 + 0x30) == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_0206154c();
+          }
+          lVar25 = *(long *)(*(long *)(unaff_x21 + 0x30) + 0x10);
+          if (lVar25 == 0) {
+                    /* WARNING: Subroutine does not return */
+            FUN_0206154c();
+          }
+          lVar25 = *(long *)(lVar25 + 0x10);
+  
+
+/* ... MIDDLE OF FUNCTION OMITTED FOR UPLOAD SIZE ... */
+
+0d0 = FUN_0372b580(*(undefined8 *)puVar8,uVar34,0);
+              uVar16 = in_stack_000000e0;
+              in_stack_000000d8 = 0;
+              lVar14 = *(long *)(lVar13 + 0x20);
+              thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+              in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar17 == 9);
+              if (lVar14 == 0) goto LAB_03d03818;
+              FUN_02e98db0(lVar14,uVar16 & 0xffffffff,in_stack_000000d0,in_stack_000000d8,
+                           *(undefined8 *)PTR_DAT_046b3c48);
+            }
+            uVar15 = uVar15 - 1;
+            puVar21 = puVar21 + 3;
+          } while (uVar15 != 0);
+        }
+        if (-1 < piVar22[5]) {
+          lVar14 = *(long *)(unaff_x21 + 0x30);
+          if (DAT_04921b11 == '\0') {
+            FUN_020612a4(PTR_DAT_046b39f8);
+            DAT_04921b11 = '\x01';
+          }
+          if (lVar14 == 0) break;
+          iVar35 = piVar22[9];
+          uVar37 = piVar22[10];
+          lVar26 = *(long *)PTR_DAT_046b39f8;
+          lVar25 = *(long *)(lVar26 + 0x38);
+          if (lVar25 == 0) {
+            FUN_02091390(lVar26);
+            lVar25 = *(long *)(lVar26 + 0x38);
+          }
+          lVar14 = FUN_024ee2ac(*(undefined8 *)(lVar14 + 0x38),*(undefined8 *)(lVar25 + 0x10));
+          if ((int)uVar37 < 0) {
+            FUN_0384bcc8(0);
+          }
+          else if (uVar37 != 0) {
+            uVar15 = 0;
+            do {
+              if (*(long *)(unaff_x21 + 0x30) == 0) goto LAB_03d03818;
+              puVar19 = (undefined8 *)(lVar14 + (long)iVar35 * 0xc + uVar15 * 0xc);
+              in_stack_00000020 =
+                   in_stack_00000020 & 0xffffffff00000000 | (ulong)*(uint *)(puVar19 + 1);
+              lVar25 = FUN_03d04e08(*(long *)(unaff_x21 + 0x30),*puVar19,in_stack_00000020,0);
+              if (*(int *)(lVar25 + 8) != *piVar22) {
+                if ((*(long *)(unaff_x21 + 0x30) == 0) ||
+                   (lVar25 = *(long *)(*(long *)(unaff_x21 + 0x30) + 0x10), lVar25 == 0))
+                goto LAB_03d03818;
+                lVar25 = FUN_03d08478(lVar25,*puVar19,*(undefined4 *)(puVar19 + 1),0);
+                iVar3 = *(int *)(lVar25 + 8);
+                if (0 < iVar3) {
+                  iVar30 = 0;
+                  do {
+                    if ((*(long *)(unaff_x21 + 0x30) == 0) ||
+                       (lVar25 = *(long *)(*(long *)(unaff_x21 + 0x30) + 0x10), lVar25 == 0))
+                    goto LAB_03d03818;
+                    uVar17 = *puVar19;
+                    if (DAT_04921b09 == '\0') {
+                      FUN_020612a4(puVar9);
+                      DAT_04921b09 = '\x01';
+                    }
+                    if (*(int *)(*(long *)puVar9 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if ((*(long *)(unaff_x21 + 0x30) == 0) ||
+                       (lVar26 = *(long *)(*(long *)(unaff_x21 + 0x30) + 0x10), lVar26 == 0))
+                    goto LAB_03d03818;
+                    lVar26 = *(long *)(lVar26 + 0x20);
+                    uVar33 = *(uint *)(puVar19 + 1);
+                    iVar1 = *(int *)(lVar25 + 0x28);
+                    iVar2 = *(int *)(lVar25 + 0x2c);
+                    if (*(int *)(*(long *)puVar9 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (DAT_04921567 == '\0') {
+                      FUN_020612a4(puVar9);
+                      DAT_04921567 = '\x01';
+                    }
+                    if (*(int *)(*(long *)puVar9 + 0xe4) == 0) {
+                      thunk_FUN_020b5864();
+                    }
+                    if (lVar26 == 0) goto LAB_03d03818;
+                    if (*(uint *)(lVar26 + 0x18) <= uVar33) goto LAB_03d0383c;
+                    piVar24 = (int *)FUN_0371c840(lVar26 + (long)(int)uVar33 * 8 + 0x20,
+                                                  iVar30 + ((int)((ulong)uVar17 >> 0x20) +
+                                                           iVar1 * ((uint)uVar17 & 0xffff)) * iVar2,
+                                                  *(undefined8 *)PTR_DAT_046b38a8);
+                    lVar25 = *(long *)(unaff_x21 + 0x30);
+                    if (lVar25 == 0) goto LAB_03d03818;
+                    iVar1 = *piVar24;
+                    plVar32 = *(long **)(lVar25 + 0x18);
+                    if ((*(ushort *)(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20) + 0x135) & 1) == 0)
+                    {
+                      FUN_02091334(*(long *)(*(long *)PTR_DAT_046b3a88 + 0x20));
+                      lVar25 = *(long *)(unaff_x21 + 0x30);
+                    }
+                    memcpy(&stack0x00000060,(void *)(*plVar32 + (long)iVar1 * 0x70),0x70);
+                    uVar16 = in_stack_00000060;
+                    uVar17 = FUN_03d07d04(lVar25,piVar22[5],in_stack_00000060 & 0xffffffff,0);
+                    uVar34 = FUN_03d00f6c(*(undefined8 *)(unaff_x21 + 0x30),&stack0x00000060,piVar22
+                                          ,uVar17);
+                    in_stack_000000d0 = FUN_0372b580(*(undefined8 *)PTR_DAT_046b3cc8,uVar34,0);
+                    in_stack_000000d8 = 0;
+                    lVar25 = *(long *)(lVar13 + 0x20);
+                    thunk_FUN_020ccb58(&stack0x000000d0,in_stack_000000d0);
+                    in_stack_000000d8 = CONCAT71(in_stack_000000d8._1_7_,(int)uVar17 == 9);
+                    if (lVar25 == 0) goto LAB_03d03818;
+                    FUN_02e98db0(lVar25,uVar16 & 0xffffffff,in_stack_000000d0,in_stack_000000d8,
+                                 *(undefined8 *)PTR_DAT_046b3c48);
+                    iVar30 = iVar30 + 1;
+                  } while (iVar3 != iVar30);
+                }
+              }
+              uVar15 = uVar15 + 1;
+            } while (uVar15 != uVar37);
+          }
+        }
+      }
+      lVar13 = *(long *)(unaff_x21 + 0x30);
+      iVar31 = iVar31 + 1;
+    } while (lVar13 != 0);
+  }
+LAB_03d03818:
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 54
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f155f8
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 111
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_111', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\03f155f8_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\054_p163_Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.Utils$$get_eyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f155f8
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 111
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_Utils__get_eyeTrackedFoveatedRenderingEnabled(void)
+
+{
+                    /* WARNING: Subroutine does not return */
+  FUN_0206154c();
+}
+
+
+
+END_DECOMPILED_FUNCTION
+
+============================================================
+RANK: 55
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods.Internal$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f19ae8
+MANUAL_PRIORITY_SCORE: 163
+MANUAL_TIER: A_must_review
+ORIGINAL_SCANNER_SCORE: 111
+ORIGINAL_SCANNER_LABEL: 90_plus_framework_foveated_rendering_support_or_attempt_near_certain
+MODULES: ['eye_source', 'weak_source_state', 'foveation_rendering', 'attempted_use', 'dynamic_foveation_possible']
+EVIDENCE: ['strong_eye_source_hits_4', 'weak_xr_or_state_hits_4', 'strong_foveation_hits_2', 'attempted_eye_tracking_permission_or_feature_enable', 'attempted_eye_tracking_with_foveated_rendering_path', 'negative_framework_support_context_without_confirmed_app_level_gaze_flow', 'framework_foveation_support_not_confirmed_dynamic_eye_tracking', 'functionality_foveated_rendering']
+PRIORITY_REASONS: ['base_scanner_score_111', 'module_bonus_foveation_rendering_20', 'sensitive_sink_foveation_bonus_12', 'keyword_support_eye_or_gaze_5_bonus_20']
+SOURCE_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\general-structure-results\90_plus_framework_foveated_rendering_support_or_attempt_near_certain\03f19ae8_Unity.XR.Oculus.NativeMethods.Internal$$GetEyeTrackedFoveatedRenderingEnabled.c
+COPIED_FILE: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\Gorillavs100Men\manual-review-pack\A_must_review\055_p163_Unity.XR.Oculus.NativeMethods.Internal$$GetEyeTrackedFoveatedRenderingEnabled.c
+============================================================
+
+BEGIN_DECOMPILED_FUNCTION
+/*
+FUNCTION_NAME: Unity.XR.Oculus.NativeMethods.Internal$$GetEyeTrackedFoveatedRenderingEnabled
+ENTRY_POINT: 03f19ae8
+PROGRAM: Gorillavs100Men-libil2cpp.so
+SCORE: 111
+LABEL: framework_foveated_rendering_support_or_attempt_near_certain
+EYE_TRACKING_DECISION: uncertain
+USE_CLASSIFICATION: framework_foveated_rendering_support_or_attempt
+FRAMEWORK_CONTEXT: framework_or_engine_namespace
+FUNCTIONALITY: foveated_rendering;attempted_eye_tracked_foveated_rendering
+MODULES: eye_source;weak_source_state;foveation_rendering;attempted_use;dynamic_foveation_possible
+EVIDENCE: strong_eye_source_hits_4;weak_xr_or_state_hits_4;strong_foveation_hits_2;attempted_eye_tracking_permission_or_feature_enable;attempted_eye_tracking_with_foveated_rendering_path;negative_framework_support_context_without_confirmed_app_level_gaze_flow;framework_foveation_support_not_confirmed_dynamic_eye_tracking;functionality_foveated_rendering
+*/
+
+
+void Unity_XR_Oculus_NativeMethods_Internal__GetEyeTrackedFoveatedRenderingEnabled(ulong param_1)
+
+{
+  int unaff_w19;
+  long unaff_x20;
+  long *unaff_x21;
+  
+  if ((param_1 & 1) == 0) {
+    FUN_020612a4(PTR_DAT_046beaf0);
+    *(undefined1 *)(unaff_x20 + 0xab3) = 1;
+  }
+  if (*(int *)(*unaff_x21 + 0xe4) == 0) {
+    thunk_FUN_020b5864();
+  }
+  FUN_03f1993c((double)unaff_w19);
+  return;
+}
+
+
+
+END_DECOMPILED_FUNCTION

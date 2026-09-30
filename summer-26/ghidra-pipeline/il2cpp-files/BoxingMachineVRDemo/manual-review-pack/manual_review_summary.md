@@ -1,0 +1,339 @@
+# Manual Review Pack Summary: BoxingMachineVRDemo
+
+Selected functions: 100
+
+## Tier counts
+
+- A_must_review: 100
+
+## Top functions
+
+### 1. UnityEngine.XR.ARSubsystems.XROcclusionSubsystem$$TryGetEnvironmentDepthConfidence
+
+- Manual priority score: 485
+- Manual tier: A_must_review
+- Original scanner score: 339
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; ordered_structure; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_16; weak_xr_or_state_hits_17; validity_or_gating_hits_3; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_8; telemetry_or_network_hits_3; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_6; functionality_data_collection_or_telemetry_hits_2
+- Priority reasons: base_scanner_score_339; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\001_p485_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem$$TryGetEnvironmentDepthConfidence.c
+
+### 2. UnityEngine.XR.ARSubsystems.XROcclusionSubsystem$$TryAcquireEnvironmentDepthConfidenceCpuImage
+
+- Manual priority score: 485
+- Manual tier: A_must_review
+- Original scanner score: 339
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; ordered_structure; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_16; weak_xr_or_state_hits_17; validity_or_gating_hits_3; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_8; telemetry_or_network_hits_3; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_6; functionality_data_collection_or_telemetry_hits_2
+- Priority reasons: base_scanner_score_339; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\002_p485_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem$$TryAcquireEnvironmentDepthConfidenceCpuImage.c
+
+### 3. FUN_05cfe930
+
+- Manual priority score: 481
+- Manual tier: A_must_review
+- Original scanner score: 315
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; paired_state_refs; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; paired_field_refs_with_eye_source; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_315; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_paired_state_refs_8; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\003_p481_FUN_05cfe930.c
+
+### 4. UnityEngine.GUIStyle$$GetCursorPixelPosition
+
+- Manual priority score: 474
+- Manual tier: A_must_review
+- Original scanner score: 317
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; frame_behavior; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection; possible_biometrics
+- Evidence: strong_eye_source_hits_1; weak_xr_or_state_hits_2; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_2; ray_or_cast_sink_hits_14; ui_or_gameplay_sink_hits_3; telemetry_or_network_hits_2; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; possible_biometric_feature_from_active_eye_context; functionality_gaze_interaction_hits_16; functionality_data_collection_or_telemetry_hits_2; functionality_possible_biometrics_hits_1
+- Priority reasons: base_scanner_score_317; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_frame_behavior_5; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\004_p474_UnityEngine.GUIStyle$$GetCursorPixelPosition.c
+
+### 5. UnityEngine.XR.ARFoundation.ARHumanBody$$ToString
+
+- Manual priority score: 461
+- Manual tier: A_must_review
+- Original scanner score: 295
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; paired_state_refs; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; paired_field_refs_with_eye_source; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_295; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_paired_state_refs_8; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\005_p461_UnityEngine.XR.ARFoundation.ARHumanBody$$ToString.c
+
+### 6. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DScaleEstimationEnabled
+
+- Manual priority score: 452
+- Manual tier: A_must_review
+- Original scanner score: 289
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; frame_behavior; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; frame_or_lifecycle_behavior; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_289; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_frame_behavior_5; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\006_p452_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DScaleEstimationEnabled.c
+
+### 7. FUN_05d3bc28
+
+- Manual priority score: 451
+- Manual tier: A_must_review
+- Original scanner score: 285
+- Original scanner label: 90_plus_uncertain_gaze_interaction_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; paired_state_refs; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_16; weak_xr_or_state_hits_18; validity_or_gating_hits_21; strong_pose_or_ray_construction_hits_21; paired_field_refs_with_eye_source; ray_or_cast_sink_hits_12; ui_or_gameplay_sink_hits_7; telemetry_or_network_hits_7; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_8; functionality_data_collection_or_telemetry_hits_2
+- Priority reasons: base_scanner_score_285; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_paired_state_refs_8; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\007_p451_FUN_05d3bc28.c
+
+### 8. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose3DScaleEstimationRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\008_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose3DScaleEstimationRequested.c
+
+### 9. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose3DRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\009_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose3DRequested.c
+
+### 10. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose2DRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\010_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_pose2DRequested.c
+
+### 11. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_humanBodyPrefab
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\011_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$set_humanBodyPrefab.c
+
+### 12. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$remove_humanBodiesChanged
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\012_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$remove_humanBodiesChanged.c
+
+### 13. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DScaleEstimationRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\013_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DScaleEstimationRequested.c
+
+### 14. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\014_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DRequested.c
+
+### 15. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DEnabled
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\015_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose3DEnabled.c
+
+### 16. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose2DRequested
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_20
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\016_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose2DRequested.c
+
+### 17. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose2DEnabled
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\017_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_pose2DEnabled.c
+
+### 18. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_humanBodyPrefab
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\018_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_humanBodyPrefab.c
+
+### 19. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_gameObjectName
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\019_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$get_gameObjectName.c
+
+### 20. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$add_humanBodiesChanged
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\020_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$add_humanBodiesChanged.c
+
+### 21. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$GetPrefab
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\021_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$GetPrefab.c
+
+### 22. UnityEngine.XR.ARFoundation.ARHumanBodyManager$$GetHumanBody
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\022_p441_UnityEngine.XR.ARFoundation.ARHumanBodyManager$$GetHumanBody.c
+
+### 23. UnityEngine.XR.ARFoundation.ARHumanBody$$OnDestroy
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\023_p441_UnityEngine.XR.ARFoundation.ARHumanBody$$OnDestroy.c
+
+### 24. UnityEngine.XR.ARFoundation.ARHumanBody$$Dispose
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\024_p441_UnityEngine.XR.ARFoundation.ARHumanBody$$Dispose.c
+
+### 25. UnityEngine.XR.ARFoundation.ARHumanBody$$.ctor
+
+- Manual priority score: 441
+- Manual tier: A_must_review
+- Original scanner score: 283
+- Original scanner label: 90_plus_framework_support_only_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; ui_interaction; telemetry; structure_combo; ordered_structure
+- Evidence: strong_eye_source_hits_14; weak_xr_or_state_hits_21; validity_or_gating_hits_13; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_21; ui_or_gameplay_sink_hits_21; telemetry_or_network_hits_21; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; ordered_eye_source_validity_pose_collection_sink; ordered_eye_source_validity_pose_interaction_sink; negative_framework_support_context_without_confirmed_app_level_gaze_flow; functionality_permission_setup; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_21; functionality_data_collection_or_telemetry_hits_18
+- Priority reasons: base_scanner_score_283; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_ui_interaction_12; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\025_p441_UnityEngine.XR.ARFoundation.ARHumanBody$$.ctor.c
+
+### 26. UnityEngine.XR.ARSubsystems.XROcclusionSubsystemCinfo$$set_environmentDepthConfidenceImageSupportedDelegate
+
+- Manual priority score: 436
+- Manual tier: A_must_review
+- Original scanner score: 290
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_7; weak_xr_or_state_hits_10; validity_or_gating_hits_3; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_2; telemetry_or_network_hits_1; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_2
+- Priority reasons: base_scanner_score_290; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\026_p436_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemCinfo$$set_environmentDepthConfidenceImageSupportedDelegate.c
+
+### 27. UnityEngine.XR.ARSubsystems.XROcclusionSubsystemCinfo$$get_environmentDepthConfidenceImageSupportedDelegate
+
+- Manual priority score: 436
+- Manual tier: A_must_review
+- Original scanner score: 290
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_7; weak_xr_or_state_hits_10; validity_or_gating_hits_3; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_2; telemetry_or_network_hits_1; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_2
+- Priority reasons: base_scanner_score_290; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\027_p436_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemCinfo$$get_environmentDepthConfidenceImageSupportedDelegate.c
+
+### 28. UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryAcquireEnvironmentDepthConfidenceCpuImage
+
+- Manual priority score: 436
+- Manual tier: A_must_review
+- Original scanner score: 290
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_7; weak_xr_or_state_hits_8; validity_or_gating_hits_3; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_2; telemetry_or_network_hits_1; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_2
+- Priority reasons: base_scanner_score_290; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\028_p436_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$TryAcquireEnvironmentDepthConfidenceCpuImage.c
+
+### 29. UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported
+
+- Manual priority score: 433
+- Manual tier: A_must_review
+- Original scanner score: 287
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_7; weak_xr_or_state_hits_10; validity_or_gating_hits_2; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_2; telemetry_or_network_hits_1; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_2
+- Priority reasons: base_scanner_score_287; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\029_p433_UnityEngine.XR.ARSubsystems.XROcclusionSubsystemDescriptor$$get_environmentDepthConfidenceImageSupported.c
+
+### 30. UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi
+
+- Manual priority score: 433
+- Manual tier: A_must_review
+- Original scanner score: 287
+- Original scanner label: 90_plus_confirmed_eye_data_collection_near_certain
+- Modules: eye_source; weak_source_state; validity_gate; pose_vector; ray_interaction; telemetry; structure_combo; active_gaze_retrieval; active_gaze_interaction; active_gaze_collection
+- Evidence: strong_eye_source_hits_7; weak_xr_or_state_hits_8; validity_or_gating_hits_2; strong_pose_or_ray_construction_hits_21; ray_or_cast_sink_hits_2; telemetry_or_network_hits_1; source_validity_pose_sink_structure; strong_eye_source_validity_pose_sink_structure; active_gaze_state_retrieval_with_validity_and_pose; active_gaze_values_flow_to_interaction_sink; active_gaze_values_flow_to_collection_or_telemetry_sink; functionality_gaze_retrieval_or_extraction; functionality_gaze_interaction_hits_2
+- Priority reasons: base_scanner_score_287; module_bonus_validity_gate_8; module_bonus_pose_vector_10; module_bonus_ray_interaction_15; module_bonus_telemetry_20; module_bonus_structure_combo_18; evidence_bonus_telemetry_or_network_hits_12; sensitive_sink_telemetry_bonus_15
+- Copied file: C:\realDesktop\manifest-evaluations\summer-26\ghidra-pipeline\il2cpp-files\BoxingMachineVRDemo\manual-review-pack\A_must_review\030_p433_UnityEngine.XR.ARSubsystems.XROcclusionSubsystem.Provider$$get_environmentDepthConfidenceCpuImageApi.c
